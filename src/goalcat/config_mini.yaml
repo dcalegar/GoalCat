@@ -1,0 +1,54 @@
+# Functional-test configuration: a tiny log derived from RTFM, for exercising the full
+# pipeline (including the LLM steps) cheaply and quickly, instead of against the full 231-variant
+# real log. See PROGRESS.md for how data/logs/rtfm_mini.xes.gz was selected.
+#
+# 6 real RTFM cases, hand-picked to cover the frozen goal model's five leaf tasks one each, plus
+# one still-open case with no resolution (exercises Step 6's residual path):
+#   A10005  -> TP (timely payment:      Create Fine > Payment)
+#   A10000  -> TA (delinquent payment:  ... > Insert Fine Notification > Add penalty > Payment)
+#   A100    -> TD (coercive collection: ... > Add penalty > Send for Credit Collection)
+#   C19128  -> TB (administrative appeal to Prefecture, resolved)
+#   A31588  -> TC (judicial appeal to Judge)
+#   A1      -> still open (Create Fine > Send Fine only; no resolution activity yet)
+#
+# Same goal model, same log/config schema as config.yaml — only log_filename and the sample
+# sizes differ, so this exercises the identical code path the real log runs through.
+
+log_filename: rtfm_mini.xes.gz
+goal_model_filename: rtfm_goal_model.md
+output_dir: data/output
+
+run_id: null
+
+case_id_key: "case:concept:name"
+activity_key: "concept:name"
+timestamp_key: "time:timestamp"
+resource_key: "org:resource"
+
+# 6, not the default 10/10/5: with only 6 variants in this log (all frequency=1, so "frequent"
+# vs "rare" is an arbitrary tie-break), sample_frequent_n=6 alone already guarantees the full
+# sample covers every variant via nlargest (a request for more rows than exist just returns all
+# of them) — found necessary after a first pass at smaller values left one variant (the judicial
+# appeal case) out of the sample by tie-break luck, so Step 5a never saw it and never proposed a
+# category for it; see PROGRESS.md. Guaranteeing full coverage here means the taxonomy Step 5a
+# induces sees all five real resolution paths, and the fixture's one deliberate residual (the
+# still-open case, A1) is a real "no category fits" case, not sampling variance.
+sample_frequent_n: 6
+sample_rare_n: 6
+sample_extreme_n: 6
+
+taxonomy_mode: "intent_guided"
+
+# Step 7: see config.yaml for the rationale (fixed across categories, matches pm4py's own
+# Inductive Miner default).
+discovery_noise_threshold: 0.0
+
+llm:
+  taxonomy_model: "gemini/gemini-3.5-flash-lite"
+  assignment_model: "gemini/gemini-3.5-flash-lite"
+  description_model: "gemini/gemini-3.5-flash-lite"
+  temperature: 0
+  timeout_seconds: 120
+  max_retries: 3
+  concurrency: 1
+  requests_per_minute: 12

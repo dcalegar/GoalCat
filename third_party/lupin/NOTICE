@@ -1,0 +1,18 @@
+LUPIN
+Copyright (c) 2024 Vincenzo Pasquadibisceglie, Annalisa Appice, Donato Malerba
+
+Source:  https://github.com/vinspdb/LUPIN
+License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+         https://creativecommons.org/licenses/by-nc-sa/4.0/  (full text: LICENSE in this directory)
+
+Citation:
+  Pasquadibisceglie, V., Appice, A., & Malerba, D. (2024). LUPIN: A LLM Approach for
+  Activity Suffix Prediction in Business Process Event Logs. International Conference
+  on Process Mining (ICPM). IEEE. https://doi.org/10.1109/ICPM63005.2024.10680620
+
+This directory holds material adapted from the source above (the trace-to-narrative
+textualization mechanism in preprocessing/log_to_history.py and utility/log_config.py).
+It is not modified in the copyright sense beyond the adaptation described in README.md,
+and remains licensed under CC BY-NC-SA 4.0, independent of the rest of this repository's
+AGPL-3.0 license. See README.md for the exact scope of reuse and the isolation contract
+governing how this directory may be called from the rest of the repository.

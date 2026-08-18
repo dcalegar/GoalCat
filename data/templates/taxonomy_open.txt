@@ -1,0 +1,10 @@
+You are inducing a taxonomy of process-variant behavior directly from a narrative sample, with no external declaration to anchor to. There is no goal model for this log: propose the categories that best explain the recurring patterns you observe in the sample below, the way unsupervised clustering would form groups from a log without an external specification.
+
+Each category's anchor_ids field must be an empty list — there is no declared axis to trace it to.
+
+Aim for categories that are mutually informative and collectively explain most of the sample: group narratives that realize a similar business-relevant pattern (comparable outcome, comparable resolution path, comparable timing/rework profile), and keep categories distinct enough that a human reviewer could tell, from the name and description alone, which one a new narrative belongs to. Do not force every narrative in the sample into a category — some may be outliers or blends that don't cleanly fit anywhere; that is expected and is handled by a later step, not by this taxonomy.
+
+=== NARRATIVE SAMPLE ({sample_size} variants, drawn to cover frequent, rare, and extreme cases) ===
+{narrative_blocks}
+
+Propose the taxonomy now.

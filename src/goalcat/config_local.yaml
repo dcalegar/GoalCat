@@ -1,0 +1,50 @@
+# Local-LLM configuration: same tiny log/sample settings as config_mini.yaml (see its header
+# for the case-by-case rationale), but routed to a locally-hosted model via Ollama instead of
+# a hosted API — for offline iteration/debugging or runs where no remote API key is available.
+# Requires Ollama running locally (`brew services start ollama`) with the model pulled
+# (`ollama pull qwen2.5:3b`). Qwen2.5 3B chosen for this machine's 8 GB unified memory — see
+# PROGRESS.md, "Local LLM backend (Ollama)" for the RAM-budget analysis behind that choice;
+# swapping to a different local model is a one-line change to the three *_model fields below,
+# no code change (same litellm "provider/model" convention as config.yaml/config_mini.yaml).
+#
+# Structured-output caveat: Ollama enforces response_format via grammar-constrained decoding,
+# so this model will always emit schema-valid JSON — but small local models can still make
+# weaker categorization judgments inside that valid shape (no ValidationError to catch it).
+# Spot-check Step 5/6 output against the Gemini baseline before trusting this beyond quick
+# local iteration.
+
+log_filename: rtfm_mini.xes.gz
+goal_model_filename: rtfm_goal_model.md
+output_dir: data/output
+
+run_id: null
+
+case_id_key: "case:concept:name"
+activity_key: "concept:name"
+timestamp_key: "time:timestamp"
+resource_key: "org:resource"
+
+sample_frequent_n: 6
+sample_rare_n: 6
+sample_extreme_n: 6
+
+taxonomy_mode: "intent_guided"
+
+# Step 7: see config.yaml for the rationale (fixed across categories, matches pm4py's own
+# Inductive Miner default).
+discovery_noise_threshold: 0.0
+
+llm:
+  # ollama_chat/<model> is litellm's provider prefix for a locally-hosted Ollama model — same
+  # "provider/model" string convention as gemini/... or anthropic/..., resolved against
+  # Ollama's default local server (http://localhost:11434), no API key needed.
+  taxonomy_model: "ollama_chat/qwen2.5:3b"
+  assignment_model: "ollama_chat/qwen2.5:3b"
+  description_model: "ollama_chat/qwen2.5:3b"
+  temperature: 0
+  timeout_seconds: 120
+  max_retries: 3
+  # No hosted-API rate limit to respect locally — concurrency is bounded by this machine's CPU
+  # instead, so higher values just contend for the same cores rather than adding throughput.
+  concurrency: 1
+  requests_per_minute: null

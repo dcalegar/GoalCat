@@ -1,0 +1,85 @@
+# Default pipeline configuration.
+# Paths are resolved relative to the repository root, regardless of the
+# working directory the pipeline is invoked from.
+
+# Log filename only — resolved under the fixed data/logs/ directory.
+log_filename: rtfm.xes.gz
+# Goal model filename only — resolved under the fixed data/goals/ directory (Step G's frozen
+# artifact for this log, e.g. data/goals/rtfm_goal_model.md). Read by Step 5a even if
+# taxonomy_mode is later switched to "open", since switching modes back is a config edit away.
+goal_model_filename: rtfm_goal_model.md
+output_dir: data/output
+
+# Which run directory to use, under output_dir/<log_stem>/ — e.g. "20260818_105007". Unset (or
+# null): a fresh timestamped directory, empty, for a complete run from scratch. Set to an
+# existing run's id: every step reads whatever it needs (variants/profiles/narratives/taxonomy)
+# from that directory instead of recomputing it, and only adds what's missing — e.g. point this
+# at a Step 5 run's id before calling Step 6, and it picks up that run's taxonomy.json directly,
+# writing its own assignment outputs into the same directory. A run_stepN_*() call's run_id=
+# argument (for chaining several steps within one process) takes priority over this field.
+run_id: null
+
+case_id_key: "case:concept:name"
+activity_key: "concept:name"
+timestamp_key: "time:timestamp"
+resource_key: "org:resource"
+
+# Narrative sampling (Step 4): number of variants per bucket, before deduplication.
+sample_frequent_n: 10
+sample_rare_n: 10
+sample_extreme_n: 5
+
+# Step 5: which taxonomy-induction mode to run. "intent_guided" (5a) subdivides the goal
+# model's declared OR/XOR axis; "open" (5b) proposes categories with no external axis — not
+# yet implemented, present here so the switch is explicit and auditable rather than inferred
+# from whether a goal-model file happens to exist.
+taxonomy_mode: "intent_guided"
+
+# Step 7: Inductive Miner noise threshold, applied uniformly to every category's sub-log —
+# OVERVIEW.md requires "fixed hyperparameters across categories", not per-category tuning. 0.0
+# (no denoising) matches pm4py.discover_petri_net_inductive's own default; categories are already
+# curated, LLM-assigned subsets, not raw noisy variant sets, so there is no a priori reason to
+# filter infrequent behavior out of them by default.
+discovery_noise_threshold: 0.0
+
+# LLM steps (5a/5b, 6, 8). Model strings are litellm "provider/model" IDs — swapping
+# provider (e.g. to anthropic/claude-... or openai/...) is a config-only change, no code
+# change. Gemini 2.5 Flash-Lite chosen for cost (see PROGRESS.md); Flash is the
+# Step-5-only comparison point, not a default. API keys (GEMINI_API_KEY / OPENAI_API_KEY /
+# ANTHROPIC_API_KEY) must be exported from the user's shell profile (e.g. ~/.bash_profile) —
+# never stored in any file in this repository, which lives under a synced Google Drive folder
+# (see PROGRESS.md, "Gemini API key: storage location"). litellm reads them from the
+# environment automatically.
+llm:
+  taxonomy_model: "gemini/gemini-3.5-flash-lite"
+  assignment_model: "gemini/gemini-3.5-flash-lite"
+  description_model: "gemini/gemini-3.5-flash-lite"
+  temperature: 0
+  timeout_seconds: 120
+  max_retries: 3
+  # 1, not 5: Gemini's free tier caps gemini-3.5-flash-lite at 15 requests/minute, discovered
+  # when Step 6's first live run (231 calls) hit RateLimitError at concurrency=5 — litellm's own
+  # retries compounded the burst.
+  #
+  # NOT fixed via Gemini Batch — investigated and ruled out (see PROGRESS.md): litellm's
+  # create_batch only routes Google calls through custom_llm_provider="vertex_ai" (GCP project +
+  # service-account auth, separate billing/quota from this key), never "gemini" (Google AI
+  # Studio / GEMINI_API_KEY, what this file actually uses). Switching provider families just to
+  # get batching was judged not worth it. Ollama has no batch concept either, for anyone who
+  # points a model field at a local model — it's synchronous local inference, no job queue to
+  # submit to.
+  #
+  # Fix instead: raise this account to Gemini's paid tier (aistudio.google.com — enabling
+  # billing is an account action, done outside this repo). Google no longer publishes a static
+  # per-tier RPM table (ai.google.dev/gemini-api/docs/rate-limits now says it's account-specific,
+  # viewable only at aistudio.google.com/rate-limit after upgrading) — check that page for the
+  # real number once upgraded, rather than assuming a value here. Note the same paid-tier switch
+  # also matters for the unrelated free-tier data-use policy already recorded in PROGRESS.md
+  # (free tier content may be used to improve Google's products; paid tier content is not).
+  concurrency: 1
+  # Per-call latency (~1s) is far faster than the free tier's 15 requests/minute budget on its
+  # own, so concurrency=1 alone still overruns it (serial != rate-limited) — Step 6's assignment
+  # loop paces requests to this rate when set. null = no pacing: safe once the account's actual
+  # paid-tier RPM (checked at aistudio.google.com/rate-limit) is high enough that litellm's own
+  # num_retries backoff can absorb the rare 429 rather than needing proactive pacing at all.
+  requests_per_minute: 12

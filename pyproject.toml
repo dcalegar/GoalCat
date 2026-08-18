@@ -1,0 +1,36 @@
+[project]
+name = "goalcat"
+version = "0.1.0"
+description = "Goal-driven categorization of process variants anchored in a declared goal model"
+requires-python = ">=3.11"
+license = { text = "AGPL-3.0-or-later" }
+authors = [{ name = "Daniel Calegari" }]
+
+# AGPL-3.0 is not a choice: pm4py imposes it, and the repository adopts it
+# (see project/OVERVIEW.md, Tools).
+dependencies = [
+    "pm4py==2.7.23.5",
+    "pandas>=2.2",
+    "PyYAML>=6.0",
+    # Only used by third_party/lupin/render_narratives.py, invoked as a subprocess (see its
+    # README's isolation contract) — never imported by src/goalcat itself.
+    "Jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+# Steps 5a/5b, 6, 8 (Task 5+): LLM taxonomy induction, narrative assignment, description
+# generation. litellm>=1.83.0 is a hard floor, not just a recency preference — versions
+# 1.82.7 and 1.82.8 were a confirmed PyPI supply-chain compromise (credential-stealing
+# malware; CVE-2026-33634, March 2026); 1.83.0+ was rebuilt on litellm's post-incident
+# CI/CD pipeline. Pin via lockfile, not just this floor.
+llm = [
+    "litellm>=1.83.0",
+    "pydantic>=2,<3",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/goalcat"]
