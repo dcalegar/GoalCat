@@ -38,6 +38,7 @@ class LLMConfig:
     max_retries: int
     concurrency: int
     requests_per_minute: int | None
+    assignment_batch_size: int
 
 
 @dataclasses.dataclass
@@ -206,6 +207,7 @@ def load_config(
             max_retries=raw["llm"]["max_retries"],
             concurrency=raw["llm"]["concurrency"],
             requests_per_minute=raw["llm"].get("requests_per_minute"),
+            assignment_batch_size=raw["llm"].get("assignment_batch_size", 20),
         ),
         run_id=resolved_run_id,
         round=resolved_round,
@@ -220,13 +222,13 @@ def _log_stem_of(log_filename: str) -> str:
 
 
 def load_prompt_template(name: str) -> str:
-    """Reads a prompt template from data/templates/<name>.
+    """Reads a prompt template from src/goalcat/templates/<name>.
 
     Kept as plain str.format()-style text files, not Jinja2 — editing prompt wording is then a
     data change, not a code change, while Jinja2 itself stays walled off to the vendored LUPIN
     module per its isolation contract (see third_party/lupin/README.md).
     """
-    return (REPO_ROOT / "data" / "templates" / name).read_text(encoding="utf-8")
+    return (Path(__file__).resolve().with_name("templates") / name).read_text(encoding="utf-8")
 
 
 def config_snapshot_dict(config: PipelineConfig) -> dict:

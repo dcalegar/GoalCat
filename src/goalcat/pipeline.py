@@ -375,18 +375,19 @@ def run_step6_assignment(
             len(already_done_ids), len(merged_df), len(pending_df),
         )
 
-    example_prompt = None
+    batch_prompts: list[tuple[str, str, str]] = []
     new_metadata_list: list = []
     still_failed_ids: list[str] = []
     if len(pending_df) > 0:
         logger.info(
-            "Assigning %d narratives against %d categories (model=%s, concurrency=%d)",
+            "Assigning %d narratives against %d categories (model=%s, batch_size=%d, concurrency=%d)",
             len(pending_df),
             len(taxonomy.categories),
             config.llm.assignment_model,
+            config.llm.assignment_batch_size,
             config.llm.concurrency,
         )
-        new_assignments_df, new_metadata_list, example_prompt, still_failed_ids = assign_narratives_6(
+        new_assignments_df, new_metadata_list, batch_prompts, still_failed_ids = assign_narratives_6(
             pending_df, taxonomy, config, logger
         )
         assignments_df = pd.concat([prior_assignments_df, new_assignments_df], ignore_index=True)
@@ -421,7 +422,7 @@ def run_step6_assignment(
         taxonomy, assignments_df, merged_df, structural_df, profile_df, config, still_failed_ids
     )
     save_assignment_outputs(
-        assignments_df, metadata_list, example_prompt, report_markdown, structural_df, profile_df, config.assignment_dir
+        assignments_df, metadata_list, batch_prompts, report_markdown, structural_df, profile_df, config.assignment_dir
     )
     logger.info("Saved assignment outputs to: %s", config.assignment_dir)
 

@@ -1,0 +1,64 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Fines resolved through prompt payment before formal enforcement and penalties.",
+      "anchor_ids": [
+        "TP"
+      ],
+      "rationale": "Directly maps to the timely payment task realizing fast revenue recovery without formal notification or penalties.",
+      "evidence_variant_ids": [
+        "V0004"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Resolve via delinquent payment",
+      "description": "Fines resolved through payment occurring after formal notification and added penalties.",
+      "anchor_ids": [
+        "TA"
+      ],
+      "rationale": "Maps to delinquent payment following the enforcement path with notification and penalty surcharge.",
+      "evidence_variant_ids": [
+        "V0003"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Fines contested through the administrative appeal channel directed to the Prefecture.",
+      "anchor_ids": [
+        "TB"
+      ],
+      "rationale": "Traces to administrative appeal handling steps including filing, transmission, and ruling from the Prefecture.",
+      "evidence_variant_ids": [
+        "V0006"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Fines contested through the judicial appeal channel directed to a Judge.",
+      "anchor_ids": [
+        "TC"
+      ],
+      "rationale": "Maps directly to the judicial appeal alternative providing independent review.",
+      "evidence_variant_ids": [
+        "V0005"
+      ]
+    },
+    {
+      "category_id": "coercive_collection",
+      "name": "Resolve via coercive credit collection",
+      "description": "Fines recovered through coercive credit collection procedures following unfulfilled enforcement.",
+      "anchor_ids": [
+        "TD"
+      ],
+      "rationale": "Traces to the coercive credit collection task used when voluntary or non-appeal resolutions are absent.",
+      "evidence_variant_ids": [
+        "V0002"
+      ]
+    }
+  ]
+}

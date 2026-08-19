@@ -56,7 +56,11 @@ def load_variants(path: Path) -> pd.DataFrame:
     """Inverse of save_variants: reconstructs activity_sequence as a tuple and case_ids as a
     list, so a run directory's variants.csv round-trips to the same shape extract_variants()
     produces in-memory."""
-    variants_df = pd.read_csv(path, dtype={"variant_id": str})
+    # keep_default_na=False: every column here is always populated (a variant always has a
+    # non-empty case_ids/activity_sequence), and pandas' default na_values list includes "NA" —
+    # a real case ID in the Sepsis Cases log, which would otherwise round-trip through
+    # save_variants/load_variants as a float NaN instead of the string "NA".
+    variants_df = pd.read_csv(path, dtype={"variant_id": str}, keep_default_na=False)
     variants_df["activity_sequence"] = variants_df["activity_sequence"].apply(lambda s: tuple(s.split(">")))
     variants_df["case_ids"] = variants_df["case_ids"].apply(lambda s: s.split(","))
     return variants_df

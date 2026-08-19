@@ -125,8 +125,8 @@ def validate_decisions_against_taxonomy(decisions: ReviewDecisions, taxonomy: Ta
 
 def write_review_template(taxonomy: Taxonomy, config: PipelineConfig, logger: logging.Logger) -> Path:
     """Writes review_decisions.yaml if absent; never overwrites an existing one, so in-progress
-    human edits are never clobbered. Body lives in data/templates/decisions_review.yaml — data,
-    not code, same convention as every prompt template."""
+    human edits are never clobbered. Body lives in src/goalcat/templates/decisions_review.yaml —
+    data, not code, same convention as every prompt template."""
     path = config.review_dir / "review_decisions.yaml"
     if path.exists():
         return path

@@ -91,3 +91,10 @@ llm:
   # paid-tier RPM (checked at aistudio.google.com/rate-limit) is high enough that litellm's own
   # num_retries backoff can absorb the rare 429 rather than needing proactive pacing at all.
   requests_per_minute: 12
+  # Step 6: how many narratives go into a single assignment prompt/response, instead of one LLM
+  # call per narrative. 20 narratives -> ~12 calls for a 231-narrative run instead of 231,
+  # trading away per-narrative failure isolation for call-count reduction: a failed/invalid batch
+  # response leaves every narrative in that batch pending (retried on the next call against the
+  # same run_id, per load_prior_assignments()'s resume logic), not just one. Lower this back
+  # toward 1 if that coarser failure granularity becomes a practical problem.
+  assignment_batch_size: 20

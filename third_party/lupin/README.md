@@ -53,6 +53,8 @@ content authored for its own attribute schema, following the same Jinja2 pattern
 ## Status
 
 `render_narratives.py` (the adapted rendering loop) and `log_templates.py` (this project's own
-`event_template` / `trace_template` definitions, currently covering `rtfm`) are implemented.
-Invoked from `src/goalcat/narrative/textualization.py` via `subprocess`, per the isolation
-contract above.
+`event_template` / `trace_template` definitions) are implemented. One template set, defined once
+under `"rtfm"`, is reused for every log (`rtfm_mini`, `sepsis`, `bpic2019`, `bpic2020_permit`) —
+Step 2 profiling emits the same event/trace attribute schema regardless of the source log, so the
+template's wording carries no per-dataset vocabulary. Invoked from
+`src/goalcat/narrative/textualization.py` via `subprocess`, per the isolation contract above.

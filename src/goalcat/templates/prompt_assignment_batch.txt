@@ -1,0 +1,11 @@
+You are deciding, for each of several process-variant narratives, which single taxonomy category (if any) it realizes.
+
+The taxonomy was derived {mode_clause}.
+
+=== TAXONOMY CATEGORIES ===
+{category_blocks}
+
+=== NARRATIVES TO CLASSIFY ({narrative_count}) ===
+{narrative_blocks}
+
+For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids.

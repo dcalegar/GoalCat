@@ -6,23 +6,35 @@ import logging
 from pathlib import Path
 
 import pandas as pd
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 from ..config import PipelineConfig, load_prompt_template
 from .llm_backend import LLMBackend, RunMetadata
 from .taxonomy import Taxonomy, _resolve_anchor_labels
 
 
-class Assignment(BaseModel):
-    """One narrative's classification against the taxonomy. variant_id is not part of this
-    schema — the orchestration loop already knows which narrative a given call was for, so it's
-    attached from the caller's own context rather than trusted to an LLM echo."""
+class VariantAssignment(BaseModel):
+    """One narrative's classification within a batched call. variant_id is part of the schema —
+    unlike a single-item call, one response here covers several narratives, so the caller needs
+    the LLM's own echo to map each judgment back to the narrative it belongs to."""
 
+    variant_id: str = Field(description="Must exactly match one of the variant_ids given in the prompt.")
     category_id: str | None = Field(
         description="A category_id from the taxonomy this narrative realizes, or null if none "
         "of the categories fit (the narrative becomes part of the residual)."
     )
     rationale: str = Field(description="Why this narrative does, or does not, realize the chosen category.")
+
+
+class AssignmentBatch(BaseModel):
+    assignments: list[VariantAssignment]
+
+    @model_validator(mode="after")
+    def _unique_variant_ids(self) -> "AssignmentBatch":
+        ids = [a.variant_id for a in self.assignments]
+        if len(ids) != len(set(ids)):
+            raise ValueError(f"Duplicate variant_id values in assignment batch: {ids}")
+        return self
 
 
 _MODE_CLAUSES = {
@@ -41,19 +53,27 @@ def _format_category_block(category) -> str:
     return f"- category_id={category.category_id} | name={category.name}\n  description: {category.description}"
 
 
-def _build_assignment_prompt(narrative_row: pd.Series, taxonomy: Taxonomy, taxonomy_mode: str) -> str:
+def _format_narrative_block(narrative_row: pd.Series) -> str:
+    return (
+        f"- variant_id={narrative_row['variant_id']} | frequency={narrative_row['frequency']} "
+        f"({narrative_row['frequency_pct'] * 100:.1f}%) | "
+        f"duration_seconds_median={narrative_row['duration_seconds_median']:.0f} | "
+        f"outcome={narrative_row['outcome']}\n"
+        f"  narrative: {narrative_row['narrative']}"
+    )
+
+
+def _build_assignment_batch_prompt(batch_df: pd.DataFrame, taxonomy: Taxonomy, taxonomy_mode: str) -> str:
     if taxonomy_mode not in _MODE_CLAUSES:
         raise ValueError(f"Unknown taxonomy_mode={taxonomy_mode!r} (expected 'intent_guided' or 'open')")
     category_blocks = "\n".join(_format_category_block(c) for c in taxonomy.categories)
-    template = load_prompt_template("prompt_assignment.txt")
+    narrative_blocks = "\n".join(_format_narrative_block(row) for _, row in batch_df.iterrows())
+    template = load_prompt_template("prompt_assignment_batch.txt")
     return template.format(
         mode_clause=_MODE_CLAUSES[taxonomy_mode],
         category_blocks=category_blocks,
-        frequency=narrative_row["frequency"],
-        frequency_pct=narrative_row["frequency_pct"] * 100,
-        duration=narrative_row["duration_seconds_median"],
-        outcome=narrative_row["outcome"],
-        narrative=narrative_row["narrative"],
+        narrative_count=len(batch_df),
+        narrative_blocks=narrative_blocks,
     )
 
 
@@ -84,82 +104,111 @@ class _RateLimiter:
             self._next_allowed = now + self._interval
 
 
-async def _assign_one(
+async def _assign_batch(
     backend: LLMBackend,
     semaphore: asyncio.Semaphore,
     rate_limiter: _RateLimiter,
-    variant_id: str,
-    prompt: str,
+    batch_df: pd.DataFrame,
+    taxonomy: Taxonomy,
+    taxonomy_mode: str,
     logger: logging.Logger,
-) -> tuple[str, Assignment | None, RunMetadata | None]:
-    """Catches its own failures rather than letting them propagate to asyncio.gather: with 231
-    independent calls, one persistent transport failure (rate limit, 503, ...) must not discard
-    every other call's already-completed work — observed directly during this project's own
-    live verification, twice, before this guard existed (see PROGRESS.md)."""
+) -> tuple[dict[str, VariantAssignment], RunMetadata | None, list[str]]:
+    """One LLM call per batch of up to config.llm.assignment_batch_size narratives. Catches its
+    own failures rather than letting them propagate to asyncio.gather, same rationale as the
+    original per-narrative version (see PROGRESS.md): one persistent transport failure must not
+    discard every other batch's already-completed work. Batching trades away per-narrative
+    isolation for call-count reduction, though — a failed/invalid response here leaves every
+    narrative in this batch pending, not just one."""
+    variant_ids = list(batch_df["variant_id"])
+    prompt = _build_assignment_batch_prompt(batch_df, taxonomy, taxonomy_mode)
     async with semaphore:
         await rate_limiter.wait()
         try:
-            assignment, metadata = await backend.generate_structured(prompt, Assignment)
-            return variant_id, assignment, metadata
+            batch, metadata = await backend.generate_structured(prompt, AssignmentBatch)
         except Exception as exc:
-            logger.warning("Assignment call failed for %s, will remain pending: %s", variant_id, exc)
-            return variant_id, None, None
+            logger.warning(
+                "Assignment batch call failed for %d narratives, will remain pending: %s", len(variant_ids), exc
+            )
+            return {}, None, variant_ids
+
+    by_id = {a.variant_id: a for a in batch.assignments}
+    unexpected = set(by_id) - set(variant_ids)
+    for variant_id in unexpected:
+        logger.warning("Assignment batch response returned unexpected variant_id %s — discarded", variant_id)
+        del by_id[variant_id]
+    missing = [variant_id for variant_id in variant_ids if variant_id not in by_id]
+    if missing:
+        logger.warning(
+            "Assignment batch response missing %d/%d narratives, will remain pending: %s",
+            len(missing), len(variant_ids), missing,
+        )
+    return by_id, metadata, missing
+
+
+def _build_batches(pending_df: pd.DataFrame, batch_size: int) -> list[pd.DataFrame]:
+    return [pending_df.iloc[i : i + batch_size] for i in range(0, len(pending_df), batch_size)]
 
 
 async def _assign_all(
-    merged_df: pd.DataFrame, taxonomy: Taxonomy, config: PipelineConfig, logger: logging.Logger
-) -> list[tuple[str, Assignment | None, RunMetadata | None]]:
+    batches: list[pd.DataFrame], taxonomy: Taxonomy, config: PipelineConfig, logger: logging.Logger
+) -> list[tuple[dict[str, VariantAssignment], RunMetadata | None, list[str]]]:
     backend = LLMBackend(config.llm.assignment_model, config.llm, logger)
     semaphore = asyncio.Semaphore(config.llm.concurrency)
     rate_limiter = _RateLimiter(config.llm.requests_per_minute)
     tasks = [
-        _assign_one(
-            backend,
-            semaphore,
-            rate_limiter,
-            row["variant_id"],
-            _build_assignment_prompt(row, taxonomy, config.taxonomy_mode),
-            logger,
-        )
-        for _, row in merged_df.iterrows()
+        _assign_batch(backend, semaphore, rate_limiter, batch_df, taxonomy, config.taxonomy_mode, logger)
+        for batch_df in batches
     ]
     return await asyncio.gather(*tasks)
 
 
 def assign_narratives_6(
     merged_df: pd.DataFrame, taxonomy: Taxonomy, config: PipelineConfig, logger: logging.Logger
-) -> tuple[pd.DataFrame, list[RunMetadata], str, list[str]]:
-    """Narrative assignment (Step 6): one LLM call per narrative, bounded by
-    config.llm.concurrency — the first pipeline step needing more than one concurrent call.
+) -> tuple[pd.DataFrame, list[RunMetadata], list[tuple[str, str, str]], list[str]]:
+    """Narrative assignment (Step 6): one LLM call per batch of config.llm.assignment_batch_size
+    narratives (default 20), with up to config.llm.concurrency batch calls in flight at once —
+    the first pipeline step needing more than one concurrent call.
 
-    Returns (assignments_df, metadata_list, example_prompt, failed_variant_ids) — a call that
-    exhausted its own retries is reported in failed_variant_ids, not silently dropped or treated
-    as a residual (a residual means the LLM decided no category fits, a substantively different
-    outcome from an infrastructure failure). The caller decides how to handle retrying failures.
+    Returns (assignments_df, metadata_list, batch_prompts, failed_variant_ids). batch_prompts is
+    one (first_variant_id, last_variant_id, prompt_text) entry per batch actually sent this call,
+    in call order — every prompt this run submitted, not just a sample of the first one, so
+    save_assignment_outputs() can persist the full set for traceability. A narrative whose batch
+    call failed, or whose batch response omitted it, is reported in failed_variant_ids, not
+    silently dropped or treated as a residual (a residual means the LLM decided no category fits,
+    a substantively different outcome from an infrastructure failure). The caller decides how to
+    handle retrying failures.
     """
-    example_prompt = _build_assignment_prompt(merged_df.iloc[0], taxonomy, config.taxonomy_mode)
+    batches = _build_batches(merged_df, config.llm.assignment_batch_size)
+    batch_prompts = [
+        (
+            str(batch_df["variant_id"].iloc[0]),
+            str(batch_df["variant_id"].iloc[-1]),
+            _build_assignment_batch_prompt(batch_df, taxonomy, config.taxonomy_mode),
+        )
+        for batch_df in batches
+    ]
 
-    results = asyncio.run(_assign_all(merged_df, taxonomy, config, logger))
+    results = asyncio.run(_assign_all(batches, taxonomy, config, logger))
 
     rows = []
     metadata_list = []
     failed_variant_ids = []
-    for variant_id, assignment, metadata in results:
-        if assignment is None:
-            failed_variant_ids.append(variant_id)
-            continue
-        rows.append({"variant_id": variant_id, "category_id": assignment.category_id, "rationale": assignment.rationale})
-        metadata_list.append(metadata)
+    for by_id, metadata, missing in results:
+        failed_variant_ids.extend(missing)
+        if metadata is not None:
+            metadata_list.append(metadata)
+        for variant_id, assignment in by_id.items():
+            rows.append({"variant_id": variant_id, "category_id": assignment.category_id, "rationale": assignment.rationale})
 
     assignments_df = pd.DataFrame(rows, columns=["variant_id", "category_id", "rationale"])
-    return assignments_df, metadata_list, example_prompt, failed_variant_ids
+    return assignments_df, metadata_list, batch_prompts, failed_variant_ids
 
 
 def load_prior_assignments(output_dir: Path) -> tuple[pd.DataFrame, list[RunMetadata]]:
     """Reads back a previous (possibly partial) run's assignments.csv and
     assignment_run_metadata.json, for resuming an interrupted Step 6 call against the same run
     directory — retrying only the narratives that never got a successful assignment, instead of
-    re-sending (and re-billing) all 231 calls after a single transient failure.
+    re-sending (and re-billing) every batch call after a single transient failure.
 
     Returns empty results if either file is missing (nothing to resume from).
     """
@@ -472,14 +521,18 @@ def build_assignment_report(
 def save_assignment_outputs(
     assignments_df: pd.DataFrame,
     metadata_list: list[RunMetadata],
-    example_prompt: str | None,
+    batch_prompts: list[tuple[str, str, str]],
     report_markdown: str,
     structural_df: pd.DataFrame,
     profile_df: pd.DataFrame,
     output_dir: Path,
 ) -> None:
-    """example_prompt=None (a fully-resumed run that made zero new calls) leaves any existing
-    assignment_prompt_example.txt untouched rather than overwriting it with a placeholder."""
+    """batch_prompts: one (first_variant_id, last_variant_id, prompt_text) entry per batch this
+    call actually sent (see assign_narratives_6) — written one file per batch under
+    assignment_prompts/, named by the batch's variant_id range, for full traceability of every
+    assignment prompt rather than a single example. Empty on a fully-resumed run that made zero
+    new calls, which leaves any prompt files an earlier call already wrote untouched: each call
+    against a run directory only covers its own pending subset, so nothing here is ever cleared."""
     output_dir.mkdir(parents=True, exist_ok=True)
 
     structural_stats = _per_variant_distance_stats(assignments_df, structural_df, "distance")
@@ -509,8 +562,11 @@ def save_assignment_outputs(
     profile_df.to_csv(output_dir / "profile_distances.csv", index=False)
 
     (output_dir / "assignment_report.md").write_text(report_markdown, encoding="utf-8")
-    if example_prompt is not None:
-        (output_dir / "assignment_prompt_example.txt").write_text(example_prompt, encoding="utf-8")
+    if batch_prompts:
+        prompts_dir = output_dir / "assignment_prompts"
+        prompts_dir.mkdir(parents=True, exist_ok=True)
+        for first_variant_id, last_variant_id, prompt in batch_prompts:
+            (prompts_dir / f"{first_variant_id}_{last_variant_id}.txt").write_text(prompt, encoding="utf-8")
 
     metadata_payload = {
         "calls": [m.model_dump() for m in metadata_list],

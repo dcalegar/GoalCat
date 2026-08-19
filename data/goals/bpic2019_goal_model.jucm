@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:grl.kpimodel="http:///grl/kpimodel.ecore" xmlns:urn="http:///urn.ecore" name="BPIC2019 Goal Model" author="goalcat (draft v1.0, artificial -- see data/goals/bpic2019_goal_model.md)" created="August 19, 2026, 12:00:00 AM EDT" modified="August 19, 2026, 12:00:00 AM EDT" specVersion="1.0" urnVersion="1.27" nextGlobalID="98">
+  <grlspec>
+    <intElements name="Every purchase order item reaches a matched, compliant closure" id="2" type="Goal" decompositionType="And"/>
+    <intElements name="Item is created and, where applicable, requisitioned" id="3" type="Goal" decompositionType="And"/>
+    <intElements name="Item is resolved per its matching regime" id="4" type="Goal" decompositionType="Or"/>
+    <intElements name="3-way matched, invoice recorded after goods receipt" id="5" type="Goal" decompositionType="And"/>
+    <intElements name="3-way matched, invoice recorded before goods receipt" id="6" type="Goal" decompositionType="And"/>
+    <intElements name="2-way matched (no goods receipt required)" id="7" type="Goal" decompositionType="And"/>
+    <intElements name="Create Purchase Order Item" id="8" type="Task"/>
+    <intElements name="Requisition &amp; release (optional upstream gate)" id="9" type="Task"/>
+    <intElements name="Record Goods Receipt" id="10" type="Task"/>
+    <intElements name="Record invoice" id="11" type="Task"/>
+    <intElements name="Clear Invoice" id="12" type="Task"/>
+    <intElements name="Resolve via consignment consumption" id="13" type="Task"/>
+    <intElements name="Minimize procurement &amp; matching overhead" id="14" type="Softgoal"/>
+    <intElements name="Maximize working-capital efficiency (timely clearance)" id="15" type="Softgoal"/>
+    <intElements name="Preserve value-matching control integrity" id="16" type="Softgoal"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to clearance, 3-way after GR (days)" id="17" type="Indicator" groups="47"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to clearance, 3-way before GR (days)" id="18" type="Indicator" groups="47"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to clearance, 2-way match (days)" id="19" type="Indicator" groups="47"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="3-way matching compliance (violation rate, %)" id="20" type="Indicator" groups="48"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Exception/rework rate (%)" id="21" type="Indicator" groups="48"/>
+    <actors name="Purchase-to-Pay Back-Office" id="1"/>
+    <links xsi:type="grl:Decomposition" id="22" src="2" dest="3" refs="73"/>
+    <links xsi:type="grl:Decomposition" id="23" src="2" dest="4" refs="74"/>
+    <links xsi:type="grl:Decomposition" id="24" src="3" dest="8" refs="75"/>
+    <links xsi:type="grl:Decomposition" id="25" src="3" dest="9" refs="76"/>
+    <links xsi:type="grl:Decomposition" id="26" src="4" dest="5" refs="77"/>
+    <links xsi:type="grl:Decomposition" id="27" src="4" dest="6" refs="78"/>
+    <links xsi:type="grl:Decomposition" id="28" src="4" dest="7" refs="79"/>
+    <links xsi:type="grl:Decomposition" id="29" src="4" dest="13" refs="80"/>
+    <links xsi:type="grl:Decomposition" id="30" src="5" dest="10" refs="81"/>
+    <links xsi:type="grl:Decomposition" id="31" src="5" dest="11" refs="82"/>
+    <links xsi:type="grl:Decomposition" id="32" src="5" dest="12" refs="83"/>
+    <links xsi:type="grl:Decomposition" id="33" src="6" dest="10" refs="84"/>
+    <links xsi:type="grl:Decomposition" id="34" src="6" dest="11" refs="85"/>
+    <links xsi:type="grl:Decomposition" id="35" src="6" dest="12" refs="86"/>
+    <links xsi:type="grl:Decomposition" id="36" src="7" dest="11" refs="87"/>
+    <links xsi:type="grl:Decomposition" id="37" src="7" dest="12" refs="88"/>
+    <links xsi:type="grl:Contribution" id="38" src="12" dest="15" refs="89" contribution="Make" quantitativeContribution="100"/>
+    <links xsi:type="grl:Contribution" id="39" src="5" dest="16" refs="90" contribution="Make" quantitativeContribution="100"/>
+    <links xsi:type="grl:Contribution" id="40" src="5" dest="14" refs="91" contribution="SomeNegative" quantitativeContribution="-25"/>
+    <links xsi:type="grl:Contribution" id="41" src="6" dest="16" refs="92" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="42" src="6" dest="15" refs="93" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="43" src="7" dest="14" refs="94" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="44" src="7" dest="16" refs="95" contribution="SomeNegative" quantitativeContribution="-25"/>
+    <links xsi:type="grl:Contribution" id="45" src="13" dest="14" refs="96" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="46" src="13" dest="16" refs="97" contribution="SomeNegative" quantitativeContribution="-25"/>
+    <indicatorGroup name="Time" id="47" isRedesignCategory="true" indicators="17 18 19"/>
+    <indicatorGroup name="Quality" id="48" isRedesignCategory="true" indicators="20 21"/>
+    <groups name="KPI Reference Values (descriptive, draft v1.0)" id="49" strategies="50"/>
+    <strategies name="Log-computed reference values, v1.0 (draft)" id="50" author="goalcat (draft v1.0, artificial)" type="Private" group="49">
+      <evaluations intElement="17">
+        <kpiEvalValueSet targetValue="65" thresholdValue="84" worstValue="119" unit="days" qualitativeEvaluationValue="Not an organizational target -- P50/P75/P95 computed directly against the log, see bpic2019_goal_model.md SS6/SS8"/>
+      </evaluations>
+      <evaluations intElement="18">
+        <kpiEvalValueSet targetValue="64" thresholdValue="87" worstValue="118" unit="days" qualitativeEvaluationValue="Not an organizational target -- P50/P75/P95 computed directly against the log, see bpic2019_goal_model.md SS6/SS8"/>
+      </evaluations>
+      <evaluations intElement="19">
+        <kpiEvalValueSet targetValue="20" thresholdValue="39" worstValue="130" unit="days" qualitativeEvaluationValue="Not an organizational target -- P50/P75/P95 computed directly against the log (small sample, n=303), see bpic2019_goal_model.md SS6/SS8"/>
+      </evaluations>
+      <evaluations intElement="20">
+        <kpiEvalValueSet targetValue="0" thresholdValue="1" worstValue="5" unit="%" qualitativeEvaluationValue="Observed rate 0.31% (566/183,374) -- illustrative bounds, no organizational target, see bpic2019_goal_model.md SS6/SS8"/>
+      </evaluations>
+      <evaluations intElement="21">
+        <kpiEvalValueSet targetValue="0" thresholdValue="5" worstValue="15" unit="%" qualitativeEvaluationValue="Observed rate 3.39% (8,523/251,734) -- illustrative bounds, no organizational target, see bpic2019_goal_model.md SS6/SS8"/>
+      </evaluations>
+    </strategies>
+    <impactModel/>
+    <featureModel/>
+  </grlspec>
+  <urndef>
+    <specDiagrams xsi:type="grl:GRLGraph" name="BPIC2019 Goal Model" id="51">
+      <contRefs xsi:type="grl:ActorRef" id="52" name="Purchase-to-Pay Back-Office" x="100" y="40" width="1500" height="750" contDef="1" nodes="53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69">
+        <label/>
+      </contRefs>
+      <nodes xsi:type="grl:IntentionalElementRef" id="53" name="Every purchase order item reaches a matched, compliant closure" x="700" y="80" def="2" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="54" name="Item is created and, where applicable, requisitioned" x="350" y="180" def="3" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="55" name="Item is resolved per its matching regime" x="950" y="180" def="4" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="56" name="3-way matched, invoice recorded after goods receipt" x="650" y="280" def="5" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="57" name="3-way matched, invoice recorded before goods receipt" x="950" y="280" def="6" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="58" name="2-way matched (no goods receipt required)" x="1250" y="280" def="7" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="59" name="Create Purchase Order Item" x="200" y="280" def="8" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="60" name="Requisition &amp; release (optional upstream gate)" x="450" y="280" def="9" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="61" name="Record Goods Receipt" x="750" y="380" def="10" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="62" name="Record invoice" x="950" y="380" def="11" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="63" name="Clear Invoice" x="1150" y="380" def="12" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="64" name="Resolve via consignment consumption" x="1450" y="280" def="13" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="65" name="Time to clearance, 3-way after GR (days)" x="200" y="620" def="17" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="66" name="Time to clearance, 3-way before GR (days)" x="500" y="620" def="18" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="67" name="Time to clearance, 2-way match (days)" x="800" y="620" def="19" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="68" name="3-way matching compliance (violation rate, %)" x="1100" y="620" def="20" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="69" name="Exception/rework rate (%)" x="1400" y="620" def="21" contRef="52">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="70" name="Minimize procurement &amp; matching overhead" x="350" y="880" def="14">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="71" name="Maximize working-capital efficiency (timely clearance)" x="750" y="880" def="15">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="72" name="Preserve value-matching control integrity" x="1150" y="880" def="16">
+        <label/>
+      </nodes>
+      <connections xsi:type="grl:LinkRef" id="73" source="53" target="54" link="22"/>
+      <connections xsi:type="grl:LinkRef" id="74" source="53" target="55" link="23"/>
+      <connections xsi:type="grl:LinkRef" id="75" source="54" target="59" link="24"/>
+      <connections xsi:type="grl:LinkRef" id="76" source="54" target="60" link="25"/>
+      <connections xsi:type="grl:LinkRef" id="77" source="55" target="56" link="26"/>
+      <connections xsi:type="grl:LinkRef" id="78" source="55" target="57" link="27"/>
+      <connections xsi:type="grl:LinkRef" id="79" source="55" target="58" link="28"/>
+      <connections xsi:type="grl:LinkRef" id="80" source="55" target="64" link="29"/>
+      <connections xsi:type="grl:LinkRef" id="81" source="56" target="61" link="30"/>
+      <connections xsi:type="grl:LinkRef" id="82" source="56" target="62" link="31"/>
+      <connections xsi:type="grl:LinkRef" id="83" source="56" target="63" link="32"/>
+      <connections xsi:type="grl:LinkRef" id="84" source="57" target="61" link="33"/>
+      <connections xsi:type="grl:LinkRef" id="85" source="57" target="62" link="34"/>
+      <connections xsi:type="grl:LinkRef" id="86" source="57" target="63" link="35"/>
+      <connections xsi:type="grl:LinkRef" id="87" source="58" target="62" link="36"/>
+      <connections xsi:type="grl:LinkRef" id="88" source="58" target="63" link="37"/>
+      <connections xsi:type="grl:LinkRef" id="89" source="63" target="71" link="38"/>
+      <connections xsi:type="grl:LinkRef" id="90" source="56" target="72" link="39"/>
+      <connections xsi:type="grl:LinkRef" id="91" source="56" target="70" link="40"/>
+      <connections xsi:type="grl:LinkRef" id="92" source="57" target="72" link="41"/>
+      <connections xsi:type="grl:LinkRef" id="93" source="57" target="71" link="42"/>
+      <connections xsi:type="grl:LinkRef" id="94" source="58" target="70" link="43"/>
+      <connections xsi:type="grl:LinkRef" id="95" source="58" target="72" link="44"/>
+      <connections xsi:type="grl:LinkRef" id="96" source="64" target="70" link="45"/>
+      <connections xsi:type="grl:LinkRef" id="97" source="64" target="72" link="46"/>
+    </specDiagrams>
+  </urndef>
+</urn:URNspec>

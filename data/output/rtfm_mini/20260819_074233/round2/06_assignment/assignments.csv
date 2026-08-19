@@ -1,0 +1,7 @@
+variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
+V0001,,"The process ends at Send Fine without any payment, appeal, or credit collection action completed.",,payment_resolution,1,,0.33405107160585173
+V0002,coercive_collection,The process ends with Send for Credit Collection following unfulfilled enforcement and penalties.,0.0,payment_resolution,1,0.0,0.3608828617024307
+V0003,payment_resolution,The fine is resolved through a delinquent payment following formal notification and added penalties.,0.0,coercive_collection,1,0.0,0.3608828617024307
+V0004,payment_resolution,The fine is resolved through a prompt payment shortly after creation.,3.0,coercive_collection,4,0.3057838049642359,0.5444914249700502
+V0005,judicial_appeal,The fine is contested through an appeal directed to a Judge.,0.0,coercive_collection,1,0.0,0.36026422230408667
+V0006,administrative_appeal,"The fine is contested through an administrative appeal to the Prefecture, ending with the receipt of the result.",0.0,coercive_collection,3,0.0,0.36026422230408667

@@ -1,0 +1,29 @@
+You are deciding, for each of several process-variant narratives, which single taxonomy category (if any) it realizes.
+
+The taxonomy was derived by subdividing a declared goal-model axis — every category is traceable to specific goal-model elements, so 'realize' means the narrative satisfies that declared alternative.
+
+=== TAXONOMY CATEGORIES ===
+- category_id=payment_resolution | name=Resolve via payment
+  description: Fines resolved through payment, encompassing both prompt payments before formal enforcement and delinquent payments following formal notification and added penalties.
+- category_id=administrative_appeal | name=Resolve via administrative appeal to the Prefecture
+  description: Fines contested through the administrative appeal channel directed to the Prefecture.
+- category_id=judicial_appeal | name=Resolve via judicial appeal to the Judge
+  description: Fines contested through the judicial appeal channel directed to a Judge.
+- category_id=coercive_collection | name=Resolve via coercive credit collection
+  description: Fines recovered through coercive credit collection procedures following unfulfilled enforcement.
+
+=== NARRATIVES TO CLASSIFY (6) ===
+- variant_id=V0001 | frequency=1 (16.7%) | duration_seconds_median=11581200 | outcome=Send Fine
+  narrative: Create Fine (handled by resource 561), 0 seconds after the previous step. Send Fine, 11581200 seconds after the previous step. This variant covers 1 cases (16.7% of the log), typically takes about 11581200 seconds from start to finish, and ends in Send Fine.
+- variant_id=V0002 | frequency=1 (16.7%) | duration_seconds_median=83894400 | outcome=Send for Credit Collection
+  narrative: Create Fine (handled by resource 561), 0 seconds after the previous step. Send Fine, 11408400 seconds after the previous step. Insert Fine Notification, 2937600 seconds after the previous step. Add penalty, 5184000 seconds after the previous step. Send for Credit Collection, 64364400 seconds after the previous step. This variant covers 1 cases (16.7% of the log), typically takes about 83894400 seconds from start to finish, and ends in Send for Credit Collection.
+- variant_id=V0003 | frequency=1 (16.7%) | duration_seconds_median=47516400 | outcome=Payment
+  narrative: Create Fine (handled by resource 561), 0 seconds after the previous step. Send Fine, 11228400 seconds after the previous step. Insert Fine Notification, 1382400 seconds after the previous step. Add penalty, 5184000 seconds after the previous step. Payment, 29721600 seconds after the previous step. This variant covers 1 cases (16.7% of the log), typically takes about 47516400 seconds from start to finish, and ends in Payment.
+- variant_id=V0004 | frequency=1 (16.7%) | duration_seconds_median=86400 | outcome=Payment
+  narrative: Create Fine (handled by resource 537), 0 seconds after the previous step. Payment, 86400 seconds after the previous step. This variant covers 1 cases (16.7% of the log), typically takes about 86400 seconds from start to finish, and ends in Payment.
+- variant_id=V0005 | frequency=1 (16.7%) | duration_seconds_median=11754000 | outcome=Appeal to Judge
+  narrative: Create Fine (handled by resource 563), 0 seconds after the previous step. Send Fine, 3974400 seconds after the previous step. Insert Fine Notification, 777600 seconds after the previous step. Add penalty, 5184000 seconds after the previous step. Appeal to Judge (handled by resource 0), 1818000 seconds after the previous step. This variant covers 1 cases (16.7% of the log), typically takes about 11754000 seconds from start to finish, and ends in Appeal to Judge.
+- variant_id=V0006 | frequency=1 (16.7%) | duration_seconds_median=6742800 | outcome=Receive Result Appeal from Prefecture
+  narrative: Create Fine (handled by resource 56), 0 seconds after the previous step. Send Fine, 0 seconds after the previous step. Insert Fine Notification, 0 seconds after the previous step. Insert Date Appeal to Prefecture, 432000 seconds after the previous step. Send Appeal to Prefecture, 3024000 seconds after the previous step. Add penalty, 1731600 seconds after the previous step. Receive Result Appeal from Prefecture, 1555200 seconds after the previous step. This variant covers 1 cases (16.7% of the log), typically takes about 6742800 seconds from start to finish, and ends in Receive Result Appeal from Prefecture.
+
+For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids.

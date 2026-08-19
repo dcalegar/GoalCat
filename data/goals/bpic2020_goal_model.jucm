@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:grl.kpimodel="http:///grl/kpimodel.ecore" xmlns:urn="http:///urn.ecore" name="BPIC2020 Goal Model" author="goalcat (draft v1.0, artificial -- see data/goals/bpic2020_goal_model.md)" created="August 19, 2026, 12:00:00 AM EDT" modified="August 19, 2026, 12:00:00 AM EDT" specVersion="1.0" urnVersion="1.27" nextGlobalID="78">
+  <grlspec>
+    <intElements name="Every submitted permit reaches a documented authorization outcome, and every cost from an approved trip is paid" id="2" type="Goal" decompositionType="And"/>
+    <intElements name="Permit is submitted for authorization" id="3" type="Goal" decompositionType="And"/>
+    <intElements name="Permit reaches a closed resolution" id="4" type="Goal" decompositionType="Or"/>
+    <intElements name="Permit is approved and its trip/costs are settled" id="5" type="Goal" decompositionType="And"/>
+    <intElements name="Trip is undertaken and its costs are settled" id="6" type="Goal" decompositionType="And"/>
+    <intElements name="Costs arising from the trip are declared or requested, and paid" id="7" type="Goal" decompositionType="Or"/>
+    <intElements name="Permit SUBMITTED by EMPLOYEE" id="8" type="Task"/>
+    <intElements name="Permit is rejected and not further pursued" id="9" type="Task"/>
+    <intElements name="Permit is approved through the required chain" id="10" type="Task"/>
+    <intElements name="Start trip &#8594; End trip" id="11" type="Task"/>
+    <intElements name="Declaration submitted, approved, and paid" id="12" type="Task"/>
+    <intElements name="Request For Payment submitted, approved, and paid" id="13" type="Task"/>
+    <intElements name="Minimize approval-chain overhead" id="14" type="Softgoal"/>
+    <intElements name="Maintain budgetary control" id="15" type="Softgoal"/>
+    <intElements name="Minimize employee reimbursement delay" id="16" type="Softgoal"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to reimbursement (days)" id="17" type="Indicator" groups="37"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Budget overspend rate (%)" id="18" type="Indicator" groups="38"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Approval-chain rejection rate (%)" id="19" type="Indicator" groups="38"/>
+    <actors name="Travel &amp; Finance Administration" id="1"/>
+    <links xsi:type="grl:Decomposition" id="20" src="2" dest="3" refs="61"/>
+    <links xsi:type="grl:Decomposition" id="21" src="2" dest="4" refs="62"/>
+    <links xsi:type="grl:Decomposition" id="22" src="3" dest="8" refs="63"/>
+    <links xsi:type="grl:Decomposition" id="23" src="4" dest="9" refs="64"/>
+    <links xsi:type="grl:Decomposition" id="24" src="4" dest="5" refs="65"/>
+    <links xsi:type="grl:Decomposition" id="25" src="5" dest="10" refs="66"/>
+    <links xsi:type="grl:Decomposition" id="26" src="5" dest="6" refs="67"/>
+    <links xsi:type="grl:Decomposition" id="27" src="6" dest="11" refs="68"/>
+    <links xsi:type="grl:Decomposition" id="28" src="6" dest="7" refs="69"/>
+    <links xsi:type="grl:Decomposition" id="29" src="7" dest="12" refs="70"/>
+    <links xsi:type="grl:Decomposition" id="30" src="7" dest="13" refs="71"/>
+    <links xsi:type="grl:Contribution" id="31" src="10" dest="14" refs="72" contribution="SomeNegative" quantitativeContribution="-25"/>
+    <links xsi:type="grl:Contribution" id="32" src="10" dest="15" refs="73" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="33" src="9" dest="15" refs="74" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="34" src="9" dest="14" refs="75" contribution="SomeNegative" quantitativeContribution="-25"/>
+    <links xsi:type="grl:Contribution" id="35" src="12" dest="16" refs="76" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="36" src="13" dest="16" refs="77" contribution="Help" quantitativeContribution="50"/>
+    <indicatorGroup name="Time" id="37" isRedesignCategory="true" indicators="17"/>
+    <indicatorGroup name="Control" id="38" isRedesignCategory="true" indicators="18 19"/>
+    <groups name="KPI Reference Values (descriptive, draft v1.0)" id="39" strategies="40"/>
+    <strategies name="Log-computed reference values, v1.0 (draft)" id="40" author="goalcat (draft v1.0, artificial)" type="Private" group="39">
+      <evaluations intElement="17">
+        <kpiEvalValueSet targetValue="13" thresholdValue="31" worstValue="105" unit="days" qualitativeEvaluationValue="Not an organizational target -- P50/P75/P95 computed directly against the log (n=5,721), see bpic2020_goal_model.md SS6/SS8"/>
+      </evaluations>
+      <evaluations intElement="18">
+        <kpiEvalValueSet targetValue="0" thresholdValue="15" worstValue="40" unit="%" qualitativeEvaluationValue="Observed rate 26.8% (1,894/7,065) -- the log's own case:Overspent attribute; illustrative bounds, no organizational target, see bpic2020_goal_model.md SS6/SS8"/>
+      </evaluations>
+      <evaluations intElement="19">
+        <kpiEvalValueSet targetValue="0" thresholdValue="10" worstValue="25" unit="%" qualitativeEvaluationValue="Observed rate 4.6% (319/6,960) -- illustrative bounds, no organizational target, see bpic2020_goal_model.md SS6/SS8"/>
+      </evaluations>
+    </strategies>
+    <impactModel/>
+    <featureModel/>
+  </grlspec>
+  <urndef>
+    <specDiagrams xsi:type="grl:GRLGraph" name="BPIC2020 Goal Model" id="41">
+      <contRefs xsi:type="grl:ActorRef" id="42" name="Travel &amp; Finance Administration" x="100" y="40" width="1300" height="700" contDef="1" nodes="43 44 45 46 47 48 49 50 51 52 53 54 55 56 57">
+        <label/>
+      </contRefs>
+      <nodes xsi:type="grl:IntentionalElementRef" id="43" name="Every submitted permit reaches a documented authorization outcome, and every cost from an approved trip is paid" x="650" y="80" def="2" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="44" name="Permit is submitted for authorization" x="250" y="180" def="3" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="45" name="Permit reaches a closed resolution" x="850" y="180" def="4" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="46" name="Permit is approved and its trip/costs are settled" x="950" y="280" def="5" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="47" name="Trip is undertaken and its costs are settled" x="1000" y="380" def="6" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="48" name="Costs arising from the trip are declared or requested, and paid" x="1050" y="480" def="7" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="49" name="Permit SUBMITTED by EMPLOYEE" x="250" y="280" def="8" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="50" name="Permit is rejected and not further pursued" x="650" y="280" def="9" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="51" name="Permit is approved through the required chain" x="750" y="380" def="10" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="52" name="Start trip &#8594; End trip" x="800" y="480" def="11" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="53" name="Declaration submitted, approved, and paid" x="900" y="580" def="12" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="54" name="Request For Payment submitted, approved, and paid" x="1200" y="580" def="13" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="55" name="Time to reimbursement (days)" x="200" y="620" def="17" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="56" name="Budget overspend rate (%)" x="450" y="620" def="18" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="57" name="Approval-chain rejection rate (%)" x="1350" y="180" def="19" contRef="42">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="58" name="Minimize approval-chain overhead" x="300" y="820" def="14">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="59" name="Maintain budgetary control" x="650" y="820" def="15">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="60" name="Minimize employee reimbursement delay" x="1000" y="820" def="16">
+        <label/>
+      </nodes>
+      <connections xsi:type="grl:LinkRef" id="61" source="43" target="44" link="20"/>
+      <connections xsi:type="grl:LinkRef" id="62" source="43" target="45" link="21"/>
+      <connections xsi:type="grl:LinkRef" id="63" source="44" target="49" link="22"/>
+      <connections xsi:type="grl:LinkRef" id="64" source="45" target="50" link="23"/>
+      <connections xsi:type="grl:LinkRef" id="65" source="45" target="46" link="24"/>
+      <connections xsi:type="grl:LinkRef" id="66" source="46" target="51" link="25"/>
+      <connections xsi:type="grl:LinkRef" id="67" source="46" target="47" link="26"/>
+      <connections xsi:type="grl:LinkRef" id="68" source="47" target="52" link="27"/>
+      <connections xsi:type="grl:LinkRef" id="69" source="47" target="48" link="28"/>
+      <connections xsi:type="grl:LinkRef" id="70" source="48" target="53" link="29"/>
+      <connections xsi:type="grl:LinkRef" id="71" source="48" target="54" link="30"/>
+      <connections xsi:type="grl:LinkRef" id="72" source="51" target="58" link="31"/>
+      <connections xsi:type="grl:LinkRef" id="73" source="51" target="59" link="32"/>
+      <connections xsi:type="grl:LinkRef" id="74" source="50" target="59" link="33"/>
+      <connections xsi:type="grl:LinkRef" id="75" source="50" target="58" link="34"/>
+      <connections xsi:type="grl:LinkRef" id="76" source="53" target="60" link="35"/>
+      <connections xsi:type="grl:LinkRef" id="77" source="54" target="60" link="36"/>
+    </specDiagrams>
+  </urndef>
+</urn:URNspec>

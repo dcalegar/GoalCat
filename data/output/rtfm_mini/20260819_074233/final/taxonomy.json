@@ -1,0 +1,54 @@
+{
+  "categories": [
+    {
+      "category_id": "payment_resolution",
+      "name": "Resolve via payment",
+      "description": "Fines resolved through payment, encompassing both prompt payments before formal enforcement and delinquent payments following formal notification and added penalties.",
+      "anchor_ids": [
+        "TP",
+        "TA"
+      ],
+      "rationale": "Merged timely_payment and delinquent_payment categories per the reviewer's requested script rework-loop demonstration, combining both payment-related resolution paths.",
+      "evidence_variant_ids": [
+        "V0003",
+        "V0004"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Fines contested through the administrative appeal channel directed to the Prefecture.",
+      "anchor_ids": [
+        "TB"
+      ],
+      "rationale": "Traces to administrative appeal handling steps including filing, transmission, and ruling from the Prefecture.",
+      "evidence_variant_ids": [
+        "V0006"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Fines contested through the judicial appeal channel directed to a Judge.",
+      "anchor_ids": [
+        "TC"
+      ],
+      "rationale": "Maps directly to the judicial appeal alternative providing independent review.",
+      "evidence_variant_ids": [
+        "V0005"
+      ]
+    },
+    {
+      "category_id": "coercive_collection",
+      "name": "Resolve via coercive credit collection",
+      "description": "Fines recovered through coercive credit collection procedures following unfulfilled enforcement.",
+      "anchor_ids": [
+        "TD"
+      ],
+      "rationale": "Traces to the coercive credit collection task used when voluntary or non-appeal resolutions are absent.",
+      "evidence_variant_ids": [
+        "V0002"
+      ]
+    }
+  ]
+}

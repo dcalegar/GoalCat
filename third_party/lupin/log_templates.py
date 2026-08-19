@@ -33,3 +33,12 @@ TEMPLATES = {
 # fast functional testing — same activity vocabulary and event/trace structure as "rtfm", so it
 # reuses the same templates rather than duplicating them.
 TEMPLATES["rtfm_mini"] = TEMPLATES["rtfm"]
+
+# Every other log in data/logs/ (sepsis, bpic2019, bpic2020_permit) goes through the same Step 2
+# profiling code (src/goalcat/extraction/profiling.py) as rtfm, which always emits this exact
+# event_attribute/trace_attribute schema regardless of the source log — nothing in the "rtfm"
+# template's wording is RTFM-specific (no activity names, no dataset vocabulary). Reusing it here
+# follows the same precedent as rtfm_mini above, rather than duplicating an identical template
+# under three more keys.
+for _log_name in ("sepsis", "bpic2019", "bpic2020_permit"):
+    TEMPLATES[_log_name] = TEMPLATES["rtfm"]

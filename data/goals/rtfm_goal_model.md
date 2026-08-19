@@ -1,16 +1,25 @@
 # RTFM Goal Model (Step G) — Road Traffic Fine Management
 
-**Status:** **Frozen**, version 1.0, 2026-08-18 — per `project/OVERVIEW.md`'s definition of Step G,
-versioned and frozen before assignment. Frozen by project-owner decision, not by the domain-expert
-review originally scoped in §8 below; §8 records that gap so it stays visible rather than
-retroactively presented as closed. Any future revision (via Step 9's merge/split/rename loop, or a
-domain-expert review) must bump this version, not edit v1.0 in place.
+**Status:** **Frozen**, version 1.1, 2026-08-19 — supersedes v1.0 (2026-08-18) per `project/OVERVIEW.md`'s
+definition of Step G; v1.0 is not edited in place, per its own freeze policy (see §8 for the diff).
+Frozen by project-owner decision, not by the domain-expert review originally scoped in §8 below; §8
+records that gap so it stays visible rather than retroactively presented as closed. Any future revision
+(via Step 9's merge/split/rename loop, or a domain-expert review) must bump this version, not edit v1.1
+in place.
 **Target log:** `data/logs/rtfm.xes.gz` — the Road Traffic Fine Management Process event log
 (231 variants, 150,370 cases; de Leoni & Mannhardt, 2015).
-**Provenance:** Reconstructed from the publicly documented Italian administrative-sanction procedure
-for road traffic violations (Legge 689/1981; Codice della Strada, D.Lgs. 285/1992), not transcribed
-from a specific municipality's internal process documentation. §8 states what is required to promote
-this from "artificial but reasonable" to a genuinely sourced Step G artifact.
+**Provenance:** §3–§4's goal-task decomposition is cross-checked against the DPN-net process model in
+Mannhardt et al. (2016, §6.1.1, Fig. 7–8), which the paper's authors designed "using a discovered model
+next to domain knowledge and information regarding traffic regulations" for this exact police force and
+event log — an expert-authored model of this specific process, not a general statutory reconstruction.
+The legal framing (actor roles, the appeal channels' mutual exclusivity) remains grounded in the publicly
+documented Italian administrative-sanction procedure (Legge 689/1981; Codice della Strada, D.Lgs.
+285/1992), not transcribed from a specific municipality's internal process documentation. §8 states what
+is still required to promote this from "artificial but reasonable" to a genuinely sourced Step G
+artifact.
+**Note on the tool-notation copy:** the `.jucm` file below mirrors v1.0's content; it has not been
+regenerated for v1.1 (the §6 KPI correction and §8 rewrite below) and should not be treated as current
+until it is.
 **Tool-notation copy:** [`rtfm_goal_model.jucm`](rtfm_goal_model.jucm) — the full model serialized as
 jUCMNav's native URN/GRL XMI format: §2's actor, §3–§4's goals/tasks and AND/OR/XOR decomposition
 links, §5's softgoals and contribution links, and §6's three indicators (as `grl.ecore`'s
@@ -150,6 +159,14 @@ never needed formal notification or a penalty surcharge; a case satisfying TA di
 deliberate example of the taxonomy axis carving on business intent rather than on activity-label
 identity — the distinction a purely lexical grouping of the log would miss.
 
+This TP/TA split is itself a simplification of what the cited normative model actually encodes:
+Mannhardt et al. (2016, Fig. 7) place three separate `Payment` transitions in the DPN-net — payable
+immediately after `Create Fine`, after `Send Fine`, and after `Notification` — not a binary
+timely/delinquent choice. Collapsing the first two into TP and the third into TA is a deliberate
+business-intent grouping for this goal model's taxonomy-axis purpose, not a claim that the underlying
+process has only two payment points; a future revision could split TP further if the taxonomy needs
+that granularity.
+
 ## 5. Contribution links (softgoals)
 
 | Source | Target | Value | Rationale |
@@ -176,14 +193,14 @@ SomeNegative = -25, Hurt = -50, Break = -100), as used in the IMS example (Amyot
 
 | KPI | Formula (informal) | Worst | Threshold | Target | Provenance |
 |---|---|---|---|---|---|
-| Time to formal notification | days, Create Fine → Insert Fine Notification | > 360 | 90 | ≤ 90 | Statutory — Art. 201, D.Lgs. 285/1992, ordinary notification term for domestic-plate violations; extended terms (illustratively, up to 360 days) apply to cases requiring foreign/complex ownership lookup |
-| Share of cases closed by voluntary payment (TP + TA) | % of closed cases | < 40% | 40% | ≥ 65% | Illustrative managerial target — no external source; a real Step G artifact should replace this with the owning municipality's actual target |
-| Average time to case closure | days, Create Fine → last resolving task | > 365 | 180 | ≤ 180 | Illustrative managerial target — no external source |
+| Time to fine dispatch | days, Create Fine → Send Fine | > 360 | 90 | ≤ 90 | Statutory — Art. 201, D.Lgs. 285/1992, ordinary notification term for domestic-plate violations, corroborated by the `Delay Send' < 90 days` guard on the `Send Fine` transition in Mannhardt et al. (2016, Fig. 8); extended terms (illustratively, up to 360 days) apply to cases requiring foreign/complex ownership lookup. (v1.0 measured this against `Insert Fine Notification`; corrected in v1.1 — both the statute and Fig. 8's guard attach the 90-day clock to `Send Fine`.) |
+| Time to appeal filing | days, Notification → Appeal to Judge / Appeal to Prefecture | > 120 | 60 | ≤ 60 | Corroborated by the `Delay Judge' < 60 days` and `Delay Prefecture' < 60 days` guards in Mannhardt et al. (2016, Fig. 8); same statutory appeal window cited for G5's XOR in §3 (L. 689/1981). Added in v1.1, replacing v1.0's invented "share of cases closed by voluntary payment" placeholder. |
+| Average time to case closure | days, Create Fine → last resolving task | > 365 | 180 | ≤ 180 | Illustrative managerial target — no external source; a real Step G artifact should replace this with the owning municipality's actual target |
 
-Only the first indicator is statute-grounded; the other two are invented for this illustrative draft
-and are flagged as such rather than presented with false precision. Exact statutory day-counts have
-been amended over time and should be checked against the consolidated text before this model is used
-for anything beyond illustration.
+The first two indicators are now statute- and model-grounded; the third remains invented for this
+illustrative draft and is flagged as such rather than presented with false precision. Exact statutory
+day-counts have been amended over time and should be checked against the consolidated text before this
+model is used for anything beyond illustration.
 
 ## 7. Traceability to observed RTFM activity labels (non-binding)
 
@@ -215,19 +232,39 @@ Two known behaviors deliberately fall outside this table, by design rather than 
 
 ## 8. Limitations of the frozen artifact
 
-This model is authored from general, publicly available statutory sources, not from Polizia Locale
-internal procedure documents, and its two illustrative KPIs (§6) have no external grounding at all.
-Both gaps mirror the bottleneck the goal-oriented process mining literature itself reports — "logs
-typically do not include explicit goals, KPIs, or goal models" (Ghasemi et al., 2025). That literature
-closes the equivalent gap through **domain-expert review**: Ghasemi et al. (2025, Ch. 8) grounded
-their Sepsis KPI triples in physician consultation against the actual clinical guideline. That review
-has **not** happened for this artifact — v1.0 was frozen by project-owner decision on 2026-08-18 for
-pipeline-development purposes, not through consultation with a Polizia Locale administrative officer
-or legal counsel. §3–§5 (the goal-task decomposition that Step 5a actually consumes) rest on cited
-statutory sources (L. 689/1981; D.Lgs. 285/1992) and are not affected by this gap; §6's two
-non-statutory KPIs remain invented placeholders and should be read as such wherever they appear
-downstream. A future domain-expert pass, should one occur, supersedes v1.0 as a new frozen version,
-not an edit to it.
+**What changed in v1.1.** v1.0 was authored from general, publicly available statutory sources only,
+not from Polizia Locale internal procedure documents or any process model of the actual system.
+v1.1 cross-checks §3–§4's goal-task decomposition and two of §6's three KPIs against a published,
+expert-authored normative process model of this exact log and police force — the DPN-net in Mannhardt
+et al. (2016, §6.1.1, Fig. 7–8), whose authors state they built it "using a discovered model next to
+domain knowledge and information regarding traffic regulations." That cross-check also caught and fixed
+a boundary error in v1.0's first KPI, which measured the 90-day statutory clock against
+`Insert Fine Notification` when both the statute and Fig. 8's guard attach it to `Send Fine`.
+
+**What is still open.** A published paper's normative model, however expert-informed, is not a
+substitute for direct consultation with a Polizia Locale administrative officer or legal counsel on
+*this* municipality's actual procedure — that domain-expert review, originally scoped for this artifact,
+has still **not** happened. This gap mirrors the bottleneck the goal-oriented process mining literature
+itself reports — "logs typically do not include explicit goals, KPIs, or goal models" (Ghasemi et al.,
+2025). That literature closes the equivalent gap through domain-expert review: Ghasemi (2021, Ch. 8) —
+his University of Ottawa PhD dissertation, not the 2025 MoDRE workshop paper cited above, whose own
+illustrative example is a synthetic gestational-diabetes log with no Sepsis content — grounded three
+Sepsis KPIs in physician consultation against guideline windows sourced from Mannhardt & Blinde (2017),
+themselves traceable to the Surviving Sepsis Campaign 2016 guidelines (Rhodes et al., 2017). See
+`data/goals/sepsis_goal_model.md` §6, which reuses those three KPIs directly. Three residual gaps remain
+in *this* (RTFM) artifact and should be read as such wherever they appear downstream:
+
+- §6's third KPI ("Average time to case closure") is still an invented placeholder with no external
+  grounding.
+- §4's TP/TA split is a business-intent simplification of the DPN-net's three-point `Payment`
+  structure (see §4's note below the decomposition table) — defensible for this goal model's purposes,
+  but not a 1:1 mirror of the cited process model.
+- No domain-expert review, as distinct from literature cross-checking, has occurred for §3–§6 as a
+  whole.
+
+v1.1 was frozen by project-owner decision on 2026-08-19, for the same pipeline-development purposes as
+v1.0. A future domain-expert pass, should one occur, supersedes v1.1 as a new frozen version, not an
+edit to it.
 
 ## 9. References
 
@@ -272,6 +309,14 @@ not an edit to it.
   pages     = {304--313},
   year      = {2025},
   doi       = {10.1109/REW66121.2025.00046}
+}
+
+@phdthesis{ghasemi2021dissertation,
+  author = {Ghasemi, Mahdi},
+  title  = {Goal-oriented Process Mining},
+  school = {University of Ottawa},
+  year   = {2021},
+  doi    = {10.20381/ruor-27301}
 }
 
 @article{amyot2022urnsurvey,
