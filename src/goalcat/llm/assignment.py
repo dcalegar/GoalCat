@@ -42,8 +42,10 @@ def _format_category_block(category) -> str:
 
 
 def _build_assignment_prompt(narrative_row: pd.Series, taxonomy: Taxonomy, taxonomy_mode: str) -> str:
+    if taxonomy_mode not in _MODE_CLAUSES:
+        raise ValueError(f"Unknown taxonomy_mode={taxonomy_mode!r} (expected 'intent_guided' or 'open')")
     category_blocks = "\n".join(_format_category_block(c) for c in taxonomy.categories)
-    template = load_prompt_template("assignment.txt")
+    template = load_prompt_template("prompt_assignment.txt")
     return template.format(
         mode_clause=_MODE_CLAUSES[taxonomy_mode],
         category_blocks=category_blocks,

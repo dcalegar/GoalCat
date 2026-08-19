@@ -12,10 +12,11 @@ def get_logger(config: PipelineConfig) -> logging.Logger:
     """Logger shared by every pipeline step, so a multi-step unattended run leaves one trail.
 
     Writes to stdout and to `<output_dir>/<log_stem>/<run_id>/pipeline.log` (append mode), so
-    later steps called with the same run_id keep accumulating into the same file. One process
-    is assumed to correspond to one run_id — this cache is keyed by logger name only, not by
-    run directory, so a single process switching run_ids mid-run would keep writing to the
-    first run's log file.
+    later steps called with the same run_id keep accumulating into the same file — including
+    every round of a Step 9 revision chain, since rounds nest inside one execution directory and
+    never change run_output_dir. One process is assumed to correspond to one run_id — this cache
+    is keyed by logger name only, not by run directory, so a single process switching run_ids
+    mid-run would keep writing to the first run's log file.
     """
     logger = logging.getLogger("goalcat")
     if logger.handlers:

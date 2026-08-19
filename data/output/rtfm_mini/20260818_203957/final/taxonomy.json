@@ -1,0 +1,54 @@
+{
+  "categories": [
+    {
+      "category_id": "payment",
+      "name": "Resolve via payment",
+      "description": "Fine is settled by the offender either promptly without enforcement or later following formal notification and penalty addition.",
+      "anchor_ids": [
+        "TP",
+        "TA"
+      ],
+      "rationale": "Merged timely_payment and delinquent_payment categories per reviewer request to exercise the revision path.",
+      "evidence_variant_ids": [
+        "V0003",
+        "V0004"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Case involves an administrative appeal process directed to the Prefecture following fine enforcement.",
+      "anchor_ids": [
+        "TB"
+      ],
+      "rationale": "Traced to variant V0006 which includes appeal steps submitted to the Prefecture and a subsequent result ruling.",
+      "evidence_variant_ids": [
+        "V0006"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Case involves an appeal brought before a judicial judge after standard enforcement steps.",
+      "anchor_ids": [
+        "TC"
+      ],
+      "rationale": "Traced to variant V0005 where the trace ends with an appeal to the judge following notification and penalties.",
+      "evidence_variant_ids": [
+        "V0005"
+      ]
+    },
+    {
+      "category_id": "coercive_collection",
+      "name": "Resolve via coercive credit collection",
+      "description": "Unresolved enforced fine is forwarded to a credit collection agent for coercive recovery.",
+      "anchor_ids": [
+        "TD"
+      ],
+      "rationale": "Traced to variant V0002 which concludes with sending the case for credit collection after all penalties and notifications.",
+      "evidence_variant_ids": [
+        "V0002"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+# Step 9 review decisions — run {run_id} ({log_stem}, {taxonomy_mode} taxonomy, round {round})
+# Read first: assignment_report.md, discovery_report.md, description_report.md
+# (see review_index.md for links). Then choose exactly one of:
+#   decision: accept   — finalizes this run as-is; renames/merges/splits below are ignored
+#                         and must be left empty.
+#   decision: revise    — apply the edits below (leave the sections you don't need empty: [])
+#
+# category_id values in this taxonomy:
+#   {category_ids}
+
+decision: revise   # accept | revise
+notes: null
+
+renames: []
+# renames:
+#   - category_id: some_category
+#     new_name: "New display name"
+#     new_description: null   # omit/null to keep the current description
+#     reason: "Why this rename — kept for the record, never sent to the LLM."
+
+merges: []
+# merges:
+#   - category_ids: [category_a, category_b]
+#     reason: >
+#       Why these should become one category — this text is sent to the LLM that re-derives
+#       the taxonomy, so state the business reasoning, not just "merge these."
+
+splits: []
+# splits:
+#   - category_id: some_category
+#     reason: >
+#       What distinction within this category should become a split — this text is sent to
+#       the LLM, which proposes the actual boundary; you only need to state what and why.

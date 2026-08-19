@@ -19,6 +19,7 @@ goal_model_filename: rtfm_goal_model.md
 output_dir: data/output
 
 run_id: null
+round: null
 
 case_id_key: "case:concept:name"
 activity_key: "concept:name"

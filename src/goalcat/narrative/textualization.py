@@ -45,8 +45,8 @@ def _format_rework(rework: dict) -> str:
 
 def render_narratives(profiles_df: pd.DataFrame, config: PipelineConfig, logger: logging.Logger) -> pd.DataFrame:
     """Invoke the vendored LUPIN renderer as a subprocess (pipeline Step 3)."""
-    input_path = config.run_output_dir / "lupin_input.json"
-    output_path = config.run_output_dir / "lupin_output.json"
+    input_path = config.textualization_dir / "lupin_input.json"
+    output_path = config.textualization_dir / "lupin_output.json"
     input_path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(input_path, "w", encoding="utf-8") as f:

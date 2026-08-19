@@ -54,4 +54,5 @@ content authored for its own attribute schema, following the same Jinja2 pattern
 
 `render_narratives.py` (the adapted rendering loop) and `log_templates.py` (this project's own
 `event_template` / `trace_template` definitions, currently covering `rtfm`) are implemented.
-Invoked from `src/goalcat/textualization.py` via `subprocess`, per the isolation contract above.
+Invoked from `src/goalcat/narrative/textualization.py` via `subprocess`, per the isolation
+contract above.

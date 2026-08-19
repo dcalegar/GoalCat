@@ -15,17 +15,22 @@ dependencies = [
     # Only used by third_party/lupin/render_narratives.py, invoked as a subprocess (see its
     # README's isolation contract) — never imported by src/goalcat itself.
     "Jinja2>=3.1",
+    # Not actually optional: llm/taxonomy.py, llm/assignment.py, llm/description.py, and
+    # llm_backend.py all define pydantic BaseModel subclasses at module scope (Category,
+    # Taxonomy, Assignment, ...), and pipeline.py imports all three llm.* modules at module
+    # load — so `import goalcat.pipeline` needs pydantic even for a Steps-1-4-only base
+    # install. litellm stays in the [llm] extra below since its import is deferred inside
+    # LLMBackend's methods, not at module scope, so it's genuinely optional at import time.
+    "pydantic>=2,<3",
 ]
 
 [project.optional-dependencies]
-# Steps 5a/5b, 6, 8 (Task 5+): LLM taxonomy induction, narrative assignment, description
-# generation. litellm>=1.83.0 is a hard floor, not just a recency preference — versions
-# 1.82.7 and 1.82.8 were a confirmed PyPI supply-chain compromise (credential-stealing
-# malware; CVE-2026-33634, March 2026); 1.83.0+ was rebuilt on litellm's post-incident
-# CI/CD pipeline. Pin via lockfile, not just this floor.
+# Steps 5a/5b, 6, 8 (Task 5+): the LLM API call itself. litellm>=1.83.0 is a hard floor, not
+# just a recency preference — versions 1.82.7 and 1.82.8 were a confirmed PyPI supply-chain
+# compromise (credential-stealing malware; CVE-2026-33634, March 2026); 1.83.0+ was rebuilt on
+# litellm's post-incident CI/CD pipeline. Pin via lockfile, not just this floor.
 llm = [
     "litellm>=1.83.0",
-    "pydantic>=2,<3",
 ]
 
 [build-system]

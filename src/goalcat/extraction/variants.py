@@ -32,7 +32,13 @@ def extract_variants(df: pd.DataFrame, config: PipelineConfig) -> pd.DataFrame:
         record["frequency_pct"] = record["frequency"] / total_cases
 
     variants_df = pd.DataFrame.from_records(records)
-    variants_df = variants_df.sort_values("frequency", ascending=False).reset_index(drop=True)
+    # kind="stable" (mergesort), not the pandas default (quicksort, not stable for ties):
+    # V#### is assigned by row position right after this sort, and RTFM alone has ~100
+    # equal-frequency (singleton) variants — without a stable sort, which physical variant
+    # gets "V0001" among a tied group can drift between runs on the identical log, even
+    # though sampling.py's own docstring already claims Steps 1-4 are "deterministic by
+    # construction." Verified: pandas 3.0.5's default quicksort does reorder an all-tied frame.
+    variants_df = variants_df.sort_values("frequency", ascending=False, kind="stable").reset_index(drop=True)
     variants_df.insert(0, "variant_id", [f"V{i + 1:04d}" for i in range(len(variants_df))])
     return variants_df
 

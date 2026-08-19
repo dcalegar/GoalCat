@@ -36,6 +36,25 @@ def build_category_sublogs(
     }
 
 
+def build_residual_sublog(
+    df: pd.DataFrame, variants_df: pd.DataFrame, assignments_df: pd.DataFrame, config: PipelineConfig
+) -> pd.DataFrame:
+    """The mirror image of build_category_sublogs: raw events for variants left unassigned
+    (category_id is NA). Used by Step 9's accept/finalize path (review.py) to persist the
+    residual as its own partitioned-log file, matching how every other report already reports
+    it for context rather than treating it as silently absent."""
+    merged = variants_df[["variant_id", "case_ids"]].merge(
+        assignments_df[["variant_id", "category_id"]], on="variant_id", how="inner"
+    )
+    merged = merged[merged["category_id"].isna()]
+
+    case_ids: set[str] = set()
+    for ids in merged["case_ids"]:
+        case_ids.update(ids)
+
+    return df[df[config.case_id_key].isin(case_ids)]
+
+
 def discover_category_model(sub_df: pd.DataFrame, config: PipelineConfig) -> tuple[PetriNet, Marking, Marking]:
     """Inductive Miner over one category's sub-log. noise_threshold is fixed across every
     category via config.discovery_noise_threshold, per OVERVIEW.md's "fixed hyperparameters
@@ -43,6 +62,19 @@ def discover_category_model(sub_df: pd.DataFrame, config: PipelineConfig) -> tup
     return pm4py.discover_petri_net_inductive(
         sub_df,
         noise_threshold=config.discovery_noise_threshold,
+        activity_key=config.activity_key,
+        timestamp_key=config.timestamp_key,
+        case_id_key=config.case_id_key,
+    )
+
+
+def discover_category_dfg(sub_df: pd.DataFrame, config: PipelineConfig) -> tuple[dict, dict, dict]:
+    """Directly-Follows Graph over one category's sub-log, used only for the rendered artifact
+    (models/{category_id}.png). Conformance (fitness/precision) still comes from the Petri net
+    discovered by discover_category_model — DFG-based conformance in pm4py lacks the token-based
+    replay semantics those metrics rely on."""
+    return pm4py.discover_dfg(
+        sub_df,
         activity_key=config.activity_key,
         timestamp_key=config.timestamp_key,
         case_id_key=config.case_id_key,
@@ -78,13 +110,17 @@ def discover_all_categories(
     taxonomy: Taxonomy,
     config: PipelineConfig,
     logger: logging.Logger,
-) -> tuple[pd.DataFrame, dict[str, tuple[PetriNet, Marking, Marking]]]:
+) -> tuple[pd.DataFrame, dict[str, tuple[PetriNet, Marking, Marking]], dict[str, tuple[dict, dict, dict]]]:
     """Discovers one model per taxonomy category (pipeline Step 7). Iterates taxonomy.categories
     in taxonomy order, not just categories that happen to appear in assignments_df, so a category
     with zero assigned variants is reported as 0/0 explicitly rather than silently absent —
     mirrors llm/assignment.py's build_assignment_report. The residual (category_id is NA) is not
     discovered at all: OVERVIEW.md's output is "one process model per category" and the residual
     isn't a category.
+
+    Returns the Petri net (used for conformance and .pnml export) alongside a DFG per category
+    (used only for the rendered .png artifact — DFGs are easier to read than Petri nets for this
+    project's audience, per user preference).
     """
     sublogs = build_category_sublogs(df, variants_df, assignments_df, config)
     category_of = dict(zip(assignments_df["variant_id"], assignments_df["category_id"]))
@@ -92,6 +128,7 @@ def discover_all_categories(
 
     rows = []
     models_by_category: dict[str, tuple[PetriNet, Marking, Marking]] = {}
+    dfgs_by_category: dict[str, tuple[dict, dict, dict]] = {}
     for category in taxonomy.categories:
         assigned_variant_ids = [vid for vid, cat in category_of.items() if cat == category.category_id]
         num_variants = len(assigned_variant_ids)
@@ -117,6 +154,7 @@ def discover_all_categories(
         net, im, fm = discover_category_model(sub_df, config)
         conformance = compute_conformance(sub_df, net, im, fm, config)
         models_by_category[category.category_id] = (net, im, fm)
+        dfgs_by_category[category.category_id] = discover_category_dfg(sub_df, config)
         rows.append(
             {"category_id": category.category_id, "name": category.name, "num_variants": num_variants, "num_cases": num_cases, **conformance}
         )
@@ -129,7 +167,7 @@ def discover_all_categories(
         rows,
         columns=["category_id", "name", "num_variants", "num_cases", "perc_fit_traces", "average_trace_fitness", "log_fitness", "precision"],
     )
-    return metrics_df, models_by_category
+    return metrics_df, models_by_category, dfgs_by_category
 
 
 def build_discovery_report(
@@ -138,10 +176,18 @@ def build_discovery_report(
     variants_df: pd.DataFrame,
     taxonomy: Taxonomy,
     config: PipelineConfig,
+    models_present: bool = True,
 ) -> str:
     """The Markdown explainability artifact for Step 7, in the same style as
     llm/assignment.py's build_assignment_report: per-category coverage and conformance, plus a
-    residual line for context (no model attempted for it)."""
+    residual line for context (no model attempted for it).
+
+    models_present=False (set only when Step 9's finalize_run() re-renders this report after
+    deleting the accepted round's models/ folder, per user direction — the rendered .pnml/.png
+    aren't kept once a run is accepted, since the data to regenerate them stays in this round's
+    own assignments.csv/taxonomy.json) swaps the "Model:" line for a note instead of a now-dead
+    link.
+    """
     metrics_by_category = metrics_df.set_index("category_id").to_dict(orient="index")
     freq_by_variant = dict(zip(variants_df["variant_id"], variants_df["frequency"]))
     category_of = dict(zip(assignments_df["variant_id"], assignments_df["category_id"]))
@@ -182,10 +228,20 @@ def build_discovery_report(
             f"average trace fitness {stats['average_trace_fitness']:.3f}, "
             f"{stats['perc_fit_traces']:.1f}% fit traces, precision {stats['precision']:.3f}",
             "",
-            f"Model: [`models/{category.category_id}.pnml`](models/{category.category_id}.pnml) · "
-            f"[`models/{category.category_id}.png`](models/{category.category_id}.png)",
-            "",
         ]
+        if models_present:
+            lines += [
+                f"Model: [`models/{category.category_id}.pnml`](models/{category.category_id}.pnml) (Petri net, Inductive Miner) · "
+                f"[`models/{category.category_id}.png`](models/{category.category_id}.png) (Directly-Follows Graph)",
+                "",
+            ]
+        else:
+            lines += [
+                "Model files were removed after this run was accepted (kept out of the final "
+                "deliverable to save disk space) — re-run Step 7 against this round's "
+                "`assignments.csv`/`taxonomy.json` to regenerate them if needed.",
+                "",
+            ]
 
     return "\n".join(lines)
 
@@ -193,6 +249,7 @@ def build_discovery_report(
 def save_discovery_outputs(
     metrics_df: pd.DataFrame,
     models_by_category: dict[str, tuple[PetriNet, Marking, Marking]],
+    dfgs_by_category: dict[str, tuple[dict, dict, dict]],
     assignments_df: pd.DataFrame,
     variants_df: pd.DataFrame,
     taxonomy: Taxonomy,
@@ -207,7 +264,8 @@ def save_discovery_outputs(
 
     for category_id, (net, im, fm) in models_by_category.items():
         pm4py.write_pnml(net, im, fm, str(models_dir / f"{category_id}.pnml"))
-        pm4py.save_vis_petri_net(net, im, fm, str(models_dir / f"{category_id}.png"))
+    for category_id, (dfg, start_activities, end_activities) in dfgs_by_category.items():
+        pm4py.save_vis_dfg(dfg, start_activities, end_activities, str(models_dir / f"{category_id}.png"))
 
     report = build_discovery_report(metrics_df, assignments_df, variants_df, taxonomy, config)
     (output_dir / "discovery_report.md").write_text(report, encoding="utf-8")

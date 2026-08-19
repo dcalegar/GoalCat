@@ -19,6 +19,13 @@ output_dir: data/output
 # argument (for chaining several steps within one process) takes priority over this field.
 run_id: null
 
+# Which round (Steps 5-9, nested under run_id/roundN/) a standalone call addresses. Resolution
+# differs from run_id's: round (arg) > this field > auto-detected as the highest existing roundN/
+# already on disk for this run_id (or 1 for a fresh execution) — the useful default is "continue
+# the current round," not "start something new." Only Step 9's merge/split path ever explicitly
+# requests round + 1. Steps 1-4 ignore this field entirely (they're execution-scoped).
+round: null
+
 case_id_key: "case:concept:name"
 activity_key: "concept:name"
 timestamp_key: "time:timestamp"
@@ -30,9 +37,9 @@ sample_rare_n: 10
 sample_extreme_n: 5
 
 # Step 5: which taxonomy-induction mode to run. "intent_guided" (5a) subdivides the goal
-# model's declared OR/XOR axis; "open" (5b) proposes categories with no external axis — not
-# yet implemented, present here so the switch is explicit and auditable rather than inferred
-# from whether a goal-model file happens to exist.
+# model's declared OR/XOR axis; "open" (5b) proposes categories with no external axis. Both are
+# implemented (run_step5_taxonomy() dispatches on this field); kept as an explicit, auditable
+# switch rather than inferred from whether a goal-model file happens to exist.
 taxonomy_mode: "intent_guided"
 
 # Step 7: Inductive Miner noise threshold, applied uniformly to every category's sub-log —
@@ -44,12 +51,13 @@ discovery_noise_threshold: 0.0
 
 # LLM steps (5a/5b, 6, 8). Model strings are litellm "provider/model" IDs — swapping
 # provider (e.g. to anthropic/claude-... or openai/...) is a config-only change, no code
-# change. Gemini 2.5 Flash-Lite chosen for cost (see PROGRESS.md); Flash is the
+# change. Gemini 3.5 Flash-Lite chosen for cost (see PROGRESS.md; 2.5 Flash-Lite was the
+# original choice, deprecated by Google mid-project — see Task 5's entry); Flash is the
 # Step-5-only comparison point, not a default. API keys (GEMINI_API_KEY / OPENAI_API_KEY /
 # ANTHROPIC_API_KEY) must be exported from the user's shell profile (e.g. ~/.bash_profile) —
-# never stored in any file in this repository, which lives under a synced Google Drive folder
-# (see PROGRESS.md, "Gemini API key: storage location"). litellm reads them from the
-# environment automatically.
+# never stored in any file in this repository (originally kept under a synced Google Drive
+# folder, since relocated — see PROGRESS.md, "Gemini API key: storage location" and "Project
+# retitled and package renamed"). litellm reads them from the environment automatically.
 llm:
   taxonomy_model: "gemini/gemini-3.5-flash-lite"
   assignment_model: "gemini/gemini-3.5-flash-lite"

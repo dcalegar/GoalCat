@@ -65,10 +65,23 @@ def _format_narrative_block(row: pd.Series) -> str:
     )
 
 
+def _format_prior_category_block(category: Category) -> str:
+    return (
+        f"- category_id={category.category_id} | name={category.name}\n"
+        f"  description: {category.description}\n"
+        f"  anchor_ids={category.anchor_ids}\n"
+        f"  rationale: {category.rationale}"
+    )
+
+
+def _format_prior_taxonomy_block(prior_taxonomy: Taxonomy) -> str:
+    return "\n".join(_format_prior_category_block(c) for c in prior_taxonomy.categories)
+
+
 def build_taxonomy_prompt(sample_df: pd.DataFrame, goal_model_text: str) -> str:
     excerpt = _extract_sections(goal_model_text)
     blocks = "\n".join(_format_narrative_block(row) for _, row in sample_df.iterrows())
-    template = load_prompt_template("taxonomy_intent_guided.txt")
+    template = load_prompt_template("prompt_taxonomy_intent_guided.txt")
     return template.format(
         goal_model_excerpt=excerpt,
         sample_size=len(sample_df),
@@ -76,12 +89,45 @@ def build_taxonomy_prompt(sample_df: pd.DataFrame, goal_model_text: str) -> str:
     )
 
 
+def build_taxonomy_revision_prompt(
+    sample_df: pd.DataFrame, goal_model_text: str, prior_taxonomy: Taxonomy, revision_instructions: str
+) -> str:
+    excerpt = _extract_sections(goal_model_text)
+    blocks = "\n".join(_format_narrative_block(row) for _, row in sample_df.iterrows())
+    template = load_prompt_template("prompt_taxonomy_intent_guided_revision.txt")
+    return template.format(
+        goal_model_excerpt=excerpt,
+        sample_size=len(sample_df),
+        narrative_blocks=blocks,
+        prior_taxonomy_block=_format_prior_taxonomy_block(prior_taxonomy),
+        revision_instructions=revision_instructions,
+    )
+
+
 def induce_taxonomy_5a(
-    sample_df: pd.DataFrame, config: PipelineConfig, logger: logging.Logger
+    sample_df: pd.DataFrame,
+    config: PipelineConfig,
+    logger: logging.Logger,
+    prior_taxonomy: Taxonomy | None = None,
+    revision_instructions: str | None = None,
 ) -> tuple[Taxonomy, RunMetadata, str]:
-    """Intent-guided taxonomy induction (Step 5a): a single LLM call, no concurrency needed."""
+    """Intent-guided taxonomy induction (Step 5a): a single LLM call, no concurrency needed.
+
+    prior_taxonomy/revision_instructions (Step 9's merge/split revision round): when both are set,
+    builds the revision prompt (existing taxonomy + the reviewer's requested change) instead of
+    inducing fresh from the sample. Both default to None so every existing call site is unaffected.
+    """
+    if config.goal_model_path is None:
+        raise ValueError(
+            "induce_taxonomy_5a() (intent-guided induction) needs config.goal_model_filename "
+            "set — got None. Either set it, or use taxonomy_mode='open' (induce_taxonomy_5b) "
+            "for a log with no authored goal model."
+        )
     goal_model_text = config.goal_model_path.read_text(encoding="utf-8")
-    prompt = build_taxonomy_prompt(sample_df, goal_model_text)
+    if prior_taxonomy is not None:
+        prompt = build_taxonomy_revision_prompt(sample_df, goal_model_text, prior_taxonomy, revision_instructions)
+    else:
+        prompt = build_taxonomy_prompt(sample_df, goal_model_text)
 
     backend = LLMBackend(config.llm.taxonomy_model, config.llm, logger)
     taxonomy, metadata = asyncio.run(backend.generate_structured(prompt, Taxonomy))
@@ -97,17 +143,49 @@ def save_taxonomy(taxonomy: Taxonomy, metadata: RunMetadata, prompt: str, output
     )
 
 
+def overwrite_taxonomy_json(taxonomy: Taxonomy, output_dir: Path) -> None:
+    """Writes only taxonomy.json — used by Step 9's rename path, which edits an existing taxonomy
+    without a new LLM call, so taxonomy_prompt.txt/taxonomy_run_metadata.json (which describe that
+    call) must stay untouched rather than being overwritten by save_taxonomy()."""
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "taxonomy.json").write_text(json.dumps(taxonomy.model_dump(), indent=2), encoding="utf-8")
+
+
 def build_open_taxonomy_prompt(sample_df: pd.DataFrame) -> str:
     blocks = "\n".join(_format_narrative_block(row) for _, row in sample_df.iterrows())
-    template = load_prompt_template("taxonomy_open.txt")
+    template = load_prompt_template("prompt_taxonomy_open.txt")
     return template.format(sample_size=len(sample_df), narrative_blocks=blocks)
 
 
+def build_open_taxonomy_revision_prompt(
+    sample_df: pd.DataFrame, prior_taxonomy: Taxonomy, revision_instructions: str
+) -> str:
+    blocks = "\n".join(_format_narrative_block(row) for _, row in sample_df.iterrows())
+    template = load_prompt_template("prompt_taxonomy_open_revision.txt")
+    return template.format(
+        sample_size=len(sample_df),
+        narrative_blocks=blocks,
+        prior_taxonomy_block=_format_prior_taxonomy_block(prior_taxonomy),
+        revision_instructions=revision_instructions,
+    )
+
+
 def induce_taxonomy_5b(
-    sample_df: pd.DataFrame, config: PipelineConfig, logger: logging.Logger
+    sample_df: pd.DataFrame,
+    config: PipelineConfig,
+    logger: logging.Logger,
+    prior_taxonomy: Taxonomy | None = None,
+    revision_instructions: str | None = None,
 ) -> tuple[Taxonomy, RunMetadata, str]:
-    """Open taxonomy induction (Step 5b): a single LLM call, no external axis to anchor to."""
-    prompt = build_open_taxonomy_prompt(sample_df)
+    """Open taxonomy induction (Step 5b): a single LLM call, no external axis to anchor to.
+
+    prior_taxonomy/revision_instructions: see induce_taxonomy_5a's docstring — same revision-round
+    mechanism, minus the goal model.
+    """
+    if prior_taxonomy is not None:
+        prompt = build_open_taxonomy_revision_prompt(sample_df, prior_taxonomy, revision_instructions)
+    else:
+        prompt = build_open_taxonomy_prompt(sample_df)
 
     backend = LLMBackend(config.llm.taxonomy_model, config.llm, logger)
     taxonomy, metadata = asyncio.run(backend.generate_structured(prompt, Taxonomy))
@@ -198,6 +276,17 @@ def check_taxonomy_grounding(
             bad_anchors = set(category.anchor_ids) - valid_anchor_ids
             if bad_anchors:
                 problems.append(f"{category.category_id}: anchor_ids not in goal model: {sorted(bad_anchors)}")
+            if not category.anchor_ids:
+                # The Category schema itself permits an empty anchor_ids list unconditionally
+                # (no min_length — 5b needs to allow it), so nothing structurally stops 5a from
+                # producing an "anchored" category traceable to nothing. OVERVIEW.md's "every
+                # category is traceable to a declared alternative" is a prompted constraint, not
+                # a schema-enforced one — this is what actually checks it, warn-only like every
+                # other check in this function.
+                problems.append(
+                    f"{category.category_id}: anchor_ids is empty under intent-guided induction — "
+                    "not traceable to any declared goal-model alternative"
+                )
         elif category.anchor_ids:
             problems.append(
                 f"{category.category_id}: anchor_ids non-empty in open mode (no goal model): "

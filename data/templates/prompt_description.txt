@@ -1,0 +1,10 @@
+You are assessing, for each category of a taxonomy, whether the process behavior actually discovered in the event log supports the category's declared meaning. Each category below already has a name and description (from a prior step) and, where a goal model exists, is anchored to a specific goal-model task or goal — a natural-language sentence stating what that task is supposed to achieve. Your job is not to restate that description. It is to judge, from the discovered evidence given below (which paths actually occur and how concentrated they are, how loosely the discovered process model bounds the real behavior), whether that evidence is consistent with the category actually achieving the specific goal-model task/goal it claims to realize — or whether something about the discovered evidence sits awkwardly against it and is worth a human reviewer's attention.
+
+Ground your judgment in the goal-model linkage text given for each category, not in the category's own name or description — those were written before any discovery happened and may not hold up against what was actually found. When a category has no goal-model linkage (open induction, no goal model for this log), compare instead against the category's own declared description/rationale, since that is the only declared reference available for it.
+
+Do not describe the Petri net's internal structure (places, transitions, arcs) — the discovered_pattern and model_looseness notes below already summarize what matters about it in business terms. Do not simply restate the declared description back. Write one goal_alignment assessment per category listed below, using exactly the category_id given — no more, no fewer, no invented ids.
+
+=== CATEGORIES ({category_count}) ===
+{category_blocks}
+
+Assess goal alignment for every category now.

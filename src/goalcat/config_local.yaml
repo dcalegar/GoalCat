@@ -1,11 +1,13 @@
-# Local-LLM configuration: same tiny log/sample settings as config_mini.yaml (see its header
-# for the case-by-case rationale), but routed to a locally-hosted model via Ollama instead of
-# a hosted API — for offline iteration/debugging or runs where no remote API key is available.
+# Local-LLM configuration: same tiny log/sample settings as experimentation/config_mini.yaml
+# (see its header for the case-by-case rationale), but routed to a locally-hosted model via
+# Ollama instead of a hosted API — for offline iteration/debugging or runs where no remote API
+# key is available.
 # Requires Ollama running locally (`brew services start ollama`) with the model pulled
 # (`ollama pull qwen2.5:3b`). Qwen2.5 3B chosen for this machine's 8 GB unified memory — see
 # PROGRESS.md, "Local LLM backend (Ollama)" for the RAM-budget analysis behind that choice;
 # swapping to a different local model is a one-line change to the three *_model fields below,
-# no code change (same litellm "provider/model" convention as config.yaml/config_mini.yaml).
+# no code change (same litellm "provider/model" convention as config.yaml and
+# experimentation/config_mini.yaml).
 #
 # Structured-output caveat: Ollama enforces response_format via grammar-constrained decoding,
 # so this model will always emit schema-valid JSON — but small local models can still make
@@ -18,6 +20,7 @@ goal_model_filename: rtfm_goal_model.md
 output_dir: data/output
 
 run_id: null
+round: null
 
 case_id_key: "case:concept:name"
 activity_key: "concept:name"

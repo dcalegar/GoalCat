@@ -123,7 +123,9 @@ class LLMBackend:
         )
 
     async def generate_text(self, prompt: str) -> tuple[str, RunMetadata]:
-        """Calls the model for free-form prose (Step 8's description-generation prompt)."""
+        """Calls the model for free-form prose. General-purpose method on the adapter -- every
+        pipeline step currently uses generate_structured() instead (Step 8's goal_alignment is a
+        batched list response, so it needs a schema to map judgments back to category_ids)."""
         import litellm
 
         prompt_hash = _hash_prompt(prompt)

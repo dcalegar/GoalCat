@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from .config import PipelineConfig, load_config, new_run_id
+from .config import PipelineConfig, load_config
 from .discovery import discover_all_categories, save_discovery_outputs
 from .extraction.log_io import load_event_log
 from .extraction.profiling import load_profiles, profile_variants, save_profiles
@@ -18,6 +18,7 @@ from .llm.assignment import (
     load_prior_assignments,
     save_assignment_outputs,
 )
+from .llm.description import build_description_report, generate_descriptions_8, save_description_outputs
 from .llm.taxonomy import (
     Taxonomy,
     _extract_declared_ids,
@@ -28,14 +29,15 @@ from .llm.taxonomy import (
 )
 from .narrative.sampling import load_narrative_sample, sample_narratives, save_narrative_sample
 from .narrative.textualization import load_narratives, render_narratives, save_narratives
+from .review import process_review
 from .run_logging import get_logger
 
 
 def _get_or_build_variants(config: PipelineConfig, logger: logging.Logger) -> pd.DataFrame:
-    """Loads variants.csv from config.run_output_dir if it's already there (a reused run
+    """Loads variants.csv from config.variants_dir if it's already there (a reused execution
     directory), else computes it from the raw log and saves it. Shared by every step whose
-    input, not primary output, is the variants table."""
-    path = config.run_output_dir / "variants.csv"
+    input, not primary output, is the variants table. Execution-scoped, not round-scoped."""
+    path = config.variants_dir / "variants.csv"
     if path.exists():
         logger.info("Loading variants from existing run directory: %s", path)
         return load_variants(path)
@@ -46,8 +48,8 @@ def _get_or_build_variants(config: PipelineConfig, logger: logging.Logger) -> pd
 
 
 def _get_or_build_profiles(config: PipelineConfig, logger: logging.Logger) -> pd.DataFrame:
-    csv_path = config.run_output_dir / "profiles.csv"
-    json_path = config.run_output_dir / "profiles.json"
+    csv_path = config.profiling_dir / "profiles.csv"
+    json_path = config.profiling_dir / "profiles.json"
     if csv_path.exists() and json_path.exists():
         logger.info("Loading profiles from existing run directory: %s", csv_path)
         return load_profiles(csv_path, json_path)
@@ -62,9 +64,9 @@ def _get_or_build_narratives(config: PipelineConfig, logger: logging.Logger) -> 
     """Returns (profiles_df, narratives_df) — both, since Step 6 needs both and this is the
     shortest disk-first path to get them: if narratives.csv and profiles.* are all already in
     the run directory, this skips the raw log, variant extraction, and profiling entirely."""
-    profiles_csv = config.run_output_dir / "profiles.csv"
-    profiles_json = config.run_output_dir / "profiles.json"
-    narratives_csv = config.run_output_dir / "narratives.csv"
+    profiles_csv = config.profiling_dir / "profiles.csv"
+    profiles_json = config.profiling_dir / "profiles.json"
+    narratives_csv = config.textualization_dir / "narratives.csv"
     if profiles_csv.exists() and profiles_json.exists() and narratives_csv.exists():
         logger.info("Loading profiles/narratives from existing run directory: %s", config.run_output_dir)
         return load_profiles(profiles_csv, profiles_json), load_narratives(narratives_csv)
@@ -75,7 +77,7 @@ def _get_or_build_narratives(config: PipelineConfig, logger: logging.Logger) -> 
 
 
 def _get_or_build_sample(config: PipelineConfig, logger: logging.Logger) -> pd.DataFrame:
-    path = config.run_output_dir / "narrative_sample.csv"
+    path = config.sampling_dir / "narrative_sample.csv"
     if path.exists():
         logger.info("Loading narrative sample from existing run directory: %s", path)
         return load_narrative_sample(path)
@@ -106,7 +108,7 @@ def run_step1_variants(config_path: str | Path | None = None, run_id: str | None
         top["frequency_pct"] * 100,
     )
 
-    output_path = config.run_output_dir / "variants.csv"
+    output_path = config.variants_dir / "variants.csv"
     save_variants(variants_df, output_path)
     logger.info("Saved variants to: %s", output_path)
 
@@ -140,8 +142,8 @@ def run_step2_profiling(
         top["duration_seconds_median"],
     )
 
-    csv_path = config.run_output_dir / "profiles.csv"
-    json_path = config.run_output_dir / "profiles.json"
+    csv_path = config.profiling_dir / "profiles.csv"
+    json_path = config.profiling_dir / "profiles.json"
     save_profiles(profiles_df, csv_path, json_path)
     logger.info("Saved profiles to: %s and %s", csv_path, json_path)
 
@@ -172,7 +174,7 @@ def run_step3_textualization(
         top_narrative[:120],
     )
 
-    output_path = config.run_output_dir / "narratives.csv"
+    output_path = config.textualization_dir / "narratives.csv"
     save_narratives(narratives_df, output_path)
     logger.info("Saved narratives to: %s", output_path)
 
@@ -204,7 +206,7 @@ def run_step4_sampling(
         config.sample_extreme_n,
     )
 
-    output_path = config.run_output_dir / "narrative_sample.csv"
+    output_path = config.sampling_dir / "narrative_sample.csv"
     save_narrative_sample(sample_df, output_path)
     logger.info("Saved narrative sample to: %s", output_path)
 
@@ -216,9 +218,17 @@ def run_step5a_taxonomy(
     config_path: str | Path | None = None,
     run_id: str | None = None,
     sample_df: pd.DataFrame | None = None,
+    prior_taxonomy: Taxonomy | None = None,
+    revision_instructions: str | None = None,
+    round: int | None = None,
 ) -> Taxonomy:
-    """Intent-guided taxonomy induction (pipeline Step 5a): subdivides the goal model's declared axis."""
-    config = load_config(config_path, run_id)
+    """Intent-guided taxonomy induction (pipeline Step 5a): subdivides the goal model's declared
+    axis. prior_taxonomy/revision_instructions (Step 9's merge/split revision round): both set
+    means this call revises an existing taxonomy instead of inducing fresh; both default to None
+    for every other caller. round (also Step 9's revision round): which round's folder to write
+    into — defaults to auto-detecting the current one (see load_config()).
+    """
+    config = load_config(config_path, run_id, round)
     logger = get_logger(config)
 
     logger.info("Step 5a (intent-guided taxonomy induction) started for log: %s", config.log_path)
@@ -231,7 +241,9 @@ def run_step5a_taxonomy(
         config.goal_model_path,
     )
 
-    taxonomy, metadata, prompt = induce_taxonomy_5a(sample_df, config, logger)
+    taxonomy, metadata, prompt = induce_taxonomy_5a(
+        sample_df, config, logger, prior_taxonomy=prior_taxonomy, revision_instructions=revision_instructions
+    )
     logger.info(
         "Induced %d categories: %s",
         len(taxonomy.categories),
@@ -245,8 +257,8 @@ def run_step5a_taxonomy(
     if not problems:
         logger.info("Taxonomy grounding check: no problems found.")
 
-    save_taxonomy(taxonomy, metadata, prompt, config.run_output_dir)
-    logger.info("Saved taxonomy to: %s", config.run_output_dir / "taxonomy.json")
+    save_taxonomy(taxonomy, metadata, prompt, config.taxonomy_dir)
+    logger.info("Saved taxonomy to: %s", config.taxonomy_dir / "taxonomy.json")
 
     logger.info("Step 5a complete.")
     return taxonomy
@@ -256,9 +268,15 @@ def run_step5b_taxonomy(
     config_path: str | Path | None = None,
     run_id: str | None = None,
     sample_df: pd.DataFrame | None = None,
+    prior_taxonomy: Taxonomy | None = None,
+    revision_instructions: str | None = None,
+    round: int | None = None,
 ) -> Taxonomy:
-    """Open taxonomy induction (pipeline Step 5b): proposes categories with no external axis."""
-    config = load_config(config_path, run_id)
+    """Open taxonomy induction (pipeline Step 5b): proposes categories with no external axis.
+    prior_taxonomy/revision_instructions/round: see run_step5a_taxonomy's docstring — same
+    revision-round mechanism, minus the goal model.
+    """
+    config = load_config(config_path, run_id, round)
     logger = get_logger(config)
 
     logger.info("Step 5b (open taxonomy induction) started for log: %s", config.log_path)
@@ -267,7 +285,9 @@ def run_step5b_taxonomy(
         sample_df = _get_or_build_sample(config, logger)
     logger.info("Inducing taxonomy from %d sampled narratives (no goal model)", len(sample_df))
 
-    taxonomy, metadata, prompt = induce_taxonomy_5b(sample_df, config, logger)
+    taxonomy, metadata, prompt = induce_taxonomy_5b(
+        sample_df, config, logger, prior_taxonomy=prior_taxonomy, revision_instructions=revision_instructions
+    )
     logger.info(
         "Induced %d categories: %s",
         len(taxonomy.categories),
@@ -280,8 +300,8 @@ def run_step5b_taxonomy(
     if not problems:
         logger.info("Taxonomy grounding check: no problems found.")
 
-    save_taxonomy(taxonomy, metadata, prompt, config.run_output_dir)
-    logger.info("Saved taxonomy to: %s", config.run_output_dir / "taxonomy.json")
+    save_taxonomy(taxonomy, metadata, prompt, config.taxonomy_dir)
+    logger.info("Saved taxonomy to: %s", config.taxonomy_dir / "taxonomy.json")
 
     logger.info("Step 5b complete.")
     return taxonomy
@@ -291,13 +311,20 @@ def run_step5_taxonomy(
     config_path: str | Path | None = None,
     run_id: str | None = None,
     sample_df: pd.DataFrame | None = None,
+    prior_taxonomy: Taxonomy | None = None,
+    revision_instructions: str | None = None,
+    round: int | None = None,
 ) -> Taxonomy:
     """Dispatches to Step 5a or 5b per config.taxonomy_mode."""
-    config = load_config(config_path, run_id)
+    config = load_config(config_path, run_id, round)
     if config.taxonomy_mode == "intent_guided":
-        return run_step5a_taxonomy(config_path, config.run_id, sample_df)
+        return run_step5a_taxonomy(
+            config_path, config.run_id, sample_df, prior_taxonomy, revision_instructions, config.round
+        )
     if config.taxonomy_mode == "open":
-        return run_step5b_taxonomy(config_path, config.run_id, sample_df)
+        return run_step5b_taxonomy(
+            config_path, config.run_id, sample_df, prior_taxonomy, revision_instructions, config.round
+        )
     raise ValueError(f"Unknown taxonomy_mode={config.taxonomy_mode!r} (expected 'intent_guided' or 'open')")
 
 
@@ -307,16 +334,17 @@ def run_step6_assignment(
     profiles_df: pd.DataFrame | None = None,
     narratives_df: pd.DataFrame | None = None,
     taxonomy: Taxonomy | None = None,
+    round: int | None = None,
 ) -> pd.DataFrame:
     """Narrative assignment (pipeline Step 6): for every narrative, an LLM decides which
     taxonomy category (from Step 5a/5b) it realizes, if any.
 
     Unlike Steps 2-5, this does NOT compute a missing taxonomy from scratch: Step 5 is proven
     non-deterministic (see PROGRESS.md), so an implicit rebuild here could assign against a
-    taxonomy nobody reviewed. A taxonomy must be passed in-memory, or run_id (argument or
-    config.yaml's run_id field) must point at a run directory that already has a taxonomy.json.
+    taxonomy nobody reviewed. A taxonomy must be passed in-memory, or run_id/round (arguments, or
+    config.yaml's fields) must point at a round directory that already has a taxonomy.json.
     """
-    config = load_config(config_path, run_id)
+    config = load_config(config_path, run_id, round)
     logger = get_logger(config)
 
     logger.info("Step 6 (narrative assignment) started for log: %s", config.log_path)
@@ -325,11 +353,11 @@ def run_step6_assignment(
         profiles_df, narratives_df = _get_or_build_narratives(config, logger)
 
     if taxonomy is None:
-        taxonomy_path = config.run_output_dir / "taxonomy.json"
+        taxonomy_path = config.taxonomy_dir / "taxonomy.json"
         if not taxonomy_path.exists():
             raise ValueError(
                 "run_step6_assignment() needs a taxonomy: pass taxonomy= directly, or point "
-                "run_id (argument, or config.yaml's run_id field) at a run directory that "
+                "run_id/round (arguments, or config.yaml's fields) at a round directory that "
                 f"already has a taxonomy.json in it (checked: {taxonomy_path})."
             )
         logger.info("Loading taxonomy from: %s", taxonomy_path)
@@ -338,7 +366,7 @@ def run_step6_assignment(
     profile_columns = ["variant_id", "activity_sequence", "frequency", "frequency_pct", "duration_seconds_median", "outcome", "rework"]
     merged_df = profiles_df[profile_columns].merge(narratives_df, on="variant_id", how="inner")
 
-    prior_assignments_df, prior_metadata_list = load_prior_assignments(config.run_output_dir)
+    prior_assignments_df, prior_metadata_list = load_prior_assignments(config.assignment_dir)
     already_done_ids = set(prior_assignments_df["variant_id"])
     pending_df = merged_df[~merged_df["variant_id"].isin(already_done_ids)]
     if already_done_ids:
@@ -393,9 +421,9 @@ def run_step6_assignment(
         taxonomy, assignments_df, merged_df, structural_df, profile_df, config, still_failed_ids
     )
     save_assignment_outputs(
-        assignments_df, metadata_list, example_prompt, report_markdown, structural_df, profile_df, config.run_output_dir
+        assignments_df, metadata_list, example_prompt, report_markdown, structural_df, profile_df, config.assignment_dir
     )
-    logger.info("Saved assignment outputs to: %s", config.run_output_dir)
+    logger.info("Saved assignment outputs to: %s", config.assignment_dir)
 
     logger.info("Step 6 complete.")
     return assignments_df
@@ -407,17 +435,18 @@ def run_step7_discovery(
     variants_df: pd.DataFrame | None = None,
     assignments_df: pd.DataFrame | None = None,
     taxonomy: Taxonomy | None = None,
+    round: int | None = None,
 ) -> pd.DataFrame:
     """Per-category process discovery (pipeline Step 7): Inductive Miner + fitness/precision
     (token-based replay) on each categorized subset from Step 6.
 
     Like Step 6 with Step 5's taxonomy, this does NOT implicitly recompute a missing
     assignments_df/taxonomy from scratch: Step 6 is an LLM step, so an implicit rebuild here
-    could silently re-run (and re-bill) it. Either pass both in-memory, or point run_id (argument
-    or config.yaml's run_id field) at a run directory that already has assignments.csv and
-    taxonomy.json.
+    could silently re-run (and re-bill) it. Either pass both in-memory, or point run_id/round
+    (arguments, or config.yaml's fields) at a round directory that already has assignments.csv
+    and taxonomy.json.
     """
-    config = load_config(config_path, run_id)
+    config = load_config(config_path, run_id, round)
     logger = get_logger(config)
 
     logger.info("Step 7 (per-category discovery) started for log: %s", config.log_path)
@@ -426,13 +455,22 @@ def run_step7_discovery(
         variants_df = _get_or_build_variants(config, logger)
 
     if assignments_df is None or taxonomy is None:
-        assignments_path = config.run_output_dir / "assignments.csv"
-        taxonomy_path = config.run_output_dir / "taxonomy.json"
+        assignments_path = config.assignment_dir / "assignments.csv"
+        taxonomy_path = config.taxonomy_dir / "taxonomy.json"
+        if not taxonomy_path.exists():
+            # An accepted round has its taxonomy.json *moved* into final/ by review.py's
+            # finalize_run() (models/ deleted at the same time) — discovery_report.md/
+            # final/README.md both tell a reviewer to "re-run Step 7 against this round's
+            # assignments.csv/taxonomy.json" to regenerate the deleted models, so that
+            # instruction must keep working after acceptance, not just before it.
+            final_taxonomy_path = config.final_dir / "taxonomy.json"
+            if final_taxonomy_path.exists():
+                taxonomy_path = final_taxonomy_path
         if not assignments_path.exists() or not taxonomy_path.exists():
             raise ValueError(
                 "run_step7_discovery() needs assignments and a taxonomy: pass assignments_df= "
-                "and taxonomy= directly, or point run_id (argument, or config.yaml's run_id "
-                "field) at a run directory that already has both assignments.csv and "
+                "and taxonomy= directly, or point run_id/round (arguments, or config.yaml's "
+                "fields) at a round directory that already has both assignments.csv and "
                 f"taxonomy.json in it (checked: {assignments_path}, {taxonomy_path})."
             )
         logger.info("Loading assignments from: %s", assignments_path)
@@ -445,25 +483,106 @@ def run_step7_discovery(
         "Discovering models for %d categories against %d events", len(taxonomy.categories), len(df)
     )
 
-    metrics_df, models_by_category = discover_all_categories(df, variants_df, assignments_df, taxonomy, config, logger)
+    metrics_df, models_by_category, dfgs_by_category = discover_all_categories(
+        df, variants_df, assignments_df, taxonomy, config, logger
+    )
     logger.info(
         "Discovered %d/%d category models (%d categories had no assigned variants)",
         len(models_by_category), len(taxonomy.categories), len(taxonomy.categories) - len(models_by_category),
     )
 
-    save_discovery_outputs(metrics_df, models_by_category, assignments_df, variants_df, taxonomy, config, config.run_output_dir)
-    logger.info("Saved discovery outputs to: %s", config.run_output_dir)
+    save_discovery_outputs(
+        metrics_df, models_by_category, dfgs_by_category, assignments_df, variants_df, taxonomy, config, config.discovery_dir
+    )
+    logger.info("Saved discovery outputs to: %s", config.discovery_dir)
 
     logger.info("Step 7 complete.")
     return metrics_df
 
 
-if __name__ == "__main__":
-    # Steps 1-4 only: Step 5a/5b/6 require an LLM API key and make real (if cheap) network
-    # calls, so they stay explicitly invoked rather than chained here. One run_id generated up
-    # front so all four steps share the same run directory.
-    run_id = new_run_id()
-    variants_df = run_step1_variants(run_id=run_id)
-    profiles_df = run_step2_profiling(run_id=run_id, variants_df=variants_df)
-    narratives_df = run_step3_textualization(run_id=run_id, profiles_df=profiles_df)
-    run_step4_sampling(run_id=run_id, profiles_df=profiles_df, narratives_df=narratives_df)
+def run_step8_description(
+    config_path: str | Path | None = None,
+    run_id: str | None = None,
+    variants_df: pd.DataFrame | None = None,
+    assignments_df: pd.DataFrame | None = None,
+    taxonomy: Taxonomy | None = None,
+    metrics_df: pd.DataFrame | None = None,
+    round: int | None = None,
+) -> pd.DataFrame:
+    """High-level description generation (pipeline Step 8): a deterministic discovered_pattern/
+    model_looseness per category (pure functions of numbers Steps 2/7 already computed, no LLM),
+    plus one batched LLM call judging goal_alignment against each category's real goal-model
+    linkage (or Step 5's own description/rationale, in open mode).
+
+    Like Step 7 with Step 6's taxonomy, this does NOT implicitly recompute a missing
+    assignments_df/taxonomy/metrics_df from scratch: Step 6 is an LLM step and Step 7 discovers
+    real process models, so an implicit rebuild here could silently re-run (and re-bill/
+    re-discover) either. Either pass all three in-memory, or point run_id/round (arguments, or
+    config.yaml's fields) at a round directory that already has assignments.csv, taxonomy.json,
+    and discovery_metrics.csv.
+    """
+    config = load_config(config_path, run_id, round)
+    logger = get_logger(config)
+
+    logger.info("Step 8 (high-level description generation) started for log: %s", config.log_path)
+
+    if variants_df is None:
+        variants_df = _get_or_build_variants(config, logger)
+
+    if assignments_df is None or taxonomy is None or metrics_df is None:
+        assignments_path = config.assignment_dir / "assignments.csv"
+        taxonomy_path = config.taxonomy_dir / "taxonomy.json"
+        metrics_path = config.discovery_dir / "discovery_metrics.csv"
+        if not assignments_path.exists() or not taxonomy_path.exists() or not metrics_path.exists():
+            raise ValueError(
+                "run_step8_description() needs assignments, a taxonomy, and discovery metrics: "
+                "pass assignments_df=, taxonomy=, and metrics_df= directly, or point run_id/round "
+                "(arguments, or config.yaml's fields) at a round directory that already has "
+                f"all three (checked: {assignments_path}, {taxonomy_path}, {metrics_path})."
+            )
+        logger.info("Loading assignments from: %s", assignments_path)
+        assignments_df = pd.read_csv(assignments_path, dtype={"variant_id": str})
+        logger.info("Loading taxonomy from: %s", taxonomy_path)
+        taxonomy = Taxonomy.model_validate_json(taxonomy_path.read_text(encoding="utf-8"))
+        logger.info("Loading discovery metrics from: %s", metrics_path)
+        metrics_df = pd.read_csv(metrics_path)
+
+    df = load_event_log(config)
+    logger.info("Generating descriptions for %d categories against %d events", len(taxonomy.categories), len(df))
+
+    descriptions_df, metadata, prompt = generate_descriptions_8(
+        df, variants_df, assignments_df, metrics_df, taxonomy, config, logger
+    )
+    logger.info("Generated %d/%d category descriptions", len(descriptions_df), len(taxonomy.categories))
+
+    report_markdown = build_description_report(taxonomy, descriptions_df, metrics_df, config)
+    save_description_outputs(descriptions_df, metadata, prompt, report_markdown, config.description_dir)
+    logger.info("Saved description outputs to: %s", config.description_dir)
+
+    logger.info("Step 8 complete.")
+    return descriptions_df
+
+
+def run_step9_review(
+    config_path: str | Path | None = None, run_id: str | None = None, round: int | None = None
+) -> dict:
+    """Business review (pipeline Step 9): file-based, not a UI — a human reads the single
+    execution-level review_index.md/the current round's Step 6-8 reports, then records
+    accept/rename/merge/split in that round's review_decisions.yaml. Re-invoking this against the
+    same run_id processes whatever decision is there: accept finalizes (final/ + round_info.json
+    status), a rename applies in place (no LLM call), a merge/split starts a new round (a fresh
+    LLM-driven taxonomy revision nested under round{N+1}/, then Steps 6-8 re-run under it). See
+    review.py for the full mechanism.
+
+    Same not-implicitly-recomputed contract as Steps 6-8: needs an existing taxonomy.json and
+    assignments.csv in the current round's directory (raises ValueError naming what's missing
+    otherwise).
+    """
+    config = load_config(config_path, run_id, round)
+    logger = get_logger(config)
+
+    logger.info("Step 9 (business review) started for log: %s", config.log_path)
+    result = process_review(config_path, config, logger)
+    logger.info("Step 9 result: %s", result)
+
+    return result

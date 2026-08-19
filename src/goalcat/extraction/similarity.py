@@ -11,11 +11,12 @@ _PROFILE_COMPONENTS = ["outcome_mismatch", "duration_log_distance", "rework_jacc
 
 def compute_structural_distances(profiles_df: pd.DataFrame) -> pd.DataFrame:
     """Pairwise control-flow distance between every pair of variants (Levenshtein edit distance
-    on activity_sequence, via pm4py's own implementation — per
-    [[feedback_prefer_pm4py_builtins]]). Measures control-flow proximity only, not business
-    equivalence: two variants realizing business-distinct outcomes can still have near-identical
-    activity sequences (RTFM's TP/TA distinction, documented in its frozen goal model, is exactly
-    this case), so this is reported alongside compute_profile_distances(), never in place of it.
+    on activity_sequence, via pm4py's own implementation, preferred over a hand-rolled distance
+    per this project's standing practice of using a PM4Py primitive when one exists). Measures
+    control-flow proximity only, not business equivalence: two variants realizing business-
+    distinct outcomes can still have near-identical activity sequences (RTFM's TP/TA distinction,
+    documented in its frozen goal model, is exactly this case), so this is reported alongside
+    compute_profile_distances(), never in place of it.
     """
     rows = []
     for (id_a, seq_a), (id_b, seq_b) in itertools.combinations(

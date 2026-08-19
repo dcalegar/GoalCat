@@ -1,0 +1,73 @@
+{
+  "calls": [
+    {
+      "provider": "gemini",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "backend": "remote",
+      "temperature": 0.0,
+      "prompt_hash": "585fb4235438b729",
+      "latency_seconds": 0.6785700410109712,
+      "input_tokens": 401,
+      "output_tokens": 49,
+      "raw_response": "{\n  \"category_id\": null,\n  \"rationale\": \"The narrative only describes the creation and sending of the fine, without any resolution steps such as payment, administrative appeal, judicial appeal, or coercive collection.\"\n}"
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "backend": "remote",
+      "temperature": 0.0,
+      "prompt_hash": "ac4f65bd24724651",
+      "latency_seconds": 0.7413573750091018,
+      "input_tokens": 460,
+      "output_tokens": 67,
+      "raw_response": "{\n  \"category_id\": \"coercive_collection\",\n  \"rationale\": \"The narrative explicitly follows the process steps of creating a fine, sending it, inserting a notification, adding a penalty, and ultimately ending with sending the case for credit collection, which aligns with the coercive credit collection category.\"\n}"
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "backend": "remote",
+      "temperature": 0.0,
+      "prompt_hash": "95b595cde51f558e",
+      "latency_seconds": 0.8515977079950972,
+      "input_tokens": 451,
+      "output_tokens": 73,
+      "raw_response": "{\n  \"category_id\": \"payment\",\n  \"rationale\": \"The narrative details the creation and sending of a fine, followed by fine notification and the addition of a penalty, and ultimately concludes with a Payment. This directly matches the 'Resolve via payment' category description where the fine is settled later following formal notification and penalty addition.\"\n}"
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "backend": "remote",
+      "temperature": 0.0,
+      "prompt_hash": "3d989cede1ae11a4",
+      "latency_seconds": 0.7264942079928005,
+      "input_tokens": 389,
+      "output_tokens": 53,
+      "raw_response": "{\n  \"category_id\": \"payment\",\n  \"rationale\": \"The narrative consists of creating a fine followed directly by a payment step and ends in the Payment outcome, which matches the prompt definition for resolving the fine promptly without enforcement.\"\n}"
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "backend": "remote",
+      "temperature": 0.0,
+      "prompt_hash": "d8cec68359774e20",
+      "latency_seconds": 0.6814732920029201,
+      "input_tokens": 460,
+      "output_tokens": 56,
+      "raw_response": "{\n  \"category_id\": \"judicial_appeal\",\n  \"rationale\": \"The narrative describes the creation and notification of a fine, the addition of a penalty, and concludes with an appeal to a judge, which directly matches the judicial appeal category.\"\n}"
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "backend": "remote",
+      "temperature": 0.0,
+      "prompt_hash": "b83a304b683d6008",
+      "latency_seconds": 0.8492669999977807,
+      "input_tokens": 484,
+      "output_tokens": 80,
+      "raw_response": "{\n  \"category_id\": \"administrative_appeal\",\n  \"rationale\": \"The narrative explicitly includes steps for inserting and sending an appeal to the Prefecture ('Insert Date Appeal to Prefecture', 'Send Appeal to Prefecture') and ends with receiving the result of this appeal ('Receive Result Appeal from Prefecture'). This directly matches the 'Resolve via administrative appeal to the Prefecture' category.\"\n}"
+    }
+  ],
+  "total_input_tokens": 2645,
+  "total_output_tokens": 378,
+  "total_latency_seconds": 4.528759624008671
+}

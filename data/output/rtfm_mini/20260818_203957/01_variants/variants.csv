@@ -1,0 +1,7 @@
+variant_id,activity_sequence,trace_length,case_ids,frequency,frequency_pct
+V0001,Create Fine>Send Fine,2,A1,1,0.16666666666666666
+V0002,Create Fine>Send Fine>Insert Fine Notification>Add penalty>Send for Credit Collection,5,A100,1,0.16666666666666666
+V0003,Create Fine>Send Fine>Insert Fine Notification>Add penalty>Payment,5,A10000,1,0.16666666666666666
+V0004,Create Fine>Payment,2,A10005,1,0.16666666666666666
+V0005,Create Fine>Send Fine>Insert Fine Notification>Add penalty>Appeal to Judge,5,A31588,1,0.16666666666666666
+V0006,Create Fine>Send Fine>Insert Fine Notification>Insert Date Appeal to Prefecture>Send Appeal to Prefecture>Add penalty>Receive Result Appeal from Prefecture,7,C19128,1,0.16666666666666666

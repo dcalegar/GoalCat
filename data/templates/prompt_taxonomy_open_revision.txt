@@ -1,0 +1,14 @@
+You are revising an existing taxonomy induced directly from a narrative sample (no external declaration to anchor to), per a human reviewer's specific request below. Apply exactly the requested revision (merge and/or split) and otherwise preserve the existing taxonomy as closely as possible: keep every unaffected category's category_id, name, description, and rationale unchanged.
+
+Each category's anchor_ids field must remain an empty list — there is still no declared axis to trace it to.
+
+=== NARRATIVE SAMPLE ({sample_size} variants, drawn to cover frequent, rare, and extreme cases) ===
+{narrative_blocks}
+
+=== PRIOR TAXONOMY (the taxonomy you are revising) ===
+{prior_taxonomy_block}
+
+=== REVIEWER'S REQUESTED REVISION ===
+{revision_instructions}
+
+Propose the revised taxonomy now, applying exactly the requested changes above and leaving every other category as close to its prior form as possible.
