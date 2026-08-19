@@ -1,10 +1,10 @@
-# Case-study configuration for the full RTFM log (231 variants), used by
-# experimentation/rtfm/example_run.py. Same settings as src/goalcat/config.yaml, kept as its own
-# copy under experimentation/ so this case study is self-contained like its siblings — see that
-# file's header for the rationale behind each setting.
+# Case-study configuration for the Sepsis Cases log, used by
+# experimentation/examples/sepsis/example_run.py. Sample sizes and LLM settings mirror src/goalcat/
+# config.yaml's defaults; only log_filename and goal_model_filename are log-specific — see that
+# file's header for the rationale behind each shared setting.
 
-log_filename: rtfm.xes.gz
-goal_model_filename: rtfm_goal_model.md
+log_filename: sepsis.xes.gz
+goal_model_filename: sepsis_goal_model.md
 output_dir: data/output
 
 run_id: null

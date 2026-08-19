@@ -48,23 +48,33 @@ GoalCat/
 │   └── output/                # generated pipeline run artifacts, one dir per run
 ├── scripts/
 │   └── setup_local_llm.sh # optional local Ollama backend bootstrap
-├── src/goalcat/
-│   ├── config.py, config.yaml, config_local.yaml   # PipelineConfig + default/local-LLM configs
-│   ├── pipeline.py         # orchestrator: run_step1_variants ... run_step9_review
-│   ├── discovery.py        # Step 7: per-category process discovery
-│   ├── review.py            # Step 9: business review loop
-│   ├── run_logging.py
-│   ├── extraction/          # Steps 1-2: log I/O, variants, profiling, similarity
-│   ├── narrative/            # Steps 3-4: textualization, sampling
-│   ├── llm/                   # Steps 5a/5b, 6, 8: LLM backend, taxonomy, assignment, description
-│   └── experimentation/    # one self-contained subdirectory per case study
-│       ├── rtfm_mini/       # config_mini.yaml + example_run.py (6-case fixture)
-│       ├── rtfm/             # config_rtfm.yaml + example_run.py (full RTFM log)
-│       ├── bpic2019/
-│       ├── bpic2020_permit/
-│       └── sepsis/
+├── src/
+│   ├── goalcat/              # the pipeline library — core execution, no case-study or GUI code
+│   │   ├── config.py, config.yaml, config_local.yaml   # PipelineConfig + default/local-LLM configs
+│   │   ├── pipeline.py       # orchestrator: run_step1_variants ... run_step9_review
+│   │   ├── discovery.py      # Step 7: per-category process discovery
+│   │   ├── review.py          # Step 9: business review loop
+│   │   ├── run_logging.py
+│   │   ├── extraction/        # Steps 1-2: log I/O, variants, profiling, similarity
+│   │   ├── narrative/          # Steps 3-4: textualization, sampling
+│   │   └── llm/                 # Steps 5a/5b, 6, 8: LLM backend, taxonomy, assignment, description
+│   └── gui/                   # local Streamlit GUI over the pipeline (imports goalcat) — see
+│                               # "Running the GUI" below
+├── experimentation/          # case-study drivers (imports goalcat) — see experimentation/README.md
+│   ├── examples/               # one self-contained subdirectory per illustrative case study
+│   │   ├── rtfm_mini/           # config_mini.yaml + example_run.py (6-case fixture)
+│   │   ├── rtfm/                 # config_rtfm.yaml + example_run.py (full RTFM log)
+│   │   ├── bpic2019/
+│   │   ├── bpic2020_permit/
+│   │   └── sepsis/
+│   └── icpm2027/               # replication package for the ICPM 2027 paper (RQ1 protocol runs)
 └── third_party/lupin/      # vendored CC BY-NC-SA 4.0 textualization module (subprocess-isolated)
 ```
+
+`goalcat`, `gui`, and `experimentation` are three separate top-level Python packages —
+`experimentation` and `gui` both import `goalcat` as a library, never the reverse. `goalcat` and
+`gui` live under `src/`; `experimentation` lives at the repository root instead, since it only
+consumes the pipeline and isn't part of the implemented core.
 
 `project/` (deeper architecture/research documentation) and `.claude/` (assistant configuration) are
 listed in `.gitignore` and are not part of the git repository — see
@@ -79,6 +89,9 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[llm]"
 ```
+
+Add `gui` to that extras list (`pip install -e ".[llm,gui]"`) to also install the local Streamlit
+GUI — see [Running the GUI](#running-the-gui).
 
 For exact reproducibility of the verified environment instead of resolving against
 `pyproject.toml`'s version ranges, use the lockfile:
@@ -119,19 +132,23 @@ baseline before relying on this beyond quick local iteration.
 There is no packaged CLI. `src/goalcat/pipeline.py` exposes each step as a library function —
 `run_step1_variants()` through `run_step9_review()` — not a `__main__` entry point.
 
-Each study case under `src/goalcat/experimentation/` is a self-contained, runnable example (its own
-config alongside its driver script), invoked as a module:
+Each study case under `experimentation/examples/` is a self-contained, illustrative,
+runnable example (its own config alongside its driver script), invoked as a module:
 
 ```bash
-python -m goalcat.experimentation.rtfm_mini.example_run       # 6-case fixture, scripted rework round
-python -m goalcat.experimentation.rtfm.example_run             # full RTFM log
-python -m goalcat.experimentation.bpic2019.example_run
-python -m goalcat.experimentation.bpic2020_permit.example_run
-python -m goalcat.experimentation.sepsis.example_run
+python -m experimentation.examples.rtfm_mini.example_run       # 6-case fixture, scripted rework round
+python -m experimentation.examples.rtfm.example_run             # full RTFM log
+python -m experimentation.examples.bpic2019.example_run
+python -m experimentation.examples.bpic2020_permit.example_run
+python -m experimentation.examples.sepsis.example_run
 ```
 
 Each requires `GEMINI_API_KEY` (or `config_local.yaml` for the local backend) and makes real LLM
 calls — billed ones, under the hosted backend.
+
+The runs behind the ICPM 2027 paper's reported results live separately, under
+`experimentation/icpm2027/` — see [`experimentation/README.md`](experimentation/README.md)
+for the distinction and that subpackage's own README for its (currently scaffolded) layout.
 
 For a custom run against any config, call the `run_stepN_*()` functions directly with a shared
 `run_id`:
@@ -151,6 +168,41 @@ run_step2_profiling(run_id=run_id)
 ```
 
 against `src/goalcat/config.yaml` (the default) or any other `config_path=`.
+
+## Running the GUI
+
+`src/gui/` is a local Streamlit app over the same pipeline library — no YAML hand-editing, no
+`review_decisions.yaml` hand-editing. Install its extra and launch it:
+
+```bash
+pip install -e ".[llm,gui]"
+export GEMINI_API_KEY=...        # or the local Ollama backend — see "LLM backend" above
+streamlit run src/gui/app.py
+```
+
+This opens `http://localhost:8501` in your browser. Everything runs on your machine — there is no
+hosted/paid Streamlit service involved. Four pages, in the sidebar:
+
+- **Nueva corrida** — pick a log (`data/logs/`) and goal model (`data/goals/`), a form pre-filled
+  from the matching case study's config (or the top-level default) for everything else
+  (`case_id_key`/`activity_key`/..., sample sizes, `taxonomy_mode`, LLM model/temperature/
+  concurrency/rate-limit), and a button that launches Steps 1-8 with a live progress checklist and
+  a `pipeline.log` tail — useful during Step 6/8, which can take several minutes against real LLM
+  calls.
+- **Resultados** — browse any past run's variants, profiles, narratives, taxonomy, per-category
+  reports, discovered process models (DFG images + downloadable `.pnml`), and — once a round is
+  accepted — the final partitioned `.xes.gz` logs.
+- **Revisión** — the Step 9 business review, without touching `review_decisions.yaml` directly:
+  per category, keep / rename / merge / split, backed by the same `ReviewDecisions` validation the
+  library already enforces.
+- **Historial** — every run under `data/output/`, with its round count, latest status, and config
+  summary, with a shortcut into Resultados/Revisión for any of them.
+
+Each run/round the GUI launches executes in its own subprocess (`python -m gui.worker`), not
+inside the Streamlit process itself — `goalcat.run_logging.get_logger()` caches its file handler
+per process, so a long-lived GUI session launching many runs needs one fresh process per run to
+give each its own `pipeline.log`. See `src/gui/run_control.py`'s module docstring for the full
+rationale.
 
 ## Data
 

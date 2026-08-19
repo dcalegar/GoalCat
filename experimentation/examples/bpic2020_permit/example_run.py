@@ -1,17 +1,17 @@
-"""Runnable case study: the full GoalCat pipeline (Steps 1-9) against bpic2019.
+"""Runnable case study: the full GoalCat pipeline (Steps 1-9) against bpic2020_permit.
 
-Unlike experimentation/rtfm_mini/example_run.py, this script does not script a rework loop
+Unlike experimentation/examples/rtfm_mini/example_run.py, this script does not script a rework loop
 through Step 9's revise path — it stands in for a business expert who accepts the induced
 taxonomy outright, on the first round, with no edits. Step 9 is designed for a human reviewer
 reading review_index.md and hand-editing review_decisions.yaml (see review.py's process_review
 docstring); here that decision is written directly as decision="accept" and Step 9 is invoked
 once.
 
-Uses its own config_bpic2019.yaml, alongside this script under experimentation/bpic2019/ — one
-subdirectory per log in data/logs/, so each case study is self-contained. Invoke it as a module,
-not as a loose script: the imports above are relative to the goalcat package
-(`python -m goalcat.experimentation.bpic2019.example_run`). Requires GEMINI_API_KEY in the
-environment (see llm/llm_backend.py).
+Uses its own config_bpic2020_permit.yaml, alongside this script under
+experimentation/examples/bpic2020_permit/ — one subdirectory per log in data/logs/, so each case study is
+self-contained. Invoke it as a module, not as a loose script: `python -m experimentation.examples.bpic2020_permit.example_run` (experimentation.examples is its
+a subpackage of experimentation (itself a top-level package living at the repository root, alongside src/ — see README.md's repository layout). Requires
+GEMINI_API_KEY in the environment (see llm/llm_backend.py).
 """
 
 from __future__ import annotations
@@ -20,8 +20,8 @@ from pathlib import Path
 
 import yaml
 
-from ...config import load_config, new_run_id
-from ...pipeline import (
+from goalcat.config import load_config, new_run_id
+from goalcat.pipeline import (
     run_step1_variants,
     run_step2_profiling,
     run_step3_textualization,
@@ -32,10 +32,10 @@ from ...pipeline import (
     run_step8_description,
     run_step9_review,
 )
-from ...review import ReviewDecisions
-from ...run_logging import get_logger
+from goalcat.review import ReviewDecisions
+from goalcat.run_logging import get_logger
 
-CONFIG_PATH = Path(__file__).with_name("config_bpic2019.yaml")
+CONFIG_PATH = Path(__file__).with_name("config_bpic2020_permit.yaml")
 
 
 def _write_accept_decision(config_path: Path, run_id: str, round_num: int, logger) -> None:
@@ -54,7 +54,7 @@ def main() -> None:
     run_id = new_run_id()
     config = load_config(CONFIG_PATH, run_id)
     logger = get_logger(config)
-    logger.info("example_run: starting full pipeline for bpic2019, run_id=%s", run_id)
+    logger.info("example_run: starting full pipeline for bpic2020_permit, run_id=%s", run_id)
 
     variants_df = run_step1_variants(CONFIG_PATH, run_id)
     profiles_df = run_step2_profiling(CONFIG_PATH, run_id, variants_df)

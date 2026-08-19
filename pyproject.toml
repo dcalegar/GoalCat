@@ -32,10 +32,21 @@ dependencies = [
 llm = [
     "litellm>=1.83.0",
 ]
+# Local GUI (src/gui/, sibling of src/goalcat/): st.fragment(run_every=...) and
+# st.switch_page() both need 1.38+. Run entirely locally (`streamlit run src/gui/app.py`) — no
+# hosted/paid service.
+gui = [
+    "streamlit>=1.38",
+]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/goalcat"]
+# goalcat is the pipeline library; experimentation (case-study drivers) and gui (the Streamlit
+# app) are separate top-level packages, not subpackages of goalcat — both import it as a
+# dependency (`from goalcat... import ...`), never the reverse. experimentation lives at the
+# repository root rather than under src/: it consumes goalcat but isn't part of the implemented
+# core, unlike gui, which stays alongside goalcat under src/.
+packages = ["src/goalcat", "src/gui", "experimentation"]

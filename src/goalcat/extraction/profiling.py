@@ -130,7 +130,7 @@ def save_profiles(profiles_df: pd.DataFrame, csv_path: Path, json_path: Path) ->
 def _parse_counts(joined: str) -> dict[str, int]:
     if not isinstance(joined, str) or not joined:
         return {}
-    return {key: int(value) for key, value in (pair.split(":", 1) for pair in joined.split(","))}
+    return json.loads(joined)
 
 
 def load_profiles(csv_path: Path, json_path: Path) -> pd.DataFrame:
@@ -151,4 +151,4 @@ def load_profiles(csv_path: Path, json_path: Path) -> pd.DataFrame:
 
 
 def _join_counts(counts: dict) -> str:
-    return ",".join(f"{key}:{value}" for key, value in counts.items())
+    return json.dumps(counts)

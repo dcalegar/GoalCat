@@ -1,10 +1,12 @@
-# Case-study configuration for the BPIC 2019 log (purchase-order handling), used by
-# experimentation/bpic2019/example_run.py. Sample sizes and LLM settings mirror src/goalcat/
-# config.yaml's defaults; only log_filename and goal_model_filename are log-specific — see that
-# file's header for the rationale behind each shared setting.
+# Case-study configuration for the BPIC 2020 "Permit" log, used by
+# experimentation/examples/bpic2020_permit/example_run.py. Sample sizes and LLM settings mirror
+# src/goalcat/config.yaml's defaults; only log_filename and goal_model_filename are log-specific
+# — see that file's header for the rationale behind each shared setting. goal_model_filename
+# points at bpic2020_goal_model.md (data/goals/), the frozen goal model shared by every BPIC 2020
+# sub-log, not a "permit"-specific file.
 
-log_filename: bpic2019.xes.gz
-goal_model_filename: bpic2019_goal_model.md
+log_filename: bpic2020_permit.xes.gz
+goal_model_filename: bpic2020_goal_model.md
 output_dir: data/output
 
 run_id: null

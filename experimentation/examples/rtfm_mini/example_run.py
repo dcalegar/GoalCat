@@ -8,10 +8,10 @@ decision for the round it just reached, then calls run_step9_review() to process
 relies on the auto-written default template (decision: revise with no edits) being valid on its
 own — it isn't, by ReviewDecisions' own model validator.
 
-Uses its own config_mini.yaml, alongside this script under experimentation/rtfm_mini/ — one
+Uses its own config_mini.yaml, alongside this script under experimentation/examples/rtfm_mini/ — one
 subdirectory per log in data/logs/, so each case study is self-contained. Invoke it as a module,
-not as a loose script: the imports above are relative to the goalcat package
-(`python -m goalcat.experimentation.rtfm_mini.example_run`). Requires GEMINI_API_KEY in the
+not as a loose script: `python -m experimentation.examples.rtfm_mini.example_run` (experimentation.examples is its
+a subpackage of experimentation (itself a top-level package living at the repository root, alongside src/ — see README.md's repository layout). Requires GEMINI_API_KEY in the
 environment (see llm/llm_backend.py).
 """
 
@@ -21,9 +21,9 @@ from pathlib import Path
 
 import yaml
 
-from ...config import load_config, new_run_id
-from ...llm.taxonomy import Taxonomy
-from ...pipeline import (
+from goalcat.config import load_config, new_run_id
+from goalcat.llm.taxonomy import Taxonomy
+from goalcat.pipeline import (
     run_step1_variants,
     run_step2_profiling,
     run_step3_textualization,
@@ -34,8 +34,8 @@ from ...pipeline import (
     run_step8_description,
     run_step9_review,
 )
-from ...review import MergeDecision, ReviewDecisions
-from ...run_logging import get_logger
+from goalcat.review import MergeDecision, ReviewDecisions
+from goalcat.run_logging import get_logger
 
 CONFIG_PATH = Path(__file__).with_name("config_mini.yaml")
 MAX_REWORK_ROUNDS = 5
@@ -61,7 +61,7 @@ def _write_scripted_decision(config_path: Path, run_id: str, round_num: int, rou
                 MergeDecision(
                     category_ids=[a, b],
                     reason=(
-                        "Scripted rework-loop demonstration (experimentation/rtfm_mini/example_run.py): "
+                        "Scripted rework-loop demonstration (experimentation/examples/rtfm_mini/example_run.py): "
                         f"merging the first two induced categories ({a}, {b}) to exercise Step 9's "
                         "revise path end-to-end (new round, Steps 5-8 re-run)."
                     ),

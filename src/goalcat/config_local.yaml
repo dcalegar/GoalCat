@@ -1,4 +1,5 @@
-# Local-LLM configuration: same tiny log/sample settings as experimentation/config_mini.yaml
+# Local-LLM configuration: same tiny log/sample settings as
+# experimentation/examples/rtfm_mini/config_mini.yaml
 # (see its header for the case-by-case rationale), but routed to a locally-hosted model via
 # Ollama instead of a hosted API — for offline iteration/debugging or runs where no remote API
 # key is available.
@@ -7,7 +8,7 @@
 # PROGRESS.md, "Local LLM backend (Ollama)" for the RAM-budget analysis behind that choice;
 # swapping to a different local model is a one-line change to the three *_model fields below,
 # no code change (same litellm "provider/model" convention as config.yaml and
-# experimentation/config_mini.yaml).
+# experimentation/examples/rtfm_mini/config_mini.yaml).
 #
 # Structured-output caveat: Ollama enforces response_format via grammar-constrained decoding,
 # so this model will always emit schema-valid JSON — but small local models can still make

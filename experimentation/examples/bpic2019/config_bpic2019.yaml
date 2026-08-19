@@ -1,10 +1,10 @@
-# Case-study configuration for the Sepsis Cases log, used by
-# experimentation/sepsis/example_run.py. Sample sizes and LLM settings mirror src/goalcat/
+# Case-study configuration for the BPIC 2019 log (purchase-order handling), used by
+# experimentation/examples/bpic2019/example_run.py. Sample sizes and LLM settings mirror src/goalcat/
 # config.yaml's defaults; only log_filename and goal_model_filename are log-specific — see that
 # file's header for the rationale behind each shared setting.
 
-log_filename: sepsis.xes.gz
-goal_model_filename: sepsis_goal_model.md
+log_filename: bpic2019.xes.gz
+goal_model_filename: bpic2019_goal_model.md
 output_dir: data/output
 
 run_id: null
