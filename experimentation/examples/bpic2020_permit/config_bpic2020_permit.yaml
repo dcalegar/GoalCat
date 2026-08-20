@@ -2,11 +2,11 @@
 # experimentation/examples/bpic2020_permit/example_run.py. Sample sizes and LLM settings mirror
 # src/goalcat/config.yaml's defaults; only log_filename and goal_model_filename are log-specific
 # — see that file's header for the rationale behind each shared setting. goal_model_filename
-# points at bpic2020_goal_model.md (data/goals/), the frozen goal model shared by every BPIC 2020
-# sub-log, not a "permit"-specific file.
+# points at bpic2020_goal_model.jucm (data/goals/), the frozen goal model shared by every BPIC
+# 2020 sub-log, not a "permit"-specific file.
 
 log_filename: bpic2020_permit.xes.gz
-goal_model_filename: bpic2020_goal_model.md
+goal_model_filename: bpic2020_goal_model.jucm
 output_dir: data/output
 
 run_id: null

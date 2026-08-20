@@ -4,7 +4,7 @@
 # file's header for the rationale behind each setting.
 
 log_filename: rtfm.xes.gz
-goal_model_filename: rtfm_goal_model.md
+goal_model_filename: rtfm_goal_model.jucm
 output_dir: data/output
 
 run_id: null

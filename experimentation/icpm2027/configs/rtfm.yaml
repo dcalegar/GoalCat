@@ -1,0 +1,20 @@
+# ICPM 2027 — RTFM dataset spec. Only the log-specific half of a pipeline config: everything the
+# freeze table holds identical across arms and datasets lives in protocol.yaml and is merged in by
+# protocol.py, so this file cannot drift from the frozen protocol.
+dataset_id: rtfm
+log_filename: rtfm.xes.gz
+goal_model_filename: rtfm_goal_model.jucm
+case_id_key: "case:concept:name"
+activity_key: "concept:name"
+timestamp_key: "time:timestamp"
+resource_key: "org:resource"
+
+# §5: mechanism case — low relative diversity, high repetition (231 variants / 150,370 cases).
+role: mechanism_case
+# Whole log; no Task C7-style scope decision applies here.
+variant_scope:
+  policy: all
+
+# Held-out case attribute for a non-partition-divergence validation metric (Task C1). None for
+# this dataset — RTFM carries no organization-supplied categorical label.
+heldout_case_attribute: null

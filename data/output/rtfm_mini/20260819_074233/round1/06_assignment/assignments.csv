@@ -1,7 +1,0 @@
-variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
-V0001,,"The narrative ends in Send Fine without any payment, appeal, or enforcement action.",,timely_payment,1,,0.33405107160585173
-V0002,coercive_collection,The narrative includes fine notification and added penalty followed by sending the case for credit collection.,0.0,delinquent_payment,1,0.0,0.3608828617024307
-V0003,delinquent_payment,"The narrative includes a fine notification and added penalty, and subsequently concludes with a payment.",0.0,coercive_collection,1,0.0,0.3057838049642359
-V0004,timely_payment,"The narrative goes straight from fine creation to payment without formal notifications, penalties, or appeals.",0.0,delinquent_payment,3,0.0,0.3057838049642359
-V0005,judicial_appeal,"The narrative includes fine notification and added penalties, and concludes with an appeal to the Judge.",0.0,coercive_collection,1,0.0,0.36026422230408667
-V0006,administrative_appeal,The narrative involves an appeal submitted to the Prefecture and concludes with receiving the result from the Prefecture.,0.0,coercive_collection,3,0.0,0.36026422230408667

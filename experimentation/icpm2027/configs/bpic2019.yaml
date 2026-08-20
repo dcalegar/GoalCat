@@ -1,0 +1,24 @@
+# ICPM 2027 — BPIC 2019 dataset spec. See rtfm.yaml's header for what this file does and does not
+# carry.
+dataset_id: bpic2019
+log_filename: bpic2019.xes.gz
+goal_model_filename: bpic2019_goal_model.jucm
+case_id_key: "case:concept:name"
+activity_key: "concept:name"
+timestamp_key: "time:timestamp"
+resource_key: "org:resource"
+
+# §5: large-scale case — high absolute diversity (11,973 variants / 251,734 cases).
+role: large_scale_case
+# Task C7: resolved from preregistration.yaml's C7_bpic2019_variant_scope decision, not fixed
+# here — the plan requires this to be pre-registered as a decision with a date and a rationale,
+# not silently baked into a dataset file.
+variant_scope:
+  policy: from_preregistration
+  decision: C7_bpic2019_variant_scope
+
+# Task C1 — the project's one non-partition-divergence validation opportunity: the log's own
+# organization-supplied label, verified never to reach the narrative (narrative/textualization.py
+# builds the LUPIN input from a fixed field set; no case attribute reaches it). Excluded from the
+# narrative by construction; used only by analysis/heldout.py, after assignment.
+heldout_case_attribute: "case:Item Category"

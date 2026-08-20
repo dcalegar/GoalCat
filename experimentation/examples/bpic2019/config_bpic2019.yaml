@@ -4,7 +4,7 @@
 # file's header for the rationale behind each shared setting.
 
 log_filename: bpic2019.xes.gz
-goal_model_filename: bpic2019_goal_model.md
+goal_model_filename: bpic2019_goal_model.jucm
 output_dir: data/output
 
 run_id: null

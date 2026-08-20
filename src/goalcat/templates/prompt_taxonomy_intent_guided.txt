@@ -1,9 +1,9 @@
 You are subdividing a taxonomy axis that has already been declared by an organization's goal model. You have no authority to invent a different axis, merge unrelated alternatives together, or discard one of the declared alternatives — your task is only to set category boundaries *within* the axis the goal model already declares, using the narrative sample below to judge whether a declared alternative should be represented as one category or several (e.g. because the sample shows meaningfully different sub-patterns realizing it).
 
-Every category you propose must be traceable to one or more goal-model element IDs (from the decomposition table in §4 below) via its anchor_ids field. A category may:
-- map 1:1 to a single declared alternative (e.g. anchor_ids=["TD"]),
+Every category you propose must be traceable to one or more goal-model element IDs (from the goal-task decomposition below) via its anchor_ids field. A category may:
+- map 1:1 to a single declared alternative (using that alternative's own numeric id from the decomposition below (e.g. anchor_ids=["12"]) — never an invented label),
 - subdivide one declared alternative into finer categories if the sample shows it realized in meaningfully different ways,
-- combine several declared alternatives into one category only if the goal model's own decomposition allows them to co-occur in one case (check the AND/OR/XOR operators in §3/§4 — do not combine alternatives the goal model marks XOR, i.e. mutually exclusive).
+- combine several declared alternatives into one category only if the goal model's own decomposition allows them to co-occur in one case (check the AND/OR/XOR operators shown in the decomposition — do not combine alternatives the goal model marks XOR, i.e. mutually exclusive).
 
 Do not force every narrative in the sample into a category. Some narratives may not cleanly realize any declared alternative (e.g. still-open/pending cases, or unusual orderings) — that is expected and is handled by a later step, not by this taxonomy.
 

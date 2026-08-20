@@ -1,0 +1,16 @@
+# ICPM 2027 — Sepsis Cases dataset spec. See rtfm.yaml's header for what this file does and does
+# not carry.
+dataset_id: sepsis
+log_filename: sepsis.xes.gz
+goal_model_filename: sepsis_goal_model.jucm
+case_id_key: "case:concept:name"
+activity_key: "concept:name"
+timestamp_key: "time:timestamp"
+resource_key: "org:resource"
+
+# §5: cross-domain case — high relative diversity (846 variants / 1,050 cases).
+role: cross_domain_case
+variant_scope:
+  policy: all
+
+heldout_case_attribute: null

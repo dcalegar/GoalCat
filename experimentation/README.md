@@ -16,11 +16,15 @@ implemented core, unlike `src/goalcat/` (the library) and `src/gui/` (a Streamli
   an illustrative demo does not need, and because a reader reproducing the paper should not have
   to pick the right script out of a directory mixed with unrelated demos.
 
-Invoke either as a module, from the repository root, e.g.:
+`examples/` scripts are invoked directly, as a module, from the repository root:
 
 ```bash
 python -m experimentation.examples.rtfm_mini.example_run
-python -m experimentation.icpm2027.rtfm.guided_run   # once the icpm2027 protocol scripts exist
 ```
+
+`icpm2027/`'s protocol is driven programmatically rather than through one `example_run.py` per
+condition — see [`experimentation/icpm2027/README.md`](icpm2027/README.md) for its module
+inventory, current status, and the pre-registration gate that must be resolved before any frozen
+run executes.
 
 See the top-level [`README.md`](../README.md) for installation and LLM-backend setup.

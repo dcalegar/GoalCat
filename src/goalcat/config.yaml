@@ -5,9 +5,10 @@
 # Log filename only — resolved under the fixed data/logs/ directory.
 log_filename: rtfm.xes.gz
 # Goal model filename only — resolved under the fixed data/goals/ directory (Step G's frozen
-# artifact for this log, e.g. data/goals/rtfm_goal_model.md). Read by Step 5a even if
+# artifact for this log, e.g. data/goals/rtfm_goal_model.jucm — the sole goal-model input; any
+# .md file alongside it is documentation, never read by the pipeline). Read by Step 5a even if
 # taxonomy_mode is later switched to "open", since switching modes back is a config edit away.
-goal_model_filename: rtfm_goal_model.md
+goal_model_filename: rtfm_goal_model.jucm
 output_dir: data/output
 
 # Which run directory to use, under output_dir/<log_stem>/ — e.g. "20260818_105007". Unset (or

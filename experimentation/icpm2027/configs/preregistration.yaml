@@ -1,0 +1,120 @@
+# ICPM 2027 — pre-registered decisions (EXPERIMENTATION_PLAN.md §13).
+#
+# Every entry here is a decision the plan requires to be fixed BEFORE the run it governs, so that
+# it cannot be chosen after observing that run's categorization output (§12, Tasks C7 and C10
+# state this discipline explicitly). protocol.py refuses to launch a frozen run while any decision
+# governing it is still `status: pending`, unless the driver is invoked with
+# --allow-pending-decisions (which stamps the run's manifest as NOT pre-registered).
+#
+# To pre-register a decision: set its `value`, set `status: decided`, and fill `decided_on` and
+# `rationale`. Do not edit a decision after the run it governs has executed — supersede it with a
+# new protocol_version instead.
+
+decisions:
+
+  C7_bpic2019_variant_scope:
+    task: C7
+    question: >-
+      BPIC 2019 variant scope: all 11,973 variants, or top-N by case coverage? At
+      assignment_batch_size=20 the full scope is ~600 Step-6 calls per condition, i.e. ~2,400
+      across the paired design with Task C2's replicates.
+    governs: [bpic2019]
+    status: pending
+    # policy: all | top_n_variants | min_case_coverage
+    value:
+      policy: top_n_variants
+      top_n: 1000
+      # Only read when policy == min_case_coverage: keep the most frequent variants until this
+      # cumulative share of cases is covered.
+      min_case_coverage: 0.80
+    decided_on: null
+    rationale: >-
+      RECOMMENDED DEFAULT, NOT YET DECIDED. top_n=1000 keeps the long tail's head (BPIC 2019's
+      case mass is concentrated in a small fraction of its 11,973 variants) at ~8% of the full
+      scope's LLM cost. Whatever is chosen, analysis/report.py reports the share of cases the
+      scope covers, so the residual and coverage figures stay interpretable against the whole log.
+
+  C10_assignment_batch_size:
+    task: C10
+    question: >-
+      One assignment_batch_size across all three datasets, or one value plus a pre-registered
+      BPIC 2019 exception on wall-clock-feasibility grounds?
+    governs: [rtfm, sepsis, bpic2019]
+    status: pending
+    value:
+      default: 20
+      # Per-dataset exceptions. Each must be justified on call-count/wall-clock accounting only
+      # (Task C10), never against observed categorization quality. Empty = one value everywhere.
+      exceptions: {}
+    decided_on: null
+    rationale: >-
+      RECOMMENDED DEFAULT, NOT YET DECIDED. 20 everywhere, matching every existing run, so the
+      freeze table's "identical across datasets by default" holds with no exception to justify.
+
+  C6_sepsis_perturbations:
+    task: C6
+    question: Run Experiment 2's goal-model perturbations on Sepsis as well as RTFM?
+    governs: [sepsis]
+    status: pending
+    value: false
+    decided_on: null
+    rationale: >-
+      RECOMMENDED DEFAULT, NOT YET DECIDED. RTFM is the mechanism case; extending to Sepsis
+      roughly doubles Experiment 2's LLM budget for a second instance of the same mechanism.
+
+  C5_label_list_control:
+    task: C5
+    question: >-
+      Add the label-list control condition (same cardinality as T^G, domain-plausible, not
+      goal-derived) separating "externally declared intent" from "any externally supplied label
+      list"?
+    governs: [rtfm, sepsis, bpic2019]
+    status: pending
+    value: false
+    decided_on: null
+    rationale: >-
+      RECOMMENDED DEFAULT, NOT YET DECIDED. Highest scientific value among §10's optional items
+      and also its largest budget increase; not part of the minimum required design. The runner
+      supports it (conditions.py, mode "label_list") whenever this flips to true.
+
+  D6_open_arm_steps_7_9:
+    task: D6
+    question: Do the open-mode arms run Steps 7-8 at all, or run them and exclude them from RQ1?
+    governs: [rtfm, sepsis, bpic2019]
+    status: pending
+    # run_both | run_guided_only | run_neither  (Step 9 never runs in a frozen condition)
+    value: run_neither
+    decided_on: null
+    rationale: >-
+      RECOMMENDED DEFAULT, NOT YET DECIDED. Steps 7-8 are descriptive only (§9) and confounded by
+      partition granularity; skipping both keeps the arms symmetric at zero extra LLM cost and
+      loses nothing RQ1 depends on. Step 7 can be regenerated later from a frozen run's
+      assignments.csv + taxonomy.json without re-billing Step 6.
+
+  D1_divergence_convention:
+    task: D1
+    question: AMI/NMI convention — residual handling and variant- vs. case-weighting.
+    governs: [rtfm, sepsis, bpic2019]
+    status: decided
+    value:
+      residual_handling: own_cluster   # own_cluster | exclude
+      weighting: variant               # variant | case
+      # Reported for both conventions regardless; this names the one the paper quotes.
+    decided_on: "2026-08-19"
+    rationale: >-
+      Fixed before any number is computed, per §7. The residual is its own block (it is a
+      substantive outcome of the guided arm, not missing data), and the primary weighting is
+      variant-level to match |T| and the contingency matrix's primary unit. analysis/divergence.py
+      computes all four combinations and marks this one as primary, so the choice is auditable
+      rather than implicit — but it is never reported as accuracy (§1).
+
+  D7_single_llm:
+    task: D7
+    question: Add an open-weights (Ollama) replication arm?
+    governs: [rtfm, sepsis, bpic2019]
+    status: decided
+    value: false
+    decided_on: "2026-08-19"
+    rationale: >-
+      Decided — not adopted. One provider/model (Gemini) throughout; cross-model robustness is
+      future work and a recorded Threat to Validity, not an experimental condition.

@@ -42,7 +42,8 @@ GoalCat/
 ├── pyproject.toml, requirements-lock.txt, .python-version
 ├── data/
 │   ├── README.md          # study cases, references, how to read an output run — see below
-│   ├── goals/               # one goal model per log (GRL/URN): <log>_goal_model.md (+ .jucm)
+│   ├── goals/               # one goal model per log (GRL/URN): <log>_goal_model.jucm — the sole
+│   │                          # pipeline input; <log>GM_description.md is documentation only
 │   ├── logs/                 # XES.gz event logs: RTFM, BPIC 2019, BPIC 2020, Sepsis
 │   ├── templates/            # LLM prompt templates, shared across logs
 │   └── output/                # generated pipeline run artifacts, one dir per run
@@ -148,7 +149,7 @@ calls — billed ones, under the hosted backend.
 
 The runs behind the ICPM 2027 paper's reported results live separately, under
 `experimentation/icpm2027/` — see [`experimentation/README.md`](experimentation/README.md)
-for the distinction and that subpackage's own README for its (currently scaffolded) layout.
+for the distinction and that subpackage's own README for its module inventory and current status.
 
 For a custom run against any config, call the `run_stepN_*()` functions directly with a shared
 `run_id`:

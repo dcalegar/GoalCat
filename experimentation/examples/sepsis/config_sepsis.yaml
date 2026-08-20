@@ -4,7 +4,7 @@
 # file's header for the rationale behind each shared setting.
 
 log_filename: sepsis.xes.gz
-goal_model_filename: sepsis_goal_model.md
+goal_model_filename: sepsis_goal_model.jucm
 output_dir: data/output
 
 run_id: null

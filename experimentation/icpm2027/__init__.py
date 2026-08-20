@@ -3,9 +3,11 @@ results (RQ1's paired intent-guided/open protocol across RTFM, Sepsis, and BPIC 
 RTFM goal-model perturbations), as opposed to the illustrative case studies under
 experimentation.examples.
 
-Scaffold only: this package fills in as the frozen experimental protocol lands (see
-EXPERIMENTATION_PLAN.md in the paper repository). Each dataset's paired guided/open runs should
-land in their own subdirectory here (e.g. icpm2027/rtfm/, icpm2027/sepsis/, icpm2027/bpic2019/),
-mirroring experimentation.examples' one-subdirectory-per-log convention, plus whatever
-cross-dataset analysis (contingency matrices, coverage comparison) the protocol calls for.
+The frozen protocol's machinery is implemented — see this package's own README.md for the
+module-by-module inventory (protocol/condition execution, manifests, freeze verification, Task C3's
+structural-clustering baseline, Experiment 2's GRL perturbations, coverage/contingency analysis)
+and for what is still open (a single per-dataset run driver, Task C4's rule-based baseline, Task
+C1's BPIC 2019 held-out validation, and chaining Experiment 2's TargetReassignment/
+CollateralReassignment measurement end to end). Nothing here has executed a real frozen run yet —
+`configs/preregistration.yaml`'s open decisions (Task C7, C10, C5, C6, D6) must be resolved first.
 """

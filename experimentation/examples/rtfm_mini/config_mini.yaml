@@ -15,7 +15,7 @@
 # sizes differ, so this exercises the identical code path the real log runs through.
 
 log_filename: rtfm_mini.xes.gz
-goal_model_filename: rtfm_goal_model.md
+goal_model_filename: rtfm_goal_model.jucm
 output_dir: data/output
 
 run_id: null

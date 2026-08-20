@@ -22,6 +22,11 @@ dependencies = [
     # install. litellm stays in the [llm] extra below since its import is deferred inside
     # LLMBackend's methods, not at module scope, so it's genuinely optional at import time.
     "pydantic>=2,<3",
+    # goalcat/grl/jucm_io.py reads/writes .jucm (GRL/URN XMI) through pyecore, a Python EMF
+    # implementation, against the real metamodel vendored under third_party/jucmnav/ — .jucm is
+    # the sole goal-model artifact (data/goals/*_goal_model.jucm), read by llm/taxonomy.py at
+    # module scope like pydantic above, so this is a base dependency, not an [llm]-extra one.
+    "pyecore>=0.15",
 ]
 
 [project.optional-dependencies]

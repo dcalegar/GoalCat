@@ -23,9 +23,13 @@ def list_log_filenames() -> list[str]:
 
 
 def list_goal_model_filenames() -> list[str]:
+    """`.jucm` only — the sole goal-model artifact the pipeline reads
+    (`PipelineConfig.goal_model_filename`, `goalcat.grl.jucm_io`). A `.md` beside a `.jucm` file
+    is documentation about it, never a pipeline input, and must not appear as a selectable goal
+    model here."""
     if not GOALS_DIR.is_dir():
         return []
-    return sorted(p.name for p in GOALS_DIR.glob("*.md"))
+    return sorted(p.name for p in GOALS_DIR.glob("*.jucm"))
 
 
 def find_default_config_for_log(log_filename: str) -> Path:

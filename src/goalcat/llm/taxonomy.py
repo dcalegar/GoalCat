@@ -8,11 +8,9 @@ from pathlib import Path
 import pandas as pd
 from pydantic import BaseModel, Field, model_validator
 
+from .. import grl
 from ..config import PipelineConfig, load_prompt_template
 from .llm_backend import LLMBackend, RunMetadata
-
-_SECTION_START = "## 1."
-_SECTION_END = "## 6."
 
 
 class Category(BaseModel):
@@ -23,8 +21,8 @@ class Category(BaseModel):
     name: str
     description: str
     anchor_ids: list[str] = Field(
-        description="Goal-model element IDs (task or goal, from the §4 decomposition table) this "
-        "category is traceable to, e.g. ['TP'] — leave this empty if no goal model was provided "
+        description="Goal-model element ids (a Goal or Task's native .jucm id, e.g. ['20']) this "
+        "category is traceable to — leave this empty if no goal model was provided "
         "(open/unsupervised induction, no declared axis to trace to)."
     )
     rationale: str = Field(description="Why this granularity was chosen, grounded in the narrative sample.")
@@ -42,16 +40,15 @@ class Taxonomy(BaseModel):
         return self
 
 
-def _extract_sections(markdown_text: str, start: str = _SECTION_START, end: str = _SECTION_END) -> str:
-    """Slices the goal-model markdown down to §1-§5 (purpose, actors, decomposition, contributions).
-
-    Excludes §6 (KPIs — irrelevant to task categories), §7 (activity-label traceability table —
-    the document itself warns against using it to pre-match narratives lexically) and §8/§9
-    (limitations note, bibliography) — none of it helps subdividing the declared axis.
+def _render_goal_model_excerpt(jucm_text: str) -> str:
+    """Renders the `.jucm` goal model's actors, decomposition tree, and contribution links —
+    the same content the markdown-era `_extract_sections()` sliced out of §1-§5 (purpose, actors,
+    decomposition, contributions), now read from the model directly rather than sliced out of
+    prose. KPIs, activity-label traceability, and any narrative documentation are excluded by
+    construction: `goalcat.grl.render_excerpt()` never renders them (see that function's
+    docstring) — none of it helps subdividing the declared axis.
     """
-    start_idx = markdown_text.index(start)
-    end_idx = markdown_text.index(end, start_idx)
-    return markdown_text[start_idx:end_idx].strip()
+    return grl.render_excerpt(grl.parse_jucm(jucm_text))
 
 
 def _format_narrative_block(row: pd.Series) -> str:
@@ -79,7 +76,7 @@ def _format_prior_taxonomy_block(prior_taxonomy: Taxonomy) -> str:
 
 
 def build_taxonomy_prompt(sample_df: pd.DataFrame, goal_model_text: str) -> str:
-    excerpt = _extract_sections(goal_model_text)
+    excerpt = _render_goal_model_excerpt(goal_model_text)
     blocks = "\n".join(_format_narrative_block(row) for _, row in sample_df.iterrows())
     template = load_prompt_template("prompt_taxonomy_intent_guided.txt")
     return template.format(
@@ -92,7 +89,7 @@ def build_taxonomy_prompt(sample_df: pd.DataFrame, goal_model_text: str) -> str:
 def build_taxonomy_revision_prompt(
     sample_df: pd.DataFrame, goal_model_text: str, prior_taxonomy: Taxonomy, revision_instructions: str
 ) -> str:
-    excerpt = _extract_sections(goal_model_text)
+    excerpt = _render_goal_model_excerpt(goal_model_text)
     blocks = "\n".join(_format_narrative_block(row) for _, row in sample_df.iterrows())
     template = load_prompt_template("prompt_taxonomy_intent_guided_revision.txt")
     return template.format(
@@ -192,63 +189,29 @@ def induce_taxonomy_5b(
     return taxonomy, metadata, prompt
 
 
-def _extract_declared_ids(markdown_text: str) -> set[str]:
-    """Parses §4's decomposition table for the set of valid goal-model element IDs (G0-G5,
-    T1-T4, TP/TA/TB/TC/TD for RTFM) — used only to ground-check Step 5a's anchor_ids."""
-    start_idx = markdown_text.index("## 4.")
-    end_idx = markdown_text.index("## 5.", start_idx)
-    table_text = markdown_text[start_idx:end_idx]
-
-    ids: set[str] = set()
-    for line in table_text.splitlines():
-        line = line.strip()
-        if not line.startswith("|"):
-            continue
-        cells = [cell.strip() for cell in line.strip("|").split("|")]
-        if not cells:
-            continue
-        candidate = cells[0]
-        if candidate == "ID" or set(candidate) <= {"-"}:
-            continue
-        ids.add(candidate)
-    return ids
+def _extract_declared_ids(jucm_text: str) -> set[str]:
+    """The set of valid goal-model element ids Step 5a's `anchor_ids` may reference — every
+    `.jucm` `intElements` id (Goal/Task/Softgoal/Ressource/Indicator), read through the real
+    GRL/URN metamodel (see `goalcat.grl`), not derived from a markdown table. Delegates to
+    `goalcat.grl.declared_ids()`; kept as a same-named module function since
+    `goalcat.pipeline.run_step5a_taxonomy()` imports it directly.
+    """
+    return grl.declared_ids(grl.parse_jucm(jucm_text))
 
 
-def _parse_decomposition_row(line: str) -> list[str] | None:
-    line = line.strip()
-    if not line.startswith("|"):
-        return None
-    cells = [cell.strip() for cell in line.strip("|").split("|")]
-    if not cells or cells[0] == "ID" or set(cells[0]) <= {"-"}:
-        return None
-    return cells
-
-
-def _resolve_anchor_labels(markdown_text: str, anchor_ids: list[str]) -> str:
-    """Resolves anchor_ids to their real §4 Type/Label, e.g. 'TD (Task): Resolve via coercive
-    credit collection.' Deterministic lookup against the frozen goal model, not LLM-restated
-    prose — used to explain a category's goal-model linkage in Step 6's assignment report
-    without risking a hallucinated restatement of what the document already says.
+def _resolve_anchor_labels(jucm_text: str, anchor_ids: list[str]) -> str:
+    """Resolves anchor_ids to their real `id (type): name` label, e.g. '20 (Task): Resolve via
+    coercive credit collection.' Deterministic lookup against the frozen goal model, not
+    LLM-restated prose — used to explain a category's goal-model linkage in Step 6's assignment
+    report without risking a hallucinated restatement of what the model already says.
 
     Returns a fixed placeholder for anchor_ids=[] (Step 5b, open induction — no goal model).
+    Delegates to `goalcat.grl.resolve_anchor_labels()`; kept as a same-named module function
+    since `goalcat.llm.description` imports it directly.
     """
     if not anchor_ids:
         return "(open induction — no goal model)"
-
-    start_idx = markdown_text.index("## 4.")
-    end_idx = markdown_text.index("## 5.", start_idx)
-    table_text = markdown_text[start_idx:end_idx]
-
-    labels: dict[str, str] = {}
-    for line in table_text.splitlines():
-        cells = _parse_decomposition_row(line)
-        if cells is None or len(cells) < 3:
-            continue
-        element_id, element_type, label = cells[0], cells[1], cells[2]
-        labels[element_id] = f"{element_id} ({element_type}): {label}"
-
-    resolved = [labels.get(anchor_id, f"{anchor_id} (not found in §4)") for anchor_id in anchor_ids]
-    return "; ".join(resolved)
+    return grl.resolve_anchor_labels(grl.parse_jucm(jucm_text), anchor_ids)
 
 
 def check_taxonomy_grounding(
