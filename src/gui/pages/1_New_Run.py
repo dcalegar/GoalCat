@@ -80,6 +80,19 @@ with col2:
     discovery_noise_threshold = st.slider(
         "discovery_noise_threshold", 0.0, 1.0, float(defaults.get("discovery_noise_threshold", 0.0))
     )
+    prune_pairwise_distances_on_finalize = st.checkbox(
+        "prune_pairwise_distances_on_finalize",
+        value=bool(defaults.get("prune_pairwise_distances_on_finalize", False)),
+        help=(
+            "On accept (Step 9), delete structural_distances.parquet/profile_distances.parquet from "
+            "every round of this run, not just the accepted one. These are Step 6's O(n^2) "
+            "pairwise variant-distance tables — the largest artifact class at scale (see "
+            "README's Resource usage section). Off by default: a superseded round's copies are "
+            "what a later rename re-render reads back, with no cheaper way to regenerate them "
+            "than a full Step 6 recompute. Set once, before the run starts — this cannot be "
+            "changed later without triggering a config-drift error at Step 9."
+        ),
+    )
 
 llm_defaults = defaults.get("llm", {})
 taxonomy_model = llm_defaults.get("taxonomy_model", "gemini/gemini-3.5-flash-lite")
@@ -132,6 +145,7 @@ if st.button("Run pipeline (Steps 1-8)", type="primary", disabled=ACTIVE_KEY in 
         sample_extreme_n=int(sample_extreme_n),
         taxonomy_mode=taxonomy_mode,
         discovery_noise_threshold=float(discovery_noise_threshold),
+        prune_pairwise_distances_on_finalize=bool(prune_pairwise_distances_on_finalize),
         llm=llm,
     )
 

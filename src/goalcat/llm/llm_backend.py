@@ -39,12 +39,28 @@ class RunMetadata(BaseModel):
     latency_seconds: float
     input_tokens: int | None = None
     output_tokens: int | None = None
+    prompt_chars: int
+    response_chars: int
     raw_response: str
 
 
 # litellm provider prefixes that route to a locally-hosted model rather than a hosted API —
 # checked against the model string's provider segment to fill RunMetadata.backend.
 _LOCAL_PROVIDERS = {"ollama", "ollama_chat"}
+
+
+def estimate_cost_usd(
+    metadata: RunMetadata, pricing_usd_per_million_tokens: dict[str, dict[str, float]]
+) -> float | None:
+    """Estimates a call's cost from RunMetadata's token counts and config.yaml's
+    llm.pricing_usd_per_million_tokens (keyed by the same litellm model string as
+    taxonomy_model/assignment_model/description_model). Returns None rather than guessing when
+    the model has no pricing entry or the provider didn't return token counts (e.g. a local
+    Ollama model, which is free) — an unpriced call must read as "unknown", not "$0.00"."""
+    rate = pricing_usd_per_million_tokens.get(metadata.model)
+    if rate is None or metadata.input_tokens is None or metadata.output_tokens is None:
+        return None
+    return (metadata.input_tokens * rate["input"] + metadata.output_tokens * rate["output"]) / 1_000_000
 
 
 class LLMBackend:
@@ -107,7 +123,7 @@ class LLMBackend:
                 )
                 continue
 
-            metadata = self._run_metadata(prompt_hash, latency, raw_content, response)
+            metadata = self._run_metadata(prompt_hash, len(prompt), latency, raw_content, response)
             self._logger.info(
                 "LLM structured call ok (backend=%s, model=%s, prompt_hash=%s, latency=%.2fs)",
                 metadata.backend,
@@ -140,7 +156,7 @@ class LLMBackend:
         latency = time.monotonic() - start
         text = response.choices[0].message.content
 
-        metadata = self._run_metadata(prompt_hash, latency, text, response)
+        metadata = self._run_metadata(prompt_hash, len(prompt), latency, text, response)
         self._logger.info(
             "LLM text call ok (backend=%s, model=%s, prompt_hash=%s, latency=%.2fs)",
             metadata.backend,
@@ -150,7 +166,9 @@ class LLMBackend:
         )
         return text, metadata
 
-    def _run_metadata(self, prompt_hash: str, latency: float, raw_content: str, response) -> RunMetadata:
+    def _run_metadata(
+        self, prompt_hash: str, prompt_chars: int, latency: float, raw_content: str, response
+    ) -> RunMetadata:
         usage = getattr(response, "usage", None)
         provider = self._model.split("/", 1)[0]
         return RunMetadata(
@@ -162,6 +180,8 @@ class LLMBackend:
             latency_seconds=latency,
             input_tokens=getattr(usage, "prompt_tokens", None),
             output_tokens=getattr(usage, "completion_tokens", None),
+            prompt_chars=prompt_chars,
+            response_chars=len(raw_content),
             raw_response=raw_content,
         )
 

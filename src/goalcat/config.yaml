@@ -50,6 +50,27 @@ taxonomy_mode: "intent_guided"
 # filter infrequent behavior out of them by default.
 discovery_noise_threshold: 0.0
 
+# Step 9: precision (Step 7, token-based replay) below this is flagged, as an advisory comment
+# only, in the review_decisions.yaml template write_review_template() writes for the human
+# reviewer — never applied automatically, never overrides Step 9's human-decision gate. Low
+# precision under a fitness-preserving discovery method (Inductive Miner at noise_threshold 0.0)
+# is a heuristic signal that a category's sublog may still conflate distinct behavioral patterns,
+# not proof of it; 0.3 is a starting point, not an empirically validated cutoff — tune per log if
+# it proves too noisy or too quiet in practice.
+review_precision_flag_threshold: 0.3
+
+# Step 9 (accept only): deletes structural_distances.csv/profile_distances.csv from every round
+# of this execution, not just the round being accepted — these are Step 6's O(n^2) pairwise
+# variant-distance tables (one row per variant pair), the single largest artifact class at scale
+# (measured ~3.9 GB of a 4.1 GB BPIC 2019 run directory). Off by default: a superseded round's
+# copies are what rerender_reports_after_rename() reads if that round is ever re-reviewed with a
+# rename decision, and Step 6 has no reuse guard for these two tables, so a later rename against a
+# pruned round forces a full O(n^2) recompute (~1h wall clock at BPIC 2019 scale) just to relabel
+# a category. Turn on only when disk pressure at this scale outweighs that risk — the raw pairwise
+# rows are not recoverable afterward, only the aggregate stats already baked into
+# assignment_report.md.
+prune_pairwise_distances_on_finalize: false
+
 # LLM steps (5a/5b, 6, 8). Model strings are litellm "provider/model" IDs — swapping
 # provider (e.g. to anthropic/claude-... or openai/...) is a config-only change, no code
 # change. Gemini 3.5 Flash-Lite chosen for cost (see PROGRESS.md; 2.5 Flash-Lite was the
@@ -63,12 +84,28 @@ llm:
   taxonomy_model: "gemini/gemini-3.5-flash-lite"
   assignment_model: "gemini/gemini-3.5-flash-lite"
   description_model: "gemini/gemini-3.5-flash-lite"
+  # USD per 1M tokens, standard (non-batch) tier, keyed by the exact model string above — used
+  # only to annotate *_run_metadata.json with an estimated_cost_usd per call (see
+  # llm_backend.estimate_cost_usd); never sent to litellm. A model with no entry here logs
+  # estimated_cost_usd: null rather than a fabricated 0.0. Verified 2026-08-19 at
+  # ai.google.dev/gemini-api/docs/pricing; re-check there before trusting this for a paper's
+  # cost figures if the run postdates that check by long enough for pricing to have moved.
+  pricing_usd_per_million_tokens:
+    "gemini/gemini-3.5-flash-lite":
+      input: 0.30
+      output: 2.50
   temperature: 0
   timeout_seconds: 120
   max_retries: 3
-  # 1, not 5: Gemini's free tier caps gemini-3.5-flash-lite at 15 requests/minute, discovered
-  # when Step 6's first live run (231 calls) hit RateLimitError at concurrency=5 — litellm's own
-  # retries compounded the burst.
+  # 5: restored after confirming the paid tier is active. Gemini's free tier capped
+  # gemini-3.5-flash-lite at 15 requests/minute, discovered when Step 6's first live run (231
+  # calls) hit RateLimitError at concurrency=5 — litellm's own retries compounded the burst. That
+  # forced concurrency down to 1 with proactive pacing (see requests_per_minute below) as a
+  # workaround. Verified 2026-08-19 at aistudio.google.com/rate-limit after enabling billing:
+  # paid tier is 4,000 RPM / 4M TPM (same for gemini-2.5-flash-lite and gemini-3.5-flash-lite),
+  # plus 150K RPD specific to 3.5-flash-lite — several orders of magnitude above this pipeline's
+  # actual volume (a Step 6 batch of 20 narratives is ~4,233 input / 1,135 output tokens; a full
+  # run is dozens of calls, not thousands per minute), so no proactive pacing is needed.
   #
   # NOT fixed via Gemini Batch — investigated and ruled out (see PROGRESS.md): litellm's
   # create_batch only routes Google calls through custom_llm_provider="vertex_ai" (GCP project +
@@ -78,24 +115,21 @@ llm:
   # points a model field at a local model — it's synchronous local inference, no job queue to
   # submit to.
   #
-  # Fix instead: raise this account to Gemini's paid tier (aistudio.google.com — enabling
-  # billing is an account action, done outside this repo). Google no longer publishes a static
-  # per-tier RPM table (ai.google.dev/gemini-api/docs/rate-limits now says it's account-specific,
-  # viewable only at aistudio.google.com/rate-limit after upgrading) — check that page for the
-  # real number once upgraded, rather than assuming a value here. Note the same paid-tier switch
-  # also matters for the unrelated free-tier data-use policy already recorded in PROGRESS.md
-  # (free tier content may be used to improve Google's products; paid tier content is not).
-  concurrency: 1
-  # Per-call latency (~1s) is far faster than the free tier's 15 requests/minute budget on its
-  # own, so concurrency=1 alone still overruns it (serial != rate-limited) — Step 6's assignment
-  # loop paces requests to this rate when set. null = no pacing: safe once the account's actual
-  # paid-tier RPM (checked at aistudio.google.com/rate-limit) is high enough that litellm's own
-  # num_retries backoff can absorb the rare 429 rather than needing proactive pacing at all.
-  requests_per_minute: 12
+  # Note the same paid-tier switch also matters for the unrelated free-tier data-use policy
+  # already recorded in PROGRESS.md (free tier content may be used to improve Google's products;
+  # paid tier content is not).
+  concurrency: 5
+  # null = no proactive pacing. Safe at the verified paid-tier RPM above — litellm's own
+  # num_retries backoff can absorb the rare 429 without needing to throttle requests manually.
+  # If the account ever reverts to free tier (15 RPM), set this back to a low value (e.g. 12) —
+  # per-call latency (~1s) alone is far faster than 15 requests/minute, so concurrency=1 without
+  # pacing still overruns it.
+  requests_per_minute: null
   # Step 6: how many narratives go into a single assignment prompt/response, instead of one LLM
-  # call per narrative. 20 narratives -> ~12 calls for a 231-narrative run instead of 231,
-  # trading away per-narrative failure isolation for call-count reduction: a failed/invalid batch
-  # response leaves every narrative in that batch pending (retried on the next call against the
-  # same run_id, per load_prior_assignments()'s resume logic), not just one. Lower this back
-  # toward 1 if that coarser failure granularity becomes a practical problem.
-  assignment_batch_size: 20
+  # call per narrative. 50 narratives -> ~5 calls for a 231-narrative run instead of 231 (raised
+  # from 20 once the paid tier's headroom made a larger batch safe), trading away per-narrative
+  # failure isolation for call-count reduction: a failed/invalid batch response leaves every
+  # narrative in that batch pending (retried on the next call against the same run_id, per
+  # load_prior_assignments()'s resume logic), not just one. Lower this back toward 1 if that
+  # coarser failure granularity becomes a practical problem.
+  assignment_batch_size: 50

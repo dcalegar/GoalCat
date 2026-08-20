@@ -21,17 +21,19 @@ from .config import (
     REVIEW_DIRNAME,
     REVIEW_INDEX_FILENAME,
     ROUND_PREFIX,
+    SUBLOGS_DIRNAME,
     TAXONOMY_DIRNAME,
     PipelineConfig,
     load_config,
     load_prompt_template,
 )
-from .discovery import build_category_sublogs, build_discovery_report, build_residual_sublog
+from .discovery import build_category_sublogs, build_discovery_report, build_residual_sublog, flag_low_precision_categories
 from .extraction.log_io import load_event_log
 from .extraction.variants import load_variants
 from .llm.assignment import build_assignment_report, check_assignment_grounding
 from .llm.description import build_description_report
 from .llm.taxonomy import Taxonomy, overwrite_taxonomy_json
+from .llm.usage_summary import save_execution_usage_summary, save_round_usage_summary
 from .run_logging import get_logger
 
 
@@ -124,6 +126,31 @@ def validate_decisions_against_taxonomy(decisions: ReviewDecisions, taxonomy: Ta
         raise ValueError(f"review_decisions.yaml references unknown category_id(s): {sorted(set(bad))}")
 
 
+def _quality_flags_comment(config: PipelineConfig) -> str:
+    """Renders Step 7's low-precision categories (see flag_low_precision_categories) as a comment
+    block for the review_decisions.yaml template — advisory only, never a decision: the reviewer
+    reads it alongside discovery_report.md and still writes the actual merges/splits by hand.
+    Empty string (no comment, just the template's existing blank line) if discovery_metrics.csv
+    doesn't exist yet for this round or nothing is flagged."""
+    metrics_path = config.discovery_dir / "discovery_metrics.csv"
+    if not metrics_path.exists():
+        return ""
+    metrics_df = pd.read_csv(metrics_path)
+    flagged = flag_low_precision_categories(metrics_df, config.review_precision_flag_threshold)
+    if not flagged:
+        return ""
+    lines = [
+        "#",
+        f"# AUTOMATED SIGNAL (heuristic, precision < {config.review_precision_flag_threshold}, not a "
+        "decision — read discovery_report.md before acting): low precision under a "
+        "fitness-preserving discovery method can mean a category's sublog still spans multiple "
+        "distinct behavioral patterns. Consider whether a split is warranted for:",
+    ]
+    for f in flagged:
+        lines.append(f"#   {f['category_id']} ({f['name']}): precision={f['precision']:.3f}, log_fitness={f['log_fitness']:.3f}")
+    return "\n".join(lines)
+
+
 def write_review_template(taxonomy: Taxonomy, config: PipelineConfig, logger: logging.Logger) -> Path:
     """Writes review_decisions.yaml if absent; never overwrites an existing one, so in-progress
     human edits are never clobbered. Body lives in src/goalcat/templates/decisions_review.yaml —
@@ -138,6 +165,7 @@ def write_review_template(taxonomy: Taxonomy, config: PipelineConfig, logger: lo
         taxonomy_mode=config.taxonomy_mode,
         round=config.round,
         category_ids=", ".join(c.category_id for c in taxonomy.categories),
+        quality_flags=_quality_flags_comment(config),
     )
     atomic_write_text(path, body)
     logger.info("Wrote review decisions template: %s", path)
@@ -200,8 +228,8 @@ def rerender_reports_after_rename(
     """
     required = {
         "assignments.csv": config.assignment_dir / "assignments.csv",
-        "structural_distances.csv": config.assignment_dir / "structural_distances.csv",
-        "profile_distances.csv": config.assignment_dir / "profile_distances.csv",
+        "structural_distances.parquet": config.assignment_dir / "structural_distances.parquet",
+        "profile_distances.parquet": config.assignment_dir / "profile_distances.parquet",
         "profiles.csv": config.profiling_dir / "profiles.csv",
         "variants.csv": config.variants_dir / "variants.csv",
         "discovery_metrics.csv": config.discovery_dir / "discovery_metrics.csv",
@@ -216,8 +244,16 @@ def rerender_reports_after_rename(
         )
 
     assignments_df = pd.read_csv(required["assignments.csv"], dtype={"variant_id": str})
-    structural_df = pd.read_csv(required["structural_distances.csv"], dtype={"variant_id_a": str, "variant_id_b": str})
-    profile_df = pd.read_csv(required["profile_distances.csv"], dtype={"variant_id_a": str, "variant_id_b": str})
+    # Parquet round-trips variant_id_a/b as the pd.Categorical they were written as
+    # (extraction/similarity.py's _pair_frame()); cast back to str here to match the CSV-era
+    # dtype contract every downstream consumer (merges, comparisons in similarity.py) already
+    # assumes, rather than auditing each of them for Categorical compatibility.
+    structural_df = pd.read_parquet(required["structural_distances.parquet"]).astype(
+        {"variant_id_a": str, "variant_id_b": str}
+    )
+    profile_df = pd.read_parquet(required["profile_distances.parquet"]).astype(
+        {"variant_id_a": str, "variant_id_b": str}
+    )
     profiles_df = pd.read_csv(required["profiles.csv"], dtype={"variant_id": str})
     variants_df = load_variants(required["variants.csv"])
     metrics_df = pd.read_csv(required["discovery_metrics.csv"])
@@ -424,16 +460,20 @@ def save_partitioned_log(
     config: PipelineConfig,
     logger: logging.Logger,
 ) -> None:
-    """Accept/finalize: writes one partitioned .xes.gz per category directly into config.final_dir
+    """Accept/finalize: writes one partitioned .xes.gz per category into config.sublogs_dir
     (OVERVIEW.md's "partitioned log" — nothing else in the pipeline persists this), plus
     residual.xes.gz, always written even if empty, matching discover_all_categories()'s "explicit
     0, not silently absent" convention. .xes.gz (not .csv) matches the original log's own format
     and structurally resolves case:concept:name trailing as a flat column — pm4py.write_xes()
-    correctly promotes it to each <trace> tag instead (verified directly before adopting this)."""
+    correctly promotes it to each <trace> tag instead (verified directly before adopting this).
+
+    Kept in their own sublogs/ subfolder of final/, not alongside taxonomy.json/README.md/
+    pipeline_usage_summary.json, so a directory listing of final/ doesn't mix one-per-execution
+    metadata files with the (potentially many) per-category log files."""
     sublogs = build_category_sublogs(df, variants_df, assignments_df, config)
     for category in taxonomy.categories:
         sub_df = sublogs.get(category.category_id, df.iloc[0:0])
-        with atomic_output_path(config.final_dir / f"{category.category_id}.xes.gz") as tmp:
+        with atomic_output_path(config.sublogs_dir / f"{category.category_id}.xes.gz") as tmp:
             pm4py.write_xes(
                 sub_df,
                 str(tmp),
@@ -443,7 +483,7 @@ def save_partitioned_log(
             )
 
     residual_df = build_residual_sublog(df, variants_df, assignments_df, config)
-    with atomic_output_path(config.final_dir / "residual.xes.gz") as tmp:
+    with atomic_output_path(config.sublogs_dir / "residual.xes.gz") as tmp:
         pm4py.write_xes(
             residual_df,
             str(tmp),
@@ -452,7 +492,7 @@ def save_partitioned_log(
             timestamp_key=config.timestamp_key,
         )
 
-    logger.info("Saved partitioned log to: %s", config.final_dir)
+    logger.info("Saved partitioned log to: %s", config.sublogs_dir)
 
 
 def write_final_manifest(config: PipelineConfig, taxonomy: Taxonomy, logger: logging.Logger) -> None:
@@ -462,20 +502,25 @@ def write_final_manifest(config: PipelineConfig, taxonomy: Taxonomy, logger: log
     a_report = f"../{round_prefix}/{ASSIGNMENT_DIRNAME}/assignment_report.md"
     d_report = f"../{round_prefix}/{DISCOVERY_DIRNAME}/discovery_report.md"
     desc_report = f"../{round_prefix}/{DESCRIPTION_DIRNAME}/description_report.md"
-    category_lines = "\n".join(f"- `{c.category_id}.xes.gz`" for c in taxonomy.categories)
+    category_lines = "\n".join(f"- `{SUBLOGS_DIRNAME}/{c.category_id}.xes.gz`" for c in taxonomy.categories)
 
     body = (
         f"# Final output — accepted taxonomy (round {config.round})\n\n"
         f"This is the accepted, final deliverable of the GoalCat pipeline for `{config.log_stem}` "
         f"(run `{config.run_id}`).\n\n"
         f"- `taxonomy.json` — the accepted category taxonomy.\n"
-        f"- One `<category_id>.xes.gz` per category — the raw event log, partitioned per category:\n"
+        f"- `assignments.csv` — the full per-variant assignment (`variant_id` -> `category_id`, "
+        f"plus distances and rationale) that produced `{SUBLOGS_DIRNAME}/`. A copy of "
+        f"`{round_prefix}/{ASSIGNMENT_DIRNAME}/assignments.csv`, kept here so this taxonomy can be "
+        f"re-filtered or re-partitioned by other tools without depending on the round directory "
+        f"still existing.\n"
+        f"- `{SUBLOGS_DIRNAME}/` — one `<category_id>.xes.gz` per category, the raw event log "
+        f"partitioned per category:\n"
         f"{category_lines}\n"
-        f"- `residual.xes.gz` — cases that fit no category.\n\n"
+        f"- `{SUBLOGS_DIRNAME}/residual.xes.gz` — cases that fit no category.\n\n"
         f"Process-model visualizations (Petri net + DFG renders) were not kept as part of this "
-        f"deliverable to save disk space — re-run Step 7 against "
-        f"`{round_prefix}/{ASSIGNMENT_DIRNAME}/assignments.csv` and this taxonomy to regenerate "
-        f"them if needed.\n\n"
+        f"deliverable to save disk space — re-run Step 7 against `assignments.csv` and this "
+        f"taxonomy to regenerate them if needed.\n\n"
         f"For per-category coverage/cohesion, see [`{a_report}`]({a_report}).\n"
         f"For conformance metrics, see [`{d_report}`]({d_report}).\n"
         f"For prose descriptions and goal alignment, see [`{desc_report}`]({desc_report}).\n\n"
@@ -483,6 +528,36 @@ def write_final_manifest(config: PipelineConfig, taxonomy: Taxonomy, logger: log
     )
     atomic_write_text(config.final_dir / "README.md", body)
     logger.info("Wrote final manifest: %s", config.final_dir / "README.md")
+
+
+def _prune_pairwise_distances(config: PipelineConfig, logger: logging.Logger) -> None:
+    """Deletes structural_distances.parquet/profile_distances.parquet from every roundN/ of this
+    execution, not just the round being accepted — see config.yaml's
+    prune_pairwise_distances_on_finalize for why this is opt-in: a superseded round's copies are
+    what rerender_reports_after_rename() reads back if that round is ever re-reviewed with a
+    rename, and Step 6 has no reuse guard for either table, so pruning them trades that (rare)
+    re-review path's cost for disk space now."""
+    freed_bytes = 0
+    deleted_paths: list[Path] = []
+    for entry in sorted(config.run_output_dir.iterdir()):
+        if not (entry.is_dir() and entry.name.startswith(ROUND_PREFIX)):
+            continue
+        assignment_dir = entry / ASSIGNMENT_DIRNAME
+        for filename in ("structural_distances.parquet", "profile_distances.parquet"):
+            path = assignment_dir / filename
+            if path.exists():
+                freed_bytes += path.stat().st_size
+                path.unlink()
+                deleted_paths.append(path)
+
+    if deleted_paths:
+        logger.info(
+            "Pruned %d pairwise variant-distance Parquet file(s) across all rounds of run %s (%.1f MB freed): %s",
+            len(deleted_paths),
+            config.run_id,
+            freed_bytes / (1024 * 1024),
+            ", ".join(str(p) for p in deleted_paths),
+        )
 
 
 def finalize_run(
@@ -507,7 +582,7 @@ def finalize_run(
     it via failed_variant_ids, not a row), and a hallucinated category_id that names no real
     category counts as neither a category member nor a residual under build_category_sublogs()/
     build_residual_sublog()'s pd.notna()/pd.isna() split — both cases mean the variant simply
-    never appears in final/ (no category .xes.gz, not in residual.xes.gz either), caught here
+    never appears in final/sublogs/ (no category .xes.gz, not in residual.xes.gz either), caught here
     before that happens rather than discovered later by someone doing the arithmetic."""
     missing_ids = set(variants_df["variant_id"]) - set(assignments_df["variant_id"])
     if missing_ids:
@@ -534,10 +609,14 @@ def finalize_run(
 
     config.final_dir.mkdir(parents=True, exist_ok=True)
     shutil.move(str(config.taxonomy_dir / "taxonomy.json"), str(config.final_dir / "taxonomy.json"))
+    shutil.copy(str(config.assignment_dir / "assignments.csv"), str(config.final_dir / "assignments.csv"))
 
     models_dir = config.discovery_dir / "models"
     if models_dir.is_dir():
         shutil.rmtree(models_dir)
+
+    if config.prune_pairwise_distances_on_finalize:
+        _prune_pairwise_distances(config, logger)
 
     metrics_df = pd.read_csv(config.discovery_dir / "discovery_metrics.csv")
     discovery_report = build_discovery_report(
@@ -552,6 +631,27 @@ def finalize_run(
     _save_round_info(config.review_dir, round_info)
 
     write_review_index(config)
+
+    # Execution-wide LLM usage/cost, combining every round of this run_id — the one place that
+    # knows the run is actually done (see llm.usage_summary's module docstring for why neither
+    # AI Studio's GUI nor GCP Billing can attribute this to a single run). The full breakdown
+    # (per round, per step) lives in final/pipeline_usage_summary.json; this log line is just a
+    # human-readable pointer to it, next to every other per-call line pipeline.log already has.
+    usage = save_execution_usage_summary(config)["totals"]
+    cost = "unknown" if usage["total_estimated_cost_usd"] is None else f"${usage['total_estimated_cost_usd']:.4f}"
+    logger.info(
+        "Run %s LLM usage total: %d calls, %d input + %d output tokens, %d prompt + %d response "
+        "chars, %.1fs latency, %s — full breakdown in %s",
+        config.run_id,
+        usage["call_count"],
+        usage["total_input_tokens"],
+        usage["total_output_tokens"],
+        usage["total_prompt_chars"],
+        usage["total_response_chars"],
+        usage["total_latency_seconds"],
+        cost,
+        config.final_dir / "pipeline_usage_summary.json",
+    )
     logger.info("Run %s finalized (accepted, round %d).", config.run_id, config.round)
 
 
@@ -652,6 +752,12 @@ def process_review(config_path: str | Path | None, config: PipelineConfig, logge
             f"{taxonomy_path}, {assignments_path})."
         )
     taxonomy = Taxonomy.model_validate_json(taxonomy_path.read_text(encoding="utf-8"))
+
+    # Refreshed every time Step 9 runs against this round (not just on accept) — round_dir /
+    # round_usage_summary.json rolls up Steps 5/6/8's own *_run_metadata.json (see
+    # llm.usage_summary), tolerating Step 8 not having run yet. finalize_run() later combines
+    # every round's copy of this file into the execution-wide total.
+    save_round_usage_summary(config)
 
     decisions_path = config.review_dir / "review_decisions.yaml"
     if not decisions_path.exists():

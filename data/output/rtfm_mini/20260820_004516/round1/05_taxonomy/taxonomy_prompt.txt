@@ -1,0 +1,68 @@
+You are subdividing a taxonomy axis that has already been declared by an organization's goal model. You have no authority to invent a different axis, merge unrelated alternatives together, or discard one of the declared alternatives — your task is only to set category boundaries *within* the axis the goal model already declares, using the narrative sample below to judge whether a declared alternative should be represented as one category or several (e.g. because the sample shows meaningfully different sub-patterns realizing it).
+
+Every category you propose must be traceable to one or more goal-model element IDs (from the goal-task decomposition below) via its anchor_ids field. Default to one category per declared alternative — only depart from that default when the narrative sample gives you positive evidence to, under these rules:
+- map 1:1 to a single declared alternative (using that alternative's own numeric id from the decomposition below (e.g. anchor_ids=["12"]) — never an invented label). This is the default; a declared alternative having few or no sampled narratives is not, by itself, a reason to fold it into another category.
+- subdivide one declared alternative into finer categories only if the sample shows it realized in meaningfully different ways — the category's rationale field must cite that evidence.
+- combine several declared alternatives into one category only if both hold: (a) the goal model's own decomposition allows them to co-occur in one case (check the AND/OR/XOR operators shown in the decomposition — never combine alternatives the goal model marks XOR, i.e. mutually exclusive), and (b) the sample contains cases that actually realize them together, not merely that the goal model permits it. Cite that co-occurrence evidence in the category's rationale field.
+
+Do not force every narrative in the sample into a category. Some narratives may not cleanly realize any declared alternative (e.g. still-open/pending cases, or unusual orderings) — that is expected and is handled by a later step, not by this taxonomy.
+
+=== GOAL MODEL (excerpt: purpose, actors, goal-task decomposition, contribution links) ===
+Goal model: RTFM Goal Model
+
+Actors:
+  - id=1: Traffic Police Back-Office
+
+Goal-task decomposition (id, type, name, decomposition operator; indentation = parent/child):
+- id=2 [Goal] Every issued fine reaches a lawful, documented closure (AND)
+  - id=3 [Goal] Fine is issued and formally communicated (AND)
+    - id=8 [Task] Create Fine (leaf)
+    - id=9 [Task] Send Fine (leaf)
+  - id=4 [Goal] Fine case is resolved (OR)
+    - id=12 [Task] Resolve via timely payment (leaf)
+    - id=5 [Goal] Fine becomes enforceable and is resolved (AND)
+      - id=10 [Task] Insert Fine Notification (leaf)
+      - id=11 [Task] Add Penalty (leaf)
+      - id=6 [Goal] Enforced case is closed (OR)
+        - id=13 [Task] Resolve via delinquent payment (leaf)
+        - id=7 [Goal] Contested appeal is resolved (XOR)
+          - id=14 [Task] Resolve via administrative appeal to the Prefecture (AND)
+            - id=15 [Task] Insert Date Appeal to Prefecture (leaf)
+            - id=16 [Task] Send Appeal to Prefecture (leaf)
+            - id=17 [Task] Receive Result Appeal from Prefecture (leaf)
+            - id=18 [Task] Notify Result Appeal to Offender (leaf)
+          - id=19 [Task] Resolve via judicial appeal to the Judge (leaf)
+        - id=20 [Task] Resolve via coercive credit collection (leaf)
+
+Softgoals and contribution links (source -> effect on softgoal):
+  - id=12 Resolve via timely payment --[Make (+100)]--> Maximize timely fine revenue
+  - id=12 Resolve via timely payment --[Help (+50)]--> Minimize administrative & enforcement cost
+  - id=13 Resolve via delinquent payment --[Help (+50)]--> Maximize timely fine revenue
+  - id=11 Add Penalty --[SomePositive (+25)]--> Maximize timely fine revenue
+  - id=11 Add Penalty --[SomeNegative (-25)]--> Preserve offender's due-process rights
+  - id=14 Resolve via administrative appeal to the Prefecture --[Help (+50)]--> Preserve offender's due-process rights
+  - id=14 Resolve via administrative appeal to the Prefecture --[SomeNegative (-25)]--> Minimize administrative & enforcement cost
+  - id=14 Resolve via administrative appeal to the Prefecture --[SomeNegative (-25)]--> Maximize timely fine revenue
+  - id=19 Resolve via judicial appeal to the Judge --[Make (+100)]--> Preserve offender's due-process rights
+  - id=19 Resolve via judicial appeal to the Judge --[Hurt (-50)]--> Minimize administrative & enforcement cost
+  - id=19 Resolve via judicial appeal to the Judge --[SomeNegative (-25)]--> Maximize timely fine revenue
+  - id=20 Resolve via coercive credit collection --[Help (+50)]--> Maximize timely fine revenue
+  - id=20 Resolve via coercive credit collection --[Hurt (-50)]--> Minimize administrative & enforcement cost
+  - id=20 Resolve via coercive credit collection --[SomeNegative (-25)]--> Preserve offender's due-process rights
+
+
+=== NARRATIVE SAMPLE (6 variants, drawn to cover frequent, rare, and extreme cases) ===
+- variant_id=V0001 | sample_reasons=frequent,rare,duration_high,duration_low,length_high,length_low | frequency=1 (16.7%) | trace_length=2 | duration_seconds_median=11581200 | outcome=Send Fine
+  narrative: Create Fine (handled by resource 561), 0 seconds after the previous step. Send Fine, 11581200 seconds after the previous step. This variant covers 1 cases (16.7% of the log), typically takes about 11581200 seconds from start to finish, and ends in Send Fine.
+- variant_id=V0002 | sample_reasons=frequent,rare,duration_high,duration_low,length_high,length_low | frequency=1 (16.7%) | trace_length=5 | duration_seconds_median=83894400 | outcome=Send for Credit Collection
+  narrative: Create Fine (handled by resource 561), 0 seconds after the previous step. Send Fine, 11408400 seconds after the previous step. Insert Fine Notification, 2937600 seconds after the previous step. Add penalty, 5184000 seconds after the previous step. Send for Credit Collection, 64364400 seconds after the previous step. This variant covers 1 cases (16.7% of the log), typically takes about 83894400 seconds from start to finish, and ends in Send for Credit Collection.
+- variant_id=V0003 | sample_reasons=frequent,rare,duration_high,duration_low,length_high,length_low | frequency=1 (16.7%) | trace_length=5 | duration_seconds_median=47516400 | outcome=Payment
+  narrative: Create Fine (handled by resource 561), 0 seconds after the previous step. Send Fine, 11228400 seconds after the previous step. Insert Fine Notification, 1382400 seconds after the previous step. Add penalty, 5184000 seconds after the previous step. Payment, 29721600 seconds after the previous step. This variant covers 1 cases (16.7% of the log), typically takes about 47516400 seconds from start to finish, and ends in Payment.
+- variant_id=V0004 | sample_reasons=frequent,rare,duration_high,duration_low,length_high,length_low | frequency=1 (16.7%) | trace_length=2 | duration_seconds_median=86400 | outcome=Payment
+  narrative: Create Fine (handled by resource 537), 0 seconds after the previous step. Payment, 86400 seconds after the previous step. This variant covers 1 cases (16.7% of the log), typically takes about 86400 seconds from start to finish, and ends in Payment.
+- variant_id=V0005 | sample_reasons=frequent,rare,duration_high,duration_low,length_high,length_low | frequency=1 (16.7%) | trace_length=5 | duration_seconds_median=11754000 | outcome=Appeal to Judge
+  narrative: Create Fine (handled by resource 563), 0 seconds after the previous step. Send Fine, 3974400 seconds after the previous step. Insert Fine Notification, 777600 seconds after the previous step. Add penalty, 5184000 seconds after the previous step. Appeal to Judge (handled by resource 0), 1818000 seconds after the previous step. This variant covers 1 cases (16.7% of the log), typically takes about 11754000 seconds from start to finish, and ends in Appeal to Judge.
+- variant_id=V0006 | sample_reasons=frequent,rare,duration_high,duration_low,length_high,length_low | frequency=1 (16.7%) | trace_length=7 | duration_seconds_median=6742800 | outcome=Receive Result Appeal from Prefecture
+  narrative: Create Fine (handled by resource 56), 0 seconds after the previous step. Send Fine, 0 seconds after the previous step. Insert Fine Notification, 0 seconds after the previous step. Insert Date Appeal to Prefecture, 432000 seconds after the previous step. Send Appeal to Prefecture, 3024000 seconds after the previous step. Add penalty, 1731600 seconds after the previous step. Receive Result Appeal from Prefecture, 1555200 seconds after the previous step. This variant covers 1 cases (16.7% of the log), typically takes about 6742800 seconds from start to finish, and ends in Receive Result Appeal from Prefecture.
+
+Propose the taxonomy now.

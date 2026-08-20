@@ -14,3 +14,13 @@ build/
 
 .claude/
 project/
+data/output/FullRun_20260820.zip
+
+# Pairwise distance matrices: CSV is redundant with parquet, and both formats
+# for the bpic2019 dataset exceed GitHub's 100MB push limit.
+data/output/*/*/round1/06_assignment/profile_distances.csv
+data/output/*/*/round1/06_assignment/structural_distances.csv
+data/output/*/*/round2/06_assignment/profile_distances.csv
+data/output/*/*/round2/06_assignment/structural_distances.csv
+data/output/bpic2019/*/round1/06_assignment/profile_distances.parquet
+data/output/bpic2019/*/round1/06_assignment/structural_distances.parquet

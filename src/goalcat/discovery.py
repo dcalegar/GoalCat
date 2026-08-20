@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeoutError
 from pathlib import Path
 
 import pandas as pd
@@ -32,9 +33,29 @@ def build_category_sublogs(
         case_ids_by_category.setdefault(category_id, set()).update(case_ids)
 
     return {
-        category_id: df[df[config.case_id_key].isin(case_ids)]
+        category_id: _sorted_sublog(df[df[config.case_id_key].isin(case_ids)], config)
         for category_id, case_ids in case_ids_by_category.items()
     }
+
+
+def _sorted_sublog(sub_df: pd.DataFrame, config: PipelineConfig) -> pd.DataFrame:
+    """Orders a sublog by (case_id, timestamp) before it reaches any pm4py discovery/conformance
+    call. extraction/variants.py derives GoalCat's own variant_id via
+    pm4py.split_by_process_variant(..., timestamp_key=...), which sorts by timestamp per case —
+    but pm4py.fitness_token_based_replay/precision_token_based_replay (used by
+    compute_conformance below) derive each case's replayed sequence from plain DataFrame row
+    order (pandas_utils.get_traces() -> groupby(case_id_key)[activity_key].agg(list), no
+    timestamp_key parameter at all). Without this sort, a sub_df whose rows aren't already
+    strictly (case_id, timestamp)-ordered — e.g. BPIC 2019, whose coarse timestamps leave many
+    same-instant events in file order — makes token-based replay see far more distinct sequences
+    than GoalCat's own variant count (observed: pm4py's internal variant tally for one BPIC 2019
+    category came out close to its raw case count, ~14x its true ~6k variant count), which is
+    both a correctness risk (replaying a case's events out of chronological order against a
+    model built from the properly-ordered sequence) and the direct cause of a replay slowdown
+    severe enough to make Step 7 impractical at that scale. kind="stable" (mergesort) matches
+    extraction/variants.py's own tie-breaking rationale — same-timestamp events keep their
+    original relative order instead of an arbitrary one that could drift between runs."""
+    return sub_df.sort_values([config.case_id_key, config.timestamp_key], kind="stable")
 
 
 def build_residual_sublog(
@@ -53,7 +74,7 @@ def build_residual_sublog(
     for ids in merged["case_ids"]:
         case_ids.update(ids)
 
-    return df[df[config.case_id_key].isin(case_ids)]
+    return _sorted_sublog(df[df[config.case_id_key].isin(case_ids)], config)
 
 
 def discover_category_model(sub_df: pd.DataFrame, config: PipelineConfig) -> tuple[PetriNet, Marking, Marking]:
@@ -83,19 +104,60 @@ def discover_category_dfg(sub_df: pd.DataFrame, config: PipelineConfig) -> tuple
 
 
 def compute_conformance(
-    sub_df: pd.DataFrame, net: PetriNet, im: Marking, fm: Marking, config: PipelineConfig
+    sub_df: pd.DataFrame,
+    net: PetriNet,
+    im: Marking,
+    fm: Marking,
+    config: PipelineConfig,
+    logger: logging.Logger,
+    category_id: str = "",
 ) -> dict:
     """Fitness and precision via token-based replay — the standard pairing with Inductive Miner,
     fast enough for both RTFM's largest category (111 variants) and smallest (1 variant, 30.8%
-    of cases); see PROGRESS.md for why alignments were considered and not chosen."""
+    of cases); see PROGRESS.md for why alignments were considered and not chosen.
+
+    Precision (ET-Conformance) replays every distinct *prefix* in the category's sublog, not
+    every distinct trace — a category with heavy internal behavioral diversity can have far more
+    unique prefixes than variants (observed on BPIC 2019: one category's 6,082 variants produced
+    88,241 unique prefixes), and each prefix replay's cost itself grows with how many invisible
+    transitions the discovered net has (more of them on a noise_threshold=0.0 model of a diverse
+    category), which a benchmark here confirmed doesn't parallelize under pm4py's own optional
+    threading (~26s vs ~28s on a 500-variant slice — Python's GIL leaves pure-Python replay
+    effectively single-threaded regardless). Not a bug, not fixable by more cores; genuinely
+    expensive at that scale. config.discovery_precision_timeout_seconds (None = no timeout, the
+    default) bounds the wait: on timeout, precision is reported as NaN rather than blocking the
+    rest of Step 7 indefinitely — the orphaned replay thread keeps running to completion in the
+    background (Python threads can't be killed cleanly), but this function stops waiting on it.
+    """
     fitness = pm4py.fitness_token_based_replay(
         sub_df, net, im, fm,
         activity_key=config.activity_key, timestamp_key=config.timestamp_key, case_id_key=config.case_id_key,
     )
-    precision = pm4py.precision_token_based_replay(
-        sub_df, net, im, fm,
-        activity_key=config.activity_key, timestamp_key=config.timestamp_key, case_id_key=config.case_id_key,
-    )
+
+    timeout = config.discovery_precision_timeout_seconds
+    if timeout is None:
+        precision = pm4py.precision_token_based_replay(
+            sub_df, net, im, fm,
+            activity_key=config.activity_key, timestamp_key=config.timestamp_key, case_id_key=config.case_id_key,
+        )
+    else:
+        with ThreadPoolExecutor(max_workers=1) as executor:
+            future = executor.submit(
+                pm4py.precision_token_based_replay,
+                sub_df, net, im, fm,
+                activity_key=config.activity_key, timestamp_key=config.timestamp_key, case_id_key=config.case_id_key,
+            )
+            try:
+                precision = future.result(timeout=timeout)
+            except FutureTimeoutError:
+                logger.warning(
+                    "Precision computation for category %s exceeded discovery_precision_timeout_seconds=%s — "
+                    "reporting precision=NaN. The replay keeps running in an orphaned background thread "
+                    "(Python threads can't be cancelled) but this run no longer waits on it.",
+                    category_id, timeout,
+                )
+                precision = float("nan")
+
     return {
         "perc_fit_traces": fitness["perc_fit_traces"],
         "average_trace_fitness": fitness["average_trace_fitness"],
@@ -153,7 +215,7 @@ def discover_all_categories(
 
         sub_df = sublogs[category.category_id]
         net, im, fm = discover_category_model(sub_df, config)
-        conformance = compute_conformance(sub_df, net, im, fm, config)
+        conformance = compute_conformance(sub_df, net, im, fm, config, logger, category.category_id)
         models_by_category[category.category_id] = (net, im, fm)
         dfgs_by_category[category.category_id] = discover_category_dfg(sub_df, config)
         rows.append(
@@ -169,6 +231,31 @@ def discover_all_categories(
         columns=["category_id", "name", "num_variants", "num_cases", "perc_fit_traces", "average_trace_fitness", "log_fitness", "precision"],
     )
     return metrics_df, models_by_category, dfgs_by_category
+
+
+def flag_low_precision_categories(metrics_df: pd.DataFrame, threshold: float) -> list[dict]:
+    """Categories whose Step 7 precision falls below threshold — advisory only, consumed by Step
+    9's write_review_template() to surface a heuristic signal in review_decisions.yaml, never
+    applied automatically. Under a fitness-preserving discovery method (Inductive Miner,
+    noise_threshold fixed via config.discovery_noise_threshold), a category whose sublog
+    conflates distinct behavioral patterns doesn't show up as unfit — the model just stays
+    permissive enough to replay everything in it — it shows up as low precision instead. Skips
+    categories with 0 assigned variants (precision is NaN there by construction, see
+    discover_all_categories)."""
+    flagged = []
+    for _, row in metrics_df.iterrows():
+        if row["num_variants"] == 0 or pd.isna(row["precision"]):
+            continue
+        if row["precision"] < threshold:
+            flagged.append(
+                {
+                    "category_id": row["category_id"],
+                    "name": row["name"],
+                    "precision": row["precision"],
+                    "log_fitness": row["log_fitness"],
+                }
+            )
+    return flagged
 
 
 def build_discovery_report(

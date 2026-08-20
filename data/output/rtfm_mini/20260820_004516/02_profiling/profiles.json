@@ -1,0 +1,232 @@
+[
+  {
+    "variant_id": "V0001",
+    "activity_sequence": [
+      "Create Fine",
+      "Send Fine"
+    ],
+    "representative_case_id": "A1",
+    "events": [
+      {
+        "activity": "Create Fine",
+        "timestamp": "2006-07-23T22:00:00+00:00",
+        "resource": "561",
+        "waiting_seconds": 0.0
+      },
+      {
+        "activity": "Send Fine",
+        "timestamp": "2006-12-04T23:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 11581200.0
+      }
+    ]
+  },
+  {
+    "variant_id": "V0002",
+    "activity_sequence": [
+      "Create Fine",
+      "Send Fine",
+      "Insert Fine Notification",
+      "Add penalty",
+      "Send for Credit Collection"
+    ],
+    "representative_case_id": "A100",
+    "events": [
+      {
+        "activity": "Create Fine",
+        "timestamp": "2006-08-01T22:00:00+00:00",
+        "resource": "561",
+        "waiting_seconds": 0.0
+      },
+      {
+        "activity": "Send Fine",
+        "timestamp": "2006-12-11T23:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 11408400.0
+      },
+      {
+        "activity": "Insert Fine Notification",
+        "timestamp": "2007-01-14T23:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 2937600.0
+      },
+      {
+        "activity": "Add penalty",
+        "timestamp": "2007-03-15T23:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 5184000.0
+      },
+      {
+        "activity": "Send for Credit Collection",
+        "timestamp": "2009-03-29T22:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 64364400.0
+      }
+    ]
+  },
+  {
+    "variant_id": "V0003",
+    "activity_sequence": [
+      "Create Fine",
+      "Send Fine",
+      "Insert Fine Notification",
+      "Add penalty",
+      "Payment"
+    ],
+    "representative_case_id": "A10000",
+    "events": [
+      {
+        "activity": "Create Fine",
+        "timestamp": "2007-03-08T23:00:00+00:00",
+        "resource": "561",
+        "waiting_seconds": 0.0
+      },
+      {
+        "activity": "Send Fine",
+        "timestamp": "2007-07-16T22:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 11228400.0
+      },
+      {
+        "activity": "Insert Fine Notification",
+        "timestamp": "2007-08-01T22:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 1382400.0
+      },
+      {
+        "activity": "Add penalty",
+        "timestamp": "2007-09-30T22:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 5184000.0
+      },
+      {
+        "activity": "Payment",
+        "timestamp": "2008-09-08T22:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 29721600.0
+      }
+    ]
+  },
+  {
+    "variant_id": "V0004",
+    "activity_sequence": [
+      "Create Fine",
+      "Payment"
+    ],
+    "representative_case_id": "A10005",
+    "events": [
+      {
+        "activity": "Create Fine",
+        "timestamp": "2007-03-19T23:00:00+00:00",
+        "resource": "537",
+        "waiting_seconds": 0.0
+      },
+      {
+        "activity": "Payment",
+        "timestamp": "2007-03-20T23:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 86400.0
+      }
+    ]
+  },
+  {
+    "variant_id": "V0005",
+    "activity_sequence": [
+      "Create Fine",
+      "Send Fine",
+      "Insert Fine Notification",
+      "Add penalty",
+      "Appeal to Judge"
+    ],
+    "representative_case_id": "A31588",
+    "events": [
+      {
+        "activity": "Create Fine",
+        "timestamp": "2008-06-13T22:00:00+00:00",
+        "resource": "563",
+        "waiting_seconds": 0.0
+      },
+      {
+        "activity": "Send Fine",
+        "timestamp": "2008-07-29T22:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 3974400.0
+      },
+      {
+        "activity": "Insert Fine Notification",
+        "timestamp": "2008-08-07T22:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 777600.0
+      },
+      {
+        "activity": "Add penalty",
+        "timestamp": "2008-10-06T22:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 5184000.0
+      },
+      {
+        "activity": "Appeal to Judge",
+        "timestamp": "2008-10-27T23:00:00+00:00",
+        "resource": "0",
+        "waiting_seconds": 1818000.0
+      }
+    ]
+  },
+  {
+    "variant_id": "V0006",
+    "activity_sequence": [
+      "Create Fine",
+      "Send Fine",
+      "Insert Fine Notification",
+      "Insert Date Appeal to Prefecture",
+      "Send Appeal to Prefecture",
+      "Add penalty",
+      "Receive Result Appeal from Prefecture"
+    ],
+    "representative_case_id": "C19128",
+    "events": [
+      {
+        "activity": "Create Fine",
+        "timestamp": "2006-09-05T22:00:00+00:00",
+        "resource": "56",
+        "waiting_seconds": 0.0
+      },
+      {
+        "activity": "Send Fine",
+        "timestamp": "2006-09-05T22:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 0.0
+      },
+      {
+        "activity": "Insert Fine Notification",
+        "timestamp": "2006-09-05T22:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 0.0
+      },
+      {
+        "activity": "Insert Date Appeal to Prefecture",
+        "timestamp": "2006-09-10T22:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 432000.0
+      },
+      {
+        "activity": "Send Appeal to Prefecture",
+        "timestamp": "2006-10-15T22:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 3024000.0
+      },
+      {
+        "activity": "Add penalty",
+        "timestamp": "2006-11-04T23:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 1731600.0
+      },
+      {
+        "activity": "Receive Result Appeal from Prefecture",
+        "timestamp": "2006-11-22T23:00:00+00:00",
+        "resource": null,
+        "waiting_seconds": 1555200.0
+      }
+    ]
+  }
+]

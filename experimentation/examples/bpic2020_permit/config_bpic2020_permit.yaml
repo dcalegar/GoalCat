@@ -29,9 +29,15 @@ llm:
   taxonomy_model: "gemini/gemini-3.5-flash-lite"
   assignment_model: "gemini/gemini-3.5-flash-lite"
   description_model: "gemini/gemini-3.5-flash-lite"
+  # USD per 1M tokens, standard tier (see src/goalcat/config.yaml for the full rationale).
+  # Verified 2026-08-19 at ai.google.dev/gemini-api/docs/pricing.
+  pricing_usd_per_million_tokens:
+    "gemini/gemini-3.5-flash-lite":
+      input: 0.30
+      output: 2.50
   temperature: 0
   timeout_seconds: 120
   max_retries: 3
-  concurrency: 1
-  requests_per_minute: 12
-  assignment_batch_size: 20
+  concurrency: 5
+  requests_per_minute: null
+  assignment_batch_size: 50

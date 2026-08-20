@@ -33,6 +33,12 @@ dependencies = [
     # transitive dependency's own requirements can change without notice.
     "numpy>=1.26",
     "scipy>=1.11",
+    # pandas' Parquet read/write backend for Step 6's structural_distances.parquet/
+    # profile_distances.parquet (extraction/similarity.py, llm/assignment.py, review.py). Was
+    # already present transitively via the [gui] extra's streamlit, but that made it an implicit
+    # dependency of a base-package code path — declared explicitly here since Steps 6/9 need it
+    # regardless of whether the GUI extra is installed.
+    "pyarrow>=18",
     # C-accelerated Levenshtein distance for extraction/similarity.py's structural-distance
     # computation. pm4py's own string_distance.levenshtein() already prefers a C backend
     # (`stringdist`) when installed, falling back to a pure-Python O(n*m) loop otherwise; this

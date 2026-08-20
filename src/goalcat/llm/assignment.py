@@ -4,14 +4,15 @@ import asyncio
 import json
 import logging
 from pathlib import Path
+from typing import Literal
 
 import numpy as np
 import pandas as pd
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, create_model, model_validator
 
-from ..atomic_io import atomic_write_csv, atomic_write_json, atomic_write_text
+from ..atomic_io import atomic_write_csv, atomic_write_json, atomic_write_parquet, atomic_write_text
 from ..config import PipelineConfig, load_prompt_template
-from .llm_backend import LLMBackend, RunMetadata
+from .llm_backend import LLMBackend, RunMetadata, estimate_cost_usd
 from .taxonomy import Taxonomy, _resolve_anchor_labels
 
 
@@ -37,6 +38,43 @@ class AssignmentBatch(BaseModel):
         if len(ids) != len(set(ids)):
             raise ValueError(f"Duplicate variant_id values in assignment batch: {ids}")
         return self
+
+
+def _build_assignment_schema(category_ids: tuple[str, ...]) -> type[AssignmentBatch]:
+    """Builds a per-taxonomy AssignmentBatch schema with category_id narrowed from `str | None`
+    to `Literal[*category_ids] | None`. Without this, category_id is unconstrained at the schema
+    level — the prompt *tells* the model which category_ids are valid, but nothing stops it from
+    emitting a plausible-looking one that isn't, which is exactly what happened on the sepsis
+    case study: Step 6 returned category_id='return_er' (echoing an activity name from the
+    narratives, "Return ER") for 7 variants, none of which were among the 7 induced categories.
+    check_assignment_grounding() caught it, but only as a warning — Step 9 hard-failed much later
+    trying to finalize the run, far from the call that produced the bad value.
+
+    Narrowing the type makes providers with real structured-output enforcement (e.g. Gemini's
+    responseSchema enum) reject the invalid value at generation time; providers that only honor
+    the schema loosely still get it caught here, by Pydantic validation in
+    LLMBackend.generate_structured(), which retries and then raises — surfacing as a failed
+    batch (narratives left pending for retry, per _assign_batch) instead of a bad value silently
+    reaching assignments.csv.
+    """
+    variant_model = create_model(
+        "VariantAssignment",
+        __base__=VariantAssignment,
+        category_id=(
+            Literal[category_ids] | None,
+            Field(
+                description="A category_id from the taxonomy this narrative realizes, or null "
+                "if none of the categories fit (the narrative becomes part of the residual). "
+                "Must be exactly one of the category_id values given in the prompt, or null — "
+                "never a new or invented category_id."
+            ),
+        ),
+    )
+    return create_model(
+        "AssignmentBatch",
+        __base__=AssignmentBatch,
+        assignments=(list[variant_model], ...),
+    )
 
 
 _MODE_CLAUSES = {
@@ -113,6 +151,7 @@ async def _assign_batch(
     batch_df: pd.DataFrame,
     taxonomy: Taxonomy,
     taxonomy_mode: str,
+    schema: type[AssignmentBatch],
     logger: logging.Logger,
 ) -> tuple[dict[str, VariantAssignment], RunMetadata | None, list[str]]:
     """One LLM call per batch of up to config.llm.assignment_batch_size narratives. Catches its
@@ -120,13 +159,17 @@ async def _assign_batch(
     original per-narrative version (see PROGRESS.md): one persistent transport failure must not
     discard every other batch's already-completed work. Batching trades away per-narrative
     isolation for call-count reduction, though — a failed/invalid response here leaves every
-    narrative in this batch pending, not just one."""
+    narrative in this batch pending, not just one.
+
+    schema is this taxonomy's category_id-constrained AssignmentBatch (see
+    _build_assignment_schema) — built once per Step 6 call in _assign_all and passed down here,
+    not rebuilt per batch, since it only depends on the taxonomy, not the batch."""
     variant_ids = list(batch_df["variant_id"])
     prompt = _build_assignment_batch_prompt(batch_df, taxonomy, taxonomy_mode)
     async with semaphore:
         await rate_limiter.wait()
         try:
-            batch, metadata = await backend.generate_structured(prompt, AssignmentBatch)
+            batch, metadata = await backend.generate_structured(prompt, schema)
         except Exception as exc:
             logger.warning(
                 "Assignment batch call failed for %d narratives, will remain pending: %s", len(variant_ids), exc
@@ -157,8 +200,9 @@ async def _assign_all(
     backend = LLMBackend(config.llm.assignment_model, config.llm, logger)
     semaphore = asyncio.Semaphore(config.llm.concurrency)
     rate_limiter = _RateLimiter(config.llm.requests_per_minute)
+    schema = _build_assignment_schema(tuple(c.category_id for c in taxonomy.categories))
     tasks = [
-        _assign_batch(backend, semaphore, rate_limiter, batch_df, taxonomy, config.taxonomy_mode, logger)
+        _assign_batch(backend, semaphore, rate_limiter, batch_df, taxonomy, config.taxonomy_mode, schema, logger)
         for batch_df in batches
     ]
     return await asyncio.gather(*tasks)
@@ -262,8 +306,21 @@ def _build_distance_matrix(distances_df: pd.DataFrame, distance_column: str, var
     index = {variant_id: i for i, variant_id in enumerate(variant_order)}
     n = len(variant_order)
     matrix = np.zeros((n, n), dtype=np.float32)
-    codes_a = distances_df["variant_id_a"].map(index).to_numpy()
-    codes_b = distances_df["variant_id_b"].map(index).to_numpy()
+
+    # distances_df covers every variant pair from Step 1/2's similarity computation, independent
+    # of whether this Step 6 call actually managed to assign each one — a batch call failure
+    # (transient API error, not a residual judgment) leaves some variant_ids out of
+    # assignments_df/variant_order entirely (see assign_narratives_6's failed_variant_ids), while
+    # distances_df still references them. .map(index) turns those into NaN, which silently
+    # upcasts codes_a/codes_b from int to float and makes the indexed assignment below raise
+    # IndexError — filter those pairs out first rather than let every variant's distance stats
+    # fail because a handful of others didn't get assigned this call.
+    known_a = distances_df["variant_id_a"].isin(index)
+    known_b = distances_df["variant_id_b"].isin(index)
+    distances_df = distances_df[known_a & known_b]
+
+    codes_a = distances_df["variant_id_a"].map(index).to_numpy(dtype=np.int64)
+    codes_b = distances_df["variant_id_b"].map(index).to_numpy(dtype=np.int64)
     values = distances_df[distance_column].to_numpy(dtype=np.float32)
     matrix[codes_a, codes_b] = values
     matrix[codes_b, codes_a] = values
@@ -559,6 +616,7 @@ def save_assignment_outputs(
     structural_df: pd.DataFrame,
     profile_df: pd.DataFrame,
     output_dir: Path,
+    pricing_usd_per_million_tokens: dict[str, dict[str, float]],
 ) -> None:
     """batch_prompts: one (first_variant_id, last_variant_id, prompt_text) entry per batch this
     call actually sent (see assign_narratives_6) — written one file per batch under
@@ -589,8 +647,15 @@ def save_assignment_outputs(
     )
     atomic_write_csv(enriched, output_dir / "assignments.csv", index=False)
 
-    atomic_write_csv(structural_df, output_dir / "structural_distances.csv", index=False)
-    atomic_write_csv(profile_df, output_dir / "profile_distances.csv", index=False)
+    # Parquet, not CSV: these are the only pipeline tables computed over every variant pair
+    # (n(n-1)/2), so their size is quadratic in variant count regardless of format (see README's
+    # Resource usage section). Parquet's dictionary encoding matches the pd.Categorical id columns
+    # _pair_frame() already builds (extraction/similarity.py) instead of expanding them back to
+    # duplicated ASCII strings on write, and its binary float/int columns skip to_csv's text
+    # formatting of float32 values — smaller on disk and faster on both write and the read in
+    # rerender_reports_after_rename() (review.py).
+    atomic_write_parquet(structural_df, output_dir / "structural_distances.parquet", index=False)
+    atomic_write_parquet(profile_df, output_dir / "profile_distances.parquet", index=False)
 
     atomic_write_text(output_dir / "assignment_report.md", report_markdown)
     if batch_prompts:
@@ -598,10 +663,16 @@ def save_assignment_outputs(
         for first_variant_id, last_variant_id, prompt in batch_prompts:
             atomic_write_text(prompts_dir / f"{first_variant_id}_{last_variant_id}.txt", prompt)
 
+    call_costs = [estimate_cost_usd(m, pricing_usd_per_million_tokens) for m in metadata_list]
     metadata_payload = {
-        "calls": [m.model_dump() for m in metadata_list],
+        "calls": [
+            {**m.model_dump(), "estimated_cost_usd": cost} for m, cost in zip(metadata_list, call_costs)
+        ],
         "total_input_tokens": sum(m.input_tokens or 0 for m in metadata_list),
         "total_output_tokens": sum(m.output_tokens or 0 for m in metadata_list),
         "total_latency_seconds": sum(m.latency_seconds for m in metadata_list),
+        # None (not 0.0) when any call's model has no pricing entry — an unknown total must
+        # never be reported as a real zero.
+        "total_estimated_cost_usd": sum(call_costs) if all(c is not None for c in call_costs) else None,
     }
     atomic_write_json(output_dir / "assignment_run_metadata.json", metadata_payload)

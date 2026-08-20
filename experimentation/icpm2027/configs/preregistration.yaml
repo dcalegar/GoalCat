@@ -40,16 +40,26 @@ decisions:
       One assignment_batch_size across all three datasets, or one value plus a pre-registered
       BPIC 2019 exception on wall-clock-feasibility grounds?
     governs: [rtfm, sepsis, bpic2019]
-    status: pending
+    status: decided
     value:
-      default: 20
+      default: 50
       # Per-dataset exceptions. Each must be justified on call-count/wall-clock accounting only
       # (Task C10), never against observed categorization quality. Empty = one value everywhere.
       exceptions: {}
-    decided_on: null
+    decided_on: "2026-08-19"
     rationale: >-
-      RECOMMENDED DEFAULT, NOT YET DECIDED. 20 everywhere, matching every existing run, so the
-      freeze table's "identical across datasets by default" holds with no exception to justify.
+      50 everywhere (raised from 20), on call-count/wall-clock grounds only, per Task C10's
+      required basis — not against observed categorization quality. Google AI Studio billing was
+      enabled on the project behind GEMINI_API_KEY and verified at aistudio.google.com/rate-limit:
+      4,000 RPM / 4M TPM for gemini-3.5-flash-lite (150K RPD), several orders of magnitude above
+      this protocol's actual volume. At batch_size=50 with protocol.yaml's concurrency=5, a
+      231-variant run costs ~5 Step-6 calls instead of 231/12 (batch=20); BPIC 2019 at the C7
+      top_n=1000 scope costs ~20 calls instead of 50. No BPIC 2019 exception needed: one value
+      holds the freeze table's "identical across datasets by default" with nothing to justify.
+      Not yet empirically re-validated against a frozen run at this batch size — the example
+      case studies under experimentation/examples/ (not the frozen protocol) are the first runs
+      to exercise batch_size=50, and should be watched for any assignment-quality regression
+      before the first real frozen run under this protocol_version.
 
   C6_sepsis_perturbations:
     task: C6

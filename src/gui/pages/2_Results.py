@@ -9,6 +9,7 @@ from goalcat.config import (
     FINAL_DIRNAME,
     PROFILING_DIRNAME,
     SAMPLING_DIRNAME,
+    SUBLOGS_DIRNAME,
     TAXONOMY_DIRNAME,
     TEXTUALIZATION_DIRNAME,
     VARIANTS_DIRNAME,
@@ -137,7 +138,15 @@ with tabs[8]:
     readme = artifacts.read_text(final_dir / "README.md")
     if readme:
         st.markdown(readme)
-        for f in sorted(final_dir.glob("*.xes.gz")):
+        final_assignments = final_dir / "assignments.csv"
+        if final_assignments.exists():
+            st.download_button(
+                "Download assignments.csv",
+                final_assignments.read_bytes(),
+                file_name="assignments.csv",
+                key="final_assignments_csv",
+            )
+        for f in sorted((final_dir / SUBLOGS_DIRNAME).glob("*.xes.gz")):
             st.download_button(f"Download {f.name}", f.read_bytes(), file_name=f.name, key=f"xes_{f.name}")
     else:
         st.info("This run has not been accepted yet (no final/).")

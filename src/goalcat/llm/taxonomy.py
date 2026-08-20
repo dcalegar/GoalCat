@@ -10,7 +10,7 @@ from pydantic import BaseModel, Field, model_validator
 from .. import grl
 from ..atomic_io import atomic_write_json, atomic_write_text
 from ..config import PipelineConfig, load_prompt_template
-from .llm_backend import LLMBackend, RunMetadata
+from .llm_backend import LLMBackend, RunMetadata, estimate_cost_usd
 
 
 class Category(BaseModel):
@@ -131,10 +131,20 @@ def induce_taxonomy_5a(
     return taxonomy, metadata, prompt
 
 
-def save_taxonomy(taxonomy: Taxonomy, metadata: RunMetadata, prompt: str, output_dir: Path) -> None:
+def save_taxonomy(
+    taxonomy: Taxonomy,
+    metadata: RunMetadata,
+    prompt: str,
+    output_dir: Path,
+    pricing_usd_per_million_tokens: dict[str, dict[str, float]],
+) -> None:
     atomic_write_json(output_dir / "taxonomy.json", taxonomy.model_dump())
     atomic_write_text(output_dir / "taxonomy_prompt.txt", prompt)
-    atomic_write_json(output_dir / "taxonomy_run_metadata.json", metadata.model_dump())
+    metadata_payload = {
+        **metadata.model_dump(),
+        "estimated_cost_usd": estimate_cost_usd(metadata, pricing_usd_per_million_tokens),
+    }
+    atomic_write_json(output_dir / "taxonomy_run_metadata.json", metadata_payload)
 
 
 def overwrite_taxonomy_json(taxonomy: Taxonomy, output_dir: Path) -> None:

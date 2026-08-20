@@ -1,0 +1,16 @@
+{
+  "call": {
+    "provider": "gemini",
+    "model": "gemini/gemini-3.5-flash-lite",
+    "backend": "remote",
+    "temperature": 0.0,
+    "prompt_hash": "2a83be7e50f805a9",
+    "latency_seconds": 1.651377041998785,
+    "input_tokens": 1167,
+    "output_tokens": 359,
+    "prompt_chars": 5153,
+    "response_chars": 1610,
+    "raw_response": "{\n  \"assessments\": [\n    {\n      \"category_id\": \"timely_payment\",\n      \"goal_alignment\": \"The discovered evidence consists of a single case and variant with perfect log fitness and precision (1.00). This tightly bounded behavior directly supports the goal of resolving the fine via timely payment without unexpected deviations or looseness.\"\n    },\n    {\n      \"category_id\": \"delinquent_payment\",\n      \"goal_alignment\": \"The discovered evidence shows a single case following a single variant with perfect fitness and precision (1.00). This tightly bounded pattern fully aligns with the goal of resolving the fine via delinquent payment.\"\n    },\n    {\n      \"category_id\": \"administrative_appeal_prefecture\",\n      \"goal_alignment\": \"The discovered evidence demonstrates a single case and variant with perfect model fitness and precision (1.00). The tight bounds and lack of extraneous behavior consistently support the execution of the administrative appeal tasks directed to the Prefecture.\"\n    },\n    {\n      \"category_id\": \"judicial_appeal_judge\",\n      \"goal_alignment\": \"The discovered evidence exhibits a single case and variant with absolute fitness and precision (1.00). This tightly bounded model perfectly supports the goal of contesting the fine via judicial appeal to the Judge.\"\n    },\n    {\n      \"category_id\": \"coercive_credit_collection\",\n      \"goal_alignment\": \"The discovered evidence contains a single case and variant with complete model fitness and precision (1.00). The lack of model looseness and precise execution fully support the goal of coercive credit collection.\"\n    }\n  ]\n}",
+    "estimated_cost_usd": 0.0012476
+  }
+}

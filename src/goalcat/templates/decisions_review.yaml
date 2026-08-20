@@ -7,7 +7,7 @@
 #
 # category_id values in this taxonomy:
 #   {category_ids}
-
+{quality_flags}
 decision: revise   # accept | revise
 notes: null
 

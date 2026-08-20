@@ -63,3 +63,8 @@ def atomic_write_json(path: Path, obj: Any, *, indent: int = 2, **json_kwargs: A
 def atomic_write_csv(df: pd.DataFrame, path: Path, **to_csv_kwargs: Any) -> None:
     with atomic_output_path(path) as tmp:
         df.to_csv(tmp, **to_csv_kwargs)
+
+
+def atomic_write_parquet(df: pd.DataFrame, path: Path, **to_parquet_kwargs: Any) -> None:
+    with atomic_output_path(path) as tmp:
+        df.to_parquet(tmp, **to_parquet_kwargs)

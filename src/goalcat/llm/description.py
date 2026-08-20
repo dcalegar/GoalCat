@@ -11,7 +11,7 @@ from pydantic import BaseModel, Field, model_validator
 from ..atomic_io import atomic_write_csv, atomic_write_json, atomic_write_text
 from ..config import PipelineConfig, load_prompt_template
 from ..discovery import build_category_sublogs
-from .llm_backend import LLMBackend, RunMetadata
+from .llm_backend import LLMBackend, RunMetadata, estimate_cost_usd
 from .taxonomy import Category, Taxonomy, _resolve_anchor_labels
 
 # Fixed thresholds, applied uniformly across every category -- same "fixed hyperparameters"
@@ -339,12 +339,23 @@ def build_description_report(
 
 
 def save_description_outputs(
-    descriptions_df: pd.DataFrame, metadata: RunMetadata | None, prompt: str, report_markdown: str, output_dir: Path
+    descriptions_df: pd.DataFrame,
+    metadata: RunMetadata | None,
+    prompt: str,
+    report_markdown: str,
+    output_dir: Path,
+    pricing_usd_per_million_tokens: dict[str, dict[str, float]],
 ) -> None:
     atomic_write_csv(descriptions_df, output_dir / "descriptions.csv", index=False)
     atomic_write_text(output_dir / "description_report.md", report_markdown)
     if prompt:
         atomic_write_text(output_dir / "description_prompt.txt", prompt)
 
-    metadata_payload = {"call": metadata.model_dump() if metadata is not None else None}
+    call_payload = None
+    if metadata is not None:
+        call_payload = {
+            **metadata.model_dump(),
+            "estimated_cost_usd": estimate_cost_usd(metadata, pricing_usd_per_million_tokens),
+        }
+    metadata_payload = {"call": call_payload}
     atomic_write_json(output_dir / "description_run_metadata.json", metadata_payload)

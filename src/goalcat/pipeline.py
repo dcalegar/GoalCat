@@ -30,7 +30,7 @@ from .llm.taxonomy import (
 from .narrative.sampling import load_narrative_sample, sample_narratives, save_narrative_sample
 from .narrative.textualization import load_narratives, render_narratives, save_narratives
 from .review import process_review
-from .run_logging import get_logger
+from .run_logging import get_logger, log_peak_memory
 
 
 def _get_or_build_variants(config: PipelineConfig, logger: logging.Logger) -> pd.DataFrame:
@@ -133,6 +133,7 @@ def run_step1_variants(
     logger.info("Saved variants to: %s", output_path)
 
     logger.info("Step 1 complete.")
+    log_peak_memory(logger, "Step 1")
     return variants_df
 
 
@@ -183,6 +184,7 @@ def run_step2_profiling(
     logger.info("Saved profiles to: %s and %s", csv_path, json_path)
 
     logger.info("Step 2 complete.")
+    log_peak_memory(logger, "Step 2")
     return profiles_df
 
 
@@ -229,6 +231,7 @@ def run_step3_textualization(
     logger.info("Saved narratives to: %s", output_path)
 
     logger.info("Step 3 complete.")
+    log_peak_memory(logger, "Step 3")
     return narratives_df
 
 
@@ -276,6 +279,7 @@ def run_step4_sampling(
     logger.info("Saved narrative sample to: %s", output_path)
 
     logger.info("Step 4 complete.")
+    log_peak_memory(logger, "Step 4")
     return sample_df
 
 
@@ -322,10 +326,11 @@ def run_step5a_taxonomy(
     if not problems:
         logger.info("Taxonomy grounding check: no problems found.")
 
-    save_taxonomy(taxonomy, metadata, prompt, config.taxonomy_dir)
+    save_taxonomy(taxonomy, metadata, prompt, config.taxonomy_dir, config.llm.pricing_usd_per_million_tokens)
     logger.info("Saved taxonomy to: %s", config.taxonomy_dir / "taxonomy.json")
 
     logger.info("Step 5a complete.")
+    log_peak_memory(logger, "Step 5a")
     return taxonomy
 
 
@@ -365,10 +370,11 @@ def run_step5b_taxonomy(
     if not problems:
         logger.info("Taxonomy grounding check: no problems found.")
 
-    save_taxonomy(taxonomy, metadata, prompt, config.taxonomy_dir)
+    save_taxonomy(taxonomy, metadata, prompt, config.taxonomy_dir, config.llm.pricing_usd_per_million_tokens)
     logger.info("Saved taxonomy to: %s", config.taxonomy_dir / "taxonomy.json")
 
     logger.info("Step 5b complete.")
+    log_peak_memory(logger, "Step 5b")
     return taxonomy
 
 
@@ -487,11 +493,19 @@ def run_step6_assignment(
         taxonomy, assignments_df, merged_df, structural_df, profile_df, config, still_failed_ids
     )
     save_assignment_outputs(
-        assignments_df, metadata_list, batch_prompts, report_markdown, structural_df, profile_df, config.assignment_dir
+        assignments_df,
+        metadata_list,
+        batch_prompts,
+        report_markdown,
+        structural_df,
+        profile_df,
+        config.assignment_dir,
+        config.llm.pricing_usd_per_million_tokens,
     )
     logger.info("Saved assignment outputs to: %s", config.assignment_dir)
 
     logger.info("Step 6 complete.")
+    log_peak_memory(logger, "Step 6")
     return assignments_df
 
 
@@ -563,6 +577,7 @@ def run_step7_discovery(
     logger.info("Saved discovery outputs to: %s", config.discovery_dir)
 
     logger.info("Step 7 complete.")
+    log_peak_memory(logger, "Step 7")
     return metrics_df
 
 
@@ -622,10 +637,13 @@ def run_step8_description(
     logger.info("Generated %d/%d category descriptions", len(descriptions_df), len(taxonomy.categories))
 
     report_markdown = build_description_report(taxonomy, descriptions_df, metrics_df, config)
-    save_description_outputs(descriptions_df, metadata, prompt, report_markdown, config.description_dir)
+    save_description_outputs(
+        descriptions_df, metadata, prompt, report_markdown, config.description_dir, config.llm.pricing_usd_per_million_tokens
+    )
     logger.info("Saved description outputs to: %s", config.description_dir)
 
     logger.info("Step 8 complete.")
+    log_peak_memory(logger, "Step 8")
     return descriptions_df
 
 

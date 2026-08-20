@@ -4,6 +4,7 @@ import json
 import logging
 import os
 import platform
+import resource
 
 from .atomic_io import atomic_write_json
 from .config import PipelineConfig, config_snapshot_dict
@@ -55,6 +56,24 @@ def _log_run_environment(logger: logging.Logger) -> None:
         os.cpu_count(),
         _total_ram_gib(),
     )
+
+
+def log_peak_memory(logger: logging.Logger, step_label: str) -> None:
+    """Logs this process's peak resident set size (RSS) so far, right after a pipeline step
+    completes — the memory-side counterpart to RunMetadata's per-call token/cost tracking and
+    _log_run_environment's one-time machine spec. Nothing recorded this before: earlier sessions
+    only had ad-hoc `ps aux` snapshots at whatever moment someone happened to check, not a trail
+    in pipeline.log itself. ru_maxrss is a running maximum since process start, not a per-step
+    delta or instantaneous value — still useful to log after every step, since watching where the
+    running maximum jumps identifies which step drove it, without adding a new dependency
+    (psutil isn't one) or the overhead of continuous background sampling. Unit differs by
+    platform (ru_maxrss is KiB on Linux, bytes on macOS/BSD) — normalized to MiB here so log
+    lines are comparable regardless of which platform produced them.
+    """
+    max_rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    divisor = 1024 if platform.system() == "Darwin" else 1
+    peak_mib = max_rss / divisor / 1024
+    logger.info("Peak RSS after %s: %.1f MiB", step_label, peak_mib)
 
 
 def _total_ram_gib() -> str:

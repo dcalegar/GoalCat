@@ -27,6 +27,13 @@ llm:
   taxonomy_model: "gemini/gemini-3.5-flash-lite"
   assignment_model: "gemini/gemini-3.5-flash-lite"
   description_model: "gemini/gemini-3.5-flash-lite"
+  # USD per 1M tokens, standard tier — used only to annotate *_run_metadata.json with
+  # estimated_cost_usd per call (see src/goalcat/config.yaml for the full rationale). Verified
+  # 2026-08-19 at ai.google.dev/gemini-api/docs/pricing.
+  pricing_usd_per_million_tokens:
+    "gemini/gemini-3.5-flash-lite":
+      input: 0.30
+      output: 2.50
   # Task D3: temperature pinned for the frozen runs. 0 is not a determinism guarantee — see
   # manifest.py's note on what this stack can and cannot record about run-to-run identity, and
   # Task C2's replicate runs, which measure the residual variance empirically rather than
@@ -34,15 +41,19 @@ llm:
   temperature: 0
   timeout_seconds: 120
   max_retries: 3
-  concurrency: 1
+  # 5, not 1: raised 2026-08-19 after confirming the Google AI Studio project behind
+  # GEMINI_API_KEY is on the paid tier (4,000 RPM / 4M TPM, verified at
+  # aistudio.google.com/rate-limit) — see README.md's "LLM backend" section. Held identical
+  # across arms either way.
+  concurrency: 5
   # null once the account's paid-tier RPM is high enough to absorb bursts via litellm's own
   # backoff; a number paces Step 6's call starts proactively (see llm/assignment.py's
   # _RateLimiter). Held identical across arms either way.
-  requests_per_minute: 12
+  requests_per_minute: null
   # Task C10 — a fixed protocol parameter, never tuned against categorization output. The value
   # actually used is resolved through preregistration.yaml (which may pre-register a documented
   # per-dataset exception on wall-clock grounds); this is the protocol default.
-  assignment_batch_size: 20
+  assignment_batch_size: 50
 
 # Which pipeline steps a frozen condition executes. Step 9 is deliberately absent: §3's paired
 # comparison runs *before* any analyst merge/split/rename, so no frozen condition may reach it.

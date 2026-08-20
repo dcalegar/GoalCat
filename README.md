@@ -128,6 +128,121 @@ done, so it is safe to re-run. Then point the pipeline at `src/goalcat/config_lo
 judgments inside a still schema-valid response — spot-check Step 5/6 output against the hosted
 baseline before relying on this beyond quick local iteration.
 
+**Throughput tuning (`llm:` block, hosted backend only).** Four knobs control call volume and
+pacing for Steps 5/6/8; every config under `src/goalcat/` and `experimentation/examples/*/` sets
+them the same way, so change them together if you change them at all:
+
+| Key | Current value | Meaning |
+|---|---|---|
+| `concurrency` | `5` | Parallel in-flight LLM calls. |
+| `requests_per_minute` | `null` | Proactive request pacing; `null` disables it and relies on litellm's own retry backoff to absorb the rare `429`. |
+| `assignment_batch_size` | `50` | Narratives per Step 6 call — e.g. a 231-variant run costs ~5 calls instead of 231. Larger batches trade away per-narrative failure isolation: a failed/invalid batch response leaves every narrative in it pending, retried on the next call against the same `run_id`. |
+| `max_retries` | `3` | litellm retries per call before failing the batch. |
+
+These values assume Gemini's **paid tier** is active on the Google AI Studio project behind
+`GEMINI_API_KEY` (aistudio.google.com — billing is an account action, done outside this repo).
+Verified paid-tier limits as of 2026-08-19: **4,000 RPM / 4M TPM** for both
+`gemini-2.5-flash-lite` and `gemini-3.5-flash-lite`, plus a **150K RPD** cap specific to
+`gemini-3.5-flash-lite` — check aistudio.google.com/rate-limit for the current numbers on your own
+account rather than assuming these hold. On the **free tier**, `gemini-3.5-flash-lite` is capped
+at 15 requests/minute; at that cap, set `concurrency: 1` and `requests_per_minute: 12` (per-call
+latency alone is faster than 15/min, so concurrency=1 without pacing still overruns it) to avoid
+`RateLimitError`.
+
+Gemini Batch is not an option here: litellm's `create_batch` only routes Google calls through
+`custom_llm_provider="vertex_ai"` (a separate GCP project/billing/quota from the `gemini` provider
+these configs use), so switching provider families just for batching was judged not worth it.
+
+**Cost tracking.** Google AI Studio's own GUI (and the linked GCP Billing console) only reports
+aggregate spend per project/day — it cannot attribute cost to a specific run or pipeline step. Every
+LLM call already records exact token counts in its `*_run_metadata.json` (`RunMetadata.input_tokens`
+/ `output_tokens`, read from the provider's response, not estimated). The `llm.pricing_usd_per_million_tokens`
+map in each config (keyed by the same model string as `taxonomy_model`/`assignment_model`/
+`description_model`) turns those into an `estimated_cost_usd` per call —
+`taxonomy_run_metadata.json` and `description_run_metadata.json` each carry one, and
+`assignment_run_metadata.json` carries one per batch call plus a `total_estimated_cost_usd`. A model
+absent from the map logs `estimated_cost_usd: null` rather than a fabricated `0.0`. Rates are USD per
+1M tokens, standard (non-batch) tier; re-check `ai.google.dev/gemini-api/docs/pricing` before trusting
+these figures for a paper's cost accounting if a run postdates the "Verified" date next to the map in
+`config.yaml` by long enough for pricing to have moved. Every call's `RunMetadata` also carries
+`prompt_chars`/`response_chars` (`len()` of the rendered prompt / raw response — a tokenizer-
+independent size measure, since the same text tokenizes to different counts depending on language,
+content, and model family) alongside `latency_seconds`.
+
+**Usage rollups (`src/goalcat/llm/usage_summary.py`).** Individual `*_run_metadata.json` files are
+per-call/per-step; two coarser views combine them for reporting:
+
+- **Per round** — `roundN/round_usage_summary.json`, written every time Step 9 runs against that
+  round (awaiting-review or accept alike), combining whichever of Steps 5/6/8 already ran in it.
+- **Per execution** — `final/pipeline_usage_summary.json`, written once at accept time
+  (`review.finalize_run`), combining every round of the run (a revision chain may span several).
+  This is the one place the *whole run's* cost/latency/token/char total lives; `pipeline.log` gets
+  a matching one-line summary at the same point, pointing at this file rather than duplicating its
+  detail.
+
+Both files nest per-step (round summary) or per-round (execution summary) breakdowns under a
+`totals` key with the same shape: `call_count`, `total_input_tokens`, `total_output_tokens`,
+`total_prompt_chars`, `total_response_chars`, `total_latency_seconds`, `total_estimated_cost_usd`
+(`null` if any included call's cost is unknown, never a misleading `0.0`).
+
+## Resource usage
+
+Two pipeline outputs do not scale linearly with log size and are worth planning disk/memory
+around before a large run.
+
+**Memory.** Every step logs its peak resident set size (RSS) so far to `pipeline.log`
+(`log_peak_memory()` in `src/goalcat/run_logging.py`), normalized to MiB regardless of platform.
+It is a running maximum since process start, not a per-step delta — read it as "how big has this
+process gotten by now," and look at which step's line shows the jump to identify the driver.
+
+**Disk — `structural_distances.parquet` / `profile_distances.parquet`.** Step 6's pairwise
+variant-distance files (`src/goalcat/extraction/similarity.py`) are the only pipeline artifacts
+computed over every variant *pair* (`n(n-1)/2`) rather than once per variant — every other
+CSV/JSON in the run scales linearly with variant, case, or narrative count instead. They are
+written as Parquet, not CSV: `_pair_frame()`'s `variant_id_a`/`variant_id_b` columns are already
+`pd.Categorical` in memory (dictionary-encoded to avoid duplicating each id string once per pair),
+and Parquet preserves that dictionary encoding on disk instead of re-expanding it into ASCII text
+the way `to_csv()` did — measured on the datasets below, this alone cuts the combined
+structural+profile file size to roughly a third of the equivalent CSV (individual files range
+wider, from ~6% for `structural_distances`'s single int32 column down to ~46% for
+`profile_distances`'s four float32 columns, where there is less redundant-string encoding to
+recover), and both write (Step 6) and read (Step 9's re-render) are faster too, since neither has
+to format/parse float32 values as text. In practice:
+
+| Dataset | Variants | Combined distance-file size (Parquet) | Equivalent CSV size |
+|---|---|---|---|
+| RTFM (mini fixture) | 6 | ~1 KB | ~1 KB |
+| RTFM (full) | 231 | ~0.53 MB | ~1.5 MB (35%) |
+| Sepsis | 846 | ~7.0 MB | ~20.7 MB (34%) |
+| BPIC 2019 (full) | 11,973 | ~1.37 GB | ~4.18 GB (33%) |
+
+Growth is quadratic, not linear, regardless of format: BPIC 2019's ~14x larger variant count than
+Sepsis still produces a ~200x larger combined distance-file size. Budget disk accordingly before
+running against a log with several thousand variants — doubling the variant count roughly
+quadruples these two files. Full memory/timing/disk figures for all four runs above are reported
+in the ICPM 2027 paper's Feasibility and runtime evaluation (predating the Parquet migration; that
+paper's disk figures are the pre-migration CSV sizes shown above).
+
+Existing run directories from before this change still have `structural_distances.csv`/
+`profile_distances.csv`; convert them with `scripts/convert_distance_files_to_parquet.py` (verifies
+each conversion by reading the Parquet back and comparing it against the source CSV before
+deleting the CSV). New runs write `.parquet` directly.
+
+These two files are **not safely deletable** once Step 6 finishes, in general: Step 9 re-reads
+them from disk whenever a category rename triggers a report re-render
+(`rerender_reports_after_rename()` in `src/goalcat/review.py`), without recomputing Step 6/7. Keep
+them until a run's revision chain is fully accepted (`review.finalize_run`).
+
+**`prune_pairwise_distances_on_finalize`** (`config.yaml` / GUI "New run" form, default `false`):
+on accept, deletes both files from *every* round of the run, not just the accepted one — including
+superseded rounds from earlier merge/split revisions. Trades traceability for disk: a superseded
+round's copies are exactly what `rerender_reports_after_rename()` needs if that round is ever
+re-reviewed with a rename, and there is no cheaper way to regenerate them than re-running Step 6's
+full O(n²) computation. Leave this off unless disk pressure at BPIC-2019-like scale outweighs that
+risk; the raw pairwise rows are unrecoverable once pruned, though the aggregate statistics they fed
+into `assignment_report.md` remain. Set once per run — it cannot be changed mid-run without
+tripping the config-drift check in `run_logging.py`.
+
 ## Running the pipeline
 
 There is no packaged CLI. `src/goalcat/pipeline.py` exposes each step as a library function —

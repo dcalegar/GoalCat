@@ -5,7 +5,8 @@ from pathlib import Path
 import streamlit as st
 import yaml
 
-from goalcat.config import REVIEW_DIRNAME, TAXONOMY_DIRNAME
+from goalcat.config import DISCOVERY_DIRNAME, REVIEW_DIRNAME, TAXONOMY_DIRNAME
+from goalcat.discovery import flag_low_precision_categories
 from goalcat.review import MergeDecision, RenameDecision, ReviewDecisions, SplitDecision
 from gui import artifacts, run_control, ui_helpers
 
@@ -70,6 +71,22 @@ if taxonomy is None:
 
 category_ids = [c.category_id for c in taxonomy.categories]
 
+# Step 7 metrics, advisory only — same source flag_low_precision_categories() feeds into the
+# CLI's review_decisions.yaml template comment (goalcat.review._quality_flags_comment); the GUI
+# bypasses that template entirely (it writes ReviewDecisions directly further below), so this is
+# where the equivalent signal has to surface for a GUI reviewer instead.
+metrics_df = artifacts.read_csv(rd / DISCOVERY_DIRNAME / "discovery_metrics.csv")
+metrics_by_id: dict[str, dict] = {}
+flagged_ids: set[str] = set()
+precision_threshold = 0.3
+if metrics_df is not None:
+    metrics_by_id = metrics_df.set_index("category_id").to_dict(orient="index")
+    gui_config_path = run_dir / "gui_run_config.yaml"
+    if gui_config_path.exists():
+        raw_config = yaml.safe_load(gui_config_path.read_text(encoding="utf-8")) or {}
+        precision_threshold = float(raw_config.get("review_precision_flag_threshold", precision_threshold))
+    flagged_ids = {f["category_id"] for f in flag_low_precision_categories(metrics_df, precision_threshold)}
+
 st.subheader("Categories")
 ACTION_CHOICES = ["Keep", "Rename", "Merge", "Split"]
 actions: dict[str, str] = {}
@@ -78,8 +95,29 @@ new_descriptions: dict[str, str] = {}
 reasons: dict[str, str] = {}
 
 for c in taxonomy.categories:
-    with st.expander(f"{c.category_id} — {c.name}", expanded=False):
+    flagged = c.category_id in flagged_ids
+    label = f"{c.category_id} — {c.name}"
+    if flagged:
+        label += " ⚠️ low precision"
+    with st.expander(label, expanded=False):
         st.caption(c.description)
+        stats = metrics_by_id.get(c.category_id)
+        if stats is not None and stats["num_variants"] > 0:
+            metric_line = (
+                f"Step 7: precision={stats['precision']:.3f}, log_fitness={stats['log_fitness']:.3f}, "
+                f"{int(stats['num_variants'])} variants, {int(stats['num_cases'])} cases"
+            )
+            if flagged:
+                st.warning(
+                    f"{metric_line} — below the {precision_threshold} flag threshold. Low precision "
+                    "under this pipeline's fitness-preserving discovery can mean the sublog still "
+                    "spans multiple distinct behavioral patterns; consider a split. Heuristic only, "
+                    "not a decision — check discovery_report.md before acting."
+                )
+            else:
+                st.caption(metric_line)
+        elif stats is not None:
+            st.caption("Step 7: no variants assigned — discovery skipped.")
         action = st.pills(
             "Action",
             ACTION_CHOICES,

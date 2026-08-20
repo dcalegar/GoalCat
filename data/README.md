@@ -84,7 +84,7 @@ starts. A run directory has this shape:
 ├── 04_sampling/narrative_sample.csv
 ├── round1/                     # Steps 5-9 for review round 1
 │   ├── 05_taxonomy/            # taxonomy.json, taxonomy_prompt.txt, taxonomy_run_metadata.json
-│   ├── 06_assignment/          # assignments.csv, assignment_report.md, *_distances.csv, ...
+│   ├── 06_assignment/          # assignments.csv, assignment_report.md, *_distances.parquet, ...
 │   ├── 07_discovery/           # discovery_metrics.csv, discovery_report.md, models/
 │   ├── 08_description/         # descriptions.csv, description_report.md, description_prompt.txt
 │   └── 09_review/              # review_decisions.yaml (or *_processed_<ts>.yaml once acted on)
@@ -93,9 +93,13 @@ starts. A run directory has this shape:
 └── final/                      # only present once a round is accepted at Step 9
     ├── README.md                # this run's own summary of its accepted categories
     ├── taxonomy.json
-    ├── <category_id>.xes.gz     # one per accepted category — the log, partitioned
-    ├── residual.xes.gz          # cases that fit no category
-    └── ...
+    ├── assignments.csv          # copy of the accepted round's assignments.csv (variant_id ->
+    │                              # category_id, distances, rationale) — kept here so other tools
+    │                              # can re-filter/re-partition without the round dir surviving
+    ├── pipeline_usage_summary.json
+    └── sublogs/
+        ├── <category_id>.xes.gz  # one per accepted category — the log, partitioned
+        └── residual.xes.gz       # cases that fit no category
 ```
 
 Notes on reading this structure:
@@ -112,3 +116,7 @@ Notes on reading this structure:
   directories.
 - The `final/README.md` inside each accepted run is auto-generated per run and describes that run's
   own accepted categories — it is a report on one execution, not project documentation.
+- **`final/assignments.csv`** is a copy, not the source of truth — the accepted round's
+  `round<N>/06_assignment/assignments.csv` remains the canonical copy. It is duplicated into
+  `final/` purely so a self-contained `(taxonomy.json, assignments.csv)` pair is available to
+  downstream tools without depending on the round directory still existing.

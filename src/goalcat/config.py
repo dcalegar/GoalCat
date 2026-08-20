@@ -24,6 +24,7 @@ DISCOVERY_DIRNAME = "07_discovery"
 DESCRIPTION_DIRNAME = "08_description"
 REVIEW_DIRNAME = "09_review"
 FINAL_DIRNAME = "final"
+SUBLOGS_DIRNAME = "sublogs"
 ROUND_PREFIX = "round"
 REVIEW_INDEX_FILENAME = "review_index.md"
 
@@ -39,6 +40,7 @@ class LLMConfig:
     concurrency: int
     requests_per_minute: int | None
     assignment_batch_size: int
+    pricing_usd_per_million_tokens: dict[str, dict[str, float]]
 
 
 @dataclasses.dataclass
@@ -55,6 +57,9 @@ class PipelineConfig:
     sample_extreme_n: int
     taxonomy_mode: str
     discovery_noise_threshold: float
+    discovery_precision_timeout_seconds: float | None
+    review_precision_flag_threshold: float
+    prune_pairwise_distances_on_finalize: bool
     llm: LLMConfig
     run_id: str
     round: int
@@ -116,6 +121,13 @@ class PipelineConfig:
     @property
     def final_dir(self) -> Path:
         return self.run_output_dir / FINAL_DIRNAME
+
+    @property
+    def sublogs_dir(self) -> Path:
+        """The partitioned-log files (one .xes.gz per category, plus residual.xes.gz) — kept in
+        their own subfolder of final/ rather than alongside taxonomy.json/README.md/
+        pipeline_usage_summary.json, so the two file kinds don't sit at the same listing level."""
+        return self.final_dir / SUBLOGS_DIRNAME
 
     @property
     def review_index_path(self) -> Path:
@@ -198,6 +210,9 @@ def load_config(
         sample_extreme_n=raw["sample_extreme_n"],
         taxonomy_mode=raw["taxonomy_mode"],
         discovery_noise_threshold=raw["discovery_noise_threshold"],
+        discovery_precision_timeout_seconds=raw.get("discovery_precision_timeout_seconds"),
+        review_precision_flag_threshold=raw.get("review_precision_flag_threshold", 0.3),
+        prune_pairwise_distances_on_finalize=raw.get("prune_pairwise_distances_on_finalize", False),
         llm=LLMConfig(
             taxonomy_model=raw["llm"]["taxonomy_model"],
             assignment_model=raw["llm"]["assignment_model"],
@@ -208,6 +223,7 @@ def load_config(
             concurrency=raw["llm"]["concurrency"],
             requests_per_minute=raw["llm"].get("requests_per_minute"),
             assignment_batch_size=raw["llm"].get("assignment_batch_size", 20),
+            pricing_usd_per_million_tokens=raw["llm"].get("pricing_usd_per_million_tokens", {}),
         ),
         run_id=resolved_run_id,
         round=resolved_round,
