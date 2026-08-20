@@ -27,6 +27,21 @@ dependencies = [
     # the sole goal-model artifact (data/goals/*_goal_model.jucm), read by llm/taxonomy.py at
     # module scope like pydantic above, so this is a base dependency, not an [llm]-extra one.
     "pyecore>=0.15",
+    # extraction/similarity.py imports these directly for Step 6's structural/profile distance
+    # computation, at module scope (pipeline.py imports similarity.py at module load, same as
+    # pydantic/pyecore above). Already transitive via pm4py, but declared explicitly since a
+    # transitive dependency's own requirements can change without notice.
+    "numpy>=1.26",
+    "scipy>=1.11",
+    # C-accelerated Levenshtein distance for extraction/similarity.py's structural-distance
+    # computation. pm4py's own string_distance.levenshtein() already prefers a C backend
+    # (`stringdist`) when installed, falling back to a pure-Python O(n*m) loop otherwise; this
+    # project calls the pure-Python function directly, which is what made BPIC 2019's ~71.7M
+    # variant-pair count (Step 6) take on the order of an hour of CPU. rapidfuzz's
+    # distance.Levenshtein and process.cdist give byte-identical results (verified against
+    # pm4py's own implementation) at ~25x the raw per-pair speed and, via process.cdist's
+    # multi-threaded C loop, the full BPIC 2019 pairwise matrix in ~2s instead of ~1h.
+    "rapidfuzz>=3.14",
 ]
 
 [project.optional-dependencies]

@@ -30,6 +30,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from goalcat.atomic_io import atomic_write_json, atomic_write_text
 from goalcat.config import REPO_ROOT
 
 MANIFEST_FILENAME = "manifest.json"
@@ -233,10 +234,9 @@ def build_manifest(
 
 
 def write_manifest(manifest: dict[str, Any], run_dir: Path) -> Path:
-    run_dir.mkdir(parents=True, exist_ok=True)
     path = run_dir / MANIFEST_FILENAME
-    path.write_text(json.dumps(manifest, indent=2, sort_keys=False), encoding="utf-8")
-    (run_dir / MANIFEST_MD_FILENAME).write_text(render_manifest_markdown(manifest), encoding="utf-8")
+    atomic_write_json(path, manifest)
+    atomic_write_text(run_dir / MANIFEST_MD_FILENAME, render_manifest_markdown(manifest))
     return path
 
 

@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from ..atomic_io import atomic_write_csv, atomic_write_json
 from ..config import REPO_ROOT, PipelineConfig
 
 _LUPIN_SCRIPT = REPO_ROOT / "third_party" / "lupin" / "render_narratives.py"
@@ -47,10 +48,8 @@ def render_narratives(profiles_df: pd.DataFrame, config: PipelineConfig, logger:
     """Invoke the vendored LUPIN renderer as a subprocess (pipeline Step 3)."""
     input_path = config.textualization_dir / "lupin_input.json"
     output_path = config.textualization_dir / "lupin_output.json"
-    input_path.parent.mkdir(parents=True, exist_ok=True)
 
-    with open(input_path, "w", encoding="utf-8") as f:
-        json.dump(build_lupin_input(profiles_df, config), f, indent=2)
+    atomic_write_json(input_path, build_lupin_input(profiles_df, config))
 
     result = subprocess.run(
         [
@@ -77,8 +76,7 @@ def render_narratives(profiles_df: pd.DataFrame, config: PipelineConfig, logger:
 
 
 def save_narratives(narratives_df: pd.DataFrame, path: Path) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    narratives_df.to_csv(path, index=False)
+    atomic_write_csv(narratives_df, path, index=False)
 
 
 def load_narratives(path: Path) -> pd.DataFrame:

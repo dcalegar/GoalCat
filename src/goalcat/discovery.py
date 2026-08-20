@@ -7,6 +7,7 @@ import pandas as pd
 import pm4py
 from pm4py.objects.petri_net.obj import Marking, PetriNet
 
+from .atomic_io import atomic_output_path, atomic_write_csv, atomic_write_text
 from .config import PipelineConfig
 from .llm.taxonomy import Taxonomy
 
@@ -256,16 +257,17 @@ def save_discovery_outputs(
     config: PipelineConfig,
     output_dir: Path,
 ) -> None:
-    output_dir.mkdir(parents=True, exist_ok=True)
     models_dir = output_dir / "models"
     models_dir.mkdir(parents=True, exist_ok=True)
 
-    metrics_df.to_csv(output_dir / "discovery_metrics.csv", index=False)
+    atomic_write_csv(metrics_df, output_dir / "discovery_metrics.csv", index=False)
 
     for category_id, (net, im, fm) in models_by_category.items():
-        pm4py.write_pnml(net, im, fm, str(models_dir / f"{category_id}.pnml"))
+        with atomic_output_path(models_dir / f"{category_id}.pnml") as tmp:
+            pm4py.write_pnml(net, im, fm, str(tmp))
     for category_id, (dfg, start_activities, end_activities) in dfgs_by_category.items():
-        pm4py.save_vis_dfg(dfg, start_activities, end_activities, str(models_dir / f"{category_id}.png"))
+        with atomic_output_path(models_dir / f"{category_id}.png") as tmp:
+            pm4py.save_vis_dfg(dfg, start_activities, end_activities, str(tmp))
 
     report = build_discovery_report(metrics_df, assignments_df, variants_df, taxonomy, config)
-    (output_dir / "discovery_report.md").write_text(report, encoding="utf-8")
+    atomic_write_text(output_dir / "discovery_report.md", report)

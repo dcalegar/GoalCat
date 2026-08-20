@@ -5,6 +5,7 @@ from pathlib import Path
 import pandas as pd
 import pm4py
 
+from ..atomic_io import atomic_write_csv
 from ..config import PipelineConfig
 
 
@@ -45,11 +46,10 @@ def extract_variants(df: pd.DataFrame, config: PipelineConfig) -> pd.DataFrame:
 
 def save_variants(variants_df: pd.DataFrame, path: Path) -> None:
     """Write the variants table as a CSV, joining list-typed fields into delimited strings."""
-    path.parent.mkdir(parents=True, exist_ok=True)
     export_df = variants_df.copy()
     export_df["activity_sequence"] = export_df["activity_sequence"].apply(">".join)
     export_df["case_ids"] = export_df["case_ids"].apply(",".join)
-    export_df.to_csv(path, index=False)
+    atomic_write_csv(export_df, path, index=False)
 
 
 def load_variants(path: Path) -> pd.DataFrame:

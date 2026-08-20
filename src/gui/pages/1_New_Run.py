@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 from pathlib import Path
 
 import streamlit as st
@@ -8,27 +7,51 @@ import streamlit as st
 from goalcat.config import new_run_id
 from gui import config_form, run_control, ui_helpers
 
-st.set_page_config(page_title="GoalCat — Nueva corrida", page_icon="🐱", layout="wide")
-st.title("Nueva corrida")
+st.set_page_config(page_title="GoalCat — New Run", page_icon="🐱", layout="wide")
+st.title("New run")
 
 ACTIVE_KEY = "gui_active_run"
 POPEN_KEY = "_gui_popen"
 
+with st.expander("Add a new log or goal model", expanded=False):
+    st.caption("Only files not already in `data/logs/` / `data/goals/` can be added here — pick a different name, or remove the existing one first, to replace one.")
+    up_col1, up_col2 = st.columns(2)
+    with up_col1:
+        log_upload = st.file_uploader("Event log (.xes or .xes.gz)", key="log_upload")
+        if log_upload is not None and st.button("Save log", key="save_log_upload"):
+            try:
+                config_form.save_uploaded_log(log_upload.name, log_upload.getvalue())
+            except (ValueError, FileExistsError) as exc:
+                st.error(str(exc))
+            else:
+                st.success(f"Saved `{log_upload.name}` to data/logs/.")
+                st.rerun()
+    with up_col2:
+        goal_upload = st.file_uploader("Goal model (.jucm)", key="goal_upload")
+        if goal_upload is not None and st.button("Save goal model", key="save_goal_upload"):
+            try:
+                config_form.save_uploaded_goal_model(goal_upload.name, goal_upload.getvalue())
+            except (ValueError, FileExistsError) as exc:
+                st.error(str(exc))
+            else:
+                st.success(f"Saved `{goal_upload.name}` to data/goals/.")
+                st.rerun()
+
 logs = config_form.list_log_filenames()
 if not logs:
-    st.error(f"No se encontraron logs en {config_form.LOGS_DIR}.")
+    st.error(f"No logs found in {config_form.LOGS_DIR}. Upload one above.")
     st.stop()
 
 log_filename = st.selectbox("Log (data/logs/)", logs)
 default_config_path = config_form.find_default_config_for_log(log_filename)
 defaults = config_form.load_config_dict(default_config_path)
-st.caption(f"Valores por defecto cargados de `{default_config_path.relative_to(config_form.REPO_ROOT)}`.")
+st.caption(f"Defaults loaded from `{default_config_path.relative_to(config_form.REPO_ROOT)}`.")
 
-goal_models = ["(ninguno — modo open)"] + config_form.list_goal_model_filenames()
+goal_models = ["(none — open mode)"] + config_form.list_goal_model_filenames()
 default_goal = defaults.get("goal_model_filename")
 goal_index = goal_models.index(default_goal) if default_goal in goal_models else 0
 goal_model_choice = st.selectbox("Goal model (data/goals/)", goal_models, index=goal_index)
-goal_model_filename = None if goal_model_choice.startswith("(ninguno") else goal_model_choice
+goal_model_filename = None if goal_model_choice.startswith("(none") else goal_model_choice
 
 col1, col2 = st.columns(2)
 with col1:
@@ -46,7 +69,7 @@ with col1:
         taxonomy_mode_options,
         index=taxonomy_mode_options.index(default_mode) if default_mode in taxonomy_mode_options else 0,
         disabled=goal_model_filename is None,
-        help="Sin goal model sólo está disponible 'open'." if goal_model_filename is None else None,
+        help="Only 'open' is available without a goal model." if goal_model_filename is None else None,
     )
     if goal_model_filename is None:
         taxonomy_mode = "open"
@@ -58,30 +81,33 @@ with col2:
         "discovery_noise_threshold", 0.0, 1.0, float(defaults.get("discovery_noise_threshold", 0.0))
     )
 
-st.subheader("LLM (Steps 5, 6, 8)")
 llm_defaults = defaults.get("llm", {})
-c1, c2, c3 = st.columns(3)
-with c1:
-    taxonomy_model = st.text_input("taxonomy_model", llm_defaults.get("taxonomy_model", "gemini/gemini-3.5-flash-lite"))
-    assignment_model = st.text_input("assignment_model", llm_defaults.get("assignment_model", "gemini/gemini-3.5-flash-lite"))
-    description_model = st.text_input("description_model", llm_defaults.get("description_model", "gemini/gemini-3.5-flash-lite"))
-with c2:
-    temperature = st.number_input("temperature", min_value=0.0, max_value=2.0, value=float(llm_defaults.get("temperature", 0)))
-    timeout_seconds = st.number_input("timeout_seconds", min_value=1, value=int(llm_defaults.get("timeout_seconds", 120)))
-    max_retries = st.number_input("max_retries", min_value=0, value=int(llm_defaults.get("max_retries", 3)))
-with c3:
-    concurrency = st.number_input("concurrency", min_value=1, value=int(llm_defaults.get("concurrency", 1)))
-    requests_per_minute = st.number_input(
-        "requests_per_minute (0 = sin límite)", min_value=0, value=int(llm_defaults.get("requests_per_minute") or 0)
-    )
-    assignment_batch_size = st.number_input(
-        "assignment_batch_size", min_value=1, value=int(llm_defaults.get("assignment_batch_size", 20))
-    )
+taxonomy_model = llm_defaults.get("taxonomy_model", "gemini/gemini-3.5-flash-lite")
+assignment_model = llm_defaults.get("assignment_model", "gemini/gemini-3.5-flash-lite")
+description_model = llm_defaults.get("description_model", "gemini/gemini-3.5-flash-lite")
 
-if not any(os.environ.get(k) for k in ("GEMINI_API_KEY", "OPENAI_API_KEY", "ANTHROPIC_API_KEY")):
-    st.warning("No se detectó ninguna API key de LLM en el entorno (ver página principal).")
+with st.expander("Advanced LLM settings (Steps 5, 6, 8)", expanded=False):
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        taxonomy_model = st.text_input("taxonomy_model", taxonomy_model)
+        assignment_model = st.text_input("assignment_model", assignment_model)
+        description_model = st.text_input("description_model", description_model)
+    with c2:
+        temperature = st.number_input("temperature", min_value=0.0, max_value=2.0, value=float(llm_defaults.get("temperature", 0)))
+        timeout_seconds = st.number_input("timeout_seconds", min_value=1, value=int(llm_defaults.get("timeout_seconds", 120)))
+        max_retries = st.number_input("max_retries", min_value=0, value=int(llm_defaults.get("max_retries", 3)))
+    with c3:
+        concurrency = st.number_input("concurrency", min_value=1, value=int(llm_defaults.get("concurrency", 1)))
+        requests_per_minute = st.number_input(
+            "requests_per_minute (0 = no limit)", min_value=0, value=int(llm_defaults.get("requests_per_minute") or 0)
+        )
+        assignment_batch_size = st.number_input(
+            "assignment_batch_size", min_value=1, value=int(llm_defaults.get("assignment_batch_size", 20))
+        )
 
-if st.button("Ejecutar pipeline (Steps 1-8)", type="primary", disabled=ACTIVE_KEY in st.session_state):
+ui_helpers.render_api_key_status()
+
+if st.button("Run pipeline (Steps 1-8)", type="primary", disabled=ACTIVE_KEY in st.session_state):
     run_id = new_run_id()
     llm = {
         "taxonomy_model": taxonomy_model,
@@ -128,7 +154,7 @@ if st.button("Ejecutar pipeline (Steps 1-8)", type="primary", disabled=ACTIVE_KE
 if ACTIVE_KEY in st.session_state:
     info = st.session_state[ACTIVE_KEY]
     st.divider()
-    st.subheader(f"Corrida en curso: {info['run_id']}")
+    st.subheader(f"Run in progress: {info['run_id']}")
     ui_helpers.render_progress_panel(
         status_path=Path(info["status_path"]),
         worker_log_path=Path(info["worker_log_path"]),
@@ -136,8 +162,8 @@ if ACTIVE_KEY in st.session_state:
         popen=st.session_state[POPEN_KEY],
         steps=list(range(1, 9)),
         success_message=(
-            "Steps 1-8 completados. Abrí **Revisión** o **Resultados** desde la barra lateral "
-            f"para la corrida `{info['run_id']}`."
+            f"Steps 1-8 complete. Open **Review** or **Results** from the sidebar for run "
+            f"`{info['run_id']}`."
         ),
         session_state_key=ACTIVE_KEY,
         popen_state_key=POPEN_KEY,

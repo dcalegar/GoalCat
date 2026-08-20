@@ -16,9 +16,12 @@ OUTPUT_ROOT = REPO_ROOT / "data" / "output"
 
 
 def list_log_stems() -> list[str]:
+    """Only log dirs with at least one run subdirectory — an empty leftover dir (e.g. after a run
+    was deleted) must never surface as a selectable option, since it leaves the run_id selectbox
+    with no options, which Streamlit resolves to None regardless of `index`."""
     if not OUTPUT_ROOT.is_dir():
         return []
-    return sorted(p.name for p in OUTPUT_ROOT.iterdir() if p.is_dir())
+    return sorted(p.name for p in OUTPUT_ROOT.iterdir() if p.is_dir() and list_run_ids(p.name))
 
 
 def list_run_ids(log_stem: str) -> list[str]:

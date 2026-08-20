@@ -29,6 +29,7 @@ from typing import Any
 import pandas as pd
 import yaml
 
+from goalcat.atomic_io import atomic_write_json, atomic_write_text
 from goalcat.config import (
     PROFILING_DIRNAME,
     SAMPLING_DIRNAME,
@@ -113,14 +114,13 @@ def _base_config_dict(dataset: DatasetSpec, protocol: Protocol) -> dict[str, Any
 
 def _write_base_config(dataset: DatasetSpec, protocol: Protocol) -> Path:
     base_dir = shared_base_dir(dataset)
-    base_dir.mkdir(parents=True, exist_ok=True)
     path = base_dir / "base_config.yaml"
     header = (
         "# GENERATED — do not edit. The Steps 1-4 config for the shared base every ICPM 2027\n"
         f"# condition of dataset '{dataset.dataset_id}' inherits from (protocol "
         f"{protocol.version}). See experimentation/icpm2027/inputs.py.\n\n"
     )
-    path.write_text(header + yaml.safe_dump(_base_config_dict(dataset, protocol), sort_keys=False), encoding="utf-8")
+    atomic_write_text(path, header + yaml.safe_dump(_base_config_dict(dataset, protocol), sort_keys=False))
     return path
 
 
@@ -213,7 +213,7 @@ def _apply_scope_to_base(base_dir: Path, scope: dict[str, Any], logger: logging.
     else:
         logger.info("Variant scope '%s': all %d variants kept.", record["applied_policy"], record["variants_total"])
 
-    record_path.write_text(json.dumps(record, indent=2), encoding="utf-8")
+    atomic_write_json(record_path, record)
     return record
 
 

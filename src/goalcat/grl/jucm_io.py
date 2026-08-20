@@ -33,6 +33,7 @@ import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from goalcat.atomic_io import atomic_write_text
 from goalcat.config import REPO_ROOT
 
 from .model import (
@@ -533,6 +534,5 @@ def render_jucm(model: GRLModel) -> str:
 
 def write_jucm(model: GRLModel, path: str | Path) -> Path:
     path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(render_jucm(model), encoding="utf-8")
+    atomic_write_text(path, render_jucm(model))
     return path

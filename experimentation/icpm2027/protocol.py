@@ -26,6 +26,7 @@ from typing import Any, Literal
 
 import yaml
 
+from goalcat.atomic_io import atomic_write_text
 from goalcat.config import REPO_ROOT
 
 CONFIGS_DIR = Path(__file__).resolve().with_name("configs")
@@ -373,12 +374,11 @@ def write_condition_config(
     reconstruct it from three source files plus a resolution order.
     """
     target = path or (condition.run_dir / "condition_config.yaml")
-    target.parent.mkdir(parents=True, exist_ok=True)
     header = _CONFIG_HEADER.format(
         condition_id=condition.condition_id,
         dataset_id=condition.dataset.dataset_id,
         protocol_version=protocol.version,
     )
     body = yaml.safe_dump(render_condition_config(condition, protocol, prereg), sort_keys=False)
-    target.write_text(header + "\n" + body, encoding="utf-8")
+    atomic_write_text(target, header + "\n" + body)
     return target

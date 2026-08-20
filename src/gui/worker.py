@@ -79,6 +79,16 @@ def run_pipeline_steps_1_8(config_path: Path, run_id: str, status_path: Path) ->
     _run_step(7, lambda: run_step7_discovery(config_path, run_id), state, status_path)
     _run_step(8, lambda: run_step8_description(config_path, run_id), state, status_path)
 
+    # Steps 5-8 alone never write round_info.json — only process_review() does, the first time
+    # Step 9 runs for a round (see goalcat/review.py's _load_or_init_round_info). Without this
+    # call, the GUI's own Results/Review pages (which key off round_info.json existing) would show
+    # nothing for a round that in fact just finished Steps 1-8. Called with no review_decisions.yaml
+    # present yet, this only writes review_index.md + the decision template (goalcat/review.py's
+    # process_review, "awaiting_review" branch) — no LLM call, so it can't introduce a new failure
+    # mode here. Not tracked as its own numbered step: it's "opening" the round for review, not the
+    # human's Step 9 decision, which stays a separate, explicit action on the GUI's Review page.
+    run_step9_review(config_path, run_id, 1)
+
 
 def run_pipeline_step_9(config_path: Path, run_id: str, round_: int, status_path: Path) -> None:
     state: dict = {"run_id": run_id, "round": round_, "steps": {}}

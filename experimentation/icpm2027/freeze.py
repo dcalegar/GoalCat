@@ -19,6 +19,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable, Iterable
 
+from goalcat.atomic_io import atomic_write_json, atomic_write_text
+
 from .manifest import read_manifest
 
 
@@ -215,16 +217,13 @@ def write_freeze_report(title: str, checks: Iterable[FreezeCheck], out_dir: Path
     out_dir.mkdir(parents=True, exist_ok=True)
     checks = list(checks)
     path = out_dir / f"{stem}.md"
-    path.write_text(render_freeze_report(title, checks), encoding="utf-8")
-    (out_dir / f"{stem}.json").write_text(
-        json.dumps(
-            [
-                {"element": c.element, "requirement": c.requirement, "passed": c.passed, "values": c.values, "note": c.note}
-                for c in checks
-            ],
-            indent=2,
-            default=str,
-        ),
-        encoding="utf-8",
+    atomic_write_text(path, render_freeze_report(title, checks))
+    atomic_write_json(
+        out_dir / f"{stem}.json",
+        [
+            {"element": c.element, "requirement": c.requirement, "passed": c.passed, "values": c.values, "note": c.note}
+            for c in checks
+        ],
+        default=str,
     )
     return path

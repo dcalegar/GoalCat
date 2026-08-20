@@ -18,7 +18,6 @@ caller asking for it.
 
 from __future__ import annotations
 
-import json
 import logging
 import math
 import subprocess
@@ -29,6 +28,7 @@ from typing import Any
 
 import yaml
 
+from goalcat.atomic_io import atomic_write_json, atomic_write_text
 from goalcat.config import REPO_ROOT, ROUND_PREFIX, TAXONOMY_DIRNAME
 from goalcat.llm.taxonomy import Category, Taxonomy
 
@@ -124,15 +124,14 @@ def write_label_list_taxonomy(condition: ConditionSpec, run_dir: Path, logger: l
         ]
     )
     taxonomy_dir = round_dir_of(run_dir) / TAXONOMY_DIRNAME
-    taxonomy_dir.mkdir(parents=True, exist_ok=True)
     path = taxonomy_dir / "taxonomy.json"
-    path.write_text(json.dumps(taxonomy.model_dump(), indent=2), encoding="utf-8")
-    (taxonomy_dir / "taxonomy_source.md").write_text(
+    atomic_write_json(path, taxonomy.model_dump())
+    atomic_write_text(
+        taxonomy_dir / "taxonomy_source.md",
         "# Supplied taxonomy — Task C5 label-list control\n\n"
         f"Written directly from `configs/label_lists/{condition.dataset.dataset_id}.yaml`; no "
         "Step 5 LLM call was made for this condition. `anchor_ids` is empty by construction: the "
         "list is not goal-derived, which is the property the control isolates.\n",
-        encoding="utf-8",
     )
     logger.info("Label-list control: wrote supplied taxonomy (%d categories) to %s", len(labels), path)
     return path

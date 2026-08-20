@@ -9,37 +9,40 @@ from goalcat.config import REVIEW_DIRNAME, TAXONOMY_DIRNAME
 from goalcat.review import MergeDecision, RenameDecision, ReviewDecisions, SplitDecision
 from gui import artifacts, run_control, ui_helpers
 
-st.set_page_config(page_title="GoalCat — Revisión", page_icon="🐱", layout="wide")
-st.title("Revisión (Step 9)")
+st.set_page_config(page_title="GoalCat — Review", page_icon="🐱", layout="wide")
+st.title("Review (Step 9)")
 
 ACTIVE_KEY = "gui_active_review"
 POPEN_KEY = "_gui_review_popen"
 
 log_stems = artifacts.list_log_stems()
 if not log_stems:
-    st.info("Todavía no hay corridas en data/output/.")
+    st.info("No runs yet under data/output/.")
     st.stop()
 
 log_stem_index = log_stems.index(st.session_state["nav_log_stem"]) if st.session_state.get("nav_log_stem") in log_stems else 0
 log_stem = st.selectbox("Log", log_stems, index=log_stem_index)
 
 run_ids = artifacts.list_run_ids(log_stem)
+if not run_ids:
+    st.info("This log has no runs yet.")
+    st.stop()
 run_id_index = run_ids.index(st.session_state["nav_run_id"]) if st.session_state.get("nav_run_id") in run_ids else 0
-run_id = st.selectbox("Corrida (run_id)", run_ids, index=run_id_index)
+run_id = st.selectbox("Run (run_id)", run_ids, index=run_id_index)
 
 run_dir = artifacts.run_output_dir(log_stem, run_id)
 
 active = st.session_state.get(ACTIVE_KEY)
 if active is not None and active["run_id"] == run_id:
     st.divider()
-    st.subheader(f"Procesando revisión: ronda {active['round']}")
+    st.subheader(f"Processing review: round {active['round']}")
     ui_helpers.render_progress_panel(
         status_path=Path(active["status_path"]),
         worker_log_path=Path(active["worker_log_path"]),
         pipeline_log_path=run_dir / "pipeline.log",
         popen=st.session_state[POPEN_KEY],
         steps=[9],
-        success_message="Revisión procesada — volvé a seleccionar la corrida para ver el resultado.",
+        success_message="Review processed — reselect the run above to see the result.",
         session_state_key=ACTIVE_KEY,
         popen_state_key=POPEN_KEY,
     )
@@ -48,12 +51,12 @@ if active is not None and active["run_id"] == run_id:
 rounds = artifacts.list_rounds(run_dir)
 pending = [r for r in rounds if r["status"] == "pending_review"]
 if not pending:
-    st.info("No hay ninguna ronda esperando revisión para esta corrida.")
+    st.info("No round is awaiting review for this run.")
     st.stop()
 
 round_num = pending[-1]["round"]
 rd = artifacts.round_dir(run_dir, round_num)
-st.caption(f"Revisando ronda {round_num}.")
+st.caption(f"Reviewing round {round_num}.")
 
 index_text = artifacts.read_text(run_dir / "review_index.md")
 if index_text:
@@ -62,12 +65,13 @@ if index_text:
 
 taxonomy = artifacts.read_taxonomy(rd / TAXONOMY_DIRNAME / "taxonomy.json")
 if taxonomy is None:
-    st.error("Sin taxonomy.json en esta ronda todavía.")
+    st.error("No taxonomy.json for this round yet.")
     st.stop()
 
 category_ids = [c.category_id for c in taxonomy.categories]
 
-st.subheader("Categorías")
+st.subheader("Categories")
+ACTION_CHOICES = ["Keep", "Rename", "Merge", "Split"]
 actions: dict[str, str] = {}
 new_names: dict[str, str] = {}
 new_descriptions: dict[str, str] = {}
@@ -76,49 +80,50 @@ reasons: dict[str, str] = {}
 for c in taxonomy.categories:
     with st.expander(f"{c.category_id} — {c.name}", expanded=False):
         st.caption(c.description)
-        action = st.radio(
-            "Acción",
-            ["Mantener", "Renombrar", "Fusionar", "Dividir"],
+        action = st.pills(
+            "Action",
+            ACTION_CHOICES,
+            default="Keep",
             key=f"action_{c.category_id}",
-            horizontal=True,
         )
+        action = action or "Keep"
         actions[c.category_id] = action
-        if action == "Renombrar":
-            new_names[c.category_id] = st.text_input("Nuevo nombre", c.name, key=f"name_{c.category_id}")
+        if action == "Rename":
+            new_names[c.category_id] = st.text_input("New name", c.name, key=f"name_{c.category_id}")
             new_descriptions[c.category_id] = st.text_area(
-                "Nueva descripción", c.description, key=f"desc_{c.category_id}"
+                "New description", c.description, key=f"desc_{c.category_id}"
             )
-            reasons[c.category_id] = st.text_input("Motivo", key=f"reason_{c.category_id}")
-        elif action == "Fusionar":
+            reasons[c.category_id] = st.text_input("Reason", key=f"reason_{c.category_id}")
+        elif action == "Merge":
             others = [cid for cid in category_ids if cid != c.category_id]
-            st.multiselect("Fusionar con", others, key=f"merge_{c.category_id}")
-            reasons[c.category_id] = st.text_input("Motivo", key=f"reason_{c.category_id}")
-        elif action == "Dividir":
-            reasons[c.category_id] = st.text_input("Motivo de la división", key=f"reason_{c.category_id}")
+            st.multiselect("Merge with", others, key=f"merge_{c.category_id}")
+            reasons[c.category_id] = st.text_input("Reason", key=f"reason_{c.category_id}")
+        elif action == "Split":
+            reasons[c.category_id] = st.text_input("Reason for the split", key=f"reason_{c.category_id}")
 
 st.divider()
-notes = st.text_area("Notas generales (opcional)")
+notes = st.text_area("General notes (optional)")
 
 col_a, col_b = st.columns(2)
 with col_a:
     accept_clicked = st.button(
-        "Aceptar taxonomía tal cual",
+        "Accept taxonomy as-is",
         type="primary",
-        disabled=any(a != "Mantener" for a in actions.values()),
-        help="Sólo disponible si ninguna categoría tiene una acción pendiente.",
+        disabled=any(a != "Keep" for a in actions.values()),
+        help="Only available if no category has a pending action.",
     )
 with col_b:
     submit_clicked = st.button(
-        "Enviar decisión (revisar)",
-        disabled=all(a == "Mantener" for a in actions.values()),
+        "Submit decision (revise)",
+        disabled=all(a == "Keep" for a in actions.values()),
     )
 
 
 def _build_decisions(decision_kind: str) -> ReviewDecisions:
     renames, merges, splits = [], [], []
     for cid, action in actions.items():
-        reason = reasons.get(cid) or "(sin motivo especificado desde la GUI)"
-        if action == "Renombrar":
+        reason = reasons.get(cid) or "(no reason given from the GUI)"
+        if action == "Rename":
             renames.append(
                 RenameDecision(
                     category_id=cid,
@@ -127,11 +132,11 @@ def _build_decisions(decision_kind: str) -> ReviewDecisions:
                     reason=reason,
                 )
             )
-        elif action == "Fusionar":
+        elif action == "Merge":
             others = st.session_state.get(f"merge_{cid}", [])
             if others:
                 merges.append(MergeDecision(category_ids=[cid, *others], reason=reason))
-        elif action == "Dividir":
+        elif action == "Split":
             splits.append(SplitDecision(category_id=cid, reason=reason))
     return ReviewDecisions(decision=decision_kind, notes=notes or None, renames=renames, merges=merges, splits=splits)
 
@@ -158,9 +163,9 @@ if decisions_to_submit is not None:
     config_path = run_dir / "gui_run_config.yaml"
     if not config_path.exists():
         st.error(
-            f"No se encontró {config_path} — esta corrida no fue creada desde la GUI, así que no "
-            "hay un config propio para re-invocar Step 9. Corré Step 9 desde un script para esta "
-            "corrida (ver goalcat.pipeline.run_step9_review)."
+            f"Could not find {config_path} — this run was not created from the GUI, so there is no "
+            "config of its own to re-invoke Step 9 with. Run Step 9 from a script for this run "
+            "(see goalcat.pipeline.run_step9_review)."
         )
     else:
         popen = run_control.launch_worker(config_path, run_id, "9", round_num, rd)

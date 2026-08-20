@@ -5,9 +5,11 @@ import json
 import logging
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 from pydantic import BaseModel, Field, model_validator
 
+from ..atomic_io import atomic_write_csv, atomic_write_json, atomic_write_text
 from ..config import PipelineConfig, load_prompt_template
 from .llm_backend import LLMBackend, RunMetadata
 from .taxonomy import Taxonomy, _resolve_anchor_labels
@@ -245,22 +247,34 @@ def check_assignment_grounding(assignments_df: pd.DataFrame, taxonomy: Taxonomy)
     return problems
 
 
-def _build_distance_lookup(distances_df: pd.DataFrame, distance_column: str) -> dict[tuple[str, str], float]:
-    lookup: dict[tuple[str, str], float] = {}
-    for a, b, d in zip(distances_df["variant_id_a"], distances_df["variant_id_b"], distances_df[distance_column]):
-        lookup[(a, b)] = d
-        lookup[(b, a)] = d
-    return lookup
+def _build_distance_matrix(distances_df: pd.DataFrame, distance_column: str, variant_order: list[str]) -> np.ndarray:
+    """Dense n x n float32 lookup (diagonal implicitly 0.0, since distances_df never has a
+    self-pair), indexed by position in variant_order — replaces a dict[(a, b)] -> float that held
+    two entries per pair (≈22 GiB at BPIC 2019 scale: 11,973 variants, 143.3M entries) with an
+    array with the same O(1) lookup at ≈573 MB (11,973² x 4 bytes) for that scale, scaling as
+    O(n²) memory either way but without the multi-hundred-byte-per-entry dict overhead.
+
+    variant_order fixes the array's index space to assignments_df's own row order (see callers),
+    the same order the replaced dict-based version implicitly walked via category_of.items() —
+    preserved so an exact-distance tie in argmin/medoid selection below still resolves to the
+    same candidate as before, not just to the same distance value.
+    """
+    index = {variant_id: i for i, variant_id in enumerate(variant_order)}
+    n = len(variant_order)
+    matrix = np.zeros((n, n), dtype=np.float32)
+    codes_a = distances_df["variant_id_a"].map(index).to_numpy()
+    codes_b = distances_df["variant_id_b"].map(index).to_numpy()
+    values = distances_df[distance_column].to_numpy(dtype=np.float32)
+    matrix[codes_a, codes_b] = values
+    matrix[codes_b, codes_a] = values
+    return matrix
 
 
-def _distance(lookup: dict[tuple[str, str], float], a: str, b: str) -> float:
-    return 0.0 if a == b else lookup[(a, b)]
-
-
-def _category_medoid(members: list[str], lookup: dict[tuple[str, str], float]) -> str:
-    if len(members) == 1:
-        return members[0]
-    return min(members, key=lambda cand: sum(_distance(lookup, cand, other) for other in members if other != cand))
+def _category_medoid(member_indices: np.ndarray, matrix: np.ndarray) -> int:
+    if len(member_indices) == 1:
+        return int(member_indices[0])
+    sub = matrix[np.ix_(member_indices, member_indices)]
+    return int(member_indices[np.argmin(sub.sum(axis=1))])
 
 
 def _per_variant_distance_stats(
@@ -276,40 +290,61 @@ def _per_variant_distance_stats(
     # as pandas' own NA sentinel (pd.isna() == True), not Python None — pandas 3's string-dtype
     # inference silently converts None to it on DataFrame construction, so every "is this a
     # residual" check here must use pd.isna()/pd.notna(), never `is None`.
-    lookup = _build_distance_lookup(distances_df, distance_column)
+    variant_order = assignments_df["variant_id"].tolist()
     category_of = dict(zip(assignments_df["variant_id"], assignments_df["category_id"]))
-    members_by_category: dict[str, list[str]] = {}
+    index = {variant_id: i for i, variant_id in enumerate(variant_order)}
+    n = len(variant_order)
+    matrix = _build_distance_matrix(distances_df, distance_column, variant_order)
+
+    # Every categorized variant gets a stable integer category code (residual variants keep -1),
+    # so "same category" and "is a valid target" become vectorized boolean masks over the whole
+    # n x n matrix at once, instead of an O(n) Python-level min(..., key=...) scan per variant
+    # (an O(n^2) Python loop this replaces — ~143.3M candidate checks at BPIC 2019 scale).
+    cat_codes = np.full(n, -1, dtype=np.int64)
+    category_code_of: dict[str, int] = {}
+    members_by_category: dict[str, list[int]] = {}
     for variant_id, category_id in category_of.items():
         if pd.notna(category_id):
-            members_by_category.setdefault(category_id, []).append(variant_id)
-    medoid_by_category = {cat: _category_medoid(members, lookup) for cat, members in members_by_category.items()}
+            code = category_code_of.setdefault(category_id, len(category_code_of))
+            cat_codes[index[variant_id]] = code
+            members_by_category.setdefault(category_id, []).append(index[variant_id])
+
+    valid_target = cat_codes != -1
+    same_category = cat_codes[:, None] == cat_codes[None, :]
+    candidate_mask = valid_target[None, :] & ~same_category
+    masked = np.where(candidate_mask, matrix, np.inf)
+    nearest_idx = masked.argmin(axis=1)
+    has_candidate = candidate_mask.any(axis=1)
+    nearest_distance = masked[np.arange(n), nearest_idx]
+
+    medoid_idx_by_category = {
+        category: _category_medoid(np.array(members, dtype=np.int64), matrix)
+        for category, members in members_by_category.items()
+    }
 
     rows = []
-    for variant_id, own_category in category_of.items():
+    for variant_id in variant_order:
+        i = index[variant_id]
+        own_category = category_of[variant_id]
         if pd.notna(own_category):
-            medoid_distance = _distance(lookup, variant_id, medoid_by_category[own_category])
+            medoid_distance = float(matrix[i, medoid_idx_by_category[own_category]])
         else:
             medoid_distance = float("nan")
 
-        candidates = [
-            other_id
-            for other_id, other_category in category_of.items()
-            if pd.notna(other_category) and other_category != own_category and other_id != variant_id
-        ]
-        if candidates:
-            nearest_id = min(candidates, key=lambda cand: _distance(lookup, variant_id, cand))
-            nearest_category = category_of[nearest_id]
-            nearest_distance = _distance(lookup, variant_id, nearest_id)
+        if has_candidate[i]:
+            nearest_variant_id = variant_order[nearest_idx[i]]
+            nearest_category = category_of[nearest_variant_id]
+            nearest_distance_i = float(nearest_distance[i])
         else:
             nearest_category = None
-            nearest_distance = float("nan")
+            nearest_distance_i = float("nan")
 
         rows.append(
             {
                 "variant_id": variant_id,
                 "distance_to_category_medoid": medoid_distance,
                 "nearest_other_category_id": nearest_category,
-                "nearest_other_category_distance": nearest_distance,
+                "nearest_other_category_distance": nearest_distance_i,
             }
         )
     return pd.DataFrame(rows)
@@ -332,9 +367,7 @@ def _category_pairwise_stats(
             ((df["category_a"] == category) & (df["category_b"] != category))
             | ((df["category_b"] == category) & (df["category_a"] != category))
         ].copy()
-        inter["other_category"] = inter.apply(
-            lambda r: r["category_b"] if r["category_a"] == category else r["category_a"], axis=1
-        )
+        inter["other_category"] = np.where(inter["category_a"] == category, inter["category_b"], inter["category_a"])
 
         nearest_other_id = None
         nearest_other_mean = float("nan")
@@ -533,8 +566,6 @@ def save_assignment_outputs(
     assignment prompt rather than a single example. Empty on a fully-resumed run that made zero
     new calls, which leaves any prompt files an earlier call already wrote untouched: each call
     against a run directory only covers its own pending subset, so nothing here is ever cleared."""
-    output_dir.mkdir(parents=True, exist_ok=True)
-
     structural_stats = _per_variant_distance_stats(assignments_df, structural_df, "distance")
     profile_stats = _per_variant_distance_stats(assignments_df, profile_df, "profile_distance_mean")
 
@@ -556,17 +587,16 @@ def save_assignment_outputs(
         )[["variant_id", "profile_distance_to_category_medoid", "nearest_other_category_profile_distance"]],
         on="variant_id",
     )
-    enriched.to_csv(output_dir / "assignments.csv", index=False)
+    atomic_write_csv(enriched, output_dir / "assignments.csv", index=False)
 
-    structural_df.to_csv(output_dir / "structural_distances.csv", index=False)
-    profile_df.to_csv(output_dir / "profile_distances.csv", index=False)
+    atomic_write_csv(structural_df, output_dir / "structural_distances.csv", index=False)
+    atomic_write_csv(profile_df, output_dir / "profile_distances.csv", index=False)
 
-    (output_dir / "assignment_report.md").write_text(report_markdown, encoding="utf-8")
+    atomic_write_text(output_dir / "assignment_report.md", report_markdown)
     if batch_prompts:
         prompts_dir = output_dir / "assignment_prompts"
-        prompts_dir.mkdir(parents=True, exist_ok=True)
         for first_variant_id, last_variant_id, prompt in batch_prompts:
-            (prompts_dir / f"{first_variant_id}_{last_variant_id}.txt").write_text(prompt, encoding="utf-8")
+            atomic_write_text(prompts_dir / f"{first_variant_id}_{last_variant_id}.txt", prompt)
 
     metadata_payload = {
         "calls": [m.model_dump() for m in metadata_list],
@@ -574,4 +604,4 @@ def save_assignment_outputs(
         "total_output_tokens": sum(m.output_tokens or 0 for m in metadata_list),
         "total_latency_seconds": sum(m.latency_seconds for m in metadata_list),
     }
-    (output_dir / "assignment_run_metadata.json").write_text(json.dumps(metadata_payload, indent=2), encoding="utf-8")
+    atomic_write_json(output_dir / "assignment_run_metadata.json", metadata_payload)

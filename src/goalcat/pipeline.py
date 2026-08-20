@@ -87,12 +87,33 @@ def _get_or_build_sample(config: PipelineConfig, logger: logging.Logger) -> pd.D
     return sample_df
 
 
-def run_step1_variants(config_path: str | Path | None = None, run_id: str | None = None) -> pd.DataFrame:
-    """Variant extraction (pipeline Step 1): load the log, group traces by activity sequence."""
+def run_step1_variants(
+    config_path: str | Path | None = None, run_id: str | None = None, force: bool = False
+) -> pd.DataFrame:
+    """Variant extraction (pipeline Step 1): load the log, group traces by activity sequence.
+
+    force=False (default): if this run directory's variants.csv already exists, reuses it instead
+    of recomputing — matching the resumability every OTHER step already gets when it needs
+    variants.csv as an input dependency (via _get_or_build_variants()). Without this, a driver
+    that retries a full run after a later step failed would silently redo every earlier step's
+    work on each retry, even though its output is already correct and on disk (measured cost:
+    ~4-5 minutes of redone Steps 1-4 work on BPIC2019's full log). Pass force=True to recompute
+    on purpose (e.g. after a code change to extract_variants()).
+    """
     config = load_config(config_path, run_id)
     logger = get_logger(config)
 
     logger.info("Step 1 (variant extraction) started for log: %s", config.log_path)
+
+    output_path = config.variants_dir / "variants.csv"
+    if not force and output_path.exists():
+        logger.info(
+            "Step 1: reusing existing variants.csv in this run directory (pass force=True to "
+            "recompute): %s", output_path,
+        )
+        variants_df = load_variants(output_path)
+        logger.info("Step 1 complete (reused).")
+        return variants_df
 
     df = load_event_log(config)
     num_cases = df[config.case_id_key].nunique()
@@ -108,7 +129,6 @@ def run_step1_variants(config_path: str | Path | None = None, run_id: str | None
         top["frequency_pct"] * 100,
     )
 
-    output_path = config.variants_dir / "variants.csv"
     save_variants(variants_df, output_path)
     logger.info("Saved variants to: %s", output_path)
 
@@ -120,12 +140,29 @@ def run_step2_profiling(
     config_path: str | Path | None = None,
     run_id: str | None = None,
     variants_df: pd.DataFrame | None = None,
+    force: bool = False,
 ) -> pd.DataFrame:
-    """Multi-view profiling (pipeline Step 2): duration, rework, outcome, resource per variant."""
+    """Multi-view profiling (pipeline Step 2): duration, rework, outcome, resource per variant.
+
+    force=False (default): reuses this run directory's profiles.csv/profiles.json if both already
+    exist, instead of recomputing — see run_step1_variants()'s docstring for why. Pass force=True
+    to recompute on purpose.
+    """
     config = load_config(config_path, run_id)
     logger = get_logger(config)
 
     logger.info("Step 2 (multi-view profiling) started for log: %s", config.log_path)
+
+    csv_path = config.profiling_dir / "profiles.csv"
+    json_path = config.profiling_dir / "profiles.json"
+    if not force and csv_path.exists() and json_path.exists():
+        logger.info(
+            "Step 2: reusing existing profiles.csv/profiles.json in this run directory (pass "
+            "force=True to recompute): %s", csv_path,
+        )
+        profiles_df = load_profiles(csv_path, json_path)
+        logger.info("Step 2 complete (reused).")
+        return profiles_df
 
     if variants_df is None:
         variants_df = _get_or_build_variants(config, logger)
@@ -142,8 +179,6 @@ def run_step2_profiling(
         top["duration_seconds_median"],
     )
 
-    csv_path = config.profiling_dir / "profiles.csv"
-    json_path = config.profiling_dir / "profiles.json"
     save_profiles(profiles_df, csv_path, json_path)
     logger.info("Saved profiles to: %s and %s", csv_path, json_path)
 
@@ -155,12 +190,28 @@ def run_step3_textualization(
     config_path: str | Path | None = None,
     run_id: str | None = None,
     profiles_df: pd.DataFrame | None = None,
+    force: bool = False,
 ) -> pd.DataFrame:
-    """Textualization (pipeline Step 3): render each variant's profile as a narrative via LUPIN."""
+    """Textualization (pipeline Step 3): render each variant's profile as a narrative via LUPIN.
+
+    force=False (default): reuses this run directory's narratives.csv if it already exists,
+    instead of recomputing — see run_step1_variants()'s docstring for why. Pass force=True to
+    recompute on purpose.
+    """
     config = load_config(config_path, run_id)
     logger = get_logger(config)
 
     logger.info("Step 3 (textualization) started for log: %s", config.log_path)
+
+    output_path = config.textualization_dir / "narratives.csv"
+    if not force and output_path.exists():
+        logger.info(
+            "Step 3: reusing existing narratives.csv in this run directory (pass force=True to "
+            "recompute): %s", output_path,
+        )
+        narratives_df = load_narratives(output_path)
+        logger.info("Step 3 complete (reused).")
+        return narratives_df
 
     if profiles_df is None:
         profiles_df = _get_or_build_profiles(config, logger)
@@ -174,7 +225,6 @@ def run_step3_textualization(
         top_narrative[:120],
     )
 
-    output_path = config.textualization_dir / "narratives.csv"
     save_narratives(narratives_df, output_path)
     logger.info("Saved narratives to: %s", output_path)
 
@@ -187,12 +237,28 @@ def run_step4_sampling(
     run_id: str | None = None,
     profiles_df: pd.DataFrame | None = None,
     narratives_df: pd.DataFrame | None = None,
+    force: bool = False,
 ) -> pd.DataFrame:
-    """Narrative sampling (pipeline Step 4): draw frequent/rare/extreme cases for calibration."""
+    """Narrative sampling (pipeline Step 4): draw frequent/rare/extreme cases for calibration.
+
+    force=False (default): reuses this run directory's narrative_sample.csv if it already exists,
+    instead of recomputing — see run_step1_variants()'s docstring for why. Pass force=True to
+    recompute on purpose.
+    """
     config = load_config(config_path, run_id)
     logger = get_logger(config)
 
     logger.info("Step 4 (narrative sampling) started for log: %s", config.log_path)
+
+    output_path = config.sampling_dir / "narrative_sample.csv"
+    if not force and output_path.exists():
+        logger.info(
+            "Step 4: reusing existing narrative_sample.csv in this run directory (pass "
+            "force=True to recompute): %s", output_path,
+        )
+        sample_df = load_narrative_sample(output_path)
+        logger.info("Step 4 complete (reused).")
+        return sample_df
 
     if profiles_df is None or narratives_df is None:
         profiles_df, narratives_df = _get_or_build_narratives(config, logger)
@@ -206,7 +272,6 @@ def run_step4_sampling(
         config.sample_extreme_n,
     )
 
-    output_path = config.sampling_dir / "narrative_sample.csv"
     save_narrative_sample(sample_df, output_path)
     logger.info("Saved narrative sample to: %s", output_path)
 

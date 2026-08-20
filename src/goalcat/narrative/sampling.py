@@ -4,6 +4,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from ..atomic_io import atomic_write_csv
 from ..config import PipelineConfig
 
 _PROFILE_COLUMNS = [
@@ -47,8 +48,7 @@ def sample_narratives(profiles_df: pd.DataFrame, narratives_df: pd.DataFrame, co
 
 
 def save_narrative_sample(sample_df: pd.DataFrame, path: Path) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    sample_df.to_csv(path, index=False)
+    atomic_write_csv(sample_df, path, index=False)
 
 
 def load_narrative_sample(path: Path) -> pd.DataFrame:

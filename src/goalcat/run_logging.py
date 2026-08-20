@@ -5,6 +5,7 @@ import logging
 import os
 import platform
 
+from .atomic_io import atomic_write_json
 from .config import PipelineConfig, config_snapshot_dict
 
 
@@ -74,8 +75,7 @@ def _snapshot_or_check_config(config: PipelineConfig, logger: logging.Logger) ->
     current = config_snapshot_dict(config)
 
     if not snapshot_path.exists():
-        snapshot_path.parent.mkdir(parents=True, exist_ok=True)
-        snapshot_path.write_text(json.dumps(current, indent=2), encoding="utf-8")
+        atomic_write_json(snapshot_path, current)
         return
 
     saved = json.loads(snapshot_path.read_text(encoding="utf-8"))

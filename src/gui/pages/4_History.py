@@ -4,12 +4,12 @@ import streamlit as st
 
 from gui import artifacts
 
-st.set_page_config(page_title="GoalCat — Historial", page_icon="🐱", layout="wide")
-st.title("Historial de corridas")
+st.set_page_config(page_title="GoalCat — History", page_icon="🐱", layout="wide")
+st.title("Run history")
 
 log_stems = artifacts.list_log_stems()
 if not log_stems:
-    st.info("Todavía no hay corridas en data/output/.")
+    st.info("No runs yet under data/output/.")
     st.stop()
 
 rows = []
@@ -23,9 +23,9 @@ for log_stem in log_stems:
             {
                 "log": log_stem,
                 "run_id": run_id,
-                "rondas": len(rounds),
-                "estado_ultima_ronda": latest["status"] if latest else "(sin rondas)",
-                "aceptado": "Sí" if latest and latest["status"] == "accepted" else "No",
+                "rounds": len(rounds),
+                "latest_round_status": latest["status"] if latest else "(no rounds)",
+                "accepted": "Yes" if latest and latest["status"] == "accepted" else "No",
                 "taxonomy_mode": snapshot.get("taxonomy_mode", "?"),
                 "sample_frequent_n": snapshot.get("sample_frequent_n", "?"),
                 "sample_rare_n": snapshot.get("sample_rare_n", "?"),
@@ -36,17 +36,17 @@ for log_stem in log_stems:
 st.dataframe(rows, width="stretch")
 
 st.divider()
-st.subheader("Abrir una corrida")
+st.subheader("Open a run")
 labels = [f"{r['log']} / {r['run_id']}" for r in rows]
-choice = st.selectbox("Corrida", labels)
+choice = st.selectbox("Run", labels)
 chosen = rows[labels.index(choice)]
 st.session_state["nav_log_stem"] = chosen["log"]
 st.session_state["nav_run_id"] = chosen["run_id"]
 
 col1, col2 = st.columns(2)
 with col1:
-    if st.button("Ver en Resultados"):
-        st.switch_page("pages/2_Resultados.py")
+    if st.button("View in Results"):
+        st.switch_page("pages/2_Results.py")
 with col2:
-    if st.button("Ver en Revisión", disabled=chosen["estado_ultima_ronda"] != "pending_review"):
-        st.switch_page("pages/3_Revision.py")
+    if st.button("View in Review", disabled=chosen["latest_round_status"] != "pending_review"):
+        st.switch_page("pages/3_Review.py")

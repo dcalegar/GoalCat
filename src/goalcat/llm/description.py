@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import asyncio
-import json
 import logging
 from pathlib import Path
 
@@ -9,6 +8,7 @@ import pandas as pd
 import pm4py
 from pydantic import BaseModel, Field, model_validator
 
+from ..atomic_io import atomic_write_csv, atomic_write_json, atomic_write_text
 from ..config import PipelineConfig, load_prompt_template
 from ..discovery import build_category_sublogs
 from .llm_backend import LLMBackend, RunMetadata
@@ -341,12 +341,10 @@ def build_description_report(
 def save_description_outputs(
     descriptions_df: pd.DataFrame, metadata: RunMetadata | None, prompt: str, report_markdown: str, output_dir: Path
 ) -> None:
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    descriptions_df.to_csv(output_dir / "descriptions.csv", index=False)
-    (output_dir / "description_report.md").write_text(report_markdown, encoding="utf-8")
+    atomic_write_csv(descriptions_df, output_dir / "descriptions.csv", index=False)
+    atomic_write_text(output_dir / "description_report.md", report_markdown)
     if prompt:
-        (output_dir / "description_prompt.txt").write_text(prompt, encoding="utf-8")
+        atomic_write_text(output_dir / "description_prompt.txt", prompt)
 
     metadata_payload = {"call": metadata.model_dump() if metadata is not None else None}
-    (output_dir / "description_run_metadata.json").write_text(json.dumps(metadata_payload, indent=2), encoding="utf-8")
+    atomic_write_json(output_dir / "description_run_metadata.json", metadata_payload)

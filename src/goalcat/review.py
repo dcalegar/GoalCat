@@ -12,6 +12,7 @@ import pm4py
 import yaml
 from pydantic import BaseModel, Field, ValidationError, model_validator
 
+from .atomic_io import atomic_output_path, atomic_write_csv, atomic_write_json, atomic_write_text
 from .config import (
     ASSIGNMENT_DIRNAME,
     DESCRIPTION_DIRNAME,
@@ -138,8 +139,7 @@ def write_review_template(taxonomy: Taxonomy, config: PipelineConfig, logger: lo
         round=config.round,
         category_ids=", ".join(c.category_id for c in taxonomy.categories),
     )
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(body, encoding="utf-8")
+    atomic_write_text(path, body)
     logger.info("Wrote review decisions template: %s", path)
     return path
 
@@ -228,15 +228,15 @@ def rerender_reports_after_rename(
     # discovery_metrics.csv directly would still see the pre-rename name without this.
     name_by_id = {c.category_id: c.name for c in taxonomy.categories}
     metrics_df["name"] = metrics_df["category_id"].map(name_by_id).fillna(metrics_df["name"])
-    metrics_df.to_csv(required["discovery_metrics.csv"], index=False)
+    atomic_write_csv(metrics_df, required["discovery_metrics.csv"], index=False)
 
     assignment_report = build_assignment_report(
         taxonomy, assignments_df, profiles_df[["variant_id", "frequency"]], structural_df, profile_df, config
     )
-    (config.assignment_dir / "assignment_report.md").write_text(assignment_report, encoding="utf-8")
+    atomic_write_text(config.assignment_dir / "assignment_report.md", assignment_report)
 
     discovery_report = build_discovery_report(metrics_df, assignments_df, variants_df, taxonomy, config)
-    (config.discovery_dir / "discovery_report.md").write_text(discovery_report, encoding="utf-8")
+    atomic_write_text(config.discovery_dir / "discovery_report.md", discovery_report)
 
     descriptions_path = config.description_dir / "descriptions.csv"
     if descriptions_path.exists():
@@ -244,7 +244,7 @@ def rerender_reports_after_rename(
         description_report = build_description_report(
             taxonomy, descriptions_df, metrics_df, config, stale_goal_alignment_category_ids
         )
-        (config.description_dir / "description_report.md").write_text(description_report, encoding="utf-8")
+        atomic_write_text(config.description_dir / "description_report.md", description_report)
 
     logger.info("Re-rendered assignment/discovery/description reports after rename.")
 
@@ -321,8 +321,7 @@ def _load_or_init_round_info(config: PipelineConfig) -> dict:
 
 
 def _save_round_info(review_dir: Path, info: dict) -> None:
-    review_dir.mkdir(parents=True, exist_ok=True)
-    _round_info_path(review_dir).write_text(json.dumps(info, indent=2), encoding="utf-8")
+    atomic_write_json(_round_info_path(review_dir), info)
 
 
 def list_rounds(config: PipelineConfig) -> list[dict]:
@@ -414,7 +413,7 @@ def write_review_index(config: PipelineConfig) -> None:
             "",
         ]
 
-    config.review_index_path.write_text("\n".join(lines), encoding="utf-8")
+    atomic_write_text(config.review_index_path, "\n".join(lines))
 
 
 def save_partitioned_log(
@@ -431,27 +430,27 @@ def save_partitioned_log(
     0, not silently absent" convention. .xes.gz (not .csv) matches the original log's own format
     and structurally resolves case:concept:name trailing as a flat column — pm4py.write_xes()
     correctly promotes it to each <trace> tag instead (verified directly before adopting this)."""
-    config.final_dir.mkdir(parents=True, exist_ok=True)
-
     sublogs = build_category_sublogs(df, variants_df, assignments_df, config)
     for category in taxonomy.categories:
         sub_df = sublogs.get(category.category_id, df.iloc[0:0])
+        with atomic_output_path(config.final_dir / f"{category.category_id}.xes.gz") as tmp:
+            pm4py.write_xes(
+                sub_df,
+                str(tmp),
+                case_id_key=config.case_id_key,
+                activity_key=config.activity_key,
+                timestamp_key=config.timestamp_key,
+            )
+
+    residual_df = build_residual_sublog(df, variants_df, assignments_df, config)
+    with atomic_output_path(config.final_dir / "residual.xes.gz") as tmp:
         pm4py.write_xes(
-            sub_df,
-            str(config.final_dir / f"{category.category_id}.xes.gz"),
+            residual_df,
+            str(tmp),
             case_id_key=config.case_id_key,
             activity_key=config.activity_key,
             timestamp_key=config.timestamp_key,
         )
-
-    residual_df = build_residual_sublog(df, variants_df, assignments_df, config)
-    pm4py.write_xes(
-        residual_df,
-        str(config.final_dir / "residual.xes.gz"),
-        case_id_key=config.case_id_key,
-        activity_key=config.activity_key,
-        timestamp_key=config.timestamp_key,
-    )
 
     logger.info("Saved partitioned log to: %s", config.final_dir)
 
@@ -482,7 +481,7 @@ def write_final_manifest(config: PipelineConfig, taxonomy: Taxonomy, logger: log
         f"For prose descriptions and goal alignment, see [`{desc_report}`]({desc_report}).\n\n"
         f"Full revision history: [`../{REVIEW_INDEX_FILENAME}`](../{REVIEW_INDEX_FILENAME}).\n"
     )
-    (config.final_dir / "README.md").write_text(body, encoding="utf-8")
+    atomic_write_text(config.final_dir / "README.md", body)
     logger.info("Wrote final manifest: %s", config.final_dir / "README.md")
 
 
@@ -544,7 +543,7 @@ def finalize_run(
     discovery_report = build_discovery_report(
         metrics_df, assignments_df, variants_df, taxonomy, config, models_present=False
     )
-    (config.discovery_dir / "discovery_report.md").write_text(discovery_report, encoding="utf-8")
+    atomic_write_text(config.discovery_dir / "discovery_report.md", discovery_report)
 
     write_final_manifest(config, taxonomy, logger)
 

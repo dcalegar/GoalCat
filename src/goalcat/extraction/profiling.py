@@ -7,6 +7,7 @@ from pathlib import Path
 import pandas as pd
 import pm4py
 
+from ..atomic_io import atomic_write_csv, atomic_write_json
 from ..config import PipelineConfig
 
 
@@ -91,8 +92,6 @@ def profile_variants(df: pd.DataFrame, variants_df: pd.DataFrame, config: Pipeli
 
 def save_profiles(profiles_df: pd.DataFrame, csv_path: Path, json_path: Path) -> None:
     """Write the flat summary as CSV and the nested representative-case events as JSON."""
-    csv_path.parent.mkdir(parents=True, exist_ok=True)
-
     csv_columns = [
         "variant_id",
         "activity_sequence",
@@ -112,7 +111,7 @@ def save_profiles(profiles_df: pd.DataFrame, csv_path: Path, json_path: Path) ->
     export_df["activity_sequence"] = export_df["activity_sequence"].apply(">".join)
     export_df["rework"] = export_df["rework"].apply(_join_counts)
     export_df["resource_distribution"] = export_df["resource_distribution"].apply(_join_counts)
-    export_df.to_csv(csv_path, index=False)
+    atomic_write_csv(export_df, csv_path, index=False)
 
     json_records = [
         {
@@ -123,8 +122,7 @@ def save_profiles(profiles_df: pd.DataFrame, csv_path: Path, json_path: Path) ->
         }
         for _, row in profiles_df.iterrows()
     ]
-    with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(json_records, f, indent=2)
+    atomic_write_json(json_path, json_records)
 
 
 def _parse_counts(joined: str) -> dict[str, int]:

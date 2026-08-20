@@ -15,48 +15,67 @@ from goalcat.config import (
 )
 from gui import artifacts
 
-st.set_page_config(page_title="GoalCat — Resultados", page_icon="🐱", layout="wide")
-st.title("Resultados")
+st.set_page_config(page_title="GoalCat — Results", page_icon="🐱", layout="wide")
+st.title("Results")
 
 
 def _show_df(df) -> None:
     if df is None:
-        st.info("Sin datos.")
+        st.info("No data.")
     elif df.empty:
-        st.info("Tabla vacía.")
+        st.info("Empty table.")
     else:
         st.dataframe(df, width="stretch")
 
 
 log_stems = artifacts.list_log_stems()
 if not log_stems:
-    st.info("Todavía no hay corridas en data/output/.")
+    st.info("No runs yet under data/output/.")
     st.stop()
 
 log_stem_index = log_stems.index(st.session_state["nav_log_stem"]) if st.session_state.get("nav_log_stem") in log_stems else 0
 log_stem = st.selectbox("Log", log_stems, index=log_stem_index)
 
 run_ids = artifacts.list_run_ids(log_stem)
+if not run_ids:
+    st.info("This log has no runs yet.")
+    st.stop()
 run_id_index = run_ids.index(st.session_state["nav_run_id"]) if st.session_state.get("nav_run_id") in run_ids else 0
-run_id = st.selectbox("Corrida (run_id)", run_ids, index=run_id_index)
+run_id = st.selectbox("Run (run_id)", run_ids, index=run_id_index)
 
 run_dir = artifacts.run_output_dir(log_stem, run_id)
 rounds = artifacts.list_rounds(run_dir)
 if not rounds:
-    st.warning("Esta corrida todavía no tiene ninguna ronda (Steps 5-9) completa.")
+    st.warning("This run has no round (Steps 5-9) complete yet.")
     st.stop()
 
-round_labels = [f"Ronda {r['round']} — {r['status']}" for r in rounds]
-round_choice = st.selectbox("Ronda", round_labels, index=len(round_labels) - 1)
+round_labels = [f"Round {r['round']} — {r['status']}" for r in rounds]
+round_choice = st.selectbox("Round", round_labels, index=len(round_labels) - 1)
 round_num = rounds[round_labels.index(round_choice)]["round"]
 rd = artifacts.round_dir(run_dir, round_num)
 
+variants_df = artifacts.read_csv(run_dir / VARIANTS_DIRNAME / "variants.csv")
+taxonomy = artifacts.read_taxonomy(rd / TAXONOMY_DIRNAME / "taxonomy.json")
+if taxonomy is None:
+    taxonomy = artifacts.read_taxonomy(run_dir / FINAL_DIRNAME / "taxonomy.json")
+assignments_df = artifacts.read_csv(rd / ASSIGNMENT_DIRNAME / "assignments.csv")
+
+m1, m2, m3, m4 = st.columns(4)
+m1.metric("Variants", len(variants_df) if variants_df is not None else "—")
+m2.metric("Categories", len(taxonomy.categories) if taxonomy is not None else "—")
+if assignments_df is not None and "category_id" in assignments_df.columns:
+    residual = int((assignments_df["category_id"].isna() | (assignments_df["category_id"] == "residual")).sum())
+    m3.metric("Residual narratives", residual)
+else:
+    m3.metric("Residual narratives", "—")
+m4.metric("Round", round_num)
+
 tabs = st.tabs(
-    ["Variantes", "Perfiles", "Narrativas", "Muestra", "Taxonomía", "Asignación", "Discovery", "Descripción", "Final"]
+    ["Variants", "Profiles", "Narratives", "Sample", "Taxonomy", "Assignment", "Discovery", "Description", "Final"]
 )
 
 with tabs[0]:
-    _show_df(artifacts.read_csv(run_dir / VARIANTS_DIRNAME / "variants.csv"))
+    _show_df(variants_df)
 
 with tabs[1]:
     _show_df(artifacts.read_csv(run_dir / PROFILING_DIRNAME / "profiles.csv"))
@@ -68,11 +87,8 @@ with tabs[3]:
     _show_df(artifacts.read_csv(run_dir / SAMPLING_DIRNAME / "narrative_sample.csv"))
 
 with tabs[4]:
-    taxonomy = artifacts.read_taxonomy(rd / TAXONOMY_DIRNAME / "taxonomy.json")
     if taxonomy is None:
-        taxonomy = artifacts.read_taxonomy(run_dir / FINAL_DIRNAME / "taxonomy.json")
-    if taxonomy is None:
-        st.info("Sin taxonomía todavía.")
+        st.info("No taxonomy yet.")
     else:
         st.dataframe(
             [{"category_id": c.category_id, "name": c.name, "description": c.description} for c in taxonomy.categories],
@@ -81,14 +97,13 @@ with tabs[4]:
 
 with tabs[5]:
     report = artifacts.read_text(rd / ASSIGNMENT_DIRNAME / "assignment_report.md")
-    df = artifacts.read_csv(rd / ASSIGNMENT_DIRNAME / "assignments.csv")
     if report:
         st.markdown(report)
-    if df is not None:
+    if assignments_df is not None:
         with st.expander("assignments.csv"):
-            _show_df(df)
-    if not report and df is None:
-        st.info("Sin datos.")
+            _show_df(assignments_df)
+    if not report and assignments_df is None:
+        st.info("No data.")
 
 with tabs[6]:
     report = artifacts.read_text(rd / DISCOVERY_DIRNAME / "discovery_report.md")
@@ -105,17 +120,17 @@ with tabs[6]:
             pnml = img.with_suffix(".pnml")
             if pnml.exists():
                 st.download_button(
-                    f"Descargar {pnml.name}", pnml.read_bytes(), file_name=pnml.name, key=f"pnml_{img.stem}"
+                    f"Download {pnml.name}", pnml.read_bytes(), file_name=pnml.name, key=f"pnml_{img.stem}"
                 )
     if not report and metrics is None:
-        st.info("Sin datos (¿ronda ya aceptada? los modelos se borran al aceptar — ver pestaña Final).")
+        st.info("No data (round already accepted? models are deleted on acceptance — see the Final tab).")
 
 with tabs[7]:
     report = artifacts.read_text(rd / DESCRIPTION_DIRNAME / "description_report.md")
     if report:
         st.markdown(report)
     else:
-        st.info("Sin datos.")
+        st.info("No data.")
 
 with tabs[8]:
     final_dir = run_dir / FINAL_DIRNAME
@@ -123,6 +138,6 @@ with tabs[8]:
     if readme:
         st.markdown(readme)
         for f in sorted(final_dir.glob("*.xes.gz")):
-            st.download_button(f"Descargar {f.name}", f.read_bytes(), file_name=f.name, key=f"xes_{f.name}")
+            st.download_button(f"Download {f.name}", f.read_bytes(), file_name=f.name, key=f"xes_{f.name}")
     else:
-        st.info("Esta corrida todavía no fue aceptada (sin final/).")
+        st.info("This run has not been accepted yet (no final/).")

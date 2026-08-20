@@ -7,6 +7,7 @@ from pathlib import Path
 
 import yaml
 
+from goalcat.atomic_io import atomic_output_path, atomic_write_text
 from goalcat.config import REPO_ROOT
 
 LOGS_DIR = REPO_ROOT / "data" / "logs"
@@ -106,5 +107,23 @@ def build_config_dict(
 
 def write_run_config(config_dict: dict, path: Path) -> None:
     """Writes a fresh YAML for this run only — never overwrites a versioned config.yaml."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(yaml.safe_dump(config_dict, sort_keys=False), encoding="utf-8")
+    atomic_write_text(path, yaml.safe_dump(config_dict, sort_keys=False))
+
+
+def _save_upload(dest_dir: Path, filename: str, data: bytes, allowed_suffixes: tuple[str, ...]) -> Path:
+    if not any(filename.endswith(suffix) for suffix in allowed_suffixes):
+        raise ValueError(f"'{filename}' must end with one of {allowed_suffixes}.")
+    dest = dest_dir / filename
+    if dest.exists():
+        raise FileExistsError(f"'{filename}' already exists in {dest_dir} — this is only for files not yet loaded.")
+    with atomic_output_path(dest) as tmp:
+        tmp.write_bytes(data)
+    return dest
+
+
+def save_uploaded_log(filename: str, data: bytes) -> Path:
+    return _save_upload(LOGS_DIR, filename, data, (".xes.gz", ".xes"))
+
+
+def save_uploaded_goal_model(filename: str, data: bytes) -> Path:
+    return _save_upload(GOALS_DIR, filename, data, (".jucm",))

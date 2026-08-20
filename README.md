@@ -182,28 +182,51 @@ streamlit run src/gui/app.py
 ```
 
 This opens `http://localhost:8501` in your browser. Everything runs on your machine — there is no
-hosted/paid Streamlit service involved. Four pages, in the sidebar:
+hosted/paid Streamlit service involved. Five pages, in the sidebar:
 
-- **Nueva corrida** — pick a log (`data/logs/`) and goal model (`data/goals/`), a form pre-filled
-  from the matching case study's config (or the top-level default) for everything else
-  (`case_id_key`/`activity_key`/..., sample sizes, `taxonomy_mode`, LLM model/temperature/
-  concurrency/rate-limit), and a button that launches Steps 1-8 with a live progress checklist and
-  a `pipeline.log` tail — useful during Step 6/8, which can take several minutes against real LLM
-  calls.
-- **Resultados** — browse any past run's variants, profiles, narratives, taxonomy, per-category
+- **Setup** — check which LLM API key (`GEMINI_API_KEY`/`OPENAI_API_KEY`/`ANTHROPIC_API_KEY`) is
+  already in the environment, or paste one in for the session (kept in the server process's memory
+  only — never written to a file, per the "LLM backend" convention above).
+- **New Run** — upload a new log/goal model if needed, pick a log (`data/logs/`) and goal model
+  (`data/goals/`), a form pre-filled from the matching case study's config (or the top-level
+  default) for everything else (`case_id_key`/`activity_key`/..., sample sizes, `taxonomy_mode`,
+  LLM model/temperature/concurrency/rate-limit), and a button that launches Steps 1-8 with a live
+  progress checklist, a stop control, and a `pipeline.log` tail — useful during Step 6/8, which can
+  take several minutes against real LLM calls.
+- **Results** — browse any past run's variants, profiles, narratives, taxonomy, per-category
   reports, discovered process models (DFG images + downloadable `.pnml`), and — once a round is
   accepted — the final partitioned `.xes.gz` logs.
-- **Revisión** — the Step 9 business review, without touching `review_decisions.yaml` directly:
-  per category, keep / rename / merge / split, backed by the same `ReviewDecisions` validation the
+- **Review** — the Step 9 business review, without touching `review_decisions.yaml` directly: per
+  category, keep / rename / merge / split, backed by the same `ReviewDecisions` validation the
   library already enforces.
-- **Historial** — every run under `data/output/`, with its round count, latest status, and config
-  summary, with a shortcut into Resultados/Revisión for any of them.
+- **History** — every run under `data/output/`, with its round count, latest status, and config
+  summary, with a shortcut into Results/Review for any of them.
 
 Each run/round the GUI launches executes in its own subprocess (`python -m gui.worker`), not
 inside the Streamlit process itself — `goalcat.run_logging.get_logger()` caches its file handler
 per process, so a long-lived GUI session launching many runs needs one fresh process per run to
 give each its own `pipeline.log`. See `src/gui/run_control.py`'s module docstring for the full
 rationale.
+
+### Deploying the GUI as a shared web server (not currently supported)
+
+The GUI above is designed and tested for a single local user only; hosting it on a public or
+shared web server was not considered in its design and needs adaptation first:
+
+- **No auth or session isolation.** `src/gui/run_control.py` and `src/gui/worker.py` distinguish
+  concurrent runs only by `run_id`, not by requester identity — any visitor to a shared deployment
+  could trigger runs, read another user's `data/output/`, or burn the host's LLM API budget.
+- **Local-machine assumptions.** Runs are launched via `subprocess.Popen(..., cwd=REPO_ROOT)` and
+  poll plain files (`gui_status.json`, `pipeline.log`) on the local filesystem. A host needs to
+  both permit arbitrary subprocess spawning and persist `data/output/` across restarts/redeploys —
+  ruling out fully managed/stateless Streamlit hosting.
+- **Server-side secret handling.** `GEMINI_API_KEY` (see "LLM backend" above) would need to be
+  injected as a server-side secret, never exposed to the client, with usage/cost controls if
+  multiple untrusted users can trigger LLM-backed steps (5a/5b, 6, 8).
+
+Adding these (containerized deployment with persistent storage, an auth layer, and per-user run
+scoping/queueing in place of the bare subprocess model) is required before exposing this GUI beyond
+a single trusted user.
 
 ## Data
 

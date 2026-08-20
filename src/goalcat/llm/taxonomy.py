@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import asyncio
-import json
 import logging
 from pathlib import Path
 
@@ -9,6 +8,7 @@ import pandas as pd
 from pydantic import BaseModel, Field, model_validator
 
 from .. import grl
+from ..atomic_io import atomic_write_json, atomic_write_text
 from ..config import PipelineConfig, load_prompt_template
 from .llm_backend import LLMBackend, RunMetadata
 
@@ -132,20 +132,16 @@ def induce_taxonomy_5a(
 
 
 def save_taxonomy(taxonomy: Taxonomy, metadata: RunMetadata, prompt: str, output_dir: Path) -> None:
-    output_dir.mkdir(parents=True, exist_ok=True)
-    (output_dir / "taxonomy.json").write_text(json.dumps(taxonomy.model_dump(), indent=2), encoding="utf-8")
-    (output_dir / "taxonomy_prompt.txt").write_text(prompt, encoding="utf-8")
-    (output_dir / "taxonomy_run_metadata.json").write_text(
-        json.dumps(metadata.model_dump(), indent=2), encoding="utf-8"
-    )
+    atomic_write_json(output_dir / "taxonomy.json", taxonomy.model_dump())
+    atomic_write_text(output_dir / "taxonomy_prompt.txt", prompt)
+    atomic_write_json(output_dir / "taxonomy_run_metadata.json", metadata.model_dump())
 
 
 def overwrite_taxonomy_json(taxonomy: Taxonomy, output_dir: Path) -> None:
     """Writes only taxonomy.json — used by Step 9's rename path, which edits an existing taxonomy
     without a new LLM call, so taxonomy_prompt.txt/taxonomy_run_metadata.json (which describe that
     call) must stay untouched rather than being overwritten by save_taxonomy()."""
-    output_dir.mkdir(parents=True, exist_ok=True)
-    (output_dir / "taxonomy.json").write_text(json.dumps(taxonomy.model_dump(), indent=2), encoding="utf-8")
+    atomic_write_json(output_dir / "taxonomy.json", taxonomy.model_dump())
 
 
 def build_open_taxonomy_prompt(sample_df: pd.DataFrame) -> str:
