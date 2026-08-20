@@ -348,6 +348,23 @@ def _per_variant_distance_stats(
     # inference silently converts None to it on DataFrame construction, so every "is this a
     # residual" check here must use pd.isna()/pd.notna(), never `is None`.
     variant_order = assignments_df["variant_id"].tolist()
+
+    # distances_df is legitimately empty in two distinct cases: n<2 variants (where every stat
+    # below is trivially NaN/None anyway) and config.skip_pairwise_distances (n>=2, but distances
+    # were never computed). _build_distance_matrix() below defaults every unset cell to 0.0, which
+    # is correct for the former (nothing to look up) but would silently read as "distance 0 to
+    # every neighbor" for the latter — indistinguishable from a real zero distance. Short-circuit
+    # here instead of letting that ambiguity reach the matrix.
+    if distances_df.empty and len(variant_order) >= 2:
+        return pd.DataFrame(
+            {
+                "variant_id": variant_order,
+                "distance_to_category_medoid": float("nan"),
+                "nearest_other_category_id": None,
+                "nearest_other_category_distance": float("nan"),
+            }
+        )
+
     category_of = dict(zip(assignments_df["variant_id"], assignments_df["category_id"]))
     index = {variant_id: i for i, variant_id in enumerate(variant_order)}
     n = len(variant_order)
@@ -446,7 +463,17 @@ def _divergence_callout(
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Pairs where the structural and profile distances disagree sharply: same category but
     structurally far apart ('loose_within'), or different category but structurally
-    near-identical ('tight_across', the TP/TA-style case)."""
+    near-identical ('tight_across', the TP/TA-style case).
+
+    structural_df/profile_df empty (config.skip_pairwise_distances, or n<2 variants): nothing to
+    compare, return empty results directly. Needed as an explicit guard, not just relying on the
+    empty merge below to fall through cleanly — an empty pd.DataFrame(columns=[...]) has object
+    dtype columns (nothing to infer a numeric dtype from), and .nlargest()/.nsmallest() raise
+    TypeError on an object-dtype column even when it has zero rows.
+    """
+    if structural_df.empty or profile_df.empty:
+        return pd.DataFrame(), pd.DataFrame()
+
     merged = structural_df.merge(profile_df[["variant_id_a", "variant_id_b", "profile_distance_mean"]], on=["variant_id_a", "variant_id_b"])
     merged["category_a"] = merged["variant_id_a"].map(category_of)
     merged["category_b"] = merged["variant_id_b"].map(category_of)
@@ -511,6 +538,13 @@ def build_assignment_report(
             f"**{len(pending_variant_ids)} variants still pending** (API calls failed every "
             f"attempt this run, not yet a residual): {', '.join(pending_variant_ids)}. Re-run "
             f"Step 6 against run `{config.run_id}` to retry only these.",
+            "",
+        ]
+    if config.skip_pairwise_distances:
+        lines += [
+            "**Pairwise distances skipped** (`skip_pairwise_distances=true`): the cohesion lines "
+            "below and the divergence section report no data for this round, rather than a "
+            "genuinely undefined or zero distance.",
             "",
         ]
 

@@ -58,8 +58,10 @@ class PipelineConfig:
     taxonomy_mode: str
     discovery_noise_threshold: float
     discovery_precision_timeout_seconds: float | None
+    skip_precision: bool
     review_precision_flag_threshold: float
     prune_pairwise_distances_on_finalize: bool
+    skip_pairwise_distances: bool
     llm: LLMConfig
     run_id: str
     round: int
@@ -211,8 +213,10 @@ def load_config(
         taxonomy_mode=raw["taxonomy_mode"],
         discovery_noise_threshold=raw["discovery_noise_threshold"],
         discovery_precision_timeout_seconds=raw.get("discovery_precision_timeout_seconds"),
+        skip_precision=raw.get("skip_precision", False),
         review_precision_flag_threshold=raw.get("review_precision_flag_threshold", 0.3),
         prune_pairwise_distances_on_finalize=raw.get("prune_pairwise_distances_on_finalize", False),
+        skip_pairwise_distances=raw.get("skip_pairwise_distances", False),
         llm=LLMConfig(
             taxonomy_model=raw["llm"]["taxonomy_model"],
             assignment_model=raw["llm"]["assignment_model"],

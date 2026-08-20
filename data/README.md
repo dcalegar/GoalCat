@@ -85,7 +85,9 @@ starts. A run directory has this shape:
 ├── round1/                     # Steps 5-9 for review round 1
 │   ├── 05_taxonomy/            # taxonomy.json, taxonomy_prompt.txt, taxonomy_run_metadata.json
 │   ├── 06_assignment/          # assignments.csv, assignment_report.md, *_distances.parquet, ...
+│   │                              # (*_distances.parquet empty if skip_pairwise_distances=true)
 │   ├── 07_discovery/           # discovery_metrics.csv, discovery_report.md, models/
+│   │                              # (precision column NaN throughout if skip_precision=true)
 │   ├── 08_description/         # descriptions.csv, description_report.md, description_prompt.txt
 │   └── 09_review/              # review_decisions.yaml (or *_processed_<ts>.yaml once acted on)
 ├── round2/                     # only present if round 1 was revised (merge/split at Step 9)
@@ -120,3 +122,10 @@ Notes on reading this structure:
   `round<N>/06_assignment/assignments.csv` remains the canonical copy. It is duplicated into
   `final/` purely so a self-contained `(taxonomy.json, assignments.csv)` pair is available to
   downstream tools without depending on the round directory still existing.
+- **`skip_precision`/`skip_pairwise_distances`** (opt-in config flags, both default `false` — see
+  root README's "Resource usage" section) leave the corresponding output *files* in place but
+  empty of the data they'd normally hold: `structural_distances.parquet`/`profile_distances.parquet`
+  are written schema-valid but zero-row, and `discovery_metrics.csv`'s `precision` column is `NaN`
+  for every category. `assignment_report.md`/`discovery_report.md` both note explicitly when this
+  is why a section is empty, rather than leaving it ambiguous with a genuine timeout or singleton
+  category.

@@ -14,13 +14,18 @@ build/
 
 .claude/
 project/
-data/output/FullRun_20260820.zip
 
-# Pairwise distance matrices: CSV is redundant with parquet, and both formats
-# for the bpic2019 dataset exceed GitHub's 100MB push limit.
+# Example pipeline run outputs: only rtfm_mini is pushed to GitHub, as a
+# complete end-to-end example. Every other example run (bpic2019,
+# bpic2020_permit, rtfm, sepsis) stays local-only — reproduce them via
+# experimentation/examples/ instead. See experimentation/README.md for the
+# time/cost/memory/disk footprint of each before running one.
+data/output/*
+!data/output/rtfm_mini/
+
+# Pairwise distance matrices: CSV is redundant with parquet. Applies within
+# rtfm_mini too (the only example whose output is tracked above).
 data/output/*/*/round1/06_assignment/profile_distances.csv
 data/output/*/*/round1/06_assignment/structural_distances.csv
 data/output/*/*/round2/06_assignment/profile_distances.csv
 data/output/*/*/round2/06_assignment/structural_distances.csv
-data/output/bpic2019/*/round1/06_assignment/profile_distances.parquet
-data/output/bpic2019/*/round1/06_assignment/structural_distances.parquet

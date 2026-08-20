@@ -243,6 +243,29 @@ risk; the raw pairwise rows are unrecoverable once pruned, though the aggregate 
 into `assignment_report.md` remain. Set once per run — it cannot be changed mid-run without
 tripping the config-drift check in `run_logging.py`.
 
+**Compute — `skip_precision` / `skip_pairwise_distances`** (`config.yaml` / GUI "New Run" form's
+"Performance" section, both default `false`): two independent opt-in flags that skip the pipeline's
+two confirmed computational cost drivers, trading information for speed. Neither is automatic —
+whether the tradeoff is worth it on a given run is a decision for the human reviewer/domain expert,
+not the pipeline.
+
+- `skip_precision` skips Step 7's precision computation (`pm4py.precision_token_based_replay`), the
+  only single-threaded, GIL-bound step in the pipeline — its cost scales with a category's unique
+  *prefix* count, not its variant count (observed on BPIC 2019: one category's 6,082 variants
+  produced 88,241 unique prefixes), and pm4py's own optional threading does not help (benchmarked:
+  ~26s vs ~28s on a 500-variant slice). Fitness is still computed. `discovery_metrics.csv`'s
+  `precision` column is `NaN` throughout, `discovery_report.md` notes it was skipped by config
+  rather than timed out, and Step 9's automated low-precision review flag has nothing to flag.
+- `skip_pairwise_distances` skips Step 6's structural/profile distance computation described above
+  — `structural_distances.parquet`/`profile_distances.parquet` are still written (empty,
+  schema-valid, so Step 9's rename re-render keeps working), but `assignment_report.md`'s
+  per-category cohesion/divergence sections and `assignments.csv`'s nearest-neighbor columns carry
+  no data for the round. Moot to also set `prune_pairwise_distances_on_finalize` in the same run —
+  there is nothing left to prune.
+
+Both are ordinary `PipelineConfig` fields: set once per run, and changing either mid-run trips the
+same config-drift check as every other field.
+
 ## Running the pipeline
 
 There is no packaged CLI. `src/goalcat/pipeline.py` exposes each step as a library function —
@@ -305,9 +328,11 @@ hosted/paid Streamlit service involved. Five pages, in the sidebar:
 - **New Run** — upload a new log/goal model if needed, pick a log (`data/logs/`) and goal model
   (`data/goals/`), a form pre-filled from the matching case study's config (or the top-level
   default) for everything else (`case_id_key`/`activity_key`/..., sample sizes, `taxonomy_mode`,
-  LLM model/temperature/concurrency/rate-limit), and a button that launches Steps 1-8 with a live
-  progress checklist, a stop control, and a `pipeline.log` tail — useful during Step 6/8, which can
-  take several minutes against real LLM calls.
+  a "Performance" section for `skip_precision`/`skip_pairwise_distances`/
+  `prune_pairwise_distances_on_finalize` (see "Resource usage" above), LLM model/temperature/
+  concurrency/rate-limit), and a button that launches Steps 1-8 with a live progress checklist, a
+  stop control, and a `pipeline.log` tail — useful during Step 6/8, which can take several minutes
+  against real LLM calls.
 - **Results** — browse any past run's variants, profiles, narratives, taxonomy, per-category
   reports, discovered process models (DFG images + downloadable `.pnml`), and — once a round is
   accepted — the final partitioned `.xes.gz` logs.

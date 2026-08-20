@@ -84,7 +84,9 @@ def build_config_dict(
     sample_extreme_n: int,
     taxonomy_mode: str,
     discovery_noise_threshold: float,
+    skip_precision: bool,
     prune_pairwise_distances_on_finalize: bool,
+    skip_pairwise_distances: bool,
     llm: dict,
 ) -> dict:
     return {
@@ -102,7 +104,9 @@ def build_config_dict(
         "sample_extreme_n": sample_extreme_n,
         "taxonomy_mode": taxonomy_mode,
         "discovery_noise_threshold": discovery_noise_threshold,
+        "skip_precision": skip_precision,
         "prune_pairwise_distances_on_finalize": prune_pairwise_distances_on_finalize,
+        "skip_pairwise_distances": skip_pairwise_distances,
         "llm": llm,
     }
 

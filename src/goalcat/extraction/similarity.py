@@ -12,6 +12,18 @@ _EMPTY_STRUCTURAL_COLUMNS = ["variant_id_a", "variant_id_b", "distance"]
 _EMPTY_PROFILE_COLUMNS = ["variant_id_a", "variant_id_b", *_PROFILE_COMPONENTS, "profile_distance_mean"]
 
 
+def empty_structural_distances() -> pd.DataFrame:
+    """Schema-valid, zero-row structural-distance table — the n<2 shape compute_structural_distances()
+    already returns, reused by callers that skip the O(n^2) computation outright (config.skip_pairwise_distances)
+    rather than duplicating the column list."""
+    return pd.DataFrame(columns=_EMPTY_STRUCTURAL_COLUMNS)
+
+
+def empty_profile_distances() -> pd.DataFrame:
+    """Schema-valid, zero-row profile-distance table — see empty_structural_distances()."""
+    return pd.DataFrame(columns=_EMPTY_PROFILE_COLUMNS)
+
+
 def _pair_frame(variant_ids: list[str], n: int) -> tuple[np.ndarray, np.ndarray, pd.Categorical, pd.Categorical]:
     """The (i, j) index pairs for every i<j combination, plus the corresponding variant_id_a/b
     columns as pandas Categoricals rather than plain object/string columns: at BPIC 2019 scale
@@ -49,7 +61,7 @@ def compute_structural_distances(profiles_df: pd.DataFrame) -> pd.DataFrame:
     sequences = profiles_df["activity_sequence"].tolist()
     n = len(variant_ids)
     if n < 2:
-        return pd.DataFrame(columns=_EMPTY_STRUCTURAL_COLUMNS)
+        return empty_structural_distances()
 
     distance_matrix = process.cdist(sequences, sequences, scorer=Levenshtein.distance, workers=-1, dtype=np.int32)
 
@@ -78,7 +90,7 @@ def compute_profile_distances(profiles_df: pd.DataFrame) -> pd.DataFrame:
     variant_ids = profiles_df["variant_id"].tolist()
     n = len(variant_ids)
     if n < 2:
-        return pd.DataFrame(columns=_EMPTY_PROFILE_COLUMNS)
+        return empty_profile_distances()
 
     idx_a, idx_b, variant_id_a, variant_id_b = _pair_frame(variant_ids, n)
 

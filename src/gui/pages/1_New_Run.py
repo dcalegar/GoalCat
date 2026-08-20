@@ -80,6 +80,34 @@ with col2:
     discovery_noise_threshold = st.slider(
         "discovery_noise_threshold", 0.0, 1.0, float(defaults.get("discovery_noise_threshold", 0.0))
     )
+
+with st.expander("Performance", expanded=False):
+    st.caption(
+        "Opt-in flags that trade computation cost for lost information. Off by default: whether "
+        "the tradeoff is worth it is a human-in-the-loop decision, made per run, not automated."
+    )
+    skip_precision = st.checkbox(
+        "skip_precision",
+        value=bool(defaults.get("skip_precision", False)),
+        help=(
+            "Skip Step 7's precision computation (token-based replay) — the single confirmed "
+            "single-threaded/GIL-bound cost driver in the pipeline, scaling with each category's "
+            "unique prefix count rather than its variant count. Fitness is still computed. "
+            "precision is reported as NaN throughout, and Step 9's automated low-precision review "
+            "flag has nothing to flag. Off by default."
+        ),
+    )
+    skip_pairwise_distances = st.checkbox(
+        "skip_pairwise_distances",
+        value=bool(defaults.get("skip_pairwise_distances", False)),
+        help=(
+            "Skip Step 6's pairwise structural/profile distance computation "
+            "(structural_distances.parquet/profile_distances.parquet) — the only O(n^2) "
+            "computation in the pipeline (see README's Resource usage section). "
+            "assignment_report.md's per-category cohesion/divergence sections and "
+            "assignments.csv's nearest-neighbor columns are empty for this round. Off by default."
+        ),
+    )
     prune_pairwise_distances_on_finalize = st.checkbox(
         "prune_pairwise_distances_on_finalize",
         value=bool(defaults.get("prune_pairwise_distances_on_finalize", False)),
@@ -90,7 +118,8 @@ with col2:
             "README's Resource usage section). Off by default: a superseded round's copies are "
             "what a later rename re-render reads back, with no cheaper way to regenerate them "
             "than a full Step 6 recompute. Set once, before the run starts — this cannot be "
-            "changed later without triggering a config-drift error at Step 9."
+            "changed later without triggering a config-drift error at Step 9. Moot if "
+            "skip_pairwise_distances is already on — there is nothing left to prune."
         ),
     )
 
@@ -145,7 +174,9 @@ if st.button("Run pipeline (Steps 1-8)", type="primary", disabled=ACTIVE_KEY in 
         sample_extreme_n=int(sample_extreme_n),
         taxonomy_mode=taxonomy_mode,
         discovery_noise_threshold=float(discovery_noise_threshold),
+        skip_precision=bool(skip_precision),
         prune_pairwise_distances_on_finalize=bool(prune_pairwise_distances_on_finalize),
+        skip_pairwise_distances=bool(skip_pairwise_distances),
         llm=llm,
     )
 

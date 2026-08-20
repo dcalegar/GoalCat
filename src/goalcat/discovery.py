@@ -128,35 +128,43 @@ def compute_conformance(
     default) bounds the wait: on timeout, precision is reported as NaN rather than blocking the
     rest of Step 7 indefinitely — the orphaned replay thread keeps running to completion in the
     background (Python threads can't be killed cleanly), but this function stops waiting on it.
+
+    config.skip_precision (default False) bypasses the replay call entirely and reports NaN
+    unconditionally, reusing this same NaN path — an opt-in, human-decided tradeoff (see README's
+    Resource usage section) for when Step 7's single-threaded replay cost isn't worth paying at
+    all, not just bounding how long it's allowed to run.
     """
     fitness = pm4py.fitness_token_based_replay(
         sub_df, net, im, fm,
         activity_key=config.activity_key, timestamp_key=config.timestamp_key, case_id_key=config.case_id_key,
     )
 
-    timeout = config.discovery_precision_timeout_seconds
-    if timeout is None:
-        precision = pm4py.precision_token_based_replay(
-            sub_df, net, im, fm,
-            activity_key=config.activity_key, timestamp_key=config.timestamp_key, case_id_key=config.case_id_key,
-        )
+    if config.skip_precision:
+        precision = float("nan")
     else:
-        with ThreadPoolExecutor(max_workers=1) as executor:
-            future = executor.submit(
-                pm4py.precision_token_based_replay,
+        timeout = config.discovery_precision_timeout_seconds
+        if timeout is None:
+            precision = pm4py.precision_token_based_replay(
                 sub_df, net, im, fm,
                 activity_key=config.activity_key, timestamp_key=config.timestamp_key, case_id_key=config.case_id_key,
             )
-            try:
-                precision = future.result(timeout=timeout)
-            except FutureTimeoutError:
-                logger.warning(
-                    "Precision computation for category %s exceeded discovery_precision_timeout_seconds=%s — "
-                    "reporting precision=NaN. The replay keeps running in an orphaned background thread "
-                    "(Python threads can't be cancelled) but this run no longer waits on it.",
-                    category_id, timeout,
+        else:
+            with ThreadPoolExecutor(max_workers=1) as executor:
+                future = executor.submit(
+                    pm4py.precision_token_based_replay,
+                    sub_df, net, im, fm,
+                    activity_key=config.activity_key, timestamp_key=config.timestamp_key, case_id_key=config.case_id_key,
                 )
-                precision = float("nan")
+                try:
+                    precision = future.result(timeout=timeout)
+                except FutureTimeoutError:
+                    logger.warning(
+                        "Precision computation for category %s exceeded discovery_precision_timeout_seconds=%s — "
+                        "reporting precision=NaN. The replay keeps running in an orphaned background thread "
+                        "(Python threads can't be cancelled) but this run no longer waits on it.",
+                        category_id, timeout,
+                    )
+                    precision = float("nan")
 
     return {
         "perc_fit_traces": fitness["perc_fit_traces"],
@@ -295,6 +303,13 @@ def build_discovery_report(
         f"{len(residual_ids)}/{total_variants} variants, {residual_cases}/{total_cases} cases.",
         "",
     ]
+    if config.skip_precision:
+        lines += [
+            "**Precision skipped** (`skip_precision=true`): every category's precision below is "
+            "`NaN` by config, not because it timed out or genuinely came out undefined. Fitness "
+            "is still computed.",
+            "",
+        ]
 
     for category in taxonomy.categories:
         stats = metrics_by_category.get(category.category_id, {})
@@ -311,10 +326,11 @@ def build_discovery_report(
         if num_variants == 0:
             lines += ["No variants assigned — discovery skipped.", ""]
             continue
+        precision_display = "skipped (`skip_precision=true`)" if config.skip_precision else f"{stats['precision']:.3f}"
         lines += [
             f"**Conformance (token-based replay):** log fitness {stats['log_fitness']:.3f}, "
             f"average trace fitness {stats['average_trace_fitness']:.3f}, "
-            f"{stats['perc_fit_traces']:.1f}% fit traces, precision {stats['precision']:.3f}",
+            f"{stats['perc_fit_traces']:.1f}% fit traces, precision {precision_display}",
             "",
         ]
         if models_present:

@@ -50,6 +50,14 @@ taxonomy_mode: "intent_guided"
 # filter infrequent behavior out of them by default.
 discovery_noise_threshold: 0.0
 
+# Step 7 (opt-in, off by default): skips precision (token-based replay) entirely and reports NaN,
+# rather than just bounding it via discovery_precision_timeout_seconds above. This is the single
+# confirmed single-threaded/GIL-bound cost driver in the pipeline — its cost scales with a
+# category's unique *prefix* count, not its variant count, and does not benefit from more cores.
+# Fitness is still computed either way. A human-in-the-loop tradeoff (see README's Resource usage
+# section), not something the pipeline decides on its own.
+skip_precision: false
+
 # Step 9: precision (Step 7, token-based replay) below this is flagged, as an advisory comment
 # only, in the review_decisions.yaml template write_review_template() writes for the human
 # reviewer — never applied automatically, never overrides Step 9's human-decision gate. Low
@@ -70,6 +78,15 @@ review_precision_flag_threshold: 0.3
 # rows are not recoverable afterward, only the aggregate stats already baked into
 # assignment_report.md.
 prune_pairwise_distances_on_finalize: false
+
+# Step 6 (opt-in, off by default): skips the O(n^2) structural/profile pairwise-distance
+# computation above entirely (structural_distances.parquet/profile_distances.parquet are still
+# written, empty and schema-valid, so a later rename re-render doesn't break). Loses
+# assignment_report.md's per-category cohesion/divergence sections and assignments.csv's
+# nearest-neighbor columns for the round. Moot to also set prune_pairwise_distances_on_finalize
+# above in the same run — there is nothing left to prune. A human-in-the-loop tradeoff (see
+# README's Resource usage section), not something the pipeline decides on its own.
+skip_pairwise_distances: false
 
 # LLM steps (5a/5b, 6, 8). Model strings are litellm "provider/model" IDs — swapping
 # provider (e.g. to anthropic/claude-... or openai/...) is a config-only change, no code

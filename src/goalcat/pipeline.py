@@ -9,7 +9,12 @@ from .config import PipelineConfig, load_config
 from .discovery import discover_all_categories, save_discovery_outputs
 from .extraction.log_io import load_event_log
 from .extraction.profiling import load_profiles, profile_variants, save_profiles
-from .extraction.similarity import compute_profile_distances, compute_structural_distances
+from .extraction.similarity import (
+    compute_profile_distances,
+    compute_structural_distances,
+    empty_profile_distances,
+    empty_structural_distances,
+)
 from .extraction.variants import extract_variants, load_variants, save_variants
 from .llm.assignment import (
     assign_narratives_6,
@@ -486,8 +491,17 @@ def run_step6_assignment(
     if not problems:
         logger.info("Assignment grounding check: no problems found.")
 
-    structural_df = compute_structural_distances(merged_df)
-    profile_df = compute_profile_distances(merged_df)
+    if config.skip_pairwise_distances:
+        logger.info(
+            "Skipping Step 6 pairwise structural/profile distances (skip_pairwise_distances=true) — "
+            "assignment_report.md's cohesion/divergence sections and assignments.csv's nearest-neighbor "
+            "columns will be empty for this round."
+        )
+        structural_df = empty_structural_distances()
+        profile_df = empty_profile_distances()
+    else:
+        structural_df = compute_structural_distances(merged_df)
+        profile_df = compute_profile_distances(merged_df)
 
     report_markdown = build_assignment_report(
         taxonomy, assignments_df, merged_df, structural_df, profile_df, config, still_failed_ids
