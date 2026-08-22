@@ -34,6 +34,89 @@ the equivalent of clustering noise, reported as an "other/unclassifiable" bucket
 related-work positioning, and evaluation plan are documented in `project/OVERVIEW.md` (local,
 gitignored — see [Further documentation](#further-documentation)).
 
+## What the LLM actually sees of the goal model
+
+The `.jucm` file is jUCMNav's XMI serialization: it interleaves the GRL specification with a diagram
+layer (`urndef`, `refs`/`contRef`, x/y coordinates), KPI indicators, and file provenance. That file
+is never sent to an LLM, and neither is the prose `<log>GM_description.md`. A single function —
+`goalcat.grl.render_excerpt()` ([`src/goalcat/grl/prompt.py`](src/goalcat/grl/prompt.py)) — renders a
+task-scoped plain-text projection of the parsed model, and that projection is the only place a
+prompt ever states the goal model. It is substituted into Step 5a's induction and revision prompts
+(`{goal_model_excerpt}`); no later step re-sends the model. Step 6's assignment prompt carries the
+induced categories alone, and Step 8's description prompt carries only the deterministically
+resolved anchor labels of `grl.resolve_anchor_labels()` (`id (type): name`), never an LLM's
+restatement of what the model says.
+
+The RTFM goal model renders as follows (abridged; `data/goals/rtfm_goal_model.jucm` is 14 KB of
+XMI, the full excerpt 41 lines):
+
+```
+Goal model: RTFM Goal Model
+
+Actors:
+  - id=1: Traffic Police Back-Office
+
+Goal-task decomposition (id, type, name, decomposition operator; indentation = parent/child):
+- id=2 [Goal] Every issued fine reaches a lawful, documented closure (AND)
+  - id=3 [Goal] Fine is issued and formally communicated (AND)
+    - id=8 [Task] Create Fine (leaf)
+    - id=9 [Task] Send Fine (leaf)
+  - id=4 [Goal] Fine case is resolved (OR)
+    - id=12 [Task] Resolve via timely payment (leaf)
+    - id=5 [Goal] Fine becomes enforceable and is resolved (AND)
+      - id=10 [Task] Insert Fine Notification (leaf)
+    …
+
+Softgoals and contribution links (source -> effect on softgoal):
+  - id=12 Resolve via timely payment --[Make (+100)]--> Maximize timely fine revenue
+  - id=20 Resolve via coercive credit collection --[Hurt (-50)]--> Minimize administrative & enforcement cost
+  …
+```
+
+| Aspect | `.jucm` (XMI) | Rendered excerpt |
+|---|---|---|
+| Decomposition | flat list of `<links xsi:type="grl:Decomposition" src="…" dest="…"/>` | indented parent/child tree |
+| Decomposition operator | `decompositionType` on the *parent* element, stored apart from the links | printed inline per node as `(AND)`/`(OR)`/`(XOR)`/`(leaf)` |
+| Contribution links | `contribution="Help" quantitativeContribution="50"` attributes | `--[Help (+50)]-->` with the target softgoal resolved by name |
+| Element ids | present | preserved verbatim, shown as `id=12` next to each name |
+| Diagram layer | `urndef`, `refs`, `contRef`, coordinates, `ActorRef`, `IntentionalElementRef` | omitted |
+| KPIs | `grl.kpimodel:Indicator` elements and their `groups` | omitted |
+| Provenance | `author`, `created`, `modified`, `nextGlobalID` | omitted |
+
+The projection is a semantic subset chosen for the task, not a summary written for readability. Four
+reasons drive it:
+
+- **The prompts' decision rules depend on structure the XMI does not present directly.**
+  `prompt_taxonomy_intent_guided.txt` instructs the model to "check the AND/OR/XOR operators shown in
+  the decomposition — never combine alternatives the goal model marks XOR". Recovering that from XMI
+  requires joining `intElements[@decompositionType]` against `links[@src]` and reconstructing
+  parenthood transitively; delegating that reconstruction to the LLM would put the intent-guided
+  condition's central constraint at the mercy of a graph-traversal error.
+- **Identifier grounding stays mechanically checkable.** Every proposed category must carry
+  `anchor_ids` referencing native `.jucm` element ids; the excerpt shows each id beside its name, and
+  `grl.grounding_problems()` validates the returned ids against `grl.declared_ids()`. The mnemonic
+  codes used in the prose descriptions (`G0`, `TP`, …) are prose-only and are not part of the model,
+  so rendering the prose form instead would invite unresolvable anchors.
+- **Everything omitted is irrelevant to the task.** Layout is presentation, KPI indicators are not an
+  axis to subdivide, and provenance is file metadata. Omitting them also keeps the prompt's token
+  budget on the narrative sample, which is what actually calibrates category granularity.
+- **Determinism, required by the experimental protocol.** `render_excerpt()` iterates in the `.jucm`
+  file's own element order, so a frozen goal model always renders byte-identical prompt text — the
+  "Prompts: versioned" requirement of the freeze table (`project/EXPERIMENTATION_PLAN.md` §2.2,
+  local and gitignored — see [Further documentation](#further-documentation)).
+  `experimentation/icpm2027/goalmodel/perturb.py` hashes exactly this text as the provenance record
+  for perturbation conditions.
+
+Two properties of the model are not carried into the excerpt, neither of which affects the goal
+models currently in `data/goals/`:
+
+- **Element-to-actor membership.** Actors are listed, but the excerpt does not state which elements
+  belong to which actor. All four goal models declare exactly one actor and carry no element-level
+  `actor` attribute in `grlspec` (ownership exists only in the diagram layer), so nothing is lost
+  today; a multi-actor goal model would need this rendered.
+- **Softgoals with no incoming contribution link** are never printed, since the softgoal block is
+  emitted only when both softgoals and contribution links exist and it iterates the links.
+
 ## Repository structure
 
 ```

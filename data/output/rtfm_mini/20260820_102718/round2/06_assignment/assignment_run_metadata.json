@@ -1,0 +1,22 @@
+{
+  "calls": [
+    {
+      "provider": "gemini",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "backend": "remote",
+      "temperature": 0.0,
+      "prompt_hash": "2fb6f54bf568080f",
+      "latency_seconds": 1.4024529580055969,
+      "input_tokens": 1287,
+      "output_tokens": 346,
+      "prompt_chars": 4673,
+      "response_chars": 1230,
+      "raw_response": "{\n  \"assignments\": [\n    {\n      \"variant_id\": \"V0001\",\n      \"category_id\": null,\n      \"rationale\": \"The process variant ends simply after sending the fine, without a final resolution such as payment, appeal, or coercive collection.\"\n    },\n    {\n      \"variant_id\": \"V0002\",\n      \"category_id\": \"coercive_credit_collection\",\n      \"rationale\": \"The process ends by sending the fine for credit collection after penalties have been applied.\"\n    },\n    {\n      \"variant_id\": \"V0003\",\n      \"category_id\": \"payment\",\n      \"rationale\": \"The process ends with a payment after fine notification and penalties, fitting the delinquent payment resolution.\"\n    },\n    {\n      \"variant_id\": \"V0004\",\n      \"category_id\": \"payment\",\n      \"rationale\": \"The process ends with a timely payment shortly after the fine is created.\"\n    },\n    {\n      \"variant_id\": \"V0005\",\n      \"category_id\": \"judicial_appeal\",\n      \"rationale\": \"The process concludes with an appeal brought before a judge.\"\n    },\n    {\n      \"variant_id\": \"V0006\",\n      \"category_id\": \"administrative_appeal\",\n      \"rationale\": \"The process involves submitting an appeal to the Prefecture and receiving the result, matching administrative appeal steps.\"\n    }\n  ]\n}",
+      "estimated_cost_usd": 0.0012511
+    }
+  ],
+  "total_input_tokens": 1287,
+  "total_output_tokens": 346,
+  "total_latency_seconds": 1.4024529580055969,
+  "total_estimated_cost_usd": 0.0012511
+}

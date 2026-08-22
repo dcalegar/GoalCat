@@ -1,8 +1,10 @@
-"""Rendering a `GRLModel` into the text Step 5a/6 send an LLM, and validating `anchor_ids`
+"""Rendering a `GRLModel` into the text Step 5a sends an LLM, and validating `anchor_ids`
 against it — the GRL-native replacement for what `goalcat.llm.taxonomy` used to do by slicing a
 markdown document's §1-§7.
 
-`render_excerpt()` produces the *only* goal-model content an LLM ever sees for a guided run: no
+`render_excerpt()` produces the *only* goal-model content a prompt ever states for a guided run
+(Step 5a's induction and revision prompts; Step 6's assignment prompt carries the induced categories
+alone, and Step 8's description prompt carries only `resolve_anchor_labels()` output): no
 KPI section (Step 5a never needs it, matching the markdown-era `_extract_sections()`'s own §6
 exclusion), no diagram layout, no provenance prose — just actors, the decomposition tree, and
 contribution links, each element shown with its native `.jucm` id so a proposed category's
@@ -10,6 +12,39 @@ contribution links, each element shown with its native `.jucm` id so a proposed 
 `grounding_problems()` replace `_extract_declared_ids()`/`_resolve_anchor_labels()`/
 `check_taxonomy_grounding()`'s markdown-table lookups with the equivalent lookups against
 `GRLModel.elements` directly — no parsing involved, since the model is already structured.
+
+Why a projection instead of the `.jucm` file itself (README, "What the LLM actually sees of the
+goal model", carries this same rationale for readers who never open this module):
+
+1. The prompts' decision rules depend on structure the XMI does not present directly.
+   `prompt_taxonomy_intent_guided.txt` tells the model to "check the AND/OR/XOR operators shown in
+   the decomposition — never combine alternatives the goal model marks XOR". In XMI that means
+   joining `intElements[@decompositionType]` against a flat `<links xsi:type="grl:Decomposition">`
+   edge list and reconstructing parenthood transitively; `_render_tree()` does that join
+   deterministically here rather than leaving the intent-guided condition's central constraint to
+   an LLM's graph traversal.
+2. Identifier grounding stays mechanically checkable. Each element is printed with its native id,
+   so `Category.anchor_ids` can name one and `grounding_problems()` can validate it against
+   `declared_ids()`. The mnemonic codes a reader sees in the goal models' prose descriptions
+   (`G0`, `TP`, ...) are prose-only (see `model.py`'s `IntentionalElement.id` note), so rendering
+   that prose instead would invite anchors that resolve to nothing.
+3. Everything omitted is irrelevant to Step 5a's task: the `urndef` diagram layer is presentation,
+   KPI
+   Indicators are not an axis to subdivide, and `author`/`created`/`nextGlobalID` are file
+   metadata. Dropping them also keeps the prompt's token budget on the narrative sample, which is
+   what actually calibrates category granularity.
+4. Determinism — see `render_excerpt()`'s own docstring.
+
+Two model properties are deliberately *not* carried into the excerpt. Neither affects the goal
+models in `data/goals/`, but both would need revisiting before that changes:
+
+- Element-to-actor membership: actors are listed, but no element is attributed to one. Every
+  current goal model declares exactly one actor and carries no element-level `actor` attribute in
+  `grlspec` at all (ownership lives only in the diagram layer — see `jucm_io.py`'s single-actor
+  note), so nothing is lost today; a multi-actor model would need this rendered.
+- Softgoals with no incoming Contribution link: the softgoal block is emitted only when both
+  softgoals and contributions exist, and it iterates the links, so an unconnected softgoal never
+  appears.
 """
 
 from __future__ import annotations
@@ -63,10 +98,14 @@ def _roots(model: GRLModel) -> list[str]:
 
 
 def render_excerpt(model: GRLModel) -> str:
-    """The full text block Step 5a's `{goal_model_excerpt}` / Step 6's grounding context receive.
+    """The full text block Step 5a's `{goal_model_excerpt}` receives, in both the induction and
+    the revision prompt.
     Deterministic (dict/list iteration order matches the `.jucm` file's own element order), so the
     same frozen goal model always renders identical prompt text — required by the freeze table's
-    "Prompts: versioned" row (EXPERIMENTATION_PLAN.md §2.2)."""
+    "Prompts: versioned" row (EXPERIMENTATION_PLAN.md §2.2) and by
+    `icpm2027.goalmodel.perturb`, which hashes this text as a perturbation's provenance record.
+    Changing this function's output format therefore invalidates those hashes: treat it as a
+    versioned artifact, not as free-form prompt wording."""
     lines = [f"Goal model: {model.name}", ""]
 
     if model.actors:

@@ -47,6 +47,12 @@ def _render_goal_model_excerpt(jucm_text: str) -> str:
     prose. KPIs, activity-label traceability, and any narrative documentation are excluded by
     construction: `goalcat.grl.render_excerpt()` never renders them (see that function's
     docstring) — none of it helps subdividing the declared axis.
+
+    This rendered excerpt — not the `.jucm` file, and not the prose `<log>GM_description.md` — is
+    the only place any prompt states the goal model, and only Step 5a's two prompts contain it.
+    `goalcat.grl.prompt`'s module docstring gives the four reasons for projecting rather than
+    forwarding the XMI; the README's "What the LLM actually sees of the goal model" section states
+    the same rationale for readers who never open the code.
     """
     return grl.render_excerpt(grl.parse_jucm(jucm_text))
 

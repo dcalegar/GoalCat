@@ -11,8 +11,11 @@ Each study case pairs one public event log (`data/logs/`) with an authored goal 
 (`data/goals/`) — a GRL/URN declaration of what the process is for, authored from the organization's
 published process documentation and frozen before any categorization runs against it. Every log
 currently has a goal model in both its editable jUCMNav form (`.jucm`) and a rendered Markdown form
-(`.md`); see [`../project/OVERVIEW.md`](../project/OVERVIEW.md) (local, not tracked in git) for the
-full architecture this data feeds.
+(`.md`). Only the `.jucm` is a pipeline input, and even it is never sent to an LLM verbatim: Step 5a
+receives a task-scoped text projection of it — see "What the LLM actually sees of the goal model" in
+[`../README.md`](../README.md). The `.md` form is documentation for human readers only. See
+[`../project/OVERVIEW.md`](../project/OVERVIEW.md) (local, not tracked in git) for the full
+architecture this data feeds.
 
 | Log | Domain | Scale | Log file | Goal model | Status |
 |---|---|---|---|---|---|
