@@ -29,3 +29,7 @@ data/output/*/*/round1/06_assignment/profile_distances.csv
 data/output/*/*/round1/06_assignment/structural_distances.csv
 data/output/*/*/round2/06_assignment/profile_distances.csv
 data/output/*/*/round2/06_assignment/structural_distances.csv
+
+# Bundled archives of a full multi-log run (data/fullrun_<date>.zip). Hundreds of MB —
+# above GitHub's 100 MB per-file limit, and redundant with the run directories above.
+data/fullrun*.zip
