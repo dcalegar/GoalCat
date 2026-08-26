@@ -9,7 +9,7 @@ frozen, versioned experimental protocol behind EXPERIMENTATION_PLAN.md, as oppos
 | Module | Purpose | Plan reference |
 |---|---|---|
 | `configs/protocol.yaml` | Frozen freeze-table values (sampling, LLM params, batch size, steps) shared by every dataset/arm | §2.2 |
-| `configs/preregistration.yaml` | Open decisions (Task C7's BPIC 2019 scope, C10's batch size, C5/C6/D6), gated *before* execution | §12, §13 |
+| `configs/preregistration.yaml` | Pre-registered decisions (C5, C6, C7, C10, C13, D1, D6, D7, degenerate-OR policy), gated *before* execution | §12, §13 |
 | `configs/{rtfm,sepsis,bpic2019}.yaml` | Per-dataset specs (log/goal-model filenames, keys, role, variant scope) | §5, §8 |
 | `protocol.py` | Merges protocol + dataset spec + preregistration into one condition's executable config; the pre-registration gate | §2.2, §12 |
 | `inputs.py` | Runs Steps 1-4 **once** per dataset into a shared base; Task C7 variant-scope policies; copies (never recomputes) into each condition | §2.1, Task C7 |
@@ -21,28 +21,53 @@ frozen, versioned experimental protocol behind EXPERIMENTATION_PLAN.md, as oppos
 | `baselines/structural_clustering.py` | Task C3 — boolean activity-vector + HDBSCAN, zero LLM cost | §2.3, Task C3 |
 | `analysis/coverage.py` | Macro/micro coverage, residual (§3 evidence item 3, Task D2's caveat) | §3, §7 |
 | `analysis/contingency.py` | Contingency matrices + merge/split identification, for any two conditions (§3 evidence items 4-5) | §3, §7 |
+| `analysis/divergence.py` | AMI/NMI over all four (residual-handling x weighting) conventions, with D1's pre-registered one flagged; never reported as accuracy | §7, Task D1 |
+| `analysis/report.py` | Assembles one dataset's §3 evidence into Markdown — scope framing, coverage, declared-alternative coverage, contingency, divergence, and Task E7's instability qualification | §3, Tasks C7/C12/D2/E7 |
+| `run_experiment.py` | **The driver.** `--experiment stability\|e1\|e2` for one dataset, end to end | §3, §4, Task C12 |
 
 Every piece above has been exercised against the real `data/goals/*.jucm` files and/or the real
 RTFM log (`data/logs/rtfm.xes.gz`) during development — not run against fixtures only.
+
+## How to run it
+
+```bash
+# Task C12 first — is this dataset's Step 5a taxonomy even stable? (k reruns, 1 LLM call each)
+python -m experimentation.icpm2027.run_experiment --dataset rtfm --experiment stability
+
+# Experiment 1 — paired guided/open, with replicates and the structural baseline
+python -m experimentation.icpm2027.run_experiment --dataset rtfm --experiment e1
+
+# ... adding Task C11a's ablation as a third arm
+python -m experimentation.icpm2027.run_experiment --dataset rtfm --experiment e1 \
+    --arms guided,open,guided_no_sample
+
+# Experiment 2 — perturbations (refuses on a dataset C12 showed unstable)
+python -m experimentation.icpm2027.run_experiment --dataset rtfm --experiment e2
+```
+
+`--dry-run` resolves and logs every condition, with its LLM-call estimate, and launches nothing.
+It still builds the shared base if absent (Steps 1-4 are deterministic and LLM-free), because the
+call estimate depends on the variant count they produce. Re-running resumes: a condition whose run
+directory is already complete is skipped unless `--force`.
+
+Run `stability` before `e1` on any dataset whose goal model is mostly AND-decomposed above the leaf
+level. It is the cheapest check here and a negative result changes how every other number from that
+dataset must be reported (Task E7) and disqualifies it from Experiment 2 (§4).
 
 ## What's still open
 
 Not yet built, in roughly the order §10/§13 prioritizes them:
 
-- **A single per-dataset driver** tying `protocol.py`/`inputs.py`/`conditions.py` into one
-  "run Experiment 1 for RTFM" command (guided + open + replicates + structural baseline). Every
-  piece it would call already exists; this is orchestration, not new capability.
 - **Task C4** — RTFM's rule-based baseline (terminal-activity rule reproducing {TP,TA,TB,TC,TD}).
-- **Task C1** — the BPIC 2019 held-out validation (`case:Item Category` vs. Step 6's guided
-  assignment) — needs the BPIC 2019 frozen run to exist first.
-- **Task D1** — AMI/NMI divergence (optional; convention is fixed in `configs/preregistration.yaml`,
-  computation itself isn't written).
-- **Experiment 2's measurement** — `TargetReassignment`/`CollateralReassignment` computed from a
-  pair of contingency matrices (before/after a perturbation); `goalmodel/perturb.py` produces the
-  perturbed model, `analysis/contingency.py` can already build the matrices, but nothing yet
-  chains "run guided on `G_0`, run guided on the perturbed model, diff the two" into one call.
+- **Task C1** — the BPIC 2019 label-recovery comparison (`case:Item Category` vs. Step 6's guided
+  assignment). Report it as label recovery under an axis-aligned frame, not as independent ground
+  truth: the goal model's organizing axis and that attribute carry the same four labels by
+  construction, and T9 (Consignment) has no activity label at all, so its agreement figure is not
+  comparable to the other three.
 - **`rtfm_mini`'s Task C8 demonstration** (boolean-vector collapse of two rework variants) —
   `baselines/structural_clustering.py` makes this immediate to produce once wanted.
+- **Tests.** There are none, here or anywhere in the repository. The modules have been exercised
+  against real logs and real `.jucm` files, which is not the same thing as a regression suite.
 
 ## The `.jucm`/`.md` split
 
@@ -54,8 +79,16 @@ perturbations, and every condition this package runs all point at `.jucm` files 
 
 ## Before running anything for real
 
-1. **Resolve `configs/preregistration.yaml`'s pending decisions** (C7, C10, C5, C6, D6) — `protocol.require()`
-   refuses a frozen run while any decision governing its dataset is still `status: pending`.
+1. **Pre-registration is now resolved** — C5, C6, C7, C10, C13, D1, D6, D7 and the degenerate-OR
+   policy are all `status: decided` as of 2026-08-25, so `prereg.require()` passes for all three
+   datasets. Re-read them before running: `C5_label_list_control` is the one deliberately marked as
+   the most revisitable (the label-list arm is supported in code and costs only budget to enable),
+   and `C6_sepsis_perturbations` is set to `false` partly on a validity ground that would change if
+   Sepsis's Step 5a induction ever became stable. Do not edit a decision after the run it governs
+   has executed — supersede it with a new `protocol_version`.
 2. Confirm `GEMINI_API_KEY` is exported and the account is off the free tier before a full-scale
-   run — Task C7's ~24k-call BPIC 2019 estimate is real; `conditions.estimated_llm_calls()` reports
-   the count for whatever scope is chosen before anything is billed.
+   run. The plan's original ~24k-call BPIC 2019 figure assumed `assignment_batch_size=20`; at the
+   pre-registered 50 the full 11,973-variant scope is roughly 240 Step-6 calls per condition. Use
+   `--dry-run` to see `conditions.estimated_llm_calls()` for every condition before anything is
+   billed.
+3. Run `--experiment stability` (Task C12) before committing a dataset's budget to `e1`.

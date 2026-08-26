@@ -3,6 +3,11 @@ You are revising an existing taxonomy induced directly from a narrative sample (
 Each category's anchor_ids field must remain an empty list — there is still no declared axis to trace it to.
 
 === NARRATIVE SAMPLE ({sample_size} variants, drawn to cover frequent, rare, and extreme cases) ===
+How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
+- frequency is how many cases share that sequence, with that count as a share of all cases in the log in parentheses; duration_median is the median case duration for that variant, written compactly on the same scale as the waits inside the narrative ("134d", "3h", "45m"); trace_length is the number of activities in the sequence; outcome is the variant's final activity.
+- The activity sequence shown after "narrative:" is that of a single representative case (the one whose duration is closest to the variant's median), so a "(+34d)" after an activity is that case's waiting time since the preceding activity, not a variant-wide average. Activities are listed in the order they occurred. A "(handled by resource R)" clause, where present, names the resource that performed that activity in the representative case. A trailing "Rework observed: ..." sentence, where present, is a variant-level count over the variant's own cases, not part of the representative case's sequence.
+- sample_reasons records why the variant was drawn into the sample. The sample deliberately over-represents rare and extreme variants, so the frequencies listed below are not the log's overall distribution and must not be read as one.
+
 {narrative_blocks}
 
 === PRIOR TAXONOMY (the taxonomy you are revising) ===

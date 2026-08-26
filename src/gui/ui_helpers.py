@@ -17,7 +17,7 @@ API_KEY_ENV_VARS = ("GEMINI_API_KEY", "OPENAI_API_KEY", "ANTHROPIC_API_KEY")
 _STEP_KIND = {
     1: "det", 2: "det", 3: "det", 4: "det",
     5: "llm", 6: "llm",
-    7: "det",
+    7: "det", "7b": "det",
     8: "llm",
     9: "human",
 }
@@ -53,7 +53,11 @@ def render_api_key_status(*, show_setup_link: bool = True) -> None:
 
 def render_pipeline_diagram() -> None:
     """A small inline HTML/CSS strip of the 9-step pipeline, color-coded by step kind. Home page
-    only — no external image asset exists in the repo to embed instead (see project/OVERVIEW.md)."""
+    only — no external image asset exists in the repo to embed instead (see project/OVERVIEW.md).
+
+    Step 7b appears as its own chip but is not a tenth step: it is optional, sits between 7 and 8,
+    and is a no-op on a goal model that does not bind its indicators to the log. The caption below
+    the strip says so, since a chip on its own reads as mandatory."""
     chips = []
     for step, name in run_control.STEP_NAMES.items():
         color = _KIND_COLOR[_STEP_KIND[step]]
@@ -75,7 +79,11 @@ def render_pipeline_diagram() -> None:
 
     st.markdown(
         f'<div style="display:flex;align-items:flex-start;gap:4px;overflow-x:auto;padding:8px 0 4px 0;">{"".join(chips)}</div>'
-        f'<div style="margin-top:4px;">{legend}</div>',
+        f'<div style="margin-top:4px;">{legend}</div>'
+        f'<div style="margin-top:6px;font-size:0.72rem;color:#888;">'
+        f'Step 7b is optional \u2014 it measures the goal model\u2019s KPI indicators per category and is skipped '
+        f'automatically on a goal model that does not bind its indicators to the log. Step 5 runs in one of two '
+        f'mutually exclusive modes (5a intent-guided, 5b open), never both.</div>',
         unsafe_allow_html=True,
     )
 
@@ -86,7 +94,7 @@ def render_progress_panel(
     worker_log_path: Path,
     pipeline_log_path: Path,
     popen,
-    steps: list[int],
+    steps: list[int | str],
     success_message: str,
     session_state_key: str,
     popen_state_key: str,

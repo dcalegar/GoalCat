@@ -314,3 +314,27 @@ def materialize_condition_inputs(base: SharedBase, condition_dir: Path, logger: 
         )
     logger.info("Materialized shared Steps 1-4 inputs into %s", condition_dir)
     return hashes
+
+
+def withhold_narrative_sample(condition_dir: Path, logger: logging.Logger) -> dict[str, Any]:
+    """Task C11a: empty this condition's narrative sample, keeping its columns.
+
+    Called *after* `materialize_condition_inputs()` has already asserted that the copied Steps 1-4
+    artifacts hash-match the shared base. That ordering is deliberate: the freeze table's
+    identical-inputs rows are verified for this condition exactly as for every other, and only then
+    is the one factor under ablation removed. The withheld row count is returned for the manifest,
+    so a run whose sample was emptied can never be mistaken for a plain guided run.
+    """
+    sample_path = condition_dir / SAMPLING_DIRNAME / "narrative_sample.csv"
+    sample_df = pd.read_csv(sample_path)
+    withheld = len(sample_df)
+    sample_df.iloc[0:0].to_csv(sample_path, index=False)
+    logger.info(
+        "Task C11a: withheld %d narrative(s) from Step 5a for %s (columns kept, rows emptied)",
+        withheld, condition_dir.name,
+    )
+    return {
+        "withheld": True,
+        "narratives_withheld": withheld,
+        "sample_path": str(sample_path.relative_to(REPO_ROOT)),
+    }

@@ -1,0 +1,16 @@
+{
+  "call": {
+    "provider": "gemini",
+    "model": "gemini/gemini-3.5-flash-lite",
+    "backend": "remote",
+    "temperature": 0.0,
+    "prompt_hash": "11820e46b27d4e9c",
+    "latency_seconds": 2.663224167015869,
+    "input_tokens": 1701,
+    "output_tokens": 376,
+    "prompt_chars": 7239,
+    "response_chars": 1614,
+    "raw_response": "{\n  \"assessments\": [\n    {\n      \"category_id\": \"payment_resolution\",\n      \"goal_alignment\": \"The discovered pattern and model looseness (perfect fitness and precision) confirm standard payment paths, but measured satisfaction indicates significant delays with an average time to case closure score of -51 (external-by-analogy) and a time to fine dispatch score of -14 (statutory, 50% coverage), showing friction in achieving timely payment.\"\n    },\n    {\n      \"category_id\": \"administrative_appeal_to_prefecture\",\n      \"goal_alignment\": \"The single-case variant is tightly bounded with perfect fitness and precision, and the measured satisfaction scores all reach the maximum +100 (statutory and external-by-analogy), demonstrating strong alignment with resolving via administrative appeal to the Prefecture.\"\n    },\n    {\n      \"category_id\": \"judicial_appeal_to_the_judge\",\n      \"goal_alignment\": \"Although the process model is tightly bounded and time to fine dispatch scores moderately at +73 (statutory), the time to appeal filing to the Judge scores -100 (statutory, one-sided scale), indicating severe delays in filing that challenge the successful realization of a timely judicial appeal.\"\n    },\n    {\n      \"category_id\": \"coercive_credit_collection\",\n      \"goal_alignment\": \"The process model is tightly bounded with perfect fitness and precision, but measured satisfaction shows poor performance with a time to fine dispatch score of -15 (statutory) and an average time to case closure score of -100 (external-by-analogy), reflecting extreme delays in concluding coercive collection.\"\n    }\n  ]\n}",
+    "estimated_cost_usd": 0.0014502999999999999
+  }
+}

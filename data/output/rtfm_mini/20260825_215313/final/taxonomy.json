@@ -1,0 +1,54 @@
+{
+  "categories": [
+    {
+      "category_id": "payment_resolution",
+      "name": "Resolve via payment",
+      "description": "Resolution of the fine case through payment, encompassing both early payment before penalties and delinquent payment after notification and penalty have been applied. Advances Maximize timely fine revenue and Minimize administrative & enforcement cost.",
+      "anchor_ids": [
+        "12",
+        "13"
+      ],
+      "rationale": "Merged per reviewer request to exercise Step 9 revision, combining declared alternatives 12 and 13 observed in variants V0003 and V0004.",
+      "evidence_variant_ids": [
+        "V0003",
+        "V0004"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal_to_prefecture",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Contested appeal resolved through administrative process via the Prefecture. Preserves offender's due-process rights while impacting costs and revenue.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Maps 1:1 to declared alternative 14, observed in variant V0006 involving insertion of appeal date, sending appeal, and receiving results.",
+      "evidence_variant_ids": [
+        "V0006"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal_to_the_judge",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Contested appeal resolved through the judicial system. Makes a strong positive contribution to preserving offender's due-process rights while hurting administrative costs.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to declared alternative 19, observed in variant V0005 where the case concludes with an appeal to the judge.",
+      "evidence_variant_ids": [
+        "V0005"
+      ]
+    },
+    {
+      "category_id": "coercive_credit_collection",
+      "name": "Resolve via coercive credit collection",
+      "description": "Resolution of the fine case through coercive credit collection procedures after notifications and penalties. Helps timely revenue while hurting enforcement costs.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Maps 1:1 to declared alternative 20, observed in variant V0002 where the case concludes by sending for credit collection.",
+      "evidence_variant_ids": [
+        "V0002"
+      ]
+    }
+  ]
+}

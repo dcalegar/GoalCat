@@ -4,41 +4,47 @@
 # each entry declaring event_attribute/trace_attribute/event_template/trace_template), but
 # the template strings themselves are original content authored for this project's own logs,
 # not copied from LUPIN's six dataset configs — see README.md, "What is NOT reused".
+#
+# Two templates, not one aliased across all five logs. `_DEFAULT` keeps a `resource` clause
+# (guarded, so it stays silent on today's logs, none of which populate `resource` outside RTFM)
+# for any future multi-actor goal model. RTFM's own goal model declares a single actor, so its
+# categories can never be resource-discriminated; the clause would only be distractor content in
+# a prompt that asks the LLM to find "meaningfully different sub-patterns". Both templates drop
+# the LUPIN trace-level sentence's restated frequency/duration/outcome (already present,
+# structured, in the Step 5a header line) and render waiting time as a compact inline suffix,
+# e.g. "Send Fine (+90d)", instead of raw seconds — computed by
+# `src/goalcat/extraction/profiling.py::_format_waiting_display`, not here; unit conversion stays
+# out of third_party/, see README.md's isolation contract. Adopted as the pipeline's single
+# default narrative rendering (2026-08-25).
 
-TEMPLATES = {
-    "rtfm": {
-        "event_attribute": ["activity", "resource", "waiting_seconds"],
-        "trace_attribute": [
-            "outcome",
-            "frequency",
-            "frequency_pct_display",
-            "duration_seconds_median",
-            "rework_summary",
-        ],
-        "event_template": (
-            "{{ activity }}"
-            "{% if resource %} (handled by resource {{ resource }}){% endif %}, "
-            "{{ waiting_seconds }} seconds after the previous step."
-        ),
-        "trace_template": (
-            "This variant covers {{ frequency }} cases ({{ frequency_pct_display }}% of the "
-            "log), typically takes about {{ duration_seconds_median }} seconds from start to "
-            "finish, and ends in {{ outcome }}."
-            "{% if rework_summary %} {{ rework_summary }}{% endif %}"
-        ),
-    },
+_DEFAULT = {
+    "event_attribute": ["activity", "resource", "waiting_display"],
+    "trace_attribute": ["rework_summary"],
+    "event_template": (
+        "{{ activity }}"
+        "{% if resource %} (handled by resource {{ resource }}){% endif %}"
+        "{% if waiting_display %} ({{ waiting_display }}){% endif %}"
+    ),
+    "trace_template": "{% if rework_summary %}{{ rework_summary }}{% endif %}",
+}
+
+_RTFM = {
+    "event_attribute": ["activity", "waiting_display"],
+    "trace_attribute": _DEFAULT["trace_attribute"],
+    "event_template": "{{ activity }}{% if waiting_display %} ({{ waiting_display }}){% endif %}",
+    "trace_template": _DEFAULT["trace_template"],
 }
 
 # rtfm_mini is a small subset of real RTFM cases (see PROGRESS.md / config_mini.yaml) used for
 # fast functional testing — same activity vocabulary and event/trace structure as "rtfm", so it
-# reuses the same templates rather than duplicating them.
-TEMPLATES["rtfm_mini"] = TEMPLATES["rtfm"]
+# reuses the same template rather than duplicating it.
+TEMPLATES = {"rtfm": _RTFM, "rtfm_mini": _RTFM}
 
-# Every other log in data/logs/ (sepsis, bpic2019, bpic2020_permit) goes through the same Step 2
-# profiling code (src/goalcat/extraction/profiling.py) as rtfm, which always emits this exact
-# event_attribute/trace_attribute schema regardless of the source log — nothing in the "rtfm"
-# template's wording is RTFM-specific (no activity names, no dataset vocabulary). Reusing it here
-# follows the same precedent as rtfm_mini above, rather than duplicating an identical template
-# under three more keys.
+# sepsis, bpic2019 and bpic2020_permit go through the same Step 2 profiling code
+# (src/goalcat/extraction/profiling.py) as rtfm, which always emits this exact
+# event_attribute/trace_attribute schema regardless of the source log. None of their goal models
+# declare a resource-discriminated alternative today either, but unlike rtfm they are not known to
+# be single-actor by construction, so they get the resource-capable default rather than rtfm's
+# trimmed template.
 for _log_name in ("sepsis", "bpic2019", "bpic2020_permit"):
-    TEMPLATES[_log_name] = TEMPLATES["rtfm"]
+    TEMPLATES[_log_name] = _DEFAULT

@@ -21,6 +21,65 @@ def select_representative_case(subdf: pd.DataFrame, config: PipelineConfig) -> s
     return min(case_durations, key=lambda case_id: abs(case_durations[case_id] - median))
 
 
+def format_duration_display(seconds: float) -> str:
+    """Compact rendering of a duration ("90d", "3h", "45m", "12s"), picking the coarsest unit that
+    keeps the value >= 1. Shared by the narrative's inter-event waits (via
+    `_format_waiting_display`, which only prefixes "+") and by the Step 5a/6 prompt header's
+    variant duration, so a reader comparing the two reads one scale rather than converting raw
+    seconds in their head. Returns "0s" for a zero duration -- a real measurement, unlike the
+    zero *wait* of a trace's first event, which `_format_waiting_display` suppresses instead.
+    """
+    total = round(seconds)
+    if total == 0:
+        return "0s"
+    if total >= 86400:
+        return f"{round(total / 86400)}d"
+    if total >= 3600:
+        hours = round(total / 3600)
+        return "1d" if hours == 24 else f"{hours}h"
+    if total >= 60:
+        minutes = round(total / 60)
+        return "1h" if minutes == 60 else f"{minutes}m"
+    return "1m" if total == 60 else f"{total}s"
+
+
+def _format_waiting_display(seconds: float) -> str:
+    """Compact suffix rendering of a waiting duration ("+90d", "+3h", "+45m", "+12s"), picking
+    the coarsest unit that keeps the value >= 1 (seconds/minutes/hours/days). RTFM's statutory
+    indicators are all whole-day thresholds (90/60/120/180/360/365 days,
+    data/goals/rtfmGM_description.md:197-199), so day-level rounding on day-scale waits is
+    lossless; short waits keep finer resolution.
+
+    Rounds to the nearest whole unit within a tier, carrying into the next tier when that
+    rounds up to it (e.g. 86399s -> "+1d", not "+24h"). Returns "" for a zero wait (always the
+    first event in a trace, which has no prior step to wait on); the caller's template omits
+    the suffix entirely rather than rendering an uninformative "+0s".
+
+    Compact form adopted as the pipeline's default narrative rendering (2026-08-25).
+    """
+    if round(seconds) == 0:
+        return ""
+    return "+" + format_duration_display(seconds)
+
+
+#: Resource values that mean "no resource recorded" despite being present as a non-null string.
+#: bpic2019 stores the literal "NONE" in its resource column, which is truthy in the narrative
+#: template's `{% if resource %}` guard, so every event of every sampled variant rendered a
+#: "(handled by resource NONE)" clause -- 2,039 occurrences and 10.6% of that log's Step 5a prompt.
+#: Normalising here rather than in the template keeps the sentinel list out of the CC BY-NC-SA
+#: `third_party/` boundary, alongside the unit conversion already kept out for the same reason.
+_RESOURCE_SENTINELS = {"none", "nan", "null", "unknown", "n/a", "na", "-", ""}
+
+
+def _normalize_resource(resource) -> str | None:
+    """None for a missing resource, including the sentinel strings above. Comparison is
+    case-insensitive on the stripped value; the original string is returned otherwise, never a
+    normalised form, so a genuine resource id reaches the narrative exactly as the log spells it."""
+    if pd.isna(resource):
+        return None
+    return None if str(resource).strip().lower() in _RESOURCE_SENTINELS else resource
+
+
 def build_event_profile(rep_case_df: pd.DataFrame, config: PipelineConfig) -> list[dict]:
     """Render the representative case's events, ordered, with waiting time since the prior event."""
     ordered = rep_case_df.sort_values(config.timestamp_key)
@@ -36,8 +95,9 @@ def build_event_profile(rep_case_df: pd.DataFrame, config: PipelineConfig) -> li
             {
                 "activity": row[config.activity_key],
                 "timestamp": timestamp.isoformat(),
-                "resource": None if pd.isna(resource) else resource,
+                "resource": _normalize_resource(resource),
                 "waiting_seconds": waiting_seconds,
+                "waiting_display": _format_waiting_display(waiting_seconds),
             }
         )
         previous_timestamp = timestamp

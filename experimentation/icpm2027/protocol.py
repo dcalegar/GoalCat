@@ -43,7 +43,7 @@ PERTURBED_GOALS_DIRNAME = "perturbed"
 
 DATASET_IDS = ("rtfm", "sepsis", "bpic2019")
 
-Arm = Literal["guided", "open", "label_list"]
+Arm = Literal["guided", "open", "label_list", "guided_no_sample"]
 
 #: taxonomy_mode each arm runs under. "label_list" (Task C5's control) is an open induction over a
 #: supplied label list, so it runs the same pipeline mode as "open" and differs in its prompt-side
@@ -52,7 +52,14 @@ _TAXONOMY_MODE_BY_ARM: dict[str, str] = {
     "guided": "intent_guided",
     "open": "open",
     "label_list": "open",
+    # Task C11a's ablation is a guided condition in every respect except that Step 5a receives an
+    # empty narrative sample — the taxonomy_mode and the goal model are unchanged, which is what
+    # makes the comparison against the plain guided arm a clean single-factor one.
+    "guided_no_sample": "intent_guided",
 }
+
+# Arms that read a goal model. Task C11a's ablation withholds the *sample*, not the model.
+_GOAL_MODEL_ARMS: frozenset[str] = frozenset({"guided", "guided_no_sample"})
 
 
 class PreRegistrationError(RuntimeError):
@@ -251,9 +258,22 @@ class ConditionSpec:
         populated in an open condition would leave a live path to the very artifact the arm is
         defined by not having. The freeze table's "Goal model: absent" row is enforced here.
         """
-        if self.arm != "guided":
+        if self.arm not in _GOAL_MODEL_ARMS:
             return None
         return self.goal_model_filename or self.dataset.goal_model_filename
+
+    @property
+    def withholds_narrative_sample(self) -> bool:
+        """Task C11a: Step 5a runs with an empty narrative sample.
+
+        Steps 1-4 still run identically and the sample is still computed and hashed into the
+        shared base — the freeze table's "identical narrative sample" row is untouched. What
+        changes is only whether Step 5a is *shown* it, which is precisely the factor the ablation
+        isolates: across every guided run to date the induced taxonomy has equalled the goal
+        model's declared element list and neither sample-driven escape hatch has fired, so the
+        sample may be cited rather than consulted in this mode.
+        """
+        return self.arm == "guided_no_sample"
 
     @property
     def condition_id(self) -> str:
@@ -310,6 +330,24 @@ def resolve_assignment_batch_size(dataset: DatasetSpec, protocol: Protocol, prer
     if dataset.dataset_id in exceptions:
         return int(exceptions[dataset.dataset_id])
     return int(value.get("default", protocol.llm["assignment_batch_size"]))
+
+
+def runs_step7b(dataset: DatasetSpec, arm: Arm, prereg: PreRegistration) -> bool:
+    """Task C13 — whether this condition runs Step 7b (indicator satisfaction).
+
+    Two conditions, both necessary. The arm must read a goal model, because open-mode categories
+    carry no `anchor_ids` and there is nothing to attach an indicator to — which is also why 7b can
+    never enter RQ1's paired contrast and is reported as guided-arm characterization rather than
+    validation. And the dataset must be one the C13 decision names, because only RTFM's goal model
+    declares measurable indicators; `run_step7b_indicators()` would no-op on the others anyway, but
+    an implicit no-op is not a pre-registration.
+    """
+    if "C13_step7b_indicators" not in prereg.decisions:
+        return False
+    value = prereg.get("C13_step7b_indicators").value or {}
+    if value.get("policy") != "run_guided_only":
+        return False
+    return arm in _GOAL_MODEL_ARMS and dataset.dataset_id in (value.get("datasets") or [])
 
 
 def steps_for(arm: Arm, protocol: Protocol, prereg: PreRegistration) -> tuple[int, ...]:

@@ -68,12 +68,28 @@ class IntentionalElement:
     type: IntentionalElementType
     decomposition_type: DecompositionType | None = None
     description: str | None = None
+    #: `urncore.ecore`'s `URNmodelElement.metadata` — a containment list of `Metadata` (name/value)
+    #: pairs every URN tool may annotate an element with; jUCMNav stamps `_numEval`/`_qualEval`
+    #: there itself after running a strategy. Flattened to a dict because every key this project
+    #: reads or writes is single-valued (`goalcat.grl.measures`' `goalcat:*` measurement binding);
+    #: a model that repeated a name would keep only its last occurrence.
+    metadata: dict[str, str] = field(default_factory=dict)
 
 
 @dataclass
 class DecompositionLink:
-    """grl.ecore's `Decomposition` (an `ElementLink` subtype): `src` (parent) -> `dest` (child).
-    `id` is the link's own XMI id, distinct from either endpoint's."""
+    """grl.ecore's `Decomposition` (an `ElementLink` subtype), oriented **parent -> child**: `src`
+    is the decomposed element, `dest` one of its parts. `id` is the link's own XMI id, distinct
+    from either endpoint's.
+
+    That is this dataclass's convention, not the wire format's. GRL itself orients a decomposition
+    link the other way — the part is `src` and the whole is `dest`, which is what makes
+    jUCMNav's own propagation work (`QuantitativeGRLStrategyAlgorithm.getEvaluation()` walks an
+    element's `linksDest` and reads each `link.src`'s satisfaction, so an And-decomposed parent can
+    only take the minimum over its children if the children are the sources). `jucm_io.py`
+    translates on both read and write; nothing above it needs to think about the flip, and
+    `children_of()`/`parent_of()` read naturally as a result.
+    """
 
     id: str
     src: str

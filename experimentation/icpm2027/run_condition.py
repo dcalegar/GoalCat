@@ -32,12 +32,19 @@ from goalcat.pipeline import (
     run_step5_taxonomy,
     run_step6_assignment,
     run_step7_discovery,
+    run_step7b_indicators,
     run_step8_description,
 )
 from goalcat.run_logging import get_logger
 
 #: Steps this entrypoint is allowed to run. 1-4 are excluded because a frozen condition inherits
 #: them from the shared base (inputs.py) and must never recompute them; 9 is excluded by protocol.
+#:
+#: Step 7b is deliberately NOT in this table and is not selectable through `--steps`. It is not a
+#: free choice: Task C13 pre-registers it as guided-arm-only (open categories carry no anchor_ids,
+#: so there is nothing to attach an indicator to) and RTFM-only (no other goal model declares a
+#: measurable indicator). It is therefore driven by its own `--indicators` flag, which the driver
+#: sets from the resolved C13 decision rather than from a step list anyone could edit.
 _STEP_FUNCTIONS = {
     5: run_step5_taxonomy,
     6: run_step6_assignment,
@@ -65,6 +72,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--run-id", required=True, help="Run directory name under data/output/<log_stem>/")
     parser.add_argument("--steps", default="5,6", help="Comma-separated subset of 5,6,7,8 (default: 5,6)")
     parser.add_argument("--round", type=int, default=1, help="Round to write into (frozen runs use 1)")
+    parser.add_argument(
+        "--indicators",
+        action="store_true",
+        help="Also run Step 7b (indicator satisfaction) after Step 6 — Task C13, guided arm only",
+    )
     args = parser.parse_args(argv)
 
     steps = parse_steps(args.steps)
@@ -77,6 +89,17 @@ def main(argv: list[str] | None = None) -> int:
 
     for step in steps:
         _STEP_FUNCTIONS[step](args.config, args.run_id, round=args.round)
+
+    if args.indicators:
+        if config.taxonomy_mode != "intent_guided":
+            # Belt and braces: the driver already refuses this, but a hand-run subprocess must not
+            # be able to produce an "indicator" result for an arm that has no anchors to measure.
+            raise SystemExit(
+                "Step 7b requires taxonomy_mode=intent_guided (Task C13): open-mode categories "
+                f"carry no anchor_ids to attach an indicator to, but this run is {config.taxonomy_mode!r}."
+            )
+        logger.info("Task C13: running Step 7b (indicator satisfaction) for run_id=%s", args.run_id)
+        run_step7b_indicators(args.config, args.run_id, round=args.round)
 
     logger.info("ICPM 2027 condition run complete: run_id=%s", args.run_id)
     return 0

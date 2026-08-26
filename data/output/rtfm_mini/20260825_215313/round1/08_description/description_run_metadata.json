@@ -1,0 +1,16 @@
+{
+  "call": {
+    "provider": "gemini",
+    "model": "gemini/gemini-3.5-flash-lite",
+    "backend": "remote",
+    "temperature": 0.0,
+    "prompt_hash": "494757e29660f81a",
+    "latency_seconds": 3.0696539169875905,
+    "input_tokens": 1938,
+    "output_tokens": 502,
+    "prompt_chars": 8136,
+    "response_chars": 2163,
+    "raw_response": "{\n  \"assessments\": [\n    {\n      \"category_id\": \"timely_payment\",\n      \"goal_alignment\": \"The discovered evidence shows a single case perfectly matching the expected path with a tight process model (fitness and precision 1.00). The measured satisfaction for average time to case closure is 1.0 day, yielding a +100 score on an external-by-analogy scale, strongly supporting the task to resolve via timely payment.\"\n    },\n    {\n      \"category_id\": \"delinquent_payment\",\n      \"goal_alignment\": \"The single case follows a predictable path with perfect model fitness and precision. However, the measured satisfaction shows negative outcomes: time to fine dispatch scored -14 on a statutory threshold (130 days), and average time to case closure scored -100 on an external-by-analogy scale (550 days), sitting awkwardly against the goal of maximizing timely fine revenue.\"\n    },\n    {\n      \"category_id\": \"administrative_appeal_to_prefecture\",\n      \"goal_alignment\": \"The process behavior is tightly bounded with perfect fitness and precision for its single case variant. Measured satisfaction scores are highly positive (+100 for fine dispatch, appeal filing, and case closure duration), fully supporting the task of resolving via administrative appeal while respecting due process.\"\n    },\n    {\n      \"category_id\": \"judicial_appeal_to_the_judge\",\n      \"goal_alignment\": \"The discovered pattern is deterministic with a single variant and tight model bounds. While time to fine dispatch achieved a positive score (+73), the time to appeal filing to the judge scored -100 on a statutory scale (81 days), indicating a severe delay that negatively impacts the efficiency goal despite preserving due-process rights.\"\n    },\n    {\n      \"category_id\": \"coercive_credit_collection\",\n      \"goal_alignment\": \"The single case follows a strict variant path under a tightly bounded model. Measured satisfaction indicates negative performance with a fine dispatch score of -15 (132 days) and an average time to case closure score of -100 (971 days, external-by-analogy), reflecting high enforcement costs and delays that conflict with timely revenue goals.\"\n    }\n  ]\n}",
+    "estimated_cost_usd": 0.0018364000000000002
+  }
+}

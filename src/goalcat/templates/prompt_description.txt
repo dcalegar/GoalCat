@@ -4,7 +4,7 @@ Ground your judgment in the goal-model linkage text given for each category, not
 
 Do not describe the Petri net's internal structure (places, transitions, arcs) — the discovered_pattern and model_looseness notes below already summarize what matters about it in business terms. Do not simply restate the declared description back. Write one goal_alignment assessment per category listed below, using exactly the category_id given — no more, no fewer, no invented ids.
 
-=== CATEGORIES ({category_count}) ===
+{measured_context}=== CATEGORIES ({category_count}) ===
 {category_blocks}
 
 Assess goal alignment for every category now.

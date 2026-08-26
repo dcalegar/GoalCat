@@ -82,7 +82,7 @@ def _metamodels():
         return package
 
     packages = {name: load(name) for name in _METAMODEL_LOAD_ORDER}
-    return rset, packages["grl.ecore"], packages["urn.ecore"]
+    return rset, packages["grl.ecore"], packages["urn.ecore"], packages["urncore.ecore"]
 
 
 class _StringURI:
@@ -129,7 +129,7 @@ def parse_jucm(xml_text: str, source_path: str = "<memory>") -> GRLModel:
     """
     from pyecore.resources.xmi import XMIResource
 
-    rset, _grl_pkg, _urn_pkg = _metamodels()
+    rset, _grl_pkg, _urn_pkg, _urncore_pkg = _metamodels()
 
     stripped = _URNDEF_RE.sub("", xml_text)
     stripped = _REFS_ATTR_RE.sub("", stripped)
@@ -169,6 +169,7 @@ def parse_jucm(xml_text: str, source_path: str = "<memory>") -> GRLModel:
             # EMF attribute access can't distinguish "explicitly set to the default" from "never
             # set" without eIsSet(), so that's what gates this rather than a truthiness check.
             decomposition_type=el.decompositionType.name if el.eIsSet("decompositionType") else None,
+            metadata={entry.name: entry.value for entry in el.metadata if entry.name is not None},
         )
 
     for actor in grlspec.actors:
@@ -177,7 +178,9 @@ def parse_jucm(xml_text: str, source_path: str = "<memory>") -> GRLModel:
     for link in grlspec.links:
         kind = link.eClass.name
         if kind == "Decomposition":
-            model.decompositions.append(DecompositionLink(id=link.id, src=link.src.id, dest=link.dest.id))
+            # GRL orients a decomposition part -> whole; GRLModel orients it parent -> child. See
+            # DecompositionLink's own docstring for why the wire format is the way it is.
+            model.decompositions.append(DecompositionLink(id=link.id, src=link.dest.id, dest=link.src.id))
         elif kind == "Contribution":
             model.contributions.append(
                 ContributionLink(
@@ -278,7 +281,7 @@ def _build_grlspec_eobject(model: GRLModel):
     `GRLModel` — the same metaclasses `parse_jucm()` reads back, so a value pyecore's own
     constructors reject (e.g. an invalid `ContributionType` literal) fails here, at construction,
     rather than silently serializing something jUCMNav would refuse to open."""
-    _rset, grl_pkg, urn_pkg = _metamodels()
+    _rset, grl_pkg, urn_pkg, urncore_pkg = _metamodels()
     URNspec = urn_pkg.getEClassifier("URNspec")
     GRLspec = grl_pkg.getEClassifier("GRLspec")
     IntentionalElementCls = grl_pkg.getEClassifier("IntentionalElement")
@@ -287,6 +290,7 @@ def _build_grlspec_eobject(model: GRLModel):
     kpimodel_pkg = next(sub for sub in grl_pkg.eSubpackages if sub.name == "kpimodel")
     IndicatorCls = kpimodel_pkg.getEClassifier("Indicator")
     ActorCls = grl_pkg.getEClassifier("Actor")
+    MetadataCls = urncore_pkg.getEClassifier("Metadata")
     DecompositionCls = grl_pkg.getEClassifier("Decomposition")
     ContributionCls = grl_pkg.getEClassifier("Contribution")
     IntentionalElementType = grl_pkg.getEClassifier("IntentionalElementType")
@@ -313,6 +317,11 @@ def _build_grlspec_eobject(model: GRLModel):
         eobject.type = getattr(IntentionalElementType, element.type)
         if element.decomposition_type:
             eobject.decompositionType = getattr(DecompositionType, element.decomposition_type)
+        for name, value in element.metadata.items():
+            entry = MetadataCls()
+            entry.name = name
+            entry.value = value
+            eobject.metadata.append(entry)
         grlspec.intElements.append(eobject)
         eobject_by_element_id[element.id] = eobject
 
@@ -325,8 +334,9 @@ def _build_grlspec_eobject(model: GRLModel):
     for link in model.decompositions:
         elink = DecompositionCls()
         elink.id = link.id
-        elink.src = eobject_by_element_id[link.src]
-        elink.dest = eobject_by_element_id[link.dest]
+        # Back to GRL's part -> whole orientation (see parse_jucm's mirror-image comment).
+        elink.src = eobject_by_element_id[link.dest]
+        elink.dest = eobject_by_element_id[link.src]
         grlspec.links.append(elink)
 
     for link in model.contributions:
@@ -473,8 +483,13 @@ def _render_urndef(model: GRLModel) -> str:
     connection_lines: list[str] = []
     for link in list(model.decompositions) + list(model.contributions):
         conn_id = model.new_id()
-        source_node = node_id_by_element.get(link.src)
-        target_node = node_id_by_element.get(link.dest)
+        # A LinkRef's source/target mirror its link's own endpoints, so decompositions are drawn
+        # part -> whole here too, matching what _build_grlspec_eobject() serializes.
+        from_id, to_id = (
+            (link.dest, link.src) if isinstance(link, DecompositionLink) else (link.src, link.dest)
+        )
+        source_node = node_id_by_element.get(from_id)
+        target_node = node_id_by_element.get(to_id)
         if source_node is None or target_node is None:
             continue
         connection_lines.append(

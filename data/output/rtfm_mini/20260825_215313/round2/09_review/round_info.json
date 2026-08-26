@@ -1,0 +1,10 @@
+{
+  "round": 2,
+  "decision_summary": [
+    "merge: ['timely_payment', 'delinquent_payment'] -> reason: Scripted rework-loop demonstration (experimentation/examples/rtfm_mini/example_run.py): merging the first two induced categories (timely_payment, delinquent_payment) to exercise Step 9's revise path end-to-end (new round, Steps 5-8 re-run)."
+  ],
+  "status": "accepted",
+  "decided_at": "2026-08-26T00:53:57.652858+00:00",
+  "renames_applied": [],
+  "source_decisions_file": "../round1/09_review/review_decisions_processed_20260826_005326.yaml"
+}

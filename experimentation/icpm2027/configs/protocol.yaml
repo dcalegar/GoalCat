@@ -67,3 +67,11 @@ steps:
 replicates:
   unperturbed: 2
   perturbed: 1
+  # Task C12 — Step 5a induction stability. A DIFFERENT quantity from `unperturbed` above: that
+  # one re-runs a whole condition (Steps 5 AND 6) to establish Step 6's partition noise floor
+  # under a fixed taxonomy; this one re-runs Step 5a alone to test whether the taxonomy is stable
+  # in the first place. Sepsis settles that the two are not the same question — four
+  # identical-input guided runs there produced three distinct anchor sets, at three different
+  # levels of the goal tree. k=5 per the plan's k>=5; one LLM call each, so the whole check costs
+  # ~15 calls across the three datasets.
+  taxonomy_induction: 5

@@ -57,6 +57,13 @@ discovery_noise_threshold: 0.0
 # Fitness is still computed either way. A human-in-the-loop tradeoff (see README's Resource usage
 # section), not something the pipeline decides on its own.
 skip_precision: false
+# Step 7b (optional): measure each goal-model indicator over each category's sublog, convert it
+# through the indicator's own KPIEvalValueSet, and propagate the result up the goal model. A no-op
+# unless the goal model binds its indicators to the log with goalcat:* metadata (only RTFM's does),
+# so this flag exists to turn the step off on a model that *could* run it. Deterministic and cheap:
+# no LLM call and no alignment computation.
+skip_indicators: false
+
 
 # Step 9: precision (Step 7, token-based replay) below this is flagged, as an advisory comment
 # only, in the review_decisions.yaml template write_review_template() writes for the human

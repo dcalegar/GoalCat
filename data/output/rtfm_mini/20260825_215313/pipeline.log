@@ -1,0 +1,170 @@
+2026-08-25 21:53:13,975 [INFO] goalcat: Run environment: host=192.168.68.56, platform=macOS-26.5.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-25 21:53:13,975 [INFO] goalcat: example_run: starting full pipeline for rtfm_mini, run_id=20260825_215313
+2026-08-25 21:53:13,977 [INFO] goalcat: Step 1 (variant extraction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:14,008 [INFO] goalcat: Loaded event log: 26 events, 6 cases
+2026-08-25 21:53:14,017 [INFO] goalcat: Extracted 6 variants. Top variant: Create Fine > Send Fine (frequency=1, 16.7%)
+2026-08-25 21:53:14,019 [INFO] goalcat: Saved variants to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/01_variants/variants.csv
+2026-08-25 21:53:14,019 [INFO] goalcat: Step 1 complete.
+2026-08-25 21:53:14,019 [INFO] goalcat: Peak RSS after Step 1: 205.6 MiB
+2026-08-25 21:53:14,020 [INFO] goalcat: Step 2 (multi-view profiling) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:14,022 [INFO] goalcat: Profiling 6 variants against 26 events
+2026-08-25 21:53:14,061 [INFO] goalcat: Profiled 6 variants. Top variant representative case: A1 (outcome=Send Fine, duration_median=11581200s)
+2026-08-25 21:53:14,063 [INFO] goalcat: Saved profiles to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/02_profiling/profiles.csv and /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/02_profiling/profiles.json
+2026-08-25 21:53:14,063 [INFO] goalcat: Step 2 complete.
+2026-08-25 21:53:14,063 [INFO] goalcat: Peak RSS after Step 2: 207.3 MiB
+2026-08-25 21:53:14,064 [INFO] goalcat: Step 3 (textualization) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:14,064 [INFO] goalcat: Rendering narratives for 6 variants
+2026-08-25 21:53:14,122 [INFO] goalcat: Rendered 6 narratives. Example (top variant): Create Fine Send Fine (+134d)
+2026-08-25 21:53:14,123 [INFO] goalcat: Saved narratives to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/03_textualization/narratives.csv
+2026-08-25 21:53:14,123 [INFO] goalcat: Step 3 complete.
+2026-08-25 21:53:14,123 [INFO] goalcat: Peak RSS after Step 3: 207.4 MiB
+2026-08-25 21:53:14,124 [INFO] goalcat: Step 4 (narrative sampling) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:14,127 [INFO] goalcat: Sampled 6 unique variants (frequent=6, rare=6, extreme=6 per direction, before dedup)
+2026-08-25 21:53:14,128 [INFO] goalcat: Saved narrative sample to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/04_sampling/narrative_sample.csv
+2026-08-25 21:53:14,128 [INFO] goalcat: Step 4 complete.
+2026-08-25 21:53:14,128 [INFO] goalcat: Peak RSS after Step 4: 207.5 MiB
+2026-08-25 21:53:14,130 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:14,130 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/04_sampling/narrative_sample.csv
+2026-08-25 21:53:14,131 [INFO] goalcat: Inducing taxonomy from 6 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/rtfm_mini_goal_model.jucm
+2026-08-25 21:53:19,096 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=70979cb827f559fa, latency=3.44s)
+2026-08-25 21:53:19,097 [INFO] goalcat: Induced 5 categories: timely_payment, delinquent_payment, administrative_appeal_to_prefecture, judicial_appeal_to_the_judge, coercive_credit_collection
+2026-08-25 21:53:19,106 [INFO] goalcat: Taxonomy grounding check: no problems found.
+2026-08-25 21:53:19,107 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/05_taxonomy/taxonomy.json
+2026-08-25 21:53:19,108 [INFO] goalcat: Step 5a complete.
+2026-08-25 21:53:19,108 [INFO] goalcat: Peak RSS after Step 5a: 382.6 MiB
+2026-08-25 21:53:19,110 [INFO] goalcat: Step 6 (narrative assignment) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:19,110 [INFO] goalcat: Loading profiles/narratives from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313
+2026-08-25 21:53:19,113 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/05_taxonomy/taxonomy.json
+2026-08-25 21:53:19,116 [INFO] goalcat: Assigning 6 narratives against 5 categories (model=gemini/gemini-3.5-flash-lite, batch_size=50, concurrency=5)
+2026-08-25 21:53:21,873 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=0518290878370798, latency=2.75s)
+2026-08-25 21:53:21,883 [INFO] goalcat: Assigned 5/6 narratives to a category, 1 residual, 0 still pending
+2026-08-25 21:53:21,884 [INFO] goalcat: Assignment grounding check: no problems found.
+2026-08-25 21:53:22,046 [INFO] goalcat: Saved assignment outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/06_assignment
+2026-08-25 21:53:22,046 [INFO] goalcat: Step 6 complete.
+2026-08-25 21:53:22,046 [INFO] goalcat: Peak RSS after Step 6: 389.6 MiB
+2026-08-25 21:53:22,047 [INFO] goalcat: Step 7 (per-category discovery) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:22,047 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/01_variants/variants.csv
+2026-08-25 21:53:22,048 [INFO] goalcat: Loading assignments from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/06_assignment/assignments.csv
+2026-08-25 21:53:22,049 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/05_taxonomy/taxonomy.json
+2026-08-25 21:53:22,053 [INFO] goalcat: Discovering models for 5 categories against 26 events
+2026-08-25 21:53:22,069 [INFO] goalcat: Discovered model for timely_payment: 1 variants, 1 cases, log_fitness=1.000, precision=1.000
+2026-08-25 21:53:22,078 [INFO] goalcat: Discovered model for delinquent_payment: 1 variants, 1 cases, log_fitness=1.000, precision=1.000
+2026-08-25 21:53:22,086 [INFO] goalcat: Discovered model for administrative_appeal_to_prefecture: 1 variants, 1 cases, log_fitness=1.000, precision=1.000
+2026-08-25 21:53:22,093 [INFO] goalcat: Discovered model for judicial_appeal_to_the_judge: 1 variants, 1 cases, log_fitness=1.000, precision=1.000
+2026-08-25 21:53:22,101 [INFO] goalcat: Discovered model for coercive_credit_collection: 1 variants, 1 cases, log_fitness=1.000, precision=1.000
+2026-08-25 21:53:22,101 [INFO] goalcat: Discovered 5/5 category models (0 categories had no assigned variants)
+2026-08-25 21:53:23,493 [INFO] goalcat: Saved discovery outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/07_discovery
+2026-08-25 21:53:23,494 [INFO] goalcat: Step 7 complete.
+2026-08-25 21:53:23,494 [INFO] goalcat: Peak RSS after Step 7: 390.4 MiB
+2026-08-25 21:53:23,495 [INFO] goalcat: Step 7b (indicator satisfaction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:23,495 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/01_variants/variants.csv
+2026-08-25 21:53:23,496 [INFO] goalcat: Loading assignments from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/06_assignment/assignments.csv
+2026-08-25 21:53:23,496 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/05_taxonomy/taxonomy.json
+2026-08-25 21:53:23,512 [INFO] goalcat: Step 7b: scope __baseline__ — 4/4 indicators measured, 6 cases
+2026-08-25 21:53:23,515 [INFO] goalcat: Step 7b: scope coercive_credit_collection — 2/4 indicators measured, 1 cases
+2026-08-25 21:53:23,519 [INFO] goalcat: Step 7b: scope delinquent_payment — 2/4 indicators measured, 1 cases
+2026-08-25 21:53:23,522 [INFO] goalcat: Step 7b: scope timely_payment — 1/4 indicators measured, 1 cases
+2026-08-25 21:53:23,526 [INFO] goalcat: Step 7b: scope judicial_appeal_to_the_judge — 2/4 indicators measured, 1 cases
+2026-08-25 21:53:23,530 [INFO] goalcat: Step 7b: scope administrative_appeal_to_prefecture — 3/4 indicators measured, 1 cases
+2026-08-25 21:53:23,542 [INFO] goalcat: Saved indicator outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/07b_indicators
+2026-08-25 21:53:23,542 [INFO] goalcat: Step 7b complete.
+2026-08-25 21:53:23,542 [INFO] goalcat: Peak RSS after Step 7b: 390.6 MiB
+2026-08-25 21:53:23,543 [INFO] goalcat: Step 8 (high-level description generation) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:23,543 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/01_variants/variants.csv
+2026-08-25 21:53:23,544 [INFO] goalcat: Loading assignments from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/06_assignment/assignments.csv
+2026-08-25 21:53:23,544 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/05_taxonomy/taxonomy.json
+2026-08-25 21:53:23,544 [INFO] goalcat: Loading discovery metrics from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/07_discovery/discovery_metrics.csv
+2026-08-25 21:53:23,546 [INFO] goalcat: Generating descriptions for 5 categories against 26 events
+2026-08-25 21:53:23,546 [INFO] goalcat: Loading Step 7b indicator satisfaction from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/07b_indicators/indicator_satisfaction.csv
+2026-08-25 21:53:23,550 [INFO] goalcat: Computed deterministic description fields for category timely_payment
+2026-08-25 21:53:23,550 [INFO] goalcat: Computed deterministic description fields for category delinquent_payment
+2026-08-25 21:53:23,550 [INFO] goalcat: Computed deterministic description fields for category administrative_appeal_to_prefecture
+2026-08-25 21:53:23,550 [INFO] goalcat: Computed deterministic description fields for category judicial_appeal_to_the_judge
+2026-08-25 21:53:23,551 [INFO] goalcat: Computed deterministic description fields for category coercive_credit_collection
+2026-08-25 21:53:26,639 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=494757e29660f81a, latency=3.07s)
+2026-08-25 21:53:26,642 [INFO] goalcat: Goal alignment coverage check: no problems found.
+2026-08-25 21:53:26,644 [INFO] goalcat: Generated 5/5 category descriptions
+2026-08-25 21:53:26,682 [INFO] goalcat: Saved description outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round1/08_description
+2026-08-25 21:53:26,682 [INFO] goalcat: Step 8 complete.
+2026-08-25 21:53:26,682 [INFO] goalcat: Peak RSS after Step 8: 391.8 MiB
+2026-08-25 21:53:26,684 [INFO] goalcat: Rework loop round 1: wrote scripted decision (revise)
+2026-08-25 21:53:26,685 [INFO] goalcat: Step 9 (business review) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:26,687 [INFO] goalcat: Step 9 revision round started: round 1 -> round 2 (run 20260825_215313)
+2026-08-25 21:53:26,689 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:26,690 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/04_sampling/narrative_sample.csv
+2026-08-25 21:53:26,690 [INFO] goalcat: Inducing taxonomy from 6 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/rtfm_mini_goal_model.jucm
+2026-08-25 21:53:51,786 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=3101fbc8ee1919e0, latency=25.09s)
+2026-08-25 21:53:51,789 [INFO] goalcat: Induced 4 categories: payment_resolution, administrative_appeal_to_prefecture, judicial_appeal_to_the_judge, coercive_credit_collection
+2026-08-25 21:53:51,800 [INFO] goalcat: Taxonomy grounding check: no problems found.
+2026-08-25 21:53:51,802 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/05_taxonomy/taxonomy.json
+2026-08-25 21:53:51,802 [INFO] goalcat: Step 5a complete.
+2026-08-25 21:53:51,802 [INFO] goalcat: Peak RSS after Step 5a: 392.0 MiB
+2026-08-25 21:53:51,802 [INFO] goalcat: Revision grounding check: no problems found.
+2026-08-25 21:53:51,805 [INFO] goalcat: Step 6 (narrative assignment) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:51,805 [INFO] goalcat: Loading profiles/narratives from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313
+2026-08-25 21:53:51,808 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/05_taxonomy/taxonomy.json
+2026-08-25 21:53:51,810 [INFO] goalcat: Assigning 6 narratives against 4 categories (model=gemini/gemini-3.5-flash-lite, batch_size=50, concurrency=5)
+2026-08-25 21:53:54,187 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a04d80a093d9a184, latency=2.37s)
+2026-08-25 21:53:54,191 [INFO] goalcat: Assigned 5/6 narratives to a category, 1 residual, 0 still pending
+2026-08-25 21:53:54,192 [INFO] goalcat: Assignment grounding check: no problems found.
+2026-08-25 21:53:54,248 [INFO] goalcat: Saved assignment outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/06_assignment
+2026-08-25 21:53:54,248 [INFO] goalcat: Step 6 complete.
+2026-08-25 21:53:54,248 [INFO] goalcat: Peak RSS after Step 6: 392.2 MiB
+2026-08-25 21:53:54,249 [INFO] goalcat: Step 7 (per-category discovery) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:54,249 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/01_variants/variants.csv
+2026-08-25 21:53:54,250 [INFO] goalcat: Loading assignments from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/06_assignment/assignments.csv
+2026-08-25 21:53:54,251 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/05_taxonomy/taxonomy.json
+2026-08-25 21:53:54,253 [INFO] goalcat: Discovering models for 4 categories against 26 events
+2026-08-25 21:53:54,266 [INFO] goalcat: Discovered model for payment_resolution: 2 variants, 2 cases, log_fitness=1.000, precision=1.000
+2026-08-25 21:53:54,275 [INFO] goalcat: Discovered model for administrative_appeal_to_prefecture: 1 variants, 1 cases, log_fitness=1.000, precision=1.000
+2026-08-25 21:53:54,282 [INFO] goalcat: Discovered model for judicial_appeal_to_the_judge: 1 variants, 1 cases, log_fitness=1.000, precision=1.000
+2026-08-25 21:53:54,290 [INFO] goalcat: Discovered model for coercive_credit_collection: 1 variants, 1 cases, log_fitness=1.000, precision=1.000
+2026-08-25 21:53:54,290 [INFO] goalcat: Discovered 4/4 category models (0 categories had no assigned variants)
+2026-08-25 21:53:54,764 [INFO] goalcat: Saved discovery outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/07_discovery
+2026-08-25 21:53:54,765 [INFO] goalcat: Step 7 complete.
+2026-08-25 21:53:54,765 [INFO] goalcat: Peak RSS after Step 7: 392.3 MiB
+2026-08-25 21:53:54,766 [INFO] goalcat: Step 7b (indicator satisfaction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:54,766 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/01_variants/variants.csv
+2026-08-25 21:53:54,767 [INFO] goalcat: Loading assignments from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/06_assignment/assignments.csv
+2026-08-25 21:53:54,767 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/05_taxonomy/taxonomy.json
+2026-08-25 21:53:54,781 [INFO] goalcat: Step 7b: scope __baseline__ — 4/4 indicators measured, 6 cases
+2026-08-25 21:53:54,784 [INFO] goalcat: Step 7b: scope coercive_credit_collection — 2/4 indicators measured, 1 cases
+2026-08-25 21:53:54,788 [INFO] goalcat: Step 7b: scope payment_resolution — 2/4 indicators measured, 2 cases
+2026-08-25 21:53:54,791 [INFO] goalcat: Step 7b: scope judicial_appeal_to_the_judge — 2/4 indicators measured, 1 cases
+2026-08-25 21:53:54,794 [INFO] goalcat: Step 7b: scope administrative_appeal_to_prefecture — 3/4 indicators measured, 1 cases
+2026-08-25 21:53:54,804 [INFO] goalcat: Saved indicator outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/07b_indicators
+2026-08-25 21:53:54,804 [INFO] goalcat: Step 7b complete.
+2026-08-25 21:53:54,804 [INFO] goalcat: Peak RSS after Step 7b: 392.6 MiB
+2026-08-25 21:53:54,805 [INFO] goalcat: Step 8 (high-level description generation) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:54,806 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/01_variants/variants.csv
+2026-08-25 21:53:54,806 [INFO] goalcat: Loading assignments from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/06_assignment/assignments.csv
+2026-08-25 21:53:54,806 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/05_taxonomy/taxonomy.json
+2026-08-25 21:53:54,807 [INFO] goalcat: Loading discovery metrics from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/07_discovery/discovery_metrics.csv
+2026-08-25 21:53:54,809 [INFO] goalcat: Generating descriptions for 4 categories against 26 events
+2026-08-25 21:53:54,809 [INFO] goalcat: Loading Step 7b indicator satisfaction from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/07b_indicators/indicator_satisfaction.csv
+2026-08-25 21:53:54,820 [INFO] goalcat: Computed deterministic description fields for category payment_resolution
+2026-08-25 21:53:54,820 [INFO] goalcat: Computed deterministic description fields for category administrative_appeal_to_prefecture
+2026-08-25 21:53:54,820 [INFO] goalcat: Computed deterministic description fields for category judicial_appeal_to_the_judge
+2026-08-25 21:53:54,820 [INFO] goalcat: Computed deterministic description fields for category coercive_credit_collection
+2026-08-25 21:53:57,583 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=11820e46b27d4e9c, latency=2.66s)
+2026-08-25 21:53:57,586 [INFO] goalcat: Goal alignment coverage check: no problems found.
+2026-08-25 21:53:57,587 [INFO] goalcat: Generated 4/4 category descriptions
+2026-08-25 21:53:57,622 [INFO] goalcat: Saved description outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/08_description
+2026-08-25 21:53:57,622 [INFO] goalcat: Step 8 complete.
+2026-08-25 21:53:57,622 [INFO] goalcat: Peak RSS after Step 8: 393.1 MiB
+2026-08-25 21:53:57,624 [INFO] goalcat: Step 9 (business review) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:57,626 [INFO] goalcat: Wrote review decisions template: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/09_review/review_decisions.yaml
+2026-08-25 21:53:57,627 [INFO] goalcat: Step 9: awaiting review — fill in /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/round2/09_review/review_decisions.yaml
+2026-08-25 21:53:57,627 [INFO] goalcat: Step 9 result: {'status': 'awaiting_review', 'run_id': '20260825_215313', 'round': 2}
+2026-08-25 21:53:57,627 [INFO] goalcat: Step 9 revision round complete. Run 20260825_215313 now at round 2.
+2026-08-25 21:53:57,628 [INFO] goalcat: Step 9 result: {'status': 'revised', 'run_id': '20260825_215313', 'round': 2}
+2026-08-25 21:53:57,629 [INFO] goalcat: Rework loop round 2: wrote scripted decision (accept)
+2026-08-25 21:53:57,631 [INFO] goalcat: Step 9 (business review) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm_mini.xes.gz
+2026-08-25 21:53:57,650 [INFO] goalcat: Saved partitioned log to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/final/sublogs
+2026-08-25 21:53:57,652 [INFO] goalcat: Wrote final manifest: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/final/README.md
+2026-08-25 21:53:57,653 [INFO] goalcat: Run 20260825_215313 LLM usage total: 6 calls, 11730 input + 3015 output tokens, 47533 prompt + 12024 response chars, 39.4s latency, $0.0111 — full breakdown in /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm_mini/20260825_215313/final/pipeline_usage_summary.json
+2026-08-25 21:53:57,653 [INFO] goalcat: Run 20260825_215313 finalized (accepted, round 2).
+2026-08-25 21:53:57,654 [INFO] goalcat: Step 9: run 20260825_215313 accepted (round 2).
+2026-08-25 21:53:57,654 [INFO] goalcat: Step 9 result: {'status': 'accepted', 'run_id': '20260825_215313', 'round': 2}
+2026-08-25 21:53:57,654 [INFO] goalcat: Rework loop converged: run 20260825_215313 round 2 accepted.
+2026-08-25 21:53:57,654 [INFO] goalcat: example_run complete. run_id=20260825_215313, final accepted round=2

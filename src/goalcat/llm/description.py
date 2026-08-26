@@ -149,8 +149,54 @@ def _resolve_goal_linkage(category: Category, goal_model_text: str | None) -> st
     return _resolve_anchor_labels(goal_model_text, category.anchor_ids) if goal_model_text else "(no goal model)"
 
 
+#: Prepended to the prompt only when Step 7b measurements are available. Kept here rather than in
+#: prompt_description.txt so a run without Step 7b produces a byte-identical prompt to every run
+#: made before Step 7b existed -- the template's `{measured_context}` placeholder renders to the
+#: empty string in that case, absorbing its own newline.
+MEASURED_CONTEXT_PREAMBLE = (
+    "Some categories below carry a MEASURED SATISFACTION line: the goal model's own KPI indicators, "
+    "measured over that category's own cases and converted to GRL's [-100, +100] satisfaction scale "
+    "by each indicator's declared value set. These are deterministic measurements, not judgments. "
+    "Where one bears on your assessment, rely on it in preference to inferring from the discovered "
+    "pattern, and say which number you relied on.\n"
+    "Read them with their stated caveats. `not applicable` means the indicator does not apply to "
+    "that category at all -- not that the category failed it. A coverage below 100% means the "
+    "aggregate rests on only part of the category's cases, the rest having no measurable endpoint. "
+    "The provenance tag says what the thresholds rest on: `statutory` is a legal term, "
+    "`external-by-analogy` a norm borrowed from a related instrument, `illustrative` a value this "
+    "project invented -- treat a score against an illustrative threshold as weak evidence.\n\n"
+)
+
+
+def _format_measured_line(category_id: str, indicator_df) -> str:
+    """One line summarising every indicator measured for this category, or "" when Step 7b did not
+    run. Raw measured value and satisfaction always appear together, per `goalcat.indicators`' own
+    rule -- a score with the measurement hidden behind it is not checkable."""
+    if indicator_df is None or indicator_df.empty:
+        return ""
+    rows = indicator_df[indicator_df["scope"] == category_id]
+    if rows.empty:
+        return ""
+    parts = []
+    for row in rows.itertuples():
+        if pd.isna(row.satisfaction):
+            parts.append(f"{row.indicator_name}: not applicable ({row.n_not_applicable}/{row.n_cases} cases out of scope)")
+            continue
+        note = f"{row.provenance}, {row.n_measured}/{row.n_cases} cases"
+        if row.coverage < 1.0:
+            note += f", coverage {row.coverage:.0%}"
+        if row.one_sided:
+            note += ", one-sided scale"
+        parts.append(f"{row.indicator_name}: {row.measured_value:.1f} {row.unit} -> {int(row.satisfaction):+d} ({note})")
+    return "\n  measured satisfaction: " + "; ".join(parts)
+
+
 def _format_category_block(
-    category: Category, deterministic: dict[str, str], metrics_row: dict, goal_model_text: str | None
+    category: Category,
+    deterministic: dict[str, str],
+    metrics_row: dict,
+    goal_model_text: str | None,
+    indicator_df=None,
 ) -> str:
     return (
         f"- category_id={category.category_id} | name={category.name}\n"
@@ -159,6 +205,7 @@ def _format_category_block(
         f"  coverage: {metrics_row['num_variants']} variants, {metrics_row['num_cases']} cases\n"
         f"  discovered pattern: {deterministic['discovered_pattern']}\n"
         f"  model looseness: {deterministic['model_looseness']}"
+        f"{_format_measured_line(category.category_id, indicator_df)}"
     )
 
 
@@ -167,15 +214,28 @@ def build_goal_alignment_prompt(
     deterministic_by_category: dict[str, dict[str, str]],
     metrics_by_category: dict[str, dict],
     goal_model_text: str | None,
+    indicator_df=None,
 ) -> str:
+    """`indicator_df` is Step 7b's `indicator_satisfaction.csv`, or None when that optional step did
+    not run -- in which case the rendered prompt is byte-identical to what this function produced
+    before Step 7b existed."""
     blocks = "\n".join(
         _format_category_block(
-            category, deterministic_by_category[category.category_id], metrics_by_category[category.category_id], goal_model_text
+            category,
+            deterministic_by_category[category.category_id],
+            metrics_by_category[category.category_id],
+            goal_model_text,
+            indicator_df,
         )
         for category in categories
     )
+    has_measurements = indicator_df is not None and not indicator_df.empty
     template = load_prompt_template("prompt_description.txt")
-    return template.format(category_count=len(categories), category_blocks=blocks)
+    return template.format(
+        category_count=len(categories),
+        category_blocks=blocks,
+        measured_context=MEASURED_CONTEXT_PREAMBLE if has_measurements else "",
+    )
 
 
 def check_goal_alignment_coverage(batch: GoalAlignmentBatch, categories: list[Category]) -> list[str]:
@@ -203,6 +263,7 @@ def generate_descriptions_8(
     taxonomy: Taxonomy,
     config: PipelineConfig,
     logger: logging.Logger,
+    indicator_df: pd.DataFrame | None = None,
 ) -> tuple[pd.DataFrame, RunMetadata | None, str]:
     """Step 8 orchestration: deterministic discovered_pattern/model_looseness per category (no
     LLM), then one batched LLM call for goal_alignment across the whole taxonomy. Categories with
@@ -236,7 +297,9 @@ def generate_descriptions_8(
         }
         logger.info("Computed deterministic description fields for category %s", category.category_id)
 
-    prompt = build_goal_alignment_prompt(active_categories, deterministic_by_category, metrics_by_category, goal_model_text)
+    prompt = build_goal_alignment_prompt(
+        active_categories, deterministic_by_category, metrics_by_category, goal_model_text, indicator_df
+    )
 
     backend = LLMBackend(config.llm.description_model, config.llm, logger)
     batch, metadata = asyncio.run(backend.generate_structured(prompt, GoalAlignmentBatch))

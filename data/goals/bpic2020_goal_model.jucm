@@ -20,17 +20,17 @@
     <intElements xsi:type="grl.kpimodel:Indicator" name="Budget overspend rate (%)" id="18" type="Indicator" groups="38"/>
     <intElements xsi:type="grl.kpimodel:Indicator" name="Approval-chain rejection rate (%)" id="19" type="Indicator" groups="38"/>
     <actors name="Travel &amp; Finance Administration" id="1"/>
-    <links xsi:type="grl:Decomposition" id="20" src="2" dest="3" refs="61"/>
-    <links xsi:type="grl:Decomposition" id="21" src="2" dest="4" refs="62"/>
-    <links xsi:type="grl:Decomposition" id="22" src="3" dest="8" refs="63"/>
-    <links xsi:type="grl:Decomposition" id="23" src="4" dest="9" refs="64"/>
-    <links xsi:type="grl:Decomposition" id="24" src="4" dest="5" refs="65"/>
-    <links xsi:type="grl:Decomposition" id="25" src="5" dest="10" refs="66"/>
-    <links xsi:type="grl:Decomposition" id="26" src="5" dest="6" refs="67"/>
-    <links xsi:type="grl:Decomposition" id="27" src="6" dest="11" refs="68"/>
-    <links xsi:type="grl:Decomposition" id="28" src="6" dest="7" refs="69"/>
-    <links xsi:type="grl:Decomposition" id="29" src="7" dest="12" refs="70"/>
-    <links xsi:type="grl:Decomposition" id="30" src="7" dest="13" refs="71"/>
+    <links xsi:type="grl:Decomposition" id="20" src="3" dest="2" refs="61"/>
+    <links xsi:type="grl:Decomposition" id="21" src="4" dest="2" refs="62"/>
+    <links xsi:type="grl:Decomposition" id="22" src="8" dest="3" refs="63"/>
+    <links xsi:type="grl:Decomposition" id="23" src="9" dest="4" refs="64"/>
+    <links xsi:type="grl:Decomposition" id="24" src="5" dest="4" refs="65"/>
+    <links xsi:type="grl:Decomposition" id="25" src="10" dest="5" refs="66"/>
+    <links xsi:type="grl:Decomposition" id="26" src="6" dest="5" refs="67"/>
+    <links xsi:type="grl:Decomposition" id="27" src="11" dest="6" refs="68"/>
+    <links xsi:type="grl:Decomposition" id="28" src="7" dest="6" refs="69"/>
+    <links xsi:type="grl:Decomposition" id="29" src="12" dest="7" refs="70"/>
+    <links xsi:type="grl:Decomposition" id="30" src="13" dest="7" refs="71"/>
     <links xsi:type="grl:Contribution" id="31" src="10" dest="14" refs="72" contribution="SomeNegative" quantitativeContribution="-25"/>
     <links xsi:type="grl:Contribution" id="32" src="10" dest="15" refs="73" contribution="Help" quantitativeContribution="50"/>
     <links xsi:type="grl:Contribution" id="33" src="9" dest="15" refs="74" contribution="Help" quantitativeContribution="50"/>
@@ -113,17 +113,17 @@
       <nodes xsi:type="grl:IntentionalElementRef" id="60" name="Minimize employee reimbursement delay" x="1000" y="820" def="16">
         <label/>
       </nodes>
-      <connections xsi:type="grl:LinkRef" id="61" source="43" target="44" link="20"/>
-      <connections xsi:type="grl:LinkRef" id="62" source="43" target="45" link="21"/>
-      <connections xsi:type="grl:LinkRef" id="63" source="44" target="49" link="22"/>
-      <connections xsi:type="grl:LinkRef" id="64" source="45" target="50" link="23"/>
-      <connections xsi:type="grl:LinkRef" id="65" source="45" target="46" link="24"/>
-      <connections xsi:type="grl:LinkRef" id="66" source="46" target="51" link="25"/>
-      <connections xsi:type="grl:LinkRef" id="67" source="46" target="47" link="26"/>
-      <connections xsi:type="grl:LinkRef" id="68" source="47" target="52" link="27"/>
-      <connections xsi:type="grl:LinkRef" id="69" source="47" target="48" link="28"/>
-      <connections xsi:type="grl:LinkRef" id="70" source="48" target="53" link="29"/>
-      <connections xsi:type="grl:LinkRef" id="71" source="48" target="54" link="30"/>
+      <connections xsi:type="grl:LinkRef" id="61" source="44" target="43" link="20"/>
+      <connections xsi:type="grl:LinkRef" id="62" source="45" target="43" link="21"/>
+      <connections xsi:type="grl:LinkRef" id="63" source="49" target="44" link="22"/>
+      <connections xsi:type="grl:LinkRef" id="64" source="50" target="45" link="23"/>
+      <connections xsi:type="grl:LinkRef" id="65" source="46" target="45" link="24"/>
+      <connections xsi:type="grl:LinkRef" id="66" source="51" target="46" link="25"/>
+      <connections xsi:type="grl:LinkRef" id="67" source="47" target="46" link="26"/>
+      <connections xsi:type="grl:LinkRef" id="68" source="52" target="47" link="27"/>
+      <connections xsi:type="grl:LinkRef" id="69" source="48" target="47" link="28"/>
+      <connections xsi:type="grl:LinkRef" id="70" source="53" target="48" link="29"/>
+      <connections xsi:type="grl:LinkRef" id="71" source="54" target="48" link="30"/>
       <connections xsi:type="grl:LinkRef" id="72" source="51" target="58" link="31"/>
       <connections xsi:type="grl:LinkRef" id="73" source="51" target="59" link="32"/>
       <connections xsi:type="grl:LinkRef" id="74" source="50" target="59" link="33"/>

@@ -23,7 +23,13 @@ from pathlib import Path
 
 from goalcat.config import REPO_ROOT
 
-STEP_NAMES: dict[int, str] = {
+#: Keys are step numbers, except Step 7b — hence `int | str` rather than `int`. 7b sits between 7
+#: and 8 sequentially but does not take a number of its own: the pipeline's architectural claim is
+#: nine steps and 7b is an optional enrichment of them, absent entirely on a goal model that does
+#: not bind its indicators to the log. Unrelated to the "5a/5b" letters used elsewhere for the two
+#: mutually exclusive taxonomy-induction *modes* — Step 5 appears here once, undifferentiated,
+#: because exactly one of those modes ever runs.
+STEP_NAMES: dict[int | str, str] = {
     1: "Variant extraction",
     2: "Multi-view profiling",
     3: "Textualization",
@@ -31,6 +37,7 @@ STEP_NAMES: dict[int, str] = {
     5: "Taxonomy induction",
     6: "Narrative assignment",
     7: "Per-category discovery",
+    "7b": "Indicator satisfaction",
     8: "High-level description",
     9: "Business review",
 }

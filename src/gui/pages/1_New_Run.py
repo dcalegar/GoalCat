@@ -4,7 +4,9 @@ from pathlib import Path
 
 import streamlit as st
 
+from goalcat.atomic_io import atomic_write_json
 from goalcat.config import new_run_id
+from goalcat.log_inspector import format_prefix_comparison, inspect_log, report_to_dict, suggest_performance_flags
 from gui import config_form, run_control, ui_helpers
 
 st.set_page_config(page_title="GoalCat — New Run", page_icon="🐱", layout="wide")
@@ -12,6 +14,16 @@ st.title("New run")
 
 ACTIVE_KEY = "gui_active_run"
 POPEN_KEY = "_gui_popen"
+
+# A widget's own `key` in session_state cannot be reassigned after that widget has already been
+# instantiated in the same script run (raises StreamlitAPIException) — so the "Apply suggestion"
+# button below (which renders after the skip_pairwise_distances checkbox) cannot set
+# `st.session_state["skip_pairwise_distances"]` directly. It stages the value here instead, then
+# reruns; this block runs before the checkbox is instantiated on the next run, which is the
+# supported way to set a widget's value programmatically.
+PENDING_SKIP_PAIRWISE_KEY = "_gui_pending_skip_pairwise_distances"
+if PENDING_SKIP_PAIRWISE_KEY in st.session_state:
+    st.session_state["skip_pairwise_distances"] = st.session_state.pop(PENDING_SKIP_PAIRWISE_KEY)
 
 with st.expander("Add a new log or goal model", expanded=False):
     st.caption("Only files not already in `data/logs/` / `data/goals/` can be added here — pick a different name, or remove the existing one first, to replace one.")
@@ -89,6 +101,7 @@ with st.expander("Performance", expanded=False):
     skip_precision = st.checkbox(
         "skip_precision",
         value=bool(defaults.get("skip_precision", False)),
+        key="skip_precision",
         help=(
             "Skip Step 7's precision computation (token-based replay) — the single confirmed "
             "single-threaded/GIL-bound cost driver in the pipeline, scaling with each category's "
@@ -97,9 +110,24 @@ with st.expander("Performance", expanded=False):
             "flag has nothing to flag. Off by default."
         ),
     )
+    skip_indicators = st.checkbox(
+        "skip_indicators",
+        value=bool(defaults.get("skip_indicators", False)),
+        key="skip_indicators",
+        help=(
+            "Turn off Step 7b, which measures each goal-model indicator over each category's "
+            "sublog, converts it through the indicator's own KPIEvalValueSet, and propagates the "
+            "result up the goal model. Deterministic and cheap — no LLM call and no alignment "
+            "computation — and already a no-op on a goal model whose indicators carry no "
+            "goalcat:* measurement binding, which today means every model except RTFM's. Turning "
+            "it off also removes the measured-satisfaction context from Step 8's prompt. Off by "
+            "default."
+        ),
+    )
     skip_pairwise_distances = st.checkbox(
         "skip_pairwise_distances",
         value=bool(defaults.get("skip_pairwise_distances", False)),
+        key="skip_pairwise_distances",
         help=(
             "Skip Step 6's pairwise structural/profile distance computation "
             "(structural_distances.parquet/profile_distances.parquet) — the only O(n^2) "
@@ -147,6 +175,122 @@ with st.expander("Advanced LLM settings (Steps 5, 6, 8)", expanded=False):
             "assignment_batch_size", min_value=1, value=int(llm_defaults.get("assignment_batch_size", 20))
         )
 
+INSPECTION_KEY = "_gui_inspection"
+INSPECTION_APPLIED_KEY = "_gui_inspection_advice_applied"
+
+with st.expander("Inspect log (optional — informs the Performance flags above)", expanded=False):
+    st.caption(
+        "Parses the log once and reports exact variant/prefix counts, a calibrated "
+        "skip_pairwise_distances disk estimate, and Step 6's LLM call count/cost, before any run "
+        "starts, plus a suggested skip_pairwise_distances value you can accept or ignore. "
+        "Entirely optional — 'Run pipeline' below works the same with or without inspecting "
+        "first. Advisory only — see `src/goalcat/log_inspector.py`; nothing is applied unless "
+        "you click 'Apply suggestion'."
+    )
+    if st.button("Inspect log"):
+        inspect_config_dict = config_form.build_config_dict(
+            log_filename=log_filename,
+            goal_model_filename=goal_model_filename,
+            case_id_key=case_id_key,
+            activity_key=activity_key,
+            timestamp_key=timestamp_key,
+            resource_key=resource_key,
+            sample_frequent_n=int(sample_frequent_n),
+            sample_rare_n=int(sample_rare_n),
+            sample_extreme_n=int(sample_extreme_n),
+            taxonomy_mode=taxonomy_mode,
+            discovery_noise_threshold=float(discovery_noise_threshold),
+            skip_precision=bool(skip_precision),
+            skip_indicators=bool(skip_indicators),
+            prune_pairwise_distances_on_finalize=bool(prune_pairwise_distances_on_finalize),
+            skip_pairwise_distances=bool(skip_pairwise_distances),
+            llm={
+                "taxonomy_model": taxonomy_model,
+                "assignment_model": assignment_model,
+                "description_model": description_model,
+                "temperature": temperature,
+                "timeout_seconds": int(timeout_seconds),
+                "max_retries": int(max_retries),
+                "concurrency": int(concurrency),
+                "requests_per_minute": int(requests_per_minute) or None,
+                "assignment_batch_size": int(assignment_batch_size),
+                # Not a form field (see "Advanced LLM settings" above) — carried through from
+                # the matched case-study config so the USD estimate below can price a call
+                # against assignment_model, same as a real run's *_run_metadata.json would.
+                "pricing_usd_per_million_tokens": llm_defaults.get("pricing_usd_per_million_tokens", {}),
+            },
+        )
+        with st.spinner("Parsing log (one XES pass; cached on repeat inspections of this log)..."):
+            inspection_config = config_form.build_inspection_config(inspect_config_dict)
+            report = inspect_log(inspection_config)
+            advice = suggest_performance_flags(report)
+
+        # Stored outside this `if st.button(...)` block's own rerun so the report and the
+        # "Apply suggestion" button below stay visible on every later rerun, not just the one
+        # where "Inspect log" was clicked (a Streamlit button's own block only re-executes on the
+        # run it was pressed).
+        st.session_state[INSPECTION_KEY] = {
+            "log_filename": log_filename,
+            "report": report,
+            "advice": advice,
+        }
+        st.session_state[INSPECTION_APPLIED_KEY] = False
+
+    inspection = st.session_state.get(INSPECTION_KEY)
+    if inspection is not None and inspection["log_filename"] == log_filename:
+        report = inspection["report"]
+        advice = inspection["advice"]
+
+        if report.key_validation.missing:
+            st.error(
+                "Missing configured keys: "
+                + ", ".join(f"{field_name}={column!r}" for field_name, column in report.key_validation.missing.items())
+            )
+        else:
+            st.success("All four configured keys are present in the log.")
+
+        st.write(f"Events: {report.num_events} | Cases: {report.num_cases} | Activities: {report.num_activities}")
+
+        if report.num_variants is None:
+            st.warning("Variant-level report skipped: case_id_key/activity_key/timestamp_key must all resolve first.")
+        else:
+            col_a, col_b, col_c = st.columns(3)
+            col_a.metric("Variants", report.num_variants)
+            col_b.metric("Unique prefixes (P)", report.num_unique_prefixes)
+            col_c.metric("Max trace length", report.max_trace_length)
+
+            st.write(
+                f"`skip_pairwise_distances` candidate: {report.variant_pairs} pairs, "
+                f"~{report.predicted_pairwise_distance_mb:.2f} MB estimated."
+            )
+            st.write(f"Step 6 LLM calls at current assignment_batch_size: {report.step6_call_count}")
+            if report.step6_estimated_usd is not None:
+                st.write(
+                    f"Estimated Step 6 cost: ${report.step6_estimated_usd:.4f} "
+                    f"(calibrated from {report.step6_usd_calibration_calls} prior call(s) against this model)"
+                )
+            else:
+                st.write("Estimated Step 6 cost: unknown (no prior call against this assignment_model yet).")
+
+            st.text(format_prefix_comparison(report))
+
+            if advice is not None:
+                st.divider()
+                st.markdown("**Suggested configuration** — heuristic, review before accepting:")
+                st.write(advice.skip_pairwise_distances_reason)
+                already_matches = bool(skip_pairwise_distances) == advice.skip_pairwise_distances
+                suggested_label = "Enable" if advice.skip_pairwise_distances else "Leave off"
+                if st.button(
+                    f"{suggested_label} skip_pairwise_distances (apply suggestion)",
+                    disabled=already_matches,
+                ):
+                    st.session_state[PENDING_SKIP_PAIRWISE_KEY] = advice.skip_pairwise_distances
+                    st.session_state[INSPECTION_APPLIED_KEY] = True
+                    st.rerun()
+                if already_matches:
+                    st.caption("skip_pairwise_distances above already matches this suggestion.")
+                st.caption(advice.precision_cost_signal)
+
 ui_helpers.render_api_key_status()
 
 if st.button("Run pipeline (Steps 1-8)", type="primary", disabled=ACTIVE_KEY in st.session_state):
@@ -161,6 +305,10 @@ if st.button("Run pipeline (Steps 1-8)", type="primary", disabled=ACTIVE_KEY in 
         "concurrency": int(concurrency),
         "requests_per_minute": int(requests_per_minute) or None,
         "assignment_batch_size": int(assignment_batch_size),
+        # Not a form field (see "Advanced LLM settings" above) — carried through from the
+        # matched case-study config so Steps 5/6/8's *_run_metadata.json get a real
+        # estimated_cost_usd instead of silently reporting null for every GUI-launched run.
+        "pricing_usd_per_million_tokens": llm_defaults.get("pricing_usd_per_million_tokens", {}),
     }
     config_dict = config_form.build_config_dict(
         log_filename=log_filename,
@@ -175,6 +323,7 @@ if st.button("Run pipeline (Steps 1-8)", type="primary", disabled=ACTIVE_KEY in 
         taxonomy_mode=taxonomy_mode,
         discovery_noise_threshold=float(discovery_noise_threshold),
         skip_precision=bool(skip_precision),
+        skip_indicators=bool(skip_indicators),
         prune_pairwise_distances_on_finalize=bool(prune_pairwise_distances_on_finalize),
         skip_pairwise_distances=bool(skip_pairwise_distances),
         llm=llm,
@@ -183,6 +332,17 @@ if st.button("Run pipeline (Steps 1-8)", type="primary", disabled=ACTIVE_KEY in 
     run_dir = config_form.run_output_dir_for(log_filename, run_id)
     gui_config_path = run_dir / "gui_run_config.yaml"
     config_form.write_run_config(config_dict, gui_config_path)
+
+    # Optional: only present when the operator chose to inspect this log first (see the
+    # "Inspect log" expander above) — direct "configure and run" launches leave no such file,
+    # which is the intended encoding of the inspector being advisory and optional, not a required
+    # step. `run_config_snapshot.json` (written by the worker at Step 1) is this file's sibling
+    # for the same auditability purpose.
+    inspection = st.session_state.get(INSPECTION_KEY)
+    if inspection is not None and inspection["log_filename"] == log_filename:
+        payload = report_to_dict(inspection["report"], inspection["advice"])
+        payload["advice_applied"] = bool(st.session_state.get(INSPECTION_APPLIED_KEY, False))
+        atomic_write_json(run_dir / "log_inspection.json", payload)
 
     popen = run_control.launch_worker(gui_config_path, run_id, "1-8", None, run_dir)
 
@@ -205,7 +365,7 @@ if ACTIVE_KEY in st.session_state:
         worker_log_path=Path(info["worker_log_path"]),
         pipeline_log_path=Path(info["run_dir"]) / "pipeline.log",
         popen=st.session_state[POPEN_KEY],
-        steps=list(range(1, 9)),
+        steps=[1, 2, 3, 4, 5, 6, 7, "7b", 8],
         success_message=(
             f"Steps 1-8 complete. Open **Review** or **Results** from the sidebar for run "
             f"`{info['run_id']}`."

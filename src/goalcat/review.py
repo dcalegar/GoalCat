@@ -678,6 +678,7 @@ def start_revision_round(
         run_step5_taxonomy,
         run_step6_assignment,
         run_step7_discovery,
+        run_step7b_indicators,
         run_step8_description,
         run_step9_review,
     )
@@ -720,6 +721,7 @@ def start_revision_round(
 
     run_step6_assignment(config_path, config.run_id, round=new_round)
     run_step7_discovery(config_path, config.run_id, round=new_round)
+    run_step7b_indicators(config_path, config.run_id, round=new_round)
     run_step8_description(config_path, config.run_id, round=new_round)
     run_step9_review(config_path, config.run_id, round=new_round)
 

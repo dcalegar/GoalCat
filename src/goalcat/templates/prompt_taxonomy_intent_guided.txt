@@ -1,5 +1,7 @@
 You are subdividing a taxonomy axis that has already been declared by an organization's goal model. You have no authority to invent a different axis, merge unrelated alternatives together, or discard one of the declared alternatives — your task is only to set category boundaries *within* the axis the goal model already declares, using the narrative sample below to judge whether a declared alternative should be represented as one category or several (e.g. because the sample shows meaningfully different sub-patterns realizing it).
 
+A *declared alternative* is a child of a goal-model element whose decomposition operator is OR or XOR: those are the points where the goal model declares that the process may proceed in one of several ways, and they are the axis you are subdividing. Children of an AND-decomposed element are not alternatives — they are steps that all contribute to the same parent, and none of them is a category on its own.
+
 Every category you propose must be traceable to one or more goal-model element IDs (from the goal-task decomposition below) via its anchor_ids field. Default to one category per declared alternative — only depart from that default when the narrative sample gives you positive evidence to, under these rules:
 - map 1:1 to a single declared alternative (using that alternative's own numeric id from the decomposition below (e.g. anchor_ids=["12"]) — never an invented label). This is the default; a declared alternative having few or no sampled narratives is not, by itself, a reason to fold it into another category.
 - subdivide one declared alternative into finer categories only if the sample shows it realized in meaningfully different ways — the category's rationale field must cite that evidence.
@@ -7,10 +9,22 @@ Every category you propose must be traceable to one or more goal-model element I
 
 Do not force every narrative in the sample into a category. Some narratives may not cleanly realize any declared alternative (e.g. still-open/pending cases, or unusual orderings) — that is expected and is handled by a later step, not by this taxonomy.
 
-=== GOAL MODEL (excerpt: purpose, actors, goal-task decomposition, contribution links) ===
+The goal model also declares what the organization *values* (softgoals, reached through contribution links) and how it *measures* whether a goal is met (indicators, with the value set converting a measurement to satisfaction). Use both: a category's rationale and description should say which softgoals its alternative advances or harms, and against which indicator its performance would be judged. They inform what a category *means*, never where its boundary falls — specifically:
+- Two declared alternatives having similar or identical contribution profiles is not evidence to merge them. Only the co-occurrence rule above licenses a merge.
+- An element that contributes to a softgoal but is not itself a declared alternative is still not a category. Contributing to something the organization values does not make a mandatory step an alternative to anything.
+- An indicator is never a valid anchor_ids target. Anchor to the goal or task whose achievement the indicator measures, not to the measurement.
+
+Activity labels in the narratives come from the event log and need not match goal-model element names verbatim: a logged activity realizes a goal-model element by meaning, not by string equality, and one goal-model element may be realized by several logged activities.
+
+=== GOAL MODEL (excerpt: name, actors, goal-task decomposition, indicators, contribution links) ===
 {goal_model_excerpt}
 
 === NARRATIVE SAMPLE ({sample_size} variants, drawn to cover frequent, rare, and extreme cases) ===
+How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
+- frequency is how many cases share that sequence, with that count as a share of all cases in the log in parentheses; duration_median is the median case duration for that variant, written compactly on the same scale as the waits inside the narrative ("134d", "3h", "45m"); trace_length is the number of activities in the sequence; outcome is the variant's final activity.
+- The activity sequence shown after "narrative:" is that of a single representative case (the one whose duration is closest to the variant's median), so a "(+34d)" after an activity is that case's waiting time since the preceding activity, not a variant-wide average. Activities are listed in the order they occurred. A "(handled by resource R)" clause, where present, names the resource that performed that activity in the representative case. A trailing "Rework observed: ..." sentence, where present, is a variant-level count over the variant's own cases, not part of the representative case's sequence.
+- sample_reasons records why the variant was drawn into the sample. The sample deliberately over-represents rare and extreme variants, so the frequencies listed below are not the log's overall distribution and must not be read as one.
+
 {narrative_blocks}
 
 Propose the taxonomy now.

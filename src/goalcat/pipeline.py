@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from . import grl
 from .config import PipelineConfig, load_config
 from .discovery import discover_all_categories, save_discovery_outputs
 from .extraction.log_io import load_event_log
@@ -16,6 +17,11 @@ from .extraction.similarity import (
     empty_structural_distances,
 )
 from .extraction.variants import extract_variants, load_variants, save_variants
+from .indicators import (
+    build_indicator_report,
+    compute_indicator_satisfaction,
+    save_indicator_outputs,
+)
 from .llm.assignment import (
     assign_narratives_6,
     build_assignment_report,
@@ -26,7 +32,6 @@ from .llm.assignment import (
 from .llm.description import build_description_report, generate_descriptions_8, save_description_outputs
 from .llm.taxonomy import (
     Taxonomy,
-    _extract_declared_ids,
     check_taxonomy_grounding,
     induce_taxonomy_5a,
     induce_taxonomy_5b,
@@ -325,7 +330,8 @@ def run_step5a_taxonomy(
     )
 
     goal_model_text = config.goal_model_path.read_text(encoding="utf-8")
-    problems = check_taxonomy_grounding(taxonomy, sample_df, _extract_declared_ids(goal_model_text))
+    goal_model = grl.parse_jucm(goal_model_text)
+    problems = check_taxonomy_grounding(taxonomy, sample_df, grl.declared_ids(goal_model), model=goal_model)
     for problem in problems:
         logger.warning("Taxonomy grounding check: %s", problem)
     if not problems:
@@ -595,6 +601,78 @@ def run_step7_discovery(
     return metrics_df
 
 
+def run_step7b_indicators(
+    config_path: str | Path | None = None,
+    run_id: str | None = None,
+    variants_df: pd.DataFrame | None = None,
+    assignments_df: pd.DataFrame | None = None,
+    taxonomy: Taxonomy | None = None,
+    round: int | None = None,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Measured goal satisfaction per category (pipeline Step 7b): each goal-model indicator
+    measured over each category's sublog, converted through its own `KPIEvalValueSet`, and
+    propagated up the decomposition/contribution graph.
+
+    Optional and deterministic — no LLM call, no alignment computation, and a silent no-op when the
+    goal model declares no measurable indicator (every model except RTFM's today) or when
+    `skip_indicators` is set. Reads the same assignments/taxonomy Step 7 does and, like Step 7,
+    refuses to recompute them implicitly rather than risk silently re-running the LLM step that
+    produced them.
+    """
+    config = load_config(config_path, run_id, round)
+    logger = get_logger(config)
+
+    logger.info("Step 7b (indicator satisfaction) started for log: %s", config.log_path)
+
+    if config.skip_indicators:
+        logger.info("skip_indicators is set — Step 7b skipped.")
+        return pd.DataFrame(), pd.DataFrame()
+    if config.goal_model_path is None:
+        logger.info("No goal model configured — Step 7b has no indicators to measure, skipped.")
+        return pd.DataFrame(), pd.DataFrame()
+
+    if variants_df is None:
+        variants_df = _get_or_build_variants(config, logger)
+
+    if assignments_df is None or taxonomy is None:
+        assignments_path = config.assignment_dir / "assignments.csv"
+        taxonomy_path = config.taxonomy_dir / "taxonomy.json"
+        if not taxonomy_path.exists() and (config.final_dir / "taxonomy.json").exists():
+            taxonomy_path = config.final_dir / "taxonomy.json"
+        if not assignments_path.exists() or not taxonomy_path.exists():
+            raise ValueError(
+                "run_step7b_indicators() needs assignments and a taxonomy: pass assignments_df= "
+                "and taxonomy= directly, or point run_id/round (arguments, or config.yaml's "
+                "fields) at a round directory that already has both assignments.csv and "
+                f"taxonomy.json in it (checked: {assignments_path}, {taxonomy_path})."
+            )
+        logger.info("Loading assignments from: %s", assignments_path)
+        assignments_df = pd.read_csv(assignments_path, dtype={"variant_id": str})
+        logger.info("Loading taxonomy from: %s", taxonomy_path)
+        taxonomy = Taxonomy.model_validate_json(taxonomy_path.read_text(encoding="utf-8"))
+
+    model = grl.read_jucm(config.goal_model_path)
+    df = load_event_log(config)
+
+    indicator_df, goal_df = compute_indicator_satisfaction(
+        df, variants_df, assignments_df, taxonomy, model, config, logger
+    )
+    if indicator_df.empty:
+        logger.info("Step 7b complete (nothing measurable).")
+        return indicator_df, goal_df
+
+    report_markdown = build_indicator_report(indicator_df, goal_df, model)
+    save_indicator_outputs(
+        indicator_df, goal_df, report_markdown, config.goal_model_path, config.indicators_dir,
+        f"{config.run_id} round{config.round}",
+    )
+    logger.info("Saved indicator outputs to: %s", config.indicators_dir)
+
+    logger.info("Step 7b complete.")
+    log_peak_memory(logger, "Step 7b")
+    return indicator_df, goal_df
+
+
 def run_step8_description(
     config_path: str | Path | None = None,
     run_id: str | None = None,
@@ -645,8 +723,18 @@ def run_step8_description(
     df = load_event_log(config)
     logger.info("Generating descriptions for %d categories against %d events", len(taxonomy.categories), len(df))
 
+    # Step 7b is optional, so its output is picked up if present and simply absent otherwise -- in
+    # which case build_goal_alignment_prompt() renders exactly the prompt it rendered before Step 7b
+    # existed. Not recomputed here: it is a separate step with its own outputs, and silently
+    # re-running it would re-measure the whole log inside what is meant to be one LLM call.
+    indicator_df = None
+    indicator_path = config.indicators_dir / "indicator_satisfaction.csv"
+    if indicator_path.exists():
+        logger.info("Loading Step 7b indicator satisfaction from: %s", indicator_path)
+        indicator_df = pd.read_csv(indicator_path)
+
     descriptions_df, metadata, prompt = generate_descriptions_8(
-        df, variants_df, assignments_df, metrics_df, taxonomy, config, logger
+        df, variants_df, assignments_df, metrics_df, taxonomy, config, logger, indicator_df
     )
     logger.info("Generated %d/%d category descriptions", len(descriptions_df), len(taxonomy.categories))
 

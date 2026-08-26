@@ -21,6 +21,7 @@ SAMPLING_DIRNAME = "04_sampling"
 TAXONOMY_DIRNAME = "05_taxonomy"
 ASSIGNMENT_DIRNAME = "06_assignment"
 DISCOVERY_DIRNAME = "07_discovery"
+INDICATORS_DIRNAME = "07b_indicators"
 DESCRIPTION_DIRNAME = "08_description"
 REVIEW_DIRNAME = "09_review"
 FINAL_DIRNAME = "final"
@@ -59,6 +60,9 @@ class PipelineConfig:
     discovery_noise_threshold: float
     discovery_precision_timeout_seconds: float | None
     skip_precision: bool
+    #: Skip Step 7b even when the goal model carries measurable indicators. Step 7b is a no-op
+    #: on a model without a `goalcat:*` measure binding, so this only matters for RTFM.
+    skip_indicators: bool
     review_precision_flag_threshold: float
     prune_pairwise_distances_on_finalize: bool
     skip_pairwise_distances: bool
@@ -149,6 +153,20 @@ class PipelineConfig:
         return self.round_dir / DISCOVERY_DIRNAME
 
     @property
+    def indicators_dir(self) -> Path:
+        """Step 7b's outputs. Named `07b_` rather than taking a number of its own for two reasons,
+        one practical and one substantive: renumbering Steps 8 and 9 would invalidate every path
+        already written into a finished run's README, and — the reason that would still hold on an
+        empty repository — the pipeline's architectural claim is nine steps, of which this is an
+        optional enrichment rather than a tenth stage. It is a no-op on any goal model that does not
+        bind its indicators to the log.
+
+        Note the letter here does *not* mean what it means in "Step 5a/5b": those are two mutually
+        exclusive modes of one step, selected by `taxonomy_mode`, and exactly one ever runs. 7b is
+        sequential — it consumes Step 7's partition and feeds Step 8's prompt."""
+        return self.round_dir / INDICATORS_DIRNAME
+
+    @property
     def description_dir(self) -> Path:
         return self.round_dir / DESCRIPTION_DIRNAME
 
@@ -192,7 +210,14 @@ def load_config(
     path = Path(config_path) if config_path is not None else _DEFAULT_CONFIG_PATH
     with open(path, "r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
+    return config_from_dict(raw, run_id=run_id, round=round)
 
+
+def config_from_dict(raw: dict, run_id: str | None = None, round: int | None = None) -> PipelineConfig:
+    """Same construction `load_config()` does, from an already-parsed dict instead of a
+    config.yaml path — for a caller that has form/widget state in memory and no file on disk
+    yet (e.g. the GUI's pre-run log inspector, `goalcat.log_inspector.inspect_log()`, called
+    before `new_run_id()`/`write_run_config()` exist for this run)."""
     resolved_run_id = run_id or raw.get("run_id") or datetime.now().strftime("%Y%m%d_%H%M%S")
     resolved_output_dir = _resolve(raw["output_dir"])
     resolved_log_stem = _log_stem_of(raw["log_filename"])
@@ -214,6 +239,7 @@ def load_config(
         discovery_noise_threshold=raw["discovery_noise_threshold"],
         discovery_precision_timeout_seconds=raw.get("discovery_precision_timeout_seconds"),
         skip_precision=raw.get("skip_precision", False),
+        skip_indicators=raw.get("skip_indicators", False),
         review_precision_flag_threshold=raw.get("review_precision_flag_threshold", 0.3),
         prune_pairwise_distances_on_finalize=raw.get("prune_pairwise_distances_on_finalize", False),
         skip_pairwise_distances=raw.get("skip_pairwise_distances", False),

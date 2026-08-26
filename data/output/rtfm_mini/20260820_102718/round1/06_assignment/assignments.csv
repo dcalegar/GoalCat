@@ -1,7 +1,0 @@
-variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
-V0001,,"The narrative only involves creating and sending the fine without any payment, appeal, or collection steps, so it does not resolve the fine.",,timely_payment,1.0,,0.3340510427951813
-V0002,coercive_credit_collection,"The process involves sending the fine, notification, adding a penalty, and ultimately sending it for credit collection, which matches coercive credit collection.",0.0,delinquent_payment,1.0,0.0,0.36088287830352783
-V0003,delinquent_payment,"The process involves sending the fine, notification, and adding a penalty before receiving a payment, which corresponds to resolution via delinquent payment.",0.0,coercive_credit_collection,1.0,0.0,0.30578380823135376
-V0004,timely_payment,"The fine is created and paid immediately without intermediate notifications, penalties, or appeals, representing timely payment.",0.0,delinquent_payment,3.0,0.0,0.30578380823135376
-V0005,judicial_appeal,"The process ends with an appeal brought before a judge, matching the judicial appeal category.",0.0,coercive_credit_collection,1.0,0.0,0.36026421189308167
-V0006,administrative_appeal,"The process involves submitting an appeal to the Prefecture and receiving the result, which fits the administrative appeal category.",0.0,coercive_credit_collection,3.0,0.0,0.36026421189308167

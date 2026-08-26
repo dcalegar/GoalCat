@@ -25,8 +25,14 @@ the narratives.
 | 5a / 5b | Taxonomy induction | An LLM subdivides the goal model's declared axis (5a, `intent_guided`) or proposes categories directly from the sample (5b, `open`), depending on `taxonomy_mode`. |
 | 6 | Narrative assignment | An LLM assigns every narrative to a category, or leaves it in the residual. |
 | 7 | Per-category discovery | Applies the Inductive Miner to each category and computes fitness/precision. |
-| 8 | High-level description generation | Combines deterministic conformance metrics with one prose-generation prompt per category. |
+| 7b | Indicator satisfaction *(optional)* | Measures each goal-model KPI indicator over each category's sublog, converts it through the indicator's own `KPIEvalValueSet`, and propagates the result up the goal model. Deterministic; a no-op unless the goal model binds its indicators to the log. |
+| 8 | High-level description generation | Combines deterministic conformance metrics with one prose-generation prompt per category. Cites Step 7b's measurements when that step ran. |
 | 9 | Business review | A human reviewer accepts, renames, merges, or splits categories; merge/split starts a new round through Steps 5-8. |
+
+**On the lettered steps.** The two letters mean different things, deliberately:
+
+- **5a / 5b are mutually exclusive modes** of one step. `taxonomy_mode` selects exactly one; they never both run. They are not two steps and are not numbered as such, because doing so would assert a sequence that does not exist.
+- **7b is a sequential, optional step.** It runs after 7 and before 8 — Step 8 reads its output — but the pipeline is complete without it, and it is a no-op on any goal model that does not bind its indicators to the log. The letter marks it as an insertion rather than a renumbering: the architecture's claim is nine steps, and 7b is an enrichment of that architecture, not a tenth stage of it.
 
 The two taxonomy-induction modes share every other step. With a goal model (`intent_guided`), the
 residual is non-conforming behavior — evidence to revise the goal model. Without one (`open`), it is
@@ -47,8 +53,8 @@ induced categories alone, and Step 8's description prompt carries only the deter
 resolved anchor labels of `grl.resolve_anchor_labels()` (`id (type): name`), never an LLM's
 restatement of what the model says.
 
-The RTFM goal model renders as follows (abridged; `data/goals/rtfm_goal_model.jucm` is 14 KB of
-XMI, the full excerpt 41 lines):
+The RTFM goal model renders as follows (abridged; `data/goals/rtfm_goal_model.jucm` is 19 KB of
+XMI, the full excerpt 52 lines):
 
 ```
 Goal model: RTFM Goal Model
@@ -67,6 +73,11 @@ Goal-task decomposition (id, type, name, decomposition operator; indentation = p
       - id=10 [Task] Insert Fine Notification (leaf)
     …
 
+Indicators (how the organization measures whether a goal is met; id, name, unit, and the value set converting a measurement to satisfaction):
+  - id=112 [Indicator] Time to fine dispatch (days) (target 30, threshold 90, worst 360 days) [provenance: statutory]
+  - id=114 [Indicator] Average time to case closure (days) (target 150, threshold 180, worst 365 days) [provenance: external-by-analogy]
+  …
+
 Softgoals and contribution links (source -> effect on softgoal):
   - id=12 Resolve via timely payment --[Make (+100)]--> Maximize timely fine revenue
   - id=20 Resolve via coercive credit collection --[Hurt (-50)]--> Minimize administrative & enforcement cost
@@ -80,7 +91,7 @@ Softgoals and contribution links (source -> effect on softgoal):
 | Contribution links | `contribution="Help" quantitativeContribution="50"` attributes | `--[Help (+50)]-->` with the target softgoal resolved by name |
 | Element ids | present | preserved verbatim, shown as `id=12` next to each name |
 | Diagram layer | `urndef`, `refs`, `contRef`, coordinates, `ActorRef`, `IntentionalElementRef` | omitted |
-| KPIs | `grl.kpimodel:Indicator` elements and their `groups` | omitted |
+| KPIs | `grl.kpimodel:Indicator` elements, their `groups`, and their `KPIEvalValueSet` | name, unit, `target`/`threshold`/`worst` and provenance rendered; the `goalcat:from`/`goalcat:to` activity-label binding **never** rendered |
 | Provenance | `author`, `created`, `modified`, `nextGlobalID` | omitted |
 
 The projection is a semantic subset chosen for the task, not a summary written for readability. Four
@@ -97,9 +108,19 @@ reasons drive it:
   `grl.grounding_problems()` validates the returned ids against `grl.declared_ids()`. The mnemonic
   codes used in the prose descriptions (`G0`, `TP`, …) are prose-only and are not part of the model,
   so rendering the prose form instead would invite unresolvable anchors.
-- **Everything omitted is irrelevant to the task.** Layout is presentation, KPI indicators are not an
-  axis to subdivide, and provenance is file metadata. Omitting them also keeps the prompt's token
-  budget on the narrative sample, which is what actually calibrates category granularity.
+- **Everything omitted is irrelevant to the task.** Layout is presentation and file provenance is
+  metadata. Indicators were omitted on the same grounds until 2026-08-25, reasoning that they "are
+  not an axis to subdivide" — true, but that conflated *anchoring to* an element with *reasoning
+  from* it. They are now rendered as context, and both intent-guided prompts state the rule
+  `grl.declared_ids()` enforces: an indicator measures whether a goal is achieved, so a category
+  anchors to that goal, never to the measurement.
+
+  One carve-out survives, and it is a hard constraint rather than a budget decision: the indicator's
+  `goalcat:from`/`goalcat:to` measurement binding is **never** rendered. Those values are activity
+  labels, and every goal model's §7 forbids the activity-label table from reaching Steps 5a/6, since
+  categorization there must be semantic rather than a lexical pre-match. The conversion arithmetic
+  is declared intent and belongs in the prompt; the label binding is a measurement mechanism and
+  stays in Step 7b.
 - **Determinism, required by the experimental protocol.** `render_excerpt()` iterates in the `.jucm`
   file's own element order, so a frozen goal model always renders byte-identical prompt text — the
   "Prompts: versioned" requirement of the freeze table (`project/EXPERIMENTATION_PLAN.md` §2.2,
@@ -111,11 +132,45 @@ Two properties of the model are not carried into the excerpt, neither of which a
 models currently in `data/goals/`:
 
 - **Element-to-actor membership.** Actors are listed, but the excerpt does not state which elements
-  belong to which actor. All four goal models declare exactly one actor and carry no element-level
+  belong to which actor. All five goal models declare exactly one actor and carry no element-level
   `actor` attribute in `grlspec` (ownership exists only in the diagram layer), so nothing is lost
   today; a multi-actor goal model would need this rendered.
 - **Softgoals with no incoming contribution link** are never printed, since the softgoal block is
-  emitted only when both softgoals and contribution links exist and it iterates the links.
+  emitted only when both softgoals and contribution links exist and it iterates the links. No goal
+  model in `data/goals/` has one.
+
+## What the LLM actually sees of a narrative
+
+Each variant's narrative — the object Step 5a/5b/6 actually read — is rendered by the vendored
+LUPIN module (`third_party/lupin/`, [`log_templates.py`](third_party/lupin/log_templates.py)) as a
+sequence of `activity (+waiting)` clauses, e.g. `Create Fine, Send Fine (+90d), Insert Fine
+Notification (+15d), ...`, followed by a `rework_summary` clause when the variant repeats an
+activity. This is a compact rendering, adopted 2026-08-25 as the pipeline's single default,
+superseding an earlier form that spelled out each wait as its own sentence (`", 7776000 seconds
+after the previous step."`) and repeated the header's frequency/duration/outcome fields a second
+time in prose. `_format_waiting_display()`
+([`src/goalcat/extraction/profiling.py`](src/goalcat/extraction/profiling.py)) computes the
+human-scale suffix (`+90d`, `+3h`, `+45m`, `+12s`, or nothing for the always-zero-wait first
+event); the vendored module only lays it out, keeping unit conversion out of the CC BY-NC-SA-licensed
+`third_party/` boundary.
+
+Measured directly on the five committed Step 5a prompts, the compact form cuts the narrative block
+by 32–60% (largest on sepsis and bpic2019, where per-event wait clauses — not the header
+restatement — dominate token count). Verified end to end on three logs (`rtfm_mini`, `rtfm`,
+`sepsis`) by re-running the full pipeline before and after the change at `temperature=0`: fitness
+and precision were unchanged throughout, and the induced taxonomies and Step 6 partitions matched
+within the same run-to-run variance observed between two identical-format reruns — this rendering
+change is not a confound on the categorization results reported elsewhere. One reproducible,
+narrower effect surfaced on `rtfm_mini`: an `anchor_ids` citation for one category shifted from a
+mandatory AND-decomposition parent's full child list to the parent alone, which is arguably the
+more correct citation and affects only the reviewer-facing "goal-model linkage" line in the
+generated reports, not Step 6's assignment or Step 7's discovered models.
+
+That same comparison surfaced a separate, pre-existing issue worth stating plainly: Step 5a's
+taxonomy induction is not reproducible on the Sepsis log at `temperature=0` — two runs with
+byte-identical prompts induced structurally different taxonomies (15 leaf-level categories in one
+run, 4 coarse top-level categories in the other). This is independent of the narrative-rendering
+change above; it is a property of the LLM call itself on that log.
 
 ## Repository structure
 
@@ -137,6 +192,7 @@ GoalCat/
 │   │   ├── config.py, config.yaml, config_local.yaml   # PipelineConfig + default/local-LLM configs
 │   │   ├── pipeline.py       # orchestrator: run_step1_variants ... run_step9_review
 │   │   ├── discovery.py      # Step 7: per-category process discovery
+│   │   ├── indicators.py     # Step 7b (optional): measured goal satisfaction per category
 │   │   ├── review.py          # Step 9: business review loop
 │   │   ├── run_logging.py
 │   │   ├── extraction/        # Steps 1-2: log I/O, variants, profiling, similarity
@@ -332,6 +388,14 @@ two confirmed computational cost drivers, trading information for speed. Neither
 whether the tradeoff is worth it on a given run is a decision for the human reviewer/domain expert,
 not the pipeline.
 
+- `skip_indicators` turns off Step 7b, the optional measured-satisfaction step. Step 7b measures each
+  goal-model indicator over each category's sublog, converts it through the indicator's own
+  `KPIEvalValueSet`, and propagates the result up the goal model, writing `indicator_satisfaction.csv`,
+  `goal_satisfaction.csv`, and a copy of the `.jucm` carrying one `EvaluationStrategy` per category —
+  openable in jUCMNav. It is deterministic (no LLM call, no alignment computation) and cheap, and it is
+  a no-op on a goal model whose indicators carry no `goalcat:*` measurement binding, which today means
+  every model except RTFM's. `scripts/verify_kpi_evaluation.py` checks the conversion and propagation
+  arithmetic against jUCMNav's reference behaviour.
 - `skip_precision` skips Step 7's precision computation (`pm4py.precision_token_based_replay`), the
   only single-threaded, GIL-bound step in the pipeline — its cost scales with a category's unique
   *prefix* count, not its variant count (observed on BPIC 2019: one category's 6,082 variants
@@ -415,10 +479,28 @@ hosted/paid Streamlit service involved. Five pages, in the sidebar:
   `prune_pairwise_distances_on_finalize` (see "Resource usage" above), LLM model/temperature/
   concurrency/rate-limit), and a button that launches Steps 1-8 with a live progress checklist, a
   stop control, and a `pipeline.log` tail — useful during Step 6/8, which can take several minutes
-  against real LLM calls.
+  against real LLM calls. Launching directly works with no further action; an optional "Inspect
+  log" step (`src/goalcat/log_inspector.py`) sits in between for a form-and-inspect workflow
+  instead:
+  - Parses the log once — key validation, exact variant/prefix counts, a calibrated
+    `skip_pairwise_distances` disk estimate, and Step 6's LLM call count/cost — before any run
+    starts. Repeat inspections of the same log (same path/size/mtime and column keys) reuse the
+    cached parse instead of re-reading the XES file.
+  - Reports a *suggested* `skip_pairwise_distances` value from a disclosed, deliberately
+    unvalidated heuristic threshold on the predicted disk estimate, and a descriptive-only signal
+    for `skip_precision` against four reference logs (never a suggested boolean for that flag —
+    its true per-category cost isn't computable before Step 6 runs). Nothing is applied on its
+    own authority: an "Apply suggestion" button flips the `skip_pairwise_distances` checkbox only
+    on explicit click.
+  - If the log was inspected before "Run pipeline" was clicked, `log_inspection.json` (the
+    report, the suggestion, and whether it was accepted) is written into the run directory
+    alongside `gui_run_config.yaml` — a record of which of the two workflows produced this run,
+    absent when the operator launched directly.
 - **Results** — browse any past run's variants, profiles, narratives, taxonomy, per-category
-  reports, discovered process models (DFG images + downloadable `.pnml`), and — once a round is
-  accepted — the final partitioned `.xes.gz` logs.
+  reports, discovered process models (DFG images + downloadable `.pnml`), Step 7b's indicator
+  satisfaction (when that step ran — measured value, propagated softgoal scores, and a
+  downloadable `.jucm` carrying one `EvaluationStrategy` per category, openable in jUCMNav),
+  and — once a round is accepted — the final partitioned `.xes.gz` logs.
 - **Review** — the Step 9 business review, without touching `review_decisions.yaml` directly: per
   category, keep / rename / merge / split, backed by the same `ReviewDecisions` validation the
   library already enforces.

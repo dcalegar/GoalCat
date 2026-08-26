@@ -19,20 +19,26 @@ decisions:
       assignment_batch_size=20 the full scope is ~600 Step-6 calls per condition, i.e. ~2,400
       across the paired design with Task C2's replicates.
     governs: [bpic2019]
-    status: pending
+    status: decided
     # policy: all | top_n_variants | min_case_coverage
     value:
-      policy: top_n_variants
+      policy: all
       top_n: 1000
       # Only read when policy == min_case_coverage: keep the most frequent variants until this
       # cumulative share of cases is covered.
       min_case_coverage: 0.80
-    decided_on: null
+    decided_on: "2026-08-25"
     rationale: >-
-      RECOMMENDED DEFAULT, NOT YET DECIDED. top_n=1000 keeps the long tail's head (BPIC 2019's
-      case mass is concentrated in a small fraction of its 11,973 variants) at ~8% of the full
-      scope's LLM cost. Whatever is chosen, analysis/report.py reports the share of cases the
-      scope covers, so the residual and coverage figures stay interpretable against the whole log.
+      Full scope, all 11,973 variants, no truncation. The feasibility concern this decision existed
+      to manage is settled empirically rather than estimated: a full-scope intent-guided run through
+      Steps 1-9 already exists at data/output/bpic2019/20260820_135000/, so the ~24k-call figure in
+      the plan's original framing is superseded by an executed run. At assignment_batch_size=50 the
+      full scope is ~240 Step-6 calls per condition. Truncating would also weaken Task C1's label-
+      recovery comparison, whose interest is concentrated in the rare regimes (two_way_matched draws
+      13 variants at full scope and would be at risk of vanishing under top_n). analysis/report.py
+      reports the scope's share of the full log's cases regardless, so this stays auditable if a
+      later protocol_version revisits it. Re-cost against Task C9's wall-clock figures before adding
+      Task C2's replicates and Experiment 2's perturbations, which multiply the call count.
 
   C10_assignment_batch_size:
     task: C10
@@ -65,12 +71,17 @@ decisions:
     task: C6
     question: Run Experiment 2's goal-model perturbations on Sepsis as well as RTFM?
     governs: [sepsis]
-    status: pending
+    status: decided
     value: false
-    decided_on: null
+    decided_on: "2026-08-25"
     rationale: >-
-      RECOMMENDED DEFAULT, NOT YET DECIDED. RTFM is the mechanism case; extending to Sepsis
-      roughly doubles Experiment 2's LLM budget for a second instance of the same mechanism.
+      Not adopted. Two independent reasons. (1) Budget: RTFM is the mechanism case and extending to
+      Sepsis roughly doubles Experiment 2's LLM cost for a second instance of the same mechanism.
+      (2) Validity, which is now the binding one: EXPERIMENTATION_PLAN.md §4 forbids running
+      perturbations on a dataset whose Step 5a induction is unstable, because TargetReassignment and
+      CollateralReassignment cannot be read through induction variance. Sepsis is demonstrably in
+      that state - four identical-input guided runs produced three distinct anchor sets (Task C12).
+      Revisit only if C12's k>=5 protocol later shows Sepsis stable under some revised goal model.
 
   C5_label_list_control:
     task: C5
@@ -79,27 +90,83 @@ decisions:
       goal-derived) separating "externally declared intent" from "any externally supplied label
       list"?
     governs: [rtfm, sepsis, bpic2019]
-    status: pending
+    status: decided
     value: false
-    decided_on: null
+    decided_on: "2026-08-25"
     rationale: >-
-      RECOMMENDED DEFAULT, NOT YET DECIDED. Highest scientific value among §10's optional items
-      and also its largest budget increase; not part of the minimum required design. The runner
-      supports it (conditions.py, mode "label_list") whenever this flips to true.
+      Not adopted for the minimum design. It remains the highest-value optional item in §10 and also
+      its largest budget increase (a third full arm on every dataset). The confound it addresses -
+      that the guided prompt supplies an axis AND a cardinality AND a vocabulary AND extra context
+      at once - is instead carried explicitly as a Threat to Validity (OVERVIEW.md), and Task C11a's
+      guided_no_sample ablation attacks the same attribution question for one LLM call per dataset
+      rather than a full arm. THIS IS THE MOST REVISITABLE DECISION HERE: conditions.py already
+      supports arm "label_list", so flipping this to true costs configuration plus LLM budget, no
+      new code. Do it before any frozen run rather than after, per this file's own discipline.
 
   D6_open_arm_steps_7_9:
     task: D6
     question: Do the open-mode arms run Steps 7-8 at all, or run them and exclude them from RQ1?
     governs: [rtfm, sepsis, bpic2019]
-    status: pending
+    status: decided
     # run_both | run_guided_only | run_neither  (Step 9 never runs in a frozen condition)
     value: run_neither
-    decided_on: null
+    decided_on: "2026-08-25"
     rationale: >-
-      RECOMMENDED DEFAULT, NOT YET DECIDED. Steps 7-8 are descriptive only (§9) and confounded by
-      partition granularity; skipping both keeps the arms symmetric at zero extra LLM cost and
-      loses nothing RQ1 depends on. Step 7 can be regenerated later from a frozen run's
-      assignments.csv + taxonomy.json without re-billing Step 6.
+      Neither arm runs Steps 7-8 in a frozen condition. They are descriptive only (§9) and
+      confounded by partition granularity - finer, purer subsets fit more easily almost
+      mechanically - so a cross-condition fitness/precision comparison is not informative about
+      which taxonomy is better. Skipping both keeps the arms symmetric at zero extra LLM cost and
+      loses nothing RQ1 depends on; Step 7 is regenerable later from a frozen run's assignments.csv
+      + taxonomy.json without re-billing Step 6. Step 8 additionally is NOT comparable across arms
+      (Task E6: its goal-alignment judgment reads goal-model text under guided mode and the
+      category's own Step 5 rationale under open mode). Step 7b is governed separately by C13 and
+      is guided-arm-only by construction, since open categories carry no anchor_ids.
+
+  C13_step7b_indicators:
+    task: C13
+    question: >-
+      Does Step 7b (KPI/indicator satisfaction, measured rather than LLM-judged) run in the frozen
+      conditions, and for which datasets?
+    governs: [rtfm, sepsis, bpic2019]
+    status: decided
+    # run_guided_only | run_neither   (never "both": open categories have no anchor_ids to measure)
+    value:
+      policy: run_guided_only
+      datasets: [rtfm]
+    decided_on: "2026-08-25"
+    rationale: >-
+      RTFM guided arm only. Step 7b measures indicator satisfaction from the log against the goal
+      model's declared KPIs, so it is the one result in the paper not exposed to the LLM-dependence
+      threat - OVERVIEW.md calls it the single counterweight to it. It cannot run in the open arm at
+      all: open-mode categories carry no anchor_ids, so there is nothing to attach an indicator to,
+      which also means it can never enter RQ1's paired contrast and is reported as characterization
+      of the guided arm, not as validation. Scoped to RTFM because only rtfm_goal_model.jucm (v1.2)
+      and rtfm_mini_goal_model.jucm declare indicators; the Sepsis and BPIC 2019 models' indicators
+      are this project's own log-computed percentiles rather than organizational targets. Reporting
+      requirement: indicators with low applicability are reported as NOT-APPLICABLE, never as bad
+      values - RTFM's timely_payment category has 7% dispatch-indicator coverage because most of its
+      cases paid before dispatch occurred, and scoring that as a bad value would invert the
+      measurement.
+
+  E2_degenerate_or_after_perturbation:
+    task: E2
+    question: >-
+      Experiment 2, Perturbation A: when removing an alternative leaves its OR-parent with exactly
+      one remaining child, is the now-vacuous decomposition collapsed into the parent, or kept?
+    governs: [rtfm, sepsis]
+    status: decided
+    # keep | collapse
+    value: keep
+    decided_on: "2026-08-25"
+    rationale: >-
+      Keep the degenerate one-child decomposition. Verified concretely: removing element 19
+      (judicial appeal) from rtfm_goal_model.jucm leaves OR-point 7 with the single child 14. Two
+      defensible options existed; keeping is chosen because collapsing changes the goal tree's DEPTH
+      as well as its breadth, and Task C12 establishes that Step 5a's output is sensitive to which
+      level of the tree it anchors at - so a collapse would confound the perturbation's effect with
+      an anchoring-level change. Keeping perturbs exactly one thing: the alternative set at one
+      OR-point. Pre-registered here because it is a free parameter that would otherwise be settled
+      silently by whichever behaviour perturb.py happened to implement.
 
   D1_divergence_convention:
     task: D1

@@ -1,0 +1,7 @@
+variant_id,sample_reasons,frequency,frequency_pct,trace_length,duration_seconds_median,outcome,narrative
+V0001,"frequent,rare,duration_high,duration_low,length_high,length_low",1,0.16666666666666666,2,11581200.0,Send Fine,Create Fine Send Fine (+134d)
+V0002,"frequent,rare,duration_high,duration_low,length_high,length_low",1,0.16666666666666666,5,83894400.0,Send for Credit Collection,Create Fine Send Fine (+132d) Insert Fine Notification (+34d) Add penalty (+60d) Send for Credit Collection (+745d)
+V0003,"frequent,rare,duration_high,duration_low,length_high,length_low",1,0.16666666666666666,5,47516400.0,Payment,Create Fine Send Fine (+130d) Insert Fine Notification (+16d) Add penalty (+60d) Payment (+344d)
+V0004,"frequent,rare,duration_high,duration_low,length_high,length_low",1,0.16666666666666666,2,86400.0,Payment,Create Fine Payment (+1d)
+V0005,"frequent,rare,duration_high,duration_low,length_high,length_low",1,0.16666666666666666,5,11754000.0,Appeal to Judge,Create Fine Send Fine (+46d) Insert Fine Notification (+9d) Add penalty (+60d) Appeal to Judge (+21d)
+V0006,"frequent,rare,duration_high,duration_low,length_high,length_low",1,0.16666666666666666,7,6742800.0,Receive Result Appeal from Prefecture,Create Fine Send Fine Insert Fine Notification Insert Date Appeal to Prefecture (+5d) Send Appeal to Prefecture (+35d) Add penalty (+20d) Receive Result Appeal from Prefecture (+18d)

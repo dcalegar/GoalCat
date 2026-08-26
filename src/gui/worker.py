@@ -27,6 +27,7 @@ from goalcat.pipeline import (
     run_step5_taxonomy,
     run_step6_assignment,
     run_step7_discovery,
+    run_step7b_indicators,
     run_step8_description,
     run_step9_review,
 )
@@ -45,7 +46,7 @@ def _write_status(path: Path, state: dict) -> None:
     tmp.replace(path)
 
 
-def _run_step(step: int, fn: Callable[[], T], state: dict, status_path: Path) -> T:
+def _run_step(step: int | str, fn: Callable[[], T], state: dict, status_path: Path) -> T:
     def mark(phase: str, error: str | None = None) -> None:
         state["steps"][str(step)] = {
             "name": STEP_NAMES[step],
@@ -66,6 +67,9 @@ def _run_step(step: int, fn: Callable[[], T], state: dict, status_path: Path) ->
 
 
 def run_pipeline_steps_1_8(config_path: Path, run_id: str, status_path: Path) -> None:
+    """Steps 1 through 8, plus the optional Step 7b between 7 and 8. The name keeps saying "1_8"
+    because 7b is not a step of its own in the numbering — it is skipped silently on a goal model
+    with no measurable indicator, and turned off entirely by `skip_indicators`."""
     state: dict = {"run_id": run_id, "steps": {}}
 
     variants_df = _run_step(1, lambda: run_step1_variants(config_path, run_id), state, status_path)
@@ -77,6 +81,9 @@ def run_pipeline_steps_1_8(config_path: Path, run_id: str, status_path: Path) ->
     _run_step(5, lambda: run_step5_taxonomy(config_path, run_id), state, status_path)
     _run_step(6, lambda: run_step6_assignment(config_path, run_id), state, status_path)
     _run_step(7, lambda: run_step7_discovery(config_path, run_id), state, status_path)
+    # Step 7b is optional and a no-op on a goal model with no measurable indicator, so it is
+    # always in the chain rather than conditioned here; skip_indicators turns it off.
+    _run_step("7b", lambda: run_step7b_indicators(config_path, run_id), state, status_path)
     _run_step(8, lambda: run_step8_description(config_path, run_id), state, status_path)
 
     # Steps 5-8 alone never write round_info.json — only process_review() does, the first time

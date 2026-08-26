@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:grl.kpimodel="http:///grl/kpimodel.ecore" xmlns:urn="http:///urn.ecore" name="RTFM Goal Model" author="goalcat (frozen v1.0, artificial -- see data/goals/rtfm_goal_model.md)" created="August 18, 2026, 12:00:00 AM EDT" modified="August 18, 2026, 01:00:00 AM EDT" specVersion="1.0" urnVersion="1.27" nextGlobalID="175">
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:grl.kpimodel="http:///grl/kpimodel.ecore" xmlns:urn="http:///urn.ecore" name="RTFM Goal Model" author="goalcat (v1.2, artificial -- see data/goals/rtfmGM_description.md)" created="August 18, 2026, 12:00:00 AM EDT" modified="August 25, 2026, 12:00:00 AM EDT" specVersion="1.0" urnVersion="1.27" nextGlobalID="187">
   <grlspec>
     <intElements name="Every issued fine reaches a lawful, documented closure" id="2" type="Goal" decompositionType="And"/>
     <intElements name="Fine is issued and formally communicated" id="3" type="Goal" decompositionType="And"/>
@@ -23,28 +23,63 @@
     <intElements name="Minimize administrative &amp; enforcement cost" id="21" type="Softgoal"/>
     <intElements name="Maximize timely fine revenue" id="22" type="Softgoal"/>
     <intElements name="Preserve offender's due-process rights" id="23" type="Softgoal"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to formal notification (days)" id="112" type="Indicator" groups="115"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="Share of cases closed by voluntary payment (%)" id="113" type="Indicator" groups="116"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="Average time to case closure (days)" id="114" type="Indicator" groups="115"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to fine dispatch (days)" id="112" type="Indicator" groups="115">
+      <metadata name="goalcat:measure" value="duration_days"/>
+      <metadata name="goalcat:from" value="Create Fine"/>
+      <metadata name="goalcat:to" value="Send Fine"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="statutory"/>
+      <metadata name="goalcat:source" value="threshold 90 d and worst 360 d: Art. 201 D.Lgs. 285/1992 (ordinary notification term; extended term for parties resident abroad). target 30 d: L. 241/1990 art. 2 c.2, the default term for concluding an administrative proceeding, applied by analogy as an operational aspiration -- the specific term in Art. 201 is what binds."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to appeal filing, Prefecture (days)" id="113" type="Indicator" groups="115">
+      <metadata name="goalcat:measure" value="duration_days"/>
+      <metadata name="goalcat:from" value="Insert Fine Notification"/>
+      <metadata name="goalcat:to" value="Insert Date Appeal to Prefecture|Send Appeal to Prefecture"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:applies_when" value="Insert Date Appeal to Prefecture|Send Appeal to Prefecture"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="statutory"/>
+      <metadata name="goalcat:source" value="threshold 60 d: Art. 203 D.Lgs. 285/1992, the window for a ricorso al Prefetto; corroborated by the Delay Prefecture' &lt; 60 days guard in Mannhardt et al. (2016, Fig. 8). target == threshold because an admissibility window is a boundary, not a gradient. worst 120 d illustrative (2x the window)."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to appeal filing, Judge (days)" id="175" type="Indicator" groups="115">
+      <metadata name="goalcat:measure" value="duration_days"/>
+      <metadata name="goalcat:from" value="Insert Fine Notification"/>
+      <metadata name="goalcat:to" value="Appeal to Judge"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:applies_when" value="Appeal to Judge"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="statutory"/>
+      <metadata name="goalcat:source" value="threshold 30 d: Art. 204-bis D.Lgs. 285/1992, the window for a ricorso al Giudice di Pace -- half the Prefecture window, which v1.1 collapsed into a single 60-day indicator taken from Mannhardt et al. (2016, Fig. 8)'s Delay Judge' guard rather than from the statute. worst 60 d illustrative (2x)."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Average time to case closure (days)" id="114" type="Indicator" groups="115">
+      <metadata name="goalcat:measure" value="duration_days"/>
+      <metadata name="goalcat:from" value="Create Fine"/>
+      <metadata name="goalcat:to" value="Payment|Send for Credit Collection|Receive Result Appeal from Prefecture|Notify Result Appeal to Offender"/>
+      <metadata name="goalcat:to_occurrence" value="last"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="external-by-analogy"/>
+      <metadata name="goalcat:source" value="threshold 180 d: L. 241/1990 art. 2, which caps any administrative proceeding's term at 180 days. target 150 d: Art. 201's 90-day notification term plus Art. 203's 60-day payment/appeal window, i.e. the earliest lawful completion of an uncontested case. worst 365 d illustrative. Replaces v1.1's acknowledged invented placeholder."/>
+    </intElements>
     <actors name="Traffic Police Back-Office" id="1"/>
-    <links xsi:type="grl:Decomposition" id="24" src="2" dest="3" refs="80"/>
-    <links xsi:type="grl:Decomposition" id="25" src="2" dest="4" refs="81"/>
-    <links xsi:type="grl:Decomposition" id="26" src="3" dest="8" refs="82"/>
-    <links xsi:type="grl:Decomposition" id="27" src="3" dest="9" refs="83"/>
-    <links xsi:type="grl:Decomposition" id="28" src="4" dest="12" refs="84"/>
-    <links xsi:type="grl:Decomposition" id="29" src="4" dest="5" refs="85"/>
-    <links xsi:type="grl:Decomposition" id="30" src="5" dest="10" refs="86"/>
-    <links xsi:type="grl:Decomposition" id="31" src="5" dest="11" refs="87"/>
-    <links xsi:type="grl:Decomposition" id="32" src="5" dest="6" refs="88"/>
-    <links xsi:type="grl:Decomposition" id="33" src="6" dest="13" refs="89"/>
-    <links xsi:type="grl:Decomposition" id="34" src="6" dest="7" refs="90"/>
-    <links xsi:type="grl:Decomposition" id="35" src="6" dest="20" refs="91"/>
-    <links xsi:type="grl:Decomposition" id="36" src="7" dest="14" refs="92"/>
-    <links xsi:type="grl:Decomposition" id="37" src="7" dest="19" refs="93"/>
-    <links xsi:type="grl:Decomposition" id="38" src="14" dest="15" refs="94"/>
-    <links xsi:type="grl:Decomposition" id="39" src="14" dest="16" refs="95"/>
-    <links xsi:type="grl:Decomposition" id="40" src="14" dest="17" refs="96"/>
-    <links xsi:type="grl:Decomposition" id="41" src="14" dest="18" refs="97"/>
+    <links xsi:type="grl:Decomposition" id="24" src="3" dest="2" refs="80"/>
+    <links xsi:type="grl:Decomposition" id="25" src="4" dest="2" refs="81"/>
+    <links xsi:type="grl:Decomposition" id="26" src="8" dest="3" refs="82"/>
+    <links xsi:type="grl:Decomposition" id="27" src="9" dest="3" refs="83"/>
+    <links xsi:type="grl:Decomposition" id="28" src="12" dest="4" refs="84"/>
+    <links xsi:type="grl:Decomposition" id="29" src="5" dest="4" refs="85"/>
+    <links xsi:type="grl:Decomposition" id="30" src="10" dest="5" refs="86"/>
+    <links xsi:type="grl:Decomposition" id="31" src="11" dest="5" refs="87"/>
+    <links xsi:type="grl:Decomposition" id="32" src="6" dest="5" refs="88"/>
+    <links xsi:type="grl:Decomposition" id="33" src="13" dest="6" refs="89"/>
+    <links xsi:type="grl:Decomposition" id="34" src="7" dest="6" refs="90"/>
+    <links xsi:type="grl:Decomposition" id="35" src="20" dest="6" refs="91"/>
+    <links xsi:type="grl:Decomposition" id="36" src="14" dest="7" refs="92"/>
+    <links xsi:type="grl:Decomposition" id="37" src="19" dest="7" refs="93"/>
+    <links xsi:type="grl:Decomposition" id="38" src="15" dest="14" refs="94"/>
+    <links xsi:type="grl:Decomposition" id="39" src="16" dest="14" refs="95"/>
+    <links xsi:type="grl:Decomposition" id="40" src="17" dest="14" refs="96"/>
+    <links xsi:type="grl:Decomposition" id="41" src="18" dest="14" refs="97"/>
     <links xsi:type="grl:Contribution" id="42" src="12" dest="22" refs="98" contribution="Make" quantitativeContribution="100"/>
     <links xsi:type="grl:Contribution" id="43" src="12" dest="21" refs="99" contribution="Help" quantitativeContribution="50"/>
     <links xsi:type="grl:Contribution" id="44" src="13" dest="22" refs="100" contribution="Help" quantitativeContribution="50"/>
@@ -59,18 +94,25 @@
     <links xsi:type="grl:Contribution" id="53" src="20" dest="22" refs="109" contribution="Help" quantitativeContribution="50"/>
     <links xsi:type="grl:Contribution" id="54" src="20" dest="21" refs="110" contribution="Hurt" quantitativeContribution="-50"/>
     <links xsi:type="grl:Contribution" id="55" src="20" dest="23" refs="111" contribution="SomeNegative" quantitativeContribution="-25"/>
-    <indicatorGroup name="Time" id="115" isRedesignCategory="true" indicators="112 114"/>
-    <indicatorGroup name="Quality" id="116" isRedesignCategory="true" indicators="113"/>
-    <groups name="KPI Baseline (frozen v1.0)" id="117" strategies="118"/>
-    <strategies name="Illustrative baseline, v1.0 (frozen)" id="118" author="goalcat (frozen v1.0, artificial)" type="Private" group="117">
+    <links xsi:type="grl:Contribution" id="176" src="112" dest="22" refs="182" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="177" src="113" dest="23" refs="183" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="178" src="175" dest="23" refs="184" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="179" src="114" dest="22" refs="185" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="180" src="114" dest="21" refs="186" contribution="Help" quantitativeContribution="50"/>
+    <indicatorGroup name="Time" id="115" isRedesignCategory="true" indicators="112 113 175 114"/>
+    <groups name="KPI Baseline (v1.2)" id="117" strategies="118"/>
+    <strategies name="Conversion baseline, v1.2" id="118" author="goalcat (v1.2, artificial)" type="Private" group="117">
       <evaluations intElement="112">
-        <kpiEvalValueSet targetValue="90" thresholdValue="90" worstValue="360" unit="days" qualitativeEvaluationValue="Not measured (Step G frozen v1.0, illustrative) -- see rtfm_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="30" thresholdValue="90" worstValue="360" unit="days" qualitativeEvaluationValue="Not measured in this baseline (Step G v1.2): the value set is the conversion, and Step 7b writes one measured EvaluationStrategy per category -- see rtfmGM_description.md SS6"/>
       </evaluations>
       <evaluations intElement="113">
-        <kpiEvalValueSet targetValue="65" thresholdValue="40" worstValue="40" unit="%" qualitativeEvaluationValue="Not measured (Step G frozen v1.0, illustrative) -- see rtfm_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="60" thresholdValue="60" worstValue="120" unit="days" qualitativeEvaluationValue="Not measured in this baseline (Step G v1.2): the value set is the conversion, and Step 7b writes one measured EvaluationStrategy per category -- see rtfmGM_description.md SS6"/>
+      </evaluations>
+      <evaluations intElement="175">
+        <kpiEvalValueSet targetValue="30" thresholdValue="30" worstValue="60" unit="days" qualitativeEvaluationValue="Not measured in this baseline (Step G v1.2): the value set is the conversion, and Step 7b writes one measured EvaluationStrategy per category -- see rtfmGM_description.md SS6"/>
       </evaluations>
       <evaluations intElement="114">
-        <kpiEvalValueSet targetValue="180" thresholdValue="180" worstValue="365" unit="days" qualitativeEvaluationValue="Not measured (Step G frozen v1.0, illustrative) -- see rtfm_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="150" thresholdValue="180" worstValue="365" unit="days" qualitativeEvaluationValue="Not measured in this baseline (Step G v1.2): the value set is the conversion, and Step 7b writes one measured EvaluationStrategy per category -- see rtfmGM_description.md SS6"/>
       </evaluations>
     </strategies>
     <impactModel/>
@@ -78,7 +120,7 @@
   </grlspec>
   <urndef>
     <specDiagrams xsi:type="grl:GRLGraph" name="RTFM Goal Model" id="56">
-      <contRefs xsi:type="grl:ActorRef" id="57" name="Traffic Police Back-Office" x="180" y="40" width="1240" height="800" contDef="1" nodes="58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 168 169 170">
+      <contRefs xsi:type="grl:ActorRef" id="57" name="Traffic Police Back-Office" x="180" y="40" width="1240" height="800" contDef="1" nodes="58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 168 169 170 181">
         <label/>
       </contRefs>
       <nodes xsi:type="grl:IntentionalElementRef" id="58" name="Every issued fine reaches a lawful, documented closure" x="700" y="80" def="2" contRef="57">
@@ -147,33 +189,36 @@
       <nodes xsi:type="grl:IntentionalElementRef" id="79" name="Preserve offender's due-process rights" x="1050" y="920" def="23">
         <label/>
       </nodes>
-      <nodes xsi:type="grl:IntentionalElementRef" id="168" name="Time to formal notification (days)" x="350" y="800" def="112" contRef="57">
+      <nodes xsi:type="grl:IntentionalElementRef" id="168" name="Time to fine dispatch (days)" x="350" y="800" def="112" contRef="57">
         <label/>
       </nodes>
-      <nodes xsi:type="grl:IntentionalElementRef" id="169" name="Share of cases closed by voluntary payment (%)" x="700" y="800" def="113" contRef="57">
+      <nodes xsi:type="grl:IntentionalElementRef" id="169" name="Time to appeal filing, Prefecture (days)" x="700" y="800" def="113" contRef="57">
         <label/>
       </nodes>
       <nodes xsi:type="grl:IntentionalElementRef" id="170" name="Average time to case closure (days)" x="1050" y="800" def="114" contRef="57">
         <label/>
       </nodes>
-      <connections xsi:type="grl:LinkRef" id="80" source="58" target="59" link="24"/>
-      <connections xsi:type="grl:LinkRef" id="81" source="58" target="60" link="25"/>
-      <connections xsi:type="grl:LinkRef" id="82" source="59" target="64" link="26"/>
-      <connections xsi:type="grl:LinkRef" id="83" source="59" target="65" link="27"/>
-      <connections xsi:type="grl:LinkRef" id="84" source="60" target="68" link="28"/>
-      <connections xsi:type="grl:LinkRef" id="85" source="60" target="61" link="29"/>
-      <connections xsi:type="grl:LinkRef" id="86" source="61" target="66" link="30"/>
-      <connections xsi:type="grl:LinkRef" id="87" source="61" target="67" link="31"/>
-      <connections xsi:type="grl:LinkRef" id="88" source="61" target="62" link="32"/>
-      <connections xsi:type="grl:LinkRef" id="89" source="62" target="69" link="33"/>
-      <connections xsi:type="grl:LinkRef" id="90" source="62" target="63" link="34"/>
-      <connections xsi:type="grl:LinkRef" id="91" source="62" target="76" link="35"/>
-      <connections xsi:type="grl:LinkRef" id="92" source="63" target="70" link="36"/>
-      <connections xsi:type="grl:LinkRef" id="93" source="63" target="75" link="37"/>
-      <connections xsi:type="grl:LinkRef" id="94" source="70" target="71" link="38"/>
-      <connections xsi:type="grl:LinkRef" id="95" source="70" target="72" link="39"/>
-      <connections xsi:type="grl:LinkRef" id="96" source="70" target="73" link="40"/>
-      <connections xsi:type="grl:LinkRef" id="97" source="70" target="74" link="41"/>
+      <nodes xsi:type="grl:IntentionalElementRef" id="181" name="Time to appeal filing, Judge (days)" x="875" y="860" def="175" contRef="57">
+        <label/>
+      </nodes>
+      <connections xsi:type="grl:LinkRef" id="80" source="59" target="58" link="24"/>
+      <connections xsi:type="grl:LinkRef" id="81" source="60" target="58" link="25"/>
+      <connections xsi:type="grl:LinkRef" id="82" source="64" target="59" link="26"/>
+      <connections xsi:type="grl:LinkRef" id="83" source="65" target="59" link="27"/>
+      <connections xsi:type="grl:LinkRef" id="84" source="68" target="60" link="28"/>
+      <connections xsi:type="grl:LinkRef" id="85" source="61" target="60" link="29"/>
+      <connections xsi:type="grl:LinkRef" id="86" source="66" target="61" link="30"/>
+      <connections xsi:type="grl:LinkRef" id="87" source="67" target="61" link="31"/>
+      <connections xsi:type="grl:LinkRef" id="88" source="62" target="61" link="32"/>
+      <connections xsi:type="grl:LinkRef" id="89" source="69" target="62" link="33"/>
+      <connections xsi:type="grl:LinkRef" id="90" source="63" target="62" link="34"/>
+      <connections xsi:type="grl:LinkRef" id="91" source="76" target="62" link="35"/>
+      <connections xsi:type="grl:LinkRef" id="92" source="70" target="63" link="36"/>
+      <connections xsi:type="grl:LinkRef" id="93" source="75" target="63" link="37"/>
+      <connections xsi:type="grl:LinkRef" id="94" source="71" target="70" link="38"/>
+      <connections xsi:type="grl:LinkRef" id="95" source="72" target="70" link="39"/>
+      <connections xsi:type="grl:LinkRef" id="96" source="73" target="70" link="40"/>
+      <connections xsi:type="grl:LinkRef" id="97" source="74" target="70" link="41"/>
       <connections xsi:type="grl:LinkRef" id="98" source="68" target="78" link="42"/>
       <connections xsi:type="grl:LinkRef" id="99" source="68" target="77" link="43"/>
       <connections xsi:type="grl:LinkRef" id="100" source="69" target="78" link="44"/>
@@ -188,6 +233,11 @@
       <connections xsi:type="grl:LinkRef" id="109" source="76" target="78" link="53"/>
       <connections xsi:type="grl:LinkRef" id="110" source="76" target="77" link="54"/>
       <connections xsi:type="grl:LinkRef" id="111" source="76" target="79" link="55"/>
+      <connections xsi:type="grl:LinkRef" id="182" source="168" target="78" link="176"/>
+      <connections xsi:type="grl:LinkRef" id="183" source="169" target="79" link="177"/>
+      <connections xsi:type="grl:LinkRef" id="184" source="181" target="79" link="178"/>
+      <connections xsi:type="grl:LinkRef" id="185" source="170" target="78" link="179"/>
+      <connections xsi:type="grl:LinkRef" id="186" source="170" target="77" link="180"/>
     </specDiagrams>
   </urndef>
 </urn:URNspec>

@@ -85,6 +85,7 @@ def build_config_dict(
     taxonomy_mode: str,
     discovery_noise_threshold: float,
     skip_precision: bool,
+    skip_indicators: bool,
     prune_pairwise_distances_on_finalize: bool,
     skip_pairwise_distances: bool,
     llm: dict,
@@ -105,6 +106,7 @@ def build_config_dict(
         "taxonomy_mode": taxonomy_mode,
         "discovery_noise_threshold": discovery_noise_threshold,
         "skip_precision": skip_precision,
+        "skip_indicators": skip_indicators,
         "prune_pairwise_distances_on_finalize": prune_pairwise_distances_on_finalize,
         "skip_pairwise_distances": skip_pairwise_distances,
         "llm": llm,
@@ -114,6 +116,17 @@ def build_config_dict(
 def write_run_config(config_dict: dict, path: Path) -> None:
     """Writes a fresh YAML for this run only — never overwrites a versioned config.yaml."""
     atomic_write_text(path, yaml.safe_dump(config_dict, sort_keys=False))
+
+
+def build_inspection_config(config_dict: dict):
+    """Builds a throwaway `PipelineConfig` from the current form's config dict, for
+    `goalcat.log_inspector.inspect_log()` — called before a run exists, so there is no real
+    run_id yet and none should be minted (`new_run_id()` is reserved for an actual run).
+    `inspect_log()` itself creates no directory, so the placeholder run_id below is never used
+    to read or write anything under `output_dir`."""
+    from goalcat.config import config_from_dict
+
+    return config_from_dict(config_dict, run_id="_inspect")
 
 
 def _save_upload(dest_dir: Path, filename: str, data: bytes, allowed_suffixes: tuple[str, ...]) -> Path:

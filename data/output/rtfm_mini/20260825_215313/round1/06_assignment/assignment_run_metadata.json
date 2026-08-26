@@ -1,0 +1,22 @@
+{
+  "calls": [
+    {
+      "provider": "gemini",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "backend": "remote",
+      "temperature": 0.0,
+      "prompt_hash": "0518290878370798",
+      "latency_seconds": 2.754669208021369,
+      "input_tokens": 1091,
+      "output_tokens": 412,
+      "prompt_chars": 4477,
+      "response_chars": 1611,
+      "raw_response": "{\n  \"assignments\": [\n    {\n      \"variant_id\": \"V0001\",\n      \"category_id\": null,\n      \"rationale\": \"The narrative ends with Send Fine and has no payment, appeal, or enforcement closure, representing an incomplete or pending fine case outside the defined resolution categories.\"\n    },\n    {\n      \"variant_id\": \"V0002\",\n      \"category_id\": \"coercive_credit_collection\",\n      \"rationale\": \"The process includes sending the fine, notification, and penalty, and concludes with sending the case for credit collection, which directly realizes coercive credit collection.\"\n    },\n    {\n      \"variant_id\": \"V0003\",\n      \"category_id\": \"delinquent_payment\",\n      \"rationale\": \"The process includes notification and penalty before payment is finally received, realizing payment after administrative enforcement steps (delinquent payment).\"\n    },\n    {\n      \"variant_id\": \"V0004\",\n      \"category_id\": \"timely_payment\",\n      \"rationale\": \"The process proceeds directly from fine creation to payment without intermediate notifications, penalties, or appeals, realizing early or timely payment.\"\n    },\n    {\n      \"variant_id\": \"V0005\",\n      \"category_id\": \"judicial_appeal_to_the_judge\",\n      \"rationale\": \"The process involves notifications and penalties followed by an appeal to the judge, realizing a judicial appeal.\"\n    },\n    {\n      \"variant_id\": \"V0006\",\n      \"category_id\": \"administrative_appeal_to_prefecture\",\n      \"rationale\": \"The process includes steps for appealing to the Prefecture and receives the result of the appeal, realizing an administrative appeal to the Prefecture.\"\n    }\n  ]\n}",
+      "estimated_cost_usd": 0.0013572999999999999
+    }
+  ],
+  "total_input_tokens": 1091,
+  "total_output_tokens": 412,
+  "total_latency_seconds": 2.754669208021369,
+  "total_estimated_cost_usd": 0.0013572999999999999
+}

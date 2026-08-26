@@ -29,6 +29,7 @@ from goalcat.pipeline import (
     run_step5_taxonomy,
     run_step6_assignment,
     run_step7_discovery,
+    run_step7b_indicators,
     run_step8_description,
     run_step9_review,
 )
@@ -64,6 +65,7 @@ def main() -> None:
     run_step5_taxonomy(CONFIG_PATH, run_id)
     run_step6_assignment(CONFIG_PATH, run_id)
     run_step7_discovery(CONFIG_PATH, run_id)
+    run_step7b_indicators(CONFIG_PATH, run_id)
     run_step8_description(CONFIG_PATH, run_id)
 
     _write_accept_decision(CONFIG_PATH, run_id, round_num=1, logger=logger)

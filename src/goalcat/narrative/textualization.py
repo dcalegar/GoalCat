@@ -23,6 +23,7 @@ def build_lupin_input(profiles_df: pd.DataFrame, config: PipelineConfig) -> list
                 "activity": event["activity"],
                 "resource": event["resource"],
                 "waiting_seconds": round(event["waiting_seconds"]),
+                "waiting_display": event["waiting_display"],
             }
             for event in row["events"]
         ]

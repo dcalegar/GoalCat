@@ -10,6 +10,7 @@ from pydantic import BaseModel, Field, model_validator
 from .. import grl
 from ..atomic_io import atomic_write_json, atomic_write_text
 from ..config import PipelineConfig, load_prompt_template
+from ..extraction.profiling import format_duration_display
 from .llm_backend import LLMBackend, RunMetadata, estimate_cost_usd
 
 
@@ -41,12 +42,13 @@ class Taxonomy(BaseModel):
 
 
 def _render_goal_model_excerpt(jucm_text: str) -> str:
-    """Renders the `.jucm` goal model's actors, decomposition tree, and contribution links —
-    the same content the markdown-era `_extract_sections()` sliced out of §1-§5 (purpose, actors,
-    decomposition, contributions), now read from the model directly rather than sliced out of
-    prose. KPIs, activity-label traceability, and any narrative documentation are excluded by
-    construction: `goalcat.grl.render_excerpt()` never renders them (see that function's
-    docstring) — none of it helps subdividing the declared axis.
+    """Renders the `.jucm` goal model's actors, decomposition tree, indicators, and contribution
+    links — the same content the markdown-era `_extract_sections()` sliced out of §1-§5 (purpose,
+    actors, decomposition, contributions), now read from the model directly rather than sliced out
+    of prose, plus the indicator value sets §6 used to hold. Activity-label traceability (§7) and
+    any narrative documentation are excluded by construction: `goalcat.grl.render_excerpt()` never
+    renders them (see that function's docstring), because Step 5a/6 matching must be semantic and
+    §7's label table would make it lexical.
 
     This rendered excerpt — not the `.jucm` file, and not the prose `<log>GM_description.md` — is
     the only place any prompt states the goal model, and only Step 5a's two prompts contain it.
@@ -62,7 +64,7 @@ def _format_narrative_block(row: pd.Series) -> str:
         f"- variant_id={row['variant_id']} | sample_reasons={row['sample_reasons']} | "
         f"frequency={row['frequency']} ({row['frequency_pct'] * 100:.1f}%) | "
         f"trace_length={row['trace_length']} | "
-        f"duration_seconds_median={row['duration_seconds_median']:.0f} | "
+        f"duration_median={format_duration_display(row['duration_seconds_median'])} | "
         f"outcome={row['outcome']}\n"
         f"  narrative: {row['narrative']}"
     )
@@ -201,16 +203,6 @@ def induce_taxonomy_5b(
     return taxonomy, metadata, prompt
 
 
-def _extract_declared_ids(jucm_text: str) -> set[str]:
-    """The set of valid goal-model element ids Step 5a's `anchor_ids` may reference — every
-    `.jucm` `intElements` id (Goal/Task/Softgoal/Ressource/Indicator), read through the real
-    GRL/URN metamodel (see `goalcat.grl`), not derived from a markdown table. Delegates to
-    `goalcat.grl.declared_ids()`; kept as a same-named module function since
-    `goalcat.pipeline.run_step5a_taxonomy()` imports it directly.
-    """
-    return grl.declared_ids(grl.parse_jucm(jucm_text))
-
-
 def _resolve_anchor_labels(jucm_text: str, anchor_ids: list[str]) -> str:
     """Resolves anchor_ids to their real `id (type): name` label, e.g. '20 (Task): Resolve via
     coercive credit collection.' Deterministic lookup against the frozen goal model, not
@@ -227,7 +219,10 @@ def _resolve_anchor_labels(jucm_text: str, anchor_ids: list[str]) -> str:
 
 
 def check_taxonomy_grounding(
-    taxonomy: Taxonomy, sample_df: pd.DataFrame, valid_anchor_ids: set[str] | None = None
+    taxonomy: Taxonomy,
+    sample_df: pd.DataFrame,
+    valid_anchor_ids: set[str] | None = None,
+    model: grl.GRLModel | None = None,
 ) -> list[str]:
     """Flags categories whose anchor_ids/evidence_variant_ids don't reference anything real.
 
@@ -236,6 +231,14 @@ def check_taxonomy_grounding(
     check. valid_anchor_ids=None means no goal model exists (Step 5b) — every category's
     anchor_ids must then be empty; a real ID set (Step 5a) means every anchor_ids entry must be
     in it. evidence_variant_ids is always checked against the sample's real variant_ids.
+
+    model (Step 5a only; None in open mode) enables two further checks that `valid_anchor_ids`
+    alone can't express, both found live in frozen runs:
+    an anchor whose parent decomposition is AND (a mandatory step, not an alternative — Sepsis's
+    categories transcribe every leaf task this way, AND-mandatory ones included), and two
+    categories sharing `evidence_variant_ids` (a mutually-exclusive partition's boundary evidence
+    should not double as another category's boundary evidence — BPIC 2020 and Sepsis both cite
+    the same variant for three categories at once).
     """
     problems: list[str] = []
     valid_variant_ids = set(sample_df["variant_id"])
@@ -262,10 +265,34 @@ def check_taxonomy_grounding(
                     f"{category.category_id}: anchor_ids is empty under intent-guided induction — "
                     "not traceable to any declared goal-model alternative"
                 )
+            if model is not None:
+                for anchor_id in category.anchor_ids:
+                    if anchor_id in bad_anchors:
+                        continue  # already flagged above; parent lookup would be meaningless
+                    parent_id = model.parent_of(anchor_id)
+                    parent = model.elements.get(parent_id) if parent_id is not None else None
+                    if parent is not None and parent.decomposition_type == "And":
+                        problems.append(
+                            f"{category.category_id}: anchor_id {anchor_id} is an AND-decomposed "
+                            f"child of {parent_id} ({parent.name}) — a mandatory step, not a "
+                            "declared alternative"
+                        )
         elif category.anchor_ids:
             problems.append(
                 f"{category.category_id}: anchor_ids non-empty in open mode (no goal model): "
                 f"{category.anchor_ids}"
             )
+
+    for i, category_a in enumerate(taxonomy.categories):
+        evidence_a = set(category_a.evidence_variant_ids)
+        if not evidence_a:
+            continue
+        for category_b in taxonomy.categories[i + 1 :]:
+            shared = evidence_a & set(category_b.evidence_variant_ids)
+            if shared:
+                problems.append(
+                    f"{category_a.category_id}/{category_b.category_id}: share "
+                    f"evidence_variant_ids: {sorted(shared)}"
+                )
 
     return problems

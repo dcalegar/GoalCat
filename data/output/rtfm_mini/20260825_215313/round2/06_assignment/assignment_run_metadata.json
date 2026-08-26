@@ -1,0 +1,22 @@
+{
+  "calls": [
+    {
+      "provider": "gemini",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "backend": "remote",
+      "temperature": 0.0,
+      "prompt_hash": "a04d80a093d9a184",
+      "latency_seconds": 2.3736023750097957,
+      "input_tokens": 1055,
+      "output_tokens": 388,
+      "prompt_chars": 4330,
+      "response_chars": 1507,
+      "raw_response": "{\n  \"assignments\": [\n    {\n      \"variant_id\": \"V0001\",\n      \"category_id\": null,\n      \"rationale\": \"The variant ends with Send Fine and contains no payment, appeal, or coercive collection activities, so it does not realize any of the taxonomy categories.\"\n    },\n    {\n      \"variant_id\": \"V0002\",\n      \"category_id\": \"coercive_credit_collection\",\n      \"rationale\": \"The narrative concludes with Send for Credit Collection following notifications and penalties, which corresponds directly to coercive credit collection procedures.\"\n    },\n    {\n      \"variant_id\": \"V0003\",\n      \"category_id\": \"payment_resolution\",\n      \"rationale\": \"The narrative ends with a Payment activity after notification and penalty have been applied, realizing delinquent payment resolution.\"\n    },\n    {\n      \"variant_id\": \"V0004\",\n      \"category_id\": \"payment_resolution\",\n      \"rationale\": \"The narrative ends with Payment occurring immediately after fine creation, realizing early payment before penalties.\"\n    },\n    {\n      \"variant_id\": \"V0005\",\n      \"category_id\": \"judicial_appeal_to_the_judge\",\n      \"rationale\": \"The narrative concludes with an Appeal to Judge activity, realizing a judicial appeal resolved through the judicial system.\"\n    },\n    {\n      \"variant_id\": \"V0006\",\n      \"category_id\": \"administrative_appeal_to_prefecture\",\n      \"rationale\": \"The narrative includes appeal steps directed to the Prefecture and ends with receiving the result of the appeal from the Prefecture.\"\n    }\n  ]\n}",
+      "estimated_cost_usd": 0.0012865
+    }
+  ],
+  "total_input_tokens": 1055,
+  "total_output_tokens": 388,
+  "total_latency_seconds": 2.3736023750097957,
+  "total_estimated_cost_usd": 0.0012865
+}

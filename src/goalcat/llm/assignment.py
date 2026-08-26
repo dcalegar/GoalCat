@@ -12,6 +12,7 @@ from pydantic import BaseModel, Field, create_model, model_validator
 
 from ..atomic_io import atomic_write_csv, atomic_write_json, atomic_write_parquet, atomic_write_text
 from ..config import PipelineConfig, load_prompt_template
+from ..extraction.profiling import format_duration_display
 from .llm_backend import LLMBackend, RunMetadata, estimate_cost_usd
 from .taxonomy import Taxonomy, _resolve_anchor_labels
 
@@ -97,7 +98,7 @@ def _format_narrative_block(narrative_row: pd.Series) -> str:
     return (
         f"- variant_id={narrative_row['variant_id']} | frequency={narrative_row['frequency']} "
         f"({narrative_row['frequency_pct'] * 100:.1f}%) | "
-        f"duration_seconds_median={narrative_row['duration_seconds_median']:.0f} | "
+        f"duration_median={format_duration_display(narrative_row['duration_seconds_median'])} | "
         f"outcome={narrative_row['outcome']}\n"
         f"  narrative: {narrative_row['narrative']}"
     )

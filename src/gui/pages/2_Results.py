@@ -7,6 +7,7 @@ from goalcat.config import (
     DESCRIPTION_DIRNAME,
     DISCOVERY_DIRNAME,
     FINAL_DIRNAME,
+    INDICATORS_DIRNAME,
     PROFILING_DIRNAME,
     SAMPLING_DIRNAME,
     SUBLOGS_DIRNAME,
@@ -72,7 +73,8 @@ else:
 m4.metric("Round", round_num)
 
 tabs = st.tabs(
-    ["Variants", "Profiles", "Narratives", "Sample", "Taxonomy", "Assignment", "Discovery", "Description", "Final"]
+    ["Variants", "Profiles", "Narratives", "Sample", "Taxonomy", "Assignment", "Discovery", "Indicators",
+     "Description", "Final"]
 )
 
 with tabs[0]:
@@ -127,13 +129,41 @@ with tabs[6]:
         st.info("No data (round already accepted? models are deleted on acceptance — see the Final tab).")
 
 with tabs[7]:
+    report = artifacts.read_text(rd / INDICATORS_DIRNAME / "indicator_report.md")
+    indicator_df = artifacts.read_csv(rd / INDICATORS_DIRNAME / "indicator_satisfaction.csv")
+    goal_df = artifacts.read_csv(rd / INDICATORS_DIRNAME / "goal_satisfaction.csv")
+    if report:
+        st.markdown(report)
+    if indicator_df is not None:
+        with st.expander("indicator_satisfaction.csv"):
+            _show_df(indicator_df)
+    if goal_df is not None:
+        with st.expander("goal_satisfaction.csv"):
+            _show_df(goal_df)
+    # The measured .jucm is the artifact this step exists to produce: one EvaluationStrategy per
+    # category, so the analyst opens it in jUCMNav and compares the colored models side by side.
+    for measured in sorted((rd / INDICATORS_DIRNAME).glob("*_measured.jucm")):
+        st.download_button(
+            f"Download {measured.name} (open in jUCMNav)",
+            measured.read_bytes(),
+            file_name=measured.name,
+            key=f"jucm_{measured.stem}",
+        )
+    if not report and indicator_df is None:
+        st.info(
+            "Step 7b did not run for this round. It is optional (`skip_indicators`) and is a no-op "
+            "on a goal model whose indicators carry no measurement binding — today, every model "
+            "except RTFM's."
+        )
+
+with tabs[8]:
     report = artifacts.read_text(rd / DESCRIPTION_DIRNAME / "description_report.md")
     if report:
         st.markdown(report)
     else:
         st.info("No data.")
 
-with tabs[8]:
+with tabs[9]:
     final_dir = run_dir / FINAL_DIRNAME
     readme = artifacts.read_text(final_dir / "README.md")
     if readme:

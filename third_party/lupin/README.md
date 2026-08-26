@@ -53,8 +53,13 @@ content authored for its own attribute schema, following the same Jinja2 pattern
 ## Status
 
 `render_narratives.py` (the adapted rendering loop) and `log_templates.py` (this project's own
-`event_template` / `trace_template` definitions) are implemented. One template set, defined once
-under `"rtfm"`, is reused for every log (`rtfm_mini`, `sepsis`, `bpic2019`, `bpic2020_permit`) —
-Step 2 profiling emits the same event/trace attribute schema regardless of the source log, so the
-template's wording carries no per-dataset vocabulary. Invoked from
-`src/goalcat/narrative/textualization.py` via `subprocess`, per the isolation contract above.
+`event_template` / `trace_template` definitions) are implemented. Two template sets exist —
+`_RTFM` (`rtfm`, `rtfm_mini`) and `_DEFAULT` (`sepsis`, `bpic2019`, `bpic2020_permit`), which keeps
+a guarded `resource` clause for a future multi-actor goal model — since Step 2 profiling emits the
+same event/trace attribute schema regardless of the source log, the difference is template wording
+only, not per-dataset vocabulary. Invoked from `src/goalcat/narrative/textualization.py` via
+`subprocess`, per the isolation contract above.
+
+Waiting time is rendered as a compact inline suffix on the activity (e.g. `"Send Fine (+90d)"`),
+computed by `src/goalcat/extraction/profiling.py::_format_waiting_display` and passed in as
+`waiting_display` — adopted as the pipeline's single default narrative rendering (2026-08-25).

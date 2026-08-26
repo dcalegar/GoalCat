@@ -52,3 +52,10 @@ llm:
   # instead, so higher values just contend for the same cores rather than adding throughput.
   concurrency: 1
   requests_per_minute: null
+
+# Step 7b (optional): measure each goal-model indicator over each category's sublog, convert it
+# through the indicator's own KPIEvalValueSet, and propagate the result up the goal model. A no-op
+# unless the goal model binds its indicators to the log with goalcat:* metadata (only RTFM's does),
+# so this flag exists to turn the step off on a model that *could* run it. Deterministic and cheap:
+# no LLM call and no alignment computation.
+skip_indicators: false

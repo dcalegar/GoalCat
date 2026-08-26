@@ -27,25 +27,25 @@
     <intElements xsi:type="grl.kpimodel:Indicator" name="Time to lactate measurement (hours)" id="25" type="Indicator" groups="51"/>
     <intElements xsi:type="grl.kpimodel:Indicator" name="Post-discharge ER return (binary)" id="26" type="Indicator" groups="52"/>
     <actors name="Emergency Department care team" id="1"/>
-    <links xsi:type="grl:Decomposition" id="27" src="2" dest="3" refs="82"/>
-    <links xsi:type="grl:Decomposition" id="28" src="2" dest="4" refs="83"/>
-    <links xsi:type="grl:Decomposition" id="29" src="2" dest="5" refs="84"/>
-    <links xsi:type="grl:Decomposition" id="30" src="2" dest="6" refs="85"/>
-    <links xsi:type="grl:Decomposition" id="31" src="3" dest="7" refs="86"/>
-    <links xsi:type="grl:Decomposition" id="32" src="3" dest="8" refs="87"/>
-    <links xsi:type="grl:Decomposition" id="33" src="3" dest="9" refs="88"/>
-    <links xsi:type="grl:Decomposition" id="34" src="4" dest="10" refs="89"/>
-    <links xsi:type="grl:Decomposition" id="35" src="4" dest="11" refs="90"/>
-    <links xsi:type="grl:Decomposition" id="36" src="4" dest="12" refs="91"/>
-    <links xsi:type="grl:Decomposition" id="37" src="4" dest="13" refs="92"/>
-    <links xsi:type="grl:Decomposition" id="38" src="4" dest="14" refs="93"/>
-    <links xsi:type="grl:Decomposition" id="39" src="5" dest="15" refs="94"/>
-    <links xsi:type="grl:Decomposition" id="40" src="5" dest="16" refs="95"/>
-    <links xsi:type="grl:Decomposition" id="41" src="6" dest="17" refs="96"/>
-    <links xsi:type="grl:Decomposition" id="42" src="6" dest="18" refs="97"/>
-    <links xsi:type="grl:Decomposition" id="43" src="6" dest="19" refs="98"/>
-    <links xsi:type="grl:Decomposition" id="44" src="6" dest="20" refs="99"/>
-    <links xsi:type="grl:Decomposition" id="45" src="6" dest="21" refs="100"/>
+    <links xsi:type="grl:Decomposition" id="27" src="3" dest="2" refs="82"/>
+    <links xsi:type="grl:Decomposition" id="28" src="4" dest="2" refs="83"/>
+    <links xsi:type="grl:Decomposition" id="29" src="5" dest="2" refs="84"/>
+    <links xsi:type="grl:Decomposition" id="30" src="6" dest="2" refs="85"/>
+    <links xsi:type="grl:Decomposition" id="31" src="7" dest="3" refs="86"/>
+    <links xsi:type="grl:Decomposition" id="32" src="8" dest="3" refs="87"/>
+    <links xsi:type="grl:Decomposition" id="33" src="9" dest="3" refs="88"/>
+    <links xsi:type="grl:Decomposition" id="34" src="10" dest="4" refs="89"/>
+    <links xsi:type="grl:Decomposition" id="35" src="11" dest="4" refs="90"/>
+    <links xsi:type="grl:Decomposition" id="36" src="12" dest="4" refs="91"/>
+    <links xsi:type="grl:Decomposition" id="37" src="13" dest="4" refs="92"/>
+    <links xsi:type="grl:Decomposition" id="38" src="14" dest="4" refs="93"/>
+    <links xsi:type="grl:Decomposition" id="39" src="15" dest="5" refs="94"/>
+    <links xsi:type="grl:Decomposition" id="40" src="16" dest="5" refs="95"/>
+    <links xsi:type="grl:Decomposition" id="41" src="17" dest="6" refs="96"/>
+    <links xsi:type="grl:Decomposition" id="42" src="18" dest="6" refs="97"/>
+    <links xsi:type="grl:Decomposition" id="43" src="19" dest="6" refs="98"/>
+    <links xsi:type="grl:Decomposition" id="44" src="20" dest="6" refs="99"/>
+    <links xsi:type="grl:Decomposition" id="45" src="21" dest="6" refs="100"/>
     <links xsi:type="grl:Contribution" id="46" src="14" dest="22" refs="101" contribution="Make" quantitativeContribution="100"/>
     <links xsi:type="grl:Contribution" id="47" src="12" dest="22" refs="102" contribution="Make" quantitativeContribution="100"/>
     <links xsi:type="grl:Contribution" id="48" src="16" dest="22" refs="103" contribution="SomeNegative" quantitativeContribution="-25"/>
@@ -148,25 +148,25 @@
       <nodes xsi:type="grl:IntentionalElementRef" id="81" name="Post-discharge ER return (binary)" x="1400" y="340" def="26" contRef="56">
         <label/>
       </nodes>
-      <connections xsi:type="grl:LinkRef" id="82" source="57" target="58" link="27"/>
-      <connections xsi:type="grl:LinkRef" id="83" source="57" target="59" link="28"/>
-      <connections xsi:type="grl:LinkRef" id="84" source="57" target="60" link="29"/>
-      <connections xsi:type="grl:LinkRef" id="85" source="57" target="61" link="30"/>
-      <connections xsi:type="grl:LinkRef" id="86" source="58" target="62" link="31"/>
-      <connections xsi:type="grl:LinkRef" id="87" source="58" target="63" link="32"/>
-      <connections xsi:type="grl:LinkRef" id="88" source="58" target="64" link="33"/>
-      <connections xsi:type="grl:LinkRef" id="89" source="59" target="65" link="34"/>
-      <connections xsi:type="grl:LinkRef" id="90" source="59" target="66" link="35"/>
-      <connections xsi:type="grl:LinkRef" id="91" source="59" target="67" link="36"/>
-      <connections xsi:type="grl:LinkRef" id="92" source="59" target="68" link="37"/>
-      <connections xsi:type="grl:LinkRef" id="93" source="59" target="69" link="38"/>
-      <connections xsi:type="grl:LinkRef" id="94" source="60" target="70" link="39"/>
-      <connections xsi:type="grl:LinkRef" id="95" source="60" target="71" link="40"/>
-      <connections xsi:type="grl:LinkRef" id="96" source="61" target="72" link="41"/>
-      <connections xsi:type="grl:LinkRef" id="97" source="61" target="73" link="42"/>
-      <connections xsi:type="grl:LinkRef" id="98" source="61" target="74" link="43"/>
-      <connections xsi:type="grl:LinkRef" id="99" source="61" target="75" link="44"/>
-      <connections xsi:type="grl:LinkRef" id="100" source="61" target="76" link="45"/>
+      <connections xsi:type="grl:LinkRef" id="82" source="58" target="57" link="27"/>
+      <connections xsi:type="grl:LinkRef" id="83" source="59" target="57" link="28"/>
+      <connections xsi:type="grl:LinkRef" id="84" source="60" target="57" link="29"/>
+      <connections xsi:type="grl:LinkRef" id="85" source="61" target="57" link="30"/>
+      <connections xsi:type="grl:LinkRef" id="86" source="62" target="58" link="31"/>
+      <connections xsi:type="grl:LinkRef" id="87" source="63" target="58" link="32"/>
+      <connections xsi:type="grl:LinkRef" id="88" source="64" target="58" link="33"/>
+      <connections xsi:type="grl:LinkRef" id="89" source="65" target="59" link="34"/>
+      <connections xsi:type="grl:LinkRef" id="90" source="66" target="59" link="35"/>
+      <connections xsi:type="grl:LinkRef" id="91" source="67" target="59" link="36"/>
+      <connections xsi:type="grl:LinkRef" id="92" source="68" target="59" link="37"/>
+      <connections xsi:type="grl:LinkRef" id="93" source="69" target="59" link="38"/>
+      <connections xsi:type="grl:LinkRef" id="94" source="70" target="60" link="39"/>
+      <connections xsi:type="grl:LinkRef" id="95" source="71" target="60" link="40"/>
+      <connections xsi:type="grl:LinkRef" id="96" source="72" target="61" link="41"/>
+      <connections xsi:type="grl:LinkRef" id="97" source="73" target="61" link="42"/>
+      <connections xsi:type="grl:LinkRef" id="98" source="74" target="61" link="43"/>
+      <connections xsi:type="grl:LinkRef" id="99" source="75" target="61" link="44"/>
+      <connections xsi:type="grl:LinkRef" id="100" source="76" target="61" link="45"/>
       <connections xsi:type="grl:LinkRef" id="101" source="69" target="77" link="46"/>
       <connections xsi:type="grl:LinkRef" id="102" source="67" target="77" link="47"/>
       <connections xsi:type="grl:LinkRef" id="103" source="71" target="77" link="48"/>

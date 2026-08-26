@@ -1,11 +1,24 @@
 # RTFM Goal Model (Step G) — Road Traffic Fine Management
 
-**Status:** **Frozen**, version 1.1, 2026-08-19 — supersedes v1.0 (2026-08-18) per `project/OVERVIEW.md`'s
-definition of Step G; v1.0 is not edited in place, per its own freeze policy (see §8 for the diff).
-Frozen by project-owner decision, not by the domain-expert review originally scoped in §8 below; §8
-records that gap so it stays visible rather than retroactively presented as closed. Any future revision
-(via Step 9's merge/split/rename loop, or a domain-expert review) must bump this version, not edit v1.1
-in place.
+**Status:** version 1.2, 2026-08-25 — supersedes v1.1 (2026-08-19) and v1.0 (2026-08-18) per
+`project/OVERVIEW.md`'s definition of Step G; an earlier version is never edited in place (see §8 for
+each diff). Versioned by project-owner decision, not by the domain-expert review originally scoped in
+§8 below; §8 records that gap so it stays visible rather than retroactively presented as closed. Any
+future revision (via Step 9's merge/split/rename loop, or a domain-expert review) must bump this
+version, not edit v1.2 in place.
+**Scope of v1.2:** the KPI layer only — §6's value sets, their measurement bindings, and the
+contribution links that let an indicator reach the rest of the model. §1–§5's goal-task decomposition
+is unchanged from v1.1.
+
+> **Correction (2026-08-25).** This section previously stated that Step 5a's rendered prompt excerpt
+> is therefore byte-identical across v1.1 and v1.2, verified by hash, because `goalcat.grl.prompt`
+> excluded indicators and the contributions originating at one. That exclusion was removed on
+> 2026-08-25: `render_excerpt()` now renders §6's indicators (name, unit, target/threshold/worst,
+> provenance) and their contribution links, so **v1.2 does change Step 5a's prompt** and the two
+> versions no longer render identically. Any result that relied on v1.1/v1.2 prompt-neutrality
+> predates that change. §6's measurement *bindings* (`goalcat:from`/`goalcat:to`) remain excluded
+> from the excerpt, per §7's prohibition on lexical pre-matching — see §6's own note on that
+> distinction.
 **Target log:** `data/logs/rtfm.xes.gz` — the Road Traffic Fine Management Process event log
 (231 variants, 150,370 cases; de Leoni & Mannhardt, 2015).
 **Provenance:** §3–§4's goal-task decomposition is cross-checked against the DPN-net process model in
@@ -17,9 +30,10 @@ documented Italian administrative-sanction procedure (Legge 689/1981; Codice del
 285/1992), not transcribed from a specific municipality's internal process documentation. §8 states what
 is still required to promote this from "artificial but reasonable" to a genuinely sourced Step G
 artifact.
-**Note on the tool-notation copy:** the `.jucm` file below mirrors v1.0's content; it has not been
-regenerated for v1.1 (the §6 KPI correction and §8 rewrite below) and should not be treated as current
-until it is.
+**Note on the tool-notation copy:** the `.jucm` file below has been regenerated for v1.1's §6 KPI
+correction (indicator 112 renamed "Time to fine dispatch (days)"; indicator 113 replaced by "Time to
+appeal filing (days)", worst/threshold/target 120/60/60). §8's rewrite is prose-only and has no
+tool-notation counterpart.
 **Tool-notation copy:** [`rtfm_goal_model.jucm`](rtfm_goal_model.jucm) — the full model serialized as
 jUCMNav's native URN/GRL XMI format: §2's actor, §3–§4's goals/tasks and AND/OR/XOR decomposition
 links, §5's softgoals and contribution links, and §6's three indicators (as `grl.ecore`'s
@@ -191,16 +205,63 @@ SomeNegative = -25, Hurt = -50, Break = -100), as used in the IMS example (Amyot
 
 ## 6. Indicators
 
+Four indicators, in one `Time` group. Each carries three things: a **value set** (`worst`,
+`threshold`, `target`) that converts a measurement to GRL's [-100, +100] satisfaction scale, a
+**measurement binding** that says how to obtain the measurement from the log, and a **contribution
+link** that gives the converted value somewhere to propagate. v1.1 had only the first of the three,
+which is why its indicators were inert.
+
 | KPI | Formula (informal) | Worst | Threshold | Target | Provenance |
 |---|---|---|---|---|---|
-| Time to fine dispatch | days, Create Fine → Send Fine | > 360 | 90 | ≤ 90 | Statutory — Art. 201, D.Lgs. 285/1992, ordinary notification term for domestic-plate violations, corroborated by the `Delay Send' < 90 days` guard on the `Send Fine` transition in Mannhardt et al. (2016, Fig. 8); extended terms (illustratively, up to 360 days) apply to cases requiring foreign/complex ownership lookup. (v1.0 measured this against `Insert Fine Notification`; corrected in v1.1 — both the statute and Fig. 8's guard attach the 90-day clock to `Send Fine`.) |
-| Time to appeal filing | days, Notification → Appeal to Judge / Appeal to Prefecture | > 120 | 60 | ≤ 60 | Corroborated by the `Delay Judge' < 60 days` and `Delay Prefecture' < 60 days` guards in Mannhardt et al. (2016, Fig. 8); same statutory appeal window cited for G5's XOR in §3 (L. 689/1981). Added in v1.1, replacing v1.0's invented "share of cases closed by voluntary payment" placeholder. |
-| Average time to case closure | days, Create Fine → last resolving task | > 365 | 180 | ≤ 180 | Illustrative managerial target — no external source; a real Step G artifact should replace this with the owning municipality's actual target |
+| Time to fine dispatch | days, `Create Fine` → `Send Fine` | 360 | 90 | 30 | Threshold and worst are **statutory**: Art. 201, D.Lgs. 285/1992 sets the ordinary notification term at 90 days and an extended term (illustratively, up to 360) for cases requiring foreign or complex ownership lookup; the 90-day figure is corroborated by the `Delay Send' < 90 days` guard on the `Send Fine` transition in Mannhardt et al. (2016, Fig. 8). The target is **external, by analogy**: L. 241/1990 art. 2 c.2 sets 30 days as the default term for concluding an administrative proceeding where no specific term exists. One does exist here, so 30 days is an operational aspiration, not a binding term — v1.1 had `target = threshold = 90`, which left the whole positive half of the scale collapsed. |
+| Time to appeal filing, Prefecture | days, notification → `Insert Date Appeal to Prefecture` / `Send Appeal to Prefecture` | 120 | 60 | 60 | **Statutory**: Art. 203, D.Lgs. 285/1992 gives 60 days for a *ricorso al Prefetto*; corroborated by Fig. 8's `Delay Prefecture' < 60 days` guard. `target == threshold` deliberately: an admissibility window is a boundary, not a gradient — filing sooner does not make the authority's goal more satisfied. Worst (120) is illustrative, twice the window. |
+| Time to appeal filing, Judge | days, notification → `Appeal to Judge` | 60 | 30 | 30 | **Statutory**: Art. 204-bis, D.Lgs. 285/1992 gives **30** days for a *ricorso al Giudice di Pace* — half the Prefecture window. v1.1 measured both appeal routes with a single 60-day indicator, taking the number from Fig. 8's `Delay Judge' guard rather than from the statute, which scored late judicial filings as compliant. Splitting the indicator is v1.2's one structural change to the KPI layer. Worst (60) is illustrative. |
+| Average time to case closure | days, `Create Fine` → last resolving task | 365 | 180 | 150 | **External, by analogy**: L. 241/1990 art. 2 caps any administrative proceeding's term at 180 days in any case, which supplies the threshold; the target is Art. 201's 90-day notification term plus Art. 203's 60-day payment/appeal window, i.e. the earliest lawful completion of an uncontested case. Worst (365) remains illustrative. This replaces v1.1's acknowledged invented placeholder, which had no external source at all. |
 
-The first two indicators are now statute- and model-grounded; the third remains invented for this
-illustrative draft and is flagged as such rather than presented with false precision. Exact statutory
-day-counts have been amended over time and should be checked against the consolidated text before this
-model is used for anything beyond illustration.
+**Two citation corrections carried from v1.1.** §2 attributed Art. 203 and Art. 204-bis to
+L. 689/1981; both articles belong to the Codice della Strada (D.Lgs. 285/1992). L. 689/1981 remains
+the correct source for the general administrative-sanction framing and for the *alternatività dei
+rimedi* rule in §3.
+
+### 6.1 Measurement bindings
+
+`grl.kpimodel` places the log-to-indicator binding in `KPIInformationElement`/`KPIModelLink`, which
+this model does not encode. v1.2 supplies it instead as URN `Metadata` (`urncore.ecore` gives every
+`URNmodelElement` a name/value annotation list, which is how jUCMNav itself stamps `_numEval`) under
+a `goalcat:` prefix, so the binding travels inside the `.jucm` file and survives a round trip through
+jUCMNav untouched. `goalcat.grl.measures` documents the key set; `goalcat.indicators` (Step 7b)
+consumes it.
+
+The activity labels appearing in those bindings are a *measurement* device, not a matching rule —
+§7's prohibition on lexical pre-matching governs Step 6's categorization, which runs before this and
+never sees them.
+
+### 6.2 Contribution links (new in v1.2)
+
+An `Indicator` is an `IntentionalElement`, so it sits *in* the satisfaction graph; but in v1.1 no
+link left any of them, which made propagation impossible in principle. v1.2 adds four:
+
+| Indicator | → | Element | Contribution | Rationale |
+|---|---|---|---|---|
+| Time to fine dispatch | → | SG2 Maximize timely fine revenue | Help (+50) | Notification beyond the statutory term voids the fine, so dispatch timeliness is what makes the revenue collectable at all. |
+| Time to appeal filing, Prefecture | → | SG3 Preserve offender's due-process rights | Help (+50) | An appeal filed inside the statutory window is an exercised right; one filed outside it is a foreclosed one. |
+| Time to appeal filing, Judge | → | SG3 Preserve offender's due-process rights | Help (+50) | Same, for the judicial route. |
+| Average time to case closure | → | SG2 Maximize timely fine revenue, SG1 Minimize administrative & enforcement cost | Help (+50) each | A case that stays open ties up both revenue and administrative effort. |
+
+These weights are **authored for this artifact, not sourced** — the same illustrative status §5's
+contribution table already carries. They are the least externally grounded part of v1.2 and should be
+read as such.
+
+### 6.3 What the value sets can and cannot discriminate
+
+Measured against the real log, two of the four saturate, and that is itself the finding rather than a
+defect to tune away. Over the six-case `rtfm_mini` fixture, closure times run 1, 78, 550 and 971 days
+against a value set whose whole scale spans 150–365, so most cases clamp at ±100. Recalibrating
+`worst` to the log's own spread would restore discrimination at the cost of making the threshold a
+function of the data it scores — the circularity this project already flags for BPIC 2019's
+percentile-derived indicators. The value sets stay externally anchored and the saturation is
+reported; `goalcat.indicators` prints the raw measured value beside every satisfaction score for
+exactly this reason.
 
 ## 7. Traceability to observed RTFM activity labels (non-binding)
 
@@ -232,6 +293,23 @@ Two known behaviors deliberately fall outside this table, by design rather than 
 
 ## 8. Limitations of the frozen artifact
 
+**What changed in v1.2.** The KPI layer only, in four moves: value sets gained operational targets
+where a gradient is meaningful and kept `target == threshold` where the bound is an admissibility
+boundary; the single appeal-filing indicator was split in two, because the Prefecture and the Judge
+have different statutory windows (60 vs 30 days) and collapsing them scored late judicial filings as
+compliant; measurement bindings were added as URN `Metadata`; and contribution links were added so an
+indicator can reach the rest of the model at all. §6's third KPI is no longer an invented placeholder
+— its threshold now rests on L. 241/1990 art. 2 — though its `worst` bound still is. The
+goal-task decomposition is untouched.
+
+Separately, and not specific to this model: every `data/goals/*.jucm` file carried its
+`Decomposition` links oriented parent → child, while GRL orients them part → whole. jUCMNav's own
+propagation walks an element's `linksDest` and reads each `link.src`, so under the old orientation an
+And-decomposed parent would have taken the minimum over its *parent*, not its children — the models
+were readable in jUCMNav but would have evaluated backwards in it. All four models were corrected;
+`goalcat.grl.jucm_io` translates between the wire orientation and its own parent → child in-memory
+convention, so nothing above it changed and every parsed tree is identical to before (verified).
+
 **What changed in v1.1.** v1.0 was authored from general, publicly available statutory sources only,
 not from Polizia Locale internal procedure documents or any process model of the actual system.
 v1.1 cross-checks §3–§4's goal-task decomposition and two of §6's three KPIs against a published,
@@ -254,17 +332,20 @@ themselves traceable to the Surviving Sepsis Campaign 2016 guidelines (Rhodes et
 `data/goals/sepsis_goal_model.md` §6, which reuses those three KPIs directly. Three residual gaps remain
 in *this* (RTFM) artifact and should be read as such wherever they appear downstream:
 
-- §6's third KPI ("Average time to case closure") is still an invented placeholder with no external
-  grounding.
+- §6's third KPI ("Average time to case closure") is no longer an invented placeholder — v1.2
+  anchors its threshold in L. 241/1990 art. 2 — but its `worst` bound (365 days) still has no
+  external source, and neither do §6.2's contribution weights.
 - §4's TP/TA split is a business-intent simplification of the DPN-net's three-point `Payment`
   structure (see §4's note below the decomposition table) — defensible for this goal model's purposes,
   but not a 1:1 mirror of the cited process model.
 - No domain-expert review, as distinct from literature cross-checking, has occurred for §3–§6 as a
   whole.
 
-v1.1 was frozen by project-owner decision on 2026-08-19, for the same pipeline-development purposes as
-v1.0. A future domain-expert pass, should one occur, supersedes v1.1 as a new frozen version, not an
-edit to it.
+v1.1 was versioned by project-owner decision on 2026-08-19 and v1.2 on 2026-08-25, both for
+pipeline-development purposes rather than as validated artifacts. A future domain-expert pass, should
+one occur, supersedes v1.2 as a new version, not an edit to it. `data/goals/rtfm_mini_goal_model.jucm`
+is a separate file carrying the identical model for the six-case `rtfm_mini` fixture — see
+`rtfm_miniGM_description.md` for why it exists and what must stay in step between the two.
 
 ## 9. References
 

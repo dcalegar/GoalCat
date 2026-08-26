@@ -1,0 +1,7 @@
+variant_id,narrative
+V0001,Create Fine Send Fine (+134d)
+V0002,Create Fine Send Fine (+132d) Insert Fine Notification (+34d) Add penalty (+60d) Send for Credit Collection (+745d)
+V0003,Create Fine Send Fine (+130d) Insert Fine Notification (+16d) Add penalty (+60d) Payment (+344d)
+V0004,Create Fine Payment (+1d)
+V0005,Create Fine Send Fine (+46d) Insert Fine Notification (+9d) Add penalty (+60d) Appeal to Judge (+21d)
+V0006,Create Fine Send Fine Insert Fine Notification Insert Date Appeal to Prefecture (+5d) Send Appeal to Prefecture (+35d) Add penalty (+20d) Receive Result Appeal from Prefecture (+18d)

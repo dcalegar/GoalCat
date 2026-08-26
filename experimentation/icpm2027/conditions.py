@@ -32,13 +32,14 @@ from goalcat.atomic_io import atomic_write_json, atomic_write_text
 from goalcat.config import REPO_ROOT, ROUND_PREFIX, TAXONOMY_DIRNAME
 from goalcat.llm.taxonomy import Category, Taxonomy
 
-from .inputs import SharedBase, materialize_condition_inputs
+from .inputs import SharedBase, materialize_condition_inputs, withhold_narrative_sample
 from .manifest import build_manifest, now_iso, write_manifest
 from .protocol import (
     ConditionSpec,
     PreRegistration,
     Protocol,
     resolve_assignment_batch_size,
+    runs_step7b,
     write_condition_config,
 )
 
@@ -150,13 +151,22 @@ def already_complete(condition: ConditionSpec) -> bool:
     ).exists()
 
 
-def _launch(config_path: Path, run_id: str, steps: tuple[int, ...], logger: logging.Logger) -> None:
+def _launch(
+    config_path: Path,
+    run_id: str,
+    steps: tuple[int, ...],
+    logger: logging.Logger,
+    *,
+    indicators: bool = False,
+) -> None:
     cmd = [
         sys.executable, "-m", "experimentation.icpm2027.run_condition",
         "--config", str(config_path),
         "--run-id", run_id,
         "--steps", ",".join(str(s) for s in steps),
     ]
+    if indicators:
+        cmd.append("--indicators")
     logger.info("Launching condition subprocess: %s", " ".join(cmd))
     completed = subprocess.run(cmd, cwd=str(REPO_ROOT), check=False)
     if completed.returncode != 0:
@@ -201,6 +211,9 @@ def execute_condition(
 
     started_at = now_iso()
     materialize_condition_inputs(base, run_dir, logger)
+    sample_record: dict[str, Any] = {"withheld": False}
+    if condition.withholds_narrative_sample:
+        sample_record = withhold_narrative_sample(run_dir, logger)
     config_path = write_condition_config(condition, protocol, prereg)
 
     steps = condition.steps
@@ -208,7 +221,8 @@ def execute_condition(
         write_label_list_taxonomy(condition, run_dir, logger)
         steps = tuple(s for s in steps if s != 5)
 
-    _launch(config_path, condition.run_id, steps, logger)
+    step7b = runs_step7b(condition.dataset, condition.arm, prereg)
+    _launch(config_path, condition.run_id, steps, logger, indicators=step7b)
     finished_at = now_iso()
 
     goal_model_filename = condition.effective_goal_model_filename
@@ -235,7 +249,12 @@ def execute_condition(
         steps=steps,
         started_at=started_at,
         finished_at=finished_at,
-        extra={"estimated_llm_calls": estimate, "assignment_batch_size": batch_size},
+        extra={
+            "estimated_llm_calls": estimate,
+            "assignment_batch_size": batch_size,
+            "narrative_sample": sample_record,
+            "step7b_indicators": step7b,
+        },
     )
     manifest_path = write_manifest(manifest, run_dir)
     logger.info("Wrote manifest: %s", manifest_path)

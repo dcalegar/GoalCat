@@ -4,11 +4,19 @@ markdown document's §1-§7.
 
 `render_excerpt()` produces the *only* goal-model content a prompt ever states for a guided run
 (Step 5a's induction and revision prompts; Step 6's assignment prompt carries the induced categories
-alone, and Step 8's description prompt carries only `resolve_anchor_labels()` output): no
-KPI section (Step 5a never needs it, matching the markdown-era `_extract_sections()`'s own §6
-exclusion), no diagram layout, no provenance prose — just actors, the decomposition tree, and
-contribution links, each element shown with its native `.jucm` id so a proposed category's
-`anchor_ids` can reference something real. `declared_ids()`/`resolve_anchor_labels()`/
+alone, and Step 8's description prompt carries only `resolve_anchor_labels()` output): actors, the
+decomposition tree, the indicator value sets, and contribution links, each element shown with its
+native `.jucm` id so a proposed category's `anchor_ids` can reference something real. No diagram
+layout and no provenance prose — those are presentation and file metadata, not declared intent.
+
+**Everything the model declares is rendered, with one deliberate carve-out.** The indicator section
+states each indicator's name, unit, target/threshold/worst and provenance, but *never* its
+`goalcat:from`/`goalcat:to` measurement binding. Those values are activity labels, and every goal
+model's §7 forbids the activity-label table from reaching Steps 5a/6, because categorization there
+must be semantic rather than a lexical pre-match (`goalcat.grl.measures`' module docstring states
+the same boundary from the measuring side). Rendering the binding would leak exactly that table into
+the categorization prompt. The conversion arithmetic is declared intent and belongs here; the
+label binding is a measurement mechanism and stays in Step 7b. `declared_ids()`/`resolve_anchor_labels()`/
 `grounding_problems()` replace `_extract_declared_ids()`/`_resolve_anchor_labels()`/
 `check_taxonomy_grounding()`'s markdown-table lookups with the equivalent lookups against
 `GRLModel.elements` directly — no parsing involved, since the model is already structured.
@@ -28,11 +36,11 @@ goal model", carries this same rationale for readers who never open this module)
    `declared_ids()`. The mnemonic codes a reader sees in the goal models' prose descriptions
    (`G0`, `TP`, ...) are prose-only (see `model.py`'s `IntentionalElement.id` note), so rendering
    that prose instead would invite anchors that resolve to nothing.
-3. Everything omitted is irrelevant to Step 5a's task: the `urndef` diagram layer is presentation,
-   KPI
-   Indicators are not an axis to subdivide, and `author`/`created`/`nextGlobalID` are file
-   metadata. Dropping them also keeps the prompt's token budget on the narrative sample, which is
-   what actually calibrates category granularity.
+3. Everything omitted is irrelevant to Step 5a's task: the `urndef` diagram layer is presentation
+   and `author`/`created`/`nextGlobalID` are file metadata. Indicators used to be omitted on the
+   grounds that they are "not an axis to subdivide" — true, but that conflated *anchoring to*
+   something with *reasoning from* it. They now render as context, with the prompts stating that an
+   indicator is never a valid `anchor_ids` target.
 4. Determinism — see `render_excerpt()`'s own docstring.
 
 Two model properties are deliberately *not* carried into the excerpt. Neither affects the goal
@@ -59,9 +67,13 @@ def declared_alternatives(model: GRLModel) -> dict[str, list[str]]:
 
 def declared_ids(model: GRLModel) -> set[str]:
     """Every id Step 5a's `anchor_ids` may legally reference — every intentional element
-    (Goal/Task/Softgoal/Ressource), Indicators included since a category could in principle
-    anchor to one, though none of this project's prompts currently invite that."""
-    return set(model.elements)
+    (Goal/Task/Softgoal/Ressource), Indicators excluded. Indicators became visible to Step 5a when
+    `render_excerpt()` started rendering them, and both intent-guided prompts state the rule this
+    enforces: an indicator measures whether a goal is achieved, so a category anchors to that goal,
+    never to the measurement. Softgoals stay legal here — no prompt invites anchoring to one and
+    none ever has, but a category naming the softgoal it realizes is a defensible reading of the
+    axis in a way that one naming a KPI is not."""
+    return {element_id for element_id, element in model.elements.items() if element.type != "Indicator"}
 
 
 def _decomposition_operator(model: GRLModel, element: IntentionalElement) -> str:
@@ -85,10 +97,10 @@ def _render_tree(model: GRLModel, element_id: str, depth: int, lines: list[str],
 
 def _roots(model: GRLModel) -> list[str]:
     """Elements with no incoming Decomposition link — where the tree rendering starts. Softgoals
-    and Indicators are excluded even though they likewise have no parent: softgoals are rendered
-    separately as contribution targets, and Indicators are KPI metadata Step 5a never needs
-    (matching the markdown-era `_extract_sections()`'s own §6 exclusion — this module's docstring
-    makes the same claim, so this function has to honor it)."""
+    and Indicators are excluded from the *tree* even though they likewise have no parent, because
+    neither is a decomposition root: softgoals render separately as contribution targets, and
+    indicators render in their own section as contribution sources. Excluded from this rendering,
+    not from the excerpt."""
     children = {link.dest for link in model.decompositions}
     return [
         element.id
@@ -119,8 +131,29 @@ def render_excerpt(model: GRLModel) -> str:
         _render_tree(model, root_id, 0, lines, visited=set())
     lines.append("")
 
+    if model.indicators:
+        lines.append(
+            "Indicators (how the organization measures whether a goal is met; id, name, unit, and the "
+            "value set converting a measurement to satisfaction):"
+        )
+        for indicator in model.indicators.values():
+            point = indicator.eval_point
+            detail = ""
+            if point is not None:
+                bounds = ", ".join(
+                    f"{label} {value:g}"
+                    for label, value in (("target", point.target), ("threshold", point.threshold), ("worst", point.worst))
+                    if value is not None
+                )
+                unit = f" {point.unit}" if point.unit else ""
+                detail = f" ({bounds}{unit})" if bounds else ""
+            provenance = model.elements[indicator.id].metadata.get("goalcat:provenance") if indicator.id in model.elements else None
+            provenance_note = f" [provenance: {provenance}]" if provenance else ""
+            lines.append(f"  - id={indicator.id} [Indicator] {indicator.name}{detail}{provenance_note}")
+        lines.append("")
+
     softgoals = [e for e in model.elements.values() if e.type == "Softgoal"]
-    contributions = [link for link in model.contributions]
+    contributions = list(model.contributions)
     if softgoals and contributions:
         lines.append("Softgoals and contribution links (source -> effect on softgoal):")
         softgoal_names = {s.id: s.name for s in softgoals}
@@ -159,6 +192,19 @@ def grounding_problems(model: GRLModel, anchor_ids: list[str], category_id: str)
     remains the actual correctness gate, matching every other grounding check in this project."""
     valid = declared_ids(model)
     bad = sorted(set(anchor_ids) - valid)
-    if bad:
-        return [f"{category_id}: anchor_ids not in goal model: {bad}"]
-    return []
+    if not bad:
+        return []
+    # An indicator id is in the model but not anchorable, which is a different reviewer-facing
+    # problem from an id that resolves to nothing at all -- reporting both as "not in goal model"
+    # would send a reviewer looking for a typo that isn't there.
+    indicators = [anchor_id for anchor_id in bad if anchor_id in model.indicators]
+    unknown = [anchor_id for anchor_id in bad if anchor_id not in model.indicators]
+    problems = []
+    if unknown:
+        problems.append(f"{category_id}: anchor_ids not in goal model: {unknown}")
+    if indicators:
+        problems.append(
+            f"{category_id}: anchor_ids name Indicators, which measure a goal rather than declare "
+            f"one and are not anchorable: {indicators}"
+        )
+    return problems

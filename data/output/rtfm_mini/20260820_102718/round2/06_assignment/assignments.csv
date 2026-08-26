@@ -1,7 +1,0 @@
-variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
-V0001,,"The process variant ends simply after sending the fine, without a final resolution such as payment, appeal, or coercive collection.",,payment,1.0,,0.3340510427951813
-V0002,coercive_credit_collection,The process ends by sending the fine for credit collection after penalties have been applied.,0.0,payment,1.0,0.0,0.36088287830352783
-V0003,payment,"The process ends with a payment after fine notification and penalties, fitting the delinquent payment resolution.",0.0,coercive_credit_collection,1.0,0.0,0.36088287830352783
-V0004,payment,The process ends with a timely payment shortly after the fine is created.,3.0,coercive_credit_collection,4.0,0.30578380823135376,0.5444914698600769
-V0005,judicial_appeal,The process concludes with an appeal brought before a judge.,0.0,coercive_credit_collection,1.0,0.0,0.36026421189308167
-V0006,administrative_appeal,"The process involves submitting an appeal to the Prefecture and receiving the result, matching administrative appeal steps.",0.0,coercive_credit_collection,3.0,0.0,0.36026421189308167
