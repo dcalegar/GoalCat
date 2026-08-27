@@ -36,9 +36,7 @@ the narratives.
 
 The two taxonomy-induction modes share every other step. With a goal model (`intent_guided`), the
 residual is non-conforming behavior — evidence to revise the goal model. Without one (`open`), it is
-the equivalent of clustering noise, reported as an "other/unclassifiable" bucket. Full architecture,
-related-work positioning, and evaluation plan are documented in `project/OVERVIEW.md` (local,
-gitignored — see [Further documentation](#further-documentation)).
+the equivalent of clustering noise, reported as an "other/unclassifiable" bucket.
 
 ## What the LLM actually sees of the goal model
 
@@ -122,9 +120,8 @@ reasons drive it:
   is declared intent and belongs in the prompt; the label binding is a measurement mechanism and
   stays in Step 7b.
 - **Determinism, required by the experimental protocol.** `render_excerpt()` iterates in the `.jucm`
-  file's own element order, so a frozen goal model always renders byte-identical prompt text — the
-  "Prompts: versioned" requirement of the freeze table (`project/EXPERIMENTATION_PLAN.md` §2.2,
-  local and gitignored — see [Further documentation](#further-documentation)).
+  file's own element order, so a frozen goal model always renders byte-identical prompt text — a
+  "Prompts: versioned" requirement of the replication package's freeze table.
   `experimentation/icpm2027/goalmodel/perturb.py` hashes exactly this text as the provenance record
   for perturbation conditions.
 
@@ -207,7 +204,7 @@ GoalCat/
 │   │   ├── bpic2019/
 │   │   ├── bpic2020_permit/
 │   │   └── sepsis/
-│   └── icpm2027/               # replication package for the ICPM 2027 paper (RQ1 protocol runs)
+│   └── icpm2027/               # replication package for the ICPM 2027 submission (RQ1 protocol runs)
 └── third_party/lupin/      # vendored CC BY-NC-SA 4.0 textualization module (subprocess-isolated)
 ```
 
@@ -217,8 +214,7 @@ GoalCat/
 consumes the pipeline and isn't part of the implemented core.
 
 `project/` (deeper architecture/research documentation) and `.claude/` (assistant configuration) are
-listed in `.gitignore` and are not part of the git repository — see
-[Further documentation](#further-documentation).
+listed in `.gitignore` and are not part of the git repository.
 
 ## Installation
 
@@ -302,7 +298,7 @@ map in each config (keyed by the same model string as `taxonomy_model`/`assignme
 `assignment_run_metadata.json` carries one per batch call plus a `total_estimated_cost_usd`. A model
 absent from the map logs `estimated_cost_usd: null` rather than a fabricated `0.0`. Rates are USD per
 1M tokens, standard (non-batch) tier; re-check `ai.google.dev/gemini-api/docs/pricing` before trusting
-these figures for a paper's cost accounting if a run postdates the "Verified" date next to the map in
+these figures for a publication's cost accounting if a run postdates the "Verified" date next to the map in
 `config.yaml` by long enough for pricing to have moved. Every call's `RunMetadata` also carries
 `prompt_chars`/`response_chars` (`len()` of the rendered prompt / raw response — a tokenizer-
 independent size measure, since the same text tokenizes to different counts depending on language,
@@ -358,9 +354,7 @@ to format/parse float32 values as text. In practice:
 Growth is quadratic, not linear, regardless of format: BPIC 2019's ~14x larger variant count than
 Sepsis still produces a ~200x larger combined distance-file size. Budget disk accordingly before
 running against a log with several thousand variants — doubling the variant count roughly
-quadruples these two files. Full memory/timing/disk figures for all four runs above are reported
-in the ICPM 2027 paper's Feasibility and runtime evaluation (predating the Parquet migration; that
-paper's disk figures are the pre-migration CSV sizes shown above).
+quadruples these two files.
 
 Existing run directories from before this change still have `structural_distances.csv`/
 `profile_distances.csv`; convert them with `scripts/convert_distance_files_to_parquet.py` (verifies
@@ -432,7 +426,7 @@ python -m experimentation.examples.sepsis.example_run
 Each requires `GEMINI_API_KEY` (or `config_local.yaml` for the local backend) and makes real LLM
 calls — billed ones, under the hosted backend.
 
-The runs behind the ICPM 2027 paper's reported results live separately, under
+The runs behind the ICPM 2027 replication package live separately, under
 `experimentation/icpm2027/` — see [`experimentation/README.md`](experimentation/README.md)
 for the distinction and that subpackage's own README for its module inventory and current status.
 
@@ -547,10 +541,9 @@ GoalCat is licensed `AGPL-3.0-or-later` — see [LICENSE](LICENSE). The vendored
 Malerba, 2024) under CC BY-NC-SA 4.0, isolated from the rest of the codebase via `subprocess`
 invocation only; see [`third_party/lupin/README.md`](third_party/lupin/README.md) for the full
 isolation contract. Its NonCommercial term is satisfied by this project's non-commercial research
-scope.
-
-## Further documentation
-
-Deeper architecture, research framing, and an implementation decision log — `OVERVIEW.md`,
-`SETUP.md`, `PROGRESS.md` — live in a local `project/` directory that is listed in `.gitignore` and
-is not part of the git repository. Ask the project maintainer for access if you need it.
+scope. The vendored `third_party/jucmnav/` schemas (GRL/URN `.ecore` metamodel definitions, loaded
+by `src/goalcat/grl/jucm_io.py` via `pyecore` to parse and serialize `.jucm` files against the real
+schema) are reused from jUCMNav/jUCMNavPlus under the Eclipse Public License, version 1.0 — data
+consumed at runtime, not executable code linked into GoalCat's own codebase; see
+[`third_party/jucmnav/README.md`](third_party/jucmnav/README.md) for the full provenance and
+license rationale.

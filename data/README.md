@@ -13,9 +13,7 @@ published process documentation and frozen before any categorization runs agains
 currently has a goal model in both its editable jUCMNav form (`.jucm`) and a rendered Markdown form
 (`.md`). Only the `.jucm` is a pipeline input, and even it is never sent to an LLM verbatim: Step 5a
 receives a task-scoped text projection of it — see "What the LLM actually sees of the goal model" in
-[`../README.md`](../README.md). The `.md` form is documentation for human readers only. See
-[`../project/OVERVIEW.md`](../project/OVERVIEW.md) (local, not tracked in git) for the full
-architecture this data feeds.
+[`../README.md`](../README.md). The `.md` form is documentation for human readers only.
 
 | Log | Domain | Scale | Log file | Goal model | Status |
 |---|---|---|---|---|---|
@@ -24,7 +22,7 @@ architecture this data feeds.
 | BPIC 2020 (Travel Permit Data) | Travel-permit requests and their approval chain at a university — one of five BPIC 2020 sub-logs, the only one staged here | 7,065 cases, 86,581 events (2017–2018) | `logs/bpic2020_permit.xes.gz` | `goals/bpic2020_goal_model.jucm` (+ `goals/bpic2020GM_description.md`; shared across BPIC 2020 sub-logs) | Case-study driver and config staged (`experimentation/examples/bpic2020_permit/`); Step 3 textualization template authored in `third_party/lupin/log_templates.py`; not yet run end-to-end. |
 | Sepsis | Hospital pathway of sepsis patients, recorded by the institution's ERP system | ~1,000 cases, ~15,000 events, 16 activities | `logs/sepsis.xes.gz` | `goals/sepsis_goal_model.jucm` (+ `goals/sepsisGM_description.md`) | Case-study driver and config staged (`experimentation/examples/sepsis/`); Step 3 textualization template authored in `third_party/lupin/log_templates.py`; not yet run end-to-end. |
 
-Publisher references (BibTeX, reused from `project/OVERVIEW.md`):
+Publisher references (BibTeX):
 
 ```bibtex
 @misc{deleoni2015rtfm,

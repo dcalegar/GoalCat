@@ -10,11 +10,11 @@ implemented core, unlike `src/goalcat/` (the library) and `src/gui/` (a Streamli
   These demonstrate that the pipeline executes end to end (including, for `rtfm_mini`, a scripted
   Step 9 rework round) and are the fastest way to exercise a change locally. They are not evidence
   for any research claim on their own.
-- **`icpm2027/`** — the replication package for the ICPM 2027 submission: every run behind the
-  paper's reported results, under a frozen, versioned experimental protocol. Distinct from
-  `examples/` because the paper's runs must stay under explicit freeze/versioning conditions that
-  an illustrative demo does not need, and because a reader reproducing the paper should not have
-  to pick the right script out of a directory mixed with unrelated demos.
+- **`icpm2027/`** — the replication package for the ICPM 2027 submission: every run under a
+  frozen, versioned experimental protocol. Distinct from `examples/` because these replication runs
+  must stay under explicit freeze/versioning conditions that an illustrative demo does not need,
+  and because a reader running the replication package should not have to pick the right script
+  out of a directory mixed with unrelated demos.
 
 `examples/` scripts are invoked directly, as a module, from the repository root:
 
