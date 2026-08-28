@@ -1,6 +1,6 @@
 # Functional-test configuration: a tiny log derived from RTFM, for exercising the full
 # pipeline (including the LLM steps) cheaply and quickly, instead of against the full 231-variant
-# real log. See PROGRESS.md for how data/logs/rtfm_mini.xes.gz was selected.
+# real log. data/logs/rtfm_mini.xes.gz was hand-selected as described below.
 #
 # 6 real RTFM cases, hand-picked to cover the frozen goal model's five leaf tasks one each, plus
 # one still-open case with no resolution (exercises Step 6's residual path):
@@ -31,7 +31,7 @@ resource_key: "org:resource"
 # sample covers every variant via nlargest (a request for more rows than exist just returns all
 # of them) — found necessary after a first pass at smaller values left one variant (the judicial
 # appeal case) out of the sample by tie-break luck, so Step 5a never saw it and never proposed a
-# category for it; see PROGRESS.md. Guaranteeing full coverage here means the taxonomy Step 5a
+# category for it. Guaranteeing full coverage here means the taxonomy Step 5a
 # induces sees all five real resolution paths, and the fixture's one deliberate residual (the
 # still-open case, A1) is a real "no category fits" case, not sampling variance.
 sample_frequent_n: 6

@@ -6,8 +6,7 @@ requires-python = ">=3.11"
 license = { text = "AGPL-3.0-or-later" }
 authors = [{ name = "Daniel Calegari" }]
 
-# AGPL-3.0 is not a choice: pm4py imposes it, and the repository adopts it
-# (see project/OVERVIEW.md, Tools).
+# AGPL-3.0 is not a choice: pm4py imposes it, and the repository adopts it.
 dependencies = [
     "pm4py==2.7.23.5",
     "pandas>=2.2",

@@ -39,3 +39,9 @@ llm:
   concurrency: 5
   requests_per_minute: null
   assignment_batch_size: 50
+
+# Step 7b: measure each goal-model indicator over each category's sublog, convert it through the
+# indicator's own KPIEvalValueSet, and propagate the result up the goal model. bpic2019_goal_model.jucm
+# binds all five indicators to the log with goalcat:* metadata (three Directive 2011/7/EU clearance
+# clocks, two case_fraction rates), so the step is active here. Deterministic and cheap: no LLM call.
+skip_indicators: false

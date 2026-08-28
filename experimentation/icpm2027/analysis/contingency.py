@@ -1,7 +1,7 @@
-"""Contingency matrices between two partitions of the same variant set (EXPERIMENTATION_PLAN.md
-§3: "guided-open contingency matrix (variant counts and, where feasible, case-weighted counts)").
+"""Contingency matrices between two partitions of the same variant set — the guided-open
+contingency matrix (variant counts and, where feasible, case-weighted counts).
 
-Rows = the first partition's categories, columns = the second's, per §7's convention: $G_1, G_2
+Rows = the first partition's categories, columns = the second's, by the reporting convention: $G_1, G_2
 \\to O_1$ reads as a merge, $G_1 \\to O_1, O_2$ reads as a split. The residual is always included
 as its own row/column labeled `(residual)` — Task D1's convention, adopted here unconditionally
 (not just for AMI/NMI): a variant the guided arm couldn't place is itself a fact about that arm's

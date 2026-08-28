@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:grl.kpimodel="http:///grl/kpimodel.ecore" xmlns:urn="http:///urn.ecore" name="BPIC2019 Goal Model" author="goalcat (draft v1.0, artificial -- see data/goals/bpic2019_goal_model.md)" created="August 19, 2026, 12:00:00 AM EDT" modified="August 19, 2026, 12:00:00 AM EDT" specVersion="1.0" urnVersion="1.27" nextGlobalID="98">
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:grl.kpimodel="http:///grl/kpimodel.ecore" xmlns:urn="http:///urn.ecore" name="BPIC2019 Goal Model" author="goalcat (artificial -- see data/goals/bpic2019GM_description.md)" created="August 19, 2026, 12:00:00 AM EDT" modified="August 28, 2026, 12:00:00 AM EDT" specVersion="1.0" urnVersion="1.27" nextGlobalID="108">
   <grlspec>
     <intElements name="Every purchase order item reaches a matched, compliant closure" id="2" type="Goal" decompositionType="And"/>
     <intElements name="Item is created and, where applicable, requisitioned" id="3" type="Goal" decompositionType="And"/>
@@ -16,11 +16,48 @@
     <intElements name="Minimize procurement &amp; matching overhead" id="14" type="Softgoal"/>
     <intElements name="Maximize working-capital efficiency (timely clearance)" id="15" type="Softgoal"/>
     <intElements name="Preserve value-matching control integrity" id="16" type="Softgoal"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to clearance, 3-way after GR (days)" id="17" type="Indicator" groups="47"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to clearance, 3-way before GR (days)" id="18" type="Indicator" groups="47"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to clearance, 2-way match (days)" id="19" type="Indicator" groups="47"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="3-way matching compliance (violation rate, %)" id="20" type="Indicator" groups="48"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="Exception/rework rate (%)" id="21" type="Indicator" groups="48"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to clearance, 3-way after GR (days)" id="17" type="Indicator" groups="47">
+      <metadata name="goalcat:measure" value="duration_days"/>
+      <metadata name="goalcat:from" value="Record Invoice Receipt"/>
+      <metadata name="goalcat:to" value="Clear Invoice"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="external-by-analogy"/>
+      <metadata name="goalcat:source" value="target 30 d / threshold 60 d: Directive 2011/7/EU on combating late payment in commercial transactions, arts. 3(3) and 3(5) -- the 30-day default B2B payment term and the 60-day maximum an agreement may set. In this regime the invoice follows goods receipt, so per art. 3(3)(b) the term runs from Record Invoice Receipt (the later event). worst 120 d illustrative (2x the maximum). Measurement frame: ICPM 2019 challenge process question 2 (time between goods receipt, invoice receipt and payment)."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to clearance, 3-way before GR (days)" id="18" type="Indicator" groups="47">
+      <metadata name="goalcat:measure" value="duration_days"/>
+      <metadata name="goalcat:from" value="Record Goods Receipt"/>
+      <metadata name="goalcat:to" value="Clear Invoice"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="external-by-analogy"/>
+      <metadata name="goalcat:source" value="Same value set and source as indicator 17 (Directive 2011/7/EU arts. 3(3), 3(5)). Here the invoice precedes goods receipt, so per art. 3(3)(b) the term runs from Record Goods Receipt (the later event)."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to clearance, 2-way match (days)" id="19" type="Indicator" groups="47">
+      <metadata name="goalcat:measure" value="duration_days"/>
+      <metadata name="goalcat:from" value="Record Invoice Receipt"/>
+      <metadata name="goalcat:to" value="Clear Invoice"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="external-by-analogy"/>
+      <metadata name="goalcat:source" value="Same value set and source as indicator 17 (Directive 2011/7/EU arts. 3(3), 3(5)). This regime records no goods receipt, so the term runs from Record Invoice Receipt."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="3-way matching compliance (violation rate, %)" id="20" type="Indicator" groups="48">
+      <metadata name="goalcat:measure" value="case_fraction"/>
+      <metadata name="goalcat:among" value="Clear Invoice"/>
+      <metadata name="goalcat:numerator" value="lacks:Record Goods Receipt"/>
+      <metadata name="goalcat:scale" value="percent"/>
+      <metadata name="goalcat:provenance" value="illustrative"/>
+      <metadata name="goalcat:source" value="Denominator: items that reach Clear Invoice. Numerator: those cleared with no Record Goods Receipt ever logged -- the deviation the ICPM 2019 challenge process question 3 asks about. No organizer-published target for an acceptable violation rate exists; target 0 / threshold 1 / worst 5 (%) are illustrative bounds around the observed 0.31%."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Exception/rework rate (%)" id="21" type="Indicator" groups="48">
+      <metadata name="goalcat:measure" value="case_fraction"/>
+      <metadata name="goalcat:numerator" value="has:Cancel Invoice Receipt|Cancel Goods Receipt|Block Purchase Order Item|Set Payment Block"/>
+      <metadata name="goalcat:scale" value="percent"/>
+      <metadata name="goalcat:provenance" value="illustrative"/>
+      <metadata name="goalcat:source" value="Share of items carrying at least one cancellation or block event. No external source defines this as a formal KPI; target 0 / threshold 5 / worst 15 (%) are illustrative bounds on SG1 around the observed 3.39%."/>
+    </intElements>
     <actors name="Purchase-to-Pay Back-Office" id="1"/>
     <links xsi:type="grl:Decomposition" id="22" src="3" dest="2" refs="73"/>
     <links xsi:type="grl:Decomposition" id="23" src="4" dest="2" refs="74"/>
@@ -47,24 +84,29 @@
     <links xsi:type="grl:Contribution" id="44" src="7" dest="16" refs="95" contribution="SomeNegative" quantitativeContribution="-25"/>
     <links xsi:type="grl:Contribution" id="45" src="13" dest="14" refs="96" contribution="Help" quantitativeContribution="50"/>
     <links xsi:type="grl:Contribution" id="46" src="13" dest="16" refs="97" contribution="SomeNegative" quantitativeContribution="-25"/>
+    <links xsi:type="grl:Contribution" id="98" src="17" dest="15" refs="103" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="99" src="18" dest="15" refs="104" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="100" src="19" dest="15" refs="105" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="101" src="20" dest="16" refs="106" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="102" src="21" dest="14" refs="107" contribution="Help" quantitativeContribution="50"/>
     <indicatorGroup name="Time" id="47" isRedesignCategory="true" indicators="17 18 19"/>
     <indicatorGroup name="Quality" id="48" isRedesignCategory="true" indicators="20 21"/>
-    <groups name="KPI Reference Values (descriptive, draft v1.0)" id="49" strategies="50"/>
-    <strategies name="Log-computed reference values, v1.0 (draft)" id="50" author="goalcat (draft v1.0, artificial)" type="Private" group="49">
+    <groups name="KPI conversion value sets" id="49" strategies="50"/>
+    <strategies name="Conversion baseline" id="50" author="goalcat (artificial -- see data/goals/bpic2019GM_description.md)" type="Private" group="49">
       <evaluations intElement="17">
-        <kpiEvalValueSet targetValue="65" thresholdValue="84" worstValue="119" unit="days" qualitativeEvaluationValue="Not an organizational target -- P50/P75/P95 computed directly against the log, see bpic2019_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="30" thresholdValue="60" worstValue="120" unit="days" qualitativeEvaluationValue="target/threshold from Directive 2011/7/EU (30-day default, 60-day maximum B2B term); worst illustrative. Not measured here -- Step 7b writes one measured strategy per category. See bpic2019GM_description.md SS6."/>
       </evaluations>
       <evaluations intElement="18">
-        <kpiEvalValueSet targetValue="64" thresholdValue="87" worstValue="118" unit="days" qualitativeEvaluationValue="Not an organizational target -- P50/P75/P95 computed directly against the log, see bpic2019_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="30" thresholdValue="60" worstValue="120" unit="days" qualitativeEvaluationValue="target/threshold from Directive 2011/7/EU (30-day default, 60-day maximum B2B term); worst illustrative. Not measured here -- Step 7b writes one measured strategy per category. See bpic2019GM_description.md SS6."/>
       </evaluations>
       <evaluations intElement="19">
-        <kpiEvalValueSet targetValue="20" thresholdValue="39" worstValue="130" unit="days" qualitativeEvaluationValue="Not an organizational target -- P50/P75/P95 computed directly against the log (small sample, n=303), see bpic2019_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="30" thresholdValue="60" worstValue="120" unit="days" qualitativeEvaluationValue="target/threshold from Directive 2011/7/EU (30-day default, 60-day maximum B2B term); worst illustrative. Not measured here -- Step 7b writes one measured strategy per category. See bpic2019GM_description.md SS6."/>
       </evaluations>
       <evaluations intElement="20">
-        <kpiEvalValueSet targetValue="0" thresholdValue="1" worstValue="5" unit="%" qualitativeEvaluationValue="Observed rate 0.31% (566/183,374) -- illustrative bounds, no organizational target, see bpic2019_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="0" thresholdValue="1" worstValue="5" unit="%" qualitativeEvaluationValue="Illustrative bounds, no organizational target -- observed rate 0.31% (566/183,374). See bpic2019GM_description.md SS6/SS8."/>
       </evaluations>
       <evaluations intElement="21">
-        <kpiEvalValueSet targetValue="0" thresholdValue="5" worstValue="15" unit="%" qualitativeEvaluationValue="Observed rate 3.39% (8,523/251,734) -- illustrative bounds, no organizational target, see bpic2019_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="0" thresholdValue="5" worstValue="15" unit="%" qualitativeEvaluationValue="Illustrative bounds, no organizational target -- observed rate 3.39% (8,523/251,734). See bpic2019GM_description.md SS6/SS8."/>
       </evaluations>
     </strategies>
     <impactModel/>
@@ -160,6 +202,11 @@
       <connections xsi:type="grl:LinkRef" id="95" source="58" target="72" link="44"/>
       <connections xsi:type="grl:LinkRef" id="96" source="64" target="70" link="45"/>
       <connections xsi:type="grl:LinkRef" id="97" source="64" target="72" link="46"/>
+      <connections xsi:type="grl:LinkRef" id="103" source="65" target="71" link="98"/>
+      <connections xsi:type="grl:LinkRef" id="104" source="66" target="71" link="99"/>
+      <connections xsi:type="grl:LinkRef" id="105" source="67" target="71" link="100"/>
+      <connections xsi:type="grl:LinkRef" id="106" source="68" target="72" link="101"/>
+      <connections xsi:type="grl:LinkRef" id="107" source="69" target="70" link="102"/>
     </specDiagrams>
   </urndef>
 </urn:URNspec>

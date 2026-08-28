@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:grl.kpimodel="http:///grl/kpimodel.ecore" xmlns:urn="http:///urn.ecore" name="BPIC2020 Goal Model" author="goalcat (draft v1.0, artificial -- see data/goals/bpic2020_goal_model.md)" created="August 19, 2026, 12:00:00 AM EDT" modified="August 19, 2026, 12:00:00 AM EDT" specVersion="1.0" urnVersion="1.27" nextGlobalID="78">
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:grl.kpimodel="http:///grl/kpimodel.ecore" xmlns:urn="http:///urn.ecore" name="BPIC2020 Goal Model" author="goalcat (artificial -- see data/goals/bpic2020GM_description.md)" created="August 19, 2026, 12:00:00 AM EDT" modified="August 28, 2026, 12:00:00 AM EDT" specVersion="1.0" urnVersion="1.27" nextGlobalID="84">
   <grlspec>
     <intElements name="Every submitted permit reaches a documented authorization outcome, and every cost from an approved trip is paid" id="2" type="Goal" decompositionType="And"/>
     <intElements name="Permit is submitted for authorization" id="3" type="Goal" decompositionType="And"/>
@@ -16,9 +16,30 @@
     <intElements name="Minimize approval-chain overhead" id="14" type="Softgoal"/>
     <intElements name="Maintain budgetary control" id="15" type="Softgoal"/>
     <intElements name="Minimize employee reimbursement delay" id="16" type="Softgoal"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to reimbursement (days)" id="17" type="Indicator" groups="37"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="Budget overspend rate (%)" id="18" type="Indicator" groups="38"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="Approval-chain rejection rate (%)" id="19" type="Indicator" groups="38"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to reimbursement (days)" id="17" type="Indicator" groups="37">
+      <metadata name="goalcat:measure" value="duration_days"/>
+      <metadata name="goalcat:from" value="Declaration SUBMITTED by EMPLOYEE|Request For Payment SUBMITTED by EMPLOYEE"/>
+      <metadata name="goalcat:to" value="Payment Handled"/>
+      <metadata name="goalcat:to_occurrence" value="last"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="external-by-analogy"/>
+      <metadata name="goalcat:source" value="target 30 d: Directive 2011/7/EU art. 4 sets 30 days as the payment term when the debtor is a public authority, the norm the Dutch central government also reports itself against; TU/e is a publicly funded university. threshold 60 d: the exceptional public-authority ceiling in art. 4(4). worst 120 d illustrative. Applied by analogy -- an employee reimbursement is not itself a commercial invoice. Measurement frame: ICPM 2020 challenge throughput question (Klein et al. 2020, Q1)."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Budget overspend rate (%)" id="18" type="Indicator" groups="38">
+      <metadata name="goalcat:measure" value="case_fraction"/>
+      <metadata name="goalcat:numerator" value="attr:Overspent=true"/>
+      <metadata name="goalcat:scale" value="percent"/>
+      <metadata name="goalcat:provenance" value="illustrative"/>
+      <metadata name="goalcat:source" value="Numerator is the log's own case:Overspent boolean, computed by the log's publisher. No public source states an acceptable overspend rate; target 0 / threshold 15 / worst 40 (%) are illustrative bounds around the observed 26.8%."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Approval-chain rejection rate (%)" id="19" type="Indicator" groups="38">
+      <metadata name="goalcat:measure" value="case_fraction"/>
+      <metadata name="goalcat:among" value="Permit FINAL_APPROVED by SUPERVISOR|Permit FINAL_APPROVED by DIRECTOR"/>
+      <metadata name="goalcat:numerator" value="before:Permit REJECTED by ADMINISTRATION|Permit REJECTED by BUDGET OWNER|Permit REJECTED by SUPERVISOR|Permit REJECTED by DIRECTOR|Permit REJECTED by PRE_APPROVER|Permit REJECTED by EMPLOYEE|Permit REJECTED by MISSING >> Permit FINAL_APPROVED by SUPERVISOR|Permit FINAL_APPROVED by DIRECTOR"/>
+      <metadata name="goalcat:scale" value="percent"/>
+      <metadata name="goalcat:provenance" value="illustrative"/>
+      <metadata name="goalcat:source" value="Denominator: permits that reach a final approval. Numerator: those rejected at least once before it. No external KPI target; target 0 / threshold 10 / worst 25 (%) are illustrative bounds around the observed 4.6%."/>
+    </intElements>
     <actors name="Travel &amp; Finance Administration" id="1"/>
     <links xsi:type="grl:Decomposition" id="20" src="3" dest="2" refs="61"/>
     <links xsi:type="grl:Decomposition" id="21" src="4" dest="2" refs="62"/>
@@ -37,18 +58,21 @@
     <links xsi:type="grl:Contribution" id="34" src="9" dest="14" refs="75" contribution="SomeNegative" quantitativeContribution="-25"/>
     <links xsi:type="grl:Contribution" id="35" src="12" dest="16" refs="76" contribution="Help" quantitativeContribution="50"/>
     <links xsi:type="grl:Contribution" id="36" src="13" dest="16" refs="77" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="78" src="17" dest="16" refs="81" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="79" src="18" dest="15" refs="82" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="80" src="19" dest="14" refs="83" contribution="Help" quantitativeContribution="50"/>
     <indicatorGroup name="Time" id="37" isRedesignCategory="true" indicators="17"/>
     <indicatorGroup name="Control" id="38" isRedesignCategory="true" indicators="18 19"/>
-    <groups name="KPI Reference Values (descriptive, draft v1.0)" id="39" strategies="40"/>
-    <strategies name="Log-computed reference values, v1.0 (draft)" id="40" author="goalcat (draft v1.0, artificial)" type="Private" group="39">
+    <groups name="KPI conversion value sets" id="39" strategies="40"/>
+    <strategies name="Conversion baseline" id="40" author="goalcat (artificial -- see data/goals/bpic2020GM_description.md)" type="Private" group="39">
       <evaluations intElement="17">
-        <kpiEvalValueSet targetValue="13" thresholdValue="31" worstValue="105" unit="days" qualitativeEvaluationValue="Not an organizational target -- P50/P75/P95 computed directly against the log (n=5,721), see bpic2020_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="30" thresholdValue="60" worstValue="120" unit="days" qualitativeEvaluationValue="target/threshold from Directive 2011/7/EU art. 4 (30-day public-authority term, 60-day exceptional ceiling); worst illustrative. Not measured here -- Step 7b writes one measured strategy per category. See bpic2020GM_description.md SS6."/>
       </evaluations>
       <evaluations intElement="18">
-        <kpiEvalValueSet targetValue="0" thresholdValue="15" worstValue="40" unit="%" qualitativeEvaluationValue="Observed rate 26.8% (1,894/7,065) -- the log's own case:Overspent attribute; illustrative bounds, no organizational target, see bpic2020_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="0" thresholdValue="15" worstValue="40" unit="%" qualitativeEvaluationValue="Illustrative bounds, no organizational target -- observed rate 26.8% (1,894/7,065) from the log's own case:Overspent attribute. See bpic2020GM_description.md SS6/SS8."/>
       </evaluations>
       <evaluations intElement="19">
-        <kpiEvalValueSet targetValue="0" thresholdValue="10" worstValue="25" unit="%" qualitativeEvaluationValue="Observed rate 4.6% (319/6,960) -- illustrative bounds, no organizational target, see bpic2020_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="0" thresholdValue="10" worstValue="25" unit="%" qualitativeEvaluationValue="Illustrative bounds, no organizational target -- observed rate 4.6% (319/6,960). See bpic2020GM_description.md SS6/SS8."/>
       </evaluations>
     </strategies>
     <impactModel/>
@@ -130,6 +154,9 @@
       <connections xsi:type="grl:LinkRef" id="75" source="50" target="58" link="34"/>
       <connections xsi:type="grl:LinkRef" id="76" source="53" target="60" link="35"/>
       <connections xsi:type="grl:LinkRef" id="77" source="54" target="60" link="36"/>
+      <connections xsi:type="grl:LinkRef" id="81" source="55" target="60" link="78"/>
+      <connections xsi:type="grl:LinkRef" id="82" source="56" target="59" link="79"/>
+      <connections xsi:type="grl:LinkRef" id="83" source="57" target="58" link="80"/>
     </specDiagrams>
   </urndef>
 </urn:URNspec>

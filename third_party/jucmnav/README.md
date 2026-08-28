@@ -35,9 +35,9 @@ This project never edits them; they are read-only reference data for `pyecore` t
 `pm4py_ucm` (a separate dependency of `experimentation/icpm2027`, for the UCM/process-mining
 side unrelated to goal models) was investigated first and confirmed to have **no GRL support** —
 its `.jucm` importer explicitly skips `grlspec` and its exporter writes an empty one (see
-`src/goalcat/grl/__init__.py`'s module docstring, and `pm4py_ucm`'s own
-`docs/goal_insights.md`, which documents GRL synthesis as an unimplemented design proposal at the
-time these files were vendored). There is nothing to reuse from it for GRL specifically.
+`src/goalcat/grl/__init__.py`'s module docstring, and `pm4py_ucm`'s own documentation, which
+documented GRL synthesis as an unimplemented design proposal at the time these files were
+vendored). There is nothing to reuse from it for GRL specifically.
 
 ## License
 

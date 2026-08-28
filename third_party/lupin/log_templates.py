@@ -35,7 +35,7 @@ _RTFM = {
     "trace_template": _DEFAULT["trace_template"],
 }
 
-# rtfm_mini is a small subset of real RTFM cases (see PROGRESS.md / config_mini.yaml) used for
+# rtfm_mini is a small subset of real RTFM cases (see config_mini.yaml) used for
 # fast functional testing — same activity vocabulary and event/trace structure as "rtfm", so it
 # reuses the same template rather than duplicating it.
 TEMPLATES = {"rtfm": _RTFM, "rtfm_mini": _RTFM}

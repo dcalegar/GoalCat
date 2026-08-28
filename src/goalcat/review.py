@@ -461,7 +461,7 @@ def save_partitioned_log(
     logger: logging.Logger,
 ) -> None:
     """Accept/finalize: writes one partitioned .xes.gz per category into config.sublogs_dir
-    (OVERVIEW.md's "partitioned log" — nothing else in the pipeline persists this), plus
+    (the pipeline's "partitioned log" — nothing else in the pipeline persists this), plus
     residual.xes.gz, always written even if empty, matching discover_all_categories()'s "explicit
     0, not silently absent" convention. .xes.gz (not .csv) matches the original log's own format
     and structurally resolves case:concept:name trailing as a flat column — pm4py.write_xes()
@@ -575,7 +575,7 @@ def finalize_run(
     round accepted.
 
     Refuses to finalize (raises) rather than silently producing an incomplete partition:
-    OVERVIEW.md's "exhaustive partition + coverage + an explicit residual" claim depends on
+    the pipeline's "exhaustive partition + coverage + an explicit residual" claim depends on
     every variant landing in assignments_df with either a real category_id or a residual (NaN)
     one, but two things can violate that silently otherwise — a variant whose Step 6 LLM call
     never succeeded is never written into assignments.csv at all (assign_narratives_6() reports

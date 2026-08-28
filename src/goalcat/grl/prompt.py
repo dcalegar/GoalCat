@@ -114,7 +114,7 @@ def render_excerpt(model: GRLModel) -> str:
     the revision prompt.
     Deterministic (dict/list iteration order matches the `.jucm` file's own element order), so the
     same frozen goal model always renders identical prompt text — required by the freeze table's
-    "Prompts: versioned" row (EXPERIMENTATION_PLAN.md §2.2) and by
+    "Prompts: versioned" row (`experimentation/icpm2027/configs/protocol.yaml`) and by
     `icpm2027.goalmodel.perturb`, which hashes this text as a perturbation's provenance record.
     Changing this function's output format therefore invalidates those hashes: treat it as a
     versioned artifact, not as free-form prompt wording."""

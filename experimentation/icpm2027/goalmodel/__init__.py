@@ -1,4 +1,4 @@
-"""Experiment 2's controlled goal-model perturbations (EXPERIMENTATION_PLAN.md §4).
+"""Experiment 2's controlled goal-model perturbations.
 
 Built on `goalcat.grl` (the project's sole `.jucm`-reading/writing module — see its own package
 docstring): loading a base model, applying a perturbation, and validating the result are all

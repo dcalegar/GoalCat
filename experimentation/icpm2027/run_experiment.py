@@ -10,7 +10,7 @@ This is orchestration only. Every decision it acts on is resolved from `configs/
 `--allow-pending-decisions`, which exists so an exploratory run is *possible* but stamps its
 manifests as not pre-registered so it can never be mistaken for a frozen result.
 
-Three experiments, matching EXPERIMENTATION_PLAN.md:
+Three experiments:
 
   ``stability``  Task C12, and the cheapest thing here. Re-runs Step 5a alone k times on identical
                  inputs (`replicates.taxonomy_induction`) and reports whether the category and
@@ -306,7 +306,7 @@ def reassignment_rates(
         "note": (
             "CollateralReassignment is interpretable only against the replicate noise floor from "
             "Task C2 — without it, collateral change cannot be distinguished from ordinary "
-            "run-to-run variance (EXPERIMENTATION_PLAN.md §4)."
+            "run-to-run variance (Experiment 2's design constraint)."
         ),
     }
 
@@ -334,8 +334,8 @@ def run_e2(
         )
         if not adopted:
             raise PreRegistrationError(
-                "Experiment 2 is not adopted for Sepsis (Task C6, decided 2026-08-25): §4 forbids "
-                "perturbations on a dataset whose Step 5a induction is unstable, because "
+                "Experiment 2 is not adopted for Sepsis (Task C6, decided 2026-08-25): the design "
+                "forbids perturbations on a dataset whose Step 5a induction is unstable, because "
                 "Target/CollateralReassignment cannot be read through induction variance."
             )
     if stability is not None and not stability.is_stable:
@@ -343,7 +343,7 @@ def run_e2(
             f"Experiment 2 refused for {dataset.dataset_id}: Task C12 shows Step 5a induction is "
             f"unstable ({stability.distinct_shapes} distinct anchor sets across {stability.k} "
             "identical-input reruns), so a perturbation contrast is confounded by induction "
-            "variance (EXPERIMENTATION_PLAN.md §4)."
+            "variance (Experiment 2's design constraint)."
         )
 
     base = prepare_shared_base(dataset, protocol, prereg, logger)

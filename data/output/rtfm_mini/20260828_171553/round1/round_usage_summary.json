@@ -1,0 +1,41 @@
+{
+  "round": 1,
+  "steps": {
+    "taxonomy": {
+      "call_count": 1,
+      "total_input_tokens": 2810,
+      "total_output_tokens": 747,
+      "total_prompt_chars": 11023,
+      "total_response_chars": 2902,
+      "total_latency_seconds": 4.579319999997097,
+      "total_estimated_cost_usd": 0.0027105
+    },
+    "assignment": {
+      "call_count": 1,
+      "total_input_tokens": 1119,
+      "total_output_tokens": 381,
+      "total_prompt_chars": 4643,
+      "total_response_chars": 1445,
+      "total_latency_seconds": 2.1261611000008998,
+      "total_estimated_cost_usd": 0.0012882
+    },
+    "description": {
+      "call_count": 1,
+      "total_input_tokens": 1966,
+      "total_output_tokens": 599,
+      "total_prompt_chars": 8302,
+      "total_response_chars": 2162,
+      "total_latency_seconds": 17.00402409999515,
+      "total_estimated_cost_usd": 0.0020873000000000003
+    }
+  },
+  "totals": {
+    "call_count": 3,
+    "total_input_tokens": 5895,
+    "total_output_tokens": 1727,
+    "total_prompt_chars": 23968,
+    "total_response_chars": 6509,
+    "total_latency_seconds": 23.709505199993146,
+    "total_estimated_cost_usd": 0.006086
+  }
+}

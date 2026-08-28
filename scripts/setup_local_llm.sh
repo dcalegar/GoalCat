@@ -2,7 +2,7 @@
 # Opt-in bootstrap for the local LLM backend (src/goalcat/config_local.yaml) — installs Ollama and
 # pulls the model that backend is pinned to. Not run automatically on venv setup: this targets
 # macOS/Homebrew specifically, downloads ~2 GB, and is only needed by whoever actually exercises
-# the local path (see project/SETUP.md, "Local LLM backend"). Every step here is a no-op if
+# the local path (see src/goalcat/config_local.yaml). Every step here is a no-op if
 # already done, so this is safe to re-run.
 
 set -euo pipefail

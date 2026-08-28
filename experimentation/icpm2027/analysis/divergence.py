@@ -1,4 +1,4 @@
-"""Label-independent partition divergence — AMI/NMI (EXPERIMENTATION_PLAN.md §7, Task D1).
+"""Label-independent partition divergence — AMI/NMI (Task D1).
 
 Task D1 requires the convention to be fixed *before* any number is computed, along two axes that
 change the result:
@@ -33,7 +33,7 @@ Weighting = Literal["variant", "case"]
 CAVEAT = (
     "AMI/NMI measure divergence between two partitions, not classification accuracy: neither "
     "partition is ground truth, so agreement between the arms is not evidence that either is "
-    "correct (EXPERIMENTATION_PLAN.md §1, §7)."
+    "correct."
 )
 
 

@@ -2,7 +2,7 @@
 # captured via `pip freeze | grep -v '^-e '`. pyproject.toml declares floors/pins with rationale;
 # this file pins the exact resolution actually verified, for full reproducibility beyond those
 # ranges. Regenerate deliberately after bumping a dependency — not automatically, and not on
-# every venv creation. See project/SETUP.md.
+# every venv creation.
 #
 # pip install -r requirements-lock.txt
 

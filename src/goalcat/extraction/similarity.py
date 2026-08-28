@@ -79,7 +79,7 @@ def compute_profile_distances(profiles_df: pd.DataFrame) -> pd.DataFrame:
     """Pairwise business-profile distance between every pair of variants, combining outcome,
     duration, and rework (three of Step 2's multi-view profile dimensions). Each component is
     reported as its own column, not silently averaged away, plus profile_distance_mean as an
-    unweighted (not fitted) convenience summary — see similarity design note in PROGRESS.md.
+    unweighted (not fitted) convenience summary.
 
     Vectorized over the full n x n pair space (outcome/duration via NumPy broadcasting, rework
     via a sparse binary variant-by-rework-key matrix whose Gram matrix gives pairwise

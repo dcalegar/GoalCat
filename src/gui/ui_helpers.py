@@ -53,7 +53,7 @@ def render_api_key_status(*, show_setup_link: bool = True) -> None:
 
 def render_pipeline_diagram() -> None:
     """A small inline HTML/CSS strip of the 9-step pipeline, color-coded by step kind. Home page
-    only — no external image asset exists in the repo to embed instead (see project/OVERVIEW.md).
+    only — no external image asset exists in the repo to embed instead.
 
     Step 7b appears as its own chip but is not a tenth step: it is optional, sits between 7 and 8,
     and is a no-op on a goal model that does not bind its indicators to the log. The caption below

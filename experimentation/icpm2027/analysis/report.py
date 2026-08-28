@@ -1,7 +1,7 @@
 """Assembles one dataset's Experiment 1 evidence into a single Markdown report
-(EXPERIMENTATION_PLAN.md §3, "Evidence reported per dataset").
+(the "Evidence reported per dataset" set).
 
-Three of §3's required items are computed nowhere else and live here:
+Three of those required items are computed nowhere else and live here:
 
   - **Scope framing (Task C7).** Every coverage and residual figure is reported against the scoped
     population *and* against the whole log. `configs/preregistration.yaml`'s C7 rationale promises
@@ -40,7 +40,7 @@ from .divergence import DivergenceResult, interpretation_caveat
 COVERAGE_CAVEAT = (
     "Higher coverage is not better categorization: a larger taxonomy or a broad catch-all "
     "category can trivially raise $C_V$/$C_C$ while carrying less semantic information "
-    "(EXPERIMENTATION_PLAN.md §7, Task D2)."
+    "(Task D2)."
 )
 
 

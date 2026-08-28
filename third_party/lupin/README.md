@@ -1,8 +1,7 @@
 # third_party/lupin
 
 Vendored component from LUPIN (Pasquadibisceglie, Appice & Malerba, 2024), reused directly
-rather than reimplemented. See `project/OVERVIEW.md`, Tools, and NOTICE / LICENSE in this
-directory.
+rather than reimplemented. See NOTICE / LICENSE in this directory.
 
 ## Source
 
@@ -48,7 +47,7 @@ content authored for its own attribute schema, following the same Jinja2 pattern
   `src/goalcat`) is enforced by the subprocess-only call boundary above, not by venv separation.
 - Non-commercial use only. CC BY-NC-SA 4.0's NonCommercial term is satisfied by this
   project's research-only scope (confirmed 2026-08-17). Any future commercial deployment
-  must first remove or relicense this directory — see `project/OVERVIEW.md`, Tools.
+  must first remove or relicense this directory.
 
 ## Status
 

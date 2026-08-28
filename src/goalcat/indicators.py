@@ -70,7 +70,7 @@ def compute_indicator_satisfaction(
     Returns `(indicator_df, goal_df)`: one row per (scope, indicator) with the measurement and its
     conversion, and one row per (scope, intentional element) with the propagated satisfaction.
     Both are empty (with their columns declared) when the goal model carries no measurable
-    indicator, which is the case for every model outside RTFM today.
+    indicator — i.e. no `Indicator` carries a `goalcat:*` measurement binding.
     """
     specs = measure_specs(model)
     if not specs:
@@ -219,11 +219,16 @@ def write_measured_jucm(
             coverage_note = "measured over {} of {} cases".format(
                 int(measured["n_measured"]), int(measured["n_cases"])
             )
+            # `thresholdValue` is optional in grl.kpimodel and some value sets legitimately omit it
+            # (a binary/one-target indicator like Sepsis KPI3); emit the attribute only when set.
+            threshold_attr = (
+                "" if pd.isna(measured["threshold"]) else f'thresholdValue={q(str(measured["threshold"]))} '
+            )
             lines.append(f'      <evaluations intElement={q(row.element_id)} '
                          f'evaluation={q(str(int(row.satisfaction)))}>')
             lines.append(
                 f'        <kpiEvalValueSet targetValue={q(str(measured["target"]))} '
-                f'thresholdValue={q(str(measured["threshold"]))} worstValue={q(str(measured["worst"]))} '
+                f'{threshold_attr}worstValue={q(str(measured["worst"]))} '
                 f'evaluationValue={q(measured_value)} unit={q(str(measured["unit"] or ""))} '
                 f'qualitativeEvaluationValue={q(coverage_note)}/>'
             )
@@ -264,8 +269,9 @@ def build_indicator_report(indicator_df: pd.DataFrame, goal_df: pd.DataFrame, mo
         if first["one_sided"]:
             flags.append("**one-sided scale** (`target == threshold`: an admissibility boundary, not "
                          "a gradient — every compliant value saturates at the same score)")
+        threshold_txt = "n/a" if pd.isna(first["threshold"]) else f"{first['threshold']}"
         lines += [f"## {first['indicator_name']} (id {indicator_id})", "",
-                  f"- Value set: worst {first['worst']}, threshold {first['threshold']}, "
+                  f"- Value set: worst {first['worst']}, threshold {threshold_txt}, "
                   f"target {first['target']} {first['unit']}",
                   f"- Provenance: `{first['provenance']}` — {first['source']}"]
         for flag in flags:

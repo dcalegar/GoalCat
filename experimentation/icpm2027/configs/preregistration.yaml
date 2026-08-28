@@ -1,8 +1,8 @@
-# ICPM 2027 — pre-registered decisions (EXPERIMENTATION_PLAN.md §13).
+# ICPM 2027 — pre-registered decisions.
 #
-# Every entry here is a decision the plan requires to be fixed BEFORE the run it governs, so that
-# it cannot be chosen after observing that run's categorization output (§12, Tasks C7 and C10
-# state this discipline explicitly). protocol.py refuses to launch a frozen run while any decision
+# Every entry here is a decision the design requires to be fixed BEFORE the run it governs, so that
+# it cannot be chosen after observing that run's categorization output (Tasks C7 and C10 state
+# this discipline explicitly). protocol.py refuses to launch a frozen run while any decision
 # governing it is still `status: pending`, unless the driver is invoked with
 # --allow-pending-decisions (which stamps the run's manifest as NOT pre-registered).
 #
@@ -77,7 +77,7 @@ decisions:
     rationale: >-
       Not adopted. Two independent reasons. (1) Budget: RTFM is the mechanism case and extending to
       Sepsis roughly doubles Experiment 2's LLM cost for a second instance of the same mechanism.
-      (2) Validity, which is now the binding one: EXPERIMENTATION_PLAN.md §4 forbids running
+      (2) Validity, which is now the binding one: Experiment 2's design forbids running
       perturbations on a dataset whose Step 5a induction is unstable, because TargetReassignment and
       CollateralReassignment cannot be read through induction variance. Sepsis is demonstrably in
       that state - four identical-input guided runs produced three distinct anchor sets (Task C12).
@@ -94,10 +94,10 @@ decisions:
     value: false
     decided_on: "2026-08-25"
     rationale: >-
-      Not adopted for the minimum design. It remains the highest-value optional item in §10 and also
+      Not adopted for the minimum design. It remains the highest-value optional item and also
       its largest budget increase (a third full arm on every dataset). The confound it addresses -
       that the guided prompt supplies an axis AND a cardinality AND a vocabulary AND extra context
-      at once - is instead carried explicitly as a Threat to Validity (OVERVIEW.md), and Task C11a's
+      at once - is instead carried explicitly as a Threat to Validity, and Task C11a's
       guided_no_sample ablation attacks the same attribution question for one LLM call per dataset
       rather than a full arm. THIS IS THE MOST REVISITABLE DECISION HERE: conditions.py already
       supports arm "label_list", so flipping this to true costs configuration plus LLM budget, no
@@ -137,7 +137,7 @@ decisions:
     rationale: >-
       RTFM guided arm only. Step 7b measures indicator satisfaction from the log against the goal
       model's declared KPIs, so it is the one result in the paper not exposed to the LLM-dependence
-      threat - OVERVIEW.md calls it the single counterweight to it. It cannot run in the open arm at
+      threat - it is the single counterweight to it. It cannot run in the open arm at
       all: open-mode categories carry no anchor_ids, so there is nothing to attach an indicator to,
       which also means it can never enter RQ1's paired contrast and is reported as characterization
       of the guided arm, not as validation. Scoped to RTFM because only rtfm_goal_model.jucm (v1.2)

@@ -157,7 +157,7 @@ async def _assign_batch(
 ) -> tuple[dict[str, VariantAssignment], RunMetadata | None, list[str]]:
     """One LLM call per batch of up to config.llm.assignment_batch_size narratives. Catches its
     own failures rather than letting them propagate to asyncio.gather, same rationale as the
-    original per-narrative version (see PROGRESS.md): one persistent transport failure must not
+    original per-narrative version: one persistent transport failure must not
     discard every other batch's already-completed work. Batching trades away per-narrative
     isolation for call-count reduction, though — a failed/invalid response here leaves every
     narrative in this batch pending, not just one.

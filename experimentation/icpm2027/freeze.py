@@ -1,4 +1,4 @@
-"""Verification of the freeze table (EXPERIMENTATION_PLAN.md §2.2) against what actually ran.
+"""Verification of the freeze table (`configs/protocol.yaml`) against what actually ran.
 
 `protocol.py` makes the two arms of a pair identical *by construction*; this module checks that
 claim against the artifacts on disk afterwards, from their manifests alone. The two are not
@@ -187,8 +187,8 @@ def render_freeze_report(title: str, checks: Iterable[FreezeCheck]) -> str:
     lines = [
         f"# Freeze verification — {title}",
         "",
-        "EXPERIMENTATION_PLAN.md §2.2, verified against the conditions' manifests rather than "
-        "against the driver's intent.",
+        "The frozen protocol's freeze table, verified against the conditions' manifests rather "
+        "than against the driver's intent.",
         "",
         f"**{len(checks) - len(failed)}/{len(checks)} rows pass.**"
         + ("" if not failed else f" Failing: {', '.join(c.element for c in failed)}."),

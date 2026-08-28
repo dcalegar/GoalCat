@@ -257,7 +257,7 @@ def check_taxonomy_grounding(
             if not category.anchor_ids:
                 # The Category schema itself permits an empty anchor_ids list unconditionally
                 # (no min_length — 5b needs to allow it), so nothing structurally stops 5a from
-                # producing an "anchored" category traceable to nothing. OVERVIEW.md's "every
+                # producing an "anchored" category traceable to nothing. The pipeline's "every
                 # category is traceable to a declared alternative" is a prompted constraint, not
                 # a schema-enforced one — this is what actually checks it, warn-only like every
                 # other check in this function.

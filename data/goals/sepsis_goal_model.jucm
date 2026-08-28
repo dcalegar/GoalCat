@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:grl.kpimodel="http:///grl/kpimodel.ecore" xmlns:urn="http:///urn.ecore" name="Sepsis Goal Model" author="goalcat (frozen v1.0, artificial -- see data/goals/sepsis_goal_model.md)" created="August 19, 2026, 12:00:00 AM EDT" modified="August 19, 2026, 12:00:00 AM EDT" specVersion="1.0" urnVersion="1.27" nextGlobalID="106">
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:grl.kpimodel="http:///grl/kpimodel.ecore" xmlns:urn="http:///urn.ecore" name="Sepsis Goal Model" author="goalcat (v1.1, artificial -- see data/goals/sepsisGM_description.md)" created="August 19, 2026, 12:00:00 AM EDT" modified="August 28, 2026, 12:00:00 AM EDT" specVersion="1.0" urnVersion="1.27" nextGlobalID="112">
   <grlspec>
     <intElements name="Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition" id="2" type="Goal" decompositionType="And"/>
     <intElements name="Patient is registered and screened for sepsis" id="3" type="Goal" decompositionType="And"/>
@@ -23,9 +23,31 @@
     <intElements name="Release E" id="21" type="Task"/>
     <intElements name="Minimize time-to-treatment" id="22" type="Softgoal"/>
     <intElements name="Avoid post-discharge deterioration" id="23" type="Softgoal"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to antibiotics (hours)" id="24" type="Indicator" groups="51"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to lactate measurement (hours)" id="25" type="Indicator" groups="51"/>
-    <intElements xsi:type="grl.kpimodel:Indicator" name="Post-discharge ER return (binary)" id="26" type="Indicator" groups="52"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to antibiotics (hours)" id="24" type="Indicator" groups="51">
+      <metadata name="goalcat:measure" value="duration_hours"/>
+      <metadata name="goalcat:from" value="ER Sepsis Triage"/>
+      <metadata name="goalcat:to" value="IV Antibiotics"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="guideline"/>
+      <metadata name="goalcat:source" value="target 1 h or less, threshold 1.8 h, worst 3 h: the 1-hour antibiotic-administration window of the Surviving Sepsis Campaign 2016 international guideline (Rhodes et al., 2017), identified by Mannhardt &amp; Blinde (2017, SS2) as the applicable rule for this exact log. worst/threshold/target reused verbatim from Ghasemi (2021, Ch.8, Table 19), set after physician consultation. See sepsisGM_description.md SS6."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to lactate measurement (hours)" id="25" type="Indicator" groups="51">
+      <metadata name="goalcat:measure" value="duration_hours"/>
+      <metadata name="goalcat:from" value="ER Sepsis Triage"/>
+      <metadata name="goalcat:to" value="LacticAcid"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="guideline"/>
+      <metadata name="goalcat:source" value="target 3 h or less, threshold 5 h, worst 7 h: the 3-hour lactate-measurement window of the Surviving Sepsis Campaign 2016 guideline (Rhodes et al., 2017) via Mannhardt &amp; Blinde (2017, SS2). worst/threshold/target reused verbatim from Ghasemi (2021, Ch.8, Table 19), physician-consulted. See sepsisGM_description.md SS6."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Post-discharge ER return (binary)" id="26" type="Indicator" groups="52">
+      <metadata name="goalcat:measure" value="trace_contains"/>
+      <metadata name="goalcat:to" value="Return ER"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="illustrative"/>
+      <metadata name="goalcat:source" value="target 0 (no return), worst 1 (returned): reused from Ghasemi (2021, Ch.8) as a common healthcare-system goal, not traced to a guideline window and with no threshold defined in the source. Measured as the presence of Return ER anywhere in the case, over every case in scope; a case with no captured discharge counts as no return -- see sepsisGM_description.md SS6/SS7."/>
+    </intElements>
     <actors name="Emergency Department care team" id="1"/>
     <links xsi:type="grl:Decomposition" id="27" src="3" dest="2" refs="82"/>
     <links xsi:type="grl:Decomposition" id="28" src="4" dest="2" refs="83"/>
@@ -51,18 +73,21 @@
     <links xsi:type="grl:Contribution" id="48" src="16" dest="22" refs="103" contribution="SomeNegative" quantitativeContribution="-25"/>
     <links xsi:type="grl:Contribution" id="49" src="17" dest="23" refs="104" contribution="Help" quantitativeContribution="50"/>
     <links xsi:type="grl:Contribution" id="50" src="18" dest="23" refs="105" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="106" src="24" dest="22" refs="109" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="107" src="25" dest="22" refs="110" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="108" src="26" dest="23" refs="111" contribution="Help" quantitativeContribution="50"/>
     <indicatorGroup name="Time-to-treatment" id="51" isRedesignCategory="true" indicators="24 25"/>
     <indicatorGroup name="Outcome" id="52" isRedesignCategory="true" indicators="26"/>
-    <groups name="KPI Baseline (frozen v1.0)" id="53" strategies="54"/>
-    <strategies name="Reused from Ghasemi (2021), physician-consulted, v1.0 (frozen)" id="54" author="goalcat (frozen v1.0, reused with attribution)" type="Private" group="53">
+    <groups name="KPI Baseline (v1.1)" id="53" strategies="54"/>
+    <strategies name="Reused from Ghasemi (2021), physician-consulted, v1.1" id="54" author="goalcat (v1.1, reused with attribution)" type="Private" group="53">
       <evaluations intElement="24">
-        <kpiEvalValueSet targetValue="1" thresholdValue="1.8" worstValue="3" unit="hours" qualitativeEvaluationValue="Reused verbatim from Ghasemi (2021, Ch.8, Table 19), physician-consulted; traced to Rhodes et al. (2017) via Mannhardt &amp; Blinde (2017, SS2) -- see sepsis_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="1" thresholdValue="1.8" worstValue="3" unit="hours" qualitativeEvaluationValue="Reused verbatim from Ghasemi (2021, Ch.8, Table 19), physician-consulted; traced to Rhodes et al. (2017) via Mannhardt &amp; Blinde (2017, SS2) -- see sepsisGM_description.md SS6/SS8"/>
       </evaluations>
       <evaluations intElement="25">
-        <kpiEvalValueSet targetValue="3" thresholdValue="5" worstValue="7" unit="hours" qualitativeEvaluationValue="Reused verbatim from Ghasemi (2021, Ch.8, Table 19), physician-consulted; traced to Rhodes et al. (2017) via Mannhardt &amp; Blinde (2017, SS2) -- see sepsis_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="3" thresholdValue="5" worstValue="7" unit="hours" qualitativeEvaluationValue="Reused verbatim from Ghasemi (2021, Ch.8, Table 19), physician-consulted; traced to Rhodes et al. (2017) via Mannhardt &amp; Blinde (2017, SS2) -- see sepsisGM_description.md SS6/SS8"/>
       </evaluations>
       <evaluations intElement="26">
-        <kpiEvalValueSet targetValue="0" worstValue="1" unit="binary" qualitativeEvaluationValue="Reused from Ghasemi (2021, Ch.8) as a common healthcare-system goal, not itself traced to a guideline window; no threshold defined in the source -- see sepsis_goal_model.md SS6/SS8"/>
+        <kpiEvalValueSet targetValue="0" worstValue="1" unit="binary" qualitativeEvaluationValue="Reused from Ghasemi (2021, Ch.8) as a common healthcare-system goal, not itself traced to a guideline window; no threshold defined in the source -- see sepsisGM_description.md SS6/SS8"/>
       </evaluations>
     </strategies>
     <impactModel/>
@@ -172,6 +197,9 @@
       <connections xsi:type="grl:LinkRef" id="103" source="71" target="77" link="48"/>
       <connections xsi:type="grl:LinkRef" id="104" source="72" target="78" link="49"/>
       <connections xsi:type="grl:LinkRef" id="105" source="73" target="78" link="50"/>
+      <connections xsi:type="grl:LinkRef" id="109" source="79" target="77" link="106"/>
+      <connections xsi:type="grl:LinkRef" id="110" source="80" target="77" link="107"/>
+      <connections xsi:type="grl:LinkRef" id="111" source="81" target="78" link="108"/>
     </specDiagrams>
   </urndef>
 </urn:URNspec>

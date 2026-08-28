@@ -2,9 +2,7 @@
 
 API keys (GEMINI_API_KEY / OPENAI_API_KEY / ANTHROPIC_API_KEY) are read by litellm straight from
 the environment — this module never touches them directly. Project convention: export them from
-the user's shell profile (e.g. ~/.bash_profile), never store one in a file inside this repository,
-which lives under a synced Google Drive folder (see PROGRESS.md, "Gemini API key: storage
-location").
+the user's shell profile (e.g. ~/.bash_profile), never store one in a file inside this repository.
 """
 
 from __future__ import annotations
@@ -27,8 +25,8 @@ class LLMGenerationError(RuntimeError):
 
 class RunMetadata(BaseModel):
     """Audit record for one LLM call — provider, exact model, params, prompt hash (not the
-    full prompt; callers that need the rendered prompt itself save it separately, per
-    OVERVIEW.md's versioned-prompts requirement), token usage, latency, and the raw response
+    full prompt; callers that need the rendered prompt itself save it separately, per the
+    pipeline's versioned-prompts requirement), token usage, latency, and the raw response
     behind whatever was parsed/validated from it."""
 
     provider: str
@@ -71,8 +69,8 @@ class LLMBackend:
     (`taxonomy_model`/`assignment_model`/`description_model`) — Steps 5a/5b, 6, and 8 each
     construct their own instance rather than sharing one with a per-call model override.
 
-    No fallback model list is configured on any call: per OVERVIEW.md's reproducibility
-    requirement, a silent model substitution mid-experiment would change the experimental
+    No fallback model list is configured on any call: for reproducibility,
+    a silent model substitution mid-experiment would change the experimental
     condition without recording that it happened.
     """
 

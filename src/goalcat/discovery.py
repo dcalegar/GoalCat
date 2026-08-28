@@ -79,7 +79,7 @@ def build_residual_sublog(
 
 def discover_category_model(sub_df: pd.DataFrame, config: PipelineConfig) -> tuple[PetriNet, Marking, Marking]:
     """Inductive Miner over one category's sub-log. noise_threshold is fixed across every
-    category via config.discovery_noise_threshold, per OVERVIEW.md's "fixed hyperparameters
+    category via config.discovery_noise_threshold, per the pipeline's "fixed hyperparameters
     across categories" requirement — never tuned per category."""
     return pm4py.discover_petri_net_inductive(
         sub_df,
@@ -114,7 +114,7 @@ def compute_conformance(
 ) -> dict:
     """Fitness and precision via token-based replay — the standard pairing with Inductive Miner,
     fast enough for both RTFM's largest category (111 variants) and smallest (1 variant, 30.8%
-    of cases); see PROGRESS.md for why alignments were considered and not chosen.
+    of cases). Alignments were considered and not chosen, for cost.
 
     Precision (ET-Conformance) replays every distinct *prefix* in the category's sublog, not
     every distinct trace — a category with heavy internal behavioral diversity can have far more
@@ -186,7 +186,7 @@ def discover_all_categories(
     in taxonomy order, not just categories that happen to appear in assignments_df, so a category
     with zero assigned variants is reported as 0/0 explicitly rather than silently absent —
     mirrors llm/assignment.py's build_assignment_report. The residual (category_id is NA) is not
-    discovered at all: OVERVIEW.md's output is "one process model per category" and the residual
+    discovered at all: the pipeline's output is "one process model per category" and the residual
     isn't a category.
 
     Returns the Petri net (used for conformance and .pnml export) alongside a DFG per category

@@ -1,4 +1,4 @@
-"""Experiment 2's controlled goal-model perturbations (EXPERIMENTATION_PLAN.md §4).
+"""Experiment 2's controlled goal-model perturbations.
 
 Three perturbations, each producing a **new** frozen `.jucm` file under
 `data/goals/perturbed/` plus a provenance record — never an edit to the base model, whose own
@@ -150,8 +150,8 @@ def _finalize(
     model.author = (
         f"EXPERIMENTAL CONSTRUCT — {kind}, perturbation_id={perturbation_id}, targets="
         f"{list(targets)}, generated from {base.source_path} (sha256={base_sha[:16]}) by "
-        f"experimentation/icpm2027/goalmodel/perturb.py for Experiment 2 "
-        f"(EXPERIMENTATION_PLAN.md §4). Not a frozen organizational goal model — {summary}"
+        f"experimentation/icpm2027/goalmodel/perturb.py for Experiment 2. "
+        f"Not a frozen organizational goal model — {summary}"
     )
 
     out_dir.mkdir(parents=True, exist_ok=True)

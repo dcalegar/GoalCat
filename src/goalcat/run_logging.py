@@ -4,7 +4,11 @@ import json
 import logging
 import os
 import platform
-import resource
+
+try:
+    import resource
+except ModuleNotFoundError:  # Windows has no `resource` module
+    resource = None
 
 from .atomic_io import atomic_write_json
 from .config import PipelineConfig, config_snapshot_dict
@@ -70,6 +74,8 @@ def log_peak_memory(logger: logging.Logger, step_label: str) -> None:
     platform (ru_maxrss is KiB on Linux, bytes on macOS/BSD) — normalized to MiB here so log
     lines are comparable regardless of which platform produced them.
     """
+    if resource is None:  # Windows: no getrusage; skip the peak-RSS line
+        return
     max_rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
     divisor = 1024 if platform.system() == "Darwin" else 1
     peak_mib = max_rss / divisor / 1024

@@ -1,4 +1,4 @@
-"""Per-run manifests (EXPERIMENTATION_PLAN.md §2.2, Task D4; §8's goal-model provenance).
+"""Per-run manifests (freeze table + Task D4; goal-model provenance).
 
 Every frozen run "retains a manifest with hashes/versions for inputs, goal model, prompts, model
 configuration, and outputs, extended per Task D4 to also record the resolved model version and any
@@ -192,7 +192,7 @@ def build_manifest(
         "finished_at": finished_at,
         # False whenever the run was launched with --allow-pending-decisions. A reader must be
         # able to tell a pre-registered run from one made under a recommended default that had
-        # not yet been chosen (EXPERIMENTATION_PLAN.md §12, Tasks C7/C10).
+        # not yet been chosen (pre-registration gate, Tasks C7/C10).
         "preregistered": preregistered,
         "pending_decisions": pending_decisions,
         "decisions": decisions,

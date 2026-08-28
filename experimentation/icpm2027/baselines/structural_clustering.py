@@ -1,15 +1,15 @@
 """Task C3 — structural (boolean activity-vector + HDBSCAN) clustering baseline.
 
-EXPERIMENTATION_PLAN.md §2.3: "boolean activity-vector representation of the same variants,
-clustered with HDBSCAN (the representation used by Amling et al., 2025, the architecture's most
-direct antecedent per OVERVIEW.md's Related Work), fed into the same contingency-matrix and
-coverage machinery as T^G and T^O. No LLM cost. This is the one baseline the Related Work section
-argues against but the current design never runs."
+A boolean activity-vector representation of the same variants, clustered with HDBSCAN (the
+representation used by Amling et al., 2025, the architecture's most direct antecedent in the
+Related Work), fed into the same contingency-matrix and coverage machinery as T^G and T^O. No
+LLM cost. This is the one baseline the Related Work argues against but the current design never
+runs.
 
 Deliberately the simplest possible representation of "what the Related Work does instead":
 one boolean column per distinct activity label observed anywhere in the log, one row per variant,
 no order/duration/rework/resource information at all — the exact structural-only signal GoalCat's
-own narrative-based Step 5/6 is positioned against (`OVERVIEW.md`'s Related Work section, and the
+own narrative-based Step 5/6 is positioned against (the Related Work, and the
 `rtfm_mini` PoC's own two-rework-variants-collapse-to-one-vector demonstration, Task C8).
 
 HDBSCAN's own noise label (`-1`) becomes this baseline's residual, directly comparable to the
@@ -73,7 +73,7 @@ def run_structural_clustering(
     """Runs HDBSCAN over the boolean activity-vector representation. `min_cluster_size` is the
     one hyperparameter this baseline exposes — scikit-learn's own HDBSCAN default (5) is kept as
     this function's default too, per the same "uniform hyperparameters, no per-case tuning"
-    discipline `OVERVIEW.md` applies to Step 7's `discovery_noise_threshold`: this value is fixed
+    discipline the project applies to Step 7's `discovery_noise_threshold`: this value is fixed
     once per dataset in the analysis driver, never chosen after inspecting the resulting clusters.
     """
     matrix, vocabulary, variant_ids = build_activity_vectors(variants_df)

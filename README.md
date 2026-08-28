@@ -213,8 +213,7 @@ GoalCat/
 `gui` live under `src/`; `experimentation` lives at the repository root instead, since it only
 consumes the pipeline and isn't part of the implemented core.
 
-`project/` (deeper architecture/research documentation) and `.claude/` (assistant configuration) are
-listed in `.gitignore` and are not part of the git repository.
+`.claude/` (assistant configuration) is listed in `.gitignore` and is not part of the git repository.
 
 ## Installation
 

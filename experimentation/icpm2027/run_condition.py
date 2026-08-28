@@ -61,7 +61,7 @@ def parse_steps(spec: str) -> list[int]:
             f"Steps {invalid} cannot run in a frozen condition. Allowed: "
             f"{sorted(_STEP_FUNCTIONS)} — Steps 1-4 are inherited from the shared base "
             "(experimentation/icpm2027/inputs.py) and Step 9 is excluded by protocol "
-            "(EXPERIMENTATION_PLAN.md §3, the comparison runs before any analyst refinement)."
+            "(the comparison runs before any analyst refinement)."
         )
     return sorted(steps)
 

@@ -3,7 +3,7 @@
 This module is the single place that turns `configs/protocol.yaml` + `configs/<dataset>.yaml` +
 `configs/preregistration.yaml` into a concrete, executable `PipelineConfig`-shaped YAML for one
 experimental condition. Nothing else in this package writes a pipeline config, so the freeze table
-(EXPERIMENTATION_PLAN.md §2.2) is enforced by construction rather than by discipline: an
+(`configs/protocol.yaml`) is enforced by construction rather than by discipline: an
 intent-guided condition and its paired open condition are generated from one protocol dict and can
 differ only in the two fields `condition_overrides()` is permitted to touch.
 
@@ -156,7 +156,7 @@ class PreRegistration:
                 f"{len(pending)} decision(s) governing it are still pending in "
                 f"{PREREGISTRATION_PATH}.",
                 "",
-                "EXPERIMENTATION_PLAN.md §12 requires these to be fixed *before* execution, so "
+                "The pre-registration gate requires these to be fixed *before* execution, so "
                 "they cannot be chosen after seeing this run's categorization output.",
                 "",
             ]

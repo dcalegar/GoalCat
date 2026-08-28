@@ -1,6 +1,6 @@
 """Executing one experimental condition end to end, and recording what it was.
 
-A *condition* is one cell of the design in EXPERIMENTATION_PLAN.md §2: a dataset, an arm
+A *condition* is one cell of the experimental design: a dataset, an arm
 (intent-guided / open / Task C5's label-list control), an optional perturbation tag, and a
 replicate index. `execute_condition()` is the only function in this package that causes LLM calls
 to happen, and it always performs the same five things in the same order:

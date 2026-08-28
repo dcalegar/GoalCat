@@ -1,5 +1,5 @@
 """Cross-condition analysis: coverage/residual, contingency matrices, and partition divergence
-(EXPERIMENTATION_PLAN.md §3's "Evidence reported per dataset" and §7's metrics reference).
+(the "Evidence reported per dataset" set and the frozen protocol's metrics reference).
 
 Every function here takes plain `assignments_df`-shaped input (`variant_id`, `category_id`, with
 `category_id` possibly missing/NaN for a residual) and a `variants_df` for case-weighting

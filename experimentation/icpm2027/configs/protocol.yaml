@@ -1,4 +1,4 @@
-# ICPM 2027 — frozen experimental protocol (EXPERIMENTATION_PLAN.md §2.2, freeze table).
+# ICPM 2027 — frozen experimental protocol (the freeze table).
 #
 # Every element the freeze table requires to be *identical* between the intent-guided and open
 # arms of a paired within-log comparison is declared once, here, and merged into each condition's
@@ -17,7 +17,7 @@ sampling:
   sample_rare_n: 10
   sample_extreme_n: 5
 
-# Step 7 hyperparameter, uniform across categories and datasets (OVERVIEW.md, no per-case tuning).
+# Step 7 hyperparameter, uniform across categories and datasets (no per-case tuning).
 discovery:
   discovery_noise_threshold: 0.0
 

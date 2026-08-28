@@ -1,8 +1,8 @@
-"""Coverage/residual (EXPERIMENTATION_PLAN.md §3, §7's metrics reference).
+"""Coverage/residual, per the frozen protocol's metrics reference.
 
 Macro (variant-level) coverage $C_V$ = assigned variants / total variants; micro (case-weighted)
-coverage $C_C$ = case-weighted assigned / total cases. Both are always reported together per §7's
-own caveat: "a few residual variants can carry a large case share, or vice versa." Task D2's
+coverage $C_C$ = case-weighted assigned / total cases. Both are always reported together, because
+a few residual variants can carry a large case share, or vice versa. Task D2's
 caveat — a larger taxonomy or a broad catch-all category can trivially raise coverage — is
 structural to this module too: nothing here ranks conditions by coverage, only reports it.
 """

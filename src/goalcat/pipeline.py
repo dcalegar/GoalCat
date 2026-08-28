@@ -422,7 +422,7 @@ def run_step6_assignment(
     taxonomy category (from Step 5a/5b) it realizes, if any.
 
     Unlike Steps 2-5, this does NOT compute a missing taxonomy from scratch: Step 5 is proven
-    non-deterministic (see PROGRESS.md), so an implicit rebuild here could assign against a
+    non-deterministic, so an implicit rebuild here could assign against a
     taxonomy nobody reviewed. A taxonomy must be passed in-memory, or run_id/round (arguments, or
     config.yaml's fields) must point at a round directory that already has a taxonomy.json.
     """

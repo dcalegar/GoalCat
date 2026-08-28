@@ -1,9 +1,9 @@
 """The shared Steps 1-4 base every condition of a dataset draws its inputs from.
 
-EXPERIMENTATION_PLAN.md §2.1: for dataset L_i, Steps 1-4 run **once** — variants, profiles,
+The frozen protocol requires that for dataset L_i, Steps 1-4 run **once** — variants, profiles,
 narratives, narrative sample — and the *same* narratives and sample then feed both the
-intent-guided and the open arm. §2.2's freeze table marks the narrative sample **identical** in
-bold, and it is the one row that a naive "run the pipeline twice with different settings" design
+intent-guided and the open arm. The freeze table marks the narrative sample **identical**, and
+it is the one row that a naive "run the pipeline twice with different settings" design
 would silently break, because Step 4's sample would be recomputed inside each arm's own run
 directory.
 

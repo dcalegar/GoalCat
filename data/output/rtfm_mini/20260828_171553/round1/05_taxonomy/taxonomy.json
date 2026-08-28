@@ -1,0 +1,64 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Resolution of the fine case through early payment by the offender, advancing the softgoal 'Maximize timely fine revenue' and helping 'Minimize administrative & enforcement cost', evaluated against indicator 'Average time to case closure'.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative 12, as observed in variant V0004 where payment occurs immediately after fine creation.",
+      "evidence_variant_ids": [
+        "V0004"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Resolve via delinquent payment",
+      "description": "Resolution of the fine case through payment after notifications and penalties have been added, helping 'Maximize timely fine revenue' and evaluated against 'Average time to case closure'.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative 13, evidenced by variant V0003 where payment follows fine notification and penalty addition.",
+      "evidence_variant_ids": [
+        "V0003"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal_prefecture",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Resolution via an administrative appeal submitted to the Prefecture, preserving due-process rights while impacting administrative cost and fine revenue, measured against 'Time to appeal filing, Prefecture'.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative 14, observed in variant V0006 involving appeal insertion, sending, and receiving results.",
+      "evidence_variant_ids": [
+        "V0006"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal_judge",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Resolution via a judicial appeal brought before a judge, strongly preserving offender due-process rights while hurting administrative cost, measured against 'Time to appeal filing, Judge'.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative 19, evidenced by variant V0005 ending in an appeal to the judge.",
+      "evidence_variant_ids": [
+        "V0005"
+      ]
+    },
+    {
+      "category_id": "coercive_credit_collection",
+      "name": "Resolve via coercive credit collection",
+      "description": "Resolution of the fine case through coercive credit collection steps after penalties are added, helping fine revenue and hurting administrative costs.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative 20, evidenced by variant V0002 which results in sending the case for credit collection.",
+      "evidence_variant_ids": [
+        "V0002"
+      ]
+    }
+  ]
+}

@@ -4,8 +4,7 @@
 # Ollama instead of a hosted API — for offline iteration/debugging or runs where no remote API
 # key is available.
 # Requires Ollama running locally (`brew services start ollama`) with the model pulled
-# (`ollama pull qwen2.5:3b`). Qwen2.5 3B chosen for this machine's 8 GB unified memory — see
-# PROGRESS.md, "Local LLM backend (Ollama)" for the RAM-budget analysis behind that choice;
+# (`ollama pull qwen2.5:3b`). Qwen2.5 3B chosen for this machine's 8 GB unified memory;
 # swapping to a different local model is a one-line change to the three *_model fields below,
 # no code change (same litellm "provider/model" convention as config.yaml and
 # experimentation/examples/rtfm_mini/config_mini.yaml).

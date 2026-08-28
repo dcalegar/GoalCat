@@ -9,7 +9,7 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parents[2]
 _DEFAULT_CONFIG_PATH = Path(__file__).resolve().with_name("config.yaml")
 
-# Folder-naming scheme for a run directory (see PROGRESS.md's output-reorg entry). Steps 1-4 are
+# Folder-naming scheme for a run directory. Steps 1-4 are
 # execution-scoped (computed once, never per-round); Steps 5-9 are round-scoped, nested under
 # ROUND_PREFIX + round number; FINAL_DIRNAME and REVIEW_INDEX_FILENAME are execution-scoped
 # siblings of the round folders. Exported as module-level constants (not just baked into
@@ -97,9 +97,8 @@ class PipelineConfig:
     def run_output_dir(self) -> Path:
         """This execution's directory: fresh and empty for a new run_id, or an existing directory
         to resume/extend when run_id names one already on disk. Steps 1-4's outputs live directly
-        here (execution-scoped); Steps 5-9's outputs live under round_dir (round-scoped) — see
-        PROGRESS.md's output-reorg entry for why revision rounds nest inside one execution instead
-        of minting a new run_id each time."""
+        here (execution-scoped); Steps 5-9's outputs live under round_dir (round-scoped): revision
+        rounds nest inside one execution instead of minting a new run_id each time."""
         return self.log_output_dir / self.run_id
 
     @property
