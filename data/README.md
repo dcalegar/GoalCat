@@ -18,9 +18,8 @@ receives a task-scoped text projection of it — see "What the LLM actually sees
 | Log | Domain | Scale | Log file | Goal model | Status |
 |---|---|---|---|---|---|
 | RTFM (Road Traffic Fine Management Process) | Lifecycle of a road traffic fine, from issuance to closure, at an Italian local police force (*Polizia Locale*) | 150,370 cases, 561,470 events, 231 variants (Jan. 2000 – Jun. 2013) | `logs/rtfm.xes.gz` (+ `logs/rtfm_mini.xes.gz`, a 6-case fixture) | `goals/rtfm_goal_model.jucm` (+ `goals/rtfmGM_description.md`); the `rtfm_mini` fixture has its own structurally identical copy, `goals/rtfm_mini_goal_model.jucm` (+ `goals/rtfm_miniGM_description.md`) | Only log with a completed, accepted pipeline run — see the `rtfm_mini` reference run in `output/rtfm_mini/`. The full log has been taken through intent-guided taxonomy induction and assignment (Step 5a → 6). |
-| BPIC 2019 | Purchase-order handling across 60 subsidiaries of a multinational coatings-and-paints company | 251,734 cases, 1,595,923 events, 42 activities | `logs/bpic2019.xes.gz` | `goals/bpic2019_goal_model.jucm` (+ `goals/bpic2019GM_description.md`) | Case-study driver and config staged (`experimentation/examples/bpic2019/`); Step 3 textualization template authored in `third_party/lupin/log_templates.py`. Not yet run end-to-end: the log's ~11,973 variants make Step 6's unscoped pairwise structural/profile-distance computation impractical — see Task C7 (`experimentation/icpm2027/configs/preregistration.yaml`), whose variant-scope policy has not yet been ported to this illustrative driver. |
-| BPIC 2020 (Travel Permit Data) | Travel-permit requests and their approval chain at a university — one of five BPIC 2020 sub-logs, the only one staged here | 7,065 cases, 86,581 events (2017–2018) | `logs/bpic2020_permit.xes.gz` | `goals/bpic2020_goal_model.jucm` (+ `goals/bpic2020GM_description.md`; shared across BPIC 2020 sub-logs) | Case-study driver and config staged (`experimentation/examples/bpic2020_permit/`); Step 3 textualization template authored in `third_party/lupin/log_templates.py`; not yet run end-to-end. |
-| Sepsis | Hospital pathway of sepsis patients, recorded by the institution's ERP system | ~1,000 cases, ~15,000 events, 16 activities | `logs/sepsis.xes.gz` | `goals/sepsis_goal_model.jucm` (+ `goals/sepsisGM_description.md`) | Case-study driver and config staged (`experimentation/examples/sepsis/`); Step 3 textualization template authored in `third_party/lupin/log_templates.py`; not yet run end-to-end. |
+| BPIC 2019 | Purchase-order handling across 60 subsidiaries of a multinational coatings-and-paints company | 251,734 cases, 1,595,923 events, 42 activities | `logs/bpic2019.xes.gz` | `goals/bpic2019_goal_model.jucm` (+ `goals/bpic2019GM_description.md`) | Main evaluation dataset. Run end-to-end under intent-guided taxonomy induction (Step 5a → 6 → 9). Open-arm and perturbation experiments pending. |
+| Sepsis | Hospital pathway of sepsis patients, recorded by the institution's ERP system | ~1,000 cases, ~15,000 events, 16 activities | `logs/sepsis.xes.gz` | `goals/sepsis_goal_model.jucm` (+ `goals/sepsisGM_description.md`) | Main evaluation dataset. Completed intent-guided run; open-arm pair pending. Note: Step 5a exhibits taxonomy induction instability across identical-input reruns (see EXPERIMENTATION_PLAN.md Task C12). |
 
 Publisher references (BibTeX):
 
@@ -39,14 +38,6 @@ Publisher references (BibTeX):
   year         = {2019},
   publisher    = {4TU.ResearchData},
   doi          = {10.4121/uuid:d06aff4b-79f0-45e6-8ec8-e19730c248f1}
-}
-
-@misc{vandongen2020bpic,
-  author       = {van Dongen, Boudewijn F.},
-  title        = {BPI Challenge 2020: Travel Permit Data},
-  year         = {2020},
-  publisher    = {4TU.ResearchData},
-  doi          = {10.4121/uuid:ea03d361-a7cd-4f5e-83d8-5fbdf0362550}
 }
 
 @misc{mannhardt2016sepsis,

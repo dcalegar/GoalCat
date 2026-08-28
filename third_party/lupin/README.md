@@ -24,10 +24,9 @@ This project has no suffix-prediction step.
 
 ## What is NOT reused
 
-LUPIN's six per-dataset template strings in `log_config.py` (helpdesk, sepsis, bpic2020,
-BPIC15_1, bpic2017_o, mip) do not match this project's event logs (`data/logs/`). This
-project's own `event_template` / `trace_template` strings, one set per log, are original
-content authored for its own attribute schema, following the same Jinja2 pattern.
+LUPIN's per-dataset template strings in `log_config.py` do not match this project's event logs 
+(`data/logs/`). This project's own `event_template` / `trace_template` strings, one set per log, 
+are original content authored for its own attribute schema, following the same Jinja2 pattern.
 
 ## Isolation contract — read before touching this directory
 
@@ -53,7 +52,7 @@ content authored for its own attribute schema, following the same Jinja2 pattern
 
 `render_narratives.py` (the adapted rendering loop) and `log_templates.py` (this project's own
 `event_template` / `trace_template` definitions) are implemented. Two template sets exist —
-`_RTFM` (`rtfm`, `rtfm_mini`) and `_DEFAULT` (`sepsis`, `bpic2019`, `bpic2020_permit`), which keeps
+`_RTFM` (`rtfm`, `rtfm_mini`) and `_DEFAULT` (`sepsis`, `bpic2019`), which keeps
 a guarded `resource` clause for a future multi-actor goal model — since Step 2 profiling emits the
 same event/trace attribute schema regardless of the source log, the difference is template wording
 only, not per-dataset vocabulary. Invoked from `src/goalcat/narrative/textualization.py` via

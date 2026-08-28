@@ -5,7 +5,7 @@
 # the template strings themselves are original content authored for this project's own logs,
 # not copied from LUPIN's six dataset configs — see README.md, "What is NOT reused".
 #
-# Two templates, not one aliased across all five logs. `_DEFAULT` keeps a `resource` clause
+# Two templates, not one aliased across all logs. `_DEFAULT` keeps a `resource` clause
 # (guarded, so it stays silent on today's logs, none of which populate `resource` outside RTFM)
 # for any future multi-actor goal model. RTFM's own goal model declares a single actor, so its
 # categories can never be resource-discriminated; the clause would only be distractor content in
@@ -40,11 +40,11 @@ _RTFM = {
 # reuses the same template rather than duplicating it.
 TEMPLATES = {"rtfm": _RTFM, "rtfm_mini": _RTFM}
 
-# sepsis, bpic2019 and bpic2020_permit go through the same Step 2 profiling code
+# sepsis and bpic2019 go through the same Step 2 profiling code
 # (src/goalcat/extraction/profiling.py) as rtfm, which always emits this exact
 # event_attribute/trace_attribute schema regardless of the source log. None of their goal models
 # declare a resource-discriminated alternative today either, but unlike rtfm they are not known to
 # be single-actor by construction, so they get the resource-capable default rather than rtfm's
 # trimmed template.
-for _log_name in ("sepsis", "bpic2019", "bpic2020_permit"):
+for _log_name in ("sepsis", "bpic2019"):
     TEMPLATES[_log_name] = _DEFAULT

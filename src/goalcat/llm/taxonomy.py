@@ -237,8 +237,7 @@ def check_taxonomy_grounding(
     an anchor whose parent decomposition is AND (a mandatory step, not an alternative — Sepsis's
     categories transcribe every leaf task this way, AND-mandatory ones included), and two
     categories sharing `evidence_variant_ids` (a mutually-exclusive partition's boundary evidence
-    should not double as another category's boundary evidence — BPIC 2020 and Sepsis both cite
-    the same variant for three categories at once).
+    should not double as another category's boundary evidence — observed in Sepsis).
     """
     problems: list[str] = []
     valid_variant_ids = set(sample_df["variant_id"])

@@ -151,7 +151,7 @@ human-scale suffix (`+90d`, `+3h`, `+45m`, `+12s`, or nothing for the always-zer
 event); the vendored module only lays it out, keeping unit conversion out of the CC BY-NC-SA-licensed
 `third_party/` boundary.
 
-Measured directly on the five committed Step 5a prompts, the compact form cuts the narrative block
+Measured directly on the committed Step 5a prompts, the compact form cuts the narrative block
 by 32–60% (largest on sepsis and bpic2019, where per-event wait clauses — not the header
 restatement — dominate token count). Verified end to end on three logs (`rtfm_mini`, `rtfm`,
 `sepsis`) by re-running the full pipeline before and after the change at `temperature=0`: fitness
@@ -179,7 +179,7 @@ GoalCat/
 │   ├── README.md          # study cases, references, how to read an output run — see below
 │   ├── goals/               # one goal model per log (GRL/URN): <log>_goal_model.jucm — the sole
 │   │                          # pipeline input; <log>GM_description.md is documentation only
-│   ├── logs/                 # XES.gz event logs: RTFM, BPIC 2019, BPIC 2020, Sepsis
+│   ├── logs/                 # XES.gz event logs: RTFM, BPIC 2019, Sepsis
 │   ├── templates/            # LLM prompt templates, shared across logs
 │   └── output/                # generated pipeline run artifacts, one dir per run
 ├── scripts/
@@ -203,7 +203,6 @@ GoalCat/
 │   │   ├── rtfm_mini/           # config_mini.yaml + example_run.py (6-case fixture)
 │   │   ├── rtfm/                 # config_rtfm.yaml + example_run.py (full RTFM log)
 │   │   ├── bpic2019/
-│   │   ├── bpic2020_permit/
 │   │   └── sepsis/
 │   └── icpm2027/               # replication package for the ICPM 2027 submission (RQ1 protocol runs)
 └── third_party/lupin/      # vendored CC BY-NC-SA 4.0 textualization module (subprocess-isolated)
@@ -419,7 +418,6 @@ runnable example (its own config alongside its driver script), invoked as a modu
 python -m experimentation.examples.rtfm_mini.example_run       # 6-case fixture, scripted rework round
 python -m experimentation.examples.rtfm.example_run             # full RTFM log
 python -m experimentation.examples.bpic2019.example_run
-python -m experimentation.examples.bpic2020_permit.example_run
 python -m experimentation.examples.sepsis.example_run
 ```
 
@@ -553,10 +551,9 @@ a single trusted user.
 
 ## Data
 
-Four public event logs (RTFM, BPIC 2019, BPIC 2020 Travel Permit, Sepsis) live in `data/logs/`, each
-paired with an authored goal model in `data/goals/`. See [`data/README.md`](data/README.md) for the
-full study-case writeup with publisher references, and for how to read a pipeline output-run
-directory under `data/output/`.
+Three public event logs (RTFM, BPIC 2019, Sepsis) live in `data/logs/`, each paired with an authored 
+goal model in `data/goals/`. See [`data/README.md`](data/README.md) for the full study-case writeup 
+with publisher references, and for how to read a pipeline output-run directory under `data/output/`.
 
 ## License and third-party components
 

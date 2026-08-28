@@ -17,7 +17,7 @@ project/
 
 # Example pipeline run outputs: only rtfm_mini is pushed to GitHub, as a
 # complete end-to-end example. Every other example run (bpic2019,
-# bpic2020_permit, rtfm, sepsis) stays local-only — reproduce them via
+# rtfm, sepsis) stays local-only — reproduce them via
 # experimentation/examples/ instead. See experimentation/README.md for the
 # time/cost/memory/disk footprint of each before running one.
 data/output/*

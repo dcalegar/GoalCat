@@ -78,7 +78,7 @@ TIMESTAMP_KEY = "time:timestamp"
 # Ordered cheapest-first so an interrupted run has still reported something useful. bpic2019 is
 # excluded by default: ~1.6M events, and it is the one log where the tree oracle's mining step is
 # itself a multi-minute cost.
-DEFAULT_LOGS = ("rtfm_mini", "sepsis", "bpic2020_permit", "rtfm")
+DEFAULT_LOGS = ("rtfm_mini", "sepsis", "rtfm")
 ALL_LOGS = DEFAULT_LOGS + ("bpic2019",)
 
 # config.yaml's llm.assignment_batch_size — used only to translate a variant count into the Step 6

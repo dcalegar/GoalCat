@@ -50,7 +50,6 @@ REFERENCE_LOGS: list[tuple[str, int, int, float, int]] = [
     ("rtfm_mini", 6, 12, 2.0, 7),
     ("rtfm", 231, 409, 1.8, 20),
     ("sepsis", 846, 6635, 7.8, 185),
-    ("bpic2020_permit", 1478, 13814, 9.3, 90),
     ("bpic2019", 11973, 213397, 17.8, 990),
 ]
 

@@ -6,7 +6,7 @@ repository root rather than under `src/`: it consumes the pipeline but is not pa
 implemented core, unlike `src/goalcat/` (the library) and `src/gui/` (a Streamlit app over it).
 
 - **`examples/`** — one self-contained, runnable illustration per supported log (`rtfm_mini`,
-  `rtfm`, `bpic2019`, `bpic2020_permit`, `sepsis`): a config file plus an `example_run.py` driver.
+  `rtfm`, `bpic2019`, `sepsis`): a config file plus an `example_run.py` driver.
   These demonstrate that the pipeline executes end to end (including, for `rtfm_mini`, a scripted
   Step 9 rework round) and are the fastest way to exercise a change locally. They are not evidence
   for any research claim on their own.
@@ -33,7 +33,7 @@ See the top-level [`README.md`](../README.md) for installation and LLM-backend s
 
 Every `examples/` script makes real, billed LLM calls and writes a full run directory under
 `data/output/`. Only `rtfm_mini`'s output is committed to this repository, as a complete
-end-to-end reference (its 6-variant fixture keeps time/cost/disk negligible); the other four
+end-to-end reference (its 6-variant fixture keeps time/cost/disk negligible); the other three
 examples reproduce locally but are `.gitignore`d, since their outputs do not scale linearly with
 log size — see the root [`README.md`](../README.md#resource-usage) "Resource usage" section for
 the full explanation of what drives that growth.
@@ -45,8 +45,7 @@ the full explanation of what drives that growth.
 | `rtfm_mini` | 6 | ~1 KB | a handful |
 | `rtfm` | 231 | ~0.53 MB | ~tens |
 | `sepsis` | 846 | ~7.0 MB | ~tens |
-| `bpic2020_permit` | 1,478 | ~21 MB | ~tens |
-| `bpic2019` | 11,973 | ~1.37 GB | proportionally the most of the five |
+| `bpic2019` | 11,973 | ~1.37 GB | proportionally the most of the four |
 
 Pairwise distance file size grows quadratically with variant count (`n(n-1)/2`), not linearly, so
 `bpic2019`'s ~14x larger variant count than `sepsis` produces a ~200x larger combined

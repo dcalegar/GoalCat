@@ -78,12 +78,6 @@ st.dataframe(
             "Goal model": "bpic2019_goal_model.jucm",
         },
         {
-            "Log": "BPIC 2020 (Travel Permit)",
-            "Domain": "Travel-permit requests and approval chain, university",
-            "Scale": "7,065 cases / 86,581 events",
-            "Goal model": "bpic2020_goal_model.jucm",
-        },
-        {
             "Log": "Sepsis",
             "Domain": "Hospital pathway of sepsis patients",
             "Scale": "~1,000 cases / ~15,000 events",
