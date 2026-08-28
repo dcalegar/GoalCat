@@ -32,7 +32,7 @@ st.subheader("Pipeline at a glance")
 ui_helpers.render_pipeline_diagram()
 
 st.subheader("Get started")
-c1, c2, c3, c4 = st.columns(4)
+c1, c2, c3, c4, c5 = st.columns(5)
 with c1:
     with st.container(border=True):
         st.markdown("**1 · Setup**")
@@ -53,6 +53,12 @@ with c4:
         st.markdown("**4 · Results & history**")
         st.caption("Browse any run's variants, taxonomy, models, and reports.")
         st.page_link("pages/2_Results.py", label="Open Results", icon=":material/insights:")
+
+with c5:
+    with st.container(border=True):
+        st.markdown("**5 · Diagnostics**")
+        st.caption("See where a run stopped and what its warnings mean.")
+        st.page_link("pages/5_Diagnostics.py", label="Open Diagnostics", icon=":material/troubleshoot:")
 
 ui_helpers.render_api_key_status()
 

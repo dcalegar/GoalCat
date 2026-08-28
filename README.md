@@ -196,7 +196,8 @@ GoalCat/
 │   │   ├── narrative/          # Steps 3-4: textualization, sampling
 │   │   └── llm/                 # Steps 5a/5b, 6, 8: LLM backend, taxonomy, assignment, description
 │   └── gui/                   # local Streamlit GUI over the pipeline (imports goalcat) — see
-│                               # "Running the GUI" below
+│                               # "Running the GUI" below; gui/diagnostics.py explains a run's
+│                               # warnings and where it stopped
 ├── experimentation/          # case-study drivers (imports goalcat) — see experimentation/README.md
 │   ├── examples/               # one self-contained subdirectory per illustrative case study
 │   │   ├── rtfm_mini/           # config_mini.yaml + example_run.py (6-case fixture)
@@ -448,6 +449,22 @@ run_step2_profiling(run_id=run_id)
 
 against `src/goalcat/config.yaml` (the default) or any other `config_path=`.
 
+### When a step cannot finish: `IncompleteAssignmentError`
+
+Every variant must leave Step 6 with an outcome — a category or an explicit residual — or the
+partition claim does not hold, which is why `review.finalize_run()` refuses to accept such a round.
+That refusal is enforced as early as it is knowable: when an assignment batch is lost (an LLM call
+exhausting `llm.max_retries` against a 429/503, or a response omitting variants), Step 6 saves what
+it did assign and then raises `goalcat.pipeline.IncompleteAssignmentError` instead of returning a
+partial assignment — so Steps 7, 7b and 8 never compute, or bill, against a partition Step 9 must
+reject. Step 6 also refuses on entry if Step 3 left a profiled variant without a narrative, and
+Step 7 re-checks the invariant, since it is often invoked on its own.
+
+**Recovery: re-run Step 6 with the same `run_id`.** It resumes — the assignments already on disk
+are kept and only the missing ones are sent to the LLM — then continue with Steps 7-9. The
+exception subclasses `ValueError`, so a driver can retry on it precisely without catching
+unrelated failures. The GUI's Diagnostics page reports the condition as a `blocking` warning.
+
 ## Running the GUI
 
 `src/gui/` is a local Streamlit app over the same pipeline library — no YAML hand-editing, no
@@ -460,7 +477,7 @@ streamlit run src/gui/app.py
 ```
 
 This opens `http://localhost:8501` in your browser. Everything runs on your machine — there is no
-hosted/paid Streamlit service involved. Five pages, in the sidebar:
+hosted/paid Streamlit service involved. Six pages, in the sidebar:
 
 - **Setup** — check which LLM API key (`GEMINI_API_KEY`/`OPENAI_API_KEY`/`ANTHROPIC_API_KEY`) is
   already in the environment, or paste one in for the session (kept in the server process's memory
@@ -497,8 +514,16 @@ hosted/paid Streamlit service involved. Five pages, in the sidebar:
 - **Review** — the Step 9 business review, without touching `review_decisions.yaml` directly: per
   category, keep / rename / merge / split, backed by the same `ReviewDecisions` validation the
   library already enforces.
-- **History** — every run under `data/output/`, with its round count, latest status, and config
-  summary, with a shortcut into Results/Review for any of them.
+- **History** — every run under `data/output/`, with its reconstructed outcome, warning counts by
+  severity, round count, latest status, and config summary, with a shortcut into
+  Results/Review/Diagnostics for any of them.
+- **Diagnostics** — where a run stopped and what its warnings mean: a step timeline, plus every
+  `WARNING`/`ERROR` in `pipeline.log` grouped by kind, each with a plain-language explanation and
+  the repair, graded `blocking` (no round can be accepted) / `quality` (a result is weaker than it
+  looks) / `transient` (a retried API hiccup) / `benign` / `unclassified`. Built from the run
+  directory's own files, so it also covers runs launched outside the GUI (`experimentation/`), and
+  it is the only page that reports a run that died before producing a round — Results and Review
+  both need one.
 
 Each run/round the GUI launches executes in its own subprocess (`python -m gui.worker`), not
 inside the Streamlit process itself — `goalcat.run_logging.get_logger()` caches its file handler

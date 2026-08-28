@@ -43,6 +43,16 @@ from .review import process_review
 from .run_logging import get_logger, log_peak_memory
 
 
+class IncompleteAssignmentError(ValueError):
+    """Raised when a step would proceed on an assignment that does not cover every variant.
+
+    Subclasses ValueError because that is what every other refusal in this pipeline raises
+    (goalcat.review.finalize_run's own completeness guard included), so existing callers keep
+    catching it; declared as its own type so a resume driver can catch *this* specific condition —
+    the one that a re-run of Step 6 actually repairs — without swallowing unrelated ValueErrors.
+    """
+
+
 def _get_or_build_variants(config: PipelineConfig, logger: logging.Logger) -> pd.DataFrame:
     """Loads variants.csv from config.variants_dir if it's already there (a reused execution
     directory), else computes it from the raw log and saves it. Shared by every step whose
@@ -448,6 +458,19 @@ def run_step6_assignment(
     profile_columns = ["variant_id", "activity_sequence", "frequency", "frequency_pct", "duration_seconds_median", "outcome", "rework"]
     merged_df = profiles_df[profile_columns].merge(narratives_df, on="variant_id", how="inner")
 
+    # The merge is inner, so a variant Step 3 produced no narrative for would not fail here — it
+    # would silently never be offered to the LLM, never appear in assignments.csv, and surface
+    # only at Step 9's completeness guard, after Steps 7/7b/8 had already run (and billed) on the
+    # truncated partition. Checked before any LLM call rather than after.
+    unnarrated_ids = set(profiles_df["variant_id"]) - set(merged_df["variant_id"])
+    if unnarrated_ids:
+        raise IncompleteAssignmentError(
+            f"Step 6 cannot start: {len(unnarrated_ids)} profiled variant(s) have no narrative "
+            f"from Step 3, so no LLM could ever assign them: {sorted(unnarrated_ids)}. Re-run "
+            "Step 3 with force=True against this run_id to regenerate narratives.csv for every "
+            "variant."
+        )
+
     prior_assignments_df, prior_metadata_list = load_prior_assignments(config.assignment_dir)
     already_done_ids = set(prior_assignments_df["variant_id"])
     pending_df = merged_df[~merged_df["variant_id"].isin(already_done_ids)]
@@ -524,6 +547,24 @@ def run_step6_assignment(
     )
     logger.info("Saved assignment outputs to: %s", config.assignment_dir)
 
+    # Stop the run here rather than letting Steps 7, 7b and 8 compute (and, in Step 8's case, bill
+    # LLM calls) on a partition that Step 9 is already guaranteed to refuse — goalcat.review's
+    # finalize_run() rejects any round with a variant that has no Step 6 outcome. Raised *after*
+    # save_assignment_outputs() on purpose: everything this attempt did assign is on disk, so
+    # re-running Step 6 against the same run_id resumes from here and calls the LLM only for what
+    # is still missing, rather than re-billing the whole step.
+    if still_failed_ids:
+        log_peak_memory(logger, "Step 6")
+        raise IncompleteAssignmentError(
+            f"Step 6 left {len(still_failed_ids)} narrative(s) with no outcome after "
+            f"{config.llm.max_retries} attempts each — neither categorized nor residual: "
+            f"{still_failed_ids}. The {len(assignments_df)} assignment(s) that did succeed are "
+            f"saved in {config.assignment_dir}, so re-running Step 6 against run_id="
+            f"{config.run_id} retries only these. Steps 7-9 are not run: Step 9 would refuse to "
+            "accept this round anyway, and Step 8 would bill LLM calls for descriptions that a "
+            "corrected assignment then invalidates."
+        )
+
     logger.info("Step 6 complete.")
     log_peak_memory(logger, "Step 6")
     return assignments_df
@@ -577,6 +618,21 @@ def run_step7_discovery(
         assignments_df = pd.read_csv(assignments_path, dtype={"variant_id": str})
         logger.info("Loading taxonomy from: %s", taxonomy_path)
         taxonomy = Taxonomy.model_validate_json(taxonomy_path.read_text(encoding="utf-8"))
+
+    # Same invariant Step 6 now enforces on its way out, re-checked on the way in because Step 7
+    # is routinely invoked on its own — against a round directory written by an earlier, partial
+    # Step 6, or with an assignments_df passed by a caller. Every metric this step reports (and
+    # every description Step 8 writes from them) is computed per category, so an assignment that
+    # covers only part of the log yields numbers that look complete and are not.
+    unassigned_ids = set(variants_df["variant_id"]) - set(assignments_df["variant_id"])
+    if unassigned_ids:
+        raise IncompleteAssignmentError(
+            f"Step 7 cannot run: {len(unassigned_ids)} variant(s) have no Step 6 outcome (neither "
+            f"a category nor residual): {sorted(unassigned_ids)}. Re-run Step 6 against "
+            f"run_id={config.run_id}, round {config.round} to retry them — it resumes, so only "
+            "these are sent to the LLM. Per-category fitness/precision computed now would silently "
+            "exclude them."
+        )
 
     df = load_event_log(config)
     logger.info(

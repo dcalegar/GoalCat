@@ -65,3 +65,12 @@ purpose (see the root README's "Resource usage" section for what each gives up):
 
 `prune_pairwise_distances_on_finalize` (also in the root README's "Resource usage" section) frees
 the disk these two files occupy after a run is accepted, once you no longer need it.
+
+## If a run stops in Step 6
+
+On a log this size a provider-side 429/503 will eventually lose an assignment batch. Step 6 saves
+what it assigned and raises `IncompleteAssignmentError` rather than carrying a partial assignment
+into Steps 7-9; re-running Step 6 with the same `run_id` resumes and retries only the missing
+narratives, after which Steps 7, 7b, 8 and 9 run as usual. See the root
+[`README.md`](../README.md#when-a-step-cannot-finish-incompleteassignmenterror), and the GUI's
+Diagnostics page for any run's warnings and where it stopped.
