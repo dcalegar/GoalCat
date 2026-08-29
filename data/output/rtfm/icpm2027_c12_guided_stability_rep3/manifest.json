@@ -1,0 +1,184 @@
+{
+  "schema": "icpm2027/manifest/1",
+  "protocol_version": "1.0.0",
+  "experiment": "c12",
+  "condition_id": "c12_guided_stability_rep3",
+  "dataset": "rtfm",
+  "arm": "guided",
+  "replicate": 3,
+  "tag": "stability",
+  "steps_executed": [
+    5
+  ],
+  "started_at": "2026-08-29T00:25:07.499758+00:00",
+  "finished_at": "2026-08-29T00:26:21.282569+00:00",
+  "preregistered": true,
+  "pending_decisions": [],
+  "decisions": {
+    "C10_assignment_batch_size": {
+      "task": "C10",
+      "status": "decided",
+      "value": {
+        "default": 50,
+        "exceptions": {}
+      },
+      "decided_on": "2026-08-19",
+      "rationale": "50 everywhere (raised from 20), on call-count/wall-clock grounds only, per Task C10's required basis \u2014 not against observed categorization quality. Google AI Studio billing was enabled on the project behind GEMINI_API_KEY and verified at aistudio.google.com/rate-limit: 4,000 RPM / 4M TPM for gemini-3.5-flash-lite (150K RPD), several orders of magnitude above this protocol's actual volume. At batch_size=50 with protocol.yaml's concurrency=5, a 231-variant run costs ~5 Step-6 calls instead of 231/12 (batch=20); BPIC 2019 at the C7 top_n=1000 scope costs ~20 calls instead of 50. No BPIC 2019 exception needed: one value holds the freeze table's \"identical across datasets by default\" with nothing to justify. Not yet empirically re-validated against a frozen run at this batch size \u2014 the example case studies under experimentation/examples/ (not the frozen protocol) are the first runs to exercise batch_size=50, and should be watched for any assignment-quality regression before the first real frozen run under this protocol_version."
+    },
+    "C5_label_list_control": {
+      "task": "C5",
+      "status": "decided",
+      "value": false,
+      "decided_on": "2026-08-25",
+      "rationale": "Not adopted for the minimum design. It remains the highest-value optional item and also its largest budget increase (a third full arm on every dataset). The confound it addresses - that the guided prompt supplies an axis AND a cardinality AND a vocabulary AND extra context at once - is instead carried explicitly as a Threat to Validity, and Task C11a's guided_no_sample ablation attacks the same attribution question for one LLM call per dataset rather than a full arm. THIS IS THE MOST REVISITABLE DECISION HERE: conditions.py already supports arm \"label_list\", so flipping this to true costs configuration plus LLM budget, no new code. Do it before any frozen run rather than after, per this file's own discipline."
+    },
+    "D6_open_arm_steps_7_9": {
+      "task": "D6",
+      "status": "decided",
+      "value": "run_neither",
+      "decided_on": "2026-08-25",
+      "rationale": "Neither arm runs Steps 7-8 in a frozen condition. They are descriptive only (\u00a79) and confounded by partition granularity - finer, purer subsets fit more easily almost mechanically - so a cross-condition fitness/precision comparison is not informative about which taxonomy is better. Skipping both keeps the arms symmetric at zero extra LLM cost and loses nothing RQ1 depends on; Step 7 is regenerable later from a frozen run's assignments.csv + taxonomy.json without re-billing Step 6. Step 8 additionally is NOT comparable across arms (Task E6: its goal-alignment judgment reads goal-model text under guided mode and the category's own Step 5 rationale under open mode). Step 7b is governed separately by C13 and is guided-arm-only by construction, since open categories carry no anchor_ids."
+    },
+    "C13_step7b_indicators": {
+      "task": "C13",
+      "status": "decided",
+      "value": {
+        "policy": "run_guided_only",
+        "datasets": [
+          "rtfm"
+        ]
+      },
+      "decided_on": "2026-08-25",
+      "rationale": "RTFM guided arm only. Step 7b measures indicator satisfaction from the log against the goal model's declared KPIs, so it is the one result in the paper not exposed to the LLM-dependence threat - it is the single counterweight to it. It cannot run in the open arm at all: open-mode categories carry no anchor_ids, so there is nothing to attach an indicator to, which also means it can never enter RQ1's paired contrast and is reported as characterization of the guided arm, not as validation. Scoped to RTFM because only rtfm_goal_model.jucm (v1.2) and rtfm_mini_goal_model.jucm declare indicators; the Sepsis and BPIC 2019 models' indicators are this project's own log-computed percentiles rather than organizational targets. Reporting requirement: indicators with low applicability are reported as NOT-APPLICABLE, never as bad values - RTFM's timely_payment category has 7% dispatch-indicator coverage because most of its cases paid before dispatch occurred, and scoring that as a bad value would invert the measurement."
+    },
+    "E2_degenerate_or_after_perturbation": {
+      "task": "E2",
+      "status": "decided",
+      "value": "keep",
+      "decided_on": "2026-08-25",
+      "rationale": "Keep the degenerate one-child decomposition. Verified concretely: removing element 19 (judicial appeal) from rtfm_goal_model.jucm leaves OR-point 7 with the single child 14. Two defensible options existed; keeping is chosen because collapsing changes the goal tree's DEPTH as well as its breadth, and Task C12 establishes that Step 5a's output is sensitive to which level of the tree it anchors at - so a collapse would confound the perturbation's effect with an anchoring-level change. Keeping perturbs exactly one thing: the alternative set at one OR-point. Pre-registered here because it is a free parameter that would otherwise be settled silently by whichever behaviour perturb.py happened to implement."
+    },
+    "D1_divergence_convention": {
+      "task": "D1",
+      "status": "decided",
+      "value": {
+        "residual_handling": "own_cluster",
+        "weighting": "variant"
+      },
+      "decided_on": "2026-08-19",
+      "rationale": "Fixed before any number is computed, per \u00a77. The residual is its own block (it is a substantive outcome of the guided arm, not missing data), and the primary weighting is variant-level to match |T| and the contingency matrix's primary unit. analysis/divergence.py computes all four combinations and marks this one as primary, so the choice is auditable rather than implicit \u2014 but it is never reported as accuracy (\u00a71)."
+    },
+    "D7_single_llm": {
+      "task": "D7",
+      "status": "decided",
+      "value": false,
+      "decided_on": "2026-08-19",
+      "rationale": "Decided \u2014 not adopted. One provider/model (Gemini) throughout; cross-model robustness is future work and a recorded Threat to Validity, not an experimental condition."
+    }
+  },
+  "variant_scope": {
+    "policy": "all",
+    "source": "configs/rtfm.yaml",
+    "applied_policy": "all",
+    "variants_total": 231,
+    "variants_kept": 231,
+    "cases_total": 150370,
+    "cases_kept": 150370,
+    "case_coverage_of_full_log": 1.0
+  },
+  "inputs": {
+    "event_log": {
+      "path": "data/logs/rtfm.xes.gz",
+      "sha256": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "bytes": 3454978
+    },
+    "goal_model": {
+      "path": "data/goals/rtfm_goal_model.jucm",
+      "sha256": "0b2a7ea87d75967f3aacf6dbfd42808afac879cab66fca93e2baa7d61086d423",
+      "bytes": 19947
+    },
+    "goal_model_absent_by_design": false,
+    "condition_config": {
+      "path": "data/output/rtfm/icpm2027_c12_guided_stability_rep3/condition_config.yaml",
+      "sha256": "b24ff7573236562d9144d35bca93153041e2665c408da5d474a40f979ee4af18",
+      "bytes": 1214
+    },
+    "prompt_templates": {
+      "prompt_assignment_batch.txt": "523c0b39823dbae80d83d65c3cb5fafefdf29f26c5ac272da73daed1f4e56345",
+      "prompt_description.txt": "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588",
+      "prompt_taxonomy_intent_guided.txt": "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3",
+      "prompt_taxonomy_intent_guided_revision.txt": "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444",
+      "prompt_taxonomy_open.txt": "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c",
+      "prompt_taxonomy_open_revision.txt": "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+    },
+    "shared_base": {
+      "run_id": "icpm2027_base",
+      "run_dir": "/Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_base",
+      "variant_count": 231,
+      "case_count": 150370,
+      "artifacts": {
+        "01_variants/variants.csv": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+        "02_profiling/profiles.csv": "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "02_profiling/profiles.json": "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78",
+        "03_textualization/narratives.csv": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+        "04_sampling/narrative_sample.csv": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b"
+      }
+    }
+  },
+  "prompts_sent": {
+    "taxonomy_prompt": {
+      "path": "data/output/rtfm/icpm2027_c12_guided_stability_rep3/round1/05_taxonomy/taxonomy_prompt.txt",
+      "sha256": "5d219d8bb5ffca03d3beabeb172df3a185a82e99699d1851b5cbb155bbc23065",
+      "bytes": 21380
+    },
+    "assignment_prompts": {}
+  },
+  "llm": {
+    "seed": null,
+    "seed_note": "null \u2014 no seed is exposed by PipelineConfig.llm or by the Gemini path through litellm; temperature=0 is the only sampling constraint applied. See Task C2's replicate runs for the empirical noise floor.",
+    "taxonomy": {
+      "distinct_call_configurations": [
+        {
+          "model": "gemini/gemini-3.5-flash-lite",
+          "resolved_model": null,
+          "provider": "gemini",
+          "backend": "remote",
+          "temperature": 0.0
+        }
+      ],
+      "call_count": 1
+    },
+    "assignment": null,
+    "description": null
+  },
+  "outputs": {
+    "taxonomy": {
+      "path": "data/output/rtfm/icpm2027_c12_guided_stability_rep3/round1/05_taxonomy/taxonomy.json",
+      "sha256": "17bf1c31e425453782d2bf99d4394fee9cba2b7e51b92af793511940b3263963",
+      "bytes": 3561
+    },
+    "assignments": null,
+    "discovery_metrics": null,
+    "descriptions": null
+  },
+  "run_dir": "data/output/rtfm/icpm2027_c12_guided_stability_rep3",
+  "round_dir": "data/output/rtfm/icpm2027_c12_guided_stability_rep3/round1",
+  "environment": {
+    "host": "192.168.68.56",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.6",
+    "git_commit": "e46965fd78bf2f7ec0f730f01914caa35c42a298",
+    "git_dirty": true
+  },
+  "estimated_llm_calls": {
+    "step5": 1,
+    "step6": 5,
+    "step8": 0,
+    "total": 6
+  },
+  "assignment_batch_size": 50,
+  "narrative_sample": {
+    "withheld": false
+  },
+  "step7b_indicators": false
+}

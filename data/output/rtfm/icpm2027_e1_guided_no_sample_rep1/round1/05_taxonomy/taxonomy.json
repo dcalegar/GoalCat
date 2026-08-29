@@ -1,0 +1,54 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Resolution of the fine case through prompt voluntary payment, advancing 'Maximize timely fine revenue' (Make +100) and 'Minimize administrative & enforcement cost' (Help +50), judged against 'Average time to case closure' (Indicator 114).",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Mapped 1:1 to the declared OR alternative 12, as instructed by the default rule.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Resolve via delinquent payment",
+      "description": "Resolution of the fine case through late payment after penalties are added, supporting 'Maximize timely fine revenue' (Help +50), judged against 'Average time to case closure' (Indicator 114).",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Mapped 1:1 to the declared OR alternative 13 under the default mapping rule.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "administrative_appeal",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Resolution of the case through an administrative appeal lodged with the Prefecture, preserving offender's due-process rights (Help +50) while impacting costs and revenue (SomeNegative -25), judged against indicator 113.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Mapped 1:1 to the declared XOR alternative 14, following the default rule.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "judicial_appeal",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Resolution of the case through a judicial appeal to the Judge, making a strong contribution to due-process rights (Make +100) but hurting administrative costs (Hurt -50), judged against indicator 175.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Mapped 1:1 to the declared XOR alternative 19 under the default rule.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "coercive_credit_collection",
+      "name": "Resolve via coercive credit collection",
+      "description": "Resolution of the case through coercive credit collection measures, helping timely revenue (Help +50) but hurting enforcement costs (Hurt -50), judged against indicator 114.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Mapped 1:1 to the declared OR alternative 20, following the default rule.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_ward_routing",
+      "name": "Patient admission ward routing",
+      "description": "Represents the OR-decomposed choice of admitting the patient to either a non-critical inpatient ward or an intensive care unit, advancing the clinical pathway towards final disposition while influencing treatment timing metrics.",
+      "anchor_ids": [
+        "5"
+      ],
+      "rationale": "Default 1:1 mapping to the OR-decomposed parent goal id=5 encompassing Admission NC (id=15) and Admission IC (id=16). The IC admission path carries a contribution to minimize time-to-treatment softgoal evaluated via indicator id=24 and id=25.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "discharge_disposition",
+      "name": "Captured discharge disposition",
+      "description": "Represents the OR-decomposed alternative pathways for concluding an admitted sepsis case through one of the designated release routes, impacting the post-discharge ER return indicator and avoiding post-discharge deterioration.",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Default 1:1 mapping to the OR-decomposed parent goal id=6 covering release variants Release A (id=17), Release B (id=18), Release C (id=19), Release D (id=20), and Release E (id=21). These alternatives connect to the Avoid post-discharge deterioration softgoal and are measured by post-discharge ER return indicator id=26.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

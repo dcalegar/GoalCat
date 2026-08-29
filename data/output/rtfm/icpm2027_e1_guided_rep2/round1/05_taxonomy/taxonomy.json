@@ -1,0 +1,78 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Resolution of the fine case via prompt payment made by the offender. Advances the 'Maximize timely fine revenue' softgoal and helps 'Minimize administrative & enforcement cost'. Judged against indicator 'Time to fine dispatch (days)' and 'Average time to case closure (days)'.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Maps 1:1 to declared alternative 12 (Resolve via timely payment). The narrative sample shows frequent realization of this alternative (e.g. variant V0002).",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0007",
+        "V0012"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Resolve via delinquent payment",
+      "description": "Resolution of the fine case via payment made after penalties and enforcement notifications have been issued. Helps 'Maximize timely fine revenue'. Judged against indicator 'Average time to case closure (days)'.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Maps 1:1 to declared alternative 13 (Resolve via delinquent payment). The narrative sample shows cases realizing delinquent payments after penalties (e.g. variants V0004, V0005, V0006).",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0005",
+        "V0006",
+        "V0009"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Resolution of the case through an administrative appeal filed with the Prefecture. Preserves offender's due-process rights (Help +50) but can negatively impact enforcement cost and timely revenue. Judged against 'Time to appeal filing, Prefecture (days)'.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Maps 1:1 to declared alternative 14 (Resolve via administrative appeal to the Prefecture). The narrative sample confirms cases following the administrative appeal pathway via variants like V0008 and V0057.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0137",
+        "V0139"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Resolution of the case through a judicial appeal to the Judge. Maximizes offender's due-process rights (Make +100) and hurts administrative enforcement cost. Judged against 'Time to appeal filing, Judge (days)'.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to declared alternative 19 (Resolve via judicial appeal to the Judge), which is mutually exclusive under the XOR parent node 7. Observed in variants such as V0103 and V0176.",
+      "evidence_variant_ids": [
+        "V0103",
+        "V0140",
+        "V0176",
+        "V0224"
+      ]
+    },
+    {
+      "category_id": "coercive_credit_collection",
+      "name": "Resolve via coercive credit collection",
+      "description": "Resolution of the case through coercive credit collection measures after standard resolution paths fail. Helps maximize timely fine revenue but hurts minimization of administrative costs. Judged against 'Average time to case closure (days)'.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Maps 1:1 to declared alternative 20 (Resolve via coercive credit collection). The narrative sample shows numerous cases ending in credit collection (e.g. variants V0001, V0009, V0135).",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0009",
+        "V0134",
+        "V0135"
+      ]
+    }
+  ]
+}

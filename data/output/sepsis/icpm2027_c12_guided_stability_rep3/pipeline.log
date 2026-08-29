@@ -1,0 +1,34 @@
+2026-08-28 21:31:59,023 [INFO] goalcat: Run environment: host=192.168.68.56, platform=macOS-26.5.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-28 21:31:59,167 [INFO] goalcat: ICPM 2027 condition run starting: run_id=icpm2027_c12_guided_stability_rep3, steps=[5], taxonomy_mode=intent_guided, goal_model=sepsis_goal_model.jucm
+2026-08-28 21:31:59,170 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 21:31:59,171 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_c12_guided_stability_rep3/04_sampling/narrative_sample.csv
+2026-08-28 21:31:59,180 [INFO] goalcat: Inducing taxonomy from 33 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/sepsis_goal_model.jucm
+2026-08-28 21:38:14,683 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=5e6270a44e51a3a0, latency=21.97s)
+2026-08-28 21:38:14,685 [INFO] goalcat: Induced 7 categories: admission_nc, admission_ic, release_a, release_b, release_c, release_d, release_e
+2026-08-28 21:38:14,693 [WARNING] goalcat: Taxonomy grounding check: admission_nc/admission_ic: share evidence_variant_ids: ['V0068']
+2026-08-28 21:38:14,693 [WARNING] goalcat: Taxonomy grounding check: admission_nc/release_a: share evidence_variant_ids: ['V0008', 'V0070', 'V0551']
+2026-08-28 21:38:14,694 [WARNING] goalcat: Taxonomy grounding check: admission_nc/release_b: share evidence_variant_ids: ['V0068']
+2026-08-28 21:38:14,694 [WARNING] goalcat: Taxonomy grounding check: admission_ic/release_b: share evidence_variant_ids: ['V0068']
+2026-08-28 21:38:14,695 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_c12_guided_stability_rep3/round1/05_taxonomy/taxonomy.json
+2026-08-28 21:38:14,695 [INFO] goalcat: Step 5a complete.
+2026-08-28 21:38:14,695 [INFO] goalcat: Peak RSS after Step 5a: 379.3 MiB
+2026-08-28 21:38:14,695 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_c12_guided_stability_rep3
+2026-08-28 21:42:05,919 [INFO] goalcat: Run environment: host=192.168.68.56, platform=macOS-26.5.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-28 21:42:05,920 [INFO] goalcat: ICPM 2027 condition run starting: run_id=icpm2027_c12_guided_stability_rep3, steps=[5], taxonomy_mode=intent_guided, goal_model=sepsis_goal_model.jucm
+2026-08-28 21:42:05,922 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 21:42:05,923 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_c12_guided_stability_rep3/04_sampling/narrative_sample.csv
+2026-08-28 21:42:05,929 [INFO] goalcat: Inducing taxonomy from 33 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/sepsis_goal_model.jucm
+2026-08-28 21:42:12,472 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=5e6270a44e51a3a0, latency=4.80s)
+2026-08-28 21:42:12,474 [INFO] goalcat: Induced 7 categories: admission_nc, admission_ic, release_a, release_b, release_c, release_d, release_e
+2026-08-28 21:42:12,482 [WARNING] goalcat: Taxonomy grounding check: admission_nc/admission_ic: share evidence_variant_ids: ['V0068', 'V0145', 'V0273', 'V0317', 'V0551', 'V0605']
+2026-08-28 21:42:12,483 [WARNING] goalcat: Taxonomy grounding check: admission_nc/release_a: share evidence_variant_ids: ['V0008', 'V0063', 'V0064', 'V0065', 'V0066', 'V0067', 'V0069', 'V0070', 'V0071', 'V0072', 'V0192', 'V0317', 'V0441', 'V0449', 'V0551', 'V0605', 'V0625']
+2026-08-28 21:42:12,483 [WARNING] goalcat: Taxonomy grounding check: admission_nc/release_b: share evidence_variant_ids: ['V0068', 'V0145']
+2026-08-28 21:42:12,483 [WARNING] goalcat: Taxonomy grounding check: admission_nc/release_c: share evidence_variant_ids: ['V0710']
+2026-08-28 21:42:12,483 [WARNING] goalcat: Taxonomy grounding check: admission_nc/release_d: share evidence_variant_ids: ['V0273']
+2026-08-28 21:42:12,483 [WARNING] goalcat: Taxonomy grounding check: admission_ic/release_a: share evidence_variant_ids: ['V0317', 'V0551', 'V0605']
+2026-08-28 21:42:12,483 [WARNING] goalcat: Taxonomy grounding check: admission_ic/release_b: share evidence_variant_ids: ['V0068', 'V0145']
+2026-08-28 21:42:12,483 [WARNING] goalcat: Taxonomy grounding check: admission_ic/release_d: share evidence_variant_ids: ['V0273']
+2026-08-28 21:42:12,486 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_c12_guided_stability_rep3/round1/05_taxonomy/taxonomy.json
+2026-08-28 21:42:12,486 [INFO] goalcat: Step 5a complete.
+2026-08-28 21:42:12,486 [INFO] goalcat: Peak RSS after Step 5a: 380.8 MiB
+2026-08-28 21:42:12,486 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_c12_guided_stability_rep3

@@ -1,0 +1,16 @@
+{
+  "call": {
+    "provider": "gemini",
+    "model": "gemini/gemini-3.5-flash-lite",
+    "backend": "remote",
+    "temperature": 0.0,
+    "prompt_hash": "c8c45942a51857d5",
+    "latency_seconds": 67.72102141598589,
+    "input_tokens": 2317,
+    "output_tokens": 621,
+    "prompt_chars": 9038,
+    "response_chars": 2664,
+    "raw_response": "{\n  \"assessments\": [\n    {\n      \"category_id\": \"resolve_timely_payment\",\n      \"goal_alignment\": \"The discovered pattern shows strong path concentration with 93% of cases following a single dominant path and high model precision (0.90). This aligns well with the goal of resolving via timely payment and minimizing costs. Measured satisfaction supports this with an optimal score of +100 for average time to case closure (external-by-analogy, 100% coverage), despite mixed statutory indicators on specific delay sub-metrics.\"\n    },\n    {\n      \"category_id\": \"resolve_delinquent_payment\",\n      \"goal_alignment\": \"Moderate path concentration (56% on the top variant) and lower model precision (0.38) indicate a grouping of several distinct real paths, which matches the delinquent nature of these cases. Measured satisfaction for average time to case closure is heavily negative (-95, external-by-analogy, 100% coverage), reflecting the inherent delay and administrative cost penalties associated with delinquent resolution.\"\n    },\n    {\n      \"category_id\": \"resolve_administrative_appeal\",\n      \"goal_alignment\": \"Moderate path concentration (69% on the primary variant) and lower model precision (0.54) reflect a variety of administrative appeal trajectories. Measured satisfaction shows a very strong score of +100 for time to appeal filing to the Prefecture (statutory, 96% coverage), but a severely negative score of -94 for average time to case closure (external-by-analogy, 14% coverage), supporting the trade-off of preserved due-process rights against delayed revenue and closure.\"\n    },\n    {\n      \"category_id\": \"resolve_judicial_appeal\",\n      \"goal_alignment\": \"Dispersion is high, with the top variant accounting for only 36% of cases and a model precision of 0.56. Measured satisfaction reveals extreme negative scores for judicial appeal filings (-100, statutory, 97% coverage) and average time to case closure (-100, external-by-analogy, 89% coverage), highlighting the heavy cost to timeliness and administrative efficiency inherent in judicial appeals.\"\n    },\n    {\n      \"category_id\": \"resolve_coercive_credit_collection\",\n      \"goal_alignment\": \"The discovered pattern exhibits exceptionally high concentration, with a single dominant path accounting for 96% of cases. Despite this behavioral consistency, the model precision is loose (0.53). Measured satisfaction reflects a severely negative score of -100 for average time to case closure (external-by-analogy, 100% coverage), which aligns directly with the goal's premise that coercive collection actions help revenue but heavily impact administrative time and costs.\"\n    }\n  ]\n}",
+    "estimated_cost_usd": 0.0022475999999999998
+  }
+}

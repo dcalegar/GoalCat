@@ -1,0 +1,77 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Resolution of the fine case via prompt payment made by the offender. Advances the 'Maximize timely fine revenue' softgoal and helps 'Minimize administrative & enforcement cost'. Judged against indicator 'Time to fine dispatch (days)' and 'Average time to case closure (days)'.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Maps 1:1 to declared alternative 12, as evidenced by variants such as V0002 where the fine is paid early without requiring further administrative escalation.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0007",
+        "V0012"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Resolve via delinquent payment",
+      "description": "Resolution of the fine case via payment occurring later in the lifecycle, often after notifications and penalties have been added. Helps 'Maximize timely fine revenue'. Judged against indicator 'Average time to case closure (days)'.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Maps 1:1 to declared alternative 13, supported by variants like V0004, V0005, and V0006 where payments occur subsequent to notification and penalty additions.",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0005",
+        "V0006",
+        "V0009"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Resolution involving an administrative appeal submitted to the Prefecture. Helps 'Preserve offender's due-process rights' while negatively impacting 'Minimize administrative & enforcement cost' and 'Maximize timely fine revenue'. Judged against 'Time to appeal filing, Prefecture (days)'.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Maps 1:1 to declared alternative 14, supported by variants such as V0008, V0057, and V0135 showing the insertion of appeal dates and transmission to the Prefecture.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0135",
+        "V0137"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Resolution involving a judicial appeal brought before a Judge. Makes a strong positive contribution to 'Preserve offender's due-process rights' and hurts 'Minimize administrative & enforcement cost'. Judged against 'Time to appeal filing, Judge (days)'.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to declared alternative 19, supported by variants like V0103, V0176, and V0140 containing judicial appeal activities.",
+      "evidence_variant_ids": [
+        "V0103",
+        "V0140",
+        "V0176"
+      ]
+    },
+    {
+      "category_id": "coercive_credit_collection",
+      "name": "Resolve via coercive credit collection",
+      "description": "Resolution of the case through coercive credit collection procedures. Helps 'Maximize timely fine revenue' but hurts 'Minimize administrative & enforcement cost'. Judged against 'Average time to case closure (days)'.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Maps 1:1 to declared alternative 20, evidenced by frequent high-duration variants such as V0001 where cases culminate in credit collection sending.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0009",
+        "V0010",
+        "V0134"
+      ]
+    }
+  ]
+}

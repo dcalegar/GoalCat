@@ -196,7 +196,12 @@ def run_e1(
                 pending_decisions=pending, dry_run=dry_run, force=force,
             )
 
-    dataset_report = report_mod.DatasetReport(dataset_id=dataset.dataset_id, scope_record=base.scope, stability=stability)
+    dataset_report = report_mod.DatasetReport(
+        dataset_id=dataset.dataset_id,
+        scope_record=base.scope,
+        stability=stability,
+        notes=report_mod.KNOWN_FINDINGS.get(dataset.dataset_id, []),
+    )
     if dry_run:
         return Experiment1Result(dataset.dataset_id, results, dataset_report)
 

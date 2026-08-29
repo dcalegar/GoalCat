@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:grl.kpimodel="http:///grl/kpimodel.ecore" xmlns:urn="http:///urn.ecore" name="Sepsis Goal Model" author="goalcat (v1.1, artificial -- see data/goals/sepsisGM_description.md)" created="August 19, 2026, 12:00:00 AM EDT" modified="August 28, 2026, 12:00:00 AM EDT" specVersion="1.0" urnVersion="1.27" nextGlobalID="121">
+  <grlspec>
+    <intElements name="Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition" id="2" type="Goal" decompositionType="And"/>
+    <intElements name="Patient is registered and screened for sepsis" id="3" type="Goal" decompositionType="And"/>
+    <intElements name="Sepsis workup and treatment are performed" id="4" type="Goal" decompositionType="And"/>
+    <intElements name="Patient is admitted to an inpatient ward" id="5" type="Goal" decompositionType="Or"/>
+    <intElements name="Admitted case reaches a captured discharge" id="6" type="Goal" decompositionType="Or"/>
+    <intElements name="ER Registration" id="7" type="Task"/>
+    <intElements name="ER Triage" id="8" type="Task"/>
+    <intElements name="ER Sepsis Triage" id="9" type="Task"/>
+    <intElements name="Leucocytes" id="10" type="Task"/>
+    <intElements name="CRP" id="11" type="Task"/>
+    <intElements name="LacticAcid" id="12" type="Task"/>
+    <intElements name="IV Liquid" id="13" type="Task"/>
+    <intElements name="IV Antibiotics" id="14" type="Task"/>
+    <intElements name="Admission NC" id="15" type="Task"/>
+    <intElements name="Admission IC" id="16" type="Task"/>
+    <intElements name="Release A" id="17" type="Task"/>
+    <intElements name="Release B" id="18" type="Task"/>
+    <intElements name="Release C" id="19" type="Task"/>
+    <intElements name="Release D" id="20" type="Task"/>
+    <intElements name="Release E" id="21" type="Task"/>
+    <intElements name="Minimize time-to-treatment" id="22" type="Softgoal"/>
+    <intElements name="Avoid post-discharge deterioration" id="23" type="Softgoal"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to antibiotics (hours)" id="24" type="Indicator" groups="51">
+      <metadata name="goalcat:measure" value="duration_hours"/>
+      <metadata name="goalcat:from" value="ER Sepsis Triage"/>
+      <metadata name="goalcat:to" value="IV Antibiotics"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="guideline"/>
+      <metadata name="goalcat:source" value="target 1 h or less, threshold 1.8 h, worst 3 h: the 1-hour antibiotic-administration window of the Surviving Sepsis Campaign 2016 international guideline (Rhodes et al., 2017), identified by Mannhardt &amp; Blinde (2017, SS2) as the applicable rule for this exact log. worst/threshold/target reused verbatim from Ghasemi (2021, Ch.8, Table 19), set after physician consultation. See sepsisGM_description.md SS6."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Time to lactate measurement (hours)" id="25" type="Indicator" groups="51">
+      <metadata name="goalcat:measure" value="duration_hours"/>
+      <metadata name="goalcat:from" value="ER Sepsis Triage"/>
+      <metadata name="goalcat:to" value="LacticAcid"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="guideline"/>
+      <metadata name="goalcat:source" value="target 3 h or less, threshold 5 h, worst 7 h: the 3-hour lactate-measurement window of the Surviving Sepsis Campaign 2016 guideline (Rhodes et al., 2017) via Mannhardt &amp; Blinde (2017, SS2). worst/threshold/target reused verbatim from Ghasemi (2021, Ch.8, Table 19), physician-consulted. See sepsisGM_description.md SS6."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" name="Post-discharge ER return (binary)" id="26" type="Indicator" groups="52">
+      <metadata name="goalcat:measure" value="trace_contains"/>
+      <metadata name="goalcat:to" value="Return ER"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="illustrative"/>
+      <metadata name="goalcat:source" value="target 0 (no return), worst 1 (returned): reused from Ghasemi (2021, Ch.8) as a common healthcare-system goal, not traced to a guideline window and with no threshold defined in the source. Measured as the presence of Return ER anywhere in the case, over every case in scope; a case with no captured discharge counts as no return -- see sepsisGM_description.md SS6/SS7."/>
+    </intElements>
+    <actors name="Emergency Department care team" id="1"/>
+    <links xsi:type="grl:Decomposition" id="27" src="3" dest="2" refs="82"/>
+    <links xsi:type="grl:Decomposition" id="28" src="4" dest="2" refs="83"/>
+    <links xsi:type="grl:Decomposition" id="29" src="5" dest="2" refs="84"/>
+    <links xsi:type="grl:Decomposition" id="30" src="6" dest="2" refs="85"/>
+    <links xsi:type="grl:Decomposition" id="31" src="7" dest="3" refs="86"/>
+    <links xsi:type="grl:Decomposition" id="32" src="8" dest="3" refs="87"/>
+    <links xsi:type="grl:Decomposition" id="33" src="9" dest="3" refs="88"/>
+    <links xsi:type="grl:Decomposition" id="34" src="10" dest="4" refs="89"/>
+    <links xsi:type="grl:Decomposition" id="35" src="11" dest="4" refs="90"/>
+    <links xsi:type="grl:Decomposition" id="36" src="12" dest="4" refs="91"/>
+    <links xsi:type="grl:Decomposition" id="37" src="13" dest="4" refs="92"/>
+    <links xsi:type="grl:Decomposition" id="38" src="14" dest="4" refs="93"/>
+    <links xsi:type="grl:Decomposition" id="39" src="15" dest="5" refs="94"/>
+    <links xsi:type="grl:Decomposition" id="40" src="16" dest="5" refs="95"/>
+    <links xsi:type="grl:Decomposition" id="41" src="17" dest="6" refs="96"/>
+    <links xsi:type="grl:Decomposition" id="42" src="18" dest="6" refs="97"/>
+    <links xsi:type="grl:Decomposition" id="43" src="19" dest="6" refs="98"/>
+    <links xsi:type="grl:Decomposition" id="44" src="20" dest="6" refs="99"/>
+    <links xsi:type="grl:Decomposition" id="45" src="21" dest="6" refs="100"/>
+    <links xsi:type="grl:Contribution" id="46" src="14" dest="22" refs="101" contribution="Make" quantitativeContribution="100"/>
+    <links xsi:type="grl:Contribution" id="47" src="12" dest="22" refs="102" contribution="Make" quantitativeContribution="100"/>
+    <links xsi:type="grl:Contribution" id="48" src="16" dest="22" refs="103" contribution="SomeNegative" quantitativeContribution="-25"/>
+    <links xsi:type="grl:Contribution" id="49" src="17" dest="23" refs="104" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="50" src="18" dest="23" refs="105" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="106" src="24" dest="22" refs="109" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="107" src="25" dest="22" refs="110" contribution="Help" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="108" src="26" dest="23" refs="111" contribution="Help" quantitativeContribution="50"/>
+    <indicatorGroup name="Time-to-treatment" id="51" isRedesignCategory="true" indicators="24 25"/>
+    <indicatorGroup name="Outcome" id="52" isRedesignCategory="true" indicators="26"/>
+    <groups name="KPI Baseline (v1.1)" id="53" strategies="54"/>
+    <strategies name="Reused from Ghasemi (2021), physician-consulted, v1.1" id="54" author="goalcat (v1.1, reused with attribution)" type="Private" group="53">
+      <evaluations intElement="24">
+        <kpiEvalValueSet targetValue="1" thresholdValue="1.8" worstValue="3" unit="hours" qualitativeEvaluationValue="Reused verbatim from Ghasemi (2021, Ch.8, Table 19), physician-consulted; traced to Rhodes et al. (2017) via Mannhardt &amp; Blinde (2017, SS2) -- see sepsisGM_description.md SS6/SS8"/>
+      </evaluations>
+      <evaluations intElement="25">
+        <kpiEvalValueSet targetValue="3" thresholdValue="5" worstValue="7" unit="hours" qualitativeEvaluationValue="Reused verbatim from Ghasemi (2021, Ch.8, Table 19), physician-consulted; traced to Rhodes et al. (2017) via Mannhardt &amp; Blinde (2017, SS2) -- see sepsisGM_description.md SS6/SS8"/>
+      </evaluations>
+      <evaluations intElement="26">
+        <kpiEvalValueSet targetValue="0" worstValue="1" unit="binary" qualitativeEvaluationValue="Reused from Ghasemi (2021, Ch.8) as a common healthcare-system goal, not itself traced to a guideline window; no threshold defined in the source -- see sepsisGM_description.md SS6/SS8"/>
+      </evaluations>
+    </strategies>
+    <groups name="GoalCat measured (20260828_182820 round1)" id="112" strategies="113 114 115 116 117 118 119 120"/>
+    <strategies name="measured: whole log (baseline)" id="113" author="goalcat Step 7b (20260828_182820 round1)" type="Private" group="112">
+      <evaluations intElement="2" evaluation="0"/>
+      <evaluations intElement="3" evaluation="0"/>
+      <evaluations intElement="4" evaluation="0"/>
+      <evaluations intElement="5" evaluation="0"/>
+      <evaluations intElement="6" evaluation="0"/>
+      <evaluations intElement="7" evaluation="0"/>
+      <evaluations intElement="8" evaluation="0"/>
+      <evaluations intElement="9" evaluation="0"/>
+      <evaluations intElement="10" evaluation="0"/>
+      <evaluations intElement="11" evaluation="0"/>
+      <evaluations intElement="12" evaluation="0"/>
+      <evaluations intElement="13" evaluation="0"/>
+      <evaluations intElement="14" evaluation="0"/>
+      <evaluations intElement="15" evaluation="0"/>
+      <evaluations intElement="16" evaluation="0"/>
+      <evaluations intElement="17" evaluation="0"/>
+      <evaluations intElement="18" evaluation="0"/>
+      <evaluations intElement="19" evaluation="0"/>
+      <evaluations intElement="20" evaluation="0"/>
+      <evaluations intElement="21" evaluation="0"/>
+      <evaluations intElement="22" evaluation="48"/>
+      <evaluations intElement="23" evaluation="-14"/>
+      <evaluations intElement="24" evaluation="-4">
+        <kpiEvalValueSet targetValue="1.0" thresholdValue="1.8" worstValue="3.0" evaluationValue="1.8569" unit="hours" qualitativeEvaluationValue="measured over 823 of 1050 cases"/>
+      </evaluations>
+      <evaluations intElement="25" evaluation="100">
+        <kpiEvalValueSet targetValue="3.0" thresholdValue="5.0" worstValue="7.0" evaluationValue="1.3941" unit="hours" qualitativeEvaluationValue="measured over 739 of 1050 cases"/>
+      </evaluations>
+      <evaluations intElement="26" evaluation="-28">
+        <kpiEvalValueSet targetValue="0.0" worstValue="1.0" evaluationValue="0.2800" unit="binary" qualitativeEvaluationValue="measured over 1050 of 1050 cases"/>
+      </evaluations>
+    </strategies>
+    <strategies name="measured: release_a" id="114" author="goalcat Step 7b (20260828_182820 round1)" type="Private" group="112">
+      <evaluations intElement="2" evaluation="0"/>
+      <evaluations intElement="3" evaluation="0"/>
+      <evaluations intElement="4" evaluation="0"/>
+      <evaluations intElement="5" evaluation="0"/>
+      <evaluations intElement="6" evaluation="0"/>
+      <evaluations intElement="7" evaluation="0"/>
+      <evaluations intElement="8" evaluation="0"/>
+      <evaluations intElement="9" evaluation="0"/>
+      <evaluations intElement="10" evaluation="0"/>
+      <evaluations intElement="11" evaluation="0"/>
+      <evaluations intElement="12" evaluation="0"/>
+      <evaluations intElement="13" evaluation="0"/>
+      <evaluations intElement="14" evaluation="0"/>
+      <evaluations intElement="15" evaluation="0"/>
+      <evaluations intElement="16" evaluation="0"/>
+      <evaluations intElement="17" evaluation="0"/>
+      <evaluations intElement="18" evaluation="0"/>
+      <evaluations intElement="19" evaluation="0"/>
+      <evaluations intElement="20" evaluation="0"/>
+      <evaluations intElement="21" evaluation="0"/>
+      <evaluations intElement="22" evaluation="50"/>
+      <evaluations intElement="23" evaluation="-17"/>
+      <evaluations intElement="24" evaluation="1">
+        <kpiEvalValueSet targetValue="1.0" thresholdValue="1.8" worstValue="3.0" evaluationValue="1.7857" unit="hours" qualitativeEvaluationValue="measured over 465 of 525 cases"/>
+      </evaluations>
+      <evaluations intElement="25" evaluation="100">
+        <kpiEvalValueSet targetValue="3.0" thresholdValue="5.0" worstValue="7.0" evaluationValue="2.1303" unit="hours" qualitativeEvaluationValue="measured over 415 of 525 cases"/>
+      </evaluations>
+      <evaluations intElement="26" evaluation="-34">
+        <kpiEvalValueSet targetValue="0.0" worstValue="1.0" evaluationValue="0.3486" unit="binary" qualitativeEvaluationValue="measured over 525 of 525 cases"/>
+      </evaluations>
+    </strategies>
+    <strategies name="measured: admission_nc" id="115" author="goalcat Step 7b (20260828_182820 round1)" type="Private" group="112">
+      <evaluations intElement="2" evaluation="0"/>
+      <evaluations intElement="3" evaluation="0"/>
+      <evaluations intElement="4" evaluation="0"/>
+      <evaluations intElement="5" evaluation="0"/>
+      <evaluations intElement="6" evaluation="0"/>
+      <evaluations intElement="7" evaluation="0"/>
+      <evaluations intElement="8" evaluation="0"/>
+      <evaluations intElement="9" evaluation="0"/>
+      <evaluations intElement="10" evaluation="0"/>
+      <evaluations intElement="11" evaluation="0"/>
+      <evaluations intElement="12" evaluation="0"/>
+      <evaluations intElement="13" evaluation="0"/>
+      <evaluations intElement="14" evaluation="0"/>
+      <evaluations intElement="15" evaluation="0"/>
+      <evaluations intElement="16" evaluation="0"/>
+      <evaluations intElement="17" evaluation="0"/>
+      <evaluations intElement="18" evaluation="0"/>
+      <evaluations intElement="19" evaluation="0"/>
+      <evaluations intElement="20" evaluation="0"/>
+      <evaluations intElement="21" evaluation="0"/>
+      <evaluations intElement="22" evaluation="41"/>
+      <evaluations intElement="23" evaluation="-16"/>
+      <evaluations intElement="24" evaluation="-18">
+        <kpiEvalValueSet targetValue="1.0" thresholdValue="1.8" worstValue="3.0" evaluationValue="2.0213" unit="hours" qualitativeEvaluationValue="measured over 84 of 98 cases"/>
+      </evaluations>
+      <evaluations intElement="25" evaluation="100">
+        <kpiEvalValueSet targetValue="3.0" thresholdValue="5.0" worstValue="7.0" evaluationValue="0.2737" unit="hours" qualitativeEvaluationValue="measured over 70 of 98 cases"/>
+      </evaluations>
+      <evaluations intElement="26" evaluation="-31">
+        <kpiEvalValueSet targetValue="0.0" worstValue="1.0" evaluationValue="0.3163" unit="binary" qualitativeEvaluationValue="measured over 98 of 98 cases"/>
+      </evaluations>
+    </strategies>
+    <strategies name="measured: release_b" id="116" author="goalcat Step 7b (20260828_182820 round1)" type="Private" group="112">
+      <evaluations intElement="2" evaluation="0"/>
+      <evaluations intElement="3" evaluation="0"/>
+      <evaluations intElement="4" evaluation="0"/>
+      <evaluations intElement="5" evaluation="0"/>
+      <evaluations intElement="6" evaluation="0"/>
+      <evaluations intElement="7" evaluation="0"/>
+      <evaluations intElement="8" evaluation="0"/>
+      <evaluations intElement="9" evaluation="0"/>
+      <evaluations intElement="10" evaluation="0"/>
+      <evaluations intElement="11" evaluation="0"/>
+      <evaluations intElement="12" evaluation="0"/>
+      <evaluations intElement="13" evaluation="0"/>
+      <evaluations intElement="14" evaluation="0"/>
+      <evaluations intElement="15" evaluation="0"/>
+      <evaluations intElement="16" evaluation="0"/>
+      <evaluations intElement="17" evaluation="0"/>
+      <evaluations intElement="18" evaluation="0"/>
+      <evaluations intElement="19" evaluation="0"/>
+      <evaluations intElement="20" evaluation="0"/>
+      <evaluations intElement="21" evaluation="0"/>
+      <evaluations intElement="22" evaluation="70"/>
+      <evaluations intElement="23" evaluation="50"/>
+      <evaluations intElement="24" evaluation="40">
+        <kpiEvalValueSet targetValue="1.0" thresholdValue="1.8" worstValue="3.0" evaluationValue="1.4739" unit="hours" qualitativeEvaluationValue="measured over 43 of 54 cases"/>
+      </evaluations>
+      <evaluations intElement="25" evaluation="100">
+        <kpiEvalValueSet targetValue="3.0" thresholdValue="5.0" worstValue="7.0" evaluationValue="0.7516" unit="hours" qualitativeEvaluationValue="measured over 42 of 54 cases"/>
+      </evaluations>
+      <evaluations intElement="26" evaluation="100">
+        <kpiEvalValueSet targetValue="0.0" worstValue="1.0" evaluationValue="0.0000" unit="binary" qualitativeEvaluationValue="measured over 54 of 54 cases"/>
+      </evaluations>
+    </strategies>
+    <strategies name="measured: admission_ic" id="117" author="goalcat Step 7b (20260828_182820 round1)" type="Private" group="112">
+      <evaluations intElement="2" evaluation="0"/>
+      <evaluations intElement="3" evaluation="0"/>
+      <evaluations intElement="4" evaluation="0"/>
+      <evaluations intElement="5" evaluation="0"/>
+      <evaluations intElement="6" evaluation="0"/>
+      <evaluations intElement="7" evaluation="0"/>
+      <evaluations intElement="8" evaluation="0"/>
+      <evaluations intElement="9" evaluation="0"/>
+      <evaluations intElement="10" evaluation="0"/>
+      <evaluations intElement="11" evaluation="0"/>
+      <evaluations intElement="12" evaluation="0"/>
+      <evaluations intElement="13" evaluation="0"/>
+      <evaluations intElement="14" evaluation="0"/>
+      <evaluations intElement="15" evaluation="0"/>
+      <evaluations intElement="16" evaluation="0"/>
+      <evaluations intElement="17" evaluation="0"/>
+      <evaluations intElement="18" evaluation="0"/>
+      <evaluations intElement="19" evaluation="0"/>
+      <evaluations intElement="20" evaluation="0"/>
+      <evaluations intElement="21" evaluation="0"/>
+      <evaluations intElement="22" evaluation="98"/>
+      <evaluations intElement="23" evaluation="-22"/>
+      <evaluations intElement="24" evaluation="96">
+        <kpiEvalValueSet targetValue="1.0" thresholdValue="1.8" worstValue="3.0" evaluationValue="1.0293" unit="hours" qualitativeEvaluationValue="measured over 10 of 11 cases"/>
+      </evaluations>
+      <evaluations intElement="25" evaluation="100">
+        <kpiEvalValueSet targetValue="3.0" thresholdValue="5.0" worstValue="7.0" evaluationValue="2.0302" unit="hours" qualitativeEvaluationValue="measured over 11 of 11 cases"/>
+      </evaluations>
+      <evaluations intElement="26" evaluation="-45">
+        <kpiEvalValueSet targetValue="0.0" worstValue="1.0" evaluationValue="0.4545" unit="binary" qualitativeEvaluationValue="measured over 11 of 11 cases"/>
+      </evaluations>
+    </strategies>
+    <strategies name="measured: release_c" id="118" author="goalcat Step 7b (20260828_182820 round1)" type="Private" group="112">
+      <evaluations intElement="2" evaluation="0"/>
+      <evaluations intElement="3" evaluation="0"/>
+      <evaluations intElement="4" evaluation="0"/>
+      <evaluations intElement="5" evaluation="0"/>
+      <evaluations intElement="6" evaluation="0"/>
+      <evaluations intElement="7" evaluation="0"/>
+      <evaluations intElement="8" evaluation="0"/>
+      <evaluations intElement="9" evaluation="0"/>
+      <evaluations intElement="10" evaluation="0"/>
+      <evaluations intElement="11" evaluation="0"/>
+      <evaluations intElement="12" evaluation="0"/>
+      <evaluations intElement="13" evaluation="0"/>
+      <evaluations intElement="14" evaluation="0"/>
+      <evaluations intElement="15" evaluation="0"/>
+      <evaluations intElement="16" evaluation="0"/>
+      <evaluations intElement="17" evaluation="0"/>
+      <evaluations intElement="18" evaluation="0"/>
+      <evaluations intElement="19" evaluation="0"/>
+      <evaluations intElement="20" evaluation="0"/>
+      <evaluations intElement="21" evaluation="0"/>
+      <evaluations intElement="22" evaluation="51"/>
+      <evaluations intElement="23" evaluation="-8"/>
+      <evaluations intElement="24" evaluation="2">
+        <kpiEvalValueSet targetValue="1.0" thresholdValue="1.8" worstValue="3.0" evaluationValue="1.7823" unit="hours" qualitativeEvaluationValue="measured over 19 of 23 cases"/>
+      </evaluations>
+      <evaluations intElement="25" evaluation="100">
+        <kpiEvalValueSet targetValue="3.0" thresholdValue="5.0" worstValue="7.0" evaluationValue="0.2348" unit="hours" qualitativeEvaluationValue="measured over 19 of 23 cases"/>
+      </evaluations>
+      <evaluations intElement="26" evaluation="-17">
+        <kpiEvalValueSet targetValue="0.0" worstValue="1.0" evaluationValue="0.1739" unit="binary" qualitativeEvaluationValue="measured over 23 of 23 cases"/>
+      </evaluations>
+    </strategies>
+    <strategies name="measured: release_d" id="119" author="goalcat Step 7b (20260828_182820 round1)" type="Private" group="112">
+      <evaluations intElement="2" evaluation="0"/>
+      <evaluations intElement="3" evaluation="0"/>
+      <evaluations intElement="4" evaluation="0"/>
+      <evaluations intElement="5" evaluation="0"/>
+      <evaluations intElement="6" evaluation="0"/>
+      <evaluations intElement="7" evaluation="0"/>
+      <evaluations intElement="8" evaluation="0"/>
+      <evaluations intElement="9" evaluation="0"/>
+      <evaluations intElement="10" evaluation="0"/>
+      <evaluations intElement="11" evaluation="0"/>
+      <evaluations intElement="12" evaluation="0"/>
+      <evaluations intElement="13" evaluation="0"/>
+      <evaluations intElement="14" evaluation="0"/>
+      <evaluations intElement="15" evaluation="0"/>
+      <evaluations intElement="16" evaluation="0"/>
+      <evaluations intElement="17" evaluation="0"/>
+      <evaluations intElement="18" evaluation="0"/>
+      <evaluations intElement="19" evaluation="0"/>
+      <evaluations intElement="20" evaluation="0"/>
+      <evaluations intElement="21" evaluation="0"/>
+      <evaluations intElement="22" evaluation="19"/>
+      <evaluations intElement="23" evaluation="-20"/>
+      <evaluations intElement="24" evaluation="-62">
+        <kpiEvalValueSet targetValue="1.0" thresholdValue="1.8" worstValue="3.0" evaluationValue="2.5531" unit="hours" qualitativeEvaluationValue="measured over 20 of 23 cases"/>
+      </evaluations>
+      <evaluations intElement="25" evaluation="100">
+        <kpiEvalValueSet targetValue="3.0" thresholdValue="5.0" worstValue="7.0" evaluationValue="0.2541" unit="hours" qualitativeEvaluationValue="measured over 18 of 23 cases"/>
+      </evaluations>
+      <evaluations intElement="26" evaluation="-39">
+        <kpiEvalValueSet targetValue="0.0" worstValue="1.0" evaluationValue="0.3913" unit="binary" qualitativeEvaluationValue="measured over 23 of 23 cases"/>
+      </evaluations>
+    </strategies>
+    <strategies name="measured: release_e" id="120" author="goalcat Step 7b (20260828_182820 round1)" type="Private" group="112">
+      <evaluations intElement="2" evaluation="0"/>
+      <evaluations intElement="3" evaluation="0"/>
+      <evaluations intElement="4" evaluation="0"/>
+      <evaluations intElement="5" evaluation="0"/>
+      <evaluations intElement="6" evaluation="0"/>
+      <evaluations intElement="7" evaluation="0"/>
+      <evaluations intElement="8" evaluation="0"/>
+      <evaluations intElement="9" evaluation="0"/>
+      <evaluations intElement="10" evaluation="0"/>
+      <evaluations intElement="11" evaluation="0"/>
+      <evaluations intElement="12" evaluation="0"/>
+      <evaluations intElement="13" evaluation="0"/>
+      <evaluations intElement="14" evaluation="0"/>
+      <evaluations intElement="15" evaluation="0"/>
+      <evaluations intElement="16" evaluation="0"/>
+      <evaluations intElement="17" evaluation="0"/>
+      <evaluations intElement="18" evaluation="0"/>
+      <evaluations intElement="19" evaluation="0"/>
+      <evaluations intElement="20" evaluation="0"/>
+      <evaluations intElement="21" evaluation="0"/>
+      <evaluations intElement="22" evaluation="0"/>
+      <evaluations intElement="23" evaluation="-8"/>
+      <evaluations intElement="24" evaluation="-100">
+        <kpiEvalValueSet targetValue="1.0" thresholdValue="1.8" worstValue="3.0" evaluationValue="3.4838" unit="hours" qualitativeEvaluationValue="measured over 3 of 6 cases"/>
+      </evaluations>
+      <evaluations intElement="25" evaluation="100">
+        <kpiEvalValueSet targetValue="3.0" thresholdValue="5.0" worstValue="7.0" evaluationValue="0.1590" unit="hours" qualitativeEvaluationValue="measured over 4 of 6 cases"/>
+      </evaluations>
+      <evaluations intElement="26" evaluation="-16">
+        <kpiEvalValueSet targetValue="0.0" worstValue="1.0" evaluationValue="0.1667" unit="binary" qualitativeEvaluationValue="measured over 6 of 6 cases"/>
+      </evaluations>
+    </strategies>
+    <impactModel/>
+    <featureModel/>
+  </grlspec>
+  <urndef>
+    <specDiagrams xsi:type="grl:GRLGraph" name="Sepsis Goal Model" id="55">
+      <contRefs xsi:type="grl:ActorRef" id="56" name="Emergency Department care team" x="60" y="0" width="1820" height="380" contDef="1" nodes="57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 79 80 81">
+        <label/>
+      </contRefs>
+      <nodes xsi:type="grl:IntentionalElementRef" id="57" name="Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition" x="900" y="40" def="2" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="58" name="Patient is registered and screened for sepsis" x="240" y="160" def="3" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="59" name="Sepsis workup and treatment are performed" x="720" y="160" def="4" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="60" name="Patient is admitted to an inpatient ward" x="1140" y="160" def="5" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="61" name="Admitted case reaches a captured discharge" x="1560" y="160" def="6" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="62" name="ER Registration" x="120" y="280" def="7" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="63" name="ER Triage" x="240" y="280" def="8" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="64" name="ER Sepsis Triage" x="360" y="280" def="9" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="65" name="Leucocytes" x="480" y="280" def="10" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="66" name="CRP" x="600" y="280" def="11" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="67" name="LacticAcid" x="720" y="280" def="12" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="68" name="IV Liquid" x="840" y="280" def="13" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="69" name="IV Antibiotics" x="960" y="280" def="14" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="70" name="Admission NC" x="1080" y="280" def="15" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="71" name="Admission IC" x="1200" y="280" def="16" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="72" name="Release A" x="1320" y="280" def="17" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="73" name="Release B" x="1440" y="280" def="18" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="74" name="Release C" x="1560" y="280" def="19" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="75" name="Release D" x="1680" y="280" def="20" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="76" name="Release E" x="1800" y="280" def="21" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="77" name="Minimize time-to-treatment" x="700" y="480" def="22">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="78" name="Avoid post-discharge deterioration" x="1300" y="480" def="23">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="79" name="Time to antibiotics (hours)" x="960" y="340" def="24" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="80" name="Time to lactate measurement (hours)" x="720" y="340" def="25" contRef="56">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="81" name="Post-discharge ER return (binary)" x="1400" y="340" def="26" contRef="56">
+        <label/>
+      </nodes>
+      <connections xsi:type="grl:LinkRef" id="82" source="58" target="57" link="27"/>
+      <connections xsi:type="grl:LinkRef" id="83" source="59" target="57" link="28"/>
+      <connections xsi:type="grl:LinkRef" id="84" source="60" target="57" link="29"/>
+      <connections xsi:type="grl:LinkRef" id="85" source="61" target="57" link="30"/>
+      <connections xsi:type="grl:LinkRef" id="86" source="62" target="58" link="31"/>
+      <connections xsi:type="grl:LinkRef" id="87" source="63" target="58" link="32"/>
+      <connections xsi:type="grl:LinkRef" id="88" source="64" target="58" link="33"/>
+      <connections xsi:type="grl:LinkRef" id="89" source="65" target="59" link="34"/>
+      <connections xsi:type="grl:LinkRef" id="90" source="66" target="59" link="35"/>
+      <connections xsi:type="grl:LinkRef" id="91" source="67" target="59" link="36"/>
+      <connections xsi:type="grl:LinkRef" id="92" source="68" target="59" link="37"/>
+      <connections xsi:type="grl:LinkRef" id="93" source="69" target="59" link="38"/>
+      <connections xsi:type="grl:LinkRef" id="94" source="70" target="60" link="39"/>
+      <connections xsi:type="grl:LinkRef" id="95" source="71" target="60" link="40"/>
+      <connections xsi:type="grl:LinkRef" id="96" source="72" target="61" link="41"/>
+      <connections xsi:type="grl:LinkRef" id="97" source="73" target="61" link="42"/>
+      <connections xsi:type="grl:LinkRef" id="98" source="74" target="61" link="43"/>
+      <connections xsi:type="grl:LinkRef" id="99" source="75" target="61" link="44"/>
+      <connections xsi:type="grl:LinkRef" id="100" source="76" target="61" link="45"/>
+      <connections xsi:type="grl:LinkRef" id="101" source="69" target="77" link="46"/>
+      <connections xsi:type="grl:LinkRef" id="102" source="67" target="77" link="47"/>
+      <connections xsi:type="grl:LinkRef" id="103" source="71" target="77" link="48"/>
+      <connections xsi:type="grl:LinkRef" id="104" source="72" target="78" link="49"/>
+      <connections xsi:type="grl:LinkRef" id="105" source="73" target="78" link="50"/>
+      <connections xsi:type="grl:LinkRef" id="109" source="79" target="77" link="106"/>
+      <connections xsi:type="grl:LinkRef" id="110" source="80" target="77" link="107"/>
+      <connections xsi:type="grl:LinkRef" id="111" source="81" target="78" link="108"/>
+    </specDiagrams>
+  </urndef>
+</urn:URNspec>

@@ -47,6 +47,13 @@ dependencies = [
     # pm4py's own implementation) at ~25x the raw per-pair speed and, via process.cdist's
     # multi-threaded C loop, the full BPIC 2019 pairwise matrix in ~2s instead of ~1h.
     "rapidfuzz>=3.14",
+    # pandas' DataFrame.to_markdown() backend — experimentation/icpm2027/analysis/{report,
+    # coverage,divergence}.py call it unconditionally when writing Task C9/D1/§3 evidence
+    # tables, so a missing install doesn't surface until report-generation time, well after an
+    # experiment's LLM calls have already been billed. Declared as a base dependency rather than
+    # an extra since run_experiment.py's driver needs it on every dataset run, not only when
+    # analysis is invoked separately.
+    "tabulate>=0.9",
 ]
 
 [project.optional-dependencies]

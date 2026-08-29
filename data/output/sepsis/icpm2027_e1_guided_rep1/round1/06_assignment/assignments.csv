@@ -1,0 +1,847 @@
+variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
+V0001,,This narrative ends at ER Sepsis Triage and does not reach admission or release pathways.,,release_a,2.0,,0.3891150653362274
+V0002,,The process terminates at CRP without proceeding to admission or release.,,admission_nc,1.0,,0.37631967663764954
+V0003,,The narrative stops at Leucocytes and does not contain admission or release stages.,,admission_nc,1.0,,0.3832360804080963
+V0004,,This variant stops at IV Antibiotics in the ER and does not progress to admission or release.,,admission_nc,1.0,,0.01704295165836811
+V0005,,The process ends at LacticAcid without admission or discharge activities.,,admission_nc,1.0,,0.37761950492858887
+V0006,,This case sequence concludes at IV Antibiotics without reaching inpatient admission or release.,,release_b,2.0,,0.004777359776198864
+V0007,,"Terminates at IV Antibiotics in the ER phase, lacking admission or release.",,admission_nc,1.0,,0.0012411928037181497
+V0008,release_a,"Includes Admission NC followed by Release A, realizing the Release Variant A pathway.",7.0,admission_nc,1.0,0.36371123790740967,0.009495901875197887
+V0009,,Stops at IV Antibiotics in the ER without proceeding to admission or release.,,release_a,2.0,,0.005673747975379229
+V0010,,Ends at ER Sepsis Triage and does not include any admission or release activities.,,release_a,2.0,,0.3388270139694214
+V0011,,Concludes at IV Antibiotics within the ER without inpatient admission or release.,,admission_nc,1.0,,0.0008854572079144418
+V0012,,Process stops at IV Antibiotics prior to any inpatient admission or discharge.,,admission_nc,2.0,,0.05102531984448433
+V0013,,Ends at Leucocytes without reaching admission or release categories.,,admission_nc,2.0,,0.367016464471817
+V0014,release_a,Proceeds through Admission NC and ends with Release A.,8.0,admission_nc,2.0,0.35956624150276184,0.005350941326469183
+V0015,release_a,Includes Admission NC and terminates with Release A.,4.0,admission_nc,1.0,0.037479717284440994,0.010969366878271103
+V0016,release_a,Features Admission NC followed by Release A.,2.0,release_b,3.0,0.025045499205589294,0.0014648506185039878
+V0017,,Ends at ER Sepsis Triage without reaching admission or release steps.,,admission_nc,2.0,,0.36712613701820374
+V0018,release_a,Involves Normal Care admission (Admission NC) and ends with Release A.,6.0,admission_nc,3.0,0.3586730659008026,0.004457733128219843
+V0019,,Terminates at IV Antibiotics without inpatient admission or release pathways.,,admission_nc,2.0,,0.006178873125463724
+V0020,,Ends at CRP without any admission or release process elements.,,admission_nc,3.0,,0.3788929879665375
+V0021,release_a,"Includes Admission NC and Release A before returning to the ER, realizing Release A.",5.0,admission_nc,2.0,0.3711993992328644,0.0033182979095727205
+V0022,release_a,Proceeds via Admission NC to Release A.,6.0,release_c,1.0,0.3581312596797943,0.003915941808372736
+V0023,release_a,Features Admission NC and Release A prior to a return to the ER.,8.0,admission_nc,3.0,0.3758113384246826,0.0012936044950038195
+V0024,admission_nc,"Terminates at Admission NC, realizing the Normal Care admission pathway.",6.0,release_a,2.0,0.7732892036437988,0.004364368971437216
+V0025,,Ends at IV Antibiotics in the ER without admission or release steps.,,admission_nc,2.0,,0.0033636149019002914
+V0026,release_a,Includes Admission NC and Release A before a post-discharge ER return.,4.0,admission_nc,2.0,0.5181387066841125,0.17055650055408478
+V0027,,Stops at IV Antibiotics without reaching inpatient admission or release.,,admission_nc,2.0,,0.00043937613372690976
+V0028,release_a,Proceeds through Admission NC and Release A prior to returning to the ER.,5.0,release_b,2.0,0.40307602286338806,0.007231835275888443
+V0029,,Ends at Leucocytes without admission or release activities.,,release_b,2.0,,0.36965814232826233
+V0030,release_a,Includes Admission NC followed by Release A.,4.0,admission_nc,3.0,0.02637525089085102,0.00013509762356989086
+V0031,,Terminates at LacticAcid without admission or discharge pathways.,,release_b,3.0,,0.3540477454662323
+V0032,release_a,Features Admission NC and Release A before a return to the ER.,4.0,admission_nc,4.0,0.3515496551990509,0.003967460710555315
+V0033,release_a,Contains Admission NC and Release A prior to a subsequent ER return.,6.0,admission_nc,3.0,0.5867221355438232,0.16679668426513672
+V0034,,Stops at IV Liquid in the ER without reaching admission or release.,,release_a,2.0,,0.33619096875190735
+V0035,release_a,Proceeds through Admission NC and ends with Release A.,1.0,release_c,2.0,0.004322426859289408,0.00870306883007288
+V0036,,Ends at CRP without reaching inpatient admission or release.,,admission_nc,2.0,,0.38420066237449646
+V0037,release_b,"Includes Admission NC followed by Release B, realizing the Release Variant B pathway.",5.0,release_a,1.0,0.3478574752807617,0.33376121520996094
+V0038,,Terminates at IV Antibiotics in the ER without admission or release.,,admission_nc,2.0,,9.540599421598017e-05
+V0039,release_a,Proceeds through Admission NC and Release A.,4.0,admission_nc,2.0,0.11652372032403946,0.0024409189354628325
+V0040,admission_nc,"Concludes at Admission NC, realizing the Normal Care admission pathway.",5.0,release_b,1.0,0.7596995234489441,0.009225305169820786
+V0041,release_a,Includes Admission NC and terminates with Release A.,2.0,release_c,3.0,0.14017163217067719,0.004060936626046896
+V0042,release_a,Features Admission NC followed by Release A.,4.0,admission_nc,1.0,0.027686402201652527,0.0011760516790673137
+V0043,,Ends at LacticAcid without reaching admission or release.,,admission_nc,1.0,,0.36644890904426575
+V0044,release_a,Contains Admission NC and Release A.,4.0,admission_nc,1.0,0.03076694905757904,0.004256600048393011
+V0045,release_a,Proceeds via Admission NC to Release A before an ER return.,8.0,admission_nc,2.0,0.7126803398132324,0.005749322474002838
+V0046,release_a,Includes Admission NC and ends with Release A.,4.0,release_c,4.0,0.0121176578104496,0.009495344944298267
+V0047,release_a,Features Admission NC followed by Release A.,6.0,admission_nc,1.0,0.3788980543613434,0.024682745337486267
+V0048,release_a,Proceeds through Admission NC and Release A.,2.0,admission_nc,2.0,0.01476524118334055,0.006847761105746031
+V0049,release_a,Includes Admission NC and Release A prior to a subsequent ER return.,7.0,admission_nc,4.0,0.4271663427352905,0.007240867242217064
+V0050,,Ends at CRP without any inpatient admission or discharge pathway.,,admission_nc,1.0,,0.37032926082611084
+V0051,release_a,The narrative concludes with Release A and is evaluated against post-discharge ER return.,3.0,admission_ic,2.0,0.12883494794368744,0.002435873029753566
+V0052,release_a,The variant features Release A before a post-discharge ER return outcome.,3.0,admission_nc,2.0,0.40423107147216797,0.006109035108238459
+V0053,release_a,The narrative ends with Release A.,9.0,admission_nc,3.0,0.3818012475967407,0.02758592553436756
+V0054,release_a,The patient goes through Admission NC and Release A before returning to the ER.,5.0,admission_nc,2.0,0.3766789734363556,0.002161274431273341
+V0055,release_a,"The discharge event is Release A, culminating in an ER return.",3.0,admission_nc,3.0,0.49952784180641174,0.016950344666838646
+V0056,,The process ends at IV Antibiotics without reaching any inpatient admission or release pathway.,,admission_nc,2.0,,0.020871778950095177
+V0057,release_a,Proceeds via Admission NC and ends with Release A.,4.0,release_b,3.0,0.37946996092796326,0.0252546239644289
+V0058,release_a,Simple normal care admission ending in Release A.,8.0,admission_nc,2.0,0.3742246627807617,0.020009327679872513
+V0059,release_a,Realizes the Release A discharge pathway following normal care admission.,2.0,admission_nc,2.0,0.03518933430314064,0.008678984828293324
+V0060,release_a,Features Admission NC and Release A prior to a return to the ER.,6.0,admission_nc,2.0,0.4137488603591919,0.0018295705085620284
+V0061,release_a,Follows the Normal Care admission route and ends with Release A.,4.0,release_d,2.0,0.00614656088873744,0.010527201928198338
+V0062,,Terminates at IV Antibiotics; does not complete an admission or release pathway.,,admission_nc,1.0,,0.0027899558190256357
+V0063,release_a,Includes Admission NC and terminates with Release A.,12.0,release_b,6.0,0.006069190334528685,0.0016688588075339794
+V0064,release_a,Realizes Release A after normal care admission.,6.0,release_b,4.0,0.18228580057621002,0.006294699851423502
+V0065,release_a,Contains repeated Admission NC steps and finishes with Release A.,3.0,release_c,3.0,0.12505485117435455,0.006090201437473297
+V0066,release_a,Admitted via normal care and released with Release A.,6.0,release_b,2.0,0.38226091861724854,0.028045596554875374
+V0067,release_a,Progresses through Admission NC and concludes with Release A.,6.0,release_b,3.0,0.008339149877429008,0.012719791382551193
+V0068,release_b,The narrative explicitly terminates with Release B after an ICU and Normal Care admission sequence.,5.0,release_a,4.0,0.0,0.197331503033638
+V0069,release_a,Normal care admission path ending in Release A.,5.0,admission_nc,2.0,0.006888807285577059,0.01126944925636053
+V0070,release_a,Realizes the Release A discharge pathway.,5.0,release_d,2.0,0.19213759899139404,0.0022122920490801334
+V0071,release_a,Discharged via Release A before experiencing an ER return.,7.0,release_d,5.0,0.5156633257865906,0.0008149051573127508
+V0072,release_a,Features an Admission NC step and concludes with Release A.,4.0,admission_nc,3.0,0.33949875831604004,0.001513043069280684
+V0073,release_a,Normal care admission leading to Release A.,5.0,admission_nc,3.0,0.016312068328261375,0.005300935823470354
+V0074,release_a,Discharged through Release A followed by an ER return.,8.0,admission_nc,2.0,0.6794148087501526,0.06451118737459183
+V0075,release_a,"Includes both Admission IC and Admission NC, ultimately discharging via Release A.",5.0,admission_ic,4.0,0.5921761989593506,0.0067535401321947575
+V0076,release_b,Concludes with the Release B discharge pathway.,2.0,release_a,2.0,0.35440078377723694,0.33370938897132874
+V0077,release_b,The narrative ends with the Release B pathway.,5.0,release_a,4.0,0.24737389385700226,0.22773535549640656
+V0078,release_a,"Passes through ICU and normal care admissions, finishing with Release A.",11.0,release_e,5.0,0.5081599354743958,0.0014013733016327024
+V0079,release_a,Normal care admission pathway ending in Release A.,7.0,admission_nc,3.0,0.19217415153980255,0.0021757343783974648
+V0080,release_a,Admitted via Normal Care and discharged with Release A.,8.0,admission_nc,4.0,0.536124050617218,0.015099197626113892
+V0081,,Stops at IV Liquid without reaching admission or release categories.,,admission_nc,2.0,,0.3563927114009857
+V0082,release_a,"Features both ICU and normal care admissions, concluding with Release A.",7.0,admission_nc,3.0,0.35666730999946594,0.2225305289030075
+V0083,release_a,Normal care admission followed by Release A.,6.0,release_d,4.0,0.398125022649765,0.0022808730136603117
+V0084,release_c,The narrative explicitly terminates with the Release C pathway.,5.0,release_b,3.0,0.1383093148469925,0.33340534567832947
+V0085,release_a,Admitted via Normal Care and discharged through Release A.,3.0,admission_nc,3.0,0.5281698107719421,0.00255248392932117
+V0086,release_a,Normal care admission ending in Release A.,6.0,release_d,3.0,0.022976679727435112,0.0003260900266468525
+V0087,release_a,Realizes Release A following an inpatient admission.,5.0,admission_nc,4.0,0.12341758608818054,0.00445294426754117
+V0088,,Terminates at IV Antibiotics; lacks admission or release milestones.,,admission_nc,2.0,,0.04480135813355446
+V0089,release_a,Inpatient admission via Normal Care ending in Release A.,9.0,release_d,6.0,0.5591852068901062,0.007727517280727625
+V0090,release_a,Normal care admission path terminating in Release A.,6.0,release_c,3.0,0.016220616176724434,0.005392386112362146
+V0091,release_c,The narrative concludes with the Release C pathway.,13.0,admission_nc,8.0,0.08758944272994995,0.3336044251918793
+V0092,,Ends at LacticAcid measurement without an admission or release event.,,release_a,2.0,,0.003960905596613884
+V0093,release_d,The narrative explicitly terminates with the Release D pathway.,6.0,release_a,2.0,0.14002251625061035,0.1784856766462326
+V0094,release_a,Normal care admission ending in Release A before an ER return.,4.0,release_c,3.0,0.3975992202758789,0.0017550437478348613
+V0095,release_a,Admission via Normal Care leading to Release A.,5.0,release_e,2.0,0.03296327963471413,0.006452929228544235
+V0096,release_a,Normal care admission path concluding with Release A.,6.0,release_b,3.0,0.35040995478630066,0.22281862795352936
+V0097,release_a,Realizes the Release A discharge pathway after normal care.,4.0,admission_nc,2.0,0.1248444989323616,0.005879862699657679
+V0098,release_a,Inpatient care via Normal Care ending in Release A.,9.0,admission_nc,2.0,0.6769846081733704,0.23003317415714264
+V0099,release_a,Normal care admission concluding with Release A.,4.0,admission_nc,1.0,0.1192627027630806,0.00029806685051880777
+V0100,release_a,Admitted through Normal Care and discharged via Release A.,4.0,release_b,1.0,0.017345262691378593,0.004267740994691849
+V0101,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",8.0,admission_nc,3.0,0.428542822599411,0.00861735362559557
+V0102,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",4.0,release_c,3.0,0.12903514504432678,0.002235673600807786
+V0103,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",6.0,admission_nc,5.0,0.1390811651945114,0.002970474073663354
+V0104,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",9.0,admission_nc,3.0,0.7465649247169495,0.028135254979133606
+V0105,release_b,"The narrative features Admission NC and concludes with Release B, evaluating against post-discharge ER return.",9.0,release_a,4.0,0.021725786849856377,0.21905727684497833
+V0106,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",9.0,release_c,3.0,0.16764695942401886,0.009449622593820095
+V0107,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",6.0,release_c,5.0,0.0035044762771576643,0.007885118015110493
+V0108,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",4.0,release_c,4.0,0.35489344596862793,0.007311271503567696
+V0109,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",7.0,admission_nc,4.0,0.6267299056053162,0.11197053641080856
+V0110,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",8.0,admission_nc,2.0,0.750601589679718,0.03217189386487007
+V0111,admission_nc,The narrative culminates in Admission NC without discharge or release activities.,4.0,release_a,1.0,0.7653055787086487,0.0036192431580275297
+V0112,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",4.0,admission_nc,2.0,0.5068762898445129,0.009601925499737263
+V0113,release_b,"The narrative features Admission NC and concludes with Release B, evaluating against post-discharge ER return.",6.0,admission_nc,2.0,0.3651614487171173,0.2233854979276657
+V0114,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",6.0,release_b,4.0,0.13490313291549683,0.00014974034274928272
+V0115,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",5.0,admission_nc,4.0,0.42925772070884705,0.009332234971225262
+V0116,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",5.0,admission_nc,2.0,0.39195820689201355,0.001824331353418529
+V0117,release_d,"The narrative features Admission NC and concludes with Release D, evaluating against post-discharge ER return.",7.0,release_a,2.0,0.3800358474254608,0.006395623087882996
+V0118,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",5.0,admission_nc,3.0,0.01813661865890026,7.481849479518132e-06
+V0119,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",6.0,admission_nc,3.0,0.01124329213052988,0.010369709692895412
+V0120,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",9.0,release_c,5.0,0.5562000870704651,0.17091576755046844
+V0121,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",5.0,admission_nc,3.0,0.3965645134449005,0.0007203731220215559
+V0122,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",3.0,release_c,2.0,0.01828041858971119,0.00015128232189454138
+V0123,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",10.0,release_c,6.0,0.4726158678531647,0.00400783633813262
+V0124,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",4.0,admission_nc,2.0,0.33562541007995605,0.0023603031877428293
+V0125,release_a,"The narrative features Admission IC and NC and concludes with Release A, evaluating against post-discharge ER return.",12.0,admission_ic,6.0,0.5404054522514343,0.014873138628900051
+V0126,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",6.0,admission_nc,3.0,0.555956244468689,0.12964074313640594
+V0127,,The narrative terminates at LacticAcid and does not reach admission or release categories.,,release_b,2.0,,0.23709064722061157
+V0128,release_a,"The narrative features Admission IC and NC and concludes with Release A, evaluating against post-discharge ER return.",14.0,admission_ic,7.0,0.5275556445121765,0.006530774757266045
+V0129,release_a,"The narrative features Admission IC and NC and concludes with Release A, evaluating against post-discharge ER return.",21.0,admission_ic,10.0,0.5539453029632568,0.0024876133538782597
+V0130,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",4.0,admission_nc,2.0,0.022658327594399452,7.740608452877495e-06
+V0131,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",9.0,admission_nc,4.0,0.6703898310661316,0.23662804067134857
+V0132,,The narrative terminates at IV Antibiotics and does not reach admission or release categories.,,admission_nc,3.0,,0.33472028374671936
+V0133,,The narrative terminates at IV Antibiotics and does not reach admission or release categories.,,release_a,4.0,,0.3394845724105835
+V0134,release_a,"The narrative features Admission IC and NC and concludes with Release A, evaluating against post-discharge ER return.",17.0,admission_ic,10.0,0.5782222747802734,0.001703656860627234
+V0135,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",5.0,release_b,3.0,0.028969326987862587,0.002458977745845914
+V0136,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",19.0,release_e,11.0,0.5286048054695129,0.002117444993928075
+V0137,,The narrative terminates at LacticAcid and does not reach admission or release categories.,,release_a,2.0,,0.01278902217745781
+V0138,release_c,"The narrative features Admission NC and concludes with Release C, evaluating against post-discharge ER return.",2.0,release_a,2.0,0.13761679828166962,0.33340248465538025
+V0139,release_a,"The narrative features Admission IC and NC and concludes with Release A, evaluating against post-discharge ER return.",21.0,admission_ic,11.0,0.1773100048303604,0.08337830752134323
+V0140,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",7.0,admission_nc,3.0,0.5363624095916748,0.0017176088877022266
+V0141,release_a,"The narrative features Admission IC and NC and concludes with Release A, evaluating against post-discharge ER return.",8.0,admission_ic,7.0,0.519325315952301,0.0016995238838717341
+V0142,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",4.0,release_c,3.0,0.006700858008116484,0.011081499047577381
+V0143,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",7.0,release_b,4.0,0.3451594114303589,0.0024227628018707037
+V0144,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",6.0,admission_nc,4.0,0.12485599517822266,0.0058913505636155605
+V0145,release_b,"The narrative features Admission IC and concludes with Release B, evaluating against post-discharge ER return.",107.0,release_a,47.0,0.2256491780281067,0.08964734524488449
+V0146,,The narrative terminates at Leucocytes and does not reach admission or release categories.,,admission_nc,3.0,,0.215531125664711
+V0147,release_b,"The narrative features Admission NC and concludes with Release B, evaluating against post-discharge ER return.",5.0,admission_nc,2.0,0.0019673386123031378,0.19929884374141693
+V0148,,The narrative terminates at IV Antibiotics and does not reach admission or release categories.,,release_a,2.0,,0.005552468355745077
+V0149,release_a,"The narrative features Admission NC and concludes with Release A, evaluating against post-discharge ER return.",7.0,release_b,5.0,0.016330717131495476,0.005282287020236254
+V0150,release_b,"The narrative features Admission NC and concludes with Release B, evaluating against post-discharge ER return.",7.0,release_a,4.0,0.02203805185854435,0.2193695455789566
+V0151,release_d,The narrative concludes with Release D and is evaluated against post-discharge ER return.,15.0,release_a,8.0,0.44845911860466003,0.001840634853579104
+V0152,release_a,The narrative ends with Release A and fits the discharge pathway avoiding deterioration.,9.0,admission_nc,4.0,0.3706689178943634,0.23172296583652496
+V0153,release_a,"The narrative finishes with Release A, realizing the respective discharge pathway.",8.0,release_b,3.0,0.35032597184181213,0.000917492900043726
+V0154,release_a,"The patient goes through Admission NC and Admission IC, and is discharged via Release A before returning to the ER.",5.0,admission_nc,4.0,0.5777906775474548,0.0021352425683289766
+V0155,release_a,The narrative includes Admission NC and ends with Release A before a post-discharge ER return.,5.0,admission_nc,2.0,0.540421187877655,0.0023411514703184366
+V0156,release_a,The sequence shows Admission NC followed by Release A.,6.0,admission_nc,2.0,0.33504608273506165,0.2245078682899475
+V0157,release_a,The sequence contains Admission NC and concludes with Release A.,9.0,admission_nc,5.0,0.3645143508911133,0.0014119163388386369
+V0158,release_a,The narrative features Admission NC and ends with Release A.,4.0,admission_nc,2.0,0.11872053146362305,0.00024411275808233768
+V0159,release_a,The narrative contains repeated Admission NC steps and terminates with Release A.,6.0,release_c,5.0,0.11838003993034363,0.0005845986888743937
+V0160,release_a,The narrative includes Admission NC and concludes with Release A.,5.0,admission_nc,3.0,0.4622470438480377,0.00032633054070174694
+V0161,release_a,The narrative features Admission NC and ends with Release A.,7.0,release_c,5.0,0.5487111210823059,0.010631069540977478
+V0162,release_b,The narrative includes Admission NC and terminates with Release B.,5.0,admission_nc,1.0,0.12079416960477829,0.13209287822246552
+V0163,release_a,The narrative includes Admission NC and ends with Release A.,5.0,admission_nc,4.0,0.4064798057079315,0.003860282711684704
+V0164,release_a,"The narrative contains Admission IC and Admission NC, ending with Release A.",9.0,release_d,6.0,0.5066089034080505,0.002952434355393052
+V0165,release_a,The narrative includes Admission NC and finishes with Release A.,6.0,admission_nc,1.0,0.35267651081085205,0.0014330390840768814
+V0166,release_a,The narrative features Admission NC and ends with Release A.,7.0,release_b,4.0,0.12041366100311279,0.0014490233734250069
+V0167,release_a,The narrative contains Admission IC and terminates with Release A.,8.0,admission_ic,6.0,0.1369197517633438,0.0018213874427601695
+V0168,release_a,"The narrative features Admission IC and Admission NC, ending with Release A.",11.0,release_b,8.0,0.5277132391929626,0.006688397843390703
+V0169,release_a,The narrative includes Admission NC and concludes with Release A.,4.0,admission_nc,3.0,0.13482841849327087,7.502407243009657e-05
+V0170,release_b,The narrative features Admission NC and terminates with Release B.,7.0,release_c,3.0,0.1337714046239853,0.1644362360239029
+V0171,release_a,The narrative includes Admission NC and ends with Release A.,7.0,release_d,6.0,0.3446788489818573,0.0029033322352916002
+V0172,release_a,The narrative includes Admission NC and terminates with Release A.,17.0,release_c,8.0,0.36137890815734863,0.004547347780317068
+V0173,release_a,The narrative features Admission NC and ends with Release A.,8.0,release_d,5.0,0.024788381531834602,0.0017219671281054616
+V0174,release_a,"The narrative contains Admission IC and Admission NC, concluding with Release A.",45.0,admission_ic,22.0,0.490532785654068,0.0020638220012187958
+V0175,release_a,The narrative includes Admission NC and ends with Release A.,4.0,admission_nc,2.0,0.12505854666233063,0.006093899253755808
+V0176,release_a,The narrative features Admission NC and terminates with Release A.,7.0,admission_nc,5.0,0.012723005376756191,0.008889998309314251
+V0177,release_a,The narrative includes Admission NC and ends with Release A.,3.0,release_d,3.0,0.1307678073644638,0.0005030179745517671
+V0178,release_a,The narrative contains Admission NC and concludes with Release A.,16.0,admission_nc,7.0,0.1316974014043808,0.021159209311008453
+V0179,release_a,The narrative includes Admission NC and ends with Release A.,6.0,admission_nc,3.0,0.5246026515960693,0.006119558122009039
+V0180,release_a,The narrative features Admission NC and terminates with Release A.,10.0,release_b,5.0,0.7158263325691223,0.23568369448184967
+V0181,release_a,The narrative includes Admission NC and ends with Release A (ignoring trailing lab steps).,9.0,release_b,6.0,0.33488237857818604,0.08433420211076736
+V0182,release_a,"The narrative contains Admission IC and Admission NC, concluding with Release A.",18.0,admission_ic,10.0,0.16867946088314056,0.01053635124117136
+V0183,release_a,The narrative features Admission NC steps and ends with Release A.,10.0,admission_nc,6.0,0.49315914511680603,0.013016493059694767
+V0184,release_a,The narrative includes Admission NC and concludes with Release A.,5.0,admission_nc,2.0,0.2487332969903946,0.11262259632349014
+V0185,release_a,"The narrative features Admission NC and Admission IC, ending with Release A.",17.0,release_c,11.0,0.17622941732406616,0.0029863996896892786
+V0186,release_a,The narrative includes Admission NC and terminates with Release A.,6.0,release_d,4.0,0.19394706189632416,0.014724799431860447
+V0187,,The narrative stops at CRP and lacks any admission or release pathway.,,admission_nc,3.0,,0.3362896144390106
+V0188,release_a,The narrative features Admission NC and ends with Release A.,7.0,release_e,3.0,0.2540188729763031,0.11790817975997925
+V0189,release_a,The narrative includes Admission NC and terminates with Release A.,3.0,admission_nc,3.0,0.017526840791106224,0.0040861633606255054
+V0190,release_a,The narrative features Admission NC and ends with Release A.,7.0,admission_nc,3.0,0.18365460634231567,0.004925895947962999
+V0191,release_a,The narrative contains Admission NC and concludes with Release A before a return to ER.,9.0,release_b,6.0,0.37324094772338867,0.001276778639294207
+V0192,release_a,The narrative includes Admission NC and ends with Release A.,6.0,release_d,3.0,0.5553126931190491,0.017232701182365417
+V0193,release_a,The narrative features Admission NC and terminates with Release A.,9.0,release_d,6.0,0.007007239852100611,0.0025237041991204023
+V0194,release_a,The narrative includes Admission NC and ends with Release A.,7.0,release_c,4.0,0.004112033639103174,0.008492675609886646
+V0195,release_a,The narrative contains Admission NC and concludes with Release A.,6.0,admission_nc,5.0,0.022975211963057518,0.0003246224077884108
+V0196,release_e,"The narrative features Admission NC and Admission IC, and terminates with Release E.",24.0,release_d,15.0,0.37534478306770325,0.0017006737180054188
+V0197,,The narrative ends with Leucocytes and does not contain any admission or release category.,,admission_nc,1.0,,0.18944840133190155
+V0198,release_a,The narrative includes Admission NC and ends with Release A.,7.0,admission_nc,3.0,0.36338770389556885,0.2272769808769226
+V0199,release_a,The narrative features Admission NC and concludes with Release A.,8.0,admission_nc,3.0,0.3642319440841675,0.0016942891525104642
+V0200,release_a,The narrative includes Admission NC and terminates with Release A.,3.0,admission_nc,1.0,0.3446849584579468,0.0028972222935408354
+V0201,release_a,The narrative ends with Release A and is evaluated against post-discharge ER return.,22.0,release_d,12.0,0.5107381343841553,0.0005516940727829933
+V0202,release_a,The narrative concludes with Release A and follows the Normal Care admission pathway.,4.0,release_b,2.0,0.03572743013501167,0.00921708159148693
+V0203,release_a,The narrative shows a discharge via Release A followed by a return to the ER.,7.0,admission_nc,5.0,0.3514786660671234,0.0038964813575148582
+V0204,release_a,The narrative ends with Release A after Normal Care admission.,4.0,release_d,2.0,0.01453226525336504,0.0070807370357215405
+V0205,release_d,The narrative ends with the specific discharge pathway Release D.,17.0,release_e,9.0,0.012281385250389576,0.11270713061094284
+V0206,release_b,The narrative concludes with Release B after a Normal Care admission.,5.0,release_a,3.0,0.36165082454681396,0.3340359926223755
+V0207,release_a,The narrative culminates in Release A following Normal Care.,5.0,admission_nc,2.0,0.023259686306118965,0.0006090979441069067
+V0208,release_a,The narrative shows Normal Care admission and ends with Release A.,8.0,admission_nc,6.0,0.1309460550546646,0.00032476469641551375
+V0209,release_a,The narrative completes the Normal Care pathway and terminates with Release A.,7.0,release_b,2.0,0.3725452125072479,0.018329894170165062
+V0210,release_a,The narrative shows Release A followed by an ER return.,6.0,admission_nc,4.0,0.40527936816215515,0.005060744937509298
+V0211,release_a,"The narrative features Normal Care, Release A, and a subsequent ER return.",5.0,release_d,3.0,0.38099586963653564,0.0025926795788109303
+V0212,release_a,"The narrative involves Normal Care, Release A, and an ER return.",6.0,release_c,5.0,0.4665276110172272,0.0005257689044810832
+V0213,release_a,"The narrative records an admission via Normal Care, Release A, and a return to the ER.",9.0,admission_nc,4.0,0.6754417419433594,0.2315760850906372
+V0214,release_a,The narrative follows Normal Care and concludes with Release A.,4.0,admission_nc,3.0,0.029877597466111183,0.003367247059941292
+V0215,release_a,The narrative ends with Release A after Normal Care.,8.0,release_d,4.0,0.005709651857614517,0.0013093202142044902
+V0216,release_a,The narrative ends in Release A before an ER return.,8.0,release_b,4.0,0.4960401952266693,0.015897588804364204
+V0217,,The process stops at IV Antibiotics without reaching any defined admission or release category.,,release_a,4.0,,0.029122019186615944
+V0218,admission_ic,The narrative explicitly includes an Admission to Intensive Care step and ends with Release B.,13.0,release_a,10.0,0.4079415798187256,0.0127410888671875
+V0219,,The process terminates early at Leucocytes without an admission or release outcome.,,release_a,2.0,,0.16959373652935028
+V0220,release_a,The narrative ends with Release A prior to an ER return.,5.0,admission_nc,1.0,0.3738143742084503,0.00070331827737391
+V0221,release_a,The narrative concludes with Release A following Normal Care.,6.0,release_b,5.0,0.2601582705974579,0.12505990266799927
+V0222,release_a,The narrative contains Normal Care and concludes with Release A.,12.0,release_c,7.0,0.11626961827278137,0.005731435492634773
+V0223,release_a,The narrative includes Normal Care and ends with Release A.,2.0,release_c,3.0,0.22295308113098145,0.11126905679702759
+V0224,release_a,The narrative finishes with Release A before a later ER return.,5.0,admission_nc,2.0,0.43993258476257324,0.02000712789595127
+V0225,release_b,The narrative concludes with Release B after Normal Care.,7.0,release_a,4.0,0.25549080967903137,0.33593711256980896
+V0226,release_a,The narrative involves Normal Care and terminates in Release A.,6.0,release_b,3.0,0.1361798644065857,6.917044083820656e-05
+V0227,release_d,The narrative includes Normal Care and culminates in Release D.,7.0,release_a,3.0,0.336277037858963,0.00023641105508431792
+V0228,release_a,The narrative shows Normal Care admission and ends with Release A.,6.0,release_b,3.0,0.2226647585630417,0.11212658137083054
+V0229,release_a,The narrative includes Normal Care and Release A before an ER return.,6.0,admission_nc,2.0,0.350872278213501,0.022191323339939117
+V0230,release_a,The narrative features Normal Care and Release A with an ER return.,5.0,admission_nc,3.0,0.4922597408294678,0.012117087841033936
+V0231,release_a,The narrative includes Normal Care and Release A followed by an ER return.,5.0,admission_nc,3.0,0.5268587470054626,0.003863513469696045
+V0232,,The narrative terminates at IV Antibiotics without reaching admission or release.,,admission_nc,1.0,,0.01385725662112236
+V0233,release_a,The narrative concludes with Release A after Normal Care.,7.0,release_c,3.0,0.3725866973400116,0.0019310266943648458
+V0234,,The process ends at Leucocytes without an admission or release category.,,admission_nc,2.0,,0.36329925060272217
+V0235,release_a,The narrative goes through Normal Care and ends with Release A.,7.0,release_c,3.0,0.20105893909931183,0.006709035951644182
+V0236,release_a,The narrative includes Normal Care and terminates with Release A.,8.0,admission_nc,2.0,0.3615235984325409,0.22541286051273346
+V0237,release_a,The narrative follows Normal Care to Release A before an ER return.,5.0,admission_nc,4.0,0.4483007490634918,0.014272559434175491
+V0238,release_a,The narrative has Normal Care and ends with Release A.,6.0,admission_nc,4.0,0.11533799767494202,0.0036266380921006203
+V0239,release_c,The narrative concludes with the specific discharge pathway Release C.,10.0,release_b,6.0,0.019804323092103004,0.3335825204849243
+V0240,release_a,The narrative features Normal Care and finishes with Release A.,4.0,release_d,3.0,0.026784874498844147,0.0002745249366853386
+V0241,release_a,The narrative includes Normal Care and Release A prior to an ER return.,9.0,release_e,6.0,0.4904552400112152,0.0103125786408782
+V0242,release_a,The narrative shows Normal Care and Release A before a return to the ER.,8.0,release_d,2.0,0.5743157863616943,0.16935761272907257
+V0243,admission_ic,The narrative includes Admission to Intensive Care and concludes with Release A and an ER return.,21.0,release_a,15.0,0.1361110955476761,0.06742193549871445
+V0244,release_a,The narrative incorporates Normal Care and ends with Release A.,9.0,release_d,6.0,0.12062031775712967,0.00165567675139755
+V0245,release_a,The narrative passes through Normal Care and terminates with Release A.,11.0,admission_nc,6.0,0.12756291031837463,0.017024725675582886
+V0246,admission_ic,The narrative features an Admission to Intensive Care step and ends with Release A.,0.0,release_b,5.0,0.3684273958206177,0.00031136456527747214
+V0247,release_b,The narrative includes Normal Care and concludes with Release B.,13.0,release_a,8.0,0.1072438582777977,0.1379086822271347
+V0248,admission_ic,The narrative includes Admission to Intensive Care and ends with Release A and an ER return.,7.0,release_a,7.0,0.05208474397659302,0.0016995238838717341
+V0249,release_a,The narrative features Normal Care and finishes with Release A.,4.0,admission_nc,3.0,0.0434001199901104,0.016889771446585655
+V0250,release_a,The narrative includes Normal Care and Release A followed by an ER return.,7.0,release_b,4.0,0.40860211849212646,0.0017379781929776073
+V0251,admission_ic,The narrative includes Admission IC and concludes with a post-discharge ER return.,11.0,release_a,4.0,0.040621235966682434,0.0011768318945541978
+V0252,release_a,"The narrative terminates with Release A, realizing the discharge pathway that helps avoid post-discharge deterioration.",2.0,admission_nc,4.0,0.12025514990091324,0.0012905156472697854
+V0253,release_a,"The narrative concludes with Release A, realizing the respective discharge pathway.",5.0,admission_nc,2.0,0.35614868998527527,0.22292715311050415
+V0254,release_d,"The narrative terminates with Release D, realizing the corresponding discharge pathway.",17.0,release_a,9.0,0.02873574197292328,0.12916147708892822
+V0255,release_a,"The narrative ends with Release A, realizing the discharge pathway.",4.0,admission_nc,3.0,0.13124220073223114,2.8607506465050392e-05
+V0256,release_a,"The narrative involves Admission NC, finishes via Release A, and subsequently records an ER return.",7.0,admission_nc,2.0,0.5127949714660645,0.0036832736805081367
+V0257,release_a,"The narrative includes Admission IC and Admission NC, ending with Release A.",13.0,admission_ic,8.0,0.1164441704750061,0.005216369871050119
+V0258,release_b,"The narrative concludes with Release B, realizing the Release Variant B pathway.",8.0,release_a,5.0,0.1732284426689148,0.037226609885692596
+V0259,release_a,"The narrative ends with Release A, realizing the corresponding release variant.",4.0,admission_nc,3.0,0.01242318656295538,0.009189817123115063
+V0260,,The narrative stops at IV Antibiotics and does not reach any admission or release phase.,,admission_nc,1.0,,0.009234319441020489
+V0261,release_a,"The narrative proceeds through Admission NC, ends with Release A, and notes an ER return.",7.0,admission_nc,6.0,0.38321423530578613,0.0003742961271200329
+V0262,release_a,The narrative includes Admission NC and concludes with Release A followed by an ER return.,8.0,admission_nc,5.0,0.3523252308368683,0.004743068479001522
+V0263,release_a,The narrative incorporates Admission NC and ends with Release A before an ER return.,6.0,release_c,4.0,0.3893526792526245,0.004429848399013281
+V0264,release_a,The narrative includes Admission NC and terminates with Release A.,4.0,admission_nc,2.0,0.12553153932094574,0.005739275831729174
+V0265,release_a,The narrative contains Admission NC and concludes with Release A prior to an ER return.,5.0,admission_nc,3.0,0.5382117629051208,0.16963928937911987
+V0266,release_a,The narrative features Admission NC and ends with Release A.,7.0,release_e,3.0,0.11332252621650696,0.0016385038616135716
+V0267,release_a,The narrative includes Admission NC and ends with Release A.,7.0,release_b,3.0,0.11280400305986404,0.0011199841974303126
+V0268,,The narrative terminates at Leucocytes and does not contain a release or specific outcome category.,,release_a,2.0,,0.005338089074939489
+V0269,release_a,"The narrative includes Admission NC, ends with Release A, and contains a subsequent ER return.",7.0,release_d,2.0,0.40858182311058044,0.0017582564614713192
+V0270,release_a,"The narrative features Admission NC, concludes with Release A, and notes an ER return.",8.0,admission_nc,3.0,0.4015417993068695,0.005697633605450392
+V0271,release_b,"The narrative includes both Admission IC and Admission NC, and terminates with Release B.",10.0,admission_ic,7.0,0.17887942492961884,0.042877573519945145
+V0272,release_a,The narrative contains Admission NC and ends with Release A.,7.0,release_b,4.0,0.006986679509282112,0.0025442650076001883
+V0273,release_d,"The narrative features Admission IC and Admission NC, and terminates with Release D.",74.0,release_b,43.0,0.10799303650856018,0.041752103716135025
+V0274,release_c,The narrative includes Admission NC and ends with Release C.,6.0,release_a,1.0,0.33583006262779236,0.34070172905921936
+V0275,release_a,"The narrative features Admission IC and Admission NC, concluding with Release A.",19.0,admission_ic,10.0,0.12780678272247314,0.0009773572674021125
+V0276,release_a,The narrative includes Admission NC and ends with Release A.,2.0,release_c,4.0,0.02872403711080551,0.00221368670463562
+V0277,release_a,"The narrative includes Admission IC and Admission NC, ending with Release A and a later ER return.",13.0,admission_ic,6.0,0.5382224917411804,0.017056075856089592
+V0278,release_a,The narrative contains Admission NC and terminates with Release A.,7.0,admission_nc,4.0,0.008478380739688873,0.012859021313488483
+V0279,release_a,"The narrative features Admission NC, ends with Release A, and records an ER return.",9.0,release_b,6.0,0.3420928716659546,0.004107136745005846
+V0280,release_a,"The narrative includes Admission NC, concludes with Release A, and records an ER return.",11.0,admission_nc,3.0,0.39825907349586487,0.0024149182718247175
+V0281,release_a,The narrative contains Admission NC and terminates with Release A.,9.0,release_c,5.0,0.0,0.004380641505122185
+V0282,release_a,The narrative features Admission NC and concludes with Release A.,5.0,release_b,4.0,0.008243681862950325,0.01262432336807251
+V0283,release_c,The narrative includes Admission NC and terminates with Release C followed by an ER return.,22.0,release_d,10.0,0.3554837703704834,0.00026249856455251575
+V0284,release_a,"The narrative contains Admission NC, ends with Release A, and includes an ER return.",6.0,admission_nc,4.0,0.5196502208709717,0.003172004595398903
+V0285,release_a,The narrative features multiple Admission NC instances and concludes with Release A.,10.0,release_b,6.0,0.12538917362689972,0.014850984327495098
+V0286,release_a,The narrative includes Admission NC and terminates with Release A.,10.0,admission_nc,3.0,0.3497038781642914,0.0015396312810480595
+V0287,,The narrative stops at CRP without reaching any admission or release category.,,release_a,2.0,,0.3696722984313965
+V0288,release_a,"The narrative includes Admission NC, concludes with Release A, and records an ER return.",5.0,release_d,4.0,0.3398141860961914,0.0018284408142790198
+V0289,release_a,The narrative contains Admission NC and ends with Release A.,5.0,admission_nc,2.0,0.04279036447405815,0.01628001220524311
+V0290,release_a,"The narrative features Admission NC, ends with Release A, and notes an ER return.",8.0,admission_nc,5.0,0.547349750995636,0.009269769303500652
+V0291,release_a,The narrative includes Admission NC and terminates with Release A.,5.0,admission_nc,3.0,0.27393171191215515,0.11598426103591919
+V0292,,The narrative terminates at Leucocytes without reaching an admission or release pathway.,,release_a,2.0,,0.4081244170665741
+V0293,release_a,The narrative contains Admission NC and concludes with Release A.,5.0,release_b,2.0,0.19374795258045197,0.16723762452602386
+V0294,release_a,The narrative includes Admission NC and terminates with Release A.,6.0,release_d,4.0,0.12159737944602966,0.0026327359955757856
+V0295,,"The narrative terminates at IV Antibiotics after Admission NC, missing a release category.",,admission_nc,2.0,,0.05921044945716858
+V0296,release_a,"The narrative contains Admission NC, concludes with Release A, and notes an ER return.",5.0,release_d,4.0,0.4500752389431,0.02140643261373043
+V0297,release_a,"The narrative features Admission NC, ends with Release A, and records an ER return.",5.0,release_c,3.0,0.4024328291416168,0.006588665768504143
+V0298,release_a,The narrative includes Admission NC and terminates with Release A.,3.0,admission_nc,4.0,0.025149350985884666,0.0013609989546239376
+V0299,release_a,The narrative contains Admission NC and concludes with Release A.,11.0,admission_nc,4.0,0.007761087734252214,0.0017698565497994423
+V0300,release_a,"The narrative includes both Admission NC and Admission IC, terminates with Release A, and records an ER return.",17.0,admission_ic,9.0,0.589036762714386,0.009110845625400543
+V0301,release_a,The narrative concludes with Release A and tracks post-discharge ER return.,7.0,release_e,4.0,0.35932886600494385,0.006597386207431555
+V0302,,The process terminates early at ER Sepsis Triage and does not complete an admission or release pathway.,,release_a,4.0,,0.3757302761077881
+V0303,release_a,Features Admission NC and ends with Release A followed by Return ER.,7.0,release_c,5.0,0.5115706920623779,0.004907504189759493
+V0304,release_a,Realizes Admission NC and terminates with Release A.,8.0,release_b,4.0,0.12737880647182465,0.003892015665769577
+V0305,,Ends at IV Antibiotics without reaching ward admission or discharge.,,admission_nc,3.0,,0.05041487514972687
+V0306,release_a,Includes Admission NC and successfully finishes with Release A.,9.0,admission_nc,4.0,0.17380867898464203,0.014771842397749424
+V0307,release_a,Realizes Admission NC and Release A pathways before a return to the ER.,5.0,release_c,2.0,0.392280250787735,0.001502270228229463
+V0308,release_a,Contains Normal Care admission and Release A discharge.,9.0,release_b,5.0,0.45454955101013184,0.009890234097838402
+V0309,release_b,Realizes the Release B pathway following admission.,8.0,admission_nc,3.0,0.772127628326416,0.0033132981043308973
+V0310,release_a,Includes Admission NC and completes via Release A.,6.0,admission_nc,4.0,0.12883637845516205,0.002434445545077324
+V0311,admission_ic,Includes an Admission IC step which contributes negatively to minimizing time-to-treatment.,11.0,release_a,10.0,0.04234975948929787,0.0005516940727829933
+V0312,release_a,Follows Admission NC and concludes with Release A.,7.0,release_b,6.0,0.0371929407119751,0.017738115042448044
+V0313,release_c,Features Admission NC and terminates with Release C.,4.0,release_a,4.0,0.02167687751352787,0.3333558142185211
+V0314,release_c,Includes Admission NC and ends with Release C.,7.0,release_a,5.0,0.0055399625562131405,0.33351871371269226
+V0315,admission_ic,Realizes Admission IC along its pathway.,18.0,release_a,11.0,0.34441789984703064,0.0065683177672326565
+V0316,release_e,Realizes Admission NC and concludes with Release E.,9.0,release_a,3.0,0.09367720037698746,0.3334403932094574
+V0317,admission_ic,Involves multiple Intensive Care admissions (Admission IC).,152.0,release_b,67.0,0.16760466992855072,0.06708485633134842
+V0318,admission_ic,Includes an Admission IC event along the path to Normal Care and release.,20.0,release_a,10.0,0.33615800738334656,0.003569160820916295
+V0319,release_a,Includes Admission NC and finishes with Release A.,12.0,release_e,7.0,0.00566081702709198,0.0012604851508513093
+V0320,release_a,Realizes Admission NC and Release A.,6.0,release_d,4.0,0.6259834170341492,0.11271701008081436
+V0321,release_a,Follows Admission NC and ends with Release A.,8.0,admission_nc,5.0,0.5596616864204407,0.008204028010368347
+V0322,,Terminates at IV Antibiotics without admission or discharge categories.,,admission_nc,2.0,,0.026486925780773163
+V0323,release_a,Realizes Admission NC and Release A.,9.0,release_b,2.0,0.39320409297943115,0.038988757878541946
+V0324,admission_ic,Includes Admission IC in its pathway.,23.0,release_a,14.0,0.09969943761825562,0.005484387278556824
+V0325,,Stops at IV Antibiotics in the ER phase.,,admission_nc,3.0,,0.35349592566490173
+V0326,release_a,Includes Admission NC and Release A.,3.0,release_c,4.0,0.024564573541283607,0.001913985819555819
+V0327,release_a,Realizes Admission NC and Release A.,6.0,release_c,4.0,0.47147274017333984,0.002864725887775421
+V0328,release_a,Includes Admission NC and Release A.,7.0,admission_nc,3.0,0.42954739928245544,0.009621920995414257
+V0329,release_a,Realizes Admission NC and Release A.,16.0,release_b,9.0,0.12512390315532684,0.01458571944385767
+V0330,,Ends at IV Liquid without reaching ward admission or release.,,admission_nc,1.0,,0.33358609676361084
+V0331,release_a,Includes Admission NC and Release A.,14.0,admission_nc,7.0,0.026756444945931435,0.007301620673388243
+V0332,release_b,Realizes Admission NC and terminates with Release B.,6.0,release_a,2.0,0.2784082293510437,0.3588545322418213
+V0333,release_b,Realizes Admission NC and terminates with Release B.,13.0,release_a,8.0,0.08355250954627991,0.11421734094619751
+V0334,admission_ic,Includes Admission IC during its inpatient stay.,24.0,release_a,14.0,0.0985456183552742,0.004330573603510857
+V0335,release_a,Includes Admission NC and Release A.,6.0,admission_ic,5.0,0.4546571671962738,0.007916202768683434
+V0336,,Terminates at CRP test without admission or discharge.,,release_a,1.0,,0.010617190040647984
+V0337,release_a,Realizes Admission NC and Release A.,6.0,admission_nc,3.0,0.026122162118554115,0.00038818642497062683
+V0338,release_a,Realizes Admission NC and Release A.,5.0,release_b,4.0,0.11753436177968979,0.0014302836498245597
+V0339,admission_ic,Includes multiple Admission IC events.,17.0,release_a,15.0,0.1555202156305313,0.06766699254512787
+V0340,release_a,Includes Admission NC and Release A.,6.0,release_e,4.0,0.02773193269968033,0.0012215821770951152
+V0341,release_a,Includes Admission NC and Release A.,4.0,release_d,4.0,0.129240944981575,0.0020298718009144068
+V0342,,Stops at CRP without completing admission or discharge.,,admission_nc,2.0,,0.1818922907114029
+V0343,release_a,Realizes Admission NC and Release A.,6.0,release_b,4.0,0.11251717805862427,0.0008331562275998294
+V0344,release_b,Includes Admission NC and finishes with Release B.,10.0,release_c,3.0,0.1462228149175644,0.1768876314163208
+V0345,admission_ic,Includes an Admission IC event in the course of treatment.,13.0,release_a,10.0,0.42225444316864014,0.0008627488859929144
+V0346,admission_ic,Realizes Admission IC during inpatient care.,11.0,release_a,9.0,0.1577674001455307,0.0025624819099903107
+V0347,release_d,Realizes Admission NC and finishes with Release D.,8.0,release_a,5.0,0.5113713145256042,0.0003271280147600919
+V0348,release_a,Includes Admission NC and Release A.,6.0,admission_nc,5.0,0.46508607268333435,0.006395623087882996
+V0349,,Terminates at ER Sepsis Triage without reaching admission or release.,,release_a,5.0,,0.3344039022922516
+V0350,release_a,Realizes Admission NC and Release A.,9.0,admission_nc,2.0,0.7436292171478271,0.02519953064620495
+V0351,release_a,The narrative ends with Release A and contributes to avoiding post-discharge deterioration.,9.0,admission_nc,1.0,0.35879865288734436,0.004583350382745266
+V0352,release_a,"Although it resulted in an ER return, the treatment path went through Release A.",5.0,admission_nc,4.0,0.47988009452819824,0.00026249856455251575
+V0353,release_a,The variant uses the Release A pathway prior to the ER return.,5.0,release_c,4.0,0.42025259137153625,0.0003271280147600919
+V0354,admission_ic,"The process involves Admission IC after Normal Care, thus realizing the intensive care pathway.",14.0,release_a,9.0,0.45159223675727844,0.0007188001764006913
+V0355,admission_ic,Includes Admission IC as part of the inpatient ward admission pathway.,5.0,release_a,4.0,0.4537179470062256,0.0009999602334573865
+V0356,release_a,Realizes Release A discharge pathway.,11.0,admission_nc,4.0,0.12765176594257355,0.007154356688261032
+V0357,release_a,Follows the Release A pathway before a subsequent return to ER.,7.0,release_c,5.0,0.49894675612449646,0.0175314974039793
+V0358,release_a,Realizes Release A pathway.,7.0,release_b,4.0,0.6771051287651062,0.22991269826889038
+V0359,release_a,Realizes Release A before the post-discharge ER return.,6.0,release_d,5.0,0.4049387276172638,0.0054013594053685665
+V0360,release_a,Realizes the Release A discharge category.,6.0,admission_nc,4.0,0.34665119647979736,0.004592300392687321
+V0361,release_a,Realizes Release A discharge pathway.,6.0,release_b,3.0,0.14672350883483887,0.010612807236611843
+V0362,release_a,Realizes Release A discharge pathway.,3.0,admission_nc,2.0,0.019336139783263206,0.0022768632043153048
+V0363,release_a,Realizes Release A discharge pathway.,4.0,admission_nc,2.0,0.025239773094654083,0.0012705766130238771
+V0364,release_a,Realizes Release A discharge pathway.,6.0,release_d,3.0,0.40764522552490234,0.002694865921512246
+V0365,admission_ic,"Includes Admission IC, realizing the intensive care admission category.",11.0,release_a,6.0,0.425553560256958,0.06894596666097641
+V0366,release_a,Realizes Release A discharge pathway.,5.0,admission_nc,4.0,0.3505697548389435,0.0029875810723751783
+V0367,admission_ic,Includes Admission IC in the pathway.,16.0,release_a,11.0,0.023745596408843994,0.0021529358346015215
+V0368,admission_nc,"Represents the Normal Care admission pathway, ending at Admission NC.",4.0,release_a,2.0,0.7794960141181946,0.010571219027042389
+V0369,release_a,Realizes Release A discharge pathway.,11.0,release_d,7.0,0.4606533944606781,0.0037863878533244133
+V0370,release_a,Realizes Release A discharge pathway.,6.0,admission_nc,4.0,0.5128738284111023,0.0015839594416320324
+V0371,release_b,Realizes the Release B discharge pathway.,5.0,admission_nc,2.0,0.36474713683128357,0.3336716592311859
+V0372,release_a,Realizes Release A discharge pathway.,13.0,admission_nc,7.0,0.1795930415391922,0.000377224525436759
+V0373,release_a,Realizes Release A discharge pathway.,6.0,release_b,3.0,0.005374075844883919,0.009754717350006104
+V0374,admission_nc,Admitted via Normal Care without reaching a final discharge category in this snippet.,6.0,release_a,2.0,0.39346790313720703,0.06948789209127426
+V0375,admission_ic,Includes Admission IC pathway.,10.0,release_d,7.0,0.42861318588256836,0.000377224525436759
+V0376,release_c,Realizes the Release C discharge pathway.,6.0,release_a,3.0,0.007629280909895897,0.3339240849018097
+V0377,release_a,Realizes Release A discharge pathway.,3.0,admission_nc,4.0,0.01746964640915394,0.004143357742577791
+V0378,admission_nc,"Does not reach discharge or IC, so it falls under the normal care admission preparation.",5.0,release_a,2.0,0.7635050415992737,0.33538034558296204
+V0379,admission_nc,Stops at IV Antibiotics during the preliminary phase before any formal ward admission category.,6.0,release_a,2.0,0.774718701839447,0.33912718296051025
+V0380,release_a,Realizes Release A discharge pathway.,8.0,admission_nc,3.0,0.35725829005241394,0.0030429402831941843
+V0381,release_a,Realizes Release A discharge pathway.,6.0,admission_nc,1.0,0.1399073600769043,0.003796664299443364
+V0382,release_a,Realizes Release A discharge pathway.,6.0,admission_nc,4.0,0.4532106816768646,0.009362704120576382
+V0383,release_a,Realizes Release A discharge pathway.,8.0,admission_nc,4.0,0.3658924996852875,0.011677156202495098
+V0384,release_b,Realizes the Release B discharge pathway.,10.0,release_a,6.0,0.1950094848871231,0.05900764837861061
+V0385,release_a,Realizes Release A discharge pathway.,11.0,release_c,7.0,0.44620218873023987,0.018237542361021042
+V0386,release_a,Realizes Release A discharge pathway.,6.0,release_c,3.0,0.4004189968109131,0.004574846010655165
+V0387,release_a,Realizes Release A discharge pathway.,5.0,admission_nc,4.0,0.1266583353281021,0.01612015627324581
+V0388,release_a,Realizes Release A discharge pathway.,7.0,release_c,5.0,0.026262611150741577,0.000247738731559366
+V0389,release_a,Realizes Release A discharge pathway.,6.0,admission_nc,2.0,0.37208226323127747,0.2303095906972885
+V0390,release_b,Realizes the Release B discharge pathway.,7.0,release_a,3.0,0.012797337956726551,0.18453414738178253
+V0391,admission_ic,Includes Admission IC in its pathway.,5.0,release_a,2.0,0.3813493251800537,0.00046695745550096035
+V0392,release_a,Realizes Release A discharge pathway.,4.0,release_d,4.0,0.25697556138038635,0.1208648756146431
+V0393,release_b,Realizes the Release B discharge pathway.,19.0,release_a,9.0,0.03321772441267967,0.23054921627044678
+V0394,release_a,Realizes Release A discharge pathway.,7.0,admission_nc,4.0,0.03250931203365326,0.005998961627483368
+V0395,release_a,Realizes Release A discharge pathway.,0.0,release_c,3.0,0.008465897291898727,0.012846537865698338
+V0396,release_a,Realizes Release A discharge pathway.,4.0,release_d,1.0,0.013027067296206951,0.008585936389863491
+V0397,release_a,Realizes Release A discharge pathway.,7.0,release_d,6.0,0.13838781416416168,0.0022771090734750032
+V0398,release_a,Realizes Release A discharge pathway.,16.0,admission_nc,8.0,0.4709019660949707,0.002293940167874098
+V0399,release_b,Realizes the Release B discharge pathway.,7.0,release_a,2.0,0.43542158603668213,0.33339282870292664
+V0400,release_a,Realizes Release A discharge pathway.,5.0,admission_nc,2.0,0.19016289710998535,0.001582380966283381
+V0401,release_b,"The narrative ends with Release B, realizing the discharge pathway Release B category.",9.0,release_a,4.0,0.1129515990614891,0.1399354487657547
+V0402,release_a,"The narrative features Admission NC and Release A, culminating in a post-discharge ER return, realizing Release A.",7.0,release_b,5.0,0.4163460433483124,0.0035794225987046957
+V0403,release_a,"The narrative contains Admission NC and Release A, realizing the Release A category.",9.0,admission_nc,6.0,0.5013084411621094,0.026720276102423668
+V0404,release_a,"The variant includes Admission NC and concludes with Release A followed by Return ER, matching Release A.",6.0,admission_nc,4.0,0.5366268754005432,0.0014531529741361737
+V0405,release_a,"The variant features Admission NC and ends with Release A, realizing Release A.",5.0,admission_nc,3.0,0.04253146052360535,0.016021111980080605
+V0406,release_a,"The variant features Admission NC and ends with Release A, realizing Release A.",6.0,admission_nc,2.0,0.19258244335651398,0.001767445937730372
+V0407,release_b,"The narrative includes Admission IC and concludes with Release B, realizing Release B.",5.0,release_a,5.0,0.14288106560707092,0.11221623420715332
+V0408,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",7.0,release_b,4.0,0.3634699285030365,0.0024563290644437075
+V0409,release_a,"The narrative features Admission NC and concludes with Release A, realizing Release A.",7.0,admission_nc,2.0,0.518430233001709,0.0019520153291523457
+V0410,release_d,"The narrative includes Admission NC and ends with Release D, realizing Release D.",6.0,release_a,1.0,0.14332804083824158,0.18179118633270264
+V0411,release_a,"The narrative includes Admission NC and Release A before a Return ER, realizing Release A.",10.0,release_b,7.0,0.4456658363342285,0.06894596666097641
+V0412,release_a,"The narrative features Admission NC and ends with Release A before a Return ER, realizing Release A.",11.0,release_d,5.0,0.37763693928718567,0.0031192386522889137
+V0413,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",7.0,admission_nc,2.0,0.7562478184700012,0.03781820461153984
+V0414,release_a,"The narrative features Admission NC and Release A, realizing Release A.",7.0,admission_nc,3.0,0.3752657473087311,0.0007480275817215443
+V0415,admission_nc,"The narrative ends directly at Admission NC without a release, realizing Admission to Normal Care.",5.0,release_a,1.0,0.7637040615081787,0.005220815073698759
+V0416,release_a,"The narrative includes Admission NC and ends with Release A, realizing Release A.",8.0,admission_nc,3.0,0.3827272951602936,0.02851198799908161
+V0417,,The narrative does not include any inpatient admission or release category from the taxonomy.,,admission_nc,1.0,,0.6931584477424622
+V0418,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",4.0,release_d,5.0,0.38543006777763367,0.0018415371887385845
+V0419,release_a,"The narrative features Admission NC and Release A, realizing Release A.",4.0,release_b,3.0,0.012303211726248264,0.009309791028499603
+V0420,release_a,"The narrative features Admission NC and Release A, realizing Release A.",7.0,admission_nc,3.0,0.35955795645713806,0.22344724833965302
+V0421,release_b,"The narrative includes Admission NC and concludes with Release B, realizing Release B.",7.0,release_a,4.0,0.00939370971173048,0.20672519505023956
+V0422,release_a,"The narrative features Admission IC followed by Admission NC and Release A, realizing Release A.",11.0,admission_ic,6.0,0.53569096326828,0.014666073955595493
+V0423,release_c,"The narrative includes Admission NC and ends with Release C, realizing Release C.",6.0,release_a,4.0,0.01725548319518566,0.33396363258361816
+V0424,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",7.0,release_b,4.0,0.6753427386283875,0.043086957186460495
+V0425,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",3.0,release_c,2.0,0.014817595481872559,0.006795408204197884
+V0426,release_c,"The narrative includes Admission NC and ends with Release C, realizing Release C.",4.0,release_a,2.0,0.018275557085871696,0.33333656191825867
+V0427,release_c,"The narrative includes Admission NC and ends with Release C, realizing Release C.",8.0,release_a,4.0,0.3918193578720093,0.0008149051573127508
+V0428,release_c,"The narrative includes Admission NC and ends with Release C, realizing Release C.",10.0,release_a,6.0,0.12931039929389954,0.33356547355651855
+V0429,,The narrative does not contain any admission or release categories from the taxonomy.,,release_a,2.0,,0.0012578346068039536
+V0430,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",8.0,release_b,4.0,0.1183517575263977,0.0033577352296561003
+V0431,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",2.0,admission_nc,2.0,0.022560274228453636,9.031485387822613e-05
+V0432,release_b,"The narrative includes Admission IC and ends with Release B, realizing Release B.",11.0,admission_ic,8.0,0.2100725919008255,0.0127410888671875
+V0433,release_c,"The narrative includes Admission NC and ends with Release C, realizing Release C.",6.0,release_a,2.0,0.22553741931915283,0.34123948216438293
+V0434,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",7.0,release_d,5.0,0.11280030012130737,0.0011162777664139867
+V0435,release_a,"The narrative includes Admission NC and Admission IC, ending with Release A, realizing Release A.",36.0,admission_ic,19.0,0.5353773832321167,0.00017225810734089464
+V0436,release_b,"The narrative includes Admission NC and ends with Release B, realizing Release B.",8.0,release_a,5.0,0.0316169448196888,0.2289484292268753
+V0437,release_d,"The narrative includes Admission IC and Admission NC, ending with Release D, realizing Release D.",30.0,release_a,16.0,0.5003300905227661,0.0037863878533244133
+V0438,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",11.0,release_c,5.0,0.01035566721111536,0.0008247224031947553
+V0439,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",28.0,release_b,12.0,0.03954935446381569,0.020094528794288635
+V0440,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",11.0,release_c,5.0,0.5496170520782471,0.001840634853579104
+V0441,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",5.0,release_c,3.0,0.44241368770599365,0.022488228976726532
+V0442,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",8.0,admission_nc,5.0,0.5115898251533508,0.0048883757553994656
+V0443,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",5.0,release_d,2.0,0.3801109790802002,0.00347756571136415
+V0444,release_c,"The narrative includes Admission NC and ends with Release C, realizing Release C.",6.0,release_a,3.0,0.1267877072095871,0.333497554063797
+V0445,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",4.0,admission_nc,2.0,0.12949679791927338,0.0017740173498168588
+V0446,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",5.0,release_c,4.0,0.12723098695278168,0.004039838910102844
+V0447,release_c,"The narrative includes Admission NC and ends with Release C, realizing Release C.",10.0,release_a,5.0,0.5094826221466064,0.0008237233851104975
+V0448,release_a,"The narrative includes Admission IC and Admission NC, ending with Release A, realizing Release A.",11.0,release_c,7.0,0.5178914070129395,0.0031334729865193367
+V0449,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",6.0,admission_nc,4.0,0.5536666512489319,0.0016118697822093964
+V0450,release_a,"The narrative includes Admission NC and Release A, realizing Release A.",5.0,admission_nc,3.0,0.01357846986502409,0.008034533821046352
+V0451,release_a,"The narrative culminates in Release A, aligning with the release pathway category.",6.0,admission_nc,1.0,0.3445344865322113,0.22556979954242706
+V0452,release_a,The narrative shows admission via normal care and concludes with Release A.,25.0,admission_ic,14.0,0.18643732368946075,0.0008627488859929144
+V0453,release_a,"Although there is a return to ER later, the initial discharge sequence is Release A.",12.0,release_d,7.0,0.4713841378688812,0.0027760693337768316
+V0454,release_a,The patient is discharged via Release A before eventually returning to the ER.,4.0,release_d,3.0,0.5140502452850342,0.002427955623716116
+V0455,release_a,The narrative successfully concludes with Release A.,5.0,admission_nc,3.0,0.1189335510134697,0.008395363576710224
+V0456,release_a,The primary pathway leads to inpatient admission through normal care and terminates in Release A.,6.0,admission_nc,3.0,0.13777510821819305,0.0016644090646877885
+V0457,release_a,The variant features mixed admissions and finishes with Release A.,18.0,admission_ic,9.0,0.1808280497789383,0.0016122306697070599
+V0458,release_a,The narrative completes the primary treatment path ending in Release A.,6.0,admission_nc,4.0,0.5639157295227051,0.16807156801223755
+V0459,release_a,The patient is admitted to normal care and ultimately released with Release A.,7.0,release_c,3.0,0.11750491708517075,0.0014597299741581082
+V0460,release_a,The discharge event in this sequence is Release A.,5.0,release_d,4.0,0.45015034079551697,0.012423043139278889
+V0461,release_a,The pathway ends with Release A.,6.0,admission_nc,4.0,0.1326763927936554,0.0014055775245651603
+V0462,,The outcome is CRP and does not lead to any final admission or release category.,,release_a,1.0,,0.0008615933475084603
+V0463,release_a,The narrative passes through normal care admission and Release A.,8.0,admission_nc,2.0,0.7356338500976562,0.01720411144196987
+V0464,release_a,The patient is discharged via Release A.,8.0,admission_nc,5.0,0.573370635509491,0.0017006737180054188
+V0465,release_a,The pathway concludes with Release A.,7.0,admission_nc,5.0,0.029156869277358055,0.0026465198025107384
+V0466,release_a,The patient's treatment sequence ends in Release A.,3.0,admission_ic,3.0,0.1268327236175537,0.016294535249471664
+V0467,release_a,The release step corresponds to Release A.,8.0,release_d,5.0,0.4598911702632904,0.002682177582755685
+V0468,release_a,The final hospital discharge event is Release A.,7.0,admission_nc,4.0,0.3360358774662018,0.0019498425535857677
+V0469,release_a,The narrative includes admission and terminates in Release A.,7.0,release_d,4.0,0.46728983521461487,0.00023641105508431792
+V0470,release_d,The patient's final discharge event is explicitly Release D.,5.0,release_a,2.0,0.14845110476016998,0.18691426515579224
+V0471,release_a,The sequence follows the normal care admission pathway and Release A.,6.0,release_b,3.0,0.027528276666998863,0.00101792614441365
+V0472,release_a,The narrative concludes with Release A.,5.0,admission_nc,2.0,0.023373208940029144,0.0007226194138638675
+V0473,release_a,The discharge event is Release A.,7.0,admission_nc,2.0,0.3340323865413666,0.005351438652724028
+V0474,release_a,The narrative concludes via Release A before any subsequent ER return.,5.0,admission_nc,3.0,0.4193924367427826,0.0005330360145308077
+V0475,release_a,The patient is discharged via Release A.,5.0,release_b,4.0,0.01140838023275137,0.010204623453319073
+V0476,release_a,The treatment path terminates in Release A.,5.0,release_b,4.0,0.5692985653877258,0.1734543889760971
+V0477,release_a,The narrative successfully completes with Release A.,6.0,release_b,4.0,0.12026045471429825,0.0012958190636709332
+V0478,release_a,The pathway concludes with Release A.,7.0,release_b,5.0,0.13156533241271973,0.0002945177548099309
+V0479,release_a,The narrative ends with the Release A outcome.,4.0,admission_nc,3.0,0.3352487087249756,0.0027370217721909285
+V0480,release_a,The patient is discharged with Release A.,6.0,release_b,3.0,0.0073051657527685165,0.011685807257890701
+V0481,release_a,The narrative follows normal care admission and concludes with Release A.,10.0,release_b,6.0,0.1176629364490509,0.007124755065888166
+V0482,release_a,"The patient receives treatment, is admitted, and is released via Release A.",8.0,admission_nc,4.0,0.4542224407196045,0.008350945077836514
+V0483,release_b,The narrative culminates specifically in Release B.,28.0,release_a,12.0,0.059152472764253616,0.2564839720726013
+V0484,release_a,The discharge step in this pathway is Release A.,9.0,release_d,6.0,0.5556856393814087,0.004227946046739817
+V0485,release_a,The complex treatment sequence terminates in Release A.,22.0,admission_nc,14.0,0.17659664154052734,0.0026191731449216604
+V0486,release_d,The patient is discharged via Release D.,10.0,release_b,5.0,0.0,0.10042574256658554
+V0487,release_a,The narrative ends with the Release A outcome.,7.0,admission_nc,6.0,0.17149139940738678,0.007724411319941282
+V0488,,The outcome is IV Liquid and does not reach any admission or release goal category.,,admission_nc,2.0,,0.33413055539131165
+V0489,release_a,The patient is admitted and successfully released via Release A.,8.0,admission_nc,3.0,0.34834229946136475,0.0029011862352490425
+V0490,release_a,The narrative terminates with Release A.,4.0,admission_nc,3.0,0.18456299602985382,0.0053407358936965466
+V0491,release_a,The sequence leads to normal care and concludes with Release A.,4.0,admission_nc,2.0,0.02745743840932846,0.0009470892255194485
+V0492,,"The outcome is IV Liquid, failing to fit any defined admission or release category.",,release_a,3.0,,0.33516204357147217
+V0493,release_b,The narrative explicitly concludes with Release B.,4.0,release_a,2.0,0.13393361866474152,0.16459845006465912
+V0494,release_a,The patient is discharged via Release A.,7.0,admission_nc,3.0,0.01087894942611456,0.010734054259955883
+V0495,,The outcome is IV Antibiotics and does not realize an admission or release goal.,,release_a,3.0,,0.0004915641620755196
+V0496,release_a,The final stage of the variant is Release A.,8.0,release_c,5.0,0.12569154798984528,0.003092588856816292
+V0497,release_a,The narrative includes a release via Release A prior to the subsequent ER visit.,9.0,admission_nc,3.0,0.6779162287712097,0.0630125030875206
+V0498,release_d,The narrative concludes with Release D.,8.0,release_a,4.0,0.11551537364721298,0.18816334009170532
+V0499,release_a,The pathway finishes with Release A.,4.0,release_c,4.0,0.1361808329820633,7.013475260464475e-05
+V0500,release_a,The sequence follows normal care admission and terminates in Release A.,8.0,release_b,4.0,0.19491763412952423,0.0005677348817698658
+V0501,,The narrative terminates at IV Liquid and does not reach ward admission or discharge categories.,,release_a,2.0,,0.33455419540405273
+V0502,admission_nc,"The narrative reaches Admission NC as its final event, thus realizing the Normal Care admission pathway.",6.0,release_a,2.0,0.7546296715736389,0.014295171946287155
+V0503,release_b,The narrative successfully discharges the patient via Release B.,6.0,admission_nc,1.0,0.37633016705513,0.3359071910381317
+V0504,release_a,"The narrative passes through Admission NC and ends with Release A (followed by an ER return), realizing Release A.",3.0,release_c,4.0,0.363776832818985,0.00214942405000329
+V0505,release_a,The narrative includes Admission NC and concludes via Release A before an ER return.,5.0,release_c,3.0,0.395504355430603,0.00033978806459344923
+V0506,release_a,The narrative terminates at Release A following Admission NC.,2.0,admission_nc,2.0,0.02511482499539852,0.001395525992847979
+V0507,admission_nc,Matches Admission NC pathway indicators though ending earlier in the sequence context.,7.0,release_b,3.0,0.7645283341407776,0.33435705304145813
+V0508,release_a,The narrative features Admission NC and is discharged via Release A.,11.0,release_c,6.0,0.39827075600624084,0.0024265889078378677
+V0509,release_a,The narrative includes Admission NC and culminates in Release A.,4.0,release_b,3.0,0.017429986968636513,0.0041830167174339294
+V0510,,The narrative ends at IV Antibiotics without progressing to admission or discharge categories.,,admission_nc,1.0,,0.009775525890290737
+V0511,release_a,The narrative features Admission NC and terminates with Release A.,10.0,admission_nc,8.0,0.1878088116645813,0.0022342444863170385
+V0512,release_a,The narrative includes Admission NC and ends with Release A.,6.0,admission_nc,5.0,0.1349440962076187,0.00019069846894126385
+V0513,release_a,The narrative contains Admission NC and is completed via Release A.,4.0,admission_nc,4.0,0.14276130497455597,0.006650600116699934
+V0514,release_a,The narrative features Admission NC and concludes with Release A.,11.0,admission_nc,4.0,0.12473813444375992,0.014199957251548767
+V0515,release_a,The narrative proceeds through Admission NC and ends with Release A before an ER return.,9.0,release_b,4.0,0.5114645957946777,0.005013633985072374
+V0516,,The narrative terminates at Leucocytes and lacks ward admission or discharge milestones.,,release_a,6.0,,0.058374062180519104
+V0517,,The narrative terminates at ER Triage and does not reach admission or release categories.,,admission_nc,1.0,,0.6884955763816833
+V0518,release_a,The narrative includes Admission NC and concludes with Release A.,6.0,admission_nc,2.0,0.04100183770060539,0.014491490088403225
+V0519,release_a,The narrative progresses through Admission NC and terminates at Release A.,5.0,admission_nc,3.0,0.44800353050231934,0.014569799415767193
+V0520,release_a,The narrative contains Admission NC and is discharged via Release A.,6.0,admission_nc,3.0,0.5591936707496643,0.1328781247138977
+V0521,release_a,The narrative includes Admission NC and ends with Release A.,7.0,release_c,6.0,0.12286943197250366,0.003904789686203003
+V0522,release_b,The narrative passes through Admission NC and terminates with Release B.,20.0,release_d,9.0,0.11910214275121689,0.1497669816017151
+V0523,release_a,The narrative includes Admission NC and concludes via Release A.,6.0,admission_nc,5.0,0.17149531841278076,0.0056012780405581
+V0524,release_a,The narrative proceeds through Admission NC and culminates in Release A.,4.0,release_d,3.0,0.008242017589509487,0.012622659094631672
+V0525,release_a,The narrative features Admission NC and ends with Release A.,4.0,release_d,2.0,0.17515772581100464,0.013422776944935322
+V0526,release_a,The narrative includes Admission NC and concludes with Release A.,7.0,admission_nc,2.0,0.5423815250396729,0.004301460459828377
+V0527,release_a,The narrative contains Admission NC and terminates at Release A.,8.0,release_b,5.0,0.17781539261341095,0.0007188001764006913
+V0528,release_a,The narrative features Admission NC and ends with Release A.,10.0,release_d,7.0,0.563425600528717,0.008142935112118721
+V0529,release_a,The narrative includes Admission NC and concludes via Release A.,6.0,admission_nc,3.0,0.4224739074707031,0.002548444317653775
+V0530,release_a,The narrative passes through Admission NC and ends with Release A.,7.0,release_d,5.0,0.49827608466148376,0.018133459612727165
+V0531,admission_ic,"The narrative explicitly includes Admission IC, realizing the intensive care admission pathway.",9.0,release_a,5.0,0.10564621537923813,0.08375833183526993
+V0532,release_a,The narrative features Admission NC and terminates with Release A.,4.0,release_c,3.0,0.008701720274984837,0.012911282479763031
+V0533,release_a,The narrative includes Admission NC and concludes with Release A.,4.0,admission_nc,2.0,0.0027561839669942856,0.0016244575381278992
+V0534,release_a,The narrative proceeds through Admission NC and ends with Release A.,5.0,admission_nc,2.0,0.132243350148201,0.0009725434356369078
+V0535,release_a,The narrative includes Admission NC and terminates at Release A.,6.0,release_b,4.0,0.40276864171028137,0.006924503017216921
+V0536,release_a,The narrative features Admission NC and concludes via Release A.,5.0,admission_nc,3.0,0.131252259016037,1.8557451767264865e-05
+V0537,release_a,The narrative contains Admission NC and ends with Release A.,7.0,release_c,6.0,0.024813136085867882,0.0016972142038866878
+V0538,release_a,The narrative passes through Admission NC and terminates with Release A.,12.0,release_c,9.0,0.13058389723300934,0.02004571072757244
+V0539,release_a,The narrative includes Admission NC and culminates in Release A.,7.0,release_d,4.0,0.46743568778038025,0.0003822969738394022
+V0540,release_b,The narrative features Admission NC and ends with Release B.,7.0,release_a,4.0,0.009863734245300293,0.1874677538871765
+V0541,release_a,The narrative includes Admission NC and concludes with Release A.,8.0,admission_nc,3.0,0.3619326055049896,0.007717253174632788
+V0542,admission_ic,"The narrative explicitly includes Admission IC, realizing the intensive care admission pathway.",8.0,release_a,5.0,0.3755020201206207,0.0007972149760462344
+V0543,admission_ic,The narrative features Admission IC as part of its admission process.,16.0,release_a,13.0,0.0,0.004500335548073053
+V0544,release_a,The narrative includes Admission NC and terminates with Release A.,5.0,admission_nc,2.0,0.02286778949201107,0.00021720030053984374
+V0545,release_a,The narrative proceeds through Admission NC and concludes with Release A.,4.0,release_e,3.0,0.00817879568785429,0.0125594362616539
+V0546,release_a,The narrative features Admission NC and ends with Release A.,5.0,admission_nc,3.0,0.36610937118530273,0.0001831106055760756
+V0547,release_b,The narrative includes Admission NC and terminates via Release B.,18.0,release_a,10.0,0.027221789583563805,0.22455328702926636
+V0548,release_a,The narrative contains Admission NC and concludes with Release A.,8.0,release_b,5.0,0.17528347671031952,0.0018131313845515251
+V0549,,The narrative terminates at IV Liquid without reaching ward admission or release categories.,,admission_nc,2.0,,0.3337417542934418
+V0550,release_b,The narrative includes Admission NC and successfully concludes with Release B.,8.0,release_a,3.0,0.2006756067276001,0.1700107604265213
+V0551,release_a,The narrative concludes with Release A and tracks post-discharge ER return.,73.0,release_b,36.0,0.20091964304447174,0.015345080755650997
+V0552,release_b,"The narrative ends with Release B, realizing the second release alternative.",14.0,release_c,6.0,0.1275031715631485,0.1581680029630661
+V0553,release_e,"The narrative concludes with Release E, corresponding to Release Variant E.",18.0,release_a,8.0,0.0,0.3345264494419098
+V0554,release_a,"The narrative terminates with Release A, matching Release Variant A.",4.0,admission_nc,1.0,0.12063520401716232,0.0016705637099221349
+V0555,release_b,The outcome of this variant is Release B.,6.0,release_a,4.0,0.22606010735034943,0.2567249536514282
+V0556,release_a,"Despite a return to ER, the primary discharge pathway is Release A.",6.0,admission_nc,3.0,0.46053948998451233,0.0020338213071227074
+V0557,release_a,The pathway concludes with Release A.,6.0,release_b,3.0,0.11624947935342789,0.005711300764232874
+V0558,release_a,The primary discharge before return is Release A.,5.0,admission_nc,3.0,0.38714197278022766,0.0035534400958567858
+V0559,release_a,The patient was discharged via Release A before returning.,8.0,release_d,5.0,0.49015116691589355,0.010008552111685276
+V0560,release_a,Discharge pathway is Release A.,8.0,release_d,4.0,0.36760035157203674,0.0016740934224799275
+V0561,release_a,The narrative ends with Release A.,6.0,admission_nc,4.0,0.0062007843516767025,0.0105814253911376
+V0562,release_a,The narrative features Admission NC and concludes with Release A.,7.0,admission_nc,4.0,0.0044193877838552,0.008800028823316097
+V0563,release_a,"Includes both Admission NC and Admission IC, ending in Release A.",13.0,release_c,8.0,0.18285870552062988,0.0036364514380693436
+V0564,release_a,Discharge is achieved through Release A.,7.0,release_b,4.0,0.48674240708351135,0.006599831860512495
+V0565,admission_nc,The narrative represents an admission to Normal Care without subsequent release in the sequence.,7.0,release_a,3.0,0.7517480850219727,0.017176801338791847
+V0566,release_a,Ends with Release A.,6.0,admission_nc,5.0,0.112700916826725,0.0010168905137106776
+V0567,release_a,Discharge via Release A followed by ER return.,5.0,admission_nc,3.0,0.41859570145606995,0.0013297502882778645
+V0568,release_a,Concludes with Release A after Normal Care admissions.,7.0,release_b,7.0,0.1692032366991043,0.010012566111981869
+V0569,release_a,Discharged via Release A.,2.0,release_d,2.0,0.12645457684993744,0.004816240165382624
+V0570,release_a,Discharged via Release A.,14.0,release_c,7.0,0.1209084764122963,0.010370295494794846
+V0571,release_b,Contains intensive care admission and concludes with Release B.,28.0,release_a,14.0,0.11622101068496704,0.14688584208488464
+V0572,release_a,"Involves admission to IC and NC, terminating in Release A.",20.0,admission_ic,9.0,0.1348622590303421,0.003569160820916295
+V0573,release_a,Discharged via Release A before returning to ER.,6.0,release_c,5.0,0.46263065934181213,5.731179771828465e-05
+V0574,release_a,Features both IC and NC admissions and ends with Release A.,13.0,admission_ic,9.0,0.18643230199813843,0.007210034877061844
+V0575,,The narrative terminates at Leucocytes without reaching any admission or release goal category.,,release_a,2.0,,7.816903962520882e-05
+V0576,release_a,Ends with Release A.,8.0,admission_nc,6.0,0.1437350958585739,0.007624392863363028
+V0577,release_a,Discharge pathway is Release A.,13.0,release_c,10.0,0.4992400109767914,0.017238184809684753
+V0578,release_a,Terminates with Release A before return.,4.0,release_c,4.0,0.35785284638404846,0.008073407225310802
+V0579,release_a,"Includes Admission IC and NC, ending in Release A.",47.0,admission_ic,24.0,0.5581687092781067,0.0067110187374055386
+V0580,,The process terminates at CRP without reaching a category-defining outcome.,,release_a,2.0,,0.008384543471038342
+V0581,release_d,The narrative terminates with Release D.,5.0,release_a,3.0,0.3378317058086395,0.0011723353527486324
+V0582,release_a,Concludes with Release A.,6.0,admission_nc,3.0,0.1795566827058792,0.17538964748382568
+V0583,release_a,Concludes with Release A.,4.0,release_c,4.0,0.12276815623044968,0.0038035137113183737
+V0584,,Process ends at IV Liquid; does not realize any admission or release category.,,release_a,3.0,,0.33377358317375183
+V0585,,Process ends at LacticAcid without realizing an admission or release goal.,,admission_nc,2.0,,0.3348802626132965
+V0586,release_b,Concludes with Release B.,4.0,release_a,1.0,0.11932045966386795,0.14998529851436615
+V0587,,Terminates at CRP without reaching admission or release categories.,,release_a,2.0,,0.19529521465301514
+V0588,release_c,The narrative concludes with Release C.,12.0,release_a,5.0,0.542354941368103,0.004931775387376547
+V0589,release_b,Concludes with Release B.,9.0,release_a,5.0,0.1817622035741806,0.045760367065668106
+V0590,release_a,Concludes with Release A before ER return.,6.0,admission_nc,4.0,0.5225982666015625,0.006120092701166868
+V0591,release_a,Concludes with Release A.,7.0,admission_nc,3.0,0.6680858731269836,0.05034373700618744
+V0592,,Terminates at IV Antibiotics without an admission or release outcome.,,admission_nc,2.0,,0.024221383035182953
+V0593,release_a,Concludes with Release A.,4.0,release_c,4.0,0.0018113679252564907,0.0061920094303786755
+V0594,release_b,Concludes with Release B.,7.0,release_a,4.0,0.10034871846437454,0.09698277711868286
+V0595,release_a,Concludes with Release A.,6.0,admission_ic,5.0,0.594740092754364,0.004189650993794203
+V0596,release_a,Concludes with Release A.,6.0,admission_nc,4.0,0.01631731167435646,0.005295692011713982
+V0597,release_a,"Features Admission IC and NC, and ends with Release A.",10.0,admission_ic,7.0,0.16910122334957123,0.010114590637385845
+V0598,release_e,Concludes with Release E.,14.0,release_a,7.0,0.08387475460767746,0.3335825204849243
+V0599,release_a,Concludes with Release A.,6.0,admission_nc,4.0,0.03277847543358803,0.0062681264244019985
+V0600,release_a,"Features Admission IC and NC, ending with Release A.",25.0,admission_ic,14.0,0.17848633229732513,0.0007294836104847491
+V0601,release_c,"The narrative ends with Release C and follows the Normal Care pathway, realizing the Release Variant C category.",0.0,release_a,2.0,0.13279515504837036,0.33337584137916565
+V0602,admission_ic,"The narrative involves Admission to Intensive Care, realizing the admission_ic category.",9.0,release_a,5.0,0.438589483499527,0.041752103716135025
+V0603,release_e,"The narrative ends with Release E, realizing the Release Variant E category.",9.0,release_a,2.0,0.17411257326602936,0.33371493220329285
+V0604,release_a,"The narrative ends with Release A, realizing the Release Variant A category.",6.0,admission_nc,4.0,0.007151877973228693,0.00237906607799232
+V0605,admission_ic,"The narrative includes Admission to Intensive Care, realizing the admission_ic category.",10.0,release_a,6.0,0.08633845299482346,0.0016118697822093964
+V0606,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",6.0,admission_nc,2.0,0.022827768698334694,0.00017718203889671713
+V0607,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",9.0,release_c,5.0,0.13351012766361237,0.0012432645307853818
+V0608,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",4.0,admission_nc,2.0,0.12172398716211319,0.002759351395070553
+V0609,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",7.0,admission_nc,4.0,0.011013012379407883,0.010599990375339985
+V0610,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",4.0,admission_nc,2.0,0.12767040729522705,0.003600413678213954
+V0611,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",9.0,release_c,6.0,0.18047498166561127,0.0012591567356139421
+V0612,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",5.0,release_c,5.0,0.1352260708808899,0.00047268180060200393
+V0613,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",4.0,admission_nc,2.0,0.19947297871112823,0.005123076029121876
+V0614,release_a,"The narrative involves Release A before an ER return, realizing the Release Variant A category.",7.0,admission_nc,2.0,0.7497167587280273,0.03128703311085701
+V0615,release_c,"The narrative involves Release C before an ER return, realizing the Release Variant C category.",5.0,release_a,2.0,0.5079033970832825,0.0017379781929776073
+V0616,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",4.0,admission_nc,1.0,0.18333519995212555,0.0052453079260885715
+V0617,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",5.0,admission_nc,2.0,0.14317771792411804,0.007067020982503891
+V0618,release_c,"The narrative concludes with Release C, realizing the Release Variant C category.",8.0,release_a,5.0,0.0,0.33340775966644287
+V0619,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",7.0,admission_nc,2.0,0.19019611179828644,0.001615606714040041
+V0620,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",5.0,release_e,3.0,0.12958134710788727,0.0007972149760462344
+V0621,release_b,"The narrative concludes with Release B, realizing the Release Variant B category.",4.0,release_a,3.0,0.40973857045173645,0.26796260476112366
+V0622,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",21.0,admission_ic,10.0,0.11278945952653885,0.0015616616001352668
+V0623,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",5.0,release_c,3.0,0.03045712597668171,0.003946775570511818
+V0624,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",5.0,release_c,3.0,0.18131394684314728,0.002091687871143222
+V0625,release_a,"The narrative features Release A prior to returning to the ER, realizing the Release Variant A category.",4.0,release_d,2.0,0.441677063703537,0.021751584485173225
+V0626,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",5.0,release_c,3.0,0.24104434251785278,0.11244866997003555
+V0627,release_a,"The narrative features Release A prior to returning to the ER, realizing the Release Variant A category.",14.0,admission_ic,11.0,0.5539644956588745,0.002506805816665292
+V0628,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",5.0,release_b,4.0,0.20116396248340607,0.00681407330557704
+V0629,release_e,"The narrative concludes with Release E, realizing the Release Variant E category.",0.0,release_a,5.0,0.15986932814121246,0.33996978402137756
+V0630,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",10.0,admission_ic,8.0,0.13024896383285522,0.001464825589209795
+V0631,release_a,"The narrative features Release A prior to returning to the ER, realizing the Release Variant A category.",5.0,admission_nc,2.0,0.3760167062282562,0.0014990019844844937
+V0632,release_a,"The narrative features Release A prior to returning to the ER, realizing the Release Variant A category.",4.0,release_c,2.0,0.4170700013637543,0.002855469472706318
+V0633,release_d,"The narrative features Release D prior to returning to the ER, realizing the Release Variant D category.",0.0,release_a,3.0,0.48728999495506287,0.00033978806459344923
+V0634,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",6.0,release_c,4.0,0.02488708682358265,0.0016232631169259548
+V0635,release_a,"The narrative features Release A prior to returning to the ER, realizing the Release Variant A category.",6.0,release_c,5.0,0.5470108985900879,0.008930853568017483
+V0636,admission_nc,"The narrative goes through Normal Care admission but terminates incomplete at LacticAcid without a release category, thus falling into the admission path but not fitting a specific release goal category directly.",2.0,release_a,2.0,0.5024778842926025,0.0962497815489769
+V0637,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",4.0,release_d,3.0,0.13627980649471283,0.0001691030483925715
+V0638,release_a,"The narrative features Release A prior to returning to the ER, realizing the Release Variant A category.",6.0,release_d,4.0,0.5963672399520874,0.0025624819099903107
+V0639,release_a,"The narrative features Release A prior to returning to the ER, realizing the Release Variant A category.",8.0,admission_ic,4.0,0.5310020446777344,0.0020689237862825394
+V0640,release_a,"The narrative features Release A prior to returning to the ER, realizing the Release Variant A category.",9.0,release_c,5.0,0.37057051062583923,0.003947204444557428
+V0641,release_a,"The narrative features Release A prior to returning to the ER, realizing the Release Variant A category.",3.0,admission_nc,2.0,0.4207822382450104,0.0008567627519369125
+V0642,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",10.0,admission_ic,4.0,0.13333897292613983,0.0012924493057653308
+V0643,release_a,"The narrative features Release A prior to returning to the ER, realizing the Release Variant A category.",23.0,release_e,11.0,0.5247435569763184,0.0032851595897227526
+V0644,admission_nc,The narrative goes through Normal Care admission but terminates incomplete at CRP without a release category.,6.0,release_b,1.0,0.39345040917396545,0.3509097099304199
+V0645,,"The narrative does not include any inpatient ward admission (neither Normal Care nor Intensive Care) nor a release category, falling into the residual.",,admission_nc,2.0,,0.24520808458328247
+V0646,release_a,"The narrative includes Release A before subsequent events, realizing the Release Variant A category.",14.0,release_c,8.0,0.4600101411342621,0.0962497815489769
+V0647,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",3.0,release_b,3.0,0.2389843463897705,0.11450868099927902
+V0648,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",8.0,admission_nc,5.0,0.0046077934093773365,0.00020746201334986836
+V0649,release_a,"The narrative features Release A prior to returning to the ER, realizing the Release Variant A category.",8.0,admission_nc,5.0,0.4600659906864166,0.0025073629803955555
+V0650,release_a,"The narrative features Release A prior to returning to the ER, realizing the Release Variant A category.",8.0,admission_nc,2.0,0.7570047974586487,0.22538095712661743
+V0651,release_a,"The narrative includes admission via Normal Care and concludes with Release A, realizing the discharge pathway Release A.",8.0,release_b,4.0,0.6066513657569885,0.1867259293794632
+V0652,release_a,"The narrative features Normal Care admission and ends with Release A, matching the Release A pathway.",4.0,admission_nc,2.0,0.5978289246559143,0.11768632382154465
+V0653,release_a,The narrative leads to Normal Care admission and successfully completes via Release A.,4.0,admission_nc,4.0,0.1299365609884262,0.001334252767264843
+V0654,,The narrative results in Leucocytes and does not reach a recognized discharge or admission category.,,release_a,4.0,,0.018542062491178513
+V0655,release_a,The narrative involves both Intensive Care and Normal Care pathways and culminates in Release A.,8.0,release_b,6.0,0.19601555168628693,0.016793297603726387
+V0656,release_d,The narrative successfully completes via the Release D pathway.,10.0,release_c,6.0,0.01688617654144764,0.08353956788778305
+V0657,release_a,The narrative includes Normal Care admission and concludes with Release A.,3.0,release_c,3.0,0.17822229862213135,0.0009999602334573865
+V0658,release_a,The narrative features Normal Care admission and ends with Release A prior to an ER return.,7.0,admission_nc,2.0,0.5737728476524353,0.16990059614181519
+V0659,release_a,The narrative follows a Normal Care admission and ends with Release A.,7.0,release_b,3.0,0.3677331209182739,0.01351778581738472
+V0660,release_a,The narrative includes Normal Care and finishes with Release A.,18.0,release_d,11.0,0.11951271444559097,0.008974536322057247
+V0661,release_a,The narrative transitions through Intensive Care and Normal Care before concluding with Release A.,19.0,admission_ic,10.0,0.11970394849777222,0.0007934749592095613
+V0662,release_a,The narrative includes both Intensive Care and Normal Care admissions and reaches Release A.,10.0,admission_ic,6.0,0.5052788853645325,0.004282416310161352
+V0663,admission_nc,The narrative terminates at Admission NC without proceeding to a discharge category.,6.0,release_a,1.0,0.7578708529472351,0.011053969152271748
+V0664,,The narrative ends at IV Liquid and does not reach any taxonomy category.,,release_a,4.0,,0.3573812246322632
+V0665,release_a,The narrative includes Normal Care admission and ends with Release A.,4.0,admission_nc,3.0,0.0037342903669923544,0.008114931173622608
+V0666,release_a,The narrative features Normal Care admission and concludes with Release A.,7.0,release_b,2.0,0.15067389607429504,0.007273549679666758
+V0667,release_a,The narrative involves Normal Care admission and finishes with Release A.,7.0,release_b,2.0,0.4127430021762848,0.0008237233851104975
+V0668,release_a,The narrative proceeds through Normal Care admission and terminates in Release A.,6.0,release_c,3.0,0.38385656476020813,0.029641250148415565
+V0669,release_a,The narrative includes Normal Care admission and concludes with Release A.,3.0,admission_nc,3.0,0.025268977507948875,0.0012413732474669814
+V0670,release_a,"The narrative includes Normal Care admission, Release A, and a subsequent brief ER return.",10.0,release_d,4.0,0.3466305732727051,0.06948789209127426
+V0671,release_a,The narrative features Normal Care admission and finishes with Release A.,8.0,admission_nc,3.0,0.3844194710254669,0.0008309492259286344
+V0672,release_b,The narrative involves Normal Care and Intensive Care admissions and concludes with Release B.,19.0,release_a,12.0,0.17641283571720123,0.040410999208688736
+V0673,release_a,The narrative includes Normal Care admission and ends with Release A.,9.0,release_b,6.0,0.1147889569401741,0.003104936331510544
+V0674,release_a,The narrative includes Intensive Care and Normal Care admissions and culminates in Release A.,39.0,admission_ic,18.0,0.15325964987277985,0.0065683177672326565
+V0675,release_d,The narrative includes Normal Care admission and ends with Release D.,7.0,release_a,4.0,0.40084752440452576,0.0009016120457090437
+V0676,,The narrative terminates at IV Antibiotics without reaching a defined taxonomy category.,,admission_nc,2.0,,0.01765051856637001
+V0677,release_a,The narrative features Normal Care admission and ends with Release A.,8.0,admission_nc,1.0,0.7154855728149414,0.00294414977543056
+V0678,release_a,The narrative includes Normal Care admission and concludes with Release A.,6.0,admission_nc,3.0,0.13449282944202423,0.00026056371279992163
+V0679,,The narrative ends at IV Antibiotics without completing an admission or release pathway.,,admission_nc,1.0,,0.003285877173766494
+V0680,release_a,The narrative involves Intensive Care and Normal Care admissions and ends with Release A.,9.0,admission_ic,6.0,0.4765861928462982,0.007646116893738508
+V0681,release_a,The narrative features Normal Care admission and concludes with Release A.,5.0,release_d,5.0,0.5655896067619324,0.16974543035030365
+V0682,release_b,The narrative involves Normal Care and Intensive Care admissions and terminates in Release B.,9.0,release_a,6.0,0.08563952893018723,0.11169197410345078
+V0683,release_a,The narrative includes Normal Care admission and ends with Release A.,8.0,admission_nc,5.0,0.12473329901695251,0.014195113442838192
+V0684,release_a,The narrative features Normal Care admission and finishes with Release A.,5.0,admission_nc,2.0,0.11871606856584549,0.00024856609525159
+V0685,,The narrative terminates at IV Antibiotics without reaching a target taxonomy category.,,admission_nc,2.0,,0.010002787224948406
+V0686,release_a,The narrative involves Normal Care admission and ends with Release A.,8.0,admission_nc,2.0,0.7565216422080994,0.03809195011854172
+V0687,release_a,The narrative includes Normal Care admission and concludes with Release A.,5.0,admission_nc,3.0,0.4758780002593994,0.0031350215431302786
+V0688,release_a,The narrative features Normal Care admission and finishes with Release A.,5.0,admission_nc,3.0,0.37733104825019836,0.002813356928527355
+V0689,,The narrative ends at IV Antibiotics and does not reach a taxonomy category.,,release_a,4.0,,0.011105113662779331
+V0690,release_a,"The narrative includes Intensive Care and Normal Care admissions, culminating in Release A.",10.0,admission_ic,6.0,0.12367311865091324,0.0019636324141174555
+V0691,release_b,The narrative features Normal Care admission and concludes with Release B.,6.0,release_a,2.0,0.39462682604789734,0.3444690704345703
+V0692,release_b,The narrative includes Normal Care admission and terminates in Release B.,6.0,release_a,3.0,0.3737633228302002,0.3333403766155243
+V0693,release_a,The narrative involves Normal Care admission and finishes with Release A.,5.0,release_c,5.0,0.5024300217628479,0.11357469111680984
+V0694,,The narrative ends at ER Sepsis Triage and does not reach an admission or release category.,,admission_nc,2.0,,0.4203183650970459
+V0695,release_a,The narrative includes Normal Care admission and ends with Release A.,3.0,admission_nc,3.0,0.11651227623224258,0.005974097177386284
+V0696,release_a,"The narrative involves both Normal Care and Intensive Care admissions, concluding with Release A.",10.0,admission_nc,6.0,0.5904927849769592,0.008436966687440872
+V0697,release_a,The narrative features Normal Care admission and ends with Release A.,7.0,release_b,3.0,0.034189946949481964,0.007679597940295935
+V0698,release_a,The narrative includes Normal Care admission and concludes with Release A.,4.0,admission_nc,4.0,0.14458529651165009,0.008474587462842464
+V0699,release_a,The narrative features Normal Care admission and finishes with Release A.,6.0,admission_nc,3.0,0.02719779498875141,0.0006874464452266693
+V0700,release_b,The narrative includes Normal Care admission and terminates in Release B.,6.0,release_a,2.0,0.2397448867559433,0.33369848132133484
+V0701,release_c,The narrative ends with Release C and advances toward avoiding post-discharge deterioration.,8.0,release_a,3.0,0.004107105545699596,0.33367064595222473
+V0702,release_a,"The narrative terminates with Release A, matching the respective discharge pathway.",4.0,admission_nc,2.0,0.1191369891166687,0.00017234835831914097
+V0703,,The process ends at IV Liquid and does not reach any of the defined admission or release pathways.,,admission_nc,2.0,,0.33499279618263245
+V0704,release_a,"The narrative concludes with Release A, realizing the Release Variant A category.",5.0,admission_nc,4.0,0.11694128066301346,0.0035561390686780214
+V0705,,"Although it passes through Release A, it terminates with Return ER, which does not fit standard successful release categories.",,release_a,1.0,,0.0003393219958525151
+V0706,release_a,The narrative ends with Release A via Normal Care admission.,6.0,release_b,1.0,0.39301106333732605,0.038795728236436844
+V0707,admission_nc,The process terminates at Admission NC without reaching discharge.,5.0,release_a,1.0,0.7656115889549255,0.0033132981043308973
+V0708,,The variant ends with IV Antibiotics and does not complete an admission or release pathway.,,admission_nc,4.0,,0.011559880338609219
+V0709,release_b,The narrative concludes with Release B.,0.0,release_a,2.0,0.11250493675470352,0.1403820961713791
+V0710,release_c,"The narrative includes intensive care and normal care admissions, eventually terminating in Release C.",173.0,admission_ic,70.0,0.14292915165424347,0.33356043696403503
+V0711,release_a,The case follows an admission via normal care and concludes with Release A.,6.0,admission_nc,2.0,0.12385710328817368,0.004892459139227867
+V0712,,The narrative ends with Return ER after an intermediate discharge.,,release_a,7.0,,2.603729626571294e-05
+V0713,,The process stops at IV Antibiotics without reaching admission or release.,,admission_nc,1.0,,0.015264421701431274
+V0714,release_a,The process involves normal care and successfully terminates at Release A.,5.0,admission_nc,2.0,0.019645793363451958,0.001967210089787841
+V0715,release_b,The narrative includes intensive care admission and terminates with Release B.,8.0,release_a,4.0,0.2136198729276657,0.01628837175667286
+V0716,release_a,The narrative concludes with Release A following normal care admission.,6.0,release_b,2.0,0.11757367849349976,0.00703549524769187
+V0717,release_a,The narrative concludes with Release A.,6.0,release_d,4.0,0.12177345156669617,0.0028088120743632317
+V0718,release_d,The narrative concludes with Release D prior to a return to ER.,20.0,release_a,10.0,0.4685699939727783,0.0018020950956270099
+V0719,,The outcome is Return ER after a Release A event.,,admission_nc,2.0,,0.0003360187401995063
+V0720,,"The final activity is Return ER, making it fall outside the clean release categories.",,release_a,1.0,,0.0006664472748525441
+V0721,,The process ends with a return to the emergency room.,,release_a,5.0,,0.00034471272374503314
+V0722,release_a,The narrative terminates at Release A.,6.0,release_b,3.0,0.0359409861266613,0.009430637583136559
+V0723,release_a,The narrative terminates at Release A.,7.0,admission_nc,4.0,0.1264108568429947,0.004859962034970522
+V0724,,Ends with Return ER.,,release_a,1.0,,0.0008852484170347452
+V0725,release_d,The narrative successfully concludes with Release D.,10.0,release_a,2.0,0.2604072391986847,0.27109262347221375
+V0726,release_a,"Includes intensive care and normal care admissions, ending in Release A.",18.0,admission_ic,9.0,0.11614701896905899,0.0043503944762051105
+V0727,,Ends with Return ER.,,release_a,2.0,,0.00011380133219063282
+V0728,release_a,Concludes with Release A.,6.0,admission_nc,5.0,0.12967358529567719,0.0008894387283362448
+V0729,release_a,Concludes with Release A after intensive and normal care steps.,6.0,admission_ic,4.0,0.12968988716602325,0.0009057482820935547
+V0730,release_a,Concludes with Release A.,4.0,release_c,3.0,0.024499090388417244,0.0018485035980120301
+V0731,release_a,Concludes with Release A.,7.0,admission_nc,2.0,0.19812722504138947,0.17161686718463898
+V0732,release_a,Concludes with Release A.,8.0,release_b,3.0,0.33383914828300476,0.017404330894351006
+V0733,release_a,Concludes with Release A.,7.0,release_d,3.0,0.13468647003173828,6.692254828521982e-05
+V0734,,Ends with Return ER.,,release_a,1.0,,0.003758639097213745
+V0735,release_a,Concludes with Release A.,6.0,admission_nc,2.0,0.3575335741043091,0.22278016805648804
+V0736,release_a,Concludes with Release A.,5.0,release_c,4.0,0.012299719266593456,0.009313284419476986
+V0737,release_a,Concludes with Release A.,6.0,admission_nc,3.0,0.023074278607964516,0.0004236903914716095
+V0738,release_a,Concludes with Release A.,5.0,admission_nc,1.0,0.0470406748354435,0.018486009910702705
+V0739,release_a,Concludes with Release A.,8.0,release_d,6.0,0.12996411323547363,0.0011799753410741687
+V0740,release_a,Concludes with Release A.,7.0,admission_nc,1.0,0.018446197733283043,0.003166806185618043
+V0741,release_a,Concludes with Release A.,6.0,admission_nc,3.0,0.025398142635822296,0.001112207188270986
+V0742,,The process stops at LacticAcid without admission or release.,,release_a,3.0,,0.012724465690553188
+V0743,release_a,Concludes with Release A.,8.0,release_b,3.0,0.01184309646487236,0.009769907221198082
+V0744,,Ends with Return ER.,,release_a,7.0,,0.0015293057076632977
+V0745,,Ends with Return ER.,,release_a,3.0,,0.027911365032196045
+V0746,,Ends with Return ER.,,release_a,11.0,,0.0008998369448818266
+V0747,release_c,Concludes with Release C.,5.0,release_a,5.0,0.09371375292539597,0.33414873480796814
+V0748,,Ends with Return ER.,,release_a,2.0,,0.0011746218660846353
+V0749,release_a,Concludes with Release A.,4.0,release_c,2.0,0.02470836229622364,0.001801986712962389
+V0750,,The process stops at IV Antibiotics without reaching admission or release.,,release_a,3.0,,0.34315261244773865
+V0751,admission_nc,"The narrative features Admission NC as the primary ward admission pathway, advancing the patient toward discharge (Release A).",3.0,release_a,1.0,0.0010375851998105645,0.0009472703677602112
+V0752,admission_ic,The narrative includes Admission IC as part of the patient's inpatient stay.,13.0,release_a,6.0,0.023656481876969337,0.0020638220012187958
+V0753,admission_nc,"The narrative includes Admission NC leading to Release A, ending with an ER return.",6.0,release_a,1.0,0.4062391221523285,0.0003742961271200329
+V0754,admission_nc,The narrative includes Admission NC and ends with Release A followed by an ER return.,6.0,release_a,1.0,0.37023279070854187,0.0024227628018707037
+V0755,admission_nc,The narrative includes Admission NC and concludes with Release A.,6.0,release_a,2.0,0.11346011608839035,6.917044083820656e-05
+V0756,admission_ic,The narrative incorporates Admission IC during the inpatient phase.,26.0,release_a,15.0,0.13876362144947052,0.001128417206928134
+V0757,admission_nc,The narrative includes Admission NC and concludes with Release A followed by an ER return.,6.0,release_a,3.0,0.4852239191532135,5.731179771828465e-05
+V0758,admission_nc,The narrative includes Admission NC and concludes with Release A.,5.0,release_a,1.0,0.13529686629772186,0.007273549679666758
+V0759,,The narrative terminates at IV Antibiotics without reaching any ward admission or release category.,,release_a,3.0,,0.03761018440127373
+V0760,admission_nc,The narrative includes Admission NC and concludes with Release A.,6.0,release_a,3.0,0.13318876922130585,0.00010648856550687924
+V0761,admission_nc,The narrative includes Admission NC and concludes with Release A.,8.0,release_a,1.0,0.00385976186953485,0.00013509762356989086
+V0762,admission_ic,The narrative includes Admission IC prior to Admission NC and Release A.,17.0,release_a,9.0,0.33977437019348145,0.007185527589172125
+V0763,admission_ic,The narrative includes Admission IC during the inpatient pathway.,37.0,release_a,18.0,0.09438730031251907,0.00017225810734089464
+V0764,,"The narrative ends at ER Sepsis Triage, lacking admission or release pathways.",,release_a,3.0,,0.33717337250709534
+V0765,admission_nc,The narrative includes Admission NC and concludes with Release A.,6.0,release_a,3.0,0.5607306361198425,0.0014531529741361737
+V0766,admission_nc,The narrative includes Admission NC and concludes with Release A.,3.0,release_a,1.0,0.17169930040836334,0.0005677348817698658
+V0767,admission_nc,The narrative includes Admission NC and concludes with Release A.,5.0,release_a,1.0,0.7410802841186523,0.00294414977543056
+V0768,admission_nc,The narrative includes Admission NC and concludes with Release A.,6.0,release_a,1.0,0.3380737602710724,0.000917492900043726
+V0769,admission_nc,The narrative includes Admission NC and concludes with Release A.,6.0,release_a,2.0,0.027031229808926582,0.000227152238949202
+V0770,admission_nc,The narrative includes Admission NC and concludes with Release A.,10.0,release_a,3.0,0.5515837073326111,0.0020689237862825394
+V0771,admission_nc,The narrative includes Admission NC and concludes with Release A.,6.0,release_a,1.0,0.12590815126895905,0.00017234835831914097
+V0772,admission_nc,The narrative includes Admission NC but ends prematurely with CRP tests.,5.0,release_a,2.0,0.3955901563167572,0.3530494272708893
+V0773,admission_nc,The narrative includes Admission NC and concludes with Release A.,2.0,release_a,1.0,0.1674034148454666,0.001582380966283381
+V0774,,The narrative terminates at ER Sepsis Triage without an admission or release outcome.,,release_a,3.0,,0.3399728238582611
+V0775,,The narrative terminates at CRP without reaching ward admission or release categories.,,release_a,2.0,,0.0038842447102069855
+V0776,admission_nc,The narrative includes Admission NC and concludes with Release A.,7.0,release_a,2.0,0.11210280656814575,6.692254828521982e-05
+V0777,,The narrative ends at Leucocytes without an admission or release.,,admission_nc,3.0,,0.3624292314052582
+V0778,,The narrative ends at Leucocytes without an admission or release.,,admission_nc,3.0,,0.17466115951538086
+V0779,admission_nc,The narrative includes Admission NC and concludes with Release A followed by an ER return.,4.0,release_a,3.0,0.36063632369041443,0.001513043069280684
+V0780,admission_nc,The narrative includes Admission NC and concludes with Release A.,17.0,release_a,7.0,0.0407797247171402,7.481849479518132e-06
+V0781,release_c,The narrative features Admission NC and concludes specifically with Release C.,8.0,release_a,5.0,0.11267659813165665,0.33335208892822266
+V0782,admission_nc,The narrative includes Admission NC and concludes with Release A.,11.0,release_a,3.0,0.03218153491616249,0.0008247224031947553
+V0783,admission_nc,The narrative includes Admission NC and concludes with Release A.,8.0,release_a,3.0,0.027050919830799103,0.00020746201334986836
+V0784,admission_nc,The narrative includes Admission NC and concludes with Release A.,13.0,release_a,4.0,0.04210541024804115,0.0011744064977392554
+V0785,admission_nc,The narrative includes Admission NC and concludes with Release A followed by an ER return.,8.0,release_a,4.0,0.5506792664527893,0.002973326714709401
+V0786,admission_nc,The narrative includes Admission NC and concludes with Release A.,8.0,release_a,3.0,0.13364499807357788,0.0015616616001352668
+V0787,admission_nc,The narrative includes Admission NC and concludes with Release A followed by an ER return.,8.0,release_a,2.0,0.5016636252403259,0.0008671052637510002
+V0788,admission_nc,The narrative includes Admission NC and concludes with Release A.,5.0,release_a,2.0,0.0,7.740608452877495e-06
+V0789,admission_nc,The narrative includes Admission NC and concludes with Release A.,0.0,release_a,2.0,0.11360198259353638,1.8557451767264865e-05
+V0790,release_d,The narrative includes Admission NC and concludes specifically with Release D.,9.0,release_a,4.0,0.017393022775650024,0.08363395184278488
+V0791,,The narrative ends at IV Antibiotics without an admission or release outcome.,,release_b,3.0,,0.02236311323940754
+V0792,release_b,The narrative includes Admission NC and concludes specifically with Release B.,4.0,release_a,2.0,0.11752891540527344,0.14819374680519104
+V0793,admission_ic,The narrative includes Admission IC prior to Admission NC and Release A.,9.0,release_a,3.0,0.3484426736831665,0.0007934749592095613
+V0794,admission_nc,The narrative includes Admission NC and concludes with Release A followed by an ER return.,14.0,release_a,5.0,0.3971683084964752,0.00070331827737391
+V0795,admission_ic,The narrative includes both Admission NC and Admission IC during the inpatient stay.,35.0,release_d,20.0,0.42480507493019104,0.002195878652855754
+V0796,admission_nc,The narrative includes Admission NC and concludes with Release A.,6.0,release_a,2.0,0.3351019322872162,0.001538807526230812
+V0797,admission_nc,The narrative includes Admission NC and concludes with Release A.,8.0,release_a,3.0,0.553372859954834,0.0009016120457090437
+V0798,admission_nc,The narrative includes Admission NC and concludes with Release A.,5.0,release_a,1.0,0.41643309593200684,0.001502270228229463
+V0799,admission_nc,The narrative includes Admission NC and concludes with Release A.,4.0,release_a,1.0,0.042876094579696655,0.0003354000800754875
+V0800,admission_nc,The narrative includes Admission NC and concludes with Release A.,6.0,release_a,3.0,0.11244777590036392,0.00046695745550096035
+V0801,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",6.0,release_c,4.0,0.11179050803184509,0.00010648856550687924
+V0802,release_d,"The narrative terminates with Release D, matching the discharge pathway Release D category.",7.0,release_a,2.0,0.024389848113059998,0.09063077718019485
+V0803,release_b,"The narrative terminates with Release B, matching the discharge pathway Release B category.",8.0,release_a,6.0,0.10299691557884216,0.09433458000421524
+V0804,,"The outcome is Return ER following Release A, which does not map cleanly to any primary admission/discharge category variant since it continues beyond initial release.",,release_a,2.0,,0.0007471114513464272
+V0805,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",31.0,admission_ic,14.0,0.13241270184516907,0.006018729880452156
+V0806,,"The outcome is Return ER after Release A, therefore does not fit the target admission or release categories.",,release_a,3.0,,8.696131408214569e-05
+V0807,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",6.0,release_b,2.0,0.1988704353570938,0.17236007750034332
+V0808,,"The outcome is Return ER after Release A, so it does not fit the target categories.",,release_a,2.0,,2.477323323546443e-05
+V0809,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",8.0,release_b,6.0,0.11820659786462784,0.0076684169471263885
+V0810,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",4.0,admission_nc,2.0,0.1253625899553299,0.0059082345105707645
+V0811,release_a,"The narrative includes Admission IC and Admission NC, and terminates with Release A, matching the Release A category.",7.0,admission_ic,4.0,0.12202084809541702,0.00031136456527747214
+V0812,,"The outcome is Return ER, making it fall outside the standard category definitions.",,release_a,1.0,,0.013712174259126186
+V0813,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",13.0,admission_nc,6.0,0.015099708922207355,0.0030294274911284447
+V0814,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",5.0,release_c,4.0,0.016053332015872,0.005559671204537153
+V0815,,"The outcome is Return ER after Release A, not matching the specific target categories.",,release_a,4.0,,9.928982035489753e-05
+V0816,,"The outcome is IV Antibiotics, which is an intermediate ER stage and does not complete an admission or release pathway.",,release_b,4.0,,0.012452528811991215
+V0817,release_c,"The narrative concludes with Release C prior to Return ER, realizing the Release C category.",12.0,release_a,6.0,0.4634896218776703,0.0001831106055760756
+V0818,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",14.0,release_c,5.0,0.012001019902527332,0.0024700758513063192
+V0819,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",5.0,release_b,6.0,0.11598672717809677,0.0029779181350022554
+V0820,,"The outcome is LacticAcid, an intermediate lab test in the ER, thus not realizing any admission or release category.",,release_a,2.0,,0.35528209805488586
+V0821,release_a,"The narrative concludes with Release A prior to Return ER, realizing the Release A category.",8.0,release_e,4.0,0.4936908185482025,0.013548166491091251
+V0822,release_a,"The narrative concludes with Release A before a Return ER event, matching the Release A category.",49.0,release_d,24.0,0.5787975192070007,0.001128417206928134
+V0823,release_a,"The narrative concludes with Release A before a Return ER event, matching the Release A category.",7.0,admission_nc,2.0,0.7632786631584167,0.044848982244729996
+V0824,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",5.0,admission_nc,1.0,0.000614195829257369,0.003766445443034172
+V0825,release_a,"The narrative concludes with Release A before a Return ER event, matching the Release A category.",6.0,admission_nc,3.0,0.5761169791221619,0.16755641996860504
+V0826,admission_nc,"The narrative ends at Admission NC, representing the Normal Care admission pathway.",6.0,release_b,2.0,0.7358930706977844,0.033031780272722244
+V0827,release_a,"The narrative concludes with Release A prior to Return ER, realizing the Release A category.",7.0,release_d,5.0,0.3705711364746094,0.003946586046367884
+V0828,release_a,"The narrative concludes with Release A prior to Return ER, realizing the Release A category.",9.0,admission_nc,6.0,0.6842108368873596,0.23171526193618774
+V0829,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",4.0,admission_nc,3.0,0.11125414818525314,0.00042987370397895575
+V0830,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",9.0,release_d,7.0,0.11260849237442017,0.0009244703687727451
+V0831,release_d,"The narrative terminates with Release D, matching the discharge pathway Release D category.",8.0,release_a,4.0,0.13306941092014313,0.17153257131576538
+V0832,,"The outcome is IV Antibiotics, which is an intermediate step and does not complete an admission or release pathway.",,release_a,2.0,,0.021742865443229675
+V0833,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",11.0,release_c,7.0,0.11691275984048843,0.006374577060341835
+V0834,release_a,"The narrative concludes with Release A prior to Return ER, realizing the Release A category.",15.0,admission_ic,9.0,0.5128048062324524,0.001514973002485931
+V0835,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",2.0,release_c,2.0,0.025480633601546288,0.001029716688208282
+V0836,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",8.0,admission_nc,7.0,0.11273980885744095,0.002201625844463706
+V0837,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",5.0,admission_ic,5.0,0.011088811792433262,0.010524190962314606
+V0838,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",7.0,admission_nc,2.0,0.3727737367153168,0.018558403477072716
+V0839,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",6.0,admission_nc,4.0,0.0231174249202013,0.00046683763503097
+V0840,release_b,"The narrative concludes with Release B prior to Return ER, realizing the Release B category.",55.0,release_a,22.0,0.2657969295978546,0.17979510128498077
+V0841,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",6.0,release_d,2.0,0.06519128382205963,0.0003354000800754875
+V0842,release_a,"The narrative concludes with Release A prior to Return ER, realizing the Release A category.",7.0,admission_nc,3.0,0.35160019993782043,0.004018022678792477
+V0843,,"The outcome is IV Liquid, which is an ER treatment stage and does not complete an admission or release pathway.",,release_b,1.0,,0.33354461193084717
+V0844,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",14.0,admission_ic,10.0,0.17567569017410278,0.08492270112037659
+V0845,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",18.0,admission_ic,9.0,0.11915761232376099,0.0013398107839748263
+V0846,release_a,"The narrative terminates with Release A, matching the discharge pathway Release A category.",4.0,release_c,3.0,0.12995310127735138,0.0011689503444358706

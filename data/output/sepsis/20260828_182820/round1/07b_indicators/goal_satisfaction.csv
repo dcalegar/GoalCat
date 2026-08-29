@@ -1,0 +1,201 @@
+scope,scope_kind,category_name,element_id,element_type,element_name,satisfaction,is_measured_seed
+__baseline__,baseline,,2,Goal,"Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition",0,False
+__baseline__,baseline,,3,Goal,Patient is registered and screened for sepsis,0,False
+__baseline__,baseline,,4,Goal,Sepsis workup and treatment are performed,0,False
+__baseline__,baseline,,5,Goal,Patient is admitted to an inpatient ward,0,False
+__baseline__,baseline,,6,Goal,Admitted case reaches a captured discharge,0,False
+__baseline__,baseline,,7,Task,ER Registration,0,False
+__baseline__,baseline,,8,Task,ER Triage,0,False
+__baseline__,baseline,,9,Task,ER Sepsis Triage,0,False
+__baseline__,baseline,,10,Task,Leucocytes,0,False
+__baseline__,baseline,,11,Task,CRP,0,False
+__baseline__,baseline,,12,Task,LacticAcid,0,False
+__baseline__,baseline,,13,Task,IV Liquid,0,False
+__baseline__,baseline,,14,Task,IV Antibiotics,0,False
+__baseline__,baseline,,15,Task,Admission NC,0,False
+__baseline__,baseline,,16,Task,Admission IC,0,False
+__baseline__,baseline,,17,Task,Release A,0,False
+__baseline__,baseline,,18,Task,Release B,0,False
+__baseline__,baseline,,19,Task,Release C,0,False
+__baseline__,baseline,,20,Task,Release D,0,False
+__baseline__,baseline,,21,Task,Release E,0,False
+__baseline__,baseline,,22,Softgoal,Minimize time-to-treatment,48,False
+__baseline__,baseline,,23,Softgoal,Avoid post-discharge deterioration,-14,False
+__baseline__,baseline,,24,Indicator,Time to antibiotics (hours),-4,True
+__baseline__,baseline,,25,Indicator,Time to lactate measurement (hours),100,True
+__baseline__,baseline,,26,Indicator,Post-discharge ER return (binary),-28,True
+release_a,category,Release Pathway A,2,Goal,"Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition",0,False
+release_a,category,Release Pathway A,3,Goal,Patient is registered and screened for sepsis,0,False
+release_a,category,Release Pathway A,4,Goal,Sepsis workup and treatment are performed,0,False
+release_a,category,Release Pathway A,5,Goal,Patient is admitted to an inpatient ward,0,False
+release_a,category,Release Pathway A,6,Goal,Admitted case reaches a captured discharge,0,False
+release_a,category,Release Pathway A,7,Task,ER Registration,0,False
+release_a,category,Release Pathway A,8,Task,ER Triage,0,False
+release_a,category,Release Pathway A,9,Task,ER Sepsis Triage,0,False
+release_a,category,Release Pathway A,10,Task,Leucocytes,0,False
+release_a,category,Release Pathway A,11,Task,CRP,0,False
+release_a,category,Release Pathway A,12,Task,LacticAcid,0,False
+release_a,category,Release Pathway A,13,Task,IV Liquid,0,False
+release_a,category,Release Pathway A,14,Task,IV Antibiotics,0,False
+release_a,category,Release Pathway A,15,Task,Admission NC,0,False
+release_a,category,Release Pathway A,16,Task,Admission IC,0,False
+release_a,category,Release Pathway A,17,Task,Release A,0,False
+release_a,category,Release Pathway A,18,Task,Release B,0,False
+release_a,category,Release Pathway A,19,Task,Release C,0,False
+release_a,category,Release Pathway A,20,Task,Release D,0,False
+release_a,category,Release Pathway A,21,Task,Release E,0,False
+release_a,category,Release Pathway A,22,Softgoal,Minimize time-to-treatment,50,False
+release_a,category,Release Pathway A,23,Softgoal,Avoid post-discharge deterioration,-17,False
+release_a,category,Release Pathway A,24,Indicator,Time to antibiotics (hours),1,True
+release_a,category,Release Pathway A,25,Indicator,Time to lactate measurement (hours),100,True
+release_a,category,Release Pathway A,26,Indicator,Post-discharge ER return (binary),-34,True
+admission_nc,category,Admission to Normal Care,2,Goal,"Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition",0,False
+admission_nc,category,Admission to Normal Care,3,Goal,Patient is registered and screened for sepsis,0,False
+admission_nc,category,Admission to Normal Care,4,Goal,Sepsis workup and treatment are performed,0,False
+admission_nc,category,Admission to Normal Care,5,Goal,Patient is admitted to an inpatient ward,0,False
+admission_nc,category,Admission to Normal Care,6,Goal,Admitted case reaches a captured discharge,0,False
+admission_nc,category,Admission to Normal Care,7,Task,ER Registration,0,False
+admission_nc,category,Admission to Normal Care,8,Task,ER Triage,0,False
+admission_nc,category,Admission to Normal Care,9,Task,ER Sepsis Triage,0,False
+admission_nc,category,Admission to Normal Care,10,Task,Leucocytes,0,False
+admission_nc,category,Admission to Normal Care,11,Task,CRP,0,False
+admission_nc,category,Admission to Normal Care,12,Task,LacticAcid,0,False
+admission_nc,category,Admission to Normal Care,13,Task,IV Liquid,0,False
+admission_nc,category,Admission to Normal Care,14,Task,IV Antibiotics,0,False
+admission_nc,category,Admission to Normal Care,15,Task,Admission NC,0,False
+admission_nc,category,Admission to Normal Care,16,Task,Admission IC,0,False
+admission_nc,category,Admission to Normal Care,17,Task,Release A,0,False
+admission_nc,category,Admission to Normal Care,18,Task,Release B,0,False
+admission_nc,category,Admission to Normal Care,19,Task,Release C,0,False
+admission_nc,category,Admission to Normal Care,20,Task,Release D,0,False
+admission_nc,category,Admission to Normal Care,21,Task,Release E,0,False
+admission_nc,category,Admission to Normal Care,22,Softgoal,Minimize time-to-treatment,41,False
+admission_nc,category,Admission to Normal Care,23,Softgoal,Avoid post-discharge deterioration,-16,False
+admission_nc,category,Admission to Normal Care,24,Indicator,Time to antibiotics (hours),-18,True
+admission_nc,category,Admission to Normal Care,25,Indicator,Time to lactate measurement (hours),100,True
+admission_nc,category,Admission to Normal Care,26,Indicator,Post-discharge ER return (binary),-31,True
+release_b,category,Release Pathway B,2,Goal,"Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition",0,False
+release_b,category,Release Pathway B,3,Goal,Patient is registered and screened for sepsis,0,False
+release_b,category,Release Pathway B,4,Goal,Sepsis workup and treatment are performed,0,False
+release_b,category,Release Pathway B,5,Goal,Patient is admitted to an inpatient ward,0,False
+release_b,category,Release Pathway B,6,Goal,Admitted case reaches a captured discharge,0,False
+release_b,category,Release Pathway B,7,Task,ER Registration,0,False
+release_b,category,Release Pathway B,8,Task,ER Triage,0,False
+release_b,category,Release Pathway B,9,Task,ER Sepsis Triage,0,False
+release_b,category,Release Pathway B,10,Task,Leucocytes,0,False
+release_b,category,Release Pathway B,11,Task,CRP,0,False
+release_b,category,Release Pathway B,12,Task,LacticAcid,0,False
+release_b,category,Release Pathway B,13,Task,IV Liquid,0,False
+release_b,category,Release Pathway B,14,Task,IV Antibiotics,0,False
+release_b,category,Release Pathway B,15,Task,Admission NC,0,False
+release_b,category,Release Pathway B,16,Task,Admission IC,0,False
+release_b,category,Release Pathway B,17,Task,Release A,0,False
+release_b,category,Release Pathway B,18,Task,Release B,0,False
+release_b,category,Release Pathway B,19,Task,Release C,0,False
+release_b,category,Release Pathway B,20,Task,Release D,0,False
+release_b,category,Release Pathway B,21,Task,Release E,0,False
+release_b,category,Release Pathway B,22,Softgoal,Minimize time-to-treatment,70,False
+release_b,category,Release Pathway B,23,Softgoal,Avoid post-discharge deterioration,50,False
+release_b,category,Release Pathway B,24,Indicator,Time to antibiotics (hours),40,True
+release_b,category,Release Pathway B,25,Indicator,Time to lactate measurement (hours),100,True
+release_b,category,Release Pathway B,26,Indicator,Post-discharge ER return (binary),100,True
+admission_ic,category,Admission to Intensive Care,2,Goal,"Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition",0,False
+admission_ic,category,Admission to Intensive Care,3,Goal,Patient is registered and screened for sepsis,0,False
+admission_ic,category,Admission to Intensive Care,4,Goal,Sepsis workup and treatment are performed,0,False
+admission_ic,category,Admission to Intensive Care,5,Goal,Patient is admitted to an inpatient ward,0,False
+admission_ic,category,Admission to Intensive Care,6,Goal,Admitted case reaches a captured discharge,0,False
+admission_ic,category,Admission to Intensive Care,7,Task,ER Registration,0,False
+admission_ic,category,Admission to Intensive Care,8,Task,ER Triage,0,False
+admission_ic,category,Admission to Intensive Care,9,Task,ER Sepsis Triage,0,False
+admission_ic,category,Admission to Intensive Care,10,Task,Leucocytes,0,False
+admission_ic,category,Admission to Intensive Care,11,Task,CRP,0,False
+admission_ic,category,Admission to Intensive Care,12,Task,LacticAcid,0,False
+admission_ic,category,Admission to Intensive Care,13,Task,IV Liquid,0,False
+admission_ic,category,Admission to Intensive Care,14,Task,IV Antibiotics,0,False
+admission_ic,category,Admission to Intensive Care,15,Task,Admission NC,0,False
+admission_ic,category,Admission to Intensive Care,16,Task,Admission IC,0,False
+admission_ic,category,Admission to Intensive Care,17,Task,Release A,0,False
+admission_ic,category,Admission to Intensive Care,18,Task,Release B,0,False
+admission_ic,category,Admission to Intensive Care,19,Task,Release C,0,False
+admission_ic,category,Admission to Intensive Care,20,Task,Release D,0,False
+admission_ic,category,Admission to Intensive Care,21,Task,Release E,0,False
+admission_ic,category,Admission to Intensive Care,22,Softgoal,Minimize time-to-treatment,98,False
+admission_ic,category,Admission to Intensive Care,23,Softgoal,Avoid post-discharge deterioration,-22,False
+admission_ic,category,Admission to Intensive Care,24,Indicator,Time to antibiotics (hours),96,True
+admission_ic,category,Admission to Intensive Care,25,Indicator,Time to lactate measurement (hours),100,True
+admission_ic,category,Admission to Intensive Care,26,Indicator,Post-discharge ER return (binary),-45,True
+release_c,category,Release Pathway C,2,Goal,"Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition",0,False
+release_c,category,Release Pathway C,3,Goal,Patient is registered and screened for sepsis,0,False
+release_c,category,Release Pathway C,4,Goal,Sepsis workup and treatment are performed,0,False
+release_c,category,Release Pathway C,5,Goal,Patient is admitted to an inpatient ward,0,False
+release_c,category,Release Pathway C,6,Goal,Admitted case reaches a captured discharge,0,False
+release_c,category,Release Pathway C,7,Task,ER Registration,0,False
+release_c,category,Release Pathway C,8,Task,ER Triage,0,False
+release_c,category,Release Pathway C,9,Task,ER Sepsis Triage,0,False
+release_c,category,Release Pathway C,10,Task,Leucocytes,0,False
+release_c,category,Release Pathway C,11,Task,CRP,0,False
+release_c,category,Release Pathway C,12,Task,LacticAcid,0,False
+release_c,category,Release Pathway C,13,Task,IV Liquid,0,False
+release_c,category,Release Pathway C,14,Task,IV Antibiotics,0,False
+release_c,category,Release Pathway C,15,Task,Admission NC,0,False
+release_c,category,Release Pathway C,16,Task,Admission IC,0,False
+release_c,category,Release Pathway C,17,Task,Release A,0,False
+release_c,category,Release Pathway C,18,Task,Release B,0,False
+release_c,category,Release Pathway C,19,Task,Release C,0,False
+release_c,category,Release Pathway C,20,Task,Release D,0,False
+release_c,category,Release Pathway C,21,Task,Release E,0,False
+release_c,category,Release Pathway C,22,Softgoal,Minimize time-to-treatment,51,False
+release_c,category,Release Pathway C,23,Softgoal,Avoid post-discharge deterioration,-8,False
+release_c,category,Release Pathway C,24,Indicator,Time to antibiotics (hours),2,True
+release_c,category,Release Pathway C,25,Indicator,Time to lactate measurement (hours),100,True
+release_c,category,Release Pathway C,26,Indicator,Post-discharge ER return (binary),-17,True
+release_d,category,Release Pathway D,2,Goal,"Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition",0,False
+release_d,category,Release Pathway D,3,Goal,Patient is registered and screened for sepsis,0,False
+release_d,category,Release Pathway D,4,Goal,Sepsis workup and treatment are performed,0,False
+release_d,category,Release Pathway D,5,Goal,Patient is admitted to an inpatient ward,0,False
+release_d,category,Release Pathway D,6,Goal,Admitted case reaches a captured discharge,0,False
+release_d,category,Release Pathway D,7,Task,ER Registration,0,False
+release_d,category,Release Pathway D,8,Task,ER Triage,0,False
+release_d,category,Release Pathway D,9,Task,ER Sepsis Triage,0,False
+release_d,category,Release Pathway D,10,Task,Leucocytes,0,False
+release_d,category,Release Pathway D,11,Task,CRP,0,False
+release_d,category,Release Pathway D,12,Task,LacticAcid,0,False
+release_d,category,Release Pathway D,13,Task,IV Liquid,0,False
+release_d,category,Release Pathway D,14,Task,IV Antibiotics,0,False
+release_d,category,Release Pathway D,15,Task,Admission NC,0,False
+release_d,category,Release Pathway D,16,Task,Admission IC,0,False
+release_d,category,Release Pathway D,17,Task,Release A,0,False
+release_d,category,Release Pathway D,18,Task,Release B,0,False
+release_d,category,Release Pathway D,19,Task,Release C,0,False
+release_d,category,Release Pathway D,20,Task,Release D,0,False
+release_d,category,Release Pathway D,21,Task,Release E,0,False
+release_d,category,Release Pathway D,22,Softgoal,Minimize time-to-treatment,19,False
+release_d,category,Release Pathway D,23,Softgoal,Avoid post-discharge deterioration,-20,False
+release_d,category,Release Pathway D,24,Indicator,Time to antibiotics (hours),-62,True
+release_d,category,Release Pathway D,25,Indicator,Time to lactate measurement (hours),100,True
+release_d,category,Release Pathway D,26,Indicator,Post-discharge ER return (binary),-39,True
+release_e,category,Release Pathway E,2,Goal,"Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition",0,False
+release_e,category,Release Pathway E,3,Goal,Patient is registered and screened for sepsis,0,False
+release_e,category,Release Pathway E,4,Goal,Sepsis workup and treatment are performed,0,False
+release_e,category,Release Pathway E,5,Goal,Patient is admitted to an inpatient ward,0,False
+release_e,category,Release Pathway E,6,Goal,Admitted case reaches a captured discharge,0,False
+release_e,category,Release Pathway E,7,Task,ER Registration,0,False
+release_e,category,Release Pathway E,8,Task,ER Triage,0,False
+release_e,category,Release Pathway E,9,Task,ER Sepsis Triage,0,False
+release_e,category,Release Pathway E,10,Task,Leucocytes,0,False
+release_e,category,Release Pathway E,11,Task,CRP,0,False
+release_e,category,Release Pathway E,12,Task,LacticAcid,0,False
+release_e,category,Release Pathway E,13,Task,IV Liquid,0,False
+release_e,category,Release Pathway E,14,Task,IV Antibiotics,0,False
+release_e,category,Release Pathway E,15,Task,Admission NC,0,False
+release_e,category,Release Pathway E,16,Task,Admission IC,0,False
+release_e,category,Release Pathway E,17,Task,Release A,0,False
+release_e,category,Release Pathway E,18,Task,Release B,0,False
+release_e,category,Release Pathway E,19,Task,Release C,0,False
+release_e,category,Release Pathway E,20,Task,Release D,0,False
+release_e,category,Release Pathway E,21,Task,Release E,0,False
+release_e,category,Release Pathway E,22,Softgoal,Minimize time-to-treatment,0,False
+release_e,category,Release Pathway E,23,Softgoal,Avoid post-discharge deterioration,-8,False
+release_e,category,Release Pathway E,24,Indicator,Time to antibiotics (hours),-100,True
+release_e,category,Release Pathway E,25,Indicator,Time to lactate measurement (hours),100,True
+release_e,category,Release Pathway E,26,Indicator,Post-discharge ER return (binary),-16,True

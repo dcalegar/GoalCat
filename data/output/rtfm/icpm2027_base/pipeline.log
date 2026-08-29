@@ -1,0 +1,27 @@
+2026-08-28 21:09:11,469 [INFO] goalcat: Run environment: host=192.168.68.56, platform=macOS-26.5.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-28 21:09:11,470 [INFO] goalcat: Step 1 (variant extraction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-28 21:09:29,933 [INFO] goalcat: Loaded event log: 561470 events, 150370 cases
+2026-08-28 21:09:30,571 [INFO] goalcat: Extracted 231 variants. Top variant: Create Fine > Send Fine > Insert Fine Notification > Add penalty > Send for Credit Collection (frequency=56482, 37.6%)
+2026-08-28 21:09:30,591 [INFO] goalcat: Saved variants to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_base/01_variants/variants.csv
+2026-08-28 21:09:30,591 [INFO] goalcat: Step 1 complete.
+2026-08-28 21:09:30,591 [INFO] goalcat: Peak RSS after Step 1: 1145.9 MiB
+2026-08-28 21:09:30,628 [INFO] goalcat: Step 2 (multi-view profiling) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-28 21:09:30,628 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_base/01_variants/variants.csv
+2026-08-28 21:09:48,998 [INFO] goalcat: Profiling 231 variants against 561470 events
+2026-08-28 21:10:19,055 [INFO] goalcat: Profiled 231 variants. Top variant representative case: A10436 (outcome=Send for Credit Collection, duration_median=55123200s)
+2026-08-28 21:10:19,068 [INFO] goalcat: Saved profiles to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_base/02_profiling/profiles.csv and /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_base/02_profiling/profiles.json
+2026-08-28 21:10:19,068 [INFO] goalcat: Step 2 complete.
+2026-08-28 21:10:19,068 [INFO] goalcat: Peak RSS after Step 2: 1317.5 MiB
+2026-08-28 21:10:19,071 [INFO] goalcat: Step 3 (textualization) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-28 21:10:19,071 [INFO] goalcat: Loading profiles from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_base/02_profiling/profiles.csv
+2026-08-28 21:10:19,077 [INFO] goalcat: Rendering narratives for 231 variants
+2026-08-28 21:10:19,358 [INFO] goalcat: Rendered 231 narratives. Example (top variant): Create Fine Send Fine (+90d) Insert Fine Notification (+23d) Add penalty (+60d) Send for Credit Collection (+465d)
+2026-08-28 21:10:19,360 [INFO] goalcat: Saved narratives to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_base/03_textualization/narratives.csv
+2026-08-28 21:10:19,360 [INFO] goalcat: Step 3 complete.
+2026-08-28 21:10:19,360 [INFO] goalcat: Peak RSS after Step 3: 1317.5 MiB
+2026-08-28 21:10:19,362 [INFO] goalcat: Step 4 (narrative sampling) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-28 21:10:19,363 [INFO] goalcat: Loading profiles/narratives from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_base
+2026-08-28 21:10:19,378 [INFO] goalcat: Sampled 34 unique variants (frequent=10, rare=10, extreme=5 per direction, before dedup)
+2026-08-28 21:10:19,379 [INFO] goalcat: Saved narrative sample to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_base/04_sampling/narrative_sample.csv
+2026-08-28 21:10:19,379 [INFO] goalcat: Step 4 complete.
+2026-08-28 21:10:19,379 [INFO] goalcat: Peak RSS after Step 4: 1317.5 MiB

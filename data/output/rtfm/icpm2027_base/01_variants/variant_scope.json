@@ -1,0 +1,10 @@
+{
+  "policy": "all",
+  "source": "configs/rtfm.yaml",
+  "applied_policy": "all",
+  "variants_total": 231,
+  "variants_kept": 231,
+  "cases_total": 150370,
+  "cases_kept": 150370,
+  "case_coverage_of_full_log": 1.0
+}

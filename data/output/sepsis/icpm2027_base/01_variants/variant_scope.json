@@ -1,0 +1,10 @@
+{
+  "policy": "all",
+  "source": "configs/sepsis.yaml",
+  "applied_policy": "all",
+  "variants_total": 846,
+  "variants_kept": 846,
+  "cases_total": 1050,
+  "cases_kept": 1050,
+  "case_coverage_of_full_log": 1.0
+}

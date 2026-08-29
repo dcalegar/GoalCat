@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "cfde757a9ac22e68",
+  "latency_seconds": 3.4537086249911226,
+  "input_tokens": 1897,
+  "output_tokens": 386,
+  "prompt_chars": 7935,
+  "response_chars": 1540,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_ward_pathway\",\n      \"name\": \"Admission Ward Pathway\",\n      \"description\": \"Represents the choices of admitting the patient to either a normal care ward or an intensive care unit. Admission IC negatively impacts the softgoal 'Minimize time-to-treatment' (SomeNegative -25), while both routes contribute toward the overarching goal of patient disposition under indicator evaluations.\",\n      \"anchor_ids\": [\n        \"5\"\n      ],\n      \"rationale\": \"Maps 1:1 to the OR-decomposed goal element id 5 (Patient is admitted to an inpatient ward), which encompasses tasks Admission NC (15) and Admission IC (16). The goal model marks them mutually exclusive via OR/XOR, so they form the boundary of this admission pathway category.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"discharge_release_pathway\",\n      \"name\": \"Discharge Release Pathway\",\n      \"description\": \"Represents the multiple discharge release options (Release A through E) for admitted cases. Release A and Release B help advance the softgoal 'Avoid post-discharge deterioration' (+50), and performance is evaluated against post-discharge ER return indicators.\",\n      \"anchor_ids\": [\n        \"6\"\n      ],\n      \"rationale\": \"Maps 1:1 to the OR-decomposed goal element id 6 (Admitted case reaches a captured discharge), which covers the alternative release tasks (17, 18, 19, 20, 21). These represent the distinct paths for completing patient care.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0015340999999999998
+}

@@ -1,0 +1,124 @@
+2026-08-28 18:28:20,077 [INFO] goalcat: Run environment: host=192.168.68.56, platform=macOS-26.5.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-28 18:28:20,078 [INFO] goalcat: example_run: starting full pipeline for sepsis, run_id=20260828_182820
+2026-08-28 18:28:20,080 [INFO] goalcat: Step 1 (variant extraction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 18:28:20,571 [INFO] goalcat: Loaded event log: 15214 events, 1050 cases
+2026-08-28 18:28:20,667 [INFO] goalcat: Extracted 846 variants. Top variant: ER Registration > ER Triage > ER Sepsis Triage (frequency=35, 3.3%)
+2026-08-28 18:28:20,674 [INFO] goalcat: Saved variants to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/01_variants/variants.csv
+2026-08-28 18:28:20,674 [INFO] goalcat: Step 1 complete.
+2026-08-28 18:28:20,674 [INFO] goalcat: Peak RSS after Step 1: 237.7 MiB
+2026-08-28 18:28:20,677 [INFO] goalcat: Step 2 (multi-view profiling) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 18:28:21,131 [INFO] goalcat: Profiling 846 variants against 15214 events
+2026-08-28 18:28:30,635 [INFO] goalcat: Profiled 846 variants. Top variant representative case: SKA (outcome=ER Sepsis Triage, duration_median=1043s)
+2026-08-28 18:28:30,676 [INFO] goalcat: Saved profiles to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/02_profiling/profiles.csv and /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/02_profiling/profiles.json
+2026-08-28 18:28:30,676 [INFO] goalcat: Step 2 complete.
+2026-08-28 18:28:30,676 [INFO] goalcat: Peak RSS after Step 2: 242.9 MiB
+2026-08-28 18:28:30,679 [INFO] goalcat: Step 3 (textualization) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 18:28:30,679 [INFO] goalcat: Rendering narratives for 846 variants
+2026-08-28 18:28:31,540 [INFO] goalcat: Rendered 846 narratives. Example (top variant): ER Registration ER Triage (+17m) ER Sepsis Triage (+24s)
+2026-08-28 18:28:31,545 [INFO] goalcat: Saved narratives to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/03_textualization/narratives.csv
+2026-08-28 18:28:31,545 [INFO] goalcat: Step 3 complete.
+2026-08-28 18:28:31,545 [INFO] goalcat: Peak RSS after Step 3: 242.9 MiB
+2026-08-28 18:28:31,547 [INFO] goalcat: Step 4 (narrative sampling) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 18:28:31,555 [INFO] goalcat: Sampled 33 unique variants (frequent=10, rare=10, extreme=5 per direction, before dedup)
+2026-08-28 18:28:31,556 [INFO] goalcat: Saved narrative sample to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/04_sampling/narrative_sample.csv
+2026-08-28 18:28:31,556 [INFO] goalcat: Step 4 complete.
+2026-08-28 18:28:31,557 [INFO] goalcat: Peak RSS after Step 4: 242.9 MiB
+2026-08-28 18:28:31,559 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 18:28:31,559 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/04_sampling/narrative_sample.csv
+2026-08-28 18:28:31,561 [INFO] goalcat: Inducing taxonomy from 33 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/sepsis_goal_model.jucm
+2026-08-28 18:28:37,398 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=5cc608b0d39e6276, latency=3.77s)
+2026-08-28 18:28:37,399 [INFO] goalcat: Induced 7 categories: admission_nc, admission_ic, release_a, release_b, release_c, release_d, release_e
+2026-08-28 18:28:37,406 [WARNING] goalcat: Taxonomy grounding check: admission_nc/release_a: share evidence_variant_ids: ['V0008']
+2026-08-28 18:28:37,406 [WARNING] goalcat: Taxonomy grounding check: admission_ic/release_b: share evidence_variant_ids: ['V0068']
+2026-08-28 18:28:37,408 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/05_taxonomy/taxonomy.json
+2026-08-28 18:28:37,408 [INFO] goalcat: Step 5a complete.
+2026-08-28 18:28:37,408 [INFO] goalcat: Peak RSS after Step 5a: 400.9 MiB
+2026-08-28 18:28:37,409 [INFO] goalcat: Step 6 (narrative assignment) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 18:28:37,410 [INFO] goalcat: Loading profiles/narratives from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820
+2026-08-28 18:28:37,437 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/05_taxonomy/taxonomy.json
+2026-08-28 18:28:37,440 [INFO] goalcat: Assigning 846 narratives against 7 categories (model=gemini/gemini-3.5-flash-lite, batch_size=50, concurrency=5)
+2026-08-28 18:28:43,940 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=407b87e0ac24fffb, latency=6.47s)
+2026-08-28 18:28:44,376 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=ee7975ffb5d16062, latency=6.90s)
+2026-08-28 18:28:44,413 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=257eff0d43bf6139, latency=6.95s)
+2026-08-28 18:28:44,517 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=ac9185a09a07d01d, latency=7.04s)
+2026-08-28 18:28:44,978 [WARNING] goalcat: LLM structured-output validation failed (attempt 1/3, model=gemini/gemini-3.5-flash-lite, prompt_hash=7fd6056b88b461b0): 1 validation error for AssignmentBatch
+  Value error, Duplicate variant_id values in assignment batch: ['V0101', 'V0102', 'V0103', 'V0104', 'V0105', 'V0106', 'V0107', 'V0108', 'V0109', 'V0110', 'V0111', 'V0112', 'V0113', 'V0114', 'V0115', 'V0116', 'V0117', 'V0117', 'V0118', 'V0119', 'V0120', 'V0121', 'V0122', 'V0123', 'V0124', 'V0125', 'V0126', 'V0127', 'V0128', 'V0129', 'V0130', 'V0131', 'V0132', 'V0133', 'V0134', 'V0135', 'V0136', 'V0137', 'V0138', 'V0139', 'V0140', 'V0141', 'V0142', 'V0143', 'V0144', 'V0145', 'V0146', 'V0147', 'V0148', 'V0149', 'V0150'] [type=value_error, input_value={'assignments': [{'varian...rmal care admission.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+2026-08-28 18:28:51,106 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b79b8af4fd5a6ae2, latency=7.16s)
+2026-08-28 18:28:51,173 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=c77ae05e54e9cde9, latency=6.65s)
+2026-08-28 18:28:51,239 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b6870d5417df8dc5, latency=6.82s)
+2026-08-28 18:28:51,254 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=991c015728b6711f, latency=6.88s)
+2026-08-28 18:28:52,326 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=7fd6056b88b461b0, latency=7.35s)
+2026-08-28 18:28:57,755 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a45049af6431215c, latency=6.58s)
+2026-08-28 18:28:57,815 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a214f4bbd1dc6902, latency=6.56s)
+2026-08-28 18:28:58,307 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=93b58c13817a5789, latency=7.20s)
+2026-08-28 18:28:58,746 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=1a5db6ba259e894a, latency=7.51s)
+2026-08-28 18:28:58,953 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2f44ae6df5262399, latency=6.63s)
+2026-08-28 18:29:03,976 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a02e726b7907a460, latency=5.67s)
+2026-08-28 18:29:04,570 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=250310a749d854b8, latency=6.81s)
+2026-08-28 18:29:05,463 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=35dad2a7b53a8759, latency=7.65s)
+2026-08-28 18:29:05,471 [INFO] goalcat: Assigned 688/846 narratives to a category, 158 residual, 0 still pending
+2026-08-28 18:29:05,471 [INFO] goalcat: Assignment grounding check: no problems found.
+2026-08-28 18:29:06,477 [INFO] goalcat: Saved assignment outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/06_assignment
+2026-08-28 18:29:06,478 [INFO] goalcat: Step 6 complete.
+2026-08-28 18:29:06,478 [INFO] goalcat: Peak RSS after Step 6: 413.8 MiB
+2026-08-28 18:29:06,482 [INFO] goalcat: Step 7 (per-category discovery) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 18:29:06,482 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/01_variants/variants.csv
+2026-08-28 18:29:06,488 [INFO] goalcat: Loading assignments from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/06_assignment/assignments.csv
+2026-08-28 18:29:06,490 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/05_taxonomy/taxonomy.json
+2026-08-28 18:29:06,961 [INFO] goalcat: Discovering models for 7 categories against 15214 events
+2026-08-28 18:29:07,609 [INFO] goalcat: Discovered model for admission_nc: 85 variants, 98 cases, log_fitness=1.000, precision=0.343
+2026-08-28 18:29:08,038 [INFO] goalcat: Discovered model for admission_ic: 11 variants, 11 cases, log_fitness=1.000, precision=0.171
+2026-08-28 18:29:17,732 [INFO] goalcat: Discovered model for release_a: 487 variants, 525 cases, log_fitness=1.000, precision=0.300
+2026-08-28 18:29:19,175 [INFO] goalcat: Discovered model for release_b: 53 variants, 54 cases, log_fitness=1.000, precision=0.283
+2026-08-28 18:29:20,233 [INFO] goalcat: Discovered model for release_c: 23 variants, 23 cases, log_fitness=1.000, precision=0.245
+2026-08-28 18:29:20,915 [INFO] goalcat: Discovered model for release_d: 23 variants, 23 cases, log_fitness=1.000, precision=0.239
+2026-08-28 18:29:21,106 [INFO] goalcat: Discovered model for release_e: 6 variants, 6 cases, log_fitness=1.000, precision=0.201
+2026-08-28 18:29:21,108 [INFO] goalcat: Discovered 7/7 category models (0 categories had no assigned variants)
+2026-08-28 18:29:25,215 [INFO] goalcat: Saved discovery outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/07_discovery
+2026-08-28 18:29:25,217 [INFO] goalcat: Step 7 complete.
+2026-08-28 18:29:25,217 [INFO] goalcat: Peak RSS after Step 7: 528.7 MiB
+2026-08-28 18:29:25,222 [INFO] goalcat: Step 7b (indicator satisfaction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 18:29:25,222 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/01_variants/variants.csv
+2026-08-28 18:29:25,227 [INFO] goalcat: Loading assignments from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/06_assignment/assignments.csv
+2026-08-28 18:29:25,230 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/05_taxonomy/taxonomy.json
+2026-08-28 18:29:26,099 [INFO] goalcat: Step 7b: scope __baseline__ — 3/3 indicators measured, 1050 cases
+2026-08-28 18:29:26,286 [INFO] goalcat: Step 7b: scope release_a — 3/3 indicators measured, 525 cases
+2026-08-28 18:29:26,325 [INFO] goalcat: Step 7b: scope admission_nc — 3/3 indicators measured, 98 cases
+2026-08-28 18:29:26,349 [INFO] goalcat: Step 7b: scope release_b — 3/3 indicators measured, 54 cases
+2026-08-28 18:29:26,357 [INFO] goalcat: Step 7b: scope admission_ic — 3/3 indicators measured, 11 cases
+2026-08-28 18:29:26,370 [INFO] goalcat: Step 7b: scope release_c — 3/3 indicators measured, 23 cases
+2026-08-28 18:29:26,383 [INFO] goalcat: Step 7b: scope release_d — 3/3 indicators measured, 23 cases
+2026-08-28 18:29:26,390 [INFO] goalcat: Step 7b: scope release_e — 3/3 indicators measured, 6 cases
+2026-08-28 18:29:26,415 [INFO] goalcat: Saved indicator outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/07b_indicators
+2026-08-28 18:29:26,415 [INFO] goalcat: Step 7b complete.
+2026-08-28 18:29:26,415 [INFO] goalcat: Peak RSS after Step 7b: 528.7 MiB
+2026-08-28 18:29:26,419 [INFO] goalcat: Step 8 (high-level description generation) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 18:29:26,419 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/01_variants/variants.csv
+2026-08-28 18:29:26,423 [INFO] goalcat: Loading assignments from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/06_assignment/assignments.csv
+2026-08-28 18:29:26,425 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/05_taxonomy/taxonomy.json
+2026-08-28 18:29:26,425 [INFO] goalcat: Loading discovery metrics from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/07_discovery/discovery_metrics.csv
+2026-08-28 18:29:26,884 [INFO] goalcat: Generating descriptions for 7 categories against 15214 events
+2026-08-28 18:29:26,884 [INFO] goalcat: Loading Step 7b indicator satisfaction from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/07b_indicators/indicator_satisfaction.csv
+2026-08-28 18:29:26,930 [INFO] goalcat: Computed deterministic description fields for category admission_nc
+2026-08-28 18:29:26,942 [INFO] goalcat: Computed deterministic description fields for category admission_ic
+2026-08-28 18:29:27,022 [INFO] goalcat: Computed deterministic description fields for category release_a
+2026-08-28 18:29:27,044 [INFO] goalcat: Computed deterministic description fields for category release_b
+2026-08-28 18:29:27,067 [INFO] goalcat: Computed deterministic description fields for category release_c
+2026-08-28 18:29:27,083 [INFO] goalcat: Computed deterministic description fields for category release_d
+2026-08-28 18:29:27,095 [INFO] goalcat: Computed deterministic description fields for category release_e
+2026-08-28 18:29:29,949 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=43fb797861b08702, latency=2.81s)
+2026-08-28 18:29:29,951 [INFO] goalcat: Goal alignment coverage check: no problems found.
+2026-08-28 18:29:29,953 [INFO] goalcat: Generated 7/7 category descriptions
+2026-08-28 18:29:29,990 [INFO] goalcat: Saved description outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/round1/08_description
+2026-08-28 18:29:29,990 [INFO] goalcat: Step 8 complete.
+2026-08-28 18:29:29,990 [INFO] goalcat: Peak RSS after Step 8: 528.7 MiB
+2026-08-28 18:29:29,994 [INFO] goalcat: Round 1: wrote direct-acceptance decision.
+2026-08-28 18:29:29,995 [INFO] goalcat: Step 9 (business review) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 18:29:32,496 [INFO] goalcat: Saved partitioned log to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/final/sublogs
+2026-08-28 18:29:32,504 [INFO] goalcat: Wrote final manifest: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/final/README.md
+2026-08-28 18:29:32,505 [INFO] goalcat: Run 20260828_182820 LLM usage total: 19 calls, 150187 input + 45695 output tokens, 456507 prompt + 150549 response chars, 123.4s latency, $0.1593 — full breakdown in /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/20260828_182820/final/pipeline_usage_summary.json
+2026-08-28 18:29:32,505 [INFO] goalcat: Run 20260828_182820 finalized (accepted, round 1).
+2026-08-28 18:29:32,506 [INFO] goalcat: Step 9: run 20260828_182820 accepted (round 1).
+2026-08-28 18:29:32,507 [INFO] goalcat: Step 9 result: {'status': 'accepted', 'run_id': '20260828_182820', 'round': 1}
+2026-08-28 18:29:32,507 [INFO] goalcat: example_run complete. run_id=20260828_182820, accepted on round 1.

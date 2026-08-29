@@ -1,0 +1,59 @@
+{
+  "categories": [
+    {
+      "category_id": "direct_payment",
+      "name": "Direct Payment",
+      "description": "Fines that are paid quickly or directly after creation, characterized by very short trace lengths and minimal administrative overhead without reaching escalation stages.",
+      "anchor_ids": [],
+      "rationale": "High frequency variants like V0002 and V0007 consistently show immediate payment behavior shortly after fine creation.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0003",
+        "V0007",
+        "V0012"
+      ]
+    },
+    {
+      "category_id": "standard_fine_lifecycle",
+      "name": "Standard Fine Lifecycle",
+      "description": "Typical administrative handling involving fine creation, sending, notification, addition of penalties, and eventual resolution through standard payment or credit collection.",
+      "anchor_ids": [],
+      "rationale": "Represents the core bulk of the process variants (e.g., V0001, V0004, V0009) where fines follow the standard penalty and notification path.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0004",
+        "V0009",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "payment_rework_loops",
+      "name": "Payment Rework Loops",
+      "description": "Cases that involve multiple repeated payment activities over an extended duration, indicating installments, split payments, or processing errors.",
+      "anchor_ids": [],
+      "rationale": "Identified by recurring payment actions across variants like V0005, V0006, and V0051 with long trace lengths.",
+      "evidence_variant_ids": [
+        "V0005",
+        "V0006",
+        "V0048",
+        "V0151",
+        "V0153"
+      ]
+    },
+    {
+      "category_id": "appeal_and_litigation",
+      "name": "Appeal and Litigation Path",
+      "description": "Complex variants involving formal appeals to the prefecture or judge, resulting in extended durations and prefecture result notifications.",
+      "anchor_ids": [],
+      "rationale": "Distinguished by specific appeal-related activities such as 'Send Appeal to Prefecture' and 'Appeal to Judge' found in variants like V0008, V0057, and V0103.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0103",
+        "V0144",
+        "V0176",
+        "V0177"
+      ]
+    }
+  ]
+}

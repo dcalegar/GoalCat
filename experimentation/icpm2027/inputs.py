@@ -32,6 +32,7 @@ import yaml
 from goalcat.atomic_io import atomic_write_json, atomic_write_text
 from goalcat.config import (
     PROFILING_DIRNAME,
+    REPO_ROOT,
     SAMPLING_DIRNAME,
     TEXTUALIZATION_DIRNAME,
     VARIANTS_DIRNAME,

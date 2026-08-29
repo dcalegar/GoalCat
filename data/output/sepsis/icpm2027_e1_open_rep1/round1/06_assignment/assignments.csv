@@ -1,0 +1,847 @@
+variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
+V0001,fast_er_triage,Short case concluding immediately at triage without hospitalization or intensive interventions.,2.0,standard_admission_release,2.0,0.3800351917743683,0.3428671360015869
+V0002,fast_er_triage,Rapid triage with basic lab tests (Leucocytes and CRP) and no hospitalization.,0.0,standard_admission_release,2.0,0.3672398328781128,0.335984468460083
+V0003,fast_er_triage,Brief case concluding after basic lab tests without admission or intensive treatments.,2.0,acute_iv_treatment,1.0,0.37415623664855957,0.020806893706321716
+V0004,acute_iv_treatment,"Acute care pathway including triage, comprehensive blood work, IV liquid, and IV antibiotics.",2.0,fast_er_triage,1.0,0.0398164764046669,0.000607567373663187
+V0005,fast_er_triage,Short diagnostics-only case ending with basic lab work without hospital admission.,1.0,acute_iv_treatment,2.0,0.36853960156440735,0.023571757599711418
+V0006,acute_iv_treatment,"Standard acute sepsis pathway with comprehensive labs, IV liquids, and IV antibiotics.",0.0,fast_er_triage,2.0,0.017360536381602287,0.0014914828352630138
+V0007,acute_iv_treatment,"Acute care involving comprehensive blood work, IV fluids, and IV antibiotics within a short duration.",2.0,standard_admission_release,1.0,0.010318686254322529,0.000749628699850291
+V0008,standard_admission_release,Requires formal hospital admission (Admission NC) followed by an inpatient stay and release.,7.0,chronic_rework_readmission,1.0,0.35246792435646057,0.0017786488169804215
+V0009,acute_iv_treatment,"Acute treatment sequence with full blood tests, IV liquids, and IV antibiotics.",2.0,standard_admission_release,2.0,0.02844727225601673,0.004101776983588934
+V0010,fast_er_triage,Brief evaluation sequence ending at triage with basic labs.,2.0,standard_admission_release,2.0,0.33691954612731934,0.33742550015449524
+V0011,acute_iv_treatment,Acute sepsis pathway with comprehensive blood work and IV interventions.,2.0,fast_er_triage,1.0,0.013468634337186813,0.0008854572079144418
+V0012,acute_iv_treatment,Rapid acute care featuring comprehensive labs and IV treatments.,3.0,fast_er_triage,1.0,0.07379884272813797,0.021903300657868385
+V0013,fast_er_triage,Short case concluding with basic lab work without hospitalization.,3.0,acute_iv_treatment,1.0,0.3579365909099579,0.00458724657073617
+V0014,standard_admission_release,Involves formal hospital admission (Admission NC) and subsequent release.,6.0,fast_er_triage,2.0,0.3483229875564575,0.0023663118481636047
+V0015,standard_admission_release,"Formal hospital admission followed by inpatient stay and discharge, despite mild repeated labs.",5.0,chronic_rework_readmission,2.0,0.02623642235994339,0.0017522848211228848
+V0016,standard_admission_release,Inpatient admission (Admission NC) followed by a standard release.,5.0,chronic_rework_readmission,1.0,0.013802207075059414,0.0013297529658302665
+V0017,fast_er_triage,Short diagnostic sequence concluding rapidly without intensive interventions.,2.0,standard_admission_release,3.0,0.3580462634563446,0.33429333567619324
+V0018,standard_admission_release,Involves formal hospital admission and subsequent release after acute care.,7.0,acute_iv_treatment,2.0,0.3474297523498535,0.003259520046412945
+V0019,acute_iv_treatment,Acute care pathway including comprehensive blood work and IV antibiotics.,4.0,fast_er_triage,2.0,0.028952397406101227,0.003596652066335082
+V0020,fast_er_triage,Rapid case with basic diagnostics and IV treatment concluding without admission.,3.0,acute_iv_treatment,2.0,0.36981311440467834,0.33341118693351746
+V0021,chronic_rework_readmission,"Involves repeated lab tests, hospital admission, and a subsequent return to the ER.",6.0,standard_admission_release,1.0,0.11327900737524033,0.0013872712152078748
+V0022,standard_admission_release,Features formal inpatient admission (Admission NC) and a standard release.,6.0,acute_iv_treatment,1.0,0.3468879759311676,0.0038013113662600517
+V0023,chronic_rework_readmission,Characterized by repeated lab tests and a prolonged timeline leading to a return to the ER.,7.0,standard_admission_release,1.0,0.11789091676473618,0.0012936044950038195
+V0024,standard_admission_release,Case requiring formal hospital admission (Admission NC) after acute care.,7.0,fast_er_triage,1.0,0.7846965193748474,0.007983611896634102
+V0025,acute_iv_treatment,"Acute pathway featuring lab work, IV liquids, and IV antibiotics.",2.0,fast_er_triage,2.0,0.01594679243862629,7.773804099997506e-05
+V0026,chronic_rework_readmission,Shows repeated lab work and a readmission/return to the ER after release.,5.0,standard_admission_release,1.0,0.2397816926240921,0.04577702283859253
+V0027,acute_iv_treatment,Standard acute care with complete blood work and IV intervention.,2.0,fast_er_triage,2.0,0.011120502837002277,5.2188017434673384e-05
+V0028,chronic_rework_readmission,"Extensive timeline with repeated labs, hospital admission, and return to the ER.",6.0,standard_admission_release,1.0,0.14515559375286102,0.0006431698566302657
+V0029,fast_er_triage,Short diagnostics and IV treatment sequence concluding without hospitalization.,4.0,acute_iv_treatment,2.0,0.3605782985687256,0.00722896121442318
+V0030,chronic_rework_readmission,Exhibits significant rework with repeated CRP and Leucocytes tests during inpatient care.,6.0,standard_admission_release,1.0,0.5065178871154785,0.00011264110798947513
+V0031,acute_iv_treatment,Acute care sequence with comprehensive diagnostics and IV administration.,5.0,fast_er_triage,2.0,0.3815986216068268,0.0012343546841293573
+V0032,chronic_rework_readmission,Features multiple repeated lab tests and a return to the ER.,5.0,standard_admission_release,2.0,0.12859296798706055,7.097923662513494e-05
+V0033,chronic_rework_readmission,Extended timeline spanning months with a return to the ER.,7.0,standard_admission_release,2.0,0.273246169090271,0.01240634173154831
+V0034,acute_iv_treatment,"Acute intervention including comprehensive diagnostics, IV antibiotics, and IV liquids.",2.0,fast_er_triage,1.0,0.3633788526058197,0.014998753555119038
+V0035,chronic_rework_readmission,Contains multiple repeated lab tests (CRP and Leucocytes) during the inpatient phase.,2.0,standard_admission_release,1.0,0.4844650328159332,9.696097549749538e-05
+V0036,fast_er_triage,Rapid case with basic diagnostics and IV treatment ending without admission.,3.0,acute_iv_treatment,2.0,0.37512078881263733,0.33795273303985596
+V0037,standard_admission_release,Formal admission followed by an inpatient stay and release type B.,8.0,fast_er_triage,2.0,0.6893952488899231,0.013793335296213627
+V0038,acute_iv_treatment,"Standard acute pathway with triage, lab work, and IV administration.",2.0,fast_er_triage,2.0,0.012487771920859814,9.540599421598017e-05
+V0039,chronic_rework_readmission,Shows repeated admissions and repeated lab tests indicative of rework.,7.0,standard_admission_release,2.0,0.3744441270828247,0.0005369993159547448
+V0040,standard_admission_release,Involves acute ER treatment followed by formal hospital admission.,7.0,acute_iv_treatment,1.0,0.7711068987846375,0.0018286644481122494
+V0041,chronic_rework_readmission,Exhibits repeated admissions and repeated lab tests.,5.0,standard_admission_release,1.0,0.39809203147888184,0.00026427218108437955
+V0042,chronic_rework_readmission,Involves repeated lab tests during the hospital stay.,7.0,standard_admission_release,1.0,0.5078290104866028,4.5530483475886285e-05
+V0043,fast_er_triage,Short diagnostic sequence without admission.,2.0,acute_iv_treatment,1.0,0.3573690354824066,0.012401166372001171
+V0044,chronic_rework_readmission,Features repeated lab tests during inpatient care.,7.0,acute_iv_treatment,1.0,0.5109095573425293,0.00030982462340034544
+V0045,chronic_rework_readmission,Extended duration culminating in a return to the ER.,9.0,standard_admission_release,2.0,0.3436488211154938,0.005749322474002838
+V0046,chronic_rework_readmission,Exhibits extensive repeated lab tests during the inpatient stay.,5.0,standard_admission_release,1.0,0.49226030707359314,0.00018206116510555148
+V0047,standard_admission_release,Acute care followed by formal hospital admission and standard release.,6.0,acute_iv_treatment,1.0,0.3676547706127167,0.0063528516329824924
+V0048,chronic_rework_readmission,Contains multiple repeated lab tests (CRP and Leucocytes).,4.0,standard_admission_release,1.0,0.49490785598754883,5.235307980910875e-05
+V0049,chronic_rework_readmission,Extended duration spanning multiple months with repeated labs and a return to the ER.,6.0,standard_admission_release,2.0,0.1692459136247635,0.0013764862669631839
+V0050,fast_er_triage,Short case concluding with basic lab work without hospitalization.,1.0,standard_admission_release,1.0,0.3612493574619293,0.3363613784313202
+V0051,standard_admission_release,The variant features formal hospital admission (Admission NC) followed by inpatient stay and discharge (Release A).,4.0,chronic_rework_readmission,2.0,0.11759164929389954,0.002111108275130391
+V0052,chronic_rework_readmission,The variant concludes with an ER return after a prolonged median duration.,4.0,standard_admission_release,1.0,0.14631064236164093,0.0010482902871444821
+V0053,standard_admission_release,The case involves admission (Admission NC) and release (Release A).,8.0,fast_er_triage,2.0,0.3705579340457916,0.009256032295525074
+V0054,chronic_rework_readmission,Ends with a return to the ER indicating a readmission pattern.,6.0,standard_admission_release,1.0,0.11875858157873154,0.002161274431273341
+V0055,chronic_rework_readmission,Characterized by repeated admissions and a final return to the ER.,4.0,standard_admission_release,1.0,0.01938524842262268,0.0034876607824116945
+V0056,acute_iv_treatment,"Involves ER triage, blood tests, and IV antibiotics within a short duration, without hospitalization.",2.0,fast_er_triage,1.0,0.04364530369639397,0.000871086202096194
+V0057,standard_admission_release,Standard hospital admission (Admission NC) followed by a release.,7.0,acute_iv_treatment,2.0,0.36822664737701416,0.006924731191247702
+V0058,standard_admission_release,Involves admission and is released (Release A).,7.0,fast_er_triage,2.0,0.3629813492298126,0.0016794330440461636
+V0059,standard_admission_release,Features formal admission (Admission NC) and a subsequent release.,5.0,chronic_rework_readmission,2.0,0.023946041241288185,0.000538096996024251
+V0060,chronic_rework_readmission,Features a long duration leading to an ER return.,7.0,standard_admission_release,1.0,0.15582843124866486,0.0018295705085620284
+V0061,standard_admission_release,Proceeds from admission (Admission NC) to release (Release A).,1.0,acute_iv_treatment,2.0,0.005096732173115015,0.001824133680202067
+V0062,acute_iv_treatment,"Rapid case involving triage, blood work, and IV interventions concluded quickly.",2.0,fast_er_triage,1.0,0.019983569160103798,0.004114513751119375
+V0063,standard_admission_release,Involves standard hospital admission and discharge despite extensive lab rework.,13.0,chronic_rework_readmission,5.0,0.017312483862042427,0.0003595386224333197
+V0064,standard_admission_release,Involves formal admission and release.,6.0,chronic_rework_readmission,3.0,0.1710425168275833,0.16752056777477264
+V0065,standard_admission_release,Proceeds with admission (Admission NC) and ends in release.,4.0,chronic_rework_readmission,2.0,0.11381155252456665,0.0044345250353217125
+V0066,standard_admission_release,Includes standard admission and release.,7.0,acute_iv_treatment,3.0,0.37101760506629944,0.009715702384710312
+V0067,standard_admission_release,Involves formal hospital admission and subsequent release.,5.0,fast_er_triage,2.0,0.002904142951592803,0.0037785079330205917
+V0068,standard_admission_release,Proceeds through admission to release (Release B).,6.0,chronic_rework_readmission,4.0,0.4526488780975342,0.00939370971173048
+V0069,standard_admission_release,Features formal admission and release.,5.0,acute_iv_treatment,2.0,0.004354485776275396,0.002566380426287651
+V0070,standard_admission_release,Involves standard admission and release.,4.0,acute_iv_treatment,2.0,0.18089431524276733,0.16757096350193024
+V0071,chronic_rework_readmission,Extensive loops and tests culminating in a return to the ER.,7.0,standard_admission_release,3.0,0.03552068769931793,0.0008149051573127508
+V0072,chronic_rework_readmission,Features multiple repeated lab tests and an ER return.,2.0,standard_admission_release,2.0,0.14064384996891022,0.00031539765768684447
+V0073,standard_admission_release,Involves admission and standard release.,5.0,chronic_rework_readmission,2.0,0.005068774335086346,0.0015468252822756767
+V0074,standard_admission_release,"Involves admission and release, though ending with a return.",6.0,acute_iv_treatment,2.0,0.6681715846061707,0.05876186490058899
+V0075,chronic_rework_readmission,Extreme duration spanning months and culminating in an ER return.,4.0,standard_admission_release,4.0,0.13981133699417114,0.014385473914444447
+V0076,standard_admission_release,Includes admission and a release outcome.,8.0,fast_er_triage,2.0,0.6959385871887207,0.007249997928738594
+V0077,standard_admission_release,Features formal admission and release.,6.0,fast_er_triage,5.0,0.5333561301231384,0.22773535549640656
+V0078,chronic_rework_readmission,Spans multiple months with repeated lab tests and an ER return.,9.0,standard_admission_release,5.0,0.1946840137243271,0.0014013733016327024
+V0079,standard_admission_release,Involves standard hospital admission and release.,6.0,acute_iv_treatment,1.0,0.18093086779117584,0.16753441095352173
+V0080,chronic_rework_readmission,Very long duration over many months leading to an ER return.,8.0,standard_admission_release,4.0,0.22264809906482697,0.0020984276197850704
+V0081,acute_iv_treatment,Short acute care path with IV treatment and diagnostics.,3.0,fast_er_triage,2.0,0.383943647146225,0.000988506362773478
+V0082,standard_admission_release,Involves ICU and NC admissions followed by release.,7.0,acute_iv_treatment,3.0,0.34542402625083923,0.1892697662115097
+V0083,chronic_rework_readmission,Extended duration resulting in an ER return.,6.0,standard_admission_release,2.0,0.14020462334156036,0.0001340450980933383
+V0084,standard_admission_release,Involves hospital admission and release.,3.0,chronic_rework_readmission,4.0,0.33574047684669495,0.1555647999048233
+V0085,chronic_rework_readmission,Spans multiple months with repeated admissions and an ER return.,3.0,standard_admission_release,2.0,0.04802714288234711,0.0035670737270265818
+V0086,standard_admission_release,Involves admission and a standard release.,5.0,chronic_rework_readmission,3.0,0.011733385734260082,0.00028300791746005416
+V0087,standard_admission_release,Features standard admission and release.,5.0,chronic_rework_readmission,3.0,0.11217429488897324,0.002797267399728298
+V0088,acute_iv_treatment,Rapid case concluding with IV antibiotics.,4.0,fast_er_triage,2.0,0.0675748810172081,0.015679338946938515
+V0089,chronic_rework_readmission,"Features extensive rework, long duration, and an ER return.",10.0,standard_admission_release,5.0,0.10682035237550735,0.0004765109915751964
+V0090,standard_admission_release,Involves admission and release.,6.0,chronic_rework_readmission,4.0,0.004977323580533266,0.0014553748769685626
+V0091,standard_admission_release,Formal admission followed by discharge (Release C).,14.0,chronic_rework_readmission,9.0,0.5205349326133728,0.06385192275047302
+V0092,fast_er_triage,Rapid triage and blood tests concluded quickly without admission.,6.0,standard_admission_release,2.0,0.734503448009491,0.016685370355844498
+V0093,standard_admission_release,Involves admission and release (Release D).,5.0,chronic_rework_readmission,2.0,0.3353304862976074,0.03331567347049713
+V0094,chronic_rework_readmission,Long duration culminating in a return to the ER.,5.0,standard_admission_release,1.0,0.13967879116535187,0.0006598744075745344
+V0095,standard_admission_release,Involves hospital admission and release.,3.0,acute_iv_treatment,3.0,0.02171998657286167,0.0021963289473205805
+V0096,standard_admission_release,Involves admission and release.,7.0,chronic_rework_readmission,2.0,0.33916664123535156,0.18752612173557281
+V0097,standard_admission_release,Involves admission and release.,4.0,chronic_rework_readmission,1.0,0.1136012077331543,0.004224186297506094
+V0098,chronic_rework_readmission,Features an ER return after a sequence of admissions.,10.0,standard_admission_release,2.0,0.2476024180650711,0.00012047109339619055
+V0099,standard_admission_release,Involves hospital admission and release.,3.0,chronic_rework_readmission,2.0,0.11420279741287231,0.0013576098717749119
+V0100,standard_admission_release,Involves formal admission and release.,4.0,chronic_rework_readmission,1.0,0.006101969163864851,0.002580020111054182
+V0101,standard_admission_release,"Involves acute ER sepsis care, formal hospital admission (Admission NC), inpatient stay, and subsequent release before a later return to ER.",8.0,chronic_rework_readmission,3.0,0.4397861063480377,0.0013764862669631839
+V0102,standard_admission_release,"Follows the acute ER care pathway with diagnostics and IV interventions, leading to standard hospital admissions and final release.",4.0,chronic_rework_readmission,3.0,0.11779185384511948,0.001910909079015255
+V0103,standard_admission_release,Shows comprehensive acute ER interventions followed by hospital admission (Admission NC) and inpatient release.,8.0,chronic_rework_readmission,4.0,0.1278378814458847,0.0010904624359682202
+V0104,standard_admission_release,"Standard acute sepsis care including triage, diagnostics, and admission (Admission NC) followed by release and later ER return.",8.0,chronic_rework_readmission,2.0,0.7578082084655762,0.003151777433231473
+V0105,standard_admission_release,"Includes ER triage, lab diagnostics, IV therapy, multiple admission steps, inpatient monitoring, and eventual release.",9.0,chronic_rework_readmission,6.0,0.45796576142311096,0.005496002733707428
+V0106,standard_admission_release,"Typical acute sepsis pathway with comprehensive lab tests, IV treatment, and formal hospital admission leading to release.",10.0,chronic_rework_readmission,5.0,0.17692965269088745,0.002993103116750717
+V0107,standard_admission_release,"Features ER triage, extensive blood work, IV fluids and antibiotics, and formal hospital admission followed by inpatient release.",6.0,chronic_rework_readmission,3.0,0.0077388170175254345,0.0008179508149623871
+V0108,standard_admission_release,"Realizes standard admission and release through acute ER triage, blood diagnostics, IV treatment, and hospital admission.",7.0,chronic_rework_readmission,2.0,0.366136759519577,0.002959383884444833
+V0109,standard_admission_release,Proceeds from acute ER interventions and comprehensive lab work to formal hospital admission and release.,7.0,chronic_rework_readmission,2.0,0.6379731893539429,0.07481244206428528
+V0110,standard_admission_release,"Standard sepsis care pathway involving ER registration, triage, diagnostics, and formal hospital admission followed by release.",7.0,chronic_rework_readmission,1.0,0.7618448734283447,0.0008848587167449296
+V0111,acute_iv_treatment,"Concludes rapidly at the admission stage after receiving comprehensive blood work, IV liquids, and antibiotics without a full inpatient stay.",3.0,standard_admission_release,1.0,0.3466937839984894,0.0036192431580275297
+V0112,standard_admission_release,Realizes standard hospital admission and release following acute ER diagnostics and intravenous treatment.,5.0,chronic_rework_readmission,2.0,0.5181195735931396,0.004588291514664888
+V0113,standard_admission_release,"Includes acute ER interventions, comprehensive lab diagnostics, and hospital admission followed by inpatient release.",8.0,chronic_rework_readmission,2.0,0.7066991925239563,0.04457711800932884
+V0114,standard_admission_release,"Follows the acute ER care pathway with blood work and IV therapy, proceeding to formal admission and release.",5.0,chronic_rework_readmission,3.0,0.12365984171628952,0.0039570811204612255
+V0115,standard_admission_release,"Shows acute ER sepsis care, lab tests, IV interventions, and hospital admission followed by inpatient release.",5.0,chronic_rework_readmission,3.0,0.44050097465515137,0.0020913672633469105
+V0116,standard_admission_release,"Features standard acute sepsis care, comprehensive labs, IV treatments, and hospital admission followed by release.",6.0,chronic_rework_readmission,1.0,0.40320149064064026,0.001824331353418529
+V0117,standard_admission_release,"Contains ER triage, IV interventions, comprehensive blood work, and hospital admission leading to a release.",6.0,chronic_rework_readmission,4.0,0.46023836731910706,0.03059636987745762
+V0118,standard_admission_release,"Standard sepsis care pathway involving ER triage, blood work, IV treatment, and formal hospital admission followed by release.",6.0,chronic_rework_readmission,2.0,0.029379911720752716,0.0030369095038622618
+V0119,standard_admission_release,"Involves acute ER sepsis care, diagnostics, IV intervention, and hospital admission followed by release.",6.0,acute_iv_treatment,2.0,0.0,0.0008743650396354496
+V0120,standard_admission_release,"Features standard acute sepsis care with ER diagnostics, IV treatments, hospital admission, and subsequent release.",10.0,acute_iv_treatment,4.0,0.5674434304237366,0.01309844758361578
+V0121,standard_admission_release,"Realizes standard hospital admission and release following acute ER care, comprehensive blood work, and IV interventions.",7.0,chronic_rework_readmission,2.0,0.4078078269958496,0.0007203731220215559
+V0122,standard_admission_release,"Proceeds through acute ER triage, comprehensive blood work, IV liquids and antibiotics, and hospital admission to release.",4.0,chronic_rework_readmission,3.0,0.029523709788918495,0.0031807099003344774
+V0123,chronic_rework_readmission,"Characterized by extensive loops and highly repeated lab tests (CRP, Leucocytes) spanning multiple weeks and culminating in an ER return.",7.0,standard_admission_release,5.0,0.007526736240833998,0.0011431103339418769
+V0124,standard_admission_release,"Follows standard acute ER sepsis care, comprehensive diagnostics, IV treatment, and formal hospital admission and release.",4.0,chronic_rework_readmission,1.0,0.34686872363090515,0.003873346373438835
+V0125,chronic_rework_readmission,"Demonstrates extreme rework with multiple repeated lab tests (CRP, LacticAcid, Leucocytes) and admission steps over a prolonged timeframe.",9.0,standard_admission_release,6.0,0.2269294708967209,0.0021829388570040464
+V0126,standard_admission_release,"Involves acute ER triage, blood diagnostics, IV interventions, hospital admission, and subsequent inpatient release.",4.0,chronic_rework_readmission,3.0,0.5663981437683105,0.0032373873982578516
+V0127,acute_iv_treatment,"Short acute ER care pathway featuring comprehensive blood work and IV antibiotics, concluding without hospitalization.",4.0,fast_er_triage,3.0,0.6790432929992676,0.2410515546798706
+V0128,chronic_rework_readmission,"Outlier case featuring extensive loops, repeated lab tests (CRP, LacticAcid, Leucocytes), and multiple admissions over an extended duration.",12.0,standard_admission_release,7.0,0.21407967805862427,0.00015762369730509818
+V0129,chronic_rework_readmission,Shows chronic rework characteristics with extensive repeating loops of lab tests and hospital admissions spanning multiple weeks.,18.0,standard_admission_release,11.0,0.10158044844865799,0.0024876133538782597
+V0130,standard_admission_release,"Standard acute sepsis care pathway including ER triage, blood diagnostics, IV treatment, and hospital admission and release.",4.0,acute_iv_treatment,2.0,0.011415035463869572,0.0006013573729433119
+V0131,standard_admission_release,"Features acute ER interventions, comprehensive diagnostics, and formal hospital admission followed by inpatient release.",8.0,chronic_rework_readmission,3.0,0.6816329956054688,0.006594869773834944
+V0132,acute_iv_treatment,"Short acute care sequence involving ER triage, blood diagnostics, and IV intervention, concluding before hospital admission.",4.0,fast_er_triage,3.0,0.3549680709838867,0.33692070841789246
+V0133,acute_iv_treatment,Rapid acute ER care pathway involving comprehensive blood work and intravenous treatment without formal hospital admission.,5.0,standard_admission_release,4.0,0.3392581641674042,0.3397129476070404
+V0134,chronic_rework_readmission,"Features repeated lab testing loops, multiple ward and ICU admissions, and an extended duration prior to ER return.",14.0,standard_admission_release,8.0,0.12585745751857758,0.00043158556218259037
+V0135,standard_admission_release,"Standard acute sepsis care pathway with ER triage, comprehensive diagnostics, IV treatment, and formal hospital admission and release.",5.0,acute_iv_treatment,1.0,0.01772603578865528,0.000908269255887717
+V0136,chronic_rework_readmission,Extreme outlier case with extensive repeated lab tests and multiple admission steps spanning several months.,16.0,standard_admission_release,11.0,0.04846218228340149,0.004002112429589033
+V0137,acute_iv_treatment,"Acute ER care pathway involving triage, comprehensive blood work, and intravenous liquids and antibiotics within a short timeframe.",5.0,standard_admission_release,2.0,0.6811226010322571,0.016749927774071693
+V0138,standard_admission_release,"Follows the standard acute sepsis care pathway with ER triage, comprehensive lab work, IV treatment, and formal hospital admission leading to release.",4.0,chronic_rework_readmission,3.0,0.33504796028137207,0.15487228333950043
+V0139,chronic_rework_readmission,"Exhibits extensive repeated lab tests (CRP, LacticAcid, Leucocytes) and multiple ICU/NC admissions, fitting the chronic rework pattern.",20.0,standard_admission_release,11.0,0.5796748995780945,0.08359972387552261
+V0140,standard_admission_release,"Standard acute care pathway involving ER triage, blood diagnostics, IV treatment, and formal hospital admission followed by release.",8.0,chronic_rework_readmission,3.0,0.5476057529449463,0.00026445588446222246
+V0141,standard_admission_release,"Features acute ER sepsis care, comprehensive diagnostics, IV treatment, and hospital admission and release.",10.0,chronic_rework_readmission,6.0,0.5305685997009277,0.0016995238838717341
+V0142,standard_admission_release,"Standard acute care sequence including ER triage, blood work, IV intervention, and formal hospital admission and release.",3.0,chronic_rework_readmission,2.0,0.0045424350537359715,0.0023784309159964323
+V0143,standard_admission_release,"Follows standard acute sepsis care with ER diagnostics, IV treatment, and hospital admission leading to inpatient release.",7.0,chronic_rework_readmission,3.0,0.356402724981308,0.005410343874245882
+V0144,standard_admission_release,"Involves acute ER sepsis care, comprehensive blood work, IV interventions, and hospital admission followed by inpatient release.",4.0,chronic_rework_readmission,3.0,0.11361270397901535,0.004235673230141401
+V0145,chronic_rework_readmission,"Extreme outlier showing a massive loop of highly repeated lab tests (CRP, LacticAcid, Leucocytes) over a prolonged duration.",106.0,standard_admission_release,71.0,0.5038365721702576,0.043886978179216385
+V0146,acute_iv_treatment,Short acute care sequence concluding promptly at the IV treatment and diagnostics stage without hospitalization.,6.0,fast_er_triage,2.0,0.6903871893882751,0.026082729920744896
+V0147,standard_admission_release,"Standard acute sepsis care with ER triage, comprehensive diagnostics, IV treatment, and formal hospital admission and release.",5.0,chronic_rework_readmission,3.0,0.4506815969944,0.0074263704009354115
+V0148,acute_iv_treatment,"Rapid case featuring ER triage, blood diagnostics, and administration of IV liquids and antibiotics within a short duration.",1.0,fast_er_triage,2.0,0.0060074119828641415,0.004450319334864616
+V0149,standard_admission_release,"Involves acute ER sepsis care, blood work, IV treatment, and hospital admission followed by inpatient release.",4.0,acute_iv_treatment,4.0,0.005087423138320446,0.001565474085509777
+V0150,standard_admission_release,"Standard acute sepsis care pathway including ER triage, diagnostics, IV interventions, and formal hospital admission followed by release.",8.0,chronic_rework_readmission,6.0,0.45827803015708923,0.005183736328035593
+V0151,standard_admission_release,"Involves hospital admission and subsequent release, though with multiple subsequent readmissions and rework.",20.0,chronic_rework_readmission,8.0,0.5627009868621826,0.0024876133538782597
+V0152,standard_admission_release,Features formal hospital admission followed by an inpatient stay and release.,8.0,fast_er_triage,3.0,0.3594256341457367,0.20327137410640717
+V0153,standard_admission_release,Includes standard hospital admission and release after acute ER care.,8.0,acute_iv_treatment,3.0,0.3390826880931854,0.011606592684984207
+V0154,standard_admission_release,Shows hospital admission and subsequent release before a later return to the ER.,7.0,chronic_rework_readmission,4.0,0.5890340209007263,0.00043158556218259037
+V0155,standard_admission_release,Involves standard admission and release prior to a return to the ER.,6.0,chronic_rework_readmission,2.0,0.5516645312309265,0.001960309222340584
+V0156,standard_admission_release,Standard hospital admission and release path.,7.0,chronic_rework_readmission,1.0,0.34628936648368835,0.16793686151504517
+V0157,standard_admission_release,Contains hospital admission followed by release and later ER return.,9.0,chronic_rework_readmission,4.0,0.3757576048374176,0.0007375078275799751
+V0158,standard_admission_release,Features standard hospital admission and eventual release.,6.0,chronic_rework_readmission,3.0,0.11474496871232986,0.0018997894367203116
+V0159,standard_admission_release,Involves hospital admission and release.,5.0,chronic_rework_readmission,3.0,0.11508546024560928,0.0018563204212114215
+V0160,standard_admission_release,Standard admission and release followed by ER return.,7.0,chronic_rework_readmission,3.0,0.47349032759666443,0.00038364235660992563
+V0161,standard_admission_release,Hospital admission and release with a long duration until ER return.,5.0,chronic_rework_readmission,2.0,0.5599544048309326,0.0017002156237140298
+V0162,standard_admission_release,Includes hospital admission and release type B.,4.0,chronic_rework_readmission,2.0,0.35122084617614746,0.07988143712282181
+V0163,standard_admission_release,Standard admission and release followed by ER return.,7.0,chronic_rework_readmission,3.0,0.4177230894565582,0.0011654166737571359
+V0164,standard_admission_release,Features intensive care and non-critical admissions followed by release and ER return.,10.0,chronic_rework_readmission,6.0,0.517852246761322,0.0013299818383529782
+V0165,standard_admission_release,Standard hospital admission and release.,7.0,acute_iv_treatment,1.0,0.34143319725990295,0.009256060235202312
+V0166,standard_admission_release,Involves repeated admissions and standard release.,8.0,chronic_rework_readmission,4.0,0.11305183917284012,0.00020665327610913664
+V0167,standard_admission_release,Hospital admission followed by release.,8.0,acute_iv_treatment,6.0,0.1256764680147171,0.015210269950330257
+V0168,standard_admission_release,IC/NC admission and release with extended follow-up.,9.0,chronic_rework_readmission,5.0,0.5389565825462341,0.00015762369730509818
+V0169,standard_admission_release,Standard hospital admission and release.,5.0,chronic_rework_readmission,1.0,0.12358512729406357,0.0038823646027594805
+V0170,standard_admission_release,Involves hospital admission and release type B.,6.0,chronic_rework_readmission,4.0,0.3477891683578491,0.11222479492425919
+V0171,standard_admission_release,Standard admission and release followed by ER return.,10.0,chronic_rework_readmission,3.0,0.355922132730484,0.005180081352591515
+V0172,chronic_rework_readmission,High number of repeated lab tests and loops characteristic of chronic rework.,14.0,standard_admission_release,7.0,0.11876371502876282,0.0020500386599451303
+V0173,standard_admission_release,Standard hospital admission and release path.,5.0,chronic_rework_readmission,5.0,0.013545089401304722,0.0015286966226994991
+V0174,chronic_rework_readmission,Extreme outlier with extensive loops and highly repeated lab tests.,42.0,standard_admission_release,19.0,0.17705680429935455,0.016076141968369484
+V0175,standard_admission_release,Standard admission and release path.,4.0,chronic_rework_readmission,2.0,0.11381524801254272,0.004438222851604223
+V0176,standard_admission_release,Involves hospital admission and release.,7.0,chronic_rework_readmission,4.0,0.0014797121984884143,0.0006053470424376428
+V0177,standard_admission_release,Standard hospital admission and release.,4.0,acute_iv_treatment,2.0,0.1195245087146759,0.00017825332179199904
+V0178,chronic_rework_readmission,Numerous repeated labs and extended rework loops over multiple days.,15.0,standard_admission_release,7.0,0.34844520688056946,0.004864672664552927
+V0179,standard_admission_release,Standard hospital admission and release followed by return.,4.0,chronic_rework_readmission,2.0,0.5358459949493408,0.0020043847616761923
+V0180,standard_admission_release,Hospital admission and release with delayed return.,9.0,chronic_rework_readmission,4.0,0.727069616317749,0.02500906027853489
+V0181,standard_admission_release,"Hospital admission and release, concluding with extra lab checks.",7.0,chronic_rework_readmission,4.0,0.34612569212913513,0.08425603061914444
+V0182,chronic_rework_readmission,Frequent repeated lab tests and multiple admission steps.,17.0,standard_admission_release,9.0,0.4503520429134369,0.00042176127317361534
+V0183,standard_admission_release,Standard admission and release sequence with subsequent ER return.,10.0,chronic_rework_readmission,6.0,0.5044023990631104,0.0005316729075275362
+V0184,standard_admission_release,Standard hospital admission and release.,5.0,chronic_rework_readmission,2.0,0.2374899983406067,0.0257802102714777
+V0185,chronic_rework_readmission,Extensive repetition of labs and multiple admissions reflecting heavy rework.,16.0,standard_admission_release,11.0,0.4428021013736725,0.004245556425303221
+V0186,standard_admission_release,Standard hospital admission and release.,6.0,acute_iv_treatment,4.0,0.18270377814769745,0.011088348925113678
+V0187,fast_er_triage,Short case ending at basic diagnostics without hospitalization or intensive interventions.,2.0,standard_admission_release,4.0,0.39002951979637146,0.3373466432094574
+V0188,standard_admission_release,Standard admission and release path.,4.0,chronic_rework_readmission,4.0,0.2427755743265152,0.032239221036434174
+V0189,standard_admission_release,Hospital admission and release with acute interventions.,3.0,chronic_rework_readmission,2.0,0.006283547263592482,0.002761597977951169
+V0190,standard_admission_release,Standard hospital admission and release.,6.0,chronic_rework_readmission,2.0,0.17241132259368896,0.1688893586397171
+V0191,chronic_rework_readmission,Long sequences of repeated leucocyte tests and rework before release and return.,8.0,standard_admission_release,6.0,0.11532052606344223,0.0005734603037126362
+V0192,standard_admission_release,Standard admission and release followed by a long-term return.,2.0,chronic_rework_readmission,3.0,0.5665560364723206,0.008301847614347935
+V0193,chronic_rework_readmission,High frequency of repeated leucocyte tests indicating chronic rework.,10.0,standard_admission_release,5.0,0.473135381937027,2.0560904886224307e-05
+V0194,standard_admission_release,Standard hospital admission and release.,4.0,chronic_rework_readmission,2.0,0.007131259422749281,0.0002103931619785726
+V0195,standard_admission_release,Standard hospital admission and release.,7.0,chronic_rework_readmission,2.0,0.011731917969882488,0.00028447553631849587
+V0196,chronic_rework_readmission,Extreme outlier spanning months with exhaustive loops of lab tests and admissions.,27.0,standard_admission_release,17.0,0.12270649522542953,0.002719367854297161
+V0197,fast_er_triage,Short triage and lab sequence concluding rapidly without admission.,1.0,standard_admission_release,2.0,0.7056596875190735,0.026082729920744896
+V0198,standard_admission_release,Standard hospital admission and release.,6.0,acute_iv_treatment,2.0,0.35214439034461975,0.1959901601076126
+V0199,standard_admission_release,Standard admission and release with subsequent ER return.,7.0,chronic_rework_readmission,4.0,0.3754752576351166,0.00045513486838899553
+V0200,standard_admission_release,Standard hospital admission and release followed by ER return.,6.0,chronic_rework_readmission,1.0,0.3559282720088959,0.0051861912943422794
+V0201,chronic_rework_readmission,"The narrative shows extensive repeated labs (CRP, Leucocytes, LacticAcid), ward admission, and an eventual return to the ER after 90 days.",20.0,standard_admission_release,12.0,0.1972622275352478,0.0005516940727829933
+V0202,acute_iv_treatment,"Involves ER triage, comprehensive blood work, and IV antibiotics followed by a standard short-duration admission.",6.0,standard_admission_release,1.0,0.7388682961463928,0.0002135557442670688
+V0203,standard_admission_release,Features formal admission (Admission NC) followed by a standard stay and subsequent return to the ER.,7.0,chronic_rework_readmission,3.0,0.3627219498157501,7.097923662513494e-05
+V0204,acute_iv_treatment,"Acute sepsis pathway with triage, comprehensive labs, IV liquid and antibiotics, and hospital admission.",8.0,standard_admission_release,1.0,0.7600634694099426,0.00023297588631976396
+V0205,chronic_rework_readmission,Demonstrates repeated admission and extensive loops of repeated lab tests spanning multiple weeks.,18.0,standard_admission_release,10.0,0.3370848596096039,0.02916756272315979
+V0206,acute_iv_treatment,"Standard acute care involving IV treatment, diagnostics, and admission leading to a release.",5.0,standard_admission_release,3.0,0.39349719882011414,0.0030963029712438583
+V0207,acute_iv_treatment,Typical acute ER care with comprehensive labs and IV antibiotics followed by admission.,6.0,standard_admission_release,1.0,0.7513360977172852,0.00011352146248100325
+V0208,chronic_rework_readmission,Contains multiple repeated admissions (Admission NC) and repeated diagnostic tests.,7.0,standard_admission_release,5.0,0.38886645436286926,0.00017825332179199904
+V0209,acute_iv_treatment,"Rapid acute care pathway with IV antibiotics, blood work, and admission.",3.0,standard_admission_release,1.0,0.40205052495002747,0.0002285104856127873
+V0210,standard_admission_release,Formal admission and release followed by a long-term return to the ER.,6.0,chronic_rework_readmission,3.0,0.4165226221084595,0.00034061408950947225
+V0211,standard_admission_release,Standard inpatient stay concluded by release and subsequent readmission.,5.0,chronic_rework_readmission,2.0,0.39223912358283997,0.0012209047563374043
+V0212,chronic_rework_readmission,"Involves repeated admission loops, multiple lab test repetitions, and eventual ER return.",5.0,standard_admission_release,4.0,0.013614973984658718,0.0007621799595654011
+V0213,standard_admission_release,Includes standard hospital admission and release before a subsequent return.,9.0,chronic_rework_readmission,3.0,0.6866850256919861,0.0015429140767082572
+V0214,acute_iv_treatment,"Acute care scenario with IV liquids, antibiotics, comprehensive labs, and admission.",6.0,standard_admission_release,1.0,0.7447181344032288,0.0005795284523628652
+V0215,chronic_rework_readmission,Long sequence characterized by heavy repetition of CRP and Leucocytes tests over multiple days.,9.0,standard_admission_release,4.0,0.47443294525146484,4.883500514551997e-05
+V0216,standard_admission_release,"Involves admission, release, and a prolonged follow-up return to the ER.",3.0,chronic_rework_readmission,2.0,0.5072835087776184,0.001174799632281065
+V0217,fast_er_triage,Short sequence terminating immediately upon IV antibiotic administration without hospitalization.,6.0,acute_iv_treatment,2.0,0.015264764428138733,0.0026350945699959993
+V0218,chronic_rework_readmission,"Exhibits heavy looping and intensive repetition of lab tests (Leucocytes, LacticAcid, CRP).",13.0,standard_admission_release,10.0,0.5858107805252075,0.0127410888671875
+V0219,fast_er_triage,Very short case concluding with basic lab testing without admission or intensive interventions.,1.0,standard_admission_release,2.0,0.7255143523216248,0.04593738541007042
+V0220,standard_admission_release,Standard admission and release path ending in a delayed return to the ER.,5.0,chronic_rework_readmission,1.0,0.3850576877593994,0.0005734603037126362
+V0221,acute_iv_treatment,"Acute care pathway featuring IV interventions, blood work, and admission.",8.0,standard_admission_release,3.0,0.7366597056388855,0.12323851138353348
+V0222,chronic_rework_readmission,Extended duration with frequent repetition of lab tests and repeated admissions.,11.0,standard_admission_release,6.0,0.3638730049133301,2.0134490114287473e-05
+V0223,chronic_rework_readmission,Shows repeated admissions and iterative lab tests over several days.,5.0,standard_admission_release,2.0,0.4808734953403473,0.018091263249516487
+V0224,standard_admission_release,Standard hospital admission and release followed by a long-term return to the ER.,5.0,chronic_rework_readmission,2.0,0.45117589831352234,0.0017444564728066325
+V0225,acute_iv_treatment,"Acute pathway featuring IV antibiotics, lab work, and admission within a short duration.",6.0,standard_admission_release,4.0,0.7218793034553528,0.015745949000120163
+V0226,standard_admission_release,Includes repeated admission and inpatient monitoring followed by release.,6.0,chronic_rework_readmission,3.0,0.12493658065795898,0.00399176636710763
+V0227,chronic_rework_readmission,Extended case involving repeated admissions and multiple rounds of lab testing.,7.0,standard_admission_release,3.0,0.013089205138385296,0.00023641105508431792
+V0228,chronic_rework_readmission,Features repeated hospital admissions and iterative lab tests over a span of days.,9.0,standard_admission_release,2.0,0.47970008850097656,0.01720469258725643
+V0229,standard_admission_release,Inpatient admission and release followed by a later return to the ER.,7.0,chronic_rework_readmission,3.0,0.3396289646625519,0.01595463789999485
+V0230,chronic_rework_readmission,Extended rework case involving multiple admission events and repetitive lab testing loops.,4.0,standard_admission_release,3.0,0.012117087841033936,0.0008994064410217106
+V0231,chronic_rework_readmission,Outlier case spanning many months with repeated admissions and lab work.,6.0,standard_admission_release,1.0,0.0467161126434803,0.0022560444194823503
+V0232,fast_er_triage,Rapid case concluding quickly after ER triage and basic diagnostics without hospitalization.,3.0,standard_admission_release,1.0,0.0,0.0031856950372457504
+V0233,standard_admission_release,Standard admission and release path leading to a subsequent ER return.,7.0,chronic_rework_readmission,2.0,0.3838299810886383,0.0006542481132782996
+V0234,fast_er_triage,Short diagnostic case finishing at triage and basic lab work without admission.,2.0,acute_iv_treatment,1.0,0.3542194068431854,0.0008700560429133475
+V0235,standard_admission_release,Hospital admission followed by treatment and subsequent release.,4.0,acute_iv_treatment,3.0,0.18981564044952393,0.16800183057785034
+V0236,standard_admission_release,Involves repeated admission steps followed by a standard release.,6.0,acute_iv_treatment,2.0,0.3502802848815918,0.19412605464458466
+V0237,chronic_rework_readmission,Contains multiple admission cycles and repetitive lab tests over a 10-day span.,6.0,standard_admission_release,3.0,0.03184181824326515,0.0018495162948966026
+V0238,chronic_rework_readmission,Exhibits frequent loops of repeated admissions and extensive lab testing.,6.0,standard_admission_release,3.0,0.37325844168663025,0.0005490417242981493
+V0239,chronic_rework_readmission,Long duration featuring heavy rework with repetitive lab test loops and multiple admissions.,11.0,standard_admission_release,6.0,0.33567941188812256,0.012175043113529682
+V0240,chronic_rework_readmission,Involves multiple repetitions of lab work and monitoring over several days.,7.0,standard_admission_release,2.0,0.506927490234375,0.0002745249366853386
+V0241,chronic_rework_readmission,Extended case involving repeated admissions and iterative diagnostic testing.,7.0,standard_admission_release,4.0,0.0103125786408782,0.002703915350139141
+V0242,standard_admission_release,Formal admission and release followed by a long-term return to the ER.,6.0,chronic_rework_readmission,2.0,0.585559070110321,0.001801188918761909
+V0243,chronic_rework_readmission,"Extreme outlier with extensive loops, highly repeated lab tests, and multiple ward admissions.",24.0,standard_admission_release,15.0,0.14175806939601898,0.06742193549871445
+V0244,chronic_rework_readmission,Exhibits frequent repetition of lab tests and multiple admission events.,9.0,standard_admission_release,3.0,0.3785407245159149,1.4887139514030423e-05
+V0245,chronic_rework_readmission,Features extensive repetition of lab tests and multiple hospital admissions.,10.0,standard_admission_release,6.0,0.3525797128677368,0.0007301903679035604
+V0246,chronic_rework_readmission,"Involves extensive loops of repeated lab tests (CRP, LacticAcid, Leucocytes).",8.0,standard_admission_release,5.0,0.5462965369224548,0.00031136456527747214
+V0247,chronic_rework_readmission,Shows heavy rework with multiple admission iterations and repetitive lab tests.,12.0,standard_admission_release,8.0,0.4479020833969116,0.02369135431945324
+V0248,chronic_rework_readmission,Long-duration outlier with continuous repetition of lab tests and subsequent return to ER.,10.0,standard_admission_release,8.0,0.20754890143871307,0.0016995238838717341
+V0249,standard_admission_release,Standard acute care and admission followed by a release.,5.0,chronic_rework_readmission,3.0,0.03215682879090309,0.007672689389437437
+V0250,standard_admission_release,Standard admission and release path ending in a long-term return to the ER.,6.0,chronic_rework_readmission,4.0,0.41984543204307556,0.0009568878449499607
+V0251,standard_admission_release,"Involves formal hospital admission followed by inpatient stay and discharge, subsequently returning to ER.",11.0,chronic_rework_readmission,7.0,0.5208046436309814,0.001089870580472052
+V0252,standard_admission_release,Shows standard hospital admission followed by inpatient stay and release.,6.0,chronic_rework_readmission,3.0,0.11321035027503967,0.0003651609004009515
+V0253,standard_admission_release,Represents standard admission and release pathway.,6.0,chronic_rework_readmission,3.0,0.34490540623664856,0.181787371635437
+V0254,chronic_rework_readmission,Contains extensive loops and repeated lab tests spanning multiple weeks.,18.0,standard_admission_release,9.0,0.3460361659526825,0.04562191665172577
+V0255,standard_admission_release,Characterized by standard hospital admission and release.,4.0,chronic_rework_readmission,3.0,0.11999890953302383,0.00029615717357955873
+V0256,standard_admission_release,Involves admission and release before returning to the ER.,7.0,chronic_rework_readmission,2.0,0.5240382552146912,0.001330360653810203
+V0257,standard_admission_release,Standard hospital admission and subsequent release.,12.0,chronic_rework_readmission,8.0,0.11702132970094681,0.005265321582555771
+V0258,standard_admission_release,Follows standard hospital admission and release.,9.0,chronic_rework_readmission,5.0,0.446087121963501,0.021781042218208313
+V0259,standard_admission_release,Standard hospital admission and release process.,3.0,chronic_rework_readmission,3.0,0.0011798932682722807,0.00030552817042917013
+V0260,acute_iv_treatment,Acute care pathway concluding with IV treatment without admission.,3.0,fast_er_triage,1.0,0.0023255597334355116,0.0007684677839279175
+V0261,standard_admission_release,Involves admission and release with subsequent return to ER.,7.0,chronic_rework_readmission,4.0,0.39445754885673523,0.0003742961271200329
+V0262,standard_admission_release,Standard hospital admission and release.,4.0,chronic_rework_readmission,3.0,0.3635685443878174,0.0007250458002090454
+V0263,standard_admission_release,Standard hospital admission followed by release and later ER return.,6.0,chronic_rework_readmission,2.0,0.4005959928035736,0.0022107011172920465
+V0264,standard_admission_release,Standard hospital admission and release.,4.0,chronic_rework_readmission,2.0,0.11428824812173843,0.004911222029477358
+V0265,standard_admission_release,Standard admission and release path.,6.0,chronic_rework_readmission,1.0,0.5494550466537476,0.031086785718798637
+V0266,standard_admission_release,Involves standard hospital admission and release.,3.0,acute_iv_treatment,3.0,0.12014297395944595,0.0020154742524027824
+V0267,standard_admission_release,Standard hospital admission and release.,6.0,chronic_rework_readmission,4.0,0.12066149711608887,0.0025339939165860415
+V0268,acute_iv_treatment,Acute care involving IV treatment and lab work without completion of formal admission.,5.0,standard_admission_release,2.0,0.6864725947380066,0.00541625777259469
+V0269,standard_admission_release,Standard admission and release.,6.0,chronic_rework_readmission,2.0,0.41982510685920715,0.0009366095182485878
+V0270,standard_admission_release,Standard hospital admission and release.,8.0,chronic_rework_readmission,5.0,0.4127850830554962,0.0011227871291339397
+V0271,standard_admission_release,Standard hospital admission and release.,10.0,chronic_rework_readmission,7.0,0.4484527111053467,0.016130076721310616
+V0272,standard_admission_release,Standard hospital admission and release.,8.0,chronic_rework_readmission,4.0,0.018229972571134567,2.0560904886224307e-05
+V0273,chronic_rework_readmission,Extreme outlier with extensive loops and repeatedly performed labs and admissions.,75.0,standard_admission_release,45.0,0.4252934455871582,0.041752103716135025
+V0274,standard_admission_release,Standard hospital admission and release.,7.0,acute_iv_treatment,1.0,0.6939544677734375,0.34809207916259766
+V0275,standard_admission_release,Standard hospital admission and release.,20.0,chronic_rework_readmission,9.0,0.11656349152326584,0.0060972957871854305
+V0276,standard_admission_release,Standard hospital admission and release.,6.0,chronic_rework_readmission,3.0,0.017480744048953056,0.0010376350255683064
+V0277,standard_admission_release,Standard hospital admission and release.,16.0,chronic_rework_readmission,6.0,0.5494657158851624,0.0020984276197850704
+V0278,standard_admission_release,Standard hospital admission and release.,6.0,chronic_rework_readmission,5.0,0.002764912322163582,0.0036392773035913706
+V0279,standard_admission_release,Standard hospital admission and release.,8.0,chronic_rework_readmission,3.0,0.3533361852169037,0.00259409355930984
+V0280,standard_admission_release,Standard hospital admission and release.,12.0,chronic_rework_readmission,3.0,0.4095023572444916,1.1670806998154148e-05
+V0281,standard_admission_release,Standard hospital admission and release.,8.0,chronic_rework_readmission,7.0,0.01124329213052988,0.004322426859289408
+V0282,standard_admission_release,Standard hospital admission and release.,7.0,chronic_rework_readmission,4.0,0.0029996109660714865,0.003873975947499275
+V0283,chronic_rework_readmission,"Features repeated rework, multiple lab tests, and readmissions.",20.0,standard_admission_release,10.0,0.0,0.001129603828303516
+V0284,standard_admission_release,Standard hospital admission and release.,8.0,chronic_rework_readmission,3.0,0.5308935046195984,0.002948088338598609
+V0285,standard_admission_release,Standard hospital admission and release.,9.0,chronic_rework_readmission,7.0,0.13663245737552643,0.001269170781597495
+V0286,standard_admission_release,Standard hospital admission and release.,9.0,fast_er_triage,4.0,0.3384605646133423,0.01222873106598854
+V0287,fast_er_triage,Short case concluding immediately with basic diagnostics without hospitalization.,1.0,acute_iv_treatment,1.0,0.36059239506721497,0.3368394672870636
+V0288,standard_admission_release,Standard hospital admission and release.,7.0,chronic_rework_readmission,2.0,0.3510574400424957,0.00031539765768684447
+V0289,standard_admission_release,Standard hospital admission and release.,4.0,acute_iv_treatment,2.0,0.03154706954956055,0.007062932010740042
+V0290,standard_admission_release,Standard hospital admission and release.,9.0,chronic_rework_readmission,4.0,0.5585930943489075,0.0003389155026525259
+V0291,standard_admission_release,Standard hospital admission and release.,5.0,chronic_rework_readmission,3.0,0.26268842816352844,0.05097861960530281
+V0292,fast_er_triage,Rapid case concluding quickly at triage with basic tests.,1.0,standard_admission_release,2.0,0.39904454350471497,0.04569520428776741
+V0293,standard_admission_release,Standard hospital admission and release.,6.0,chronic_rework_readmission,3.0,0.18250466883182526,0.16696308553218842
+V0294,standard_admission_release,Standard hospital admission and release.,4.0,chronic_rework_readmission,3.0,0.11186812072992325,0.0009770592441782355
+V0295,acute_iv_treatment,Acute care path with IV treatment and comprehensive blood work.,2.0,standard_admission_release,2.0,0.047650571912527084,0.048105333000421524
+V0296,standard_admission_release,Standard hospital admission and release.,5.0,chronic_rework_readmission,2.0,0.45005694031715393,0.009189937263727188
+V0297,standard_admission_release,Standard hospital admission and release.,3.0,chronic_rework_readmission,2.0,0.41367611289024353,0.00033583759795874357
+V0298,standard_admission_release,Standard hospital admission and release.,4.0,chronic_rework_readmission,3.0,0.013906057924032211,0.0012259014183655381
+V0299,standard_admission_release,Standard hospital admission and release.,11.0,chronic_rework_readmission,6.0,0.019004380330443382,0.00075384764932096
+V0300,chronic_rework_readmission,Involves prolonged duration with extensive loops and repeated lab tests and ward admissions.,14.0,standard_admission_release,8.0,0.13667194545269012,0.011246087960898876
+V0301,standard_admission_release,"Involves hospital admission and inpatient stay ending in release, fitting standard admission.",5.0,chronic_rework_readmission,3.0,0.37057217955589294,0.0014760210178792477
+V0302,fast_er_triage,Short case concluding immediately at triage without admission or intensive interventions.,4.0,acute_iv_treatment,3.0,0.36665037274360657,0.33570626378059387
+V0303,standard_admission_release,"Involves ER care, admission, inpatient care, and subsequent release before a later return.",7.0,chronic_rework_readmission,4.0,0.5228140354156494,0.00010612983169266954
+V0304,standard_admission_release,Features formal admission (Admission NC) and inpatient stay before release.,5.0,chronic_rework_readmission,3.0,0.11613550782203674,0.003567251143977046
+V0305,acute_iv_treatment,Rapid acute care with comprehensive diagnostics and IV antibiotics.,5.0,fast_er_triage,1.0,0.0731884017586708,0.021292852237820625
+V0306,standard_admission_release,Proceeds to standard hospital admission and release.,8.0,acute_iv_treatment,3.0,0.17076796293258667,0.16948623955249786
+V0307,standard_admission_release,Acute care followed by hospital admission and release.,4.0,chronic_rework_readmission,1.0,0.4035235643386841,0.001502270228229463
+V0308,standard_admission_release,"Involves acute care, admission, and standard release.",7.0,chronic_rework_readmission,3.0,0.46579280495643616,0.006103845778852701
+V0309,standard_admission_release,Includes acute treatment culminating in admission and release.,9.0,acute_iv_treatment,3.0,0.7803321480751038,0.0036192431580275297
+V0310,standard_admission_release,Proceeds from ER through formal admission to release.,5.0,chronic_rework_readmission,2.0,0.11759307980537415,0.0021096807904541492
+V0311,standard_admission_release,"Involves intensive care admission, normal admission, and standard release.",17.0,chronic_rework_readmission,9.0,0.5225331783294678,0.0005516940727829933
+V0312,standard_admission_release,Features acute IV interventions followed by hospital admission and release.,8.0,chronic_rework_readmission,5.0,0.0484362356364727,0.0023564144503325224
+V0313,standard_admission_release,Proceeds through ER and admission to hospital release C.,6.0,chronic_rework_readmission,4.0,0.4475586414337158,0.03893236070871353
+V0314,standard_admission_release,Standard hospital admission and release process.,7.0,chronic_rework_readmission,6.0,0.4636955261230469,0.02279544435441494
+V0315,standard_admission_release,Involves ICU and NC admissions with comprehensive blood work and subsequent release.,26.0,chronic_rework_readmission,13.0,0.15793463587760925,0.004643547814339399
+V0316,standard_admission_release,Proceeds with admission and inpatient stay followed by release.,6.0,chronic_rework_readmission,4.0,0.4784037172794342,0.010885282419621944
+V0317,chronic_rework_readmission,"Extreme outlier with extensive loops, highly repeated lab tests, and multiple ward admissions spanning extended periods.",156.0,standard_admission_release,121.0,0.15640215575695038,0.06756136566400528
+V0318,standard_admission_release,"Involves acute care, admission, and inpatient stay before release.",23.0,chronic_rework_readmission,12.0,0.14967472851276398,0.003569160820916295
+V0319,standard_admission_release,Standard pathway featuring admission and subsequent release.,11.0,chronic_rework_readmission,5.0,0.016904110088944435,4.883500514551997e-05
+V0320,standard_admission_release,Includes hospital admission and release.,6.0,chronic_rework_readmission,2.0,0.6372267007827759,0.07406596094369888
+V0321,standard_admission_release,Proceeds from acute care to admission and release.,6.0,chronic_rework_readmission,3.0,0.5709050297737122,0.0004765109915751964
+V0322,acute_iv_treatment,Acute care pathway with IV interventions and diagnostics.,4.0,fast_er_triage,2.0,0.049260448664426804,0.002265542047098279
+V0323,standard_admission_release,ER triage leading directly to admission and release.,7.0,fast_er_triage,2.0,0.38196077942848206,0.020658861845731735
+V0324,chronic_rework_readmission,Features extensive repeated lab tests and multiple ward/ICU admissions.,25.0,standard_admission_release,12.0,0.08849692344665527,0.00875528622418642
+V0325,acute_iv_treatment,Short duration acute care with blood work and IV treatment.,3.0,fast_er_triage,3.0,0.3762694299221039,0.33491361141204834
+V0326,standard_admission_release,Involves admission and inpatient monitoring followed by release.,5.0,chronic_rework_readmission,2.0,0.013321281410753727,0.0013048878172412515
+V0327,standard_admission_release,Acute care followed by admission and release.,6.0,chronic_rework_readmission,2.0,0.48271608352661133,8.86566485860385e-05
+V0328,standard_admission_release,Proceeds via acute intervention and admission to release.,6.0,chronic_rework_readmission,2.0,0.44079068303108215,0.002381053986027837
+V0329,standard_admission_release,Standard admission and inpatient stay leading to release.,16.0,chronic_rework_readmission,7.0,0.13636720180511475,0.0015344360144808888
+V0330,acute_iv_treatment,Acute ER care and IV treatment without admission.,4.0,fast_er_triage,1.0,0.3811318874359131,0.0027543073520064354
+V0331,standard_admission_release,Features hospital admission and release.,14.0,chronic_rework_readmission,7.0,0.03799973800778389,0.011656736023724079
+V0332,standard_admission_release,Involves admission and discharge release.,8.0,acute_iv_treatment,4.0,0.7310571670532227,0.022917406633496284
+V0333,standard_admission_release,Standard hospital stay and release.,13.0,acute_iv_treatment,6.0,0.5079852938652039,0.02369135431945324
+V0334,chronic_rework_readmission,Extensive rework with numerous repeated lab tests and multiple admissions.,27.0,standard_admission_release,17.0,0.08734310418367386,0.009909099899232388
+V0335,standard_admission_release,"Proceeds through acute treatment, admission, and release.",7.0,chronic_rework_readmission,2.0,0.4659004211425781,0.0014465018175542355
+V0336,acute_iv_treatment,Acute care phase concluding shortly after diagnostics and IV treatment.,5.0,chronic_rework_readmission,1.0,0.7024452686309814,0.021141448989510536
+V0337,standard_admission_release,Involves hospital admission and release.,6.0,chronic_rework_readmission,2.0,0.014878869988024235,0.000253088801400736
+V0338,standard_admission_release,Standard inpatient admission and subsequent release.,6.0,acute_iv_treatment,3.0,0.11593114584684372,0.0010106355184689164
+V0339,chronic_rework_readmission,Repeated multi-ward admissions and extensive lab testing loops.,19.0,standard_admission_release,14.0,0.16672272980213165,0.09238660335540771
+V0340,standard_admission_release,Includes hospital admission and release.,5.0,chronic_rework_readmission,4.0,0.016488639637827873,4.5530483475886285e-05
+V0341,standard_admission_release,Proceeds through ER and admission to release.,6.0,chronic_rework_readmission,3.0,0.11799764633178711,0.001705107162706554
+V0342,fast_er_triage,Very short case concluding with basic lab tests without hospitalization.,1.0,standard_admission_release,3.0,0.7110934853553772,0.18317042291164398
+V0343,standard_admission_release,"Involves acute care, hospital admission, and release.",7.0,chronic_rework_readmission,3.0,0.12094832211732864,0.002820821711793542
+V0344,standard_admission_release,Standard hospital admission and subsequent release.,11.0,chronic_rework_readmission,4.0,0.3602405786514282,0.11300507932901382
+V0345,standard_admission_release,"Features admission, inpatient treatment, and release.",17.0,chronic_rework_readmission,11.0,0.19681787490844727,0.0008627488859929144
+V0346,chronic_rework_readmission,Long-term outlier with recurring admissions and repeated diagnostic workups.,14.0,standard_admission_release,9.0,0.14656488597393036,0.021139012649655342
+V0347,chronic_rework_readmission,Extended duration with numerous repeated lab tests and prolonged course.,9.0,standard_admission_release,6.0,0.16200505197048187,0.0005330360145308077
+V0348,standard_admission_release,Involves hospital admission and release before returning.,9.0,chronic_rework_readmission,4.0,0.45384278893470764,0.024200746789574623
+V0349,fast_er_triage,Rapid case concluding at triage with basic diagnostics and no admission.,5.0,acute_iv_treatment,4.0,0.7295293807983398,0.3344213664531708
+V0350,standard_admission_release,Involves a brief admission followed by release.,8.0,chronic_rework_readmission,1.0,0.7548725008964539,0.006087501998990774
+V0351,standard_admission_release,The narrative includes formal hospital admission (Admission NC) followed by a standard inpatient stay and subsequent release (Release A).,8.0,acute_iv_treatment,2.0,0.34755539894104004,0.003133902559056878
+V0352,chronic_rework_readmission,"Spans multiple weeks with repeated lab tests, repeated admissions, and culminates in a return to the ER.",6.0,standard_admission_release,3.0,0.00026249856455251575,0.0008671052637510002
+V0353,chronic_rework_readmission,"Extensive duration with repeated CRP and Leucocytes tests during inpatient care, ending in a return to the ER.",4.0,standard_admission_release,1.0,0.1623321920633316,0.0008601640001870692
+V0354,chronic_rework_readmission,"Characterized by extensive loops, repeated lab tests (CRP, LacticAcid, Leucocytes), and ward/ICU admissions over several days.",18.0,standard_admission_release,10.0,0.46279478073120117,0.0007188001764006913
+V0355,chronic_rework_readmission,"Features multiple repetitions of Admission NC, CRP, LacticAcid, and Leucocytes over an extended inpatient stay.",6.0,standard_admission_release,5.0,0.46492043137550354,0.0009999602334573865
+V0356,chronic_rework_readmission,"Extended duration with frequent and repeated lab tests (CRP, Leucocytes, LacticAcid) during the admission.",10.0,standard_admission_release,4.0,0.5191574692726135,0.007154356688261032
+V0357,chronic_rework_readmission,"Spans months with multiple repeated lab tests and admission rework, concluding with a return to the ER.",6.0,standard_admission_release,2.0,0.018804095685482025,0.002906508045271039
+V0358,standard_admission_release,"Involves acute ER care, hospital admission, and subsequent release before culminating in an ER return.",7.0,chronic_rework_readmission,2.0,0.6883483529090881,0.00012047109339619055
+V0359,chronic_rework_readmission,Long duration spanning over three months with repeated inflammatory marker checks and an ER return.,5.0,standard_admission_release,3.0,0.14701832830905914,0.00034061408950947225
+V0360,standard_admission_release,"Standard acute sepsis care with basic diagnostics, IV treatment, and hospital admission followed by release.",7.0,acute_iv_treatment,3.0,0.33540788292884827,0.01528140064328909
+V0361,standard_admission_release,"Involves acute triage, IV treatment, repeated admission, and a standard inpatient release pathway.",5.0,chronic_rework_readmission,3.0,0.13548021018505096,0.006551870610564947
+V0362,standard_admission_release,Case requires formal hospital admission followed by inpatient stay and subsequent release.,4.0,chronic_rework_readmission,2.0,0.008092847652733326,0.003923546057194471
+V0363,standard_admission_release,Follows standard acute care and hospital admission leading to release.,4.0,chronic_rework_readmission,2.0,0.013996480964124203,0.0011354790767654777
+V0364,chronic_rework_readmission,Prolonged case duration spanning several months with repeat labs and an eventual return to the ER.,7.0,standard_admission_release,2.0,0.1497248113155365,0.0009366095182485878
+V0365,acute_iv_treatment,"Involves comprehensive blood work, IV liquids, and intravenous antibiotics within a short duration without formal admission release.",12.0,standard_admission_release,6.0,0.7068712115287781,0.018542062491178513
+V0366,chronic_rework_readmission,"Exhibits rework with repeated CRP and Leucocytes tests over multiple weeks, ending in an ER return.",6.0,standard_admission_release,3.0,0.12957285344600677,0.0009089004597626626
+V0367,chronic_rework_readmission,"Extreme outlier case spanning many days with highly repeated lab tests (LacticAcid, Leucocytes, CRP) and a return to the ER.",20.0,standard_admission_release,12.0,0.17920975387096405,0.013923205435276031
+V0368,standard_admission_release,Short acute pathway concluding immediately at hospital admission.,7.0,fast_er_triage,1.0,0.7909033894538879,0.014190461486577988
+V0369,chronic_rework_readmission,Features extensive repetition of lab tests and extended monitoring over weeks leading to a return to the ER.,8.0,standard_admission_release,6.0,0.18615590035915375,0.006103845778852701
+V0370,chronic_rework_readmission,Spans multiple months with recurrent lab tests and a subsequent return to the ER.,6.0,standard_admission_release,4.0,0.19939787685871124,0.0015839594416320324
+V0371,standard_admission_release,Standard acute pathway leading to admission and subsequent release type B.,7.0,acute_iv_treatment,1.0,0.7062849402427673,0.0030963029712438583
+V0372,chronic_rework_readmission,"Involves heavy test rework with multiple repeated iterations of CRP, Leucocytes, and LacticAcid over two weeks.",12.0,standard_admission_release,7.0,0.43943846225738525,0.0008819322101771832
+V0373,standard_admission_release,Standard acute sepsis care pathway concluding with a hospital admission and release.,6.0,acute_iv_treatment,2.0,0.005869217216968536,0.0010516488691791892
+V0374,acute_iv_treatment,Short duration acute sepsis care with comprehensive blood work and IV treatment.,6.0,standard_admission_release,2.0,0.6918106079101562,7.816903962520882e-05
+V0375,chronic_rework_readmission,Extended inpatient stay featuring numerous repeated lab tests and admission rework loops.,11.0,standard_admission_release,7.0,0.4398156702518463,0.0012591567356139421
+V0376,standard_admission_release,Inpatient stay with hospital admission followed by release C.,7.0,chronic_rework_readmission,4.0,0.4768647253513336,0.00962620135396719
+V0377,standard_admission_release,Standard acute hospital admission and subsequent release.,5.0,chronic_rework_readmission,4.0,0.006226352881640196,0.0027044035959988832
+V0378,acute_iv_treatment,"Short rapid case involving triage, comprehensive blood work, and intravenous antibiotics within hours.",2.0,fast_er_triage,2.0,0.011559880338609219,0.0004915641620755196
+V0379,acute_iv_treatment,"Rapid acute case involving triage, blood work, and IV antibiotic administration within a short duration.",3.0,fast_er_triage,1.0,0.02277352474629879,0.006904469802975655
+V0380,standard_admission_release,Involves hospital admission and subsequent release after acute interventions.,6.0,fast_er_triage,2.0,0.34601497650146484,0.00467431265860796
+V0381,standard_admission_release,Standard case requiring formal hospital admission and subsequent release.,5.0,chronic_rework_readmission,3.0,0.1286640614271164,0.00026427218108437955
+V0382,chronic_rework_readmission,Involves multiple admissions and repeated lab test loops over a period of 12 days before an ER return.,5.0,standard_admission_release,3.0,0.026931963860988617,0.0010117589263245463
+V0383,standard_admission_release,Standard acute care with admission followed by release.,9.0,acute_iv_treatment,4.0,0.3546491861343384,0.0018406291492283344
+V0384,chronic_rework_readmission,"Features extended loops and repeatedly performed lab tests (CRP, Leucocytes, LacticAcid) over an inpatient stay.",10.0,standard_admission_release,6.0,0.5268031358718872,0.013247284106910229
+V0385,chronic_rework_readmission,Characterized by repetitive lab checks and admission loops culminating in a return to the ER.,8.0,standard_admission_release,7.0,0.2006070613861084,0.00834730826318264
+V0386,chronic_rework_readmission,Spans nearly three months with repeated blood work and an ultimate return to the ER.,4.0,standard_admission_release,2.0,0.14249859750270844,0.0011227871291339397
+V0387,chronic_rework_readmission,Contains multiple loops of admission and repeatedly measured blood markers over a two-week period.,6.0,standard_admission_release,2.0,0.35348427295684814,0.0001743799221003428
+V0388,standard_admission_release,Standard hospital admission and release path with some lab repetitions.,7.0,chronic_rework_readmission,5.0,0.015019319020211697,0.00011264110798947513
+V0389,standard_admission_release,Standard case with hospital admission followed by release.,6.0,chronic_rework_readmission,2.0,0.36083900928497314,0.20468474924564362
+V0390,standard_admission_release,Involves admission and inpatient care concluding with a standard release (Release B).,6.0,chronic_rework_readmission,5.0,0.46544623374938965,0.02219104766845703
+V0391,standard_admission_release,Acute care with admission to ICU/NC followed by release.,6.0,chronic_rework_readmission,4.0,0.12338811904191971,0.012921924702823162
+V0392,standard_admission_release,Standard hospital admission and release pathway.,5.0,chronic_rework_readmission,2.0,0.24573229253292084,0.03519592061638832
+V0393,chronic_rework_readmission,Highly extended variant with extensive loops and heavily repeated lab work over 15 days.,17.0,standard_admission_release,9.0,0.35526156425476074,0.0016007829690352082
+V0394,standard_admission_release,Standard inpatient treatment pathway ending in release.,6.0,acute_iv_treatment,4.0,0.021266018971800804,0.001742361462675035
+V0395,standard_admission_release,Standard hospital admission followed by inpatient stay and subsequent release.,5.0,chronic_rework_readmission,1.0,0.002777395537123084,0.003651760518550873
+V0396,standard_admission_release,Standard acute pathway with admission and subsequent release.,3.0,chronic_rework_readmission,2.0,0.001783774234354496,0.0009094090783037245
+V0397,standard_admission_release,Involves hospital admission and subsequent release after acute ER procedures.,6.0,chronic_rework_readmission,6.0,0.12714451551437378,0.0017838276689872146
+V0398,chronic_rework_readmission,Extended duration of 23 days featuring extensive repetitions of lab tests and admissions before an ER return.,13.0,standard_admission_release,8.0,0.009240631945431232,0.0005707857781089842
+V0399,fast_er_triage,Short case concluding very quickly at triage and admission without extended inpatient stays.,5.0,standard_admission_release,2.0,0.3563571870326996,0.04079475253820419
+V0400,standard_admission_release,Standard acute care with hospital admission and subsequent release.,5.0,chronic_rework_readmission,2.0,0.17891959846019745,0.16690319776535034
+V0401,standard_admission_release,The case involves formal hospital admission followed by inpatient stay and release.,8.0,chronic_rework_readmission,4.0,0.34337830543518066,0.0877240002155304
+V0402,standard_admission_release,Features formal admission and release followed by return to the ER after a longer duration.,5.0,chronic_rework_readmission,3.0,0.4275893270969391,0.0007239529513753951
+V0403,chronic_rework_readmission,"Extensive loops, repeated admissions and labs over multiple days leading to readmission.",7.0,standard_admission_release,6.0,0.11772307008504868,0.026720276102423668
+V0404,chronic_rework_readmission,"Shows repeated admissions, frequent lab tests, and a return to the ER.",6.0,standard_admission_release,2.0,0.056484270840883255,0.00026445588446222246
+V0405,standard_admission_release,Involves admission and release with standard care.,4.0,chronic_rework_readmission,4.0,0.03128816932439804,0.006804030388593674
+V0406,standard_admission_release,Standard acute admission path culminating in release.,5.0,acute_iv_treatment,1.0,0.18133915960788727,0.1671261340379715
+V0407,standard_admission_release,Proceeds with admission to IC and eventual release.,7.0,chronic_rework_readmission,5.0,0.3733077943325043,0.057794537395238876
+V0408,standard_admission_release,Standard admission and release path.,4.0,chronic_rework_readmission,2.0,0.3747132122516632,0.00030690510175190866
+V0409,standard_admission_release,Involves repeat admissions and release.,6.0,chronic_rework_readmission,3.0,0.5296735167503357,0.0027669204864650965
+V0410,standard_admission_release,Follows standard admission and release.,4.0,acute_iv_treatment,2.0,0.334641695022583,0.036621201783418655
+V0411,chronic_rework_readmission,Extensive repetition of labs and readmission.,9.0,standard_admission_release,6.0,0.5344767570495605,0.06894596666097641
+V0412,chronic_rework_readmission,High frequency of repeated labs and prolonged timeline.,8.0,standard_admission_release,4.0,0.11971654742956161,0.0024740181397646666
+V0413,standard_admission_release,Standard admission and release with return.,8.0,chronic_rework_readmission,1.0,0.7674911618232727,0.0002737457980401814
+V0414,chronic_rework_readmission,Features multiple repeated labs over a longer span.,5.0,standard_admission_release,2.0,0.11734533309936523,0.0007480275817215443
+V0415,acute_iv_treatment,Involves comprehensive blood work and IV treatment before admission.,3.0,standard_admission_release,1.0,0.34509220719337463,0.004004490561783314
+V0416,standard_admission_release,Involves acute workup followed by admission and release.,7.0,chronic_rework_readmission,3.0,0.37148404121398926,0.010182095691561699
+V0417,,Does not fit any category cleanly due to ending back at ER triage.,,acute_iv_treatment,1.0,,0.004662918392568827
+V0418,standard_admission_release,Involves admission and subsequent release.,6.0,chronic_rework_readmission,2.0,0.3966733515262604,2.477323323546443e-05
+V0419,standard_admission_release,Standard admission and release sequence.,5.0,chronic_rework_readmission,3.0,0.0010599191300570965,0.00018555410497356206
+V0420,standard_admission_release,Involves repeated admission steps and release.,7.0,chronic_rework_readmission,3.0,0.34831467270851135,0.19216042757034302
+V0421,chronic_rework_readmission,Repeated admissions and extensive lab work loops.,8.0,standard_admission_release,4.0,0.37908557057380676,0.0074263704009354115
+V0422,chronic_rework_readmission,Extensive loops and repeated blood tests over several months.,8.0,standard_admission_release,6.0,0.2222149819135666,0.0025315512903034687
+V0423,chronic_rework_readmission,Long duration with repetitive lab tests and multiple admissions.,8.0,standard_admission_release,4.0,0.3382282555103302,0.00962620135396719
+V0424,standard_admission_release,Standard acute care and admission path.,8.0,chronic_rework_readmission,3.0,0.6865860819816589,0.03733763471245766
+V0425,standard_admission_release,Standard admission and release.,4.0,chronic_rework_readmission,1.0,0.00357430218718946,5.235307980910875e-05
+V0426,standard_admission_release,Involves admission and release.,6.0,chronic_rework_readmission,2.0,0.4509599208831787,0.03553104028105736
+V0427,standard_admission_release,Involves admission and release with a later return.,9.0,chronic_rework_readmission,5.0,0.5277214646339417,0.0008149051573127508
+V0428,standard_admission_release,Standard admission and release sequence.,11.0,chronic_rework_readmission,7.0,0.339925080537796,0.14656586945056915
+V0429,acute_iv_treatment,Concludes with acute IV treatment without formal admission.,5.0,fast_er_triage,2.0,0.02403135783970356,0.008162303827702999
+V0430,standard_admission_release,Standard admission and release.,7.0,chronic_rework_readmission,5.0,0.1151137426495552,0.0033577352296561003
+V0431,standard_admission_release,Standard admission and release.,4.0,chronic_rework_readmission,1.0,0.011316981166601181,0.0006994127761572599
+V0432,acute_iv_treatment,Intensive workup with IV treatments and blood work.,16.0,standard_admission_release,6.0,0.711742103099823,0.003547282889485359
+V0433,standard_admission_release,Standard admission and release.,6.0,chronic_rework_readmission,3.0,0.5214758515357971,0.24279290437698364
+V0434,standard_admission_release,Standard admission and release.,3.0,chronic_rework_readmission,4.0,0.12066520005464554,0.0025377003476023674
+V0435,chronic_rework_readmission,"Extensive loops, repeated labs, and multiple admissions.",33.0,standard_admission_release,24.0,0.08365413546562195,0.006444255355745554
+V0436,standard_admission_release,Standard admission and release.,9.0,chronic_rework_readmission,5.0,0.46785688400268555,0.0016007829690352082
+V0437,chronic_rework_readmission,Extensive rework and repeated lab tests over a long duration.,31.0,standard_admission_release,19.0,0.18236951529979706,0.009890234097838402
+V0438,standard_admission_release,Standard admission and release.,10.0,chronic_rework_readmission,5.0,0.02159895934164524,0.0016453536227345467
+V0439,chronic_rework_readmission,Long-lasting case with extensive loops and repeated lab tests.,27.0,standard_admission_release,16.0,0.44829559326171875,0.0023564144503325224
+V0440,standard_admission_release,Standard admission and release with return.,11.0,chronic_rework_readmission,5.0,0.5608603358268738,0.004328248091042042
+V0441,standard_admission_release,Standard admission and release with very long follow-up duration.,4.0,chronic_rework_readmission,1.0,0.45365700125694275,0.0007366447825916111
+V0442,standard_admission_release,Standard admission and release.,8.0,chronic_rework_readmission,4.0,0.5228331089019775,0.000125258753541857
+V0443,standard_admission_release,Standard admission and release.,4.0,chronic_rework_readmission,2.0,0.3913542330265045,0.0003360187401995063
+V0444,standard_admission_release,Standard admission and release.,10.0,chronic_rework_readmission,5.0,0.34244778752326965,0.1440431922674179
+V0445,standard_admission_release,Standard admission and release.,5.0,chronic_rework_readmission,2.0,0.11825350672006607,0.0014492528280243278
+V0446,standard_admission_release,Standard admission and release.,6.0,chronic_rework_readmission,4.0,0.11598768830299377,0.0037150743883103132
+V0447,standard_admission_release,Standard admission and release.,11.0,chronic_rework_readmission,5.0,0.423162579536438,0.0008237233851104975
+V0448,standard_admission_release,Standard admission and release.,10.0,chronic_rework_readmission,6.0,0.5291346907615662,0.0031334729865193367
+V0449,standard_admission_release,Standard admission and release.,7.0,chronic_rework_readmission,3.0,0.5649099349975586,0.0016118697822093964
+V0450,standard_admission_release,Standard admission and release.,4.0,chronic_rework_readmission,2.0,0.0023351763375103474,0.0009537968435324728
+V0451,standard_admission_release,Involves formal hospital admission (Admission NC) followed by a standard inpatient stay and release (Release A).,7.0,acute_iv_treatment,2.0,0.333375483751297,0.17713691294193268
+V0452,chronic_rework_readmission,"Extensive loops and highly repeated lab tests (CRP, LacticAcid, Leucocytes) spanning multiple weeks before release.",25.0,standard_admission_release,12.0,0.4325941801071167,0.0008627488859929144
+V0453,chronic_rework_readmission,"Features repeated lab tests, multiple admissions, and culminates in a return to the ER.",9.0,standard_admission_release,4.0,0.008758503012359142,8.86566485860385e-05
+V0454,standard_admission_release,"Standard sepsis care with IV treatment and admission, followed by a return to the ER after a longer duration.",5.0,chronic_rework_readmission,1.0,0.5252935290336609,0.001613050582818687
+V0455,standard_admission_release,"Involves acute ER treatment with IV antibiotics, followed by a standard hospital admission and release.",1.0,chronic_rework_readmission,4.0,0.130176842212677,0.001270608976483345
+V0456,standard_admission_release,"Typical acute care pathway with IV liquids/antibiotics, admission, and subsequent release.",5.0,acute_iv_treatment,2.0,0.12653182446956635,0.0023965274449437857
+V0457,chronic_rework_readmission,"Exhibits extensive repeated diagnostics (CRP, Leucocytes, LacticAcid) and multiple admissions/transfers.",17.0,standard_admission_release,9.0,0.43820345401763916,0.00035307396319694817
+V0458,standard_admission_release,"Follows standard acute ER and admission path, with a return to the ER later.",8.0,chronic_rework_readmission,2.0,0.5751590132713318,0.0016738661797717214
+V0459,standard_admission_release,"Typical acute sepsis care path with IV treatment and admission, concluding with release.",6.0,chronic_rework_readmission,5.0,0.11596059054136276,0.000981189077720046
+V0460,standard_admission_release,"Standard acute care involving IV intervention, admission, and release, with a later return to the ER.",5.0,chronic_rework_readmission,1.0,0.4613935947418213,0.0018495162948966026
+V0461,standard_admission_release,"Involves acute IV treatment, formal admission, and release.",6.0,chronic_rework_readmission,3.0,0.12143310159444809,0.0017303420463576913
+V0462,acute_iv_treatment,Case concludes shortly after acute ER care with IV interventions and initial diagnostics without hospitalization.,3.0,standard_admission_release,1.0,0.6909664273262024,0.009662666358053684
+V0463,standard_admission_release,"Standard acute sepsis care with IV intervention, admission, and release.",7.0,chronic_rework_readmission,2.0,0.7468770146369934,0.014082920737564564
+V0464,chronic_rework_readmission,Shows repeated lab work and multiple admissions indicating rework before release and return.,6.0,standard_admission_release,3.0,0.1210058256983757,0.00442004157230258
+V0465,standard_admission_release,Acute ER treatment with IV antibiotics followed by standard admission and release.,8.0,chronic_rework_readmission,5.0,0.01791357807815075,0.0007207272574305534
+V0466,standard_admission_release,"Involves multiple repetitions of admission and labs, typical of a complex standard hospital admission and release.",5.0,chronic_rework_readmission,3.0,0.13807600736618042,0.0001743799221003428
+V0467,chronic_rework_readmission,Characterized by repeated lab tests and re-admissions over several days.,6.0,standard_admission_release,3.0,0.02025143802165985,0.002355847042053938
+V0468,standard_admission_release,Standard admission and release trajectory with minor repeated lab work.,7.0,chronic_rework_readmission,3.0,0.3472791910171509,0.0034628857392817736
+V0469,standard_admission_release,"Acute care followed by hospital admission, release, and subsequent return to the ER.",6.0,chronic_rework_readmission,4.0,0.4785331189632416,0.0001458859333069995
+V0470,standard_admission_release,Follows a standard hospital admission and release pathway.,3.0,acute_iv_treatment,2.0,0.339764803647995,0.04174426198005676
+V0471,standard_admission_release,"Typical acute ER care, IV treatment, and standard hospital admission and release.",5.0,chronic_rework_readmission,2.0,0.016284983605146408,0.00015812554920557886
+V0472,standard_admission_release,Acute IV treatment followed by admission and release.,5.0,chronic_rework_readmission,3.0,0.012129914946854115,0.00011352146248100325
+V0473,standard_admission_release,Standard admission and release pathway following initial ER treatment.,4.0,chronic_rework_readmission,3.0,0.3438775837421417,0.0008852484170347452
+V0474,standard_admission_release,Standard hospital admission and release followed by a long-term return to the ER.,6.0,chronic_rework_readmission,3.0,0.4306357204914093,0.0005330360145308077
+V0475,standard_admission_release,Standard hospital admission and release case with minor repeated labs.,2.0,acute_iv_treatment,3.0,0.00016508693806827068,0.000709278101567179
+V0476,chronic_rework_readmission,"Displays extensive repeated leucocyte testing during admission, characteristic of rework.",4.0,standard_admission_release,4.0,0.2558225691318512,0.01309844758361578
+V0477,standard_admission_release,Standard admission and release with IV care.,5.0,chronic_rework_readmission,5.0,0.11320504546165466,0.0003598576586227864
+V0478,standard_admission_release,Standard hospital admission and release pathway.,8.0,chronic_rework_readmission,6.0,0.12032204121351242,0.0006192824221216142
+V0479,standard_admission_release,Standard admission and release with subsequent return to the ER.,5.0,chronic_rework_readmission,2.0,0.3464920222759247,0.0034996650647372007
+V0480,standard_admission_release,"Acute treatment, hospital admission, and release.",6.0,chronic_rework_readmission,4.0,0.003938127309083939,0.002982738660648465
+V0481,chronic_rework_readmission,Contains numerous repeated lab tests and repeated admissions over several days.,9.0,standard_admission_release,2.0,0.36247968673706055,8.926032023737207e-05
+V0482,standard_admission_release,Standard admission and release followed by a return to the ER.,8.0,chronic_rework_readmission,4.0,0.4654656946659088,0.0010117589263245463
+V0483,chronic_rework_readmission,"Extreme case with extensive loops, highly repeated lab tests, and prolonged stay spanning over a month.",25.0,standard_admission_release,15.0,0.3373398780822754,0.02753552980720997
+V0484,chronic_rework_readmission,Complex course with repeated admissions and lab work prior to release and return.,9.0,standard_admission_release,4.0,0.10332078486680984,0.0039760819636285305
+V0485,chronic_rework_readmission,"Characterized by extensive loops, highly repeated lab tests, and multiple ward admissions.",22.0,standard_admission_release,14.0,0.4424348771572113,0.0038783298805356026
+V0486,chronic_rework_readmission,Features extensive repetition of CRP and leucocyte tests over nearly three weeks.,11.0,standard_admission_release,5.0,0.34936627745628357,0.01688617654144764
+V0487,standard_admission_release,Standard hospital admission and release with acute care.,7.0,chronic_rework_readmission,5.0,0.1827346831560135,0.0028119406197220087
+V0488,fast_er_triage,"Short, rapid case concluding immediately with basic diagnostics and IV liquid at the ER stage.",3.0,acute_iv_treatment,1.0,0.3416160047054291,0.02226216532289982
+V0489,standard_admission_release,Acute ER care and standard hospital admission followed by release.,9.0,acute_iv_treatment,3.0,0.33709898591041565,0.013590286485850811
+V0490,standard_admission_release,Standard hospital admission and release pathway with IV treatment.,6.0,chronic_rework_readmission,2.0,0.17331969738006592,0.0017042838735505939
+V0491,standard_admission_release,Standard hospital admission and release.,5.0,chronic_rework_readmission,2.0,0.016214145347476006,0.00022896243899594992
+V0492,fast_er_triage,Short case concluding within a day after ER care and IV interventions.,5.0,chronic_rework_readmission,3.0,0.7478639483451843,0.3338428735733032
+V0493,standard_admission_release,Standard hospital admission and release pathway.,5.0,fast_er_triage,4.0,0.34795138239860535,0.11238700896501541
+V0494,standard_admission_release,Standard hospital admission and release with standard diagnostics.,7.0,chronic_rework_readmission,3.0,0.00036434383946470916,0.0012387089664116502
+V0495,fast_er_triage,"Very short case concluding within hours after ER care, blood work, and IV antibiotics.",5.0,acute_iv_treatment,2.0,0.02556246519088745,5.2188017434673384e-05
+V0496,standard_admission_release,Standard hospital admission and release with IV treatment.,6.0,chronic_rework_readmission,4.0,0.11444825679063797,0.003982063848525286
+V0497,standard_admission_release,Standard admission and release followed by a return to the ER.,9.0,chronic_rework_readmission,2.0,0.6666728854179382,0.05726318061351776
+V0498,chronic_rework_readmission,Prolonged case with numerous repeated CRP and leucocyte tests during the inpatient stay.,9.0,standard_admission_release,5.0,0.456073135137558,0.026362581178545952
+V0499,standard_admission_release,Standard hospital admission and release pathway.,6.0,chronic_rework_readmission,3.0,0.12493754178285599,0.003990801516920328
+V0500,standard_admission_release,Acute ER interventions followed by a standard hospital admission and release.,7.0,chronic_rework_readmission,4.0,0.18367433547973633,0.1672312468290329
+V0501,acute_iv_treatment,"Involves standard sepsis care steps including triage, comprehensive labs, and IV treatments within a short duration.",4.0,standard_admission_release,2.0,0.3801637887954712,0.0017862230306491256
+V0502,acute_iv_treatment,"Displays standard acute sepsis care with triage, blood work, and IV interventions leading directly to admission.",3.0,standard_admission_release,2.0,0.3360178470611572,0.00506986677646637
+V0503,standard_admission_release,Features formal hospital admission followed by an inpatient stay and release.,8.0,acute_iv_treatment,2.0,0.7178680300712585,0.002566840499639511
+V0504,chronic_rework_readmission,Shows repeated lab work and a return to the ER after discharge.,0.0,standard_admission_release,3.0,0.11636579036712646,0.00030690510175190866
+V0505,chronic_rework_readmission,Exhibits rework with repeated labs and a subsequent return to the ER.,4.0,standard_admission_release,2.0,0.13758395612239838,0.0010601611575111747
+V0506,standard_admission_release,"Follows standard acute intake, admission, and inpatient release.",4.0,chronic_rework_readmission,1.0,0.013871531002223492,0.0012604283401742578
+V0507,fast_er_triage,Short case concluding rapidly at the ER with basic diagnostics and IV treatment without hospitalization.,5.0,acute_iv_treatment,2.0,0.024047603830695152,9.540599421598017e-05
+V0508,chronic_rework_readmission,Characterized by extensive repeated lab tests and a return to the ER over a longer duration.,9.0,standard_admission_release,5.0,0.140350341796875,1.1670806998154148e-05
+V0509,standard_admission_release,Standard admission and subsequent release after acute ER care.,5.0,chronic_rework_readmission,1.0,0.00618669344112277,0.002664744621142745
+V0510,fast_er_triage,Rapid case finishing quickly with basic lab tests and IV antibiotics without admission.,3.0,acute_iv_treatment,1.0,0.004081730730831623,0.003596652066335082
+V0511,standard_admission_release,Involves hospital admission and release following acute treatments and lab work.,11.0,chronic_rework_readmission,8.0,0.1990521103143692,0.0013714955421164632
+V0512,standard_admission_release,Standard inpatient admission and release sequence.,9.0,chronic_rework_readmission,5.0,0.12370079755783081,0.003998038824647665
+V0513,standard_admission_release,Inpatient admission followed by standard release.,6.0,chronic_rework_readmission,3.0,0.13151800632476807,0.0025896632578223944
+V0514,standard_admission_release,Hospital admission and subsequent release after inpatient care.,12.0,chronic_rework_readmission,4.0,0.13598144054412842,0.001920198556035757
+V0515,chronic_rework_readmission,Long duration involving repeated labs and a return to the ER.,6.0,standard_admission_release,4.0,0.03132196143269539,0.00010612983169266954
+V0516,fast_er_triage,Short sequence focused on initial diagnostics and treatments.,7.0,acute_iv_treatment,6.0,0.6851279139518738,0.058374062180519104
+V0517,fast_er_triage,Very brief case concluding quickly at triage with minimal diagnostics.,1.0,standard_admission_release,2.0,0.6794157028198242,0.6667860150337219
+V0518,standard_admission_release,Standard hospital admission and release path.,4.0,acute_iv_treatment,2.0,0.029758548364043236,0.005274408031255007
+V0519,chronic_rework_readmission,Involves readmission or return to the ER after inpatient release.,5.0,standard_admission_release,2.0,0.03213905915617943,0.002146756509318948
+V0520,chronic_rework_readmission,Features a return to the ER following hospital release.,7.0,standard_admission_release,2.0,0.15044738352298737,0.0032373873982578516
+V0521,standard_admission_release,Standard admission and release trajectory.,6.0,chronic_rework_readmission,6.0,0.11162614077329636,0.0022491130512207747
+V0522,chronic_rework_readmission,"Contains extensive loops, repeated lab tests, and multiple ward/admission steps.",17.0,standard_admission_release,9.0,0.4360438287258148,0.03554964065551758
+V0523,standard_admission_release,Involves formal hospital admission and standard inpatient release.,6.0,chronic_rework_readmission,4.0,0.17308132350444794,0.0056012780405581
+V0524,standard_admission_release,Standard admission and release process after acute care.,3.0,acute_iv_treatment,2.0,0.0030012752395123243,0.003875640220940113
+V0525,standard_admission_release,Formal admission followed by inpatient release.,3.0,acute_iv_treatment,2.0,0.16941888630390167,0.17029325664043427
+V0526,chronic_rework_readmission,Extreme outlier spanning multiple months with a return to the ER.,8.0,standard_admission_release,2.0,0.06223888695240021,0.001960309222340584
+V0527,standard_admission_release,Standard admission and subsequent release.,8.0,chronic_rework_readmission,5.0,0.16676123440265656,0.0007188001764006913
+V0528,chronic_rework_readmission,Prolonged case featuring extensive repeated lab tests and a return to the ER.,8.0,standard_admission_release,6.0,0.11106079071760178,0.0037639227230101824
+V0529,chronic_rework_readmission,Long duration culminating in a return to the ER.,7.0,standard_admission_release,2.0,0.16455350816249847,0.003081480273976922
+V0530,chronic_rework_readmission,Extended case resulting in a return to the ER.,8.0,standard_admission_release,3.0,0.018133459612727165,0.002235871972516179
+V0531,chronic_rework_readmission,"Involves intensive care admission loops, repeated labs, and a return to the ER.",7.0,standard_admission_release,5.0,0.2335153967142105,0.09125564247369766
+V0532,standard_admission_release,Standard admission and release pathway.,4.0,chronic_rework_readmission,3.0,0.0025415727868676186,0.0034159377682954073
+V0533,standard_admission_release,Hospital admission followed by standard release.,4.0,chronic_rework_readmission,2.0,0.01399947702884674,0.0029534678906202316
+V0534,standard_admission_release,Standard inpatient admission and subsequent release.,4.0,acute_iv_treatment,3.0,0.12100007385015488,0.0012973081320524216
+V0535,chronic_rework_readmission,Prolonged outlier with repeated tests and a return to the ER.,5.0,standard_admission_release,3.0,0.14484824240207672,0.00033583759795874357
+V0536,standard_admission_release,Standard hospital admission and release.,4.0,chronic_rework_readmission,3.0,0.12000896781682968,0.0003062072501052171
+V0537,standard_admission_release,Acute care followed by admission and release.,9.0,chronic_rework_readmission,4.0,0.013569843024015427,0.0015534496633335948
+V0538,chronic_rework_readmission,Contains multiple admission steps and repeated lab tests over a longer timeframe.,12.0,standard_admission_release,8.0,0.3495587110519409,0.0037511747796088457
+V0539,chronic_rework_readmission,Extended duration with a return to the ER.,5.0,standard_admission_release,3.0,0.012706908397376537,0.0001458859333069995
+V0540,standard_admission_release,Standard admission and release process.,5.0,chronic_rework_readmission,5.0,0.46251264214515686,0.0192574430257082
+V0541,acute_iv_treatment,"Acute ER care pathway involving triage, blood work, and intravenous treatments.",5.0,standard_admission_release,1.0,0.41266319155693054,0.0017786488169804215
+V0542,standard_admission_release,Intensive care admission and subsequent release.,8.0,chronic_rework_readmission,6.0,0.11754084378480911,0.0070746527053415775
+V0543,chronic_rework_readmission,Extensive loops with highly repeated lab tests and a return to the ER.,19.0,standard_admission_release,14.0,0.17786918580532074,0.014390569180250168
+V0544,standard_admission_release,Standard inpatient admission and release sequence.,5.0,chronic_rework_readmission,1.0,0.01162449549883604,0.00039189765811897814
+V0545,standard_admission_release,Standard hospital admission followed by release.,4.0,chronic_rework_readmission,2.0,0.003064497606828809,0.003856368362903595
+V0546,chronic_rework_readmission,Prolonged case ending in a return to the ER.,6.0,standard_admission_release,2.0,0.11403325945138931,0.0015950269298627973
+V0547,chronic_rework_readmission,Features excessive admission loops and repeated lab tests.,17.0,standard_admission_release,10.0,0.3612574636936188,0.0043951538391411304
+V0548,standard_admission_release,Standard admission and inpatient release pathway.,9.0,chronic_rework_readmission,5.0,0.16929316520690918,0.0018131313845515251
+V0549,acute_iv_treatment,Rapid sepsis care pathway with comprehensive labs and intravenous treatments.,3.0,standard_admission_release,2.0,0.37840938568115234,3.1807852792553604e-05
+V0550,acute_iv_treatment,"Short acute care case involving triage, blood work, and IV interventions.",6.0,standard_admission_release,3.0,0.6677498817443848,0.057794537395238876
+V0551,chronic_rework_readmission,Shows extensive loops and repeated lab tests spanning multiple months with multiple admissions.,72.0,standard_admission_release,41.0,0.4181118309497833,0.013110836036503315
+V0552,standard_admission_release,Involves formal hospital admission followed by standard inpatient stay and release.,13.0,chronic_rework_readmission,6.0,0.34152090549468994,0.1059565618634224
+V0553,chronic_rework_readmission,Contains multiple rework loops and prolonged stays with repeated lab testing.,18.0,standard_admission_release,11.0,0.4193049669265747,0.09367720037698746
+V0554,standard_admission_release,Features formal admission NC and final release A.,5.0,chronic_rework_readmission,3.0,0.11283030360937119,1.4887139514030423e-05
+V0555,standard_admission_release,Proceeds through standard admission NC and finishes with release.,6.0,chronic_rework_readmission,4.0,0.5043665766716003,0.22777800261974335
+V0556,chronic_rework_readmission,Culminates in a return to the ER after extended care and rework.,4.0,standard_admission_release,3.0,0.019603082910180092,0.0017074906500056386
+V0557,standard_admission_release,Involves admission and normal release without chronic outlier loops.,5.0,chronic_rework_readmission,3.0,0.1274927705526352,2.0134490114287473e-05
+V0558,chronic_rework_readmission,Ends in return to the ER following prolonged observation and rework.,6.0,standard_admission_release,3.0,0.129221573472023,0.0017119027907028794
+V0559,chronic_rework_readmission,Characterized by returns to the ER and repeated testing cycles.,6.0,standard_admission_release,4.0,0.010008552111685276,0.003007941646501422
+V0560,chronic_rework_readmission,Involves return to the ER and multiple recurring lab tests over time.,6.0,standard_admission_release,3.0,0.11254227161407471,0.0030860097613185644
+V0561,standard_admission_release,Follows a standard hospital admission and release path with minor rework.,7.0,chronic_rework_readmission,4.0,0.005042508710175753,0.001878357375971973
+V0562,standard_admission_release,Standard admission and subsequent release A.,7.0,chronic_rework_readmission,4.0,0.006823904812335968,9.696097549749538e-05
+V0563,chronic_rework_readmission,Exhibits extensive rework loops and repeated interventions.,12.0,standard_admission_release,8.0,0.46855688095092773,0.0015447637997567654
+V0564,chronic_rework_readmission,Ends with a return to the ER after repeated ward admissions.,8.0,standard_admission_release,3.0,0.006599831860512495,0.006416662130504847
+V0565,acute_iv_treatment,Short acute pathway with comprehensive blood work and IV interventions concluding at admission NC.,5.0,fast_er_triage,2.0,0.333530455827713,0.007951495237648487
+V0566,standard_admission_release,Typical case requiring formal hospital admission followed by standard discharge.,9.0,chronic_rework_readmission,4.0,0.1207645833492279,0.0026370876003056765
+V0567,chronic_rework_readmission,Extreme duration spanning months and culminating in a return to the ER.,6.0,acute_iv_treatment,2.0,0.1606753021478653,0.0007967143319547176
+V0568,standard_admission_release,Follows a standard hospital admission and release process.,10.0,chronic_rework_readmission,6.0,0.1804465502500534,0.000523786002304405
+V0569,standard_admission_release,Standard inpatient stay concluded by release.,5.0,chronic_rework_readmission,1.0,0.11521127820014954,0.004491475410759449
+V0570,standard_admission_release,Involves admission and subsequent release after standard monitoring.,13.0,chronic_rework_readmission,4.0,0.1321517676115036,0.003245539963245392
+V0571,chronic_rework_readmission,Highly repeated lab tests and multiple admissions over a prolonged period.,25.0,standard_admission_release,14.0,0.4389249384403229,0.03266850486397743
+V0572,chronic_rework_readmission,Extensive loops and repeated lab tests spanning multiple weeks.,19.0,standard_admission_release,11.0,0.511946976184845,0.003569160820916295
+V0573,chronic_rework_readmission,Culminates in return to the ER after multiple repeated tests and admissions.,5.0,standard_admission_release,2.0,0.017511948943138123,5.731179771828465e-05
+V0574,standard_admission_release,Standard hospital admission followed by release.,13.0,chronic_rework_readmission,9.0,0.17518900334835052,0.0035735832061618567
+V0575,fast_er_triage,Short rapid case without hospitalization or intensive interventions.,5.0,acute_iv_treatment,2.0,0.7285196185112,7.816903962520882e-05
+V0576,standard_admission_release,Formal hospital admission followed by release.,7.0,chronic_rework_readmission,5.0,0.132491797208786,0.003563456004485488
+V0577,chronic_rework_readmission,Outlier case with extensive loops and return to the ER.,11.0,standard_admission_release,9.0,0.019097408279776573,0.003199820639565587
+V0578,chronic_rework_readmission,Prolonged duration ending in a return to the ER.,3.0,standard_admission_release,2.0,0.12228977680206299,0.0014760210178792477
+V0579,chronic_rework_readmission,"Massive loops of repeated lab tests and multiple admissions spanning over two months, ending in a return to the ER.",44.0,standard_admission_release,26.0,0.10580385476350784,0.0014930098550394177
+V0580,fast_er_triage,Rapid case concluded quickly with basic diagnostics and no admission.,5.0,acute_iv_treatment,1.0,0.7179346084594727,0.009662666358053684
+V0581,chronic_rework_readmission,Ends in a return to the ER with prolonged duration and repeated testing.,6.0,standard_admission_release,3.0,0.011534572578966618,0.0013182213297113776
+V0582,standard_admission_release,Standard hospital stay and subsequent release.,5.0,chronic_rework_readmission,2.0,0.1683133840560913,0.1674390286207199
+V0583,standard_admission_release,Involves admission and release without prolonged rework.,5.0,chronic_rework_readmission,3.0,0.11152485758066177,0.0021478370763361454
+V0584,fast_er_triage,Short case concluding without hospitalization.,5.0,acute_iv_treatment,1.0,0.4150083363056183,3.1807852792553604e-05
+V0585,fast_er_triage,Very short duration case ending at lab test without admission.,4.0,acute_iv_treatment,2.0,0.34564363956451416,0.02394484542310238
+V0586,standard_admission_release,Standard inpatient stay followed by release B.,5.0,chronic_rework_readmission,2.0,0.3333382308483124,0.09777385741472244
+V0587,fast_er_triage,Extremely short triage-level case with basic diagnostics.,1.0,acute_iv_treatment,2.0,0.6976905465126038,0.19657333195209503
+V0588,chronic_rework_readmission,Prolonged timeline with recurring lab work and return to the ER.,10.0,standard_admission_release,5.0,0.18687118589878082,0.006261757109314203
+V0589,standard_admission_release,Involves hospital admission and subsequent release.,7.0,chronic_rework_readmission,5.0,0.45133551955223083,0.013247284106910229
+V0590,chronic_rework_readmission,Extreme duration spanning months and culminating in a return to the ER.,6.0,standard_admission_release,4.0,0.04245568811893463,0.0020043847616761923
+V0591,standard_admission_release,Standard admission pathway with final release.,7.0,chronic_rework_readmission,2.0,0.6793292164802551,0.0445944108068943
+V0592,fast_er_triage,Rapid triage case completed within an hour without admission.,4.0,acute_iv_treatment,1.0,0.010364127345383167,0.0018582692136988044
+V0593,standard_admission_release,Standard hospital admission and release.,6.0,chronic_rework_readmission,3.0,0.009431925602257252,0.0025110591668635607
+V0594,standard_admission_release,Involves admission and release workflow.,6.0,chronic_rework_readmission,5.0,0.5252198576927185,0.04092591255903244
+V0595,chronic_rework_readmission,Extremely long duration spanning multiple months with a return to the ER.,6.0,standard_admission_release,4.0,0.14237523078918457,0.016949363052845
+V0596,standard_admission_release,Standard hospital admission and release.,5.0,chronic_rework_readmission,3.0,0.005074018146842718,0.0015520690940320492
+V0597,standard_admission_release,Standard inpatient pathway ending in release.,11.0,chronic_rework_readmission,7.0,0.18034452199935913,0.00042176127317361534
+V0598,chronic_rework_readmission,Prolonged sequence characterized by highly repeated leucocyte tests and ward stays.,14.0,standard_admission_release,7.0,0.33543023467063904,0.010885282419621944
+V0599,standard_admission_release,Short standard admission followed by release.,5.0,chronic_rework_readmission,3.0,0.021535182371735573,0.0020115261431783438
+V0600,chronic_rework_readmission,Extensive repetitive loops of lab testing and admissions.,24.0,standard_admission_release,14.0,0.4405452013015747,0.0019886402878910303
+V0601,standard_admission_release,The case involves a formal hospital admission (Admission NC) and concludes with Release C.,6.0,chronic_rework_readmission,4.0,0.3364403247833252,0.15005062520503998
+V0602,standard_admission_release,"The case involves formal admissions (Admission IC, Admission NC) and concludes with Release D.",7.0,acute_iv_treatment,6.0,0.5138161778450012,0.041752103716135025
+V0603,standard_admission_release,The case includes an inpatient admission (Admission NC) followed by a standard hospital stay and release.,5.0,fast_er_triage,4.0,0.3701905906200409,0.11909843236207962
+V0604,standard_admission_release,The case requires formal admission (Admission NC) and standard inpatient monitoring before release.,7.0,chronic_rework_readmission,2.0,0.01839517056941986,0.00014463810657616705
+V0605,chronic_rework_readmission,The case involves extensive duration and an eventual return to the ER after discharge.,10.0,standard_admission_release,6.0,0.2418026179075241,0.0016118697822093964
+V0606,standard_admission_release,"The case includes acute intervention, hospital admission (Admission NC), and a standard release.",5.0,chronic_rework_readmission,3.0,0.011584476567804813,0.0004319158906582743
+V0607,standard_admission_release,"The case involves IV treatments, formal admission (Admission NC), and subsequent release.",7.0,chronic_rework_readmission,4.0,0.12226682901382446,0.0025640761014074087
+V0608,standard_admission_release,The case proceeds through admission (Admission NC) and inpatient stay before release.,4.0,chronic_rework_readmission,3.0,0.11174151301383972,0.0011036747600883245
+V0609,standard_admission_release,The case includes acute ER care followed by hospital admission (Admission NC) and release.,6.0,chronic_rework_readmission,4.0,0.00023028031864669174,0.0011046453146263957
+V0610,standard_admission_release,The case progresses from ER treatment to admission (Admission NC) and release.,4.0,chronic_rework_readmission,3.0,0.11642711609601974,0.0032756486907601357
+V0611,standard_admission_release,The case features multiple admissions (Admission NC) and lab tests before concluding with a release.,10.0,chronic_rework_readmission,7.0,0.19171826541423798,0.00035307396319694817
+V0612,standard_admission_release,The case includes formal admission (Admission NC) and inpatient monitoring leading to release.,5.0,chronic_rework_readmission,3.0,0.12398277968168259,0.004280022345483303
+V0613,standard_admission_release,"The case involves ER sepsis triage, IV intervention, admission (Admission NC), and release.",4.0,chronic_rework_readmission,1.0,0.18822968006134033,0.168706014752388
+V0614,chronic_rework_readmission,The case involves an extended duration and culminates in a return to the ER.,8.0,standard_admission_release,2.0,0.3806852102279663,0.0008848587167449296
+V0615,chronic_rework_readmission,The case spans a long duration and features a return to the ER after release.,5.0,standard_admission_release,2.0,0.15241968631744385,0.001579192467033863
+V0616,standard_admission_release,"The case includes IV treatment, hospital admission (Admission NC), and standard release.",4.0,chronic_rework_readmission,2.0,0.17209190130233765,0.16856996715068817
+V0617,standard_admission_release,"The case involves ER care, admission (Admission NC), and a standard hospital release.",4.0,acute_iv_treatment,3.0,0.13193441927433014,0.0030060841236263514
+V0618,standard_admission_release,The case includes repeated admissions (Admission NC) and inpatient stays before concluding with Release C.,7.0,chronic_rework_readmission,6.0,0.46923550963401794,0.01725548319518566
+V0619,standard_admission_release,"The case follows standard acute care, hospital admission, and release.",6.0,acute_iv_treatment,1.0,0.17895282804965973,0.16693644225597382
+V0620,standard_admission_release,The case includes admission (Admission NC) and standard inpatient observation before release.,4.0,chronic_rework_readmission,4.0,0.11833807080984116,0.007871868088841438
+V0621,acute_iv_treatment,"The case is a short acute care pathway involving IV liquids, antibiotics, and comprehensive labs, concluding rapidly without admission.",6.0,standard_admission_release,3.0,0.6787427067756653,0.04457711800932884
+V0622,standard_admission_release,"The case involves extensive inpatient tracking, admission (Admission NC), and subsequent release.",21.0,chronic_rework_readmission,11.0,0.12067604064941406,0.008920029737055302
+V0623,standard_admission_release,The case involves hospital admission (Admission NC) followed by inpatient observation and release.,0.0,acute_iv_treatment,3.0,0.019213832914829254,0.00030982462340034544
+V0624,standard_admission_release,"The case features IV treatment, admission (Admission NC), and standard release.",5.0,chronic_rework_readmission,3.0,0.17007064819335938,0.0015447637997567654
+V0625,chronic_rework_readmission,The case spans over a year with a subsequent return to the ER.,5.0,standard_admission_release,2.0,0.18375663459300995,0.0007366447825916111
+V0626,standard_admission_release,The case includes formal admission (Admission NC) and inpatient stay before release.,4.0,acute_iv_treatment,3.0,0.22980105876922607,0.018091263249516487
+V0627,chronic_rework_readmission,"The case is an extreme outlier featuring extensive loops, multiple admissions, and an ER return.",13.0,standard_admission_release,12.0,0.10159964114427567,0.002506805816665292
+V0628,standard_admission_release,The case involves admission (Admission NC) and standard inpatient stay followed by release.,7.0,chronic_rework_readmission,3.0,0.18992067873477936,0.1678967922925949
+V0629,standard_admission_release,The case involves inpatient admission (Admission NC) and concludes with Release E.,8.0,chronic_rework_readmission,5.0,0.476677268743515,0.15986932814121246
+V0630,standard_admission_release,"The case includes admissions (Admission IC, Admission NC) and an inpatient stay before release.",10.0,chronic_rework_readmission,8.0,0.11900567263364792,0.008539478294551373
+V0631,chronic_rework_readmission,The case involves a prolonged duration and an eventual return to the ER.,4.0,standard_admission_release,2.0,0.11809631437063217,0.0014990019844844937
+V0632,chronic_rework_readmission,The case spans several months and culminates in a return to the ER.,5.0,standard_admission_release,1.0,0.15914958715438843,0.0007239529513753951
+V0633,chronic_rework_readmission,"The case features prolonged duration, repeated lab work, and an eventual return to the ER.",6.0,standard_admission_release,3.0,0.13792374730110168,0.0007203731220215559
+V0634,standard_admission_release,"The case includes IV therapy, admission (Admission NC), and release.",4.0,acute_iv_treatment,2.0,0.013643793761730194,0.0014881654642522335
+V0635,chronic_rework_readmission,The case has an extended duration of nearly a year and ends with a return to the ER.,5.0,standard_admission_release,3.0,0.06686828285455704,0.0003389155026525259
+V0636,,The case does not fit any standard category because it terminates abnormally at a LacticAcid activity instead of a release or ER return.,,standard_admission_release,2.0,,0.003960905596613884
+V0637,standard_admission_release,The case includes admission (Admission NC) and standard inpatient monitoring before release.,3.0,acute_iv_treatment,1.0,0.12503650784492493,0.003891833359375596
+V0638,chronic_rework_readmission,The case spans several months and culminates in a return to the ER.,6.0,standard_admission_release,2.0,0.14400239288806915,0.01857653260231018
+V0639,chronic_rework_readmission,The case involves extended duration and an eventual return to the ER.,8.0,standard_admission_release,4.0,0.08802946656942368,0.0020689237862825394
+V0640,chronic_rework_readmission,"The case features heavy lab repetition, extended stay, and a return to the ER.",6.0,standard_admission_release,4.0,0.11265009641647339,0.0020161776337772608
+V0641,chronic_rework_readmission,The case spans multiple months and culminates in a return to the ER.,4.0,standard_admission_release,1.0,0.16286182403564453,0.0013897987082600594
+V0642,standard_admission_release,"The case includes admission (Admission IC, Admission NC) and an inpatient stay before release.",11.0,chronic_rework_readmission,6.0,0.12209567427635193,0.011629476211965084
+V0643,chronic_rework_readmission,"The case exhibits excessive loop rework, repeated admissions, and a return to the ER.",20.0,standard_admission_release,12.0,0.09428795427083969,0.0032851595897227526
+V0644,,The case terminates with a CRP lab test instead of concluding with a standard release or ER return.,,standard_admission_release,1.0,,0.0008615933475084603
+V0645,,"The case is truncated, terminating on a LacticAcid activity without reaching a formal release or admission resolution.",,acute_iv_treatment,1.0,,0.008117436431348324
+V0646,chronic_rework_readmission,"The case includes repeated lab rework, an ER return, and a non-standard trail ending.",11.0,standard_admission_release,7.0,0.5201324820518494,0.09228887408971786
+V0647,standard_admission_release,The case proceeds from ER treatment to admission (Admission NC) and release.,6.0,chronic_rework_readmission,1.0,0.2277410626411438,0.01720469258725643
+V0648,standard_admission_release,The case involves hospital admission (Admission NC) and inpatient stay before release.,6.0,chronic_rework_readmission,3.0,0.015851086005568504,0.001101858215406537
+V0649,chronic_rework_readmission,"The case involves extended duration, multiple admissions, and an eventual return to the ER.",6.0,standard_admission_release,4.0,0.020076623186469078,0.0021810324396938086
+V0650,chronic_rework_readmission,The case spans many months and concludes with a return to the ER.,9.0,standard_admission_release,2.0,0.27686217427253723,0.04117850214242935
+V0651,chronic_rework_readmission,"Long-term outlier spanning almost a year, involving readmission and return to ER after discharge.",7.0,standard_admission_release,2.0,0.29317542910575867,0.03233559429645538
+V0652,standard_admission_release,Involves standard hospital admission (Admission NC) and subsequent release followed by a later return.,7.0,chronic_rework_readmission,1.0,0.6090722680091858,0.027911365032196045
+V0653,standard_admission_release,"Involves acute IV treatments and multiple ward admissions, culminating in release.",7.0,chronic_rework_readmission,4.0,0.1186932697892189,0.0010094881290569901
+V0654,fast_er_triage,Short triage and lab duration without a formal lengthy admission cycle.,8.0,standard_admission_release,4.0,0.7249599099159241,0.018542062491178513
+V0655,standard_admission_release,Standard hospital admission with comprehensive lab work and ultimate release.,7.0,acute_iv_treatment,5.0,0.18477226793766022,0.013156845234334469
+V0656,standard_admission_release,Involves hospital admission and repeat lab work before final release.,12.0,chronic_rework_readmission,6.0,0.45846685767173767,0.01688617654144764
+V0657,standard_admission_release,Typical acute pathway leading to admission and release.,6.0,chronic_rework_readmission,2.0,0.16697901487350464,0.0009999602334573865
+V0658,chronic_rework_readmission,Extensive duration ending in a return to the ER.,8.0,standard_admission_release,2.0,0.26029685139656067,0.01757272519171238
+V0659,acute_iv_treatment,"Standard acute sepsis care pathway with IV liquids, antibiotics, and lab diagnostics.",4.0,standard_admission_release,1.0,0.40686264634132385,0.0018406291492283344
+V0660,standard_admission_release,Features multiple repeat lab tests and admissions before final release.,18.0,chronic_rework_readmission,10.0,0.13075600564479828,0.001849781139753759
+V0661,standard_admission_release,"Involves acute care, admissions, and extensive inpatient laboratory monitoring.",19.0,chronic_rework_readmission,10.0,0.13094724714756012,0.000546335824765265
+V0662,chronic_rework_readmission,Long duration involving repeat visits and extended tracking.,8.0,standard_admission_release,5.0,0.191802978515625,0.0013299818383529782
+V0663,acute_iv_treatment,Short acute session featuring standard IV treatments and lab work concluding in admission.,3.0,standard_admission_release,1.0,0.3392590582370758,0.0018286644481122494
+V0664,fast_er_triage,Rapid case terminating quickly at ER stages with basic diagnostics.,5.0,acute_iv_treatment,3.0,0.34830132126808167,0.000988506362773478
+V0665,standard_admission_release,Involves formal admission and multiple lab iterations before release.,5.0,chronic_rework_readmission,3.0,0.007509002462029457,0.0005881366087123752
+V0666,standard_admission_release,Standard acute care followed by admission and eventual release.,4.0,chronic_rework_readmission,4.0,0.13943059742450714,0.01050226017832756
+V0667,chronic_rework_readmission,Extended duration outlier spanning multiple months with a return to the ER.,8.0,standard_admission_release,2.0,0.15482260286808014,0.0008237233851104975
+V0668,standard_admission_release,Acute ER care followed by hospital admission and release.,8.0,acute_iv_treatment,2.0,0.3726132810115814,0.011311358772218227
+V0669,standard_admission_release,"Involves standard admission, repeat tests, and final release.",5.0,chronic_rework_readmission,2.0,0.01402568444609642,0.00110627559479326
+V0670,standard_admission_release,"Inpatient pathway with admission, repeat labs, and release.",6.0,chronic_rework_readmission,4.0,0.33538731932640076,0.06940972059965134
+V0671,chronic_rework_readmission,Spans over a month with a return to the ER after initial release.,9.0,standard_admission_release,3.0,0.12649907171726227,0.001010588021017611
+V0672,standard_admission_release,Inpatient stay featuring extensive laboratory rework and eventual release.,20.0,chronic_rework_readmission,12.0,0.4459861218929291,0.018596649169921875
+V0673,standard_admission_release,Inpatient pathway involving repeated admissions and lab tests.,9.0,chronic_rework_readmission,5.0,0.11867654323577881,0.0005490417242981493
+V0674,standard_admission_release,Long-standing inpatient stay with numerous repeated diagnostic tests before release.,39.0,chronic_rework_readmission,18.0,0.16450296342372894,0.011211865581572056
+V0675,chronic_rework_readmission,Extremely long case spanning several months with a subsequent ER return.,9.0,standard_admission_release,6.0,0.05148124322295189,0.004738577641546726
+V0676,fast_er_triage,Very rapid case concluding immediately following IV antibiotic administration.,4.0,acute_iv_treatment,2.0,0.003793262178078294,0.000607567373663187
+V0677,chronic_rework_readmission,Multi-week outlier with an ultimate return to the ER.,9.0,standard_admission_release,1.0,0.34645402431488037,0.00294414977543056
+V0678,standard_admission_release,Standard acute path with admission and release.,6.0,chronic_rework_readmission,4.0,0.12324953079223633,0.0035467769484966993
+V0679,fast_er_triage,Short case concluding within hours at the IV antibiotic stage.,3.0,acute_iv_treatment,1.0,0.020761726424098015,7.773804099997506e-05
+V0680,chronic_rework_readmission,Extended timeline involving multiple weeks and a return to the ER.,9.0,standard_admission_release,6.0,0.17022305727005005,0.022036686539649963
+V0681,chronic_rework_readmission,Outlier spanning months with continuous CRP rework and an ER return.,5.0,standard_admission_release,3.0,0.25211361050605774,0.0016738661797717214
+V0682,standard_admission_release,Inpatient pathway involving multiple admissions and lab checks prior to release.,10.0,chronic_rework_readmission,8.0,0.5105106830596924,0.026216723024845123
+V0683,standard_admission_release,Inpatient treatment course with multiple lab repetitions and release.,7.0,chronic_rework_readmission,2.0,0.13597659766674042,0.0019250422483310103
+V0684,standard_admission_release,Standard hospital admission and subsequent discharge.,5.0,chronic_rework_readmission,2.0,0.11474943161010742,0.0019042426720261574
+V0685,fast_er_triage,Rapid triage and acute treatment concluding within hours.,3.0,acute_iv_treatment,2.0,0.03507368639111519,0.0007684677839279175
+V0686,chronic_rework_readmission,Extremely prolonged case duration of over 200 days ending in a return to the ER.,9.0,standard_admission_release,1.0,0.3874901235103607,0.0002737457980401814
+V0687,chronic_rework_readmission,Extended duration outlier featuring a return to the ER.,5.0,standard_admission_release,2.0,0.004264625255018473,0.0031350215431302786
+V0688,chronic_rework_readmission,Multi-week timeline culminating in a return to the ER.,6.0,standard_admission_release,3.0,0.11941066384315491,0.002779899863526225
+V0689,fast_er_triage,Very short turnaround concluding quickly with IV antibiotics.,5.0,acute_iv_treatment,2.0,0.03617601469159126,0.0004547650460153818
+V0690,standard_admission_release,Inpatient sequence featuring extensive diagnostic repetition and release.,10.0,chronic_rework_readmission,5.0,0.11242982745170593,0.0019636324141174555
+V0691,acute_iv_treatment,Short acute care pathway with standard diagnostics and early release.,4.0,standard_admission_release,2.0,0.3605211675167084,0.01829664781689644
+V0692,acute_iv_treatment,Brief acute episode involving full sepsis diagnostics and IV treatment.,6.0,standard_admission_release,1.0,0.38138464093208313,0.002566840499639511
+V0693,chronic_rework_readmission,Outlier case spanning over two months with repeat triage and ER return.,5.0,standard_admission_release,2.0,0.18895410001277924,0.11175036430358887
+V0694,fast_er_triage,Extremely brief initial triage case stopping within minutes.,3.0,acute_iv_treatment,2.0,0.4112384617328644,0.374070405960083
+V0695,standard_admission_release,Standard hospital stay with repeated lab monitoring before release.,5.0,chronic_rework_readmission,3.0,0.1277555674314499,0.00024266155378427356
+V0696,chronic_rework_readmission,Multi-month outlier with intense lab rework and a return to the ER.,8.0,standard_admission_release,6.0,0.1381279081106186,0.01270204782485962
+V0697,standard_admission_release,Inpatient treatment pathway concluding with release.,5.0,chronic_rework_readmission,1.0,0.022946655750274658,0.0015374836511909962
+V0698,standard_admission_release,Standard admission process accompanied by lab tracking and release.,5.0,chronic_rework_readmission,1.0,0.133341982960701,0.0044136508367955685
+V0699,standard_admission_release,Standard acute care followed by admission and release.,8.0,chronic_rework_readmission,3.0,0.015954503789544106,0.00041292153764516115
+V0700,standard_admission_release,Inpatient admission and release process with minimal complexity.,8.0,acute_iv_treatment,3.0,0.6923937797546387,0.015745949000120163
+V0701,standard_admission_release,This narrative involves formal hospital admission (Admission NC) and concludes with a standard discharge (Release C).,9.0,chronic_rework_readmission,6.0,0.46512842178344727,0.021362587809562683
+V0702,standard_admission_release,The case involves formal admission (Admission NC) followed by inpatient care and release (Release A).,4.0,acute_iv_treatment,2.0,0.11432851105928421,0.0014833282912150025
+V0703,,"The case ends with IV Liquid rather than an admission or discharge, making it an incomplete or non-standard trajectory.",,acute_iv_treatment,2.0,,0.00016920965572353452
+V0704,standard_admission_release,The process includes formal hospital admission (Admission NC) and concludes with a standard release (Release A).,6.0,chronic_rework_readmission,4.0,0.12818457186222076,0.0022163281682878733
+V0705,chronic_rework_readmission,"Involves admission, release, and a subsequent return to the ER (Return ER) indicating a readmission pattern.",5.0,standard_admission_release,2.0,0.012367586605250835,0.0004852079146075994
+V0706,standard_admission_release,"Involves ER care, admission (Admission NC), and a standard release (Release A).",7.0,acute_iv_treatment,1.0,0.38176774978637695,0.020465832203626633
+V0707,,"The process concludes at Admission NC, lacking a complete hospital stay or final release sequence.",,fast_er_triage,1.0,,0.0003059449081774801
+V0708,acute_iv_treatment,"Features comprehensive diagnostics, IV liquid, and IV antibiotics, but stops at IV Antibiotics without formal admission.",4.0,fast_er_triage,2.0,0.0,0.0004547650460153818
+V0709,standard_admission_release,"Includes acute interventions, formal admission (Admission NC), and concludes with a standard release (Release B).",7.0,chronic_rework_readmission,4.0,0.3429316282272339,0.08817065507173538
+V0710,chronic_rework_readmission,"Spans over 3 months with extensive loops, highly repeated lab tests, and multiple ward admissions.",172.0,standard_admission_release,136.0,0.45411205291748047,0.049215395003557205
+V0711,standard_admission_release,"Involves acute care, formal admission (Admission NC), and a standard inpatient release (Release A).",5.0,chronic_rework_readmission,3.0,0.11261380463838577,0.003236782504245639
+V0712,chronic_rework_readmission,"Features multiple admissions, repeated lab tests, and eventually a return to the ER after discharge.",11.0,standard_admission_release,7.0,0.09102883189916611,2.603729626571294e-05
+V0713,acute_iv_treatment,"Short acute care path with comprehensive blood work and IV treatment, concluding without formal admission.",2.0,fast_er_triage,1.0,0.003704542526975274,0.004159307572990656
+V0714,standard_admission_release,"Involves acute ER workup, formal admission (Admission NC), and a standard release (Release A).",1.0,acute_iv_treatment,3.0,0.008402500301599503,0.003613893175497651
+V0715,standard_admission_release,"Includes acute ER interventions, intensive care admission (Admission IC), and standard release (Release B).",9.0,chronic_rework_readmission,6.0,0.4996020793914795,0.003547282889485359
+V0716,standard_admission_release,"Includes acute ER diagnostics, formal admission (Admission NC), and a standard release (Release A).",5.0,chronic_rework_readmission,4.0,0.12881697714328766,8.926032023737207e-05
+V0717,standard_admission_release,Features formal admission (Admission NC) and concludes with a standard inpatient release (Release A).,4.0,chronic_rework_readmission,3.0,0.11169204860925674,0.0011531354393810034
+V0718,chronic_rework_readmission,"Extensive duration of over 3 months with repeated tests, ward admissions, and a return to the ER.",20.0,standard_admission_release,13.0,0.11920372396707535,0.006222136784344912
+V0719,chronic_rework_readmission,Spans over a month and includes a return to the ER following initial release.,7.0,standard_admission_release,2.0,0.12185454368591309,0.0003360187401995063
+V0720,chronic_rework_readmission,Spans 3 weeks and culminates in a return to the ER after initial release.,4.0,standard_admission_release,2.0,0.010868124663829803,0.0019846686627715826
+V0721,chronic_rework_readmission,Extensive duration spanning nearly two months with repeated lab loops and a return to the ER.,12.0,standard_admission_release,6.0,0.126154363155365,0.0008605325710959733
+V0722,standard_admission_release,"Involves acute care, formal admission (Admission NC), and a standard release (Release A).",5.0,acute_iv_treatment,1.0,0.024697693064808846,0.0002135557442670688
+V0723,standard_admission_release,"Includes acute treatment, formal admission (Admission NC), and a standard release (Release A).",7.0,chronic_rework_readmission,4.0,0.11516755819320679,0.004535197280347347
+V0724,chronic_rework_readmission,Involves initial hospital release followed by a return to the ER within a short span.,7.0,acute_iv_treatment,2.0,0.14839357137680054,0.0008852484170347452
+V0725,standard_admission_release,Features formal hospital admission followed by an inpatient stay and release (Release D).,6.0,fast_er_triage,3.0,0.5072764754295349,0.20925593376159668
+V0726,standard_admission_release,"Involves intensive care admission (Admission IC), subsequent ward admission (Admission NC), and release (Release A).",19.0,chronic_rework_readmission,9.0,0.1273903101682663,0.0030105833429843187
+V0727,chronic_rework_readmission,Extreme duration spanning several months followed by a return to the ER.,5.0,acute_iv_treatment,2.0,0.16913211345672607,0.0014902874827384949
+V0728,standard_admission_release,"Includes acute ER care, formal admission (Admission NC), and standard release (Release A).",7.0,chronic_rework_readmission,4.0,0.11843028664588928,0.007964092306792736
+V0729,standard_admission_release,"Features acute treatment, intensive and non-critical admissions, and standard release (Release A).",5.0,chronic_rework_readmission,4.0,0.11844659596681595,0.007980401627719402
+V0730,standard_admission_release,"Involves acute ER workup, formal admission (Admission NC), and standard release (Release A).",5.0,chronic_rework_readmission,3.0,0.013255798257887363,0.0012394057121127844
+V0731,standard_admission_release,"Includes ER processing, formal admission (Admission NC), and a standard release.",6.0,fast_er_triage,2.0,0.18688392639160156,0.16736029088497162
+V0732,standard_admission_release,"Features acute interventions, formal admission (Admission NC), and standard release (Release A).",7.0,chronic_rework_readmission,2.0,0.34407082200050354,0.028093433007597923
+V0733,standard_admission_release,"Involves acute care, repeated admission (Admission NC), and standard release (Release A).",5.0,chronic_rework_readmission,3.0,0.12344317883253098,0.003740418003872037
+V0734,chronic_rework_readmission,Spans over 200 days and concludes with a return to the ER.,4.0,standard_admission_release,1.0,0.27700480818748474,0.016164980828762054
+V0735,standard_admission_release,"Involves acute treatment, formal admission (Admission NC), and standard release (Release A).",5.0,acute_iv_treatment,2.0,0.34629026055336,0.19013603031635284
+V0736,standard_admission_release,"Includes acute ER care, formal admission (Admission NC), and standard release (Release A).",4.0,acute_iv_treatment,3.0,0.0010564262047410011,0.00018206116510555148
+V0737,standard_admission_release,"Involves acute treatment, formal admission (Admission NC), and standard release (Release A).",5.0,chronic_rework_readmission,2.0,0.01183098554611206,0.00018540753808338195
+V0738,standard_admission_release,"Features acute ER workup, formal admission (Admission NC), and standard release (Release A).",5.0,chronic_rework_readmission,2.0,0.03579738363623619,0.011313243769109249
+V0739,standard_admission_release,"Involves intensive care, ward admission, and standard release (Release A).",8.0,chronic_rework_readmission,6.0,0.11872082948684692,0.00825462769716978
+V0740,standard_admission_release,"Includes acute interventions, formal admission (Admission NC), and standard release (Release A).",7.0,chronic_rework_readmission,3.0,0.0072029042057693005,0.003680954920127988
+V0741,standard_admission_release,"Features acute treatment, formal admission (Admission NC), and standard release (Release A).",6.0,chronic_rework_readmission,3.0,0.014154850505292416,0.0009771095355972648
+V0742,acute_iv_treatment,"Involves acute sepsis care with comprehensive labs, IV liquids, and antibiotics, concluding without formal admission.",6.0,chronic_rework_readmission,3.0,0.6811872124671936,0.016685370355844498
+V0743,standard_admission_release,"Includes acute treatment, formal admission (Admission NC), and standard release (Release A).",5.0,chronic_rework_readmission,3.0,0.0005998031119816005,0.00027456198586151004
+V0744,chronic_rework_readmission,"Spans nearly two months with repeated lab tests and ward admissions, culminating in a return to the ER.",13.0,standard_admission_release,8.0,0.18073904514312744,0.012393899261951447
+V0745,chronic_rework_readmission,"Involves multiple repeated admission steps and lab loops, ending in a return to the ER.",7.0,standard_admission_release,3.0,0.1324472576379776,0.027911365032196045
+V0746,chronic_rework_readmission,"Spans 100 days with extensive repeat tests and admissions, culminating in a return to the ER.",22.0,standard_admission_release,12.0,0.20029771327972412,0.002483796328306198
+V0747,standard_admission_release,Involves multiple admission steps and concludes with a standard release (Release C).,6.0,chronic_rework_readmission,5.0,0.5351714491844177,0.049215395003557205
+V0748,chronic_rework_readmission,"Spans almost two months with repeated admissions and lab work, ending in a return to the ER.",8.0,standard_admission_release,2.0,0.014722787775099277,0.001174799632281065
+V0749,standard_admission_release,"Features acute ER care, formal admission (Admission NC), and standard release (Release A).",4.0,chronic_rework_readmission,3.0,0.01346507016569376,0.00144867692142725
+V0750,acute_iv_treatment,Short acute care pathway involving comprehensive blood work and IV treatment within a brief duration.,3.0,standard_admission_release,3.0,0.3420694172382355,0.3392343819141388
+V0751,standard_admission_release,Involves formal hospital admission (Admission NC) followed by a standard inpatient stay and subsequent discharge (Release A).,3.0,chronic_rework_readmission,2.0,0.010369709692895412,0.001646683202125132
+V0752,chronic_rework_readmission,"Extensive loops, highly repeated lab tests (CRP, LacticAcid, Leucocytes), and ward admissions spanning multiple months with a return to the ER.",16.0,standard_admission_release,6.0,0.17912064492702484,0.014012319035828114
+V0753,chronic_rework_readmission,Features repeated lab tests and readmission/return to the ER after discharge.,7.0,standard_admission_release,1.0,0.12566812336444855,0.0003742961271200329
+V0754,standard_admission_release,"Standard acute sepsis care path concluding with hospital admission and release, plus a return to ER.",5.0,chronic_rework_readmission,1.0,0.3588254749774933,0.0029875810723751783
+V0755,standard_admission_release,Involves admission and release process with some repeated nursing actions.,6.0,chronic_rework_readmission,3.0,0.12486740946769714,0.004060936626046896
+V0756,chronic_rework_readmission,"Extreme case with extensive loops, repeated ward admissions, and numerous repeated lab tests over a long duration.",28.0,standard_admission_release,20.0,0.12756110727787018,0.0021352425683289766
+V0757,standard_admission_release,Standard hospital admission and subsequent release.,8.0,chronic_rework_readmission,4.0,0.4738166332244873,5.731179771828465e-05
+V0758,standard_admission_release,Involves admission to NC followed by release.,5.0,chronic_rework_readmission,3.0,0.14670415222644806,0.01777580939233303
+V0759,acute_iv_treatment,Acute ER case with comprehensive diagnostics and IV treatment concluding at IV Antibiotics without hospitalization.,4.0,fast_er_triage,2.0,0.06038370728492737,0.008488164283335209
+V0760,standard_admission_release,Hospital admission followed by release with some repeated labs.,6.0,chronic_rework_readmission,3.0,0.12178147584199905,0.002201625844463706
+V0761,standard_admission_release,Standard admission and release pattern with acute interventions.,6.0,chronic_rework_readmission,2.0,0.015267056412994862,0.00013509762356989086
+V0762,chronic_rework_readmission,Extensive loops and repeated lab tests spanning several weeks.,22.0,standard_admission_release,10.0,0.5047615170478821,0.00361636676825583
+V0763,chronic_rework_readmission,Multiple repeated labs and ward admissions spanning over a month.,38.0,standard_admission_release,18.0,0.08348187804222107,0.0066165137104690075
+V0764,,Incomplete case concluding prematurely at ER Sepsis Triage without standard treatments or admissions.,,acute_iv_treatment,1.0,,0.05639234557747841
+V0765,chronic_rework_readmission,Extremely long duration spanning multiple months with repeated admissions and returns.,5.0,standard_admission_release,3.0,0.05793742835521698,0.0017176088877022266
+V0766,standard_admission_release,Standard hospital admission and release.,6.0,chronic_rework_readmission,2.0,0.18310660123825073,0.1666698306798935
+V0767,standard_admission_release,Standard admission and release pathway.,6.0,chronic_rework_readmission,1.0,0.7296729683876038,0.00294414977543056
+V0768,standard_admission_release,Standard hospital admission followed by release.,8.0,acute_iv_treatment,3.0,0.340000182390213,0.010689099319279194
+V0769,standard_admission_release,Standard hospital admission and release pathway.,5.0,chronic_rework_readmission,2.0,0.01562393456697464,0.0013290104689076543
+V0770,standard_admission_release,Standard hospital admission and release with some rework.,10.0,chronic_rework_readmission,3.0,0.5401764512062073,0.0009304405539296567
+V0771,standard_admission_release,Standard admission and release pathway.,4.0,chronic_rework_readmission,1.0,0.11450085788965225,0.00165567675139755
+V0772,,Incomplete process ending abruptly in a repeated CRP activity.,,standard_admission_release,2.0,,0.0012781230034306645
+V0773,standard_admission_release,Standard hospital admission and release.,6.0,acute_iv_treatment,2.0,0.17733721435070038,0.16801249980926514
+V0774,,Truncated trace that does not progress to any treatment or admission.,,fast_er_triage,2.0,,0.039881180971860886
+V0775,,Incomplete trace ending at CRP without reaching a release or admission.,,acute_iv_treatment,2.0,,0.004500298295170069
+V0776,standard_admission_release,Standard hospital admission and release with some repeated tests.,6.0,chronic_rework_readmission,4.0,0.12351009994745255,0.0038073407486081123
+V0777,acute_iv_treatment,Acute ER care with IV intervention and diagnostics concluding without admission.,4.0,fast_er_triage,2.0,0.38998010754585266,0.0008700560429133475
+V0778,,Truncated trace ending unexpectedly at Leucocytes.,,acute_iv_treatment,2.0,,0.005067409481853247
+V0779,standard_admission_release,Standard admission and release path.,6.0,chronic_rework_readmission,3.0,0.34922900795936584,0.001513043069280684
+V0780,standard_admission_release,Standard hospital admission and release with extended lab monitoring.,15.0,chronic_rework_readmission,7.0,0.029372429475188255,0.0030294274911284447
+V0781,standard_admission_release,Formal hospital admission followed by inpatient stay and Release C.,8.0,chronic_rework_readmission,6.0,0.3565588891506195,0.12993209064006805
+V0782,standard_admission_release,Standard admission and release pathway.,9.0,chronic_rework_readmission,4.0,0.0207742378115654,0.0024700758513063192
+V0783,standard_admission_release,Standard hospital admission and release pathway.,7.0,chronic_rework_readmission,5.0,0.01564362458884716,0.0013093202142044902
+V0784,standard_admission_release,Standard hospital admission and release pathway.,12.0,chronic_rework_readmission,4.0,0.03069811873137951,0.004355116281658411
+V0785,standard_admission_release,Standard hospital admission and release.,7.0,chronic_rework_readmission,4.0,0.5392720103263855,2.603729626571294e-05
+V0786,standard_admission_release,Standard hospital admission and release.,7.0,chronic_rework_readmission,5.0,0.12223770469427109,0.00816319789737463
+V0787,standard_admission_release,Standard hospital admission and release.,7.0,chronic_rework_readmission,3.0,0.49025630950927734,0.0008671052637510002
+V0788,standard_admission_release,Standard hospital admission and release.,3.0,chronic_rework_readmission,3.0,0.011407296173274517,0.0006090979441069067
+V0789,standard_admission_release,Standard hospital admission and release.,5.0,chronic_rework_readmission,3.0,0.12002751976251602,0.00032476469641551375
+V0790,standard_admission_release,Formal hospital admission followed by inpatient stay and Release D.,8.0,chronic_rework_readmission,5.0,0.45795997977256775,0.017393022775650024
+V0791,acute_iv_treatment,Acute ER care with comprehensive labs and IV treatment concluding promptly at IV Antibiotics.,2.0,fast_er_triage,2.0,0.04513664171099663,0.0006202496006153524
+V0792,standard_admission_release,Standard hospital admission followed by Release B.,5.0,chronic_rework_readmission,4.0,0.33511999249458313,0.09598230570554733
+V0793,standard_admission_release,Standard hospital admission and release.,6.0,chronic_rework_readmission,3.0,0.13174070417881012,0.0013398107839748263
+V0794,standard_admission_release,Standard hospital admission and release with extended follow-up.,13.0,chronic_rework_readmission,5.0,0.385761022567749,0.0007480275817215443
+V0795,chronic_rework_readmission,High volume of repeated lab tests and intensive loops spanning multiple weeks.,40.0,standard_admission_release,23.0,0.4360075891017914,0.0025489528197795153
+V0796,standard_admission_release,Standard hospital admission and release pathway.,6.0,acute_iv_treatment,3.0,0.3429720401763916,0.007717253174632788
+V0797,chronic_rework_readmission,Long duration spanning months with return to the ER.,7.0,standard_admission_release,3.0,0.050579626113176346,0.005640189629048109
+V0798,chronic_rework_readmission,Extended duration spanning over two months leading to return to the ER.,4.0,standard_admission_release,1.0,0.13586211204528809,0.001502270228229463
+V0799,standard_admission_release,Standard hospital admission and release.,5.0,chronic_rework_readmission,3.0,0.05428339168429375,0.02979925274848938
+V0800,standard_admission_release,Standard hospital admission and release.,4.0,chronic_rework_readmission,3.0,0.12385507673025131,0.013388882391154766
+V0801,standard_admission_release,Involves formal hospital admission and a standard inpatient stay followed by release.,6.0,chronic_rework_readmission,4.0,0.12167499214410782,0.0023081141989678144
+V0802,standard_admission_release,Features hospital admission and subsequent release.,6.0,chronic_rework_readmission,2.0,0.45096316933631897,0.024389848113059998
+V0803,standard_admission_release,Follows standard hospital admission and release path.,8.0,chronic_rework_readmission,6.0,0.5278680920600891,0.04357410594820976
+V0804,chronic_rework_readmission,Presents a prolonged duration culminating in a return to the ER.,7.0,standard_admission_release,2.0,0.15989670157432556,0.001471064519137144
+V0805,chronic_rework_readmission,Contains extensive loops and repeated lab tests spanning multiple days.,30.0,standard_admission_release,19.0,0.514396607875824,0.006018729880452156
+V0806,chronic_rework_readmission,Characterized by an extended timeframe and return to the ER.,7.0,standard_admission_release,3.0,0.1971752643585205,0.000638655386865139
+V0807,standard_admission_release,Represents standard admission and release.,7.0,fast_er_triage,3.0,0.1876271516084671,0.16810350120067596
+V0808,chronic_rework_readmission,Long duration with multiple repeated labs and a return to the ER.,5.0,standard_admission_release,2.0,0.12748488783836365,2.477323323546443e-05
+V0809,standard_admission_release,Standard hospital stay with admission and release.,10.0,chronic_rework_readmission,5.0,0.12944988906383514,0.0005436617066152394
+V0810,standard_admission_release,Standard admission and release trajectory.,4.0,chronic_rework_readmission,3.0,0.11411929130554199,0.004742264281958342
+V0811,standard_admission_release,Involves admission and release.,6.0,chronic_rework_readmission,4.0,0.11144465208053589,0.00031136456527747214
+V0812,chronic_rework_readmission,Includes return to the ER following admission.,8.0,standard_admission_release,1.0,0.23376978933811188,0.013712174259126186
+V0813,chronic_rework_readmission,Extensive repetition of lab tests over an extended duration.,12.0,standard_admission_release,6.0,0.46504291892051697,0.0030294274911284447
+V0814,standard_admission_release,Standard hospital admission and release pathway.,4.0,chronic_rework_readmission,1.0,0.0048100389540195465,0.0012880897847935557
+V0815,chronic_rework_readmission,Features significant lab rework and a return to the ER.,10.0,standard_admission_release,4.0,0.019977333024144173,0.0020817427430301905
+V0816,fast_er_triage,Short case concluding immediately with basic diagnostics and treatment.,5.0,acute_iv_treatment,2.0,0.0014047264121472836,0.004590421449393034
+V0817,chronic_rework_readmission,Prolonged duration with heavy lab repeats and a return to the ER.,10.0,standard_admission_release,5.0,0.11421636492013931,0.0014119163388386369
+V0818,chronic_rework_readmission,Contains numerous repeated lab tests over a multi-day period.,13.0,standard_admission_release,5.0,0.4681416451931,0.0016453536227345467
+V0819,standard_admission_release,Standard admission and release flow.,7.0,chronic_rework_readmission,4.0,0.11747878044843674,0.0005369993159547448
+V0820,fast_er_triage,Rapid case finishing quickly within the ER.,3.0,acute_iv_treatment,2.0,0.34620222449302673,0.0012343546841293573
+V0821,chronic_rework_readmission,Extended timeline with repeated admissions and return to the ER.,6.0,standard_admission_release,4.0,0.013548166491091251,0.0005316729075275362
+V0822,chronic_rework_readmission,"Extreme outlier with extensive loops, repeated labs, and return to the ER.",46.0,standard_admission_release,24.0,0.12643268704414368,0.0010068252449855208
+V0823,chronic_rework_readmission,Very long duration leading to a return to the ER.,8.0,standard_admission_release,1.0,0.3942471742630005,0.007030779961496592
+V0824,standard_admission_release,Standard admission followed by release.,5.0,chronic_rework_readmission,1.0,0.011857488192617893,0.00493662292137742
+V0825,chronic_rework_readmission,Long duration outlier returning to the ER.,7.0,standard_admission_release,1.0,0.2626410126686096,0.001801188918761909
+V0826,acute_iv_treatment,Acute care pathway with IV intervention and comprehensive blood work.,4.0,fast_er_triage,1.0,0.34938541054725647,0.02380647324025631
+V0827,chronic_rework_readmission,Extended timeline with multiple repeated labs and ER return.,4.0,standard_admission_release,3.0,0.11265072226524353,0.0020155597012490034
+V0828,chronic_rework_readmission,Features admission repeats and an ER return.,10.0,standard_admission_release,3.0,0.27546456456184387,0.021267281845211983
+V0829,standard_admission_release,Standard admission and release path.,4.0,chronic_rework_readmission,3.0,0.12221135944128036,0.0017717521404847503
+V0830,standard_admission_release,Standard hospital admission and subsequent release.,6.0,chronic_rework_readmission,6.0,0.12085700780153275,0.0027295078616589308
+V0831,standard_admission_release,Standard admission and release trajectory.,8.0,chronic_rework_readmission,6.0,0.34228357672691345,0.026362581178545952
+V0832,fast_er_triage,Rapid ER case with basic tests and treatment.,5.0,acute_iv_treatment,2.0,0.007885608822107315,0.0006202496006153524
+V0833,chronic_rework_readmission,Involves multiple admission repeats and lab rework.,11.0,standard_admission_release,6.0,0.3632298707962036,0.0004004804359283298
+V0834,chronic_rework_readmission,Long duration with extensive test loops and ER return.,14.0,standard_admission_release,9.0,0.19932888448238373,0.001514973002485931
+V0835,standard_admission_release,Standard inpatient admission and release.,5.0,chronic_rework_readmission,1.0,0.014237340539693832,0.0008946191519498825
+V0836,chronic_rework_readmission,Features repeated admissions and lab work over several days.,9.0,standard_admission_release,4.0,0.3674027919769287,0.0017717521404847503
+V0837,standard_admission_release,Standard hospital admission and release.,4.0,chronic_rework_readmission,3.0,0.00015448038175236434,0.0010288454359397292
+V0838,standard_admission_release,Short admission and release pathway.,5.0,acute_iv_treatment,2.0,0.3615304231643677,0.0002285104856127873
+V0839,standard_admission_release,Standard admission followed by release.,7.0,chronic_rework_readmission,4.0,0.011874132789671421,0.00014226033817976713
+V0840,chronic_rework_readmission,"Extreme outlier with extensive loops, repeated tests, and ward admissions.",53.0,standard_admission_release,22.0,0.5439843535423279,0.13403473794460297
+V0841,standard_admission_release,Standard admission and release.,4.0,acute_iv_treatment,2.0,0.05394798889756203,0.029463855549693108
+V0842,chronic_rework_readmission,Extended case involving repeated tests and a return to the ER.,4.0,standard_admission_release,3.0,0.12854240834712982,0.00012154137220932171
+V0843,acute_iv_treatment,Acute care featuring IV intervention and blood work.,4.0,standard_admission_release,2.0,0.3790290653705597,0.0006515100249089301
+V0844,chronic_rework_readmission,Involves multiple admission interventions and repeated lab testing loops.,13.0,standard_admission_release,10.0,0.5780405402183533,0.08510170131921768
+V0845,chronic_rework_readmission,Characterized by heavy lab rework and multiple iterations of tests.,18.0,standard_admission_release,9.0,0.5276516675949097,0.000546335824765265
+V0846,standard_admission_release,Standard admission and subsequent release flow.,5.0,chronic_rework_readmission,3.0,0.11870980262756348,0.008243603631854057

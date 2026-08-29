@@ -1,0 +1,93 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission to Normal Care",
+      "description": "Patient is admitted to a normal care inpatient ward (Admission NC), advancing treatment goals but subject to normal ward management and discharge pathways.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=15 under the OR-decomposed Patient is admitted to an inpatient ward goal. The sample shows this alternative realized in numerous variants (e.g., V0008, V0065).",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0065",
+        "V0066"
+      ]
+    },
+    {
+      "category_id": "admission_ic",
+      "name": "Admission to Intensive Care",
+      "description": "Patient is admitted to an intensive care inpatient ward (Admission IC). This option incurs some negative impact on minimizing time-to-treatment due to transfer overhead, but is required for critical stabilization.",
+      "anchor_ids": [
+        "16"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=16 under the OR-decomposed Patient is admitted to an inpatient ward goal, contributing negatively to minimize time-to-treatment softgoal as specified in the goal model and observed in variants such as V0068 and V0605.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0605",
+        "V0317"
+      ]
+    },
+    {
+      "category_id": "release_a",
+      "name": "Release Pathway A",
+      "description": "Captured discharge representing standard release pathway A, helping to avoid post-discharge deterioration.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=17 under the OR-decomposed Admitted case reaches a captured discharge goal. Evidenced by multiple sample variants such as V0008 and V0069.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0069",
+        "V0070"
+      ]
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release Pathway B",
+      "description": "Captured discharge representing release pathway B, helping to avoid post-discharge deterioration.",
+      "anchor_ids": [
+        "18"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=18 under the OR-decomposed Admitted case reaches a captured discharge goal, supported by sample traces like V0068 and V0145.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release Pathway C",
+      "description": "Captured discharge representing release pathway C for specific patient recovery profiles.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=19 under the OR-decomposed Admitted case reaches a captured discharge goal, observed in long-duration variants such as V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release Pathway D",
+      "description": "Captured discharge representing release pathway D.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=20 under the OR-decomposed Admitted case reaches a captured discharge goal, evidenced in complex variants like V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release Pathway E",
+      "description": "Captured discharge representing release pathway E.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=21 under the OR-decomposed Admitted case reaches a captured discharge goal.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

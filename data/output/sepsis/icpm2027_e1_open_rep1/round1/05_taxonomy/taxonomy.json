@@ -1,0 +1,59 @@
+{
+  "categories": [
+    {
+      "category_id": "fast_er_triage",
+      "name": "Fast ER Triage & Minimal Diagnostics",
+      "description": "Short, rapid cases that conclude immediately at triage or with basic lab tests (Leucocytes/CRP) within minutes and without hospitalization or intensive interventions.",
+      "anchor_ids": [],
+      "rationale": "Grounded in variants like V0001, V0002, V0003, and V0292, which show extremely short durations (minutes) and very low trace lengths ending in triage or quick lab results.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0002",
+        "V0003",
+        "V0292"
+      ]
+    },
+    {
+      "category_id": "acute_iv_treatment",
+      "name": "Acute ER Care with IV Intervention",
+      "description": "Standard acute sepsis care pathways involving triage, comprehensive blood work (CRP, Leucocytes, LacticAcid), and administration of intravenous liquids and antibiotics within a short duration.",
+      "anchor_ids": [],
+      "rationale": "Grounded in frequent variants like V0004, V0005, V0006, V0007, and V0009, which feature standard diagnostic panels followed by IV therapy within hours.",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0005",
+        "V0006",
+        "V0007",
+        "V0009"
+      ]
+    },
+    {
+      "category_id": "standard_admission_release",
+      "name": "Standard Hospital Admission and Release",
+      "description": "Cases requiring formal hospital admission (Admission NC or Admission IC) followed by a standard inpatient stay and subsequent discharge (Release A, B, C, or D).",
+      "anchor_ids": [],
+      "rationale": "Grounded in variants that incorporate ward admissions and end in regular release outcomes over a span of days, such as V0008, V0068, and V0070.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0068",
+        "V0070",
+        "V0069",
+        "V0067"
+      ]
+    },
+    {
+      "category_id": "chronic_rework_readmission",
+      "name": "Chronic Rework and Readmission",
+      "description": "Extreme outliers characterized by extensive loops, highly repeated lab tests (CRP, LacticAcid, Leucocytes) and ward admissions, spanning multiple months and frequently culminating in returns to the ER or prolonged stays.",
+      "anchor_ids": [],
+      "rationale": "Grounded in extremely long and complex variants like V0317, V0551, V0605, V0625, and V0710, where extensive rework and long durations dominate the process profile.",
+      "evidence_variant_ids": [
+        "V0317",
+        "V0551",
+        "V0605",
+        "V0625",
+        "V0710"
+      ]
+    }
+  ]
+}

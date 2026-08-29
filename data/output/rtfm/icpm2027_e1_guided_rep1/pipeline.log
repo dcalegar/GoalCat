@@ -1,0 +1,40 @@
+2026-08-28 22:29:59,076 [INFO] goalcat: Run environment: host=192.168.68.56, platform=macOS-26.5.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-28 22:29:59,077 [INFO] goalcat: ICPM 2027 condition run starting: run_id=icpm2027_e1_guided_rep1, steps=[5, 6], taxonomy_mode=intent_guided, goal_model=rtfm_goal_model.jucm
+2026-08-28 22:29:59,079 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-28 22:29:59,080 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_guided_rep1/04_sampling/narrative_sample.csv
+2026-08-28 22:29:59,086 [INFO] goalcat: Inducing taxonomy from 34 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/rtfm_goal_model.jucm
+2026-08-28 22:30:06,275 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=5d219d8bb5ffca03, latency=5.28s)
+2026-08-28 22:30:06,276 [INFO] goalcat: Induced 5 categories: timely_payment, delinquent_payment, administrative_appeal, judicial_appeal, coercive_credit_collection
+2026-08-28 22:30:06,287 [WARNING] goalcat: Taxonomy grounding check: delinquent_payment/coercive_credit_collection: share evidence_variant_ids: ['V0009']
+2026-08-28 22:30:06,289 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_guided_rep1/round1/05_taxonomy/taxonomy.json
+2026-08-28 22:30:06,289 [INFO] goalcat: Step 5a complete.
+2026-08-28 22:30:06,289 [INFO] goalcat: Peak RSS after Step 5a: 383.3 MiB
+2026-08-28 22:30:06,291 [INFO] goalcat: Step 6 (narrative assignment) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-28 22:30:06,291 [INFO] goalcat: Loading profiles/narratives from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_guided_rep1
+2026-08-28 22:30:06,300 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_guided_rep1/round1/05_taxonomy/taxonomy.json
+2026-08-28 22:30:06,304 [INFO] goalcat: Assigning 231 narratives against 5 categories (model=gemini/gemini-3.5-flash-lite, batch_size=50, concurrency=5)
+2026-08-28 22:30:12,444 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=452d0d4315ebd080, latency=6.12s)
+2026-08-28 22:30:15,172 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=e57a28a63f8373b8, latency=8.85s)
+2026-08-28 22:31:28,029 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a9584654fe89f3b2, latency=81.71s)
+2026-08-28 22:32:10,101 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2e5e95e987b9d898, latency=123.78s)
+2026-08-28 22:33:21,520 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4b5ae597b76b9ff4, latency=195.21s)
+2026-08-28 22:33:21,525 [INFO] goalcat: Assigned 227/231 narratives to a category, 4 residual, 0 still pending
+2026-08-28 22:33:21,526 [INFO] goalcat: Assignment grounding check: no problems found.
+2026-08-28 22:33:21,736 [INFO] goalcat: Saved assignment outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_guided_rep1/round1/06_assignment
+2026-08-28 22:33:21,736 [INFO] goalcat: Step 6 complete.
+2026-08-28 22:33:21,736 [INFO] goalcat: Peak RSS after Step 6: 408.7 MiB
+2026-08-28 22:33:21,737 [INFO] goalcat: Task C13: running Step 7b (indicator satisfaction) for run_id=icpm2027_e1_guided_rep1
+2026-08-28 22:33:21,738 [INFO] goalcat: Step 7b (indicator satisfaction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-28 22:33:21,738 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_guided_rep1/01_variants/variants.csv
+2026-08-28 22:33:21,765 [INFO] goalcat: Loading assignments from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_guided_rep1/round1/06_assignment/assignments.csv
+2026-08-28 22:33:21,766 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_guided_rep1/round1/05_taxonomy/taxonomy.json
+2026-08-28 22:34:53,126 [INFO] goalcat: Step 7b: scope __baseline__ — 4/4 indicators measured, 150370 cases
+2026-08-28 22:37:09,874 [INFO] goalcat: Step 7b: scope coercive_credit_collection — 4/4 indicators measured, 59010 cases
+2026-08-28 22:37:33,370 [INFO] goalcat: Step 7b: scope timely_payment — 3/4 indicators measured, 49619 cases
+2026-08-28 22:37:41,607 [INFO] goalcat: Step 7b: scope delinquent_payment — 4/4 indicators measured, 16947 cases
+2026-08-28 22:37:43,390 [INFO] goalcat: Step 7b: scope administrative_appeal — 4/4 indicators measured, 3645 cases
+2026-08-28 22:37:43,601 [INFO] goalcat: Step 7b: scope judicial_appeal — 4/4 indicators measured, 397 cases
+2026-08-28 22:37:43,626 [INFO] goalcat: Saved indicator outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_guided_rep1/round1/07b_indicators
+2026-08-28 22:37:43,626 [INFO] goalcat: Step 7b complete.
+2026-08-28 22:37:43,626 [INFO] goalcat: Peak RSS after Step 7b: 1395.5 MiB
+2026-08-28 22:37:43,628 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_e1_guided_rep1

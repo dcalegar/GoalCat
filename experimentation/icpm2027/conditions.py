@@ -26,10 +26,11 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+import pandas as pd
 import yaml
 
 from goalcat.atomic_io import atomic_write_json, atomic_write_text
-from goalcat.config import REPO_ROOT, ROUND_PREFIX, TAXONOMY_DIRNAME
+from goalcat.config import REPO_ROOT, ROUND_PREFIX, TAXONOMY_DIRNAME, VARIANTS_DIRNAME
 from goalcat.llm.taxonomy import Category, Taxonomy
 
 from .inputs import SharedBase, materialize_condition_inputs, withhold_narrative_sample
@@ -139,16 +140,35 @@ def write_label_list_taxonomy(condition: ConditionSpec, run_dir: Path, logger: l
 
 
 def already_complete(condition: ConditionSpec) -> bool:
-    """A condition counts as complete when its round holds both a taxonomy and assignments.
+    """A condition counts as complete when its round holds both a taxonomy and assignments
+    covering every variant in the condition's own population.
 
     Used to make a whole-experiment driver re-runnable: re-invoking after a partial failure should
     resume, not re-bill the conditions that already finished. A *partial* Step 6 is not complete
-    and is resumed in place by Step 6's own `load_prior_assignments()` logic.
+    and is resumed in place by Step 6's own `load_prior_assignments()` logic — but only if this
+    check actually notices the gap. File *existence* alone is not enough: a batch that Step 6
+    could not resolve after its own retries (a provider outage outlasting them) is dropped from
+    `assignments.csv` entirely — neither categorized nor residual — and `IncompleteAssignmentError`
+    is raised for that run, but a *later* invocation of the driver only sees the file that already
+    exists and, without the row-count check below, silently treats a short assignments.csv as
+    finished, permanently losing that variant from every downstream count. Observed concretely:
+    Sepsis's `icpm2027_e1_open_rep1`, 2026-08-29 — one variant (`V0100`) missing from
+    `assignments.csv` (845 rows for 846 variants) after a provider 503 outlasted Step 6's retries;
+    the next driver invocation skipped the condition as already complete and never retried it.
     """
     round_dir = round_dir_of(condition.run_dir)
-    return (round_dir / TAXONOMY_DIRNAME / "taxonomy.json").exists() and (
-        round_dir / "06_assignment" / "assignments.csv"
-    ).exists()
+    taxonomy_path = round_dir / TAXONOMY_DIRNAME / "taxonomy.json"
+    assignments_path = round_dir / "06_assignment" / "assignments.csv"
+    if not taxonomy_path.exists() or not assignments_path.exists():
+        return False
+
+    variants_path = condition.run_dir / VARIANTS_DIRNAME / "variants.csv"
+    if not variants_path.exists():
+        # Steps 1-4 inputs not even materialized yet — can't verify coverage, so don't claim done.
+        return False
+    expected = len(pd.read_csv(variants_path, dtype=str, usecols=["variant_id"]))
+    actual = len(pd.read_csv(assignments_path, dtype=str, usecols=["variant_id"]))
+    return actual >= expected
 
 
 def _launch(
@@ -221,7 +241,12 @@ def execute_condition(
         write_label_list_taxonomy(condition, run_dir, logger)
         steps = tuple(s for s in steps if s != 5)
 
-    step7b = runs_step7b(condition.dataset, condition.arm, prereg)
+    # `runs_step7b()` decides purely from arm/dataset (Task C13's policy) and knows nothing about
+    # which steps *this* condition actually runs. A Task C12 stability condition requests Step 5a
+    # alone, so it never produces `assignments.csv`; without this guard, Step 7b is launched anyway
+    # and crashes on the missing Step 6 output it needs (`run_step7b_indicators()`'s own
+    # precondition). Mirrors the `8 in condition.steps` gating pattern above (line 72).
+    step7b = runs_step7b(condition.dataset, condition.arm, prereg) and 6 in steps
     _launch(config_path, condition.run_id, steps, logger, indicators=step7b)
     finished_at = now_iso()
 

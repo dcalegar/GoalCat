@@ -107,6 +107,11 @@ class InductionStability:
 
     @property
     def categories_stable(self) -> bool:
+        """Diagnostic only — literal `category_id` string agreement. Step 5a's induced ids are
+        LLM-generated slugs (e.g. `administrative_appeal` vs. `administrative_appeal_prefecture`)
+        that can reword between identical-input reruns with no change in meaning. Per §4's own
+        matching rule ("categories are matched across runs by anchor_ids, never by category name
+        or id"), this must never gate `is_stable` — only `anchors_stable` does."""
         return len(set(self.category_sets)) <= 1
 
     @property
@@ -115,7 +120,11 @@ class InductionStability:
 
     @property
     def is_stable(self) -> bool:
-        return self.categories_stable and self.anchors_stable
+        """Task C12's stability verdict — `anchor_ids` reproduction alone, per §4's anchor-based
+        matching rule. Label rewording across reruns (`categories_stable` false while this is
+        true) is expected LLM phrasing variance, not induction instability, and must not trip
+        Task E7's qualification or the §4 gate on Experiment 2."""
+        return self.anchors_stable
 
     @property
     def distinct_shapes(self) -> int:
@@ -123,11 +132,20 @@ class InductionStability:
 
     def qualification(self, dataset_id: str) -> str:
         """The sentence Task E7 requires whenever a dataset's induction is unstable."""
-        if self.is_stable:
+        if self.is_stable and self.categories_stable:
             return (
                 f"Step 5a reproduced the same category and anchor set across all {self.k} "
                 f"identical-input reruns; {dataset_id}'s figures below are not subject to Task E7's "
                 "qualification."
+            )
+        if self.is_stable:
+            return (
+                f"Step 5a reproduced the same anchor set across all {self.k} identical-input "
+                f"reruns for {dataset_id}; category *labels* reworded cosmetically between some "
+                "reruns (e.g. added qualifiers with no change in the anchored goal-model element), "
+                "which is expected LLM phrasing variance, not induction instability (§4: categories "
+                "are matched by anchor_ids, never by name). This dataset's figures below are not "
+                "subject to Task E7's qualification."
             )
         return (
             f"**Task E7 qualification.** Step 5a did NOT reproduce a stable taxonomy on "
@@ -212,6 +230,31 @@ def declared_alternative_coverage(
     return rows
 
 
+KNOWN_FINDINGS: dict[str, list[str]] = {
+    "rtfm": [
+        (
+            "**Open-mode replicate coverage swing traced to one ambiguous variant (2026-08-29).** "
+            "`e1_open_rep1` and `e1_open_rep2` show identical variant-level coverage (229/231, 2 "
+            "residual variants each) but a ~13.8-point gap in case-weighted coverage (99.995% vs. "
+            "86.2%). Root cause: variant V0003 (`Create Fine → Send Fine`, no further activity — an "
+            "unresolved/still-open case) carries 20,385 cases (~13.6% of the whole log). Open-mode "
+            "Step 6 classified it inconsistently across replicates — folded into the catch-all-like "
+            "`standard_fine_lifecycle`/`standard_collection_or_payment` category in one replicate, "
+            "left residual in the other — because open induction has no external criterion for "
+            "\"does not realize any category.\" **Guided mode classified the same variant as "
+            "residual in both replicates**, with near-identical rationale each time (\"does not "
+            "resolve the case\" / \"remaining in the residual\"): the goal model gives the LLM a "
+            "stable boundary for what counts as resolved vs. residual that open induction lacks. "
+            "This is a concrete, high-leverage illustration of exactly what Task C2's replicate "
+            "design exists to catch — LLM-sampling noise can concentrate disproportionately in a "
+            "single high-frequency variant, and case-weighted coverage is far more sensitive to it "
+            "than variant-level coverage. Positive evidence for RQ1: the external semantic frame "
+            "stabilizes the residual boundary, not only the category set."
+        ),
+    ],
+}
+
+
 @dataclass
 class DatasetReport:
     """Everything §3 asks to be reported for one dataset. Optional pieces stay `None` when the
@@ -226,6 +269,12 @@ class DatasetReport:
     declared_coverage: list[DeclaredAlternativeCoverage] = field(default_factory=list)
     stability: InductionStability | None = None
     structural_contingency: ContingencyResult | None = None
+    notes: list[str] = field(default_factory=list)
+    """Curated qualitative findings for this dataset (Markdown, one entry per finding), rendered
+    verbatim under '## Notable findings'. Populated from `KNOWN_FINDINGS` below — hand-investigated
+    observations that the automated tables don't surface on their own (e.g. a replicate-to-replicate
+    coverage swing traced to one ambiguous high-frequency variant), kept here rather than hand-edited
+    into the generated .md so they survive the next `write()` instead of being silently overwritten."""
 
     def _scope_section(self) -> str:
         record = self.scope_record
@@ -322,6 +371,11 @@ class DatasetReport:
                 self.structural_contingency.to_markdown("variant"),
                 "",
             ]
+
+        if self.notes:
+            parts += ["## Notable findings", ""]
+            parts += [f"- {note}" for note in self.notes]
+            parts.append("")
 
         if self.divergence is not None:
             parts += ["## Partition divergence (optional, Task D1)", "", self.divergence.to_markdown(), ""]

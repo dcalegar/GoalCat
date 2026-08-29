@@ -1,0 +1,232 @@
+variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
+V0001,resolve_coercive_credit_collection,The narrative ends with Send for Credit Collection after notification and penalty additions.,2.0,resolve_delinquent_payment,1.0,0.015612207353115082,0.05419275537133217
+V0002,resolve_timely_payment,The narrative shows prompt payment without sending fine notification or penalties.,5.0,resolve_judicial_appeal,2.0,0.5620338320732117,0.17589472234249115
+V0003,,"The case ends with Send Fine and remains unresolved (no payment, appeal, or collection).",,resolve_timely_payment,1.0,,0.33492860198020935
+V0004,resolve_delinquent_payment,The case is resolved via payment after notification and penalty additions.,1.0,resolve_coercive_credit_collection,1.0,0.3405536413192749,6.770990876248106e-05
+V0005,resolve_delinquent_payment,"The case results in payment after notification and penalty additions, with repeated payment rework.",0.0,resolve_coercive_credit_collection,1.0,0.01632649265229702,0.0028145748656243086
+V0006,resolve_delinquent_payment,The case concludes with payment following notification and penalty steps.,2.0,resolve_coercive_credit_collection,1.0,0.026891911402344704,0.004125290084630251
+V0007,resolve_timely_payment,The fine is resolved via prompt payment shortly after being sent.,4.0,resolve_judicial_appeal,1.0,0.40461382269859314,0.018474731594324112
+V0008,resolve_administrative_appeal,The narrative involves administrative appeal steps directed to the Prefecture.,2.0,resolve_delinquent_payment,1.0,0.3506118953227997,0.12137193232774734
+V0009,resolve_coercive_credit_collection,"Despite an interim payment attempt, the case ultimately ends in coercive credit collection.",2.0,resolve_delinquent_payment,1.0,0.016952350735664368,0.05553290247917175
+V0010,resolve_coercive_credit_collection,The case concludes with Send for Credit Collection following penalties and notifications.,3.0,resolve_delinquent_payment,1.0,0.020879292860627174,0.05945984646677971
+V0011,resolve_administrative_appeal,The narrative proceeds through administrative appeal actions to the Prefecture.,3.0,resolve_timely_payment,1.0,0.3446626365184784,0.11542269587516785
+V0012,,The narrative concludes with Send Fine without reaching a resolution.,,resolve_timely_payment,1.0,,0.33692148327827454
+V0013,resolve_administrative_appeal,The case is resolved via payment following a completed administrative appeal process to the Prefecture.,2.0,resolve_coercive_credit_collection,1.0,0.007717736065387726,0.0031689032912254333
+V0014,resolve_judicial_appeal,The narrative involves an appeal to a judge (judicial appeal) before payment.,4.0,resolve_delinquent_payment,1.0,0.005550093483179808,0.0032684020698070526
+V0015,resolve_administrative_appeal,The narrative progresses through administrative appeal preparation and filing to the Prefecture.,4.0,resolve_judicial_appeal,1.0,0.37154170870780945,0.1423017829656601
+V0016,resolve_administrative_appeal,The case is resolved via payment after a full administrative appeal cycle involving the Prefecture.,2.0,resolve_coercive_credit_collection,1.0,0.0,0.00037261247052811086
+V0017,resolve_coercive_credit_collection,The case involves a judicial appeal followed ultimately by coercive credit collection.,3.0,resolve_judicial_appeal,1.0,0.011320621706545353,0.027259929105639458
+V0018,resolve_delinquent_payment,The case is resolved via delinquent payment after fine notification and penalty.,2.0,resolve_coercive_credit_collection,1.0,0.026644207537174225,0.0038775841239839792
+V0019,resolve_coercive_credit_collection,"The administrative appeal process concludes, but the case ultimately goes to credit collection.",2.0,resolve_administrative_appeal,1.0,0.0017929569585248828,0.036787595599889755
+V0020,resolve_coercive_credit_collection,"Following an administrative appeal and notification of results, the case ends in credit collection.",2.0,resolve_administrative_appeal,1.0,0.009584001265466213,0.048164550215005875
+V0021,resolve_delinquent_payment,The case is resolved through multiple delayed payments after notification and penalty.,1.0,resolve_coercive_credit_collection,1.0,0.02187945879995823,0.0020457857754081488
+V0022,resolve_administrative_appeal,The fine is resolved via payment after completing an administrative appeal to the Prefecture.,3.0,resolve_coercive_credit_collection,1.0,0.016568269580602646,0.0011584743624553084
+V0023,resolve_timely_payment,The case is resolved via prompt payments shortly after fine creation.,5.0,resolve_judicial_appeal,1.0,0.07726351171731949,0.011123479343950748
+V0024,resolve_delinquent_payment,The case is resolved via payment following notification and penalty additions.,2.0,resolve_coercive_credit_collection,1.0,0.030828630551695824,0.008062007836997509
+V0025,resolve_coercive_credit_collection,"An administrative appeal concludes, but the case ultimately ends in coercive credit collection.",2.0,resolve_administrative_appeal,1.0,0.0,0.038580551743507385
+V0026,resolve_coercive_credit_collection,The case proceeds through enforcement steps and ends in coercive credit collection.,3.0,resolve_delinquent_payment,1.0,0.012473203241825104,0.05105375126004219
+V0027,resolve_judicial_appeal,The narrative culminates in a judicial appeal to the Judge after an administrative appeal cycle.,1.0,resolve_administrative_appeal,1.0,0.36537042260169983,0.33392608165740967
+V0028,resolve_timely_payment,The case is resolved via prompt payments without enforcement or appeals.,3.0,resolve_delinquent_payment,2.0,0.05734996870160103,0.008790065534412861
+V0029,resolve_judicial_appeal,The narrative directly involves a judicial appeal to the Judge after fine notification and penalty.,3.0,resolve_coercive_credit_collection,1.0,0.3905044496059418,0.3334622085094452
+V0030,,"The case ends with notifying the appeal result to the offender, without a final resolution such as payment or closure.",,resolve_administrative_appeal,1.0,,0.0035430535208433867
+V0031,resolve_judicial_appeal,The case is resolved via payment following a judicial appeal to the Judge.,4.0,resolve_delinquent_payment,1.0,0.013831122778356075,0.005012627691030502
+V0032,,The case ends at receiving the appeal result from the Prefecture without a final resolution.,,resolve_administrative_appeal,1.0,,0.015611614100635052
+V0033,resolve_judicial_appeal,The case undergoes both administrative and judicial appeals before being resolved via payment.,2.0,resolve_administrative_appeal,1.0,0.0,0.004574260208755732
+V0034,,The narrative ends with notifying the result of an administrative appeal without a final resolution.,,resolve_administrative_appeal,1.0,,0.00040618141065351665
+V0035,resolve_judicial_appeal,The case involves an administrative appeal followed by a judicial appeal to the Judge.,1.0,resolve_administrative_appeal,1.0,0.37018725275993347,0.3336153030395508
+V0036,resolve_delinquent_payment,The case is resolved via delayed payments with notifications and penalties.,2.0,resolve_coercive_credit_collection,1.0,0.02700127102434635,0.004234648775309324
+V0037,resolve_judicial_appeal,The case is resolved via payment following a judicial appeal to the Judge.,4.0,resolve_delinquent_payment,1.0,0.3552418053150177,0.00041855929885059595
+V0038,,"The narrative ends with receiving the appeal result from the Prefecture, lacking a resolution.",,resolve_administrative_appeal,1.0,,0.00022634101333096623
+V0039,resolve_administrative_appeal,The case is resolved via payment after initiating an administrative appeal to the Prefecture.,3.0,resolve_delinquent_payment,1.0,0.018865903839468956,5.510637038241839e-06
+V0040,resolve_coercive_credit_collection,The case involves a judicial appeal but ultimately ends in coercive credit collection.,2.0,resolve_judicial_appeal,1.0,0.011195872910320759,0.027384677901864052
+V0041,resolve_administrative_appeal,The case is resolved via payment after completing an administrative appeal to the Prefecture.,3.0,resolve_coercive_credit_collection,1.0,0.002321308245882392,0.0019301939755678177
+V0042,resolve_administrative_appeal,The case is resolved via payment after an administrative appeal process with the Prefecture.,2.0,resolve_judicial_appeal,1.0,0.007880770601332188,0.0030058680567890406
+V0043,resolve_coercive_credit_collection,The case proceeds through enforcement steps and ends in coercive credit collection.,3.0,resolve_delinquent_payment,1.0,0.018551481887698174,0.05713203176856041
+V0044,resolve_delinquent_payment,The case is resolved via delinquent payments following notifications and penalties.,1.0,resolve_judicial_appeal,1.0,0.015555381774902344,0.002809768309816718
+V0045,resolve_delinquent_payment,The case is resolved via multiple delayed payments following enforcement actions.,2.0,resolve_timely_payment,1.0,0.02946282923221588,0.0002470270555932075
+V0046,,The narrative ends with notifying the result of an administrative appeal without a final resolution.,,resolve_administrative_appeal,1.0,,0.004631295334547758
+V0047,resolve_judicial_appeal,The case involves administrative steps and ultimately leads to a judicial appeal to the Judge.,2.0,resolve_administrative_appeal,1.0,0.36621418595314026,0.33358433842658997
+V0048,resolve_timely_payment,The case is resolved via prompt payments without enforcement steps.,4.0,resolve_judicial_appeal,2.0,0.06236901506781578,0.0037710245233029127
+V0049,resolve_administrative_appeal,The case is resolved via payment following an administrative appeal process.,3.0,resolve_delinquent_payment,1.0,0.01217799261212349,0.00030102423625066876
+V0050,resolve_administrative_appeal,The case is resolved via payment after completing an administrative appeal to the Prefecture.,2.0,resolve_delinquent_payment,1.0,0.0028088379185646772,0.002417723648250103
+V0051,resolve_coercive_credit_collection,The variant ends with Send for Credit Collection after administrative appeal steps.,3.0,resolve_administrative_appeal,1.0,0.0015811827033758163,0.03699937090277672
+V0052,resolve_administrative_appeal,The variant culminates in sending the appeal to the Prefecture.,4.0,resolve_delinquent_payment,1.0,0.4019312858581543,0.035495463758707047
+V0053,resolve_administrative_appeal,"Involves fine notifications, penalties, and ultimately an administrative appeal to the Prefecture.",3.0,resolve_delinquent_payment,2.0,0.3564070761203766,0.12716715037822723
+V0054,resolve_delinquent_payment,Payment is made after an added penalty following notification.,2.0,resolve_administrative_appeal,1.0,0.3370448648929596,0.0009903287282213569
+V0055,resolve_administrative_appeal,The process flows into an administrative appeal to the Prefecture.,4.0,resolve_coercive_credit_collection,2.0,0.43302121758461,0.004405503626912832
+V0056,resolve_judicial_appeal,The process includes an appeal to the Judge before final payment.,2.0,resolve_administrative_appeal,1.0,0.000639535894151777,0.005213795695453882
+V0057,resolve_administrative_appeal,Involves administrative appeal handling and later resubmission to the Prefecture.,2.0,resolve_coercive_credit_collection,2.0,0.4357360303401947,0.0016907023964449763
+V0058,resolve_administrative_appeal,Reaches the milestone of receiving the result of the appeal from the Prefecture.,3.0,resolve_timely_payment,1.0,0.33913561701774597,0.031143391504883766
+V0059,resolve_administrative_appeal,Involves coercive credit actions and subsequent appeal routing to the Prefecture.,4.0,resolve_judicial_appeal,1.0,0.4185142517089844,0.018912462517619133
+V0060,resolve_timely_payment,Characterized by prompt payment actions without escalation.,3.0,resolve_delinquent_payment,1.0,0.022160351276397705,0.00174392678309232
+V0061,resolve_delinquent_payment,Payment follows penalty additions and administrative steps.,2.0,resolve_administrative_appeal,1.0,0.0,0.0011347323888912797
+V0062,resolve_administrative_appeal,Involves appeal processing to the Prefecture culminating in payment.,2.0,resolve_delinquent_payment,1.0,0.003469478338956833,0.0030968657229095697
+V0063,resolve_judicial_appeal,Directly appeals to the Judge shortly after fine creation.,5.0,resolve_timely_payment,1.0,0.4069651663303375,0.3344395160675049
+V0064,resolve_delinquent_payment,Payment occurs after penalties and appeal notifications are processed.,2.0,resolve_administrative_appeal,1.0,0.3339037597179413,0.000713976623956114
+V0065,resolve_administrative_appeal,Follows the full administrative appeal lifecycle with Prefecture results before payment.,3.0,resolve_coercive_credit_collection,1.0,0.0005637810099869967,0.00019116856856271625
+V0066,resolve_administrative_appeal,Terminates after forwarding the case to the Prefecture for appeal.,1.0,resolve_delinquent_payment,2.0,0.40938806533813477,0.02803865820169449
+V0067,resolve_coercive_credit_collection,Repeated payments fail to prevent the case from going to credit collection.,3.0,resolve_delinquent_payment,1.0,0.3478766679763794,0.3334977924823761
+V0068,resolve_coercive_credit_collection,Involves appeals to both Prefecture and Judge before ending in credit collection.,3.0,resolve_judicial_appeal,1.0,0.008348983712494373,0.030231567099690437
+V0069,resolve_judicial_appeal,Proceeds through administrative appeal steps and escalates to a judicial appeal.,2.0,resolve_administrative_appeal,1.0,0.3767130672931671,0.333337664604187
+V0070,resolve_administrative_appeal,Concludes at notifying the offender of the Prefecture appeal result.,2.0,resolve_coercive_credit_collection,1.0,0.3519434630870819,0.018606198951601982
+V0071,resolve_coercive_credit_collection,Ends in coercive credit collection despite penalty and payment attempts.,2.0,resolve_delinquent_payment,1.0,0.3488626778125763,0.33349868655204773
+V0072,resolve_delinquent_payment,Involves multiple delayed payments after penalties.,5.0,resolve_timely_payment,1.0,0.028718262910842896,0.0004975415649823844
+V0073,resolve_administrative_appeal,Involves full administrative appeal cycle and subsequent delayed payments.,4.0,resolve_judicial_appeal,1.0,0.35843542218208313,0.002533257007598877
+V0074,resolve_coercive_credit_collection,Combines judge appeal and late payment before ending in credit collection.,3.0,resolve_judicial_appeal,1.0,0.006609482225030661,0.03197107091546059
+V0075,resolve_administrative_appeal,Payment is made following administrative appeal notification.,1.0,resolve_delinquent_payment,1.0,0.014454610645771027,0.000713976623956114
+V0076,resolve_coercive_credit_collection,"Administrative appeal handled, followed by credit collection.",3.0,resolve_administrative_appeal,1.0,0.017343608662486076,0.05592416226863861
+V0077,,Incomplete or unusual path ending in Send Fine without resolution.,,resolve_timely_payment,1.0,,0.3344241678714752
+V0078,resolve_delinquent_payment,Multiple delayed payments after penalty enforcement.,3.0,resolve_timely_payment,1.0,0.003538029035553336,0.0010866702068597078
+V0079,resolve_delinquent_payment,Series of late payments following penalty addition.,4.0,resolve_judicial_appeal,1.0,0.003266340820118785,0.0008149819914251566
+V0080,resolve_timely_payment,Prompt payment interactions throughout the variant lifecycle.,3.0,resolve_delinquent_payment,1.0,0.04136648401618004,0.003636368550360203
+V0081,resolve_judicial_appeal,Involves judge appeal alongside administrative appeal steps prior to payment.,5.0,resolve_administrative_appeal,1.0,0.02655516378581524,7.54167849663645e-05
+V0082,resolve_coercive_credit_collection,Escalated through both Prefecture and Judge before credit collection.,3.0,resolve_judicial_appeal,1.0,0.01656170003116131,0.022018851712346077
+V0083,resolve_administrative_appeal,Payment occurs alongside administrative appeal submission to the Prefecture.,3.0,resolve_delinquent_payment,1.0,0.3389069736003876,0.10966704040765762
+V0084,resolve_coercive_credit_collection,Full administrative and judicial appeals followed by credit collection.,3.0,resolve_judicial_appeal,1.0,0.023746399208903313,0.014834154397249222
+V0085,resolve_delinquent_payment,Delayed payment following fine notification and penalty.,2.0,resolve_administrative_appeal,1.0,0.34691503643989563,0.00044637953396886587
+V0086,resolve_administrative_appeal,Payment and appeal actions lead to Prefecture submission.,2.0,resolve_delinquent_payment,1.0,0.34327664971351624,0.11403671652078629
+V0087,resolve_delinquent_payment,Repeated payments after penalties are applied.,2.0,resolve_judicial_appeal,1.0,0.03652767837047577,0.00370114971883595
+V0088,resolve_coercive_credit_collection,Payments and penalties fail to avoid coercive credit collection.,3.0,resolve_delinquent_payment,1.0,0.3482862710952759,0.33349737524986267
+V0089,resolve_administrative_appeal,Administrative appeal results delivered prior to payment.,4.0,resolve_coercive_credit_collection,1.0,0.00434685917571187,0.003974246792495251
+V0090,resolve_administrative_appeal,Quick escalation to Prefecture appeal followed by payment.,4.0,resolve_judicial_appeal,1.0,0.03409355878829956,0.021451078355312347
+V0091,resolve_judicial_appeal,Involves administrative and judicial appeals before eventual payment.,3.0,resolve_administrative_appeal,1.0,0.029593342915177345,0.004266120493412018
+V0092,resolve_coercive_credit_collection,Appeal notifications completed before sending to credit collection.,2.0,resolve_timely_payment,1.0,0.0026512525510042906,0.035929299890995026
+V0093,,Anomalous sequence ending in Send Fine without closure.,,resolve_judicial_appeal,1.0,,0.33374011516571045
+V0094,resolve_administrative_appeal,Administrative appeal process completed before payment.,3.0,resolve_timely_payment,1.0,0.011952385306358337,7.54167849663645e-05
+V0095,resolve_administrative_appeal,Full administrative appeal cycle completed prior to repeated payments.,3.0,resolve_judicial_appeal,1.0,0.34906625747680664,2.923486135841813e-06
+V0096,resolve_judicial_appeal,Terminates with a judicial appeal after administrative submission.,4.0,resolve_administrative_appeal,1.0,0.43065258860588074,0.3333333432674408
+V0097,resolve_administrative_appeal,Involves judge appeal and subsequent Prefecture appeal filing.,4.0,resolve_judicial_appeal,2.0,0.3837375342845917,0.15449760854244232
+V0098,resolve_judicial_appeal,Includes judicial appeal interaction during the administrative appeal process.,3.0,resolve_timely_payment,1.0,0.36196649074554443,0.0029017154593020678
+V0099,resolve_judicial_appeal,Combines judicial appeal with administrative appeal workflow.,3.0,resolve_timely_payment,1.0,0.37176939845085144,0.0018641023198142648
+V0100,resolve_administrative_appeal,Administrative appeal process concludes with notification before repeated payments.,7.0,resolve_judicial_appeal,1.0,0.37185677886009216,0.00018590420950204134
+V0101,resolve_timely_payment,The case ends in payment after administrative steps.,3.0,resolve_administrative_appeal,1.0,0.05513734742999077,0.0020700593013316393
+V0102,resolve_judicial_appeal,The process explicitly involves an appeal to a judge.,0.0,resolve_administrative_appeal,1.0,0.3609558045864105,0.3334102928638458
+V0103,resolve_administrative_appeal,Involves sending an appeal to the Prefecture.,3.0,resolve_judicial_appeal,1.0,0.45370206236839294,0.016196124255657196
+V0104,resolve_administrative_appeal,Involves administrative appeal handling and notification.,1.0,resolve_delinquent_payment,1.0,0.35279110074043274,0.009658778086304665
+V0105,resolve_judicial_appeal,Ends with an appeal to the judge following administrative steps.,1.0,resolve_delinquent_payment,1.0,0.3601912260055542,0.33371150493621826
+V0106,resolve_coercive_credit_collection,Terminates with send for credit collection.,0.0,resolve_delinquent_payment,1.0,0.004372332710772753,0.04295288398861885
+V0107,resolve_judicial_appeal,Ends in an appeal to the judge.,2.0,resolve_administrative_appeal,1.0,0.35478439927101135,0.33360815048217773
+V0108,resolve_coercive_credit_collection,Involves an administrative appeal process followed by credit collection.,4.0,resolve_administrative_appeal,1.0,0.0020014101173728704,0.03657914325594902
+V0109,resolve_timely_payment,Ends with payment following administrative steps.,3.0,resolve_administrative_appeal,1.0,0.33948370814323425,6.770990876248106e-05
+V0110,resolve_timely_payment,Ends in payment after administrative appeal handling.,4.0,resolve_administrative_appeal,1.0,0.336468905210495,5.510637038241839e-06
+V0111,resolve_coercive_credit_collection,Ends with send for credit collection after administrative appeal.,3.0,resolve_administrative_appeal,3.0,0.012587289325892925,0.051167842000722885
+V0112,resolve_timely_payment,Results in payment following an administrative appeal path.,3.0,resolve_administrative_appeal,1.0,0.0,2.923486135841813e-06
+V0113,resolve_timely_payment,Results in payment.,4.0,resolve_coercive_credit_collection,1.0,0.3486965596675873,0.00019116856856271625
+V0114,resolve_timely_payment,Ends with payment.,2.0,resolve_administrative_appeal,1.0,0.020278722047805786,0.0028145748656243086
+V0115,resolve_administrative_appeal,Focuses on the administrative appeal process and notification.,1.0,resolve_judicial_appeal,2.0,0.33735978603363037,0.004022510256618261
+V0116,resolve_timely_payment,Ends in payment.,2.0,resolve_delinquent_payment,1.0,0.36484813690185547,0.0032684020698070526
+V0117,resolve_judicial_appeal,Includes an appeal to the judge.,3.0,resolve_administrative_appeal,1.0,0.3419564962387085,0.0029942847322672606
+V0118,resolve_administrative_appeal,Involves administrative appeal steps including judge appeal before prefecture.,3.0,resolve_judicial_appeal,2.0,0.3588108718395233,0.12957091629505157
+V0119,resolve_administrative_appeal,"Contains administrative and judicial appeal steps, ending with prefecture appeal.",2.0,resolve_judicial_appeal,1.0,0.39796411991119385,0.03946259990334511
+V0120,resolve_judicial_appeal,Ends with an appeal to the judge.,2.0,resolve_administrative_appeal,1.0,0.389301061630249,0.33359038829803467
+V0121,resolve_timely_payment,Ends in payment after multiple appeal actions.,4.0,resolve_administrative_appeal,1.0,0.3813568353652954,0.004266120493412018
+V0122,resolve_timely_payment,Ends in payment after adding penalties and judicial appeal.,3.0,resolve_delinquent_payment,1.0,0.03900274261832237,0.00019684644939843565
+V0123,resolve_coercive_credit_collection,Ends with send for credit collection.,3.0,resolve_delinquent_payment,1.0,0.3434004783630371,0.3334452211856842
+V0124,resolve_administrative_appeal,Leads to send appeal to prefecture.,4.0,resolve_delinquent_payment,2.0,0.34634700417518616,0.11710707098245621
+V0125,resolve_administrative_appeal,Leads to send appeal to prefecture.,5.0,resolve_timely_payment,2.0,0.3852384090423584,0.15599848330020905
+V0126,resolve_timely_payment,Ends in payment.,2.0,resolve_administrative_appeal,1.0,0.04136648401618004,0.003636368550360203
+V0127,resolve_timely_payment,Ends in payment following administrative appeal steps.,3.0,resolve_administrative_appeal,1.0,0.01388327032327652,0.002809768309816718
+V0128,resolve_timely_payment,Ends in payment after administrative appeal.,3.0,resolve_administrative_appeal,1.0,0.34945234656333923,7.92998071119655e-06
+V0129,resolve_coercive_credit_collection,Ends in credit collection.,2.0,resolve_administrative_appeal,2.0,0.01174258068203926,0.026837969198822975
+V0130,resolve_timely_payment,Ends in payment.,0.0,resolve_delinquent_payment,1.0,0.0013137030182406306,0.0008149819914251566
+V0131,resolve_timely_payment,Ends in payment.,3.0,resolve_delinquent_payment,1.0,0.3353242576122284,0.00020512867195066065
+V0132,resolve_timely_payment,Ends in payment.,3.0,resolve_administrative_appeal,1.0,0.006568560376763344,0.001130731892772019
+V0133,resolve_coercive_credit_collection,Ends in credit collection.,2.0,resolve_administrative_appeal,2.0,0.004777946043759584,0.03380260616540909
+V0134,resolve_coercive_credit_collection,Ends in credit collection after multiple appeals.,4.0,resolve_judicial_appeal,1.0,0.024819159880280495,0.013761392794549465
+V0135,resolve_coercive_credit_collection,Ends in credit collection.,2.0,resolve_administrative_appeal,3.0,0.0017573813674971461,0.040337931364774704
+V0136,resolve_timely_payment,Ends in payment.,2.0,resolve_delinquent_payment,2.0,0.3567984998226166,0.0004445431986823678
+V0137,resolve_administrative_appeal,Ends with notification of appeal result from prefecture.,0.0,resolve_judicial_appeal,1.0,0.3351935148239136,0.0018641023198142648
+V0138,resolve_coercive_credit_collection,Ends with credit collection.,2.0,resolve_administrative_appeal,2.0,0.008795218542218208,0.029785333201289177
+V0139,resolve_timely_payment,Ends in payment.,4.0,resolve_administrative_appeal,1.0,0.3462238013744354,0.00044637953396886587
+V0140,resolve_timely_payment,Ends in payment.,3.0,resolve_administrative_appeal,1.0,0.3475273549556732,0.0017499447567388415
+V0141,resolve_timely_payment,Ends in payment.,10.0,resolve_delinquent_payment,2.0,0.01680654287338257,0.0004111852904316038
+V0142,resolve_timely_payment,Ends in payment.,4.0,resolve_delinquent_payment,1.0,0.00933381449431181,0.0009881298756226897
+V0143,resolve_timely_payment,Ends in payment.,8.0,resolve_delinquent_payment,1.0,0.0450233519077301,0.00041855929885059595
+V0144,resolve_administrative_appeal,Ends with sending an appeal to the prefecture.,3.0,resolve_timely_payment,1.0,0.4139598309993744,0.18471990525722504
+V0145,resolve_administrative_appeal,Ends with sending an appeal to the prefecture.,4.0,resolve_delinquent_payment,2.0,0.399614542722702,0.17037458717823029
+V0146,resolve_timely_payment,Ends in payment.,5.0,resolve_judicial_appeal,2.0,0.02484501153230667,0.0018715179758146405
+V0147,resolve_timely_payment,Ends in payment.,11.0,resolve_judicial_appeal,1.0,0.04638132080435753,0.0008783331722952425
+V0148,resolve_timely_payment,Ends in payment.,9.0,resolve_judicial_appeal,1.0,0.028078148141503334,0.0002470270555932075
+V0149,resolve_timely_payment,Ends in payment.,3.0,resolve_delinquent_payment,1.0,0.014077644795179367,0.0031400825828313828
+V0150,resolve_timely_payment,Ends in payment.,7.0,resolve_delinquent_payment,1.0,0.04065372422337532,0.0010515599278733134
+V0151,resolve_judicial_appeal,"The narrative includes an appeal to the judge, resulting in delayed resolution through subsequent payments.",12.0,resolve_timely_payment,1.0,0.3441239595413208,0.005161729175597429
+V0152,resolve_judicial_appeal,The narrative features an appeal to a judge followed by receiving the result.,4.0,resolve_coercive_credit_collection,1.0,0.3348197937011719,0.031143391504883766
+V0153,resolve_judicial_appeal,Involves an appeal to the judge and eventual resolution via delayed payment.,16.0,resolve_timely_payment,3.0,0.33937135338783264,0.0004091657465323806
+V0154,resolve_judicial_appeal,Shows an early appeal to a judge prior to late payment.,7.0,resolve_timely_payment,1.0,0.018909014761447906,0.000651701120659709
+V0155,resolve_delinquent_payment,Resolution occurs via payment following the addition of penalties and notifications.,5.0,resolve_judicial_appeal,1.0,0.025018632411956787,0.0022520101629197598
+V0156,resolve_administrative_appeal,Contains administrative appeal steps directed to the Prefecture.,4.0,resolve_timely_payment,2.0,0.35384035110473633,0.12460041791200638
+V0157,resolve_delinquent_payment,The case is resolved through delinquent payment after fine notification and penalty addition.,3.0,resolve_timely_payment,2.0,0.06500238180160522,0.0037710245233029127
+V0158,resolve_administrative_appeal,Characterized by multiple administrative appeal steps to the Prefecture.,4.0,resolve_judicial_appeal,1.0,0.43745315074920654,2.640567436174024e-05
+V0159,resolve_administrative_appeal,Features administrative appeal processing involving the Prefecture before payment.,1.0,resolve_delinquent_payment,1.0,0.011952385306358337,7.54167849663645e-05
+V0160,resolve_coercive_credit_collection,The process culminates in coercive credit collection actions.,3.0,resolve_delinquent_payment,1.0,0.33999499678611755,0.33393314480781555
+V0161,resolve_coercive_credit_collection,Involves administrative appeal procedures ending with sending the case for credit collection.,3.0,resolve_administrative_appeal,1.0,0.0011834870092570782,0.03976403921842575
+V0162,resolve_judicial_appeal,"Includes an appeal to a judge alongside administrative steps, ending in late payment.",4.0,resolve_delinquent_payment,1.0,0.038823243230581284,7.92998071119655e-06
+V0163,resolve_coercive_credit_collection,Proceeds through administrative appeal steps and terminates in credit collection.,2.0,resolve_administrative_appeal,2.0,0.02822149358689785,0.01035905908793211
+V0164,resolve_administrative_appeal,Involves administrative appeals to the Prefecture and results in payment after review.,3.0,resolve_coercive_credit_collection,2.0,0.01348897721618414,0.0051088216714560986
+V0165,resolve_judicial_appeal,"Features both administrative appeal and judge appeal steps, ending in coercive credit collection.",3.0,resolve_coercive_credit_collection,1.0,0.3926597535610199,0.01035905908793211
+V0166,resolve_judicial_appeal,"Includes an appeal to a judge after administrative steps, eventually resolved via payment.",4.0,resolve_administrative_appeal,1.0,0.35614001750946045,0.0004796349676325917
+V0167,resolve_administrative_appeal,"Goes through administrative appeal procedures, notifying the offender of the result.",2.0,resolve_judicial_appeal,1.0,0.33827662467956543,0.004939339589327574
+V0168,resolve_administrative_appeal,"Involves fine notification, penalty addition, and sending an appeal to the Prefecture.",3.0,resolve_delinquent_payment,2.0,0.35139238834381104,0.12215247005224228
+V0169,resolve_coercive_credit_collection,"Repeated delinquent payments fail to close the case, ending in coercive credit collection.",4.0,resolve_delinquent_payment,1.0,0.3340793550014496,0.33358433842658997
+V0170,resolve_coercive_credit_collection,Includes an appeal to a judge and delinquent payments before ending in credit collection.,3.0,resolve_judicial_appeal,1.0,0.3571781814098358,0.3349219560623169
+V0171,resolve_delinquent_payment,Involves an administrative appeal process but ultimately resolves through delayed payments.,4.0,resolve_administrative_appeal,1.0,0.006087727844715118,0.00026026240084320307
+V0172,resolve_judicial_appeal,Includes administrative appeal steps followed by an appeal to a judge and payment.,3.0,resolve_administrative_appeal,1.0,0.00045500797568820417,0.004119252320379019
+V0173,resolve_coercive_credit_collection,Proceeds through notifications and penalties before being sent to coercive credit collection.,4.0,resolve_timely_payment,1.0,0.34586217999458313,0.3341670036315918
+V0174,resolve_delinquent_payment,Resolved via delinquent payment following fine notification and penalty addition.,3.0,resolve_coercive_credit_collection,2.0,0.0207293089479208,0.002785109682008624
+V0175,resolve_administrative_appeal,"Involves both administrative and judge appeals, concluding with result notification.",2.0,resolve_coercive_credit_collection,2.0,0.33624187111854553,0.002904612571001053
+V0176,resolve_judicial_appeal,Includes an appeal to a judge subsequent to administrative appeal steps.,4.0,resolve_administrative_appeal,1.0,0.3990737497806549,5.277184027363546e-05
+V0177,resolve_judicial_appeal,Features multiple appeal stages including a judge appeal before credit collection/send appeal.,4.0,resolve_administrative_appeal,1.0,0.3989945948123932,2.640567436174024e-05
+V0178,resolve_administrative_appeal,Follows a standard administrative appeal path to the Prefecture.,1.0,resolve_judicial_appeal,2.0,0.33766648173332214,0.004329205956310034
+V0179,resolve_administrative_appeal,Consists of administrative appeal actions ending with notification to the offender.,2.0,resolve_judicial_appeal,1.0,0.34603404998779297,0.0029017154593020678
+V0180,resolve_delinquent_payment,Passes through administrative appeal steps and concludes with delinquent payments.,4.0,resolve_timely_payment,1.0,0.007970661856234074,0.001622671727091074
+V0181,resolve_delinquent_payment,Involves an administrative appeal followed by delayed payments.,2.0,resolve_administrative_appeal,1.0,0.00014356824976857752,0.0012783006532117724
+V0182,resolve_coercive_credit_collection,Involves administrative appeal handling and ends with coercive credit collection.,2.0,resolve_administrative_appeal,2.0,0.0035751506220549345,0.04215570166707039
+V0183,resolve_judicial_appeal,Includes an appeal to a judge followed by multiple delayed payments.,6.0,resolve_delinquent_payment,1.0,0.3601410388946533,0.0031226808205246925
+V0184,resolve_judicial_appeal,Features an appeal to a judge and is resolved via delinquent payment.,4.0,resolve_delinquent_payment,1.0,0.35308215022087097,0.0017913879128172994
+V0185,resolve_judicial_appeal,Escalates to an appeal to a judge after administrative processes and payment.,2.0,resolve_administrative_appeal,1.0,0.3630836308002472,0.33413437008857727
+V0186,resolve_delinquent_payment,"Involves an administrative appeal and penalty addition, resolved via delinquent payment.",3.0,resolve_administrative_appeal,2.0,0.024111149832606316,0.00018590420950204134
+V0187,resolve_judicial_appeal,Involves an appeal to a judge followed by a series of delinquent payments.,7.0,resolve_delinquent_payment,1.0,0.3598130941390991,0.0025022265035659075
+V0188,resolve_delinquent_payment,Resolved via multiple delayed payments after fine notifications and penalties.,6.0,resolve_timely_payment,2.0,0.007208028808236122,0.0009881298756226897
+V0189,resolve_administrative_appeal,"Includes administrative appeal preparation and sending, followed by a late payment.",4.0,resolve_delinquent_payment,2.0,0.037069905549287796,0.018474731594324112
+V0190,resolve_administrative_appeal,Involves an administrative appeal path and concludes with delinquent payments.,4.0,resolve_delinquent_payment,2.0,0.34150180220603943,0.00174392678309232
+V0191,resolve_administrative_appeal,Consists entirely of administrative appeal actions with the Prefecture.,2.0,resolve_coercive_credit_collection,2.0,0.34170424938201904,0.045316603034734726
+V0192,resolve_administrative_appeal,Represents an administrative appeal process resulting in a received result.,3.0,resolve_judicial_appeal,1.0,0.3360902965068817,0.03418872505426407
+V0193,,Incomplete lifecycle ending prematurely at Send Fine without resolution or payment.,,resolve_timely_payment,1.0,,0.35513821244239807
+V0194,resolve_administrative_appeal,Includes an administrative appeal process sent to the Prefecture with intermediate payment.,4.0,resolve_timely_payment,2.0,0.3703714907169342,0.14113159477710724
+V0195,resolve_delinquent_payment,"Involves administrative appeal steps and penalty additions, eventually resolved via delinquent payment.",3.0,resolve_administrative_appeal,1.0,0.01835538260638714,0.0004111852904316038
+V0196,resolve_timely_payment,Involves an administrative appeal step followed directly by prompt fine sending and payment.,4.0,resolve_administrative_appeal,2.0,0.4079562723636627,0.021817201748490334
+V0197,resolve_delinquent_payment,"Involves administrative appeal procedures and penalty additions, ending in late payment.",4.0,resolve_administrative_appeal,1.0,0.35521629452705383,0.0004445431986823678
+V0198,resolve_judicial_appeal,"Contains both administrative appeal steps and an appeal to a judge, followed by delayed payment.",4.0,resolve_timely_payment,1.0,0.34113502502441406,0.0021728246938437223
+V0199,resolve_judicial_appeal,"Involves an appeal to a judge and administrative appeal steps, resolving via delinquent payment.",6.0,resolve_timely_payment,1.0,0.006605243775993586,0.0018970329547300935
+V0200,resolve_judicial_appeal,Follows an administrative appeal path that ultimately escalates to an appeal to a judge.,2.0,resolve_administrative_appeal,1.0,0.37214863300323486,0.3333333432674408
+V0201,resolve_judicial_appeal,"The narrative includes both administrative and judicial appeal steps, culminating in an appeal to a judge.",3.0,resolve_administrative_appeal,1.0,0.015288267284631729,0.006469771731644869
+V0202,resolve_administrative_appeal,The narrative features an administrative appeal to the Prefecture with notification of the result.,3.0,resolve_judicial_appeal,1.0,0.3463304042816162,0.003198102116584778
+V0203,resolve_judicial_appeal,The case involves an appeal to a judge and eventually results in payment after judicial involvement.,2.0,resolve_delinquent_payment,1.0,0.015151207335293293,0.00633271224796772
+V0204,resolve_delinquent_payment,"The fine undergoes a penalty addition and later payment, characterizing delinquent payment resolution.",1.0,resolve_judicial_appeal,1.0,0.01945856586098671,0.0015143676428124309
+V0205,resolve_judicial_appeal,The case involves an appeal to a judge following a penalty addition.,3.0,resolve_delinquent_payment,1.0,0.3532731533050537,0.33371075987815857
+V0206,resolve_administrative_appeal,The case goes through the administrative appeal process with the Prefecture.,3.0,resolve_delinquent_payment,2.0,0.3406181037425995,0.044230446219444275
+V0207,resolve_delinquent_payment,"Involves penalty addition followed by payment, fitting delinquent payment resolution.",3.0,resolve_judicial_appeal,1.0,0.3525930345058441,0.0020309840328991413
+V0208,resolve_delinquent_payment,Features penalty addition and subsequent late payment.,3.0,resolve_timely_payment,1.0,0.3366670310497284,0.00020512867195066065
+V0209,resolve_judicial_appeal,Includes an appeal to a judge along with penalty and payment actions.,4.0,resolve_delinquent_payment,1.0,0.3795126676559448,0.013738270848989487
+V0210,resolve_judicial_appeal,Involves an administrative appeal followed by a judicial appeal before final payment.,4.0,resolve_administrative_appeal,1.0,0.03842144086956978,0.013094217516481876
+V0211,resolve_administrative_appeal,Follows the administrative appeal path with the Prefecture and subsequent payment.,7.0,resolve_judicial_appeal,3.0,0.3585430681705475,0.002640906721353531
+V0212,resolve_judicial_appeal,Includes an administrative appeal path and concludes with an appeal to the judge.,2.0,resolve_administrative_appeal,1.0,0.36654841899871826,0.3339185416698456
+V0213,resolve_coercive_credit_collection,The case goes through administrative appeal and eventually gets sent for credit collection.,4.0,resolve_timely_payment,1.0,0.35254454612731934,0.33394739031791687
+V0214,resolve_coercive_credit_collection,Features both judicial and administrative appeals before being sent to coercive credit collection.,3.0,resolve_administrative_appeal,2.0,0.006987238302826881,0.031593311578035355
+V0215,resolve_administrative_appeal,Represents an administrative appeal process ending at the appeal submission.,2.0,resolve_judicial_appeal,2.0,0.4328775107860565,0.004549228120595217
+V0216,resolve_judicial_appeal,Contains both administrative and judicial appeal activities before payment.,3.0,resolve_administrative_appeal,1.0,0.0009178369655273855,0.003656423417851329
+V0217,resolve_delinquent_payment,Involves fine penalty addition and repeated payment transactions.,8.0,resolve_timely_payment,1.0,0.04033724591135979,0.00019684644939843565
+V0218,resolve_coercive_credit_collection,"Resolved via credit collection after fine notification, penalty addition, and multiple payments.",10.0,resolve_delinquent_payment,1.0,0.34110209345817566,0.33529675006866455
+V0219,resolve_administrative_appeal,Includes an administrative appeal process with the Prefecture.,2.0,resolve_coercive_credit_collection,2.0,0.3760213851928711,0.04268413782119751
+V0220,resolve_delinquent_payment,Features penalty additions and payment activities.,3.0,resolve_administrative_appeal,1.0,0.04386520013213158,0.003636368550360203
+V0221,resolve_administrative_appeal,Involves administrative appeal handling with the Prefecture.,2.0,resolve_delinquent_payment,2.0,0.0005738325999118388,0.00018271838780492544
+V0222,resolve_judicial_appeal,Involves an appeal to a judge along with delinquent fine payment steps.,7.0,resolve_delinquent_payment,1.0,0.38149797916412354,0.015723606571555138
+V0223,resolve_administrative_appeal,Follows an administrative appeal sequence with the Prefecture.,4.0,resolve_judicial_appeal,1.0,0.016706222668290138,0.0010205215075984597
+V0224,resolve_judicial_appeal,Contains both administrative and judicial appeal steps before settlement.,12.0,resolve_timely_payment,2.0,0.3443470001220703,0.005292767193168402
+V0225,resolve_judicial_appeal,Includes appeal actions directed to the judge.,7.0,resolve_delinquent_payment,3.0,0.3637043237686157,0.0020700593013316393
+V0226,resolve_administrative_appeal,Features administrative appeal and notification steps.,3.0,resolve_coercive_credit_collection,2.0,0.3542795181274414,0.00026026240084320307
+V0227,resolve_administrative_appeal,Follows an administrative appeal process.,3.0,resolve_delinquent_payment,1.0,0.00904843583703041,0.0006682809325866401
+V0228,resolve_delinquent_payment,Involves a standard delinquent payment process with penalty addition.,2.0,resolve_timely_payment,1.0,0.006561636459082365,0.001130731892772019
+V0229,resolve_coercive_credit_collection,Involves an administrative appeal and payment before escalating to credit collection.,3.0,resolve_administrative_appeal,1.0,0.005663328338414431,0.04424388334155083
+V0230,resolve_judicial_appeal,Contains both Prefecture and Judge appeal interactions before payment.,7.0,resolve_administrative_appeal,1.0,0.35023918747901917,0.00040257369983009994
+V0231,resolve_judicial_appeal,Includes an appeal to a judge along with an administrative appeal sequence.,6.0,resolve_delinquent_payment,1.0,0.046812284737825394,0.0006508347578346729

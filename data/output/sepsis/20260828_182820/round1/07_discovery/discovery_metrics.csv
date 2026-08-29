@@ -1,0 +1,8 @@
+category_id,name,num_variants,num_cases,perc_fit_traces,average_trace_fitness,log_fitness,precision
+admission_nc,Admission to Normal Care,85,98,100.0,1.0,1.0,0.3431165277950504
+admission_ic,Admission to Intensive Care,11,11,100.0,1.0,1.0,0.17105263157894735
+release_a,Release Pathway A,487,525,100.0,1.0,1.0,0.3000655632417678
+release_b,Release Pathway B,53,54,100.0,1.0,1.0,0.28348909657320875
+release_c,Release Pathway C,23,23,100.0,1.0,1.0,0.24512623841482906
+release_d,Release Pathway D,23,23,100.0,1.0,1.0,0.23910874625872958
+release_e,Release Pathway E,6,6,100.0,1.0,1.0,0.20052424639580602

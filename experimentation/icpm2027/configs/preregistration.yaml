@@ -72,16 +72,22 @@ decisions:
     question: Run Experiment 2's goal-model perturbations on Sepsis as well as RTFM?
     governs: [sepsis]
     status: decided
-    value: false
-    decided_on: "2026-08-25"
+    value: true
+    decided_on: "2026-08-29"
     rationale: >-
-      Not adopted. Two independent reasons. (1) Budget: RTFM is the mechanism case and extending to
-      Sepsis roughly doubles Experiment 2's LLM cost for a second instance of the same mechanism.
-      (2) Validity, which is now the binding one: Experiment 2's design forbids running
-      perturbations on a dataset whose Step 5a induction is unstable, because TargetReassignment and
-      CollateralReassignment cannot be read through induction variance. Sepsis is demonstrably in
-      that state - four identical-input guided runs produced three distinct anchor sets (Task C12).
-      Revisit only if C12's k>=5 protocol later shows Sepsis stable under some revised goal model.
+      Adopted, superseding the 2026-08-25 decision. The validity ground for refusal no longer
+      holds: re-run under this session's fixes (Task C12's is_stable now matches by anchor_ids per
+      §4, not by cosmetic category-label text — see conditions.py/report.py/prompt_taxonomy_
+      intent_guided.txt fixes, 2026-08-29) shows Sepsis's Step 5a induction IS stable — 5
+      identical-input reruns produced the identical anchor set {15,16,17,18,19,20,21} every time.
+      The earlier "three distinct anchor sets" finding is now attributed at least in part to the
+      anchor-inclusion prompt defect fixed the same day, not to genuine induction instability.
+      The budget ground was never binding on its own and is smaller than originally scoped: E2's
+      baseline condition reuses the existing e1_guided_rep1 run at zero additional cost (identical
+      run_id under experiment="e1"), so only the two perturbation conditions (A, B) are net new —
+      roughly 36 LLM calls total (~18 each, matching one guided e1 condition's Step 5+6 cost),
+      well under $1 at this session's measured RTFM per-call cost. Revisit only if a future C12
+      rerun on Sepsis (e.g. after any further goal-model or prompt change) shows instability again.
 
   C5_label_list_control:
     task: C5

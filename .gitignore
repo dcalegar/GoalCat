@@ -22,6 +22,9 @@ project/
 # time/cost/memory/disk footprint of each before running one.
 data/output/*
 !data/output/rtfm_mini/
+!data/output/rtfm/
+!data/output/sepsis/
+!data/output/icpm2027_results/
 
 # Pairwise distance matrices: CSV is redundant with parquet. Applies within
 # rtfm_mini too (the only example whose output is tracked above).

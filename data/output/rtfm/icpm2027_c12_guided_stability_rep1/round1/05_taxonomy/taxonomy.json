@@ -1,0 +1,77 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Resolution of the fine case through early payment before enforcement actions occur. Advances softgoal Maximize timely fine revenue and minimizes administrative costs, judged against Indicator Time to fine dispatch.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task 12 as observed in variants like V0002.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0007",
+        "V0012"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Resolve via delinquent payment",
+      "description": "Resolution of the fine case through payment after notifications and penalties have been added. Advances timely fine revenue, judged against Average time to case closure.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task 13, supported by variants showing payment occurring post-penalty.",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0005",
+        "V0006",
+        "V0009"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Contested appeal processed through the Prefecture. Preserves due process rights while impacting administrative costs, judged against Time to appeal filing, Prefecture.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task 14, supported by variants containing appeal submission and notification steps.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0137",
+        "V0139"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Contested appeal resolved via a judicial judge. Maximizes due process rights and incurs higher costs, judged against Time to appeal filing, Judge.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task 19, evidenced by variants featuring judicial appeal activities.",
+      "evidence_variant_ids": [
+        "V0103",
+        "V0140",
+        "V0176"
+      ]
+    },
+    {
+      "category_id": "coercive_credit_collection",
+      "name": "Resolve via coercive credit collection",
+      "description": "Resolution via coercive credit collection after all other payment and appeal paths have been exhausted. Maximizes revenue at the expense of costs and due process, judged against Average time to case closure.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task 20, directly observed as the final outcome in multiple frequent variants.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0010",
+        "V0134",
+        "V0135"
+      ]
+    }
+  ]
+}

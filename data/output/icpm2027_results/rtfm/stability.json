@@ -1,0 +1,80 @@
+{
+  "k": 5,
+  "stable": true,
+  "distinct_anchor_sets": 1,
+  "category_sets": [
+    [
+      "administrative_appeal",
+      "coercive_credit_collection",
+      "delinquent_payment",
+      "judicial_appeal",
+      "timely_payment"
+    ],
+    [
+      "administrative_appeal",
+      "coercive_credit_collection",
+      "delinquent_payment",
+      "judicial_appeal",
+      "timely_payment"
+    ],
+    [
+      "administrative_appeal",
+      "coercive_credit_collection",
+      "delinquent_payment",
+      "judicial_appeal",
+      "timely_payment"
+    ],
+    [
+      "administrative_appeal_prefecture",
+      "coercive_credit_collection",
+      "delinquent_payment",
+      "judicial_appeal_judge",
+      "timely_payment"
+    ],
+    [
+      "administrative_appeal",
+      "coercive_credit_collection",
+      "delinquent_payment",
+      "judicial_appeal",
+      "timely_payment"
+    ]
+  ],
+  "anchor_sets": [
+    [
+      "12",
+      "13",
+      "14",
+      "19",
+      "20"
+    ],
+    [
+      "12",
+      "13",
+      "14",
+      "19",
+      "20"
+    ],
+    [
+      "12",
+      "13",
+      "14",
+      "19",
+      "20"
+    ],
+    [
+      "12",
+      "13",
+      "14",
+      "19",
+      "20"
+    ],
+    [
+      "12",
+      "13",
+      "14",
+      "19",
+      "20"
+    ]
+  ],
+  "qualification": "Step 5a reproduced the same anchor set across all 5 identical-input reruns for rtfm; category *labels* reworded cosmetically between some reruns (e.g. added qualifiers with no change in the anchored goal-model element), which is expected LLM phrasing variance, not induction instability (\u00a74: categories are matched by anchor_ids, never by name). This dataset's figures below are not subject to Task E7's qualification."
+}

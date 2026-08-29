@@ -1,0 +1,16 @@
+{
+  "call": {
+    "provider": "gemini",
+    "model": "gemini/gemini-3.5-flash-lite",
+    "backend": "remote",
+    "temperature": 0.0,
+    "prompt_hash": "43fb797861b08702",
+    "latency_seconds": 2.8123309169895947,
+    "input_tokens": 2524,
+    "output_tokens": 611,
+    "prompt_chars": 10382,
+    "response_chars": 2612,
+    "raw_response": "{\n  \"assessments\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"goal_alignment\": \"The discovered evidence shows high variability across 85 variants with low precision (0.34) and mixed KPI satisfaction (e.g., negative time to antibiotics score of -18, positive lactate score of +100), indicating that the Admission NC task captures a loosely bounded group of paths with variable execution consistency.\"\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"goal_alignment\": \"The discovered evidence for Admission IC exhibits low precision (0.17) across 11 variants, but demonstrates strong guideline satisfaction for time to antibiotics (+96) and lactate measurement (+100), supporting its role in critical stabilization despite behavioral dispersion.\"\n    },\n    {\n      \"category_id\": \"release_a\",\n      \"goal_alignment\": \"Release A shows extensive behavioral dispersion across 487 variants and low model precision (0.30), coupled with near-neutral time to antibiotics satisfaction (+1) and a negative post-discharge ER return indicator (-34), suggesting potential divergence from optimal avoidance of post-discharge deterioration.\"\n    },\n    {\n      \"category_id\": \"release_b\",\n      \"goal_alignment\": \"Release B exhibits 53 variants with low precision (0.28), but achieves favorable measured satisfaction including strong scores for time to antibiotics (+40), lactate measurement (+100), and a maximum score of +100 for zero post-discharge ER returns, fully supporting the goal of avoiding post-discharge deterioration.\"\n    },\n    {\n      \"category_id\": \"release_c\",\n      \"goal_alignment\": \"Release C displays high path variability across 23 variants with low precision (0.25). While lactate measurement scores are optimal (+100), the time to antibiotics score is near-neutral (+2) and post-discharge ER returns yield a negative score (-17), showing partial alignment with specific recovery profiles.\"\n    },\n    {\n      \"category_id\": \"release_d\",\n      \"goal_alignment\": \"Release D is characterized by 23 variants with low model precision (0.24) and poor time to antibiotics satisfaction (-62), alongside a negative post-discharge ER return indicator (-39), indicating that the observed process behavior sits awkwardly against expected release standards.\"\n    },\n    {\n      \"category_id\": \"release_e\",\n      \"goal_alignment\": \"Release E covers only 6 cases with low precision (0.20) and features a heavily penalized time to antibiotics score (-100 with only 50 percent coverage), suggesting that the process behavior for this pathway frequently fails to meet guideline thresholds.\"\n    }\n  ]\n}",
+    "estimated_cost_usd": 0.0022846999999999998
+  }
+}

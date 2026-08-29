@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "cfde757a9ac22e68",
+  "latency_seconds": 3.829976832988905,
+  "input_tokens": 1897,
+  "output_tokens": 379,
+  "prompt_chars": 7935,
+  "response_chars": 1505,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_ward_routing\",\n      \"name\": \"Patient admission ward routing\",\n      \"description\": \"Represents the OR-decomposed choice of admitting the patient to either a non-critical inpatient ward or an intensive care unit, advancing the clinical pathway towards final disposition while influencing treatment timing metrics.\",\n      \"anchor_ids\": [\n        \"5\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to the OR-decomposed parent goal id=5 encompassing Admission NC (id=15) and Admission IC (id=16). The IC admission path carries a contribution to minimize time-to-treatment softgoal evaluated via indicator id=24 and id=25.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"discharge_disposition\",\n      \"name\": \"Captured discharge disposition\",\n      \"description\": \"Represents the OR-decomposed alternative pathways for concluding an admitted sepsis case through one of the designated release routes, impacting the post-discharge ER return indicator and avoiding post-discharge deterioration.\",\n      \"anchor_ids\": [\n        \"6\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to the OR-decomposed parent goal id=6 covering release variants Release A (id=17), Release B (id=18), Release C (id=19), Release D (id=20), and Release E (id=21). These alternatives connect to the Avoid post-discharge deterioration softgoal and are measured by post-discharge ER return indicator id=26.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0015166
+}

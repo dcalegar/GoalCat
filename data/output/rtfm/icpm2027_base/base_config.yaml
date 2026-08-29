@@ -1,0 +1,31 @@
+# GENERATED — do not edit. The Steps 1-4 config for the shared base every ICPM 2027
+# condition of dataset 'rtfm' inherits from (protocol 1.0.0). See experimentation/icpm2027/inputs.py.
+
+log_filename: rtfm.xes.gz
+goal_model_filename: rtfm_goal_model.jucm
+output_dir: data/output
+run_id: icpm2027_base
+round: 1
+case_id_key: case:concept:name
+activity_key: concept:name
+timestamp_key: time:timestamp
+resource_key: org:resource
+sample_frequent_n: 10
+sample_rare_n: 10
+sample_extreme_n: 5
+taxonomy_mode: intent_guided
+discovery_noise_threshold: 0.0
+llm:
+  taxonomy_model: gemini/gemini-3.5-flash-lite
+  assignment_model: gemini/gemini-3.5-flash-lite
+  description_model: gemini/gemini-3.5-flash-lite
+  pricing_usd_per_million_tokens:
+    gemini/gemini-3.5-flash-lite:
+      input: 0.3
+      output: 2.5
+  temperature: 0
+  timeout_seconds: 120
+  max_retries: 3
+  concurrency: 5
+  requests_per_minute: null
+  assignment_batch_size: 50

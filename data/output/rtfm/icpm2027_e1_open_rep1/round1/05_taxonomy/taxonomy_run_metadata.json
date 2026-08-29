@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "5e196f0a13a0b6c9",
+  "latency_seconds": 4.006493916007457,
+  "input_tokens": 4384,
+  "output_tokens": 677,
+  "prompt_chars": 14270,
+  "response_chars": 2324,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"direct_payment\",\n      \"name\": \"Direct Payment\",\n      \"description\": \"Fines that are paid quickly or directly after creation, characterized by very short trace lengths and minimal administrative overhead without reaching escalation stages.\",\n      \"anchor_ids\": [],\n      \"rationale\": \"High frequency variants like V0002 and V0007 consistently show immediate payment behavior shortly after fine creation.\",\n      \"evidence_variant_ids\": [\n        \"V0002\",\n        \"V0003\",\n        \"V0007\",\n        \"V0012\"\n      ]\n    },\n    {\n      \"category_id\": \"standard_fine_lifecycle\",\n      \"name\": \"Standard Fine Lifecycle\",\n      \"description\": \"Typical administrative handling involving fine creation, sending, notification, addition of penalties, and eventual resolution through standard payment or credit collection.\",\n      \"anchor_ids\": [],\n      \"rationale\": \"Represents the core bulk of the process variants (e.g., V0001, V0004, V0009) where fines follow the standard penalty and notification path.\",\n      \"evidence_variant_ids\": [\n        \"V0001\",\n        \"V0004\",\n        \"V0009\",\n        \"V0010\"\n      ]\n    },\n    {\n      \"category_id\": \"payment_rework_loops\",\n      \"name\": \"Payment Rework Loops\",\n      \"description\": \"Cases that involve multiple repeated payment activities over an extended duration, indicating installments, split payments, or processing errors.\",\n      \"anchor_ids\": [],\n      \"rationale\": \"Identified by recurring payment actions across variants like V0005, V0006, and V0051 with long trace lengths.\",\n      \"evidence_variant_ids\": [\n        \"V0005\",\n        \"V0006\",\n        \"V0048\",\n        \"V0151\",\n        \"V0153\"\n      ]\n    },\n    {\n      \"category_id\": \"appeal_and_litigation\",\n      \"name\": \"Appeal and Litigation Path\",\n      \"description\": \"Complex variants involving formal appeals to the prefecture or judge, resulting in extended durations and prefecture result notifications.\",\n      \"anchor_ids\": [],\n      \"rationale\": \"Distinguished by specific appeal-related activities such as 'Send Appeal to Prefecture' and 'Appeal to Judge' found in variants like V0008, V0057, and V0103.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0057\",\n        \"V0103\",\n        \"V0144\",\n        \"V0176\",\n        \"V0177\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0030077
+}

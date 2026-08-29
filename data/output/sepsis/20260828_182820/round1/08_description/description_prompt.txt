@@ -1,0 +1,61 @@
+You are assessing, for each category of a taxonomy, whether the process behavior actually discovered in the event log supports the category's declared meaning. Each category below already has a name and description (from a prior step) and, where a goal model exists, is anchored to a specific goal-model task or goal — a natural-language sentence stating what that task is supposed to achieve. Your job is not to restate that description. It is to judge, from the discovered evidence given below (which paths actually occur and how concentrated they are, how loosely the discovered process model bounds the real behavior), whether that evidence is consistent with the category actually achieving the specific goal-model task/goal it claims to realize — or whether something about the discovered evidence sits awkwardly against it and is worth a human reviewer's attention.
+
+Ground your judgment in the goal-model linkage text given for each category, not in the category's own name or description — those were written before any discovery happened and may not hold up against what was actually found. When a category has no goal-model linkage (open induction, no goal model for this log), compare instead against the category's own declared description/rationale, since that is the only declared reference available for it.
+
+Do not describe the Petri net's internal structure (places, transitions, arcs) — the discovered_pattern and model_looseness notes below already summarize what matters about it in business terms. Do not simply restate the declared description back. Write one goal_alignment assessment per category listed below, using exactly the category_id given — no more, no fewer, no invented ids.
+
+Some categories below carry a MEASURED SATISFACTION line: the goal model's own KPI indicators, measured over that category's own cases and converted to GRL's [-100, +100] satisfaction scale by each indicator's declared value set. These are deterministic measurements, not judgments. Where one bears on your assessment, rely on it in preference to inferring from the discovered pattern, and say which number you relied on.
+Read them with their stated caveats. `not applicable` means the indicator does not apply to that category at all -- not that the category failed it. A coverage below 100% means the aggregate rests on only part of the category's cases, the rest having no measurable endpoint. The provenance tag says what the thresholds rest on: `statutory` is a legal term, `external-by-analogy` a norm borrowed from a related instrument, `illustrative` a value this project invented -- treat a score against an illustrative threshold as weak evidence.
+
+=== CATEGORIES (7) ===
+- category_id=admission_nc | name=Admission to Normal Care
+  declared (Step 5): Patient is admitted to a normal care inpatient ward (Admission NC), advancing treatment goals but subject to normal ward management and discharge pathways.
+  goal-model linkage: 15 (Task): Admission NC
+  coverage: 85 variants, 98 cases
+  discovered pattern: No single path dominates: the most frequent of 85 distinct variants accounts for only 3% of cases -- behavior is spread widely across many distinct paths. Waiting times between activities are highly variable across cases -- worth checking whether this masks a hidden sub-behavior.
+  model looseness: Loosely bounded: the model fits the observed cases well (log fitness 1.00) but permits substantially more behavior than was actually observed (precision 0.34) -- consistent with a category that groups together several distinct real paths.
+  measured satisfaction: Time to antibiotics (hours): 2.0 hours -> -18 (guideline, 84/98 cases, coverage 86%); Time to lactate measurement (hours): 0.3 hours -> +100 (guideline, 70/98 cases, coverage 71%); Post-discharge ER return (binary): 0.3 binary -> -31 (illustrative, 98/98 cases)
+- category_id=admission_ic | name=Admission to Intensive Care
+  declared (Step 5): Patient is admitted to an intensive care inpatient ward (Admission IC). This option incurs some negative impact on minimizing time-to-treatment due to transfer overhead, but is required for critical stabilization.
+  goal-model linkage: 16 (Task): Admission IC
+  coverage: 11 variants, 11 cases
+  discovered pattern: No single path dominates: the most frequent of 11 distinct variants accounts for only 9% of cases -- behavior is spread widely across many distinct paths. Waiting times between activities show moderate variability across cases.
+  model looseness: Loosely bounded: the model fits the observed cases well (log fitness 1.00) but permits substantially more behavior than was actually observed (precision 0.17) -- consistent with a category that groups together several distinct real paths.
+  measured satisfaction: Time to antibiotics (hours): 1.0 hours -> +96 (guideline, 10/11 cases, coverage 91%); Time to lactate measurement (hours): 2.0 hours -> +100 (guideline, 11/11 cases); Post-discharge ER return (binary): 0.5 binary -> -45 (illustrative, 11/11 cases)
+- category_id=release_a | name=Release Pathway A
+  declared (Step 5): Captured discharge representing standard release pathway A, helping to avoid post-discharge deterioration.
+  goal-model linkage: 17 (Task): Release A
+  coverage: 487 variants, 525 cases
+  discovered pattern: No single path dominates: the most frequent of 487 distinct variants accounts for only 1% of cases -- behavior is spread widely across many distinct paths. Waiting times between activities are highly variable across cases -- worth checking whether this masks a hidden sub-behavior.
+  model looseness: Loosely bounded: the model fits the observed cases well (log fitness 1.00) but permits substantially more behavior than was actually observed (precision 0.30) -- consistent with a category that groups together several distinct real paths.
+  measured satisfaction: Time to antibiotics (hours): 1.8 hours -> +1 (guideline, 465/525 cases, coverage 89%); Time to lactate measurement (hours): 2.1 hours -> +100 (guideline, 415/525 cases, coverage 79%); Post-discharge ER return (binary): 0.3 binary -> -34 (illustrative, 525/525 cases)
+- category_id=release_b | name=Release Pathway B
+  declared (Step 5): Captured discharge representing release pathway B, helping to avoid post-discharge deterioration.
+  goal-model linkage: 18 (Task): Release B
+  coverage: 53 variants, 54 cases
+  discovered pattern: No single path dominates: the most frequent of 53 distinct variants accounts for only 4% of cases -- behavior is spread widely across many distinct paths. Waiting times between activities are highly variable across cases -- worth checking whether this masks a hidden sub-behavior.
+  model looseness: Loosely bounded: the model fits the observed cases well (log fitness 1.00) but permits substantially more behavior than was actually observed (precision 0.28) -- consistent with a category that groups together several distinct real paths.
+  measured satisfaction: Time to antibiotics (hours): 1.5 hours -> +40 (guideline, 43/54 cases, coverage 80%); Time to lactate measurement (hours): 0.8 hours -> +100 (guideline, 42/54 cases, coverage 78%); Post-discharge ER return (binary): 0.0 binary -> +100 (illustrative, 54/54 cases)
+- category_id=release_c | name=Release Pathway C
+  declared (Step 5): Captured discharge representing release pathway C for specific patient recovery profiles.
+  goal-model linkage: 19 (Task): Release C
+  coverage: 23 variants, 23 cases
+  discovered pattern: No single path dominates: the most frequent of 23 distinct variants accounts for only 4% of cases -- behavior is spread widely across many distinct paths. Waiting times between activities are highly variable across cases -- worth checking whether this masks a hidden sub-behavior.
+  model looseness: Loosely bounded: the model fits the observed cases well (log fitness 1.00) but permits substantially more behavior than was actually observed (precision 0.25) -- consistent with a category that groups together several distinct real paths.
+  measured satisfaction: Time to antibiotics (hours): 1.8 hours -> +2 (guideline, 19/23 cases, coverage 83%); Time to lactate measurement (hours): 0.2 hours -> +100 (guideline, 19/23 cases, coverage 83%); Post-discharge ER return (binary): 0.2 binary -> -17 (illustrative, 23/23 cases)
+- category_id=release_d | name=Release Pathway D
+  declared (Step 5): Captured discharge representing release pathway D.
+  goal-model linkage: 20 (Task): Release D
+  coverage: 23 variants, 23 cases
+  discovered pattern: No single path dominates: the most frequent of 23 distinct variants accounts for only 4% of cases -- behavior is spread widely across many distinct paths. Waiting times between activities are highly variable across cases -- worth checking whether this masks a hidden sub-behavior.
+  model looseness: Loosely bounded: the model fits the observed cases well (log fitness 1.00) but permits substantially more behavior than was actually observed (precision 0.24) -- consistent with a category that groups together several distinct real paths.
+  measured satisfaction: Time to antibiotics (hours): 2.6 hours -> -62 (guideline, 20/23 cases, coverage 87%); Time to lactate measurement (hours): 0.3 hours -> +100 (guideline, 18/23 cases, coverage 78%); Post-discharge ER return (binary): 0.4 binary -> -39 (illustrative, 23/23 cases)
+- category_id=release_e | name=Release Pathway E
+  declared (Step 5): Captured discharge representing release pathway E.
+  goal-model linkage: 21 (Task): Release E
+  coverage: 6 variants, 6 cases
+  discovered pattern: No single path dominates: the most frequent of 6 distinct variants accounts for only 17% of cases -- behavior is spread widely across many distinct paths. Waiting times between activities show moderate variability across cases.
+  model looseness: Loosely bounded: the model fits the observed cases well (log fitness 1.00) but permits substantially more behavior than was actually observed (precision 0.20) -- consistent with a category that groups together several distinct real paths.
+  measured satisfaction: Time to antibiotics (hours): 3.5 hours -> -100 (guideline, 3/6 cases, coverage 50%); Time to lactate measurement (hours): 0.2 hours -> +100 (guideline, 4/6 cases, coverage 67%); Post-discharge ER return (binary): 0.2 binary -> -16 (illustrative, 6/6 cases)
+
+Assess goal alignment for every category now.

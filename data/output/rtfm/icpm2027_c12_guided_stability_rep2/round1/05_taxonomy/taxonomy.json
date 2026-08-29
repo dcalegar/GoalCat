@@ -1,0 +1,74 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Resolution of the fine case through early payment before enforcement actions are triggered, strongly advancing timely fine revenue and helping minimize administrative costs.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=12 as supported by frequent variants such as V0002 where payment occurs directly after fine creation.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0007",
+        "V0012"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Resolve via delinquent payment",
+      "description": "Resolution of the fine case through payment occurring after penalties or enforcement procedures have started, helping maximize fine revenue.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=13, evidenced by variants like V0004 and V0006 where payment happens following notification and penalties.",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0005",
+        "V0006"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Resolution sought through an administrative appeal filed with the Prefecture, preserving due-process rights while potentially impacting enforcement costs and timely revenue.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=14, observed in variants such as V0008, V0057, and V0135 which contain appeal preparation and transmission steps.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0135"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Resolution sought through a judicial appeal to the Judge, maximizing the offender's due-process rights while hurting administrative cost efficiency.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=19, identified in variants such as V0103 and V0140 featuring judge appeal activities.",
+      "evidence_variant_ids": [
+        "V0103",
+        "V0140",
+        "V0176"
+      ]
+    },
+    {
+      "category_id": "coercive_credit_collection",
+      "name": "Resolve via coercive credit collection",
+      "description": "Resolution via coercive credit collection actions when payment is not voluntarily received, helping revenue but hurting administrative costs.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=20, supported by variants such as V0001, V0009, and V0010 culminating in credit collection.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0009",
+        "V0010"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Normal Care Ward Admission",
+      "description": "Patient is admitted to a normal care ward (Admission NC), advancing general inpatient progression and judged against post-discharge indicators such as post-discharge ER return.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=15 under Goal 5 (OR-decomposed). Evidence from variants like V0008 shows this pathway being realized independently without IC admission.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0625",
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0273",
+        "V0068",
+        "V0072",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063",
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "admission_ic",
+      "name": "Intensive Care Unit Admission",
+      "description": "Patient is admitted to an intensive care unit (Admission IC). This option harms the softgoal 'Minimize time-to-treatment' due to its negative contribution profile, and is measured against discharge and return outcomes.",
+      "anchor_ids": [
+        "16"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=16 under Goal 5 (OR-decomposed). Sample variants like V0605 and V0317 show direct realization of intensive care admissions.",
+      "evidence_variant_ids": [
+        "V0605",
+        "V0551",
+        "V0317",
+        "V0273",
+        "V0068"
+      ]
+    },
+    {
+      "category_id": "release_a",
+      "name": "Release Variant A",
+      "description": "Patient is discharged via Release A, contributing positively to 'Avoid post-discharge deterioration' and tracked against post-discharge ER return indicators.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=17 under Goal 6 (OR-decomposed). Realized in multiple sampled variants including V0008 and V0551.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0551",
+        "V0625",
+        "V0605",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0072",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063"
+      ]
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release Variant B",
+      "description": "Patient is discharged via Release B, advancing the softgoal 'Avoid post-discharge deterioration' and evaluated against post-discharge return metrics.",
+      "anchor_ids": [
+        "18"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=18 under Goal 6 (OR-decomposed). Sampled in variants V0068 and V0145.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release Variant C",
+      "description": "Patient is discharged via Release C, helping avoid post-discharge deterioration as part of the discharge goal options.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=19 under Goal 6 (OR-decomposed). Observed directly in variant V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release Variant D",
+      "description": "Patient is discharged via Release D, contributing to the organizational softgoal of preventing patient deterioration post-discharge.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=20 under Goal 6 (OR-decomposed). Observed in variant V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release Variant E",
+      "description": "Patient is discharged via Release E, representing one of the permitted resolution pathways for an admitted case.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=21 under Goal 6 (OR-decomposed). Maintained as a standard declared alternative per the goal model decomposition.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

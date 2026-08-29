@@ -1,0 +1,221 @@
+{
+  "schema": "icpm2027/manifest/1",
+  "protocol_version": "1.0.0",
+  "experiment": "e1",
+  "condition_id": "e1_open_rep1",
+  "dataset": "sepsis",
+  "arm": "open",
+  "replicate": 1,
+  "tag": null,
+  "steps_executed": [
+    5,
+    6
+  ],
+  "started_at": "2026-08-29T10:51:36.071513+00:00",
+  "finished_at": "2026-08-29T10:53:44.138069+00:00",
+  "preregistered": true,
+  "pending_decisions": [],
+  "decisions": {
+    "C10_assignment_batch_size": {
+      "task": "C10",
+      "status": "decided",
+      "value": {
+        "default": 50,
+        "exceptions": {}
+      },
+      "decided_on": "2026-08-19",
+      "rationale": "50 everywhere (raised from 20), on call-count/wall-clock grounds only, per Task C10's required basis \u2014 not against observed categorization quality. Google AI Studio billing was enabled on the project behind GEMINI_API_KEY and verified at aistudio.google.com/rate-limit: 4,000 RPM / 4M TPM for gemini-3.5-flash-lite (150K RPD), several orders of magnitude above this protocol's actual volume. At batch_size=50 with protocol.yaml's concurrency=5, a 231-variant run costs ~5 Step-6 calls instead of 231/12 (batch=20); BPIC 2019 at the C7 top_n=1000 scope costs ~20 calls instead of 50. No BPIC 2019 exception needed: one value holds the freeze table's \"identical across datasets by default\" with nothing to justify. Not yet empirically re-validated against a frozen run at this batch size \u2014 the example case studies under experimentation/examples/ (not the frozen protocol) are the first runs to exercise batch_size=50, and should be watched for any assignment-quality regression before the first real frozen run under this protocol_version."
+    },
+    "C6_sepsis_perturbations": {
+      "task": "C6",
+      "status": "decided",
+      "value": false,
+      "decided_on": "2026-08-25",
+      "rationale": "Not adopted. Two independent reasons. (1) Budget: RTFM is the mechanism case and extending to Sepsis roughly doubles Experiment 2's LLM cost for a second instance of the same mechanism. (2) Validity, which is now the binding one: Experiment 2's design forbids running perturbations on a dataset whose Step 5a induction is unstable, because TargetReassignment and CollateralReassignment cannot be read through induction variance. Sepsis is demonstrably in that state - four identical-input guided runs produced three distinct anchor sets (Task C12). Revisit only if C12's k>=5 protocol later shows Sepsis stable under some revised goal model."
+    },
+    "C5_label_list_control": {
+      "task": "C5",
+      "status": "decided",
+      "value": false,
+      "decided_on": "2026-08-25",
+      "rationale": "Not adopted for the minimum design. It remains the highest-value optional item and also its largest budget increase (a third full arm on every dataset). The confound it addresses - that the guided prompt supplies an axis AND a cardinality AND a vocabulary AND extra context at once - is instead carried explicitly as a Threat to Validity, and Task C11a's guided_no_sample ablation attacks the same attribution question for one LLM call per dataset rather than a full arm. THIS IS THE MOST REVISITABLE DECISION HERE: conditions.py already supports arm \"label_list\", so flipping this to true costs configuration plus LLM budget, no new code. Do it before any frozen run rather than after, per this file's own discipline."
+    },
+    "D6_open_arm_steps_7_9": {
+      "task": "D6",
+      "status": "decided",
+      "value": "run_neither",
+      "decided_on": "2026-08-25",
+      "rationale": "Neither arm runs Steps 7-8 in a frozen condition. They are descriptive only (\u00a79) and confounded by partition granularity - finer, purer subsets fit more easily almost mechanically - so a cross-condition fitness/precision comparison is not informative about which taxonomy is better. Skipping both keeps the arms symmetric at zero extra LLM cost and loses nothing RQ1 depends on; Step 7 is regenerable later from a frozen run's assignments.csv + taxonomy.json without re-billing Step 6. Step 8 additionally is NOT comparable across arms (Task E6: its goal-alignment judgment reads goal-model text under guided mode and the category's own Step 5 rationale under open mode). Step 7b is governed separately by C13 and is guided-arm-only by construction, since open categories carry no anchor_ids."
+    },
+    "C13_step7b_indicators": {
+      "task": "C13",
+      "status": "decided",
+      "value": {
+        "policy": "run_guided_only",
+        "datasets": [
+          "rtfm"
+        ]
+      },
+      "decided_on": "2026-08-25",
+      "rationale": "RTFM guided arm only. Step 7b measures indicator satisfaction from the log against the goal model's declared KPIs, so it is the one result in the paper not exposed to the LLM-dependence threat - it is the single counterweight to it. It cannot run in the open arm at all: open-mode categories carry no anchor_ids, so there is nothing to attach an indicator to, which also means it can never enter RQ1's paired contrast and is reported as characterization of the guided arm, not as validation. Scoped to RTFM because only rtfm_goal_model.jucm (v1.2) and rtfm_mini_goal_model.jucm declare indicators; the Sepsis and BPIC 2019 models' indicators are this project's own log-computed percentiles rather than organizational targets. Reporting requirement: indicators with low applicability are reported as NOT-APPLICABLE, never as bad values - RTFM's timely_payment category has 7% dispatch-indicator coverage because most of its cases paid before dispatch occurred, and scoring that as a bad value would invert the measurement."
+    },
+    "E2_degenerate_or_after_perturbation": {
+      "task": "E2",
+      "status": "decided",
+      "value": "keep",
+      "decided_on": "2026-08-25",
+      "rationale": "Keep the degenerate one-child decomposition. Verified concretely: removing element 19 (judicial appeal) from rtfm_goal_model.jucm leaves OR-point 7 with the single child 14. Two defensible options existed; keeping is chosen because collapsing changes the goal tree's DEPTH as well as its breadth, and Task C12 establishes that Step 5a's output is sensitive to which level of the tree it anchors at - so a collapse would confound the perturbation's effect with an anchoring-level change. Keeping perturbs exactly one thing: the alternative set at one OR-point. Pre-registered here because it is a free parameter that would otherwise be settled silently by whichever behaviour perturb.py happened to implement."
+    },
+    "D1_divergence_convention": {
+      "task": "D1",
+      "status": "decided",
+      "value": {
+        "residual_handling": "own_cluster",
+        "weighting": "variant"
+      },
+      "decided_on": "2026-08-19",
+      "rationale": "Fixed before any number is computed, per \u00a77. The residual is its own block (it is a substantive outcome of the guided arm, not missing data), and the primary weighting is variant-level to match |T| and the contingency matrix's primary unit. analysis/divergence.py computes all four combinations and marks this one as primary, so the choice is auditable rather than implicit \u2014 but it is never reported as accuracy (\u00a71)."
+    },
+    "D7_single_llm": {
+      "task": "D7",
+      "status": "decided",
+      "value": false,
+      "decided_on": "2026-08-19",
+      "rationale": "Decided \u2014 not adopted. One provider/model (Gemini) throughout; cross-model robustness is future work and a recorded Threat to Validity, not an experimental condition."
+    }
+  },
+  "variant_scope": {
+    "policy": "all",
+    "source": "configs/sepsis.yaml",
+    "applied_policy": "all",
+    "variants_total": 846,
+    "variants_kept": 846,
+    "cases_total": 1050,
+    "cases_kept": 1050,
+    "case_coverage_of_full_log": 1.0
+  },
+  "inputs": {
+    "event_log": {
+      "path": "data/logs/sepsis.xes.gz",
+      "sha256": "709c52340306415952811b9b9c5dc6bcc8f8d47d583eba39df9a538459dc543a",
+      "bytes": 202508
+    },
+    "goal_model": null,
+    "goal_model_absent_by_design": true,
+    "condition_config": {
+      "path": "data/output/sepsis/icpm2027_e1_open_rep1/condition_config.yaml",
+      "sha256": "90f012f7391e815618040d57c7873d84d8bc672e997282a4a5c2a3b236229d22",
+      "bytes": 1167
+    },
+    "prompt_templates": {
+      "prompt_assignment_batch.txt": "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d",
+      "prompt_description.txt": "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588",
+      "prompt_taxonomy_intent_guided.txt": "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3",
+      "prompt_taxonomy_intent_guided_revision.txt": "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444",
+      "prompt_taxonomy_open.txt": "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c",
+      "prompt_taxonomy_open_revision.txt": "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+    },
+    "shared_base": {
+      "run_id": "icpm2027_base",
+      "run_dir": "/Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_base",
+      "variant_count": 846,
+      "case_count": 1050,
+      "artifacts": {
+        "01_variants/variants.csv": "c24e38b68ca586fea68066929d0eb94ef4626dcc4fec511a04dc84a44c7462af",
+        "02_profiling/profiles.csv": "d6d892a366e1566759173979fd27ddf6dc474b065c07ce7fef8fbf2c36c5382c",
+        "02_profiling/profiles.json": "f77eee194fb01b7bb04d067d9cde9b01597db90179b3e5215270919805cac3eb",
+        "03_textualization/narratives.csv": "9d56dd7efb09156846cb58681311f18e96667b9d4cd9d21459308a13d4ca2b2b",
+        "04_sampling/narrative_sample.csv": "04449085030b572397081b439745b73c13d7ac5e980959cf7b3e56bb877d169a"
+      }
+    }
+  },
+  "prompts_sent": {
+    "taxonomy_prompt": {
+      "path": "data/output/sepsis/icpm2027_e1_open_rep1/round1/05_taxonomy/taxonomy_prompt.txt",
+      "sha256": "42769f778d3b67e501671dd6355d0351bc61313eb2b7c45454e07a3290c56359",
+      "bytes": 21682
+    },
+    "assignment_prompts": {
+      "V0001_V0050.txt": "5a538c1ee0607604756ecba56dd29f65da11d8caf3b7fab215e4de56c39c7a76",
+      "V0051_V0100.txt": "df7689bd983cba026f6467046382633496d5f1a84cb96a11151d72fda1dd01aa",
+      "V0101_V0150.txt": "98d5d6e3a9237619b18854b5ac826fcd6554a59d9a9c6899862582ff8dc533de",
+      "V0151_V0200.txt": "80602e830b030988fe8fbe15266837c0387567a2e186a31b3002f6d053a35885",
+      "V0201_V0250.txt": "22b9da8a03e06ffd787c4edf65a541ee8ff4982f828cf03be1a906afc1b5e8ac",
+      "V0251_V0300.txt": "2e5f1d1ed4a176311b4e6aab78d63279ae769e4e861a6dc7539380ae38325ec6",
+      "V0301_V0350.txt": "3c6a250f3a0f0400f799591da76fece9a98720531892fc741ba75c0ddb225793",
+      "V0351_V0400.txt": "7d338629a480a7859a30edb7e440b4a96502220c6a1bda92970d82d1e6306f25",
+      "V0401_V0450.txt": "4d95f2af50a0edc76657657dfb538f2f231ce99b50f2abe43349932ed7bac55c",
+      "V0451_V0500.txt": "fe3bd8003d6d4b02f32c2615189d813019e99dbedd94ca70c8f047890d970a27",
+      "V0501_V0550.txt": "5e520dfa03876b075226975818a61b75fa98d284e4d7b3011e0bbbbc964d049d",
+      "V0551_V0600.txt": "6d507012d9cda0eacf5b32a4934ed1078fb6da44816dcd16d0dece249fc8f31b",
+      "V0601_V0650.txt": "07187d3f3b19eec1b65b94b0788c7def5e610c1d83a85da66643b9b2a7785eee",
+      "V0651_V0700.txt": "6be35e48fd3ad2d77ec941118e153a789e02ce5b2e28fff8522acd751cffbd40",
+      "V0701_V0750.txt": "779d1a5f24b921f75e688f2e4eaca0703957e42e78617347870f546741a3c107",
+      "V0751_V0800.txt": "c35153814c9f45f95b58d2d0c5cd83fcc02cf0fad699b7144fff1fc0f7e68b31",
+      "V0801_V0846.txt": "af2007bd256e93e41eb7aa1898a2ba57605cc52dbaa3482d1b054f46f8d2bebe"
+    }
+  },
+  "llm": {
+    "seed": null,
+    "seed_note": "null \u2014 no seed is exposed by PipelineConfig.llm or by the Gemini path through litellm; temperature=0 is the only sampling constraint applied. See Task C2's replicate runs for the empirical noise floor.",
+    "taxonomy": {
+      "distinct_call_configurations": [
+        {
+          "model": "gemini/gemini-3.5-flash-lite",
+          "resolved_model": null,
+          "provider": "gemini",
+          "backend": "remote",
+          "temperature": 0.0
+        }
+      ],
+      "call_count": 1
+    },
+    "assignment": {
+      "distinct_call_configurations": [
+        {
+          "model": "gemini/gemini-3.5-flash-lite",
+          "resolved_model": null,
+          "provider": "gemini",
+          "backend": "remote",
+          "temperature": 0.0
+        }
+      ],
+      "call_count": 17
+    },
+    "description": null
+  },
+  "outputs": {
+    "taxonomy": {
+      "path": "data/output/sepsis/icpm2027_e1_open_rep1/round1/05_taxonomy/taxonomy.json",
+      "sha256": "fcbed6b8a1eb667c395498fc266701d8423df6d2c90bc175070e41dcbd1c0e40",
+      "bytes": 2603
+    },
+    "assignments": {
+      "path": "data/output/sepsis/icpm2027_e1_open_rep1/round1/06_assignment/assignments.csv",
+      "sha256": "c85a4bee01a4d9d185fd0532baed428691d98f2790125a4d88d644db04873917",
+      "bytes": 150814
+    },
+    "discovery_metrics": null,
+    "descriptions": null
+  },
+  "run_dir": "data/output/sepsis/icpm2027_e1_open_rep1",
+  "round_dir": "data/output/sepsis/icpm2027_e1_open_rep1/round1",
+  "environment": {
+    "host": "192.168.68.56",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.6",
+    "git_commit": "e46965fd78bf2f7ec0f730f01914caa35c42a298",
+    "git_dirty": true
+  },
+  "estimated_llm_calls": {
+    "step5": 1,
+    "step6": 17,
+    "step8": 0,
+    "total": 18
+  },
+  "assignment_batch_size": 50,
+  "narrative_sample": {
+    "withheld": false
+  },
+  "step7b_indicators": false
+}

@@ -1,0 +1,27 @@
+2026-08-28 21:10:23,997 [INFO] goalcat: Run environment: host=192.168.68.56, platform=macOS-26.5.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-28 21:10:23,997 [INFO] goalcat: Step 1 (variant extraction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 21:10:24,501 [INFO] goalcat: Loaded event log: 15214 events, 1050 cases
+2026-08-28 21:10:24,600 [INFO] goalcat: Extracted 846 variants. Top variant: ER Registration > ER Triage > ER Sepsis Triage (frequency=35, 3.3%)
+2026-08-28 21:10:24,607 [INFO] goalcat: Saved variants to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_base/01_variants/variants.csv
+2026-08-28 21:10:24,607 [INFO] goalcat: Step 1 complete.
+2026-08-28 21:10:24,607 [INFO] goalcat: Peak RSS after Step 1: 295.7 MiB
+2026-08-28 21:10:24,623 [INFO] goalcat: Step 2 (multi-view profiling) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 21:10:24,623 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_base/01_variants/variants.csv
+2026-08-28 21:10:25,168 [INFO] goalcat: Profiling 846 variants against 15214 events
+2026-08-28 21:10:35,003 [INFO] goalcat: Profiled 846 variants. Top variant representative case: SKA (outcome=ER Sepsis Triage, duration_median=1043s)
+2026-08-28 21:10:35,045 [INFO] goalcat: Saved profiles to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_base/02_profiling/profiles.csv and /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_base/02_profiling/profiles.json
+2026-08-28 21:10:35,045 [INFO] goalcat: Step 2 complete.
+2026-08-28 21:10:35,045 [INFO] goalcat: Peak RSS after Step 2: 301.7 MiB
+2026-08-28 21:10:35,050 [INFO] goalcat: Step 3 (textualization) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 21:10:35,050 [INFO] goalcat: Loading profiles from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_base/02_profiling/profiles.csv
+2026-08-28 21:10:35,073 [INFO] goalcat: Rendering narratives for 846 variants
+2026-08-28 21:10:35,959 [INFO] goalcat: Rendered 846 narratives. Example (top variant): ER Registration ER Triage (+17m) ER Sepsis Triage (+24s)
+2026-08-28 21:10:35,964 [INFO] goalcat: Saved narratives to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_base/03_textualization/narratives.csv
+2026-08-28 21:10:35,964 [INFO] goalcat: Step 3 complete.
+2026-08-28 21:10:35,964 [INFO] goalcat: Peak RSS after Step 3: 301.7 MiB
+2026-08-28 21:10:35,968 [INFO] goalcat: Step 4 (narrative sampling) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-28 21:10:35,968 [INFO] goalcat: Loading profiles/narratives from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_base
+2026-08-28 21:10:36,002 [INFO] goalcat: Sampled 33 unique variants (frequent=10, rare=10, extreme=5 per direction, before dedup)
+2026-08-28 21:10:36,004 [INFO] goalcat: Saved narrative sample to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_base/04_sampling/narrative_sample.csv
+2026-08-28 21:10:36,004 [INFO] goalcat: Step 4 complete.
+2026-08-28 21:10:36,004 [INFO] goalcat: Peak RSS after Step 4: 301.7 MiB

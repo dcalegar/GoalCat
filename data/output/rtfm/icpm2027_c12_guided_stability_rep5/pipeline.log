@@ -1,0 +1,12 @@
+2026-08-28 21:27:14,173 [INFO] goalcat: Run environment: host=192.168.68.56, platform=macOS-26.5.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-28 21:27:14,174 [INFO] goalcat: ICPM 2027 condition run starting: run_id=icpm2027_c12_guided_stability_rep5, steps=[5], taxonomy_mode=intent_guided, goal_model=rtfm_goal_model.jucm
+2026-08-28 21:27:14,177 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-28 21:27:14,177 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_c12_guided_stability_rep5/04_sampling/narrative_sample.csv
+2026-08-28 21:27:14,184 [INFO] goalcat: Inducing taxonomy from 34 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/rtfm_goal_model.jucm
+2026-08-28 21:27:19,972 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=5d219d8bb5ffca03, latency=4.10s)
+2026-08-28 21:27:19,973 [INFO] goalcat: Induced 5 categories: timely_payment, delinquent_payment, administrative_appeal, judicial_appeal, coercive_credit_collection
+2026-08-28 21:27:19,981 [WARNING] goalcat: Taxonomy grounding check: delinquent_payment/coercive_credit_collection: share evidence_variant_ids: ['V0009', 'V0010']
+2026-08-28 21:27:19,982 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_c12_guided_stability_rep5/round1/05_taxonomy/taxonomy.json
+2026-08-28 21:27:19,982 [INFO] goalcat: Step 5a complete.
+2026-08-28 21:27:19,982 [INFO] goalcat: Peak RSS after Step 5a: 380.5 MiB
+2026-08-28 21:27:19,982 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_c12_guided_stability_rep5

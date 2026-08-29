@@ -1,0 +1,47 @@
+You are assessing, for each category of a taxonomy, whether the process behavior actually discovered in the event log supports the category's declared meaning. Each category below already has a name and description (from a prior step) and, where a goal model exists, is anchored to a specific goal-model task or goal — a natural-language sentence stating what that task is supposed to achieve. Your job is not to restate that description. It is to judge, from the discovered evidence given below (which paths actually occur and how concentrated they are, how loosely the discovered process model bounds the real behavior), whether that evidence is consistent with the category actually achieving the specific goal-model task/goal it claims to realize — or whether something about the discovered evidence sits awkwardly against it and is worth a human reviewer's attention.
+
+Ground your judgment in the goal-model linkage text given for each category, not in the category's own name or description — those were written before any discovery happened and may not hold up against what was actually found. When a category has no goal-model linkage (open induction, no goal model for this log), compare instead against the category's own declared description/rationale, since that is the only declared reference available for it.
+
+Do not describe the Petri net's internal structure (places, transitions, arcs) — the discovered_pattern and model_looseness notes below already summarize what matters about it in business terms. Do not simply restate the declared description back. Write one goal_alignment assessment per category listed below, using exactly the category_id given — no more, no fewer, no invented ids.
+
+Some categories below carry a MEASURED SATISFACTION line: the goal model's own KPI indicators, measured over that category's own cases and converted to GRL's [-100, +100] satisfaction scale by each indicator's declared value set. These are deterministic measurements, not judgments. Where one bears on your assessment, rely on it in preference to inferring from the discovered pattern, and say which number you relied on.
+Read them with their stated caveats. `not applicable` means the indicator does not apply to that category at all -- not that the category failed it. A coverage below 100% means the aggregate rests on only part of the category's cases, the rest having no measurable endpoint. The provenance tag says what the thresholds rest on: `statutory` is a legal term, `external-by-analogy` a norm borrowed from a related instrument, `illustrative` a value this project invented -- treat a score against an illustrative threshold as weak evidence.
+
+=== CATEGORIES (5) ===
+- category_id=resolve_timely_payment | name=Resolve via timely payment
+  declared (Step 5): Fines resolved through prompt payment, maximizing timely fine revenue and helping minimize administrative and enforcement cost, judged against average time to case closure.
+  goal-model linkage: 12 (Task): Resolve via timely payment
+  coverage: 34 variants, 49658 cases
+  discovered pattern: A single dominant path accounts for 93% of this category's cases, out of 34 distinct variants. Waiting times between activities show moderate variability across cases.
+  model looseness: Tightly bounded: the model fits the observed cases well (log fitness 1.00) and permits little behavior beyond what was actually seen (precision 0.90).
+  measured satisfaction: Time to fine dispatch (days): 66.9 days -> +38 (statutory, 3275/49658 cases, coverage 7%); Time to appeal filing, Prefecture (days): 69.6 days -> -16 (statutory, 33/49658 cases, coverage 94%, one-sided scale); Time to appeal filing, Judge (days): 87.1 days -> -100 (statutory, 9/49658 cases, one-sided scale); Average time to case closure (days): 17.8 days -> +100 (external-by-analogy, 49658/49658 cases)
+- category_id=resolve_delinquent_payment | name=Resolve via delinquent payment
+  declared (Step 5): Enforced cases resolved through delayed payment after notification and penalty additions, helping maximize timely fine revenue, judged against average time to case closure.
+  goal-model linkage: 13 (Task): Resolve via delinquent payment
+  coverage: 33 variants, 16875 cases
+  discovered pattern: Moderate concentration: the most frequent of 33 distinct variants accounts for 56% of cases. Waiting times between activities show moderate variability across cases.
+  model looseness: Loosely bounded: the model fits the observed cases well (log fitness 1.00) but permits substantially more behavior than was actually observed (precision 0.38) -- consistent with a category that groups together several distinct real paths.
+  measured satisfaction: Time to fine dispatch (days): 91.6 days -> +0 (statutory, 16875/16875 cases); Time to appeal filing, Prefecture (days): 22.5 days -> +100 (statutory, 24/16875 cases, coverage 83%, one-sided scale); Time to appeal filing, Judge (days): 207.0 days -> -100 (statutory, 1/16875 cases, one-sided scale); Average time to case closure (days): 356.6 days -> -95 (external-by-analogy, 16875/16875 cases)
+- category_id=resolve_administrative_appeal | name=Resolve via administrative appeal to the Prefecture
+  declared (Step 5): Contested cases resolved through the administrative appeal process involving the Prefecture, preserving due-process rights while potentially increasing costs and delaying revenue, judged against time to appeal filing, Prefecture.
+  goal-model linkage: 14 (Task): Resolve via administrative appeal to the Prefecture
+  coverage: 64 variants, 3602 cases
+  discovered pattern: Moderate concentration: the most frequent of 64 distinct variants accounts for 69% of cases. Waiting times between activities show moderate variability across cases.
+  model looseness: Loosely bounded: the model fits the observed cases well (log fitness 1.00) but permits substantially more behavior than was actually observed (precision 0.54) -- consistent with a category that groups together several distinct real paths.
+  measured satisfaction: Time to fine dispatch (days): 90.5 days -> +0 (statutory, 3602/3602 cases); Time to appeal filing, Prefecture (days): 50.0 days -> +100 (statutory, 3463/3602 cases, coverage 96%, one-sided scale); Time to appeal filing, Judge (days): 118.5 days -> -100 (statutory, 13/3602 cases, coverage 81%, one-sided scale); Average time to case closure (days): 355.4 days -> -94 (external-by-analogy, 507/3602 cases, coverage 14%)
+- category_id=resolve_judicial_appeal | name=Resolve via judicial appeal to the Judge
+  declared (Step 5): Contested cases resolved via judicial appeal to a judge, strongly making offender due-process rights while hurting administrative costs, judged against time to appeal filing, Judge.
+  goal-model linkage: 19 (Task): Resolve via judicial appeal to the Judge
+  coverage: 50 variants, 380 cases
+  discovered pattern: Moderate concentration: the most frequent of 50 distinct variants accounts for 36% of cases. Waiting times between activities show moderate variability across cases.
+  model looseness: Loosely bounded: the model fits the observed cases well (log fitness 1.00) but permits substantially more behavior than was actually observed (precision 0.56) -- consistent with a category that groups together several distinct real paths.
+  measured satisfaction: Time to fine dispatch (days): 100.5 days -> -3 (statutory, 380/380 cases); Time to appeal filing, Prefecture (days): 36.2 days -> +100 (statutory, 147/380 cases, coverage 97%, one-sided scale); Time to appeal filing, Judge (days): 109.9 days -> -100 (statutory, 369/380 cases, coverage 97%, one-sided scale); Average time to case closure (days): 565.9 days -> -100 (external-by-analogy, 337/380 cases, coverage 89%)
+- category_id=resolve_coercive_credit_collection | name=Resolve via coercive credit collection
+  declared (Step 5): Cases resolved via coercive credit collection actions after enforcement steps, helping revenue but hurting administrative costs, judged against average time to case closure.
+  goal-model linkage: 20 (Task): Resolve via coercive credit collection
+  coverage: 40 variants, 58996 cases
+  discovered pattern: A single dominant path accounts for 96% of this category's cases, out of 40 distinct variants. Waiting times between activities show moderate variability across cases.
+  model looseness: Loosely bounded: the model fits the observed cases well (log fitness 1.00) but permits substantially more behavior than was actually observed (precision 0.53) -- consistent with a category that groups together several distinct real paths.
+  measured satisfaction: Time to fine dispatch (days): 84.1 days -> +9 (statutory, 58996/58996 cases); Time to appeal filing, Prefecture (days): 40.3 days -> +100 (statutory, 265/58996 cases, one-sided scale); Time to appeal filing, Judge (days): 58.3 days -> -94 (statutory, 146/58996 cases, one-sided scale); Average time to case closure (days): 690.5 days -> -100 (external-by-analogy, 58996/58996 cases)
+
+Assess goal alignment for every category now.
