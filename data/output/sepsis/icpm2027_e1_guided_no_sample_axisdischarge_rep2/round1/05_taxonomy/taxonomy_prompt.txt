@@ -1,0 +1,79 @@
+You are subdividing a taxonomy axis that has already been declared by an organization's goal model. You have no authority to invent a different axis, merge unrelated alternatives together, or discard one of the declared alternatives — your task is only to set category boundaries *within* the axis the goal model already declares, using the narrative sample below to judge whether a declared alternative should be represented as one category or several (e.g. because the sample shows meaningfully different sub-patterns realizing it).
+
+A *declared alternative* is a child of a goal-model element whose decomposition operator is OR or XOR: those are the points where the goal model declares that the process may proceed in one of several ways, and they are the axis you are subdividing. Children of an AND-decomposed element are not alternatives — they are steps that all contribute to the same parent, and none of them is a category on its own.
+
+Every category you propose must be traceable to one or more goal-model element IDs (from the goal-task decomposition below) via its anchor_ids field. Default to one category per declared alternative — only depart from that default when the narrative sample gives you positive evidence to, under these rules:
+- map 1:1 to a single declared alternative (using that alternative's own numeric id from the decomposition below (e.g. anchor_ids=["12"]) — never an invented label). This is the default; a declared alternative having few or no sampled narratives is not, by itself, a reason to fold it into another category. If that alternative itself decomposes further (its own children are AND-decomposed steps), anchor_ids still names only the alternative's own id — never also list its AND-decomposed descendant ids alongside it; those steps are not alternatives (line 3) and adding them does not make the anchor more precise, only redundant.
+- subdivide one declared alternative into finer categories only if the sample shows it realized in meaningfully different ways — the category's rationale field must cite that evidence.
+- combine several declared alternatives into one category only if both hold: (a) the goal model's own decomposition allows them to co-occur in one case (check the AND/OR/XOR operators shown in the decomposition — never combine alternatives the goal model marks XOR, i.e. mutually exclusive), and (b) the sample contains cases that actually realize them together, not merely that the goal model permits it. Cite that co-occurrence evidence in the category's rationale field.
+
+Do not force every narrative in the sample into a category. Some narratives may not cleanly realize any declared alternative (e.g. still-open/pending cases, or unusual orderings) — that is expected and is handled by a later step, not by this taxonomy.
+
+The goal model also declares what the organization *values* (softgoals, reached through contribution links) and how it *measures* whether a goal is met (indicators, with the value set converting a measurement to satisfaction). Use both: a category's rationale and description should say which softgoals its alternative advances or harms, and against which indicator its performance would be judged. They inform what a category *means*, never where its boundary falls — specifically:
+- Two declared alternatives having similar or identical contribution profiles is not evidence to merge them. Only the co-occurrence rule above licenses a merge.
+- An element that contributes to a softgoal but is not itself a declared alternative is still not a category. Contributing to something the organization values does not make a mandatory step an alternative to anything.
+- An indicator is never a valid anchor_ids target. Anchor to the goal or task whose achievement the indicator measures, not to the measurement.
+
+Activity labels in the narratives come from the event log and need not match goal-model element names verbatim: a logged activity realizes a goal-model element by meaning, not by string equality, and one goal-model element may be realized by several logged activities.
+
+=== GOAL MODEL (excerpt: name, actors, goal-task decomposition, indicators, contribution links) ===
+Goal model: Sepsis Goal Model
+
+Actors:
+  - id=1: Emergency Department care team
+
+Goal-task decomposition (id, type, name, decomposition operator; indentation = parent/child):
+- id=2 [Goal] Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition (AND)
+  - id=3 [Goal] Patient is registered and screened for sepsis (AND)
+    - id=7 [Task] ER Registration (leaf)
+    - id=8 [Task] ER Triage (leaf)
+    - id=9 [Task] ER Sepsis Triage (leaf)
+  - id=4 [Goal] Sepsis workup and treatment are performed (AND)
+    - id=10 [Task] Leucocytes (leaf)
+    - id=11 [Task] CRP (leaf)
+    - id=12 [Task] LacticAcid (leaf)
+    - id=13 [Task] IV Liquid (leaf)
+    - id=14 [Task] IV Antibiotics (leaf)
+  - id=5 [Goal] Patient is admitted to an inpatient ward (OR)
+    - id=15 [Task] Admission NC (leaf)
+    - id=16 [Task] Admission IC (leaf)
+  - id=6 [Goal] Admitted case reaches a captured discharge (OR)
+    - id=17 [Task] Release A (leaf)
+    - id=18 [Task] Release B (leaf)
+    - id=19 [Task] Release C (leaf)
+    - id=20 [Task] Release D (leaf)
+    - id=21 [Task] Release E (leaf)
+
+Indicators (how the organization measures whether a goal is met; id, name, unit, and the value set converting a measurement to satisfaction):
+  - id=24 [Indicator] Time to antibiotics (hours) (target 1, threshold 1.8, worst 3 hours) [provenance: guideline]
+  - id=25 [Indicator] Time to lactate measurement (hours) (target 3, threshold 5, worst 7 hours) [provenance: guideline]
+  - id=26 [Indicator] Post-discharge ER return (binary) (target 0, worst 1 binary) [provenance: illustrative]
+
+Softgoals and contribution links (source -> effect on softgoal):
+  - id=14 IV Antibiotics --[Make (+100)]--> Minimize time-to-treatment
+  - id=12 LacticAcid --[Make (+100)]--> Minimize time-to-treatment
+  - id=16 Admission IC --[SomeNegative (-25)]--> Minimize time-to-treatment
+  - id=17 Release A --[Help (+50)]--> Avoid post-discharge deterioration
+  - id=18 Release B --[Help (+50)]--> Avoid post-discharge deterioration
+  - id=24 Time to antibiotics (hours) --[Help (+50)]--> Minimize time-to-treatment
+  - id=25 Time to lactate measurement (hours) --[Help (+50)]--> Minimize time-to-treatment
+  - id=26 Post-discharge ER return (binary) --[Help (+50)]--> Avoid post-discharge deterioration
+
+Categorization axis: the alternatives of id=6 (Admitted case reaches a captured discharge), decomposed OR.
+  - id=17 [Task] Release A
+  - id=18 [Task] Release B
+  - id=19 [Task] Release C
+  - id=20 [Task] Release D
+  - id=21 [Task] Release E
+These ids, and only these, are valid anchor_ids. Do not anchor to a parent or ancestor of one of them: a coarser element is a different, broader goal, not the alternative it contains. Do not anchor to an alternative of any other decomposition point in the tree above — those belong to a different axis and a case may realize one of them in addition to, not instead of, one of these.
+
+
+=== NARRATIVE SAMPLE (0 variants, drawn to cover frequent, rare, and extreme cases) ===
+How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
+- frequency is how many cases share that sequence, with that count as a share of all cases in the log in parentheses; duration_median is the median case duration for that variant, written compactly on the same scale as the waits inside the narrative ("134d", "3h", "45m"); trace_length is the number of activities in the sequence; outcome is the variant's final activity.
+- The activity sequence shown after "narrative:" is that of a single representative case (the one whose duration is closest to the variant's median), so a "(+34d)" after an activity is that case's waiting time since the preceding activity, not a variant-wide average. Activities are listed in the order they occurred. A "(handled by resource R)" clause, where present, names the resource that performed that activity in the representative case. A trailing "Rework observed: ..." sentence, where present, is a variant-level count over the variant's own cases, not part of the representative case's sequence.
+- sample_reasons records why the variant was drawn into the sample. The sample deliberately over-represents rare and extreme variants, so the frequencies listed below are not the log's overall distribution and must not be read as one.
+
+
+
+Propose the taxonomy now.

@@ -10,3 +10,17 @@
 2026-08-28 21:27:19,982 [INFO] goalcat: Step 5a complete.
 2026-08-28 21:27:19,982 [INFO] goalcat: Peak RSS after Step 5a: 380.5 MiB
 2026-08-28 21:27:19,982 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_c12_guided_stability_rep5
+2026-08-31 14:30:49,435 [INFO] goalcat: Run environment: host=Mac-Daniel.local, platform=macOS-26.6.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-31 14:30:49,436 [WARNING] goalcat: Config drift: run directory /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_c12_guided_stability_rep5 was started under different settings (changed keys: ['axis_root']) — artifacts reused from this directory may not match the current config.
+2026-08-31 14:30:49,436 [INFO] goalcat: ICPM 2027 condition run starting: run_id=icpm2027_c12_guided_stability_rep5, steps=[5], taxonomy_mode=intent_guided, goal_model=rtfm_goal_model.jucm
+2026-08-31 14:30:49,438 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-31 14:30:49,439 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_c12_guided_stability_rep5/04_sampling/narrative_sample.csv
+2026-08-31 14:30:49,445 [INFO] goalcat: Inducing taxonomy from 34 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/rtfm_goal_model.jucm
+2026-08-31 14:30:55,506 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=91579725e94b4f78, latency=3.94s)
+2026-08-31 14:30:55,507 [INFO] goalcat: Induced 5 categories: timely_payment, delinquent_payment, administrative_appeal, judicial_appeal, coercive_credit_collection
+2026-08-31 14:30:55,519 [WARNING] goalcat: Taxonomy grounding check: administrative_appeal/coercive_credit_collection: share evidence_variant_ids: ['V0057', 'V0138']
+2026-08-31 14:30:55,519 [INFO] goalcat: Axis partition check: 5 categories partition the declared axis (12, 13, 14, 19, 20).
+2026-08-31 14:30:55,524 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_c12_guided_stability_rep5/round1/05_taxonomy/taxonomy.json
+2026-08-31 14:30:55,524 [INFO] goalcat: Step 5a complete.
+2026-08-31 14:30:55,525 [INFO] goalcat: Peak RSS after Step 5a: 342.0 MiB
+2026-08-31 14:30:55,526 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_c12_guided_stability_rep5

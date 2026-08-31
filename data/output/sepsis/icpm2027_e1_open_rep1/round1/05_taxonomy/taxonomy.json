@@ -1,24 +1,25 @@
 {
   "categories": [
     {
-      "category_id": "fast_er_triage",
-      "name": "Fast ER Triage & Minimal Diagnostics",
-      "description": "Short, rapid cases that conclude immediately at triage or with basic lab tests (Leucocytes/CRP) within minutes and without hospitalization or intensive interventions.",
+      "category_id": "rapid_triage_and_discharge",
+      "name": "Rapid Triage and Outpatient Evaluation",
+      "description": "Short-duration, low-length paths consisting primarily of initial emergency room registration, triage, and rapid blood work or sepsis screening without subsequent inpatient admission.",
       "anchor_ids": [],
-      "rationale": "Grounded in variants like V0001, V0002, V0003, and V0292, which show extremely short durations (minutes) and very low trace lengths ending in triage or quick lab results.",
+      "rationale": "These variants represent low-acuity or fast-resolved cases where patients spend minutes to hours in the ER and are processed with minimal steps.",
       "evidence_variant_ids": [
         "V0001",
         "V0002",
         "V0003",
-        "V0292"
+        "V0292",
+        "V0694"
       ]
     },
     {
-      "category_id": "acute_iv_treatment",
-      "name": "Acute ER Care with IV Intervention",
-      "description": "Standard acute sepsis care pathways involving triage, comprehensive blood work (CRP, Leucocytes, LacticAcid), and administration of intravenous liquids and antibiotics within a short duration.",
+      "category_id": "acute_medical_intervention",
+      "name": "Acute Medical Intervention",
+      "description": "Standard acute care pathways that involve extensive diagnostics (CRP, Leucocytes, Lactic Acid) followed by active treatment such as IV liquids and IV antibiotics within a moderate duration.",
       "anchor_ids": [],
-      "rationale": "Grounded in frequent variants like V0004, V0005, V0006, V0007, and V0009, which feature standard diagnostic panels followed by IV therapy within hours.",
+      "rationale": "Characterized by moderate trace lengths and durations of hours to days, leading to treatment interventions like IV antibiotics.",
       "evidence_variant_ids": [
         "V0004",
         "V0005",
@@ -28,25 +29,25 @@
       ]
     },
     {
-      "category_id": "standard_admission_release",
-      "name": "Standard Hospital Admission and Release",
-      "description": "Cases requiring formal hospital admission (Admission NC or Admission IC) followed by a standard inpatient stay and subsequent discharge (Release A, B, C, or D).",
+      "category_id": "short_inpatient_admission",
+      "name": "Short Inpatient Admission and Release",
+      "description": "Cases requiring short-term ward admission (Admission NC or Admission IC) spanning a few days, concluding with a standard patient release.",
       "anchor_ids": [],
-      "rationale": "Grounded in variants that incorporate ward admissions and end in regular release outcomes over a span of days, such as V0008, V0068, and V0070.",
+      "rationale": "Captures standard inpatient stays that are moderately prolonged compared to pure ER visits, but lacking chronic or extreme complications.",
       "evidence_variant_ids": [
         "V0008",
-        "V0068",
-        "V0070",
+        "V0066",
+        "V0067",
         "V0069",
-        "V0067"
+        "V0070"
       ]
     },
     {
-      "category_id": "chronic_rework_readmission",
+      "category_id": "chronic_rework_and_readmission",
       "name": "Chronic Rework and Readmission",
-      "description": "Extreme outliers characterized by extensive loops, highly repeated lab tests (CRP, LacticAcid, Leucocytes) and ward admissions, spanning multiple months and frequently culminating in returns to the ER or prolonged stays.",
+      "description": "Extremely long, highly complex paths involving heavy repetition of diagnostics and admissions (rework), frequently resulting in patient return to the ER or extended recovery.",
       "anchor_ids": [],
-      "rationale": "Grounded in extremely long and complex variants like V0317, V0551, V0605, V0625, and V0710, where extensive rework and long durations dominate the process profile.",
+      "rationale": "Identified by high trace lengths, extensive durations spanning dozens to hundreds of days, and repeated diagnostic tests or ward admissions.",
       "evidence_variant_ids": [
         "V0317",
         "V0551",

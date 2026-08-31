@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission to Normal Care",
+      "description": "Patient is admitted to a normal care inpatient ward (Admission NC). Advances the goal of inpatient care disposition while managing patient flow, assessed against indicators such as time to treatment and post-discharge outcomes.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to the declared OR alternative Admission NC (id=15).",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "admission_ic",
+      "name": "Admission to Intensive Care",
+      "description": "Patient is admitted to an intensive care inpatient ward (Admission IC). This alternative advances treatment speed but carries a negative contribution to minimizing time-to-treatment softgoals.",
+      "anchor_ids": [
+        "16"
+      ],
+      "rationale": "Mapped 1:1 to the declared OR alternative Admission IC (id=16).",
+      "evidence_variant_ids": []
+    }
+  ]
+}

@@ -3,16 +3,14 @@ You are deciding, for each of several process-variant narratives, which single t
 The taxonomy was derived directly from a narrative sample, with no external declaration to anchor to — 'realize' means the narrative matches the recurring pattern the category describes.
 
 === TAXONOMY CATEGORIES ===
-- category_id=fast_er_triage_only | name=Fast ER Triage Only
-  description: Short, rapid sequences that terminate immediately after initial ER registration and triage or basic lab work (CRP/Leucocytes) without progressing to intensive interventions or hospital admission.
-- category_id=standard_acute_intervention | name=Standard Acute Intervention
-  description: Moderately long pathways involving standard sepsis diagnostic labs (CRP, Leucocytes, LacticAcid) followed by active medical treatment such as IV fluids and IV antibiotics.
-- category_id=hospital_admission_and_release | name=Hospital Admission and Release
-  description: Pathways featuring formal ward admission (Admission NC or IC) following acute stabilization, culminating in a successful discharge or release after a few days.
-- category_id=chronic_extended_rework | name=Chronic Extended Rework
-  description: Extremely long, highly repetitive sequences characterized by persistent cyclical lab tests (CRP, Leucocytes, LacticAcid) and repeated ward transfers or readmissions over weeks or months.
-- category_id=readmission_return_er | name=Readmission / Return to ER
-  description: Pathways where patients are initially treated or released but experience complications resulting in a return visit or readmission to the emergency department.
+- category_id=rapid_triage_and_discharge | name=Rapid Triage and Outpatient-Style Resolution
+  description: Cases that move swiftly through registration, triage, and basic lab work (CRP, Leucocytes) with very short total durations (minutes to hours) and terminate directly after initial evaluation or mild intervention without requiring inpatient admission.
+- category_id=active_medical_intervention | name=Active Medical Intervention & Short Stay
+  description: Cases requiring active treatment steps such as IV liquids and IV antibiotics following initial lab and triage workups. These resolve either with discharge (Release A, B, etc.) or short-term observation within a moderate timeframe.
+- category_id=inpatient_admission_standard | name=Standard Inpatient Admission & Release
+  description: Cases where patients are admitted to nursing care (Admission NC) or intensive care (Admission IC) units following diagnostic testing and interventions, culminating in a successful discharge or release after several days.
+- category_id=chronic_rework_and_readmission | name=Extended Stay with Chronic Rework and Readmission
+  description: Complex, highly extended cases featuring extensive repetitive testing (frequent looping of CRP, LacticAcid, Leucocytes), multiple ward transfers, and extreme durations (weeks to over a year), often culminating in return to the emergency room or prolonged hospitalization.
 
 === NARRATIVES TO CLASSIFY (50) ===
 How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
@@ -121,4 +119,4 @@ How to read each line below: one line is one process *variant* — a distinct ac
 - variant_id=V0600 | frequency=1 (0.1%) | duration_median=14d | outcome=Release A
   narrative: ER Registration ER Triage (+20m) ER Sepsis Triage (+22s) Leucocytes (+19m) CRP LacticAcid IV Antibiotics (+2h) Admission NC (+3m) Leucocytes (+1d) CRP Admission IC (+1d) Leucocytes (+26m) CRP LacticAcid Leucocytes (+15h) CRP LacticAcid Leucocytes (+8h) CRP LacticAcid Leucocytes (+16h) CRP LacticAcid CRP (+1d) LacticAcid Leucocytes Leucocytes (+1d) CRP LacticAcid LacticAcid (+1d) Leucocytes CRP Leucocytes (+1d) LacticAcid CRP Admission NC (+4h) Release A (+5d) Rework observed: Admission NC was repeated (seen in 1 cases); CRP was repeated (seen in 1 cases); LacticAcid was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
 
-For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids.
+For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids. When a category does match, category_id must be copied verbatim, character-for-character, from one of the category_id values listed above under === TAXONOMY CATEGORIES === — never a paraphrase, abbreviation, or reworded variant of a category's name or description, even if it reads more naturally. A category_id that does not appear above exactly as written cannot be matched back to that category afterward, silently corrupting the result.

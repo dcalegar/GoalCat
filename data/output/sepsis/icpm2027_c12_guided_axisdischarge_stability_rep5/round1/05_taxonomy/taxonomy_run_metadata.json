@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "e5bcdd04b07b26ef",
+  "latency_seconds": 2.5477891670016106,
+  "input_tokens": 8869,
+  "output_tokens": 721,
+  "prompt_chars": 27744,
+  "response_chars": 2406,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"release_a\",\n      \"name\": \"Release A\",\n      \"description\": \"Patient discharge pathway A realized as standard discharge after inpatient care, helping avoid post-discharge deterioration and measured against post-discharge ER return.\",\n      \"anchor_ids\": [\n        \"17\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Release A (id=17), supported by variants such as V0008, V0065, V0066, V0067, V0069, V0070.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0065\",\n        \"V0066\",\n        \"V0067\",\n        \"V0069\",\n        \"V0070\"\n      ]\n    },\n    {\n      \"category_id\": \"release_b\",\n      \"name\": \"Release B\",\n      \"description\": \"Patient discharge pathway B realized as specialized discharge following inpatient stay, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return.\",\n      \"anchor_ids\": [\n        \"18\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Release B (id=18), supported by variants such as V0068 and V0145.\",\n      \"evidence_variant_ids\": [\n        \"V0068\",\n        \"V0145\"\n      ]\n    },\n    {\n      \"category_id\": \"release_c\",\n      \"name\": \"Release C\",\n      \"description\": \"Patient discharge pathway C realized as extended inpatient discharge processing, measured against post-discharge ER return.\",\n      \"anchor_ids\": [\n        \"19\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Release C (id=19), supported by variant V0710.\",\n      \"evidence_variant_ids\": [\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"release_d\",\n      \"name\": \"Release D\",\n      \"description\": \"Patient discharge pathway D realized as complex inpatient discharge processing, measured against post-discharge ER return.\",\n      \"anchor_ids\": [\n        \"20\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Release D (id=20), supported by variant V0273.\",\n      \"evidence_variant_ids\": [\n        \"V0273\"\n      ]\n    },\n    {\n      \"category_id\": \"release_e\",\n      \"name\": \"Release E\",\n      \"description\": \"Patient discharge pathway E realized as alternative disposition processing, measured against post-discharge ER return.\",\n      \"anchor_ids\": [\n        \"21\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Release E (id=21) following default mapping rules.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0044632
+}

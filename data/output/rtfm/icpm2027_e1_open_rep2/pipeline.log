@@ -24,3 +24,30 @@
 2026-08-28 22:49:31,194 [INFO] goalcat: Step 6 complete.
 2026-08-28 22:49:31,194 [INFO] goalcat: Peak RSS after Step 6: 399.8 MiB
 2026-08-28 22:49:31,194 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_e1_open_rep2
+2026-08-31 14:39:35,560 [INFO] goalcat: Run environment: host=Mac-Daniel.local, platform=macOS-26.6.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-31 14:39:35,562 [WARNING] goalcat: Config drift: run directory /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_open_rep2 was started under different settings (changed keys: []) — artifacts reused from this directory may not match the current config.
+2026-08-31 14:39:35,562 [INFO] goalcat: ICPM 2027 condition run starting: run_id=icpm2027_e1_open_rep2, steps=[5, 6], taxonomy_mode=open, goal_model=None
+2026-08-31 14:39:35,565 [INFO] goalcat: Step 5b (open taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-31 14:39:35,565 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_open_rep2/04_sampling/narrative_sample.csv
+2026-08-31 14:39:35,573 [INFO] goalcat: Inducing taxonomy from 34 sampled narratives (no goal model)
+2026-08-31 14:39:41,212 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=5e196f0a13a0b6c9, latency=3.83s)
+2026-08-31 14:39:41,213 [INFO] goalcat: Induced 5 categories: direct_payment, standard_collection, delayed_payment, appeal_process, chronic_rework_payment
+2026-08-31 14:39:41,214 [INFO] goalcat: Taxonomy grounding check: no problems found.
+2026-08-31 14:39:41,216 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_open_rep2/round1/05_taxonomy/taxonomy.json
+2026-08-31 14:39:41,216 [INFO] goalcat: Step 5b complete.
+2026-08-31 14:39:41,216 [INFO] goalcat: Peak RSS after Step 5b: 362.2 MiB
+2026-08-31 14:39:41,217 [INFO] goalcat: Step 6 (narrative assignment) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-31 14:39:41,218 [INFO] goalcat: Loading profiles/narratives from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_open_rep2
+2026-08-31 14:39:41,227 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_open_rep2/round1/05_taxonomy/taxonomy.json
+2026-08-31 14:39:41,230 [INFO] goalcat: Assigning 231 narratives against 5 categories (model=gemini/gemini-3.5-flash-lite, batch_size=50, concurrency=5)
+2026-08-31 14:39:45,899 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=82be72af69987c11, latency=4.65s)
+2026-08-31 14:39:48,236 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=7a0570790a1dbd14, latency=6.99s)
+2026-08-31 14:39:48,744 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=ea161e0228d9167c, latency=7.50s)
+2026-08-31 14:39:49,269 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a191253a017ca17c, latency=8.02s)
+2026-08-31 14:39:49,271 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b27ee1f8980adc43, latency=8.03s)
+2026-08-31 14:39:49,275 [INFO] goalcat: Assigned 222/231 narratives to a category, 9 residual, 0 still pending
+2026-08-31 14:39:49,275 [INFO] goalcat: Assignment grounding check: no problems found.
+2026-08-31 14:39:49,451 [INFO] goalcat: Saved assignment outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_open_rep2/round1/06_assignment
+2026-08-31 14:39:49,451 [INFO] goalcat: Step 6 complete.
+2026-08-31 14:39:49,451 [INFO] goalcat: Peak RSS after Step 6: 366.4 MiB
+2026-08-31 14:39:49,451 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_e1_open_rep2

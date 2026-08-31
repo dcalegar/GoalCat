@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "8c3730da85e1a90f",
+  "latency_seconds": 9.960682666998764,
+  "input_tokens": 8833,
+  "output_tokens": 366,
+  "prompt_chars": 27667,
+  "response_chars": 1263,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Non-Critical Ward Admission\",\n      \"description\": \"Patient is admitted to a non-critical inpatient ward (Admission NC), supporting general recovery goals.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Admission NC (id=15) under the XOR decomposition of goal id=5. Evidenced in variants such as V0008, where Admission NC leads to ward care without critical unit escalation.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0068\",\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Intensive Care Ward Admission\",\n      \"description\": \"Patient is admitted to an intensive care unit (Admission IC), which incurs a negative contribution profile for minimizing time-to-treatment due to heightened acuity.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Admission IC (id=16) under the XOR decomposition of goal id=5. Evidenced in variants like V0605 and V0317, realizing intensive care pathways with associated softgoal impacts.\",\n      \"evidence_variant_ids\": [\n        \"V0605\",\n        \"V0317\",\n        \"V0068\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0035649
+}

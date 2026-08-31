@@ -1,0 +1,49 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission to Non-Critical Ward",
+      "description": "Admission of the patient to a non-critical inpatient ward (Admission NC).",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Maps 1:1 to declared alternative Admission NC (id=15) under the OR decomposition of goal id=5. It is observed in variants such as V0008, where patients transition from ER sepsis care to a non-critical inpatient ward.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0273",
+        "V0068",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063",
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "admission_ic",
+      "name": "Admission to Intensive Care",
+      "description": "Admission of the patient to an intensive care inpatient ward (Admission IC). This pathway incurs a negative contribution (-25) to minimizing time-to-treatment softgoals due to its intensive nature.",
+      "anchor_ids": [
+        "16"
+      ],
+      "rationale": "Maps 1:1 to declared alternative Admission IC (id=16) under the OR decomposition of goal id=5. The narrative sample confirms its usage in variants like V0605 and V0317 where severe cases require intensive care resources.",
+      "evidence_variant_ids": [
+        "V0605",
+        "V0551",
+        "V0317",
+        "V0068",
+        "V0145",
+        "V0710"
+      ]
+    }
+  ]
+}

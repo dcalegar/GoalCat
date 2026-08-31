@@ -4,13 +4,15 @@ The taxonomy was derived directly from a narrative sample, with no external decl
 
 === TAXONOMY CATEGORIES ===
 - category_id=direct_payment | name=Direct Payment
-  description: Cases that proceed directly from creation to payment with minimal activity steps and low duration, representing straightforward and timely settlements.
-- category_id=standard_collection_or_payment | name=Standard Notification and Resolution
-  description: Cases involving standard administrative steps such as fine notification and penalty addition, eventually leading either to delayed payment or escalation to credit collection.
-- category_id=rework_heavy_payment | name=Rework-Heavy Payment
-  description: Cases characterized by extensive repetition of payment activities over long trace lengths, indicating installment-like behavior or payment processing loops.
-- category_id=prefecture_appeal | name=Prefecture Appeal and Legal Escalation
-  description: Complex cases involving appeals to the prefecture or judge, result notifications, and extended legal or administrative reviews before final resolution.
+  description: Fines that are paid quickly after creation or fine notification with minimal steps and no escalation or penalties.
+- category_id=standard_collection | name=Standard Collection
+  description: Fines that undergo standard notification, penalty addition, and eventually progress to credit collection due to non-payment.
+- category_id=delayed_payment | name=Delayed Payment with Penalties
+  description: Fines where penalties are added and notifications sent, but the offender eventually makes a payment after a moderate delay, sometimes involving multiple payment installments.
+- category_id=appeal_process | name=Prefecture Appeal Path
+  description: Processes that involve submitting an appeal to the prefecture, receiving results, and handling notifications or subsequent legal/collection steps.
+- category_id=chronic_rework_payment | name=Chronic Installment Rework
+  description: Extremely long traces characterized by a high frequency of repeated payment steps spanning multiple months or years.
 
 === NARRATIVES TO CLASSIFY (50) ===
 How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
@@ -119,4 +121,4 @@ How to read each line below: one line is one process *variant* — a distinct ac
 - variant_id=V0100 | frequency=3 (0.0%) | duration_median=580d | outcome=Payment
   narrative: Create Fine Send Fine (+73d) Insert Fine Notification (+25d) Insert Date Appeal to Prefecture (+1d) Send Appeal to Prefecture (+1d) Add penalty (+58d) Receive Result Appeal from Prefecture (+239d) Notify Result Appeal to Offender (+1d) Payment (+30d) Payment (+30d) Payment (+31d) Payment (+32d) Payment (+27d) Payment (+32d) Rework observed: Payment was repeated (seen in 3 cases).
 
-For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids.
+For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids. When a category does match, category_id must be copied verbatim, character-for-character, from one of the category_id values listed above under === TAXONOMY CATEGORIES === — never a paraphrase, abbreviation, or reworded variant of a category's name or description, even if it reads more naturally. A category_id that does not appear above exactly as written cannot be matched back to that category afterward, silently corrupting the result.

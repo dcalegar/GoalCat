@@ -1,0 +1,35 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission NC",
+      "description": "Patient is admitted to a standard inpatient ward. This contributes to the process completing its pathway but does not directly target softgoals like time-to-treatment, though performance is evaluated via indicators such as post-discharge ER return.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to the single declared alternative id=15 (Admission NC) under goal id=5, as supported by multiple sampled variants (e.g., V0008, V0625, V0551) showing standard ward admission.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0625",
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0273",
+        "V0068",
+        "V0145",
+        "V0072",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063",
+        "V0710"
+      ]
+    }
+  ]
+}

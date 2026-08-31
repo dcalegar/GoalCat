@@ -2,7 +2,7 @@
 
 Experiment `e1` · dataset `sepsis` · arm `open` · replicate 2
 
-Protocol version `1.0.0` · steps [5, 6] · 2026-08-29T10:43:11.338238+00:00 → 2026-08-29T10:44:58.524225+00:00
+Protocol version `1.0.0` · steps [5, 6] · 2026-08-31T17:51:41.681646+00:00 → 2026-08-31T17:55:24.650890+00:00
 
 ## Inputs
 
@@ -10,9 +10,9 @@ Protocol version `1.0.0` · steps [5, 6] · 2026-08-29T10:43:11.338238+00:00 →
 |---|---|---|
 | Event log | `data/logs/sepsis.xes.gz` | `709c523403064159` |
 | Goal model | *(absent by design — open arm)* | — |
-| Condition config | `data/output/sepsis/icpm2027_e1_open_rep2/condition_config.yaml` | `c20f650bdea93da5` |
+| Condition config | `data/output/sepsis/icpm2027_e1_open_rep2/condition_config.yaml` | `6697f26d3dcceb02` |
 
-**Prompt templates:** `prompt_assignment_batch.txt`=`523c0b39823d`, `prompt_description.txt`=`7683ed3205c4`, `prompt_taxonomy_intent_guided.txt`=`c3fe7d89554d`, `prompt_taxonomy_intent_guided_revision.txt`=`604be767fe9c`, `prompt_taxonomy_open.txt`=`d32f3f34b809`, `prompt_taxonomy_open_revision.txt`=`cf4eefe924c8`
+**Prompt templates:** `prompt_assignment_batch.txt`=`4fe1d4fb8ac2`, `prompt_description.txt`=`7683ed3205c4`, `prompt_taxonomy_intent_guided.txt`=`c3fe7d89554d`, `prompt_taxonomy_intent_guided_revision.txt`=`604be767fe9c`, `prompt_taxonomy_open.txt`=`d32f3f34b809`, `prompt_taxonomy_open_revision.txt`=`cf4eefe924c8`
 
 **Shared Steps 1-4 base:** "icpm2027_base" — `01_variants/variants.csv`=`c24e38b68ca5`, `02_profiling/profiles.csv`=`d6d892a366e1`, `02_profiling/profiles.json`=`f77eee194fb0`, `03_textualization/narratives.csv`=`9d56dd7efb09`, `04_sampling/narrative_sample.csv`=`04449085030b`
 
@@ -69,11 +69,11 @@ Seed: null — no seed is exposed by PipelineConfig.llm or by the Gemini path th
 
 | Artifact | Path | SHA-256 (first 16) |
 |---|---|---|
-| taxonomy | `data/output/sepsis/icpm2027_e1_open_rep2/round1/05_taxonomy/taxonomy.json` | `e936f0e648e3265d` |
-| assignments | `data/output/sepsis/icpm2027_e1_open_rep2/round1/06_assignment/assignments.csv` | `caba86e9fe61735e` |
+| taxonomy | `data/output/sepsis/icpm2027_e1_open_rep2/round1/05_taxonomy/taxonomy.json` | `5e469baff47d91e9` |
+| assignments | `data/output/sepsis/icpm2027_e1_open_rep2/round1/06_assignment/assignments.csv` | `d871a326c9ea053d` |
 | discovery_metrics | *(not produced)* | — |
 | descriptions | *(not produced)* | — |
 
 ## Environment
 
-`192.168.68.56` · macOS-26.5.2-arm64-arm-64bit-Mach-O · Python 3.14.6 · git `e46965fd78bf` **(working tree dirty)**
+`Mac-Daniel.local` · macOS-26.6.2-arm64-arm-64bit-Mach-O · Python 3.14.6 · git `b016cb958f1e` **(working tree dirty)**

@@ -245,12 +245,27 @@ def check_axis_partition(
     `model.axis_frontier()` raises `grl.AxisError` before any of these run when the model itself
     declares no single axis; that is a modeling defect, not an induction defect, and the caller
     must fix the model or name an `axis_root` rather than retry.
+
+    "Partition" here is structural: the induced categories must be a *complete, disjoint* cover of
+    the frontier, each anchored to at least one declared alternative. Disjointness and on-axis
+    membership were the only conditions this originally enforced; an anchorless category (traceable
+    to nothing) and an uncovered frontier alternative (Step 5a silently dropped a declared choice)
+    both leave the result short of a partition and are now blocking too. Completeness being blocked
+    here does not turn an *empty* category — one Step 6 assigns no variant — into an error: that is
+    reported as declared-alternative coverage, RQ1 evidence, not an induction defect.
     """
     frontier = model.axis_frontier(axis_root)
     on_axis = set(frontier)
     problems: list[str] = []
 
     for category in taxonomy.categories:
+        if not category.anchor_ids:
+            problems.append(
+                f"{category.category_id}: anchor_ids is empty. Under intent-guided induction every "
+                "category must trace to a declared alternative on the axis; a category anchored to "
+                "nothing is not a part of any partition of the frontier."
+            )
+
         off_axis = [a for a in category.anchor_ids if a not in on_axis]
         if off_axis:
             labels = ", ".join(
@@ -293,6 +308,19 @@ def check_axis_partition(
                 )
             else:
                 seen[anchor_id] = category.category_id
+
+    uncovered = [f for f in frontier if f not in seen]
+    if uncovered:
+        labels = ", ".join(
+            f"{f} ({model.elements[f].name!r})" if f in model.elements else f"{f}"
+            for f in uncovered
+        )
+        problems.append(
+            f"declared alternative(s) {labels} on the axis frontier are anchored by no category "
+            f"(frontier: {', '.join(frontier)}). Step 5a dropped a declared choice, so the "
+            "taxonomy is not a complete cover of the axis and assignment is defined over a "
+            "narrower frame than the goal model declares."
+        )
 
     return problems
 

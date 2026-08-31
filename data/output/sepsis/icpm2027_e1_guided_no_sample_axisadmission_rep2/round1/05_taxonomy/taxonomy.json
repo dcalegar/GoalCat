@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Normal Care Admission",
+      "description": "Patient is admitted to a normal care inpatient ward (Admission NC), advancing the standard treatment pathway without intensive care requirements.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative Admission NC (id=15) under the OR-decomposition of goal id=5.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "admission_ic",
+      "name": "Intensive Care Admission",
+      "description": "Patient is admitted to an intensive care inpatient ward (Admission IC). This path involves intensive monitoring but carries a negative contribution (-25) to the softgoal Minimize time-to-treatment.",
+      "anchor_ids": [
+        "16"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative Admission IC (id=16) under the OR-decomposition of goal id=5.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

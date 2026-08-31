@@ -1,0 +1,50 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission Non-Critical (NC)",
+      "description": "Patient is admitted to a non-critical inpatient ward, contributing to the standard inpatient care pathway. It is measured against discharge and readmission indicators and affects the softgoal of avoiding post-discharge deterioration.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to the declared OR alternative Admission NC (id=15) based on the goal model decomposition. The narrative sample shows this alternative realized in standard inpatient ward admissions (e.g., variant V0008), supporting recovery without intensive care requirements.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0273",
+        "V0068",
+        "V0072",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063",
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "admission_ic",
+      "name": "Admission Intensive Care (IC)",
+      "description": "Patient is admitted to an intensive care inpatient ward. It connects to the softgoal to minimize time-to-treatment via a negative contribution (-25) due to resource-intensive transfers, and performance is evaluated against post-discharge outcomes.",
+      "anchor_ids": [
+        "16"
+      ],
+      "rationale": "Mapped 1:1 to the declared OR alternative Admission IC (id=16) from the goal model. The narrative sample confirms its realization in severe patient pathways requiring intensive care monitoring (e.g., variant V0605 and V0317), reflecting the organization's critical care track.",
+      "evidence_variant_ids": [
+        "V0605",
+        "V0551",
+        "V0317",
+        "V0068",
+        "V0145",
+        "V0710"
+      ]
+    }
+  ]
+}

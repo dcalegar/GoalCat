@@ -1,0 +1,33 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission NC",
+      "description": "Patient is admitted to a non-critical inpatient ward (Admission NC). This advances the goal of patient admission while interacting with softgoals, though Admission IC specifically carries a negative contribution to minimizing time-to-treatment.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative Admission NC (id=15) from the OR decomposition of goal id=5. Supported by frequent and rare variants such as V0008, V0625, and V0068 where Admission NC is observed.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0625",
+        "V0449",
+        "V0068"
+      ]
+    },
+    {
+      "category_id": "admission_ic",
+      "name": "Admission IC",
+      "description": "Patient is admitted to an intensive care unit (Admission IC). This alternative carries a SomeNegative (-25) contribution effect to the softgoal 'Minimize time-to-treatment'.",
+      "anchor_ids": [
+        "16"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative Admission IC (id=16) from the OR decomposition of goal id=5. Supported by narrative samples such as V0605, V0317, and V0068 which realize intensive care unit admission.",
+      "evidence_variant_ids": [
+        "V0605",
+        "V0317",
+        "V0068"
+      ]
+    }
+  ]
+}

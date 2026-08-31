@@ -70,6 +70,14 @@ Softgoals and contribution links (source -> effect on softgoal):
   - id=114 Average time to case closure (days) --[Help (+50)]--> Maximize timely fine revenue
   - id=114 Average time to case closure (days) --[Help (+50)]--> Minimize administrative & enforcement cost
 
+Categorization axis: the alternatives of id=4 (Fine case is resolved), decomposed OR.
+  - id=12 [Task] Resolve via timely payment
+  - id=13 [Task] Resolve via delinquent payment
+  - id=14 [Task] Resolve via administrative appeal to the Prefecture
+  - id=19 [Task] Resolve via judicial appeal to the Judge
+  - id=20 [Task] Resolve via coercive credit collection
+These ids, and only these, are valid anchor_ids. Do not anchor to a parent or ancestor of one of them: a coarser element is a different, broader goal, not the alternative it contains. Do not anchor to an alternative of any other decomposition point in the tree above — those belong to a different axis and a case may realize one of them in addition to, not instead of, one of these.
+
 
 === NARRATIVE SAMPLE (34 variants, drawn to cover frequent, rare, and extreme cases) ===
 How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.

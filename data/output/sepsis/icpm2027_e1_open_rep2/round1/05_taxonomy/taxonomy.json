@@ -1,11 +1,11 @@
 {
   "categories": [
     {
-      "category_id": "fast_er_triage_only",
-      "name": "Fast ER Triage Only",
-      "description": "Short, rapid sequences that terminate immediately after initial ER registration and triage or basic lab work (CRP/Leucocytes) without progressing to intensive interventions or hospital admission.",
+      "category_id": "rapid_triage_and_discharge",
+      "name": "Rapid Triage and Outpatient-Style Resolution",
+      "description": "Cases that move swiftly through registration, triage, and basic lab work (CRP, Leucocytes) with very short total durations (minutes to hours) and terminate directly after initial evaluation or mild intervention without requiring inpatient admission.",
       "anchor_ids": [],
-      "rationale": "These variants represent low-acuity or fast-exit cases with durations under 30 minutes and minimal trace lengths, distinct from admitted or treated patients.",
+      "rationale": "Grouped based on low duration, short trace length, and simple diagnostic or triage outcomes without ward admissions.",
       "evidence_variant_ids": [
         "V0001",
         "V0002",
@@ -15,59 +15,44 @@
       ]
     },
     {
-      "category_id": "standard_acute_intervention",
-      "name": "Standard Acute Intervention",
-      "description": "Moderately long pathways involving standard sepsis diagnostic labs (CRP, Leucocytes, LacticAcid) followed by active medical treatment such as IV fluids and IV antibiotics.",
+      "category_id": "active_medical_intervention",
+      "name": "Active Medical Intervention & Short Stay",
+      "description": "Cases requiring active treatment steps such as IV liquids and IV antibiotics following initial lab and triage workups. These resolve either with discharge (Release A, B, etc.) or short-term observation within a moderate timeframe.",
       "anchor_ids": [],
-      "rationale": "Represents the standard clinical pathway for acute sepsis management where patients receive timely stabilization and therapeutic intervention.",
+      "rationale": "Reflects standard acute care pathways involving medication administration (IV Antibiotics/Liquid) and moderate durations.",
       "evidence_variant_ids": [
         "V0004",
-        "V0005",
         "V0006",
         "V0007",
-        "V0009"
+        "V0009",
+        "V0066"
       ]
     },
     {
-      "category_id": "hospital_admission_and_release",
-      "name": "Hospital Admission and Release",
-      "description": "Pathways featuring formal ward admission (Admission NC or IC) following acute stabilization, culminating in a successful discharge or release after a few days.",
+      "category_id": "inpatient_admission_standard",
+      "name": "Standard Inpatient Admission & Release",
+      "description": "Cases where patients are admitted to nursing care (Admission NC) or intensive care (Admission IC) units following diagnostic testing and interventions, culminating in a successful discharge or release after several days.",
       "anchor_ids": [],
-      "rationale": "Captures inpatient care trajectories that require observation or treatment on a nursing care or intensive care unit before final release.",
+      "rationale": "Characterized by formal ward admission steps and medium-range durations spanning multiple days.",
       "evidence_variant_ids": [
         "V0008",
-        "V0066",
-        "V0067",
-        "V0069",
-        "V0070"
+        "V0068",
+        "V0070",
+        "V0071"
       ]
     },
     {
-      "category_id": "chronic_extended_rework",
-      "name": "Chronic Extended Rework",
-      "description": "Extremely long, highly repetitive sequences characterized by persistent cyclical lab tests (CRP, Leucocytes, LacticAcid) and repeated ward transfers or readmissions over weeks or months.",
+      "category_id": "chronic_rework_and_readmission",
+      "name": "Extended Stay with Chronic Rework and Readmission",
+      "description": "Complex, highly extended cases featuring extensive repetitive testing (frequent looping of CRP, LacticAcid, Leucocytes), multiple ward transfers, and extreme durations (weeks to over a year), often culminating in return to the emergency room or prolonged hospitalization.",
       "anchor_ids": [],
-      "rationale": "Significantly deviates from standard flows through massive trace lengths and high frequencies of internal rework, reflecting complex or deteriorating patient conditions.",
+      "rationale": "Captures extreme outliers characterized by massive trace lengths, severe rework, and exceptionally long durations leading to return visits or complex releases.",
       "evidence_variant_ids": [
-        "V0317",
         "V0551",
-        "V0605",
-        "V0625",
+        "V0317",
+        "V0273",
+        "V0145",
         "V0710"
-      ]
-    },
-    {
-      "category_id": "readmission_return_er",
-      "name": "Readmission / Return to ER",
-      "description": "Pathways where patients are initially treated or released but experience complications resulting in a return visit or readmission to the emergency department.",
-      "anchor_ids": [],
-      "rationale": "Identifies a specific adverse outcome trajectory where post-discharge care fails or complications arise, leading to repeat emergency utilization.",
-      "evidence_variant_ids": [
-        "V0071",
-        "V0072",
-        "V0192",
-        "V0441",
-        "V0449"
       ]
     }
   ]

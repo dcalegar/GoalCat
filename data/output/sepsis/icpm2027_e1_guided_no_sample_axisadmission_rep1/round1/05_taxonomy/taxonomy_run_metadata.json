@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "e5f45cf2cb52f102",
+  "latency_seconds": 6.18523133400231,
+  "input_tokens": 2029,
+  "output_tokens": 260,
+  "prompt_chars": 8484,
+  "response_chars": 1006,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Admission to Normal Care\",\n      \"description\": \"Patient is admitted to a normal care inpatient ward (Admission NC). Advances the goal of inpatient care disposition while managing patient flow, assessed against indicators such as time to treatment and post-discharge outcomes.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared OR alternative Admission NC (id=15).\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Admission to Intensive Care\",\n      \"description\": \"Patient is admitted to an intensive care inpatient ward (Admission IC). This alternative advances treatment speed but carries a negative contribution to minimizing time-to-treatment softgoals.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared OR alternative Admission IC (id=16).\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0012586999999999997
+}

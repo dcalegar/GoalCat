@@ -6,73 +6,73 @@ Run: `icpm2027_e1_guided_rep1` | Log: `rtfm` | Taxonomy mode: `intent_guided` | 
 
 ## Resolve via timely payment (`timely_payment`)
 
-Resolution of the fine case through early payment by the offender. Advances the 'Maximize timely fine revenue' softgoal and helps 'Minimize administrative & enforcement cost'. Measured against indicator 'Time to fine dispatch (days)' and 'Average time to case closure (days)'.
+Cases resolved through prompt payment by the offender, advancing the softgoal 'Maximize timely fine revenue' and helping 'Minimize administrative & enforcement cost', judged against indicator 'Time to fine dispatch (days)' and 'Average time to case closure (days)'.
 
-**Taxonomy-derivation rationale (Step 5):** Maps 1:1 to declared alternative task 12 as observed in frequent variants such as V0002.
+**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=12. Supported by frequent narrative variants such as V0002 and V0007 where payment occurs shortly after fine creation.
 
 **Goal-model linkage:** 12 (Task): Resolve via timely payment
 
-**Coverage:** macro 10/231 variants (4.3%) · micro 49619/150370 cases (33.0%)
+**Coverage:** macro 6/231 variants (2.6%) · micro 49609/150370 cases (33.0%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 3.84, nearest other category `administrative_appeal` at mean distance 4.76
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 1.73, nearest other category `administrative_appeal` at mean distance 5.24
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.245, nearest other category `delinquent_payment` at mean distance 0.243
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.264, nearest other category `delinquent_payment` at mean distance 0.257
 
 ## Resolve via delinquent payment (`delinquent_payment`)
 
-Resolution of the fine case through payment after notifications and penalties have been applied. Helps 'Maximize timely fine revenue'. Measured against indicator 'Average time to case closure (days)'.
+Cases where payment occurs after penalties have been added and notifications sent, helping 'Maximize timely fine revenue', judged against 'Average time to case closure (days)'.
 
-**Taxonomy-derivation rationale (Step 5):** Maps 1:1 to declared alternative task 13 as seen in variants where payment occurs after penalty addition such as V0004 and V0006.
+**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=13. Supported by variants like V0004, V0005, and V0006 where payments happen subsequent to penalty additions and reminders.
 
 **Goal-model linkage:** 13 (Task): Resolve via delinquent payment
 
-**Coverage:** macro 50/231 variants (21.6%) · micro 16947/150370 cases (11.3%)
+**Coverage:** macro 42/231 variants (18.2%) · micro 16917/150370 cases (11.3%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 4.63, nearest other category `administrative_appeal` at mean distance 4.79
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 4.73, nearest other category `administrative_appeal` at mean distance 4.92
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.175, nearest other category `timely_payment` at mean distance 0.243
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.168, nearest other category `timely_payment` at mean distance 0.257
 
 ## Resolve via administrative appeal to the Prefecture (`administrative_appeal`)
 
-Resolution path involving administrative appeal to the Prefecture. Preserves offender's due-process rights while impacting enforcement costs and revenue. Measured against indicator 'Time to appeal filing, Prefecture (days)'.
+Cases involving formal administrative appeals directed to the Prefecture, preserving 'Preserve offender's due-process rights' while impacting 'Minimize administrative & enforcement cost' and 'Maximize timely fine revenue', measured using 'Time to appeal filing, Prefecture (days)'.
 
-**Taxonomy-derivation rationale (Step 5):** Maps 1:1 to declared alternative task 14 representing administrative appeals observed in variants like V0008 and V0057.
+**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=14. Supported by variants like V0008, V0057, and V00135 containing steps such as 'Insert Date Appeal to Prefecture' and 'Send Appeal to Prefecture'.
 
 **Goal-model linkage:** 14 (Task): Resolve via administrative appeal to the Prefecture
 
-**Coverage:** macro 61/231 variants (26.4%) · micro 3645/150370 cases (2.4%)
+**Coverage:** macro 72/231 variants (31.2%) · micro 3682/150370 cases (2.4%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 3.81, nearest other category `coercive_credit_collection` at mean distance 4.63
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 3.82, nearest other category `coercive_credit_collection` at mean distance 4.66
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.360, nearest other category `timely_payment` at mean distance 0.390
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.355, nearest other category `delinquent_payment` at mean distance 0.393
 
 ## Resolve via judicial appeal to the Judge (`judicial_appeal`)
 
-Resolution path involving judicial appeal to the Judge. Strongly preserves due-process rights but hurts enforcement cost and revenue. Measured against indicator 'Time to appeal filing, Judge (days)'.
+Cases involving judicial appeals escalated to a Judge, maximizing 'Preserve offender's due-process rights' while hurting 'Minimize administrative & enforcement cost' and 'Maximize timely fine revenue', judged against 'Time to appeal filing, Judge (days)'.
 
-**Taxonomy-derivation rationale (Step 5):** Maps 1:1 to declared alternative task 19 representing judicial appeals found in variants like V0103 and V0140.
+**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=19. Supported by variants like V0103, V0176, and V0140 containing the 'Appeal to Judge' activity.
 
 **Goal-model linkage:** 19 (Task): Resolve via judicial appeal to the Judge
 
-**Coverage:** macro 65/231 variants (28.1%) · micro 397/150370 cases (0.3%)
+**Coverage:** macro 64/231 variants (27.7%) · micro 398/150370 cases (0.3%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 5.69, nearest other category `administrative_appeal` at mean distance 5.16
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 5.69, nearest other category `administrative_appeal` at mean distance 5.12
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.406, nearest other category `delinquent_payment` at mean distance 0.383
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.400, nearest other category `delinquent_payment` at mean distance 0.386
 
 ## Resolve via coercive credit collection (`coercive_credit_collection`)
 
-Resolution path via coercive credit collection for unpaid or unresolved fines. Helps revenue but hurts cost and due-process softgoals. Measured against indicator 'Average time to case closure (days)'.
+Cases routed to coercive enforcement and credit collection agencies, helping 'Maximize timely fine revenue' but hurting 'Minimize administrative & enforcement cost', evaluated against 'Average time to case closure (days)'.
 
-**Taxonomy-derivation rationale (Step 5):** Maps 1:1 to declared alternative task 20 representing credit collection endpoints observed in high-duration variants like V0001 and V0009.
+**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=20. Supported by variants like V0001, V0009, and V00134 ending with 'Send for Credit Collection'.
 
 **Goal-model linkage:** 20 (Task): Resolve via coercive credit collection
 
-**Coverage:** macro 41/231 variants (17.7%) · micro 59010/150370 cases (39.2%)
+**Coverage:** macro 43/231 variants (18.6%) · micro 59012/150370 cases (39.2%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 4.07, nearest other category `administrative_appeal` at mean distance 4.63
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 4.10, nearest other category `administrative_appeal` at mean distance 4.66
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.166, nearest other category `judicial_appeal` at mean distance 0.492
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.185, nearest other category `judicial_appeal` at mean distance 0.498
 
 ## Divergence between structural and profile distance
 
@@ -87,8 +87,8 @@ Flagged for review, not resolved automatically — the two metrics measure diffe
 - `V0069` / `V0153` (category `judicial_appeal`): structural=17, profile=0.716
 - `V0097` / `V0153` (category `judicial_appeal`): structural=17, profile=0.762
 - `V0120` / `V0153` (category `judicial_appeal`): structural=17, profile=0.729
+- `V0134` / `V0153` (category `judicial_appeal`): structural=17, profile=0.706
 - `V0153` / `V0154` (category `judicial_appeal`): structural=17, profile=0.358
-- `V0153` / `V0167` (category `judicial_appeal`): structural=17, profile=0.716
 - `V0153` / `V0206` (category `judicial_appeal`): structural=17, profile=0.718
 
 **Different category, structurally near-identical** (the TP/TA-style case — categories distinguished on business intent the activity sequence alone would not show):
@@ -108,7 +108,7 @@ Flagged for review, not resolved automatically — the two metrics measure diffe
 
 4/231 variants (1.7%), 20752/150370 cases (13.8%) unassigned.
 
-- `V0003`: The case ends at Send Fine without payment or further action, thus it does not resolve the case.
-- `V0012`: The case concludes with Send Fine after an initial payment, remaining unresolved.
-- `V0077`: An incomplete or abnormal sequence where sending the fine occurs after appeal steps, fitting none of the standard resolution paths.
-- `V0193`: Incomplete case progression ending prematurely at 'Send Fine' without resolution or payment categories fitting.
+- `V0003`: The case ends with Send Fine and has no final payment, appeal, or credit collection outcome.
+- `V0012`: An unusual ordering ending in Send Fine after a payment, fitting none of the standard resolution paths.
+- `V0077`: The variant ends prematurely at Send Fine with out-of-order appeal activities and does not cleanly realize any resolution category.
+- `V0193`: Case stops at Send Fine without clear resolution or payment/appeal completion.

@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "e5f45cf2cb52f102",
+  "latency_seconds": 2.740345582998998,
+  "input_tokens": 2029,
+  "output_tokens": 266,
+  "prompt_chars": 8484,
+  "response_chars": 997,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Normal Care Admission\",\n      \"description\": \"Patient is admitted to a normal care inpatient ward (Admission NC), advancing the standard treatment pathway without intensive care requirements.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared alternative Admission NC (id=15) under the OR-decomposition of goal id=5.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Intensive Care Admission\",\n      \"description\": \"Patient is admitted to an intensive care inpatient ward (Admission IC). This path involves intensive monitoring but carries a negative contribution (-25) to the softgoal Minimize time-to-treatment.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared alternative Admission IC (id=16) under the OR-decomposition of goal id=5.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0012736999999999998
+}

@@ -1,0 +1,65 @@
+{
+  "categories": [
+    {
+      "category_id": "release_a",
+      "name": "Release A",
+      "description": "Represents the standard discharge pathway (Release A) for admitted patients who reach a captured discharge, helping to avoid post-discharge deterioration as measured by post-discharge ER return indicators.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release A (id=17). Observed in multiple variants such as V0008, V0066, and V0070 where patients successfully complete the inpatient stay and are discharged.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0066",
+        "V0070"
+      ]
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release B",
+      "description": "Represents discharge pathway B for admitted cases reaching a captured discharge, contributing to avoiding post-discharge deterioration as measured by post-discharge ER return indicators.",
+      "anchor_ids": [
+        "18"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release B (id=18). Observed in variant V0068 and V0145 as a distinct terminal discharge milestone.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Represents discharge pathway C for admitted cases reaching a captured discharge, contributing to avoiding post-discharge deterioration as measured by post-discharge ER return indicators.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release C (id=19). Observed in variant V0710 where an exceptionally long and complex trace ultimately culminates in Release C.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Represents discharge pathway D for admitted cases reaching a captured discharge, contributing to avoiding post-discharge deterioration as measured by post-discharge ER return indicators.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release D (id=20). Observed in variant V0273 as the terminal activity concluding the patient's inpatient workflow.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release E",
+      "description": "Represents discharge pathway E for admitted cases reaching a captured discharge, contributing to avoiding post-discharge deterioration as measured by post-discharge ER return indicators.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release E (id=21). Retained as a declared alternative per standard decomposition mapping rules even though instances are sparse in this specific sample.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

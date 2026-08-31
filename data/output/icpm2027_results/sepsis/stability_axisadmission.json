@@ -1,0 +1,71 @@
+{
+  "k": 5,
+  "axis": "admission",
+  "stable": true,
+  "distinct_anchor_sets": 1,
+  "category_sets": [
+    [
+      "admission_ic",
+      "admission_nc"
+    ],
+    [
+      "admission_ic",
+      "admission_nc"
+    ],
+    [
+      "admission_ic",
+      "admission_nc"
+    ],
+    [
+      "admission_ic",
+      "admission_nc"
+    ],
+    [
+      "admission_ic",
+      "admission_nc"
+    ]
+  ],
+  "anchor_sets": [
+    [
+      [
+        "15"
+      ],
+      [
+        "16"
+      ]
+    ],
+    [
+      [
+        "15"
+      ],
+      [
+        "16"
+      ]
+    ],
+    [
+      [
+        "15"
+      ],
+      [
+        "16"
+      ]
+    ],
+    [
+      [
+        "15"
+      ],
+      [
+        "16"
+      ]
+    ],
+    [
+      [
+        "15"
+      ],
+      [
+        "16"
+      ]
+    ]
+  ],
+  "qualification": "Step 5a reproduced the same category and anchor set across all 5 identical-input reruns; sepsis's figures below are not subject to Task E7's qualification."
+}

@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "8c3730da85e1a90f",
+  "latency_seconds": 2.8188317919994006,
+  "input_tokens": 8833,
+  "output_tokens": 516,
+  "prompt_chars": 27667,
+  "response_chars": 1544,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Admission to Non-Critical Ward\",\n      \"description\": \"Admission of the patient to a non-critical inpatient ward (Admission NC).\",\n      \"anchor_ids\": [\"15\"],\n      \"rationale\": \"Maps 1:1 to declared alternative Admission NC (id=15) under the OR decomposition of goal id=5. It is observed in variants such as V0008, where patients transition from ER sepsis care to a non-critical inpatient ward.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0551\",\n        \"V0449\",\n        \"V0192\",\n        \"V0441\",\n        \"V0317\",\n        \"V0273\",\n        \"V0068\",\n        \"V0071\",\n        \"V0070\",\n        \"V0069\",\n        \"V0067\",\n        \"V0066\",\n        \"V0065\",\n        \"V0064\",\n        \"V0063\",\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Admission to Intensive Care\",\n      \"description\": \"Admission of the patient to an intensive care inpatient ward (Admission IC). This pathway incurs a negative contribution (-25) to minimizing time-to-treatment softgoals due to its intensive nature.\",\n      \"anchor_ids\": [\"16\"],\n      \"rationale\": \"Maps 1:1 to declared alternative Admission IC (id=16) under the OR decomposition of goal id=5. The narrative sample confirms its usage in variants like V0605 and V0317 where severe cases require intensive care resources.\",\n      \"evidence_variant_ids\": [\n        \"V0605\",\n        \"V0551\",\n        \"V0317\",\n        \"V0068\",\n        \"V0145\",\n        \"V0710\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0039399000000000005
+}

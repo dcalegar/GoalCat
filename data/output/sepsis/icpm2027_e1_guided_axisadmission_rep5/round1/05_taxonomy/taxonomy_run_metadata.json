@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "8c3730da85e1a90f",
+  "latency_seconds": 2.1955247500009136,
+  "input_tokens": 8833,
+  "output_tokens": 399,
+  "prompt_chars": 27667,
+  "response_chars": 1331,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Non-Critical Admission\",\n      \"description\": \"Patient is admitted to a non-critical inpatient ward, contributing to standard care flows and tracking against discharge outcomes.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Admission NC (id=15) from the OR decomposition of Goal 5. Observed in multiple variants such as V0008, where it supports patient disposition.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0625\",\n        \"V0551\",\n        \"V0449\",\n        \"V0192\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Intensive Care Admission\",\n      \"description\": \"Patient is admitted to an intensive care inpatient ward, introducing a negative contribution to minimizing time-to-treatment due to specialized routing.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Admission IC (id=16) from the OR decomposition of Goal 5. Associated with softgoal trade-offs (SomeNegative contribution to time-to-treatment) and observed in complex variants such as V0605 and V0317.\",\n      \"evidence_variant_ids\": [\n        \"V0605\",\n        \"V0551\",\n        \"V0317\",\n        \"V0068\",\n        \"V0145\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0036474000000000003
+}

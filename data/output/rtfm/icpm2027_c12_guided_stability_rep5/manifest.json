@@ -7,11 +7,13 @@
   "arm": "guided",
   "replicate": 5,
   "tag": "stability",
+  "axis": "resolution",
+  "axis_root": "4",
   "steps_executed": [
     5
   ],
-  "started_at": "2026-08-29T00:27:12.697517+00:00",
-  "finished_at": "2026-08-29T00:27:20.608406+00:00",
+  "started_at": "2026-08-31T17:30:47.501648+00:00",
+  "finished_at": "2026-08-31T17:30:56.349368+00:00",
   "preregistered": true,
   "pending_decisions": [],
   "decisions": {
@@ -20,10 +22,12 @@
       "status": "decided",
       "value": {
         "default": 50,
-        "exceptions": {}
+        "exceptions": {
+          "bpic2019": 25
+        }
       },
       "decided_on": "2026-08-19",
-      "rationale": "50 everywhere (raised from 20), on call-count/wall-clock grounds only, per Task C10's required basis \u2014 not against observed categorization quality. Google AI Studio billing was enabled on the project behind GEMINI_API_KEY and verified at aistudio.google.com/rate-limit: 4,000 RPM / 4M TPM for gemini-3.5-flash-lite (150K RPD), several orders of magnitude above this protocol's actual volume. At batch_size=50 with protocol.yaml's concurrency=5, a 231-variant run costs ~5 Step-6 calls instead of 231/12 (batch=20); BPIC 2019 at the C7 top_n=1000 scope costs ~20 calls instead of 50. No BPIC 2019 exception needed: one value holds the freeze table's \"identical across datasets by default\" with nothing to justify. Not yet empirically re-validated against a frozen run at this batch size \u2014 the example case studies under experimentation/examples/ (not the frozen protocol) are the first runs to exercise batch_size=50, and should be watched for any assignment-quality regression before the first real frozen run under this protocol_version."
+      "rationale": "50 everywhere (raised from 20), on call-count/wall-clock grounds only, per Task C10's required basis \u2014 not against observed categorization quality. Google AI Studio billing was enabled on the project behind GEMINI_API_KEY and verified at aistudio.google.com/rate-limit: 4,000 RPM / 4M TPM for gemini-3.5-flash-lite (150K RPD), several orders of magnitude above this protocol's actual volume. At batch_size=50 with protocol.yaml's concurrency=5, a 231-variant run costs ~5 Step-6 calls instead of 231/12 (batch=20); BPIC 2019 at the C7 top_n=1000 scope costs ~20 calls instead of 50. No BPIC 2019 exception needed: one value holds the freeze table's \"identical across datasets by default\" with nothing to justify. Not yet empirically re-validated against a frozen run at this batch size \u2014 the example case studies under experimentation/examples/ (not the frozen protocol) are the first runs to exercise batch_size=50, and should be watched for any assignment-quality regression before the first real frozen run under this protocol_version. . AMENDMENT 2026-08-29 \u2014 bpic2019 exception added, batch_size 50 -> 25, on wall-clock/ reliability grounds only (Task C10's permitted basis), never against categorization quality. Two full-scope BPIC 2019 Step-6 runs at batch_size=50 (the example study 20260829_080358 and the first frozen e1_guided_rep1 attempt) both degraded on gemini-3.5-flash-lite: per-call latency on a 50-narrative BPIC batch (mean narrative ~1,285 chars, ~17k input tokens/call) routinely exceeded the protocol's 120 s timeout, so ~5% of batches (602/11,973 in the example study; ~6 of the first 40 in the frozen attempt) exhausted all 3 retries and the condition aborted with IncompleteAssignmentError. rtfm (231 variants, ~711-char narratives) and sepsis (846 variants) show no such degradation at 50 and keep the default. At batch_size=25 each BPIC call carries ~half the tokens and lands within the 120 s ceiling; cost rises from ~$18 to ~$32 across the four E1 conditions and call count from ~964 to ~1,920, both far below the verified rate limits. This amends an as-yet-unexecuted portion of the decision (no frozen BPIC 2019 run had completed), so rtfm/sepsis results already produced under protocol_version 1.0.0 are unaffected and no version bump is required."
     },
     "C5_label_list_control": {
       "task": "C5",
@@ -100,11 +104,11 @@
     "goal_model_absent_by_design": false,
     "condition_config": {
       "path": "data/output/rtfm/icpm2027_c12_guided_stability_rep5/condition_config.yaml",
-      "sha256": "bba8d0d1f08d0e3a66eb89a08548e670059fa3b5fcd0b61880c9a15322b7c541",
-      "bytes": 1214
+      "sha256": "c1f5303227b32f2a34c0e331cdc0e89283f51008038f80f7a5167edc7b4d62fb",
+      "bytes": 1229
     },
     "prompt_templates": {
-      "prompt_assignment_batch.txt": "523c0b39823dbae80d83d65c3cb5fafefdf29f26c5ac272da73daed1f4e56345",
+      "prompt_assignment_batch.txt": "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d",
       "prompt_description.txt": "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588",
       "prompt_taxonomy_intent_guided.txt": "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3",
       "prompt_taxonomy_intent_guided_revision.txt": "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444",
@@ -128,8 +132,8 @@
   "prompts_sent": {
     "taxonomy_prompt": {
       "path": "data/output/rtfm/icpm2027_c12_guided_stability_rep5/round1/05_taxonomy/taxonomy_prompt.txt",
-      "sha256": "5d219d8bb5ffca03d3beabeb172df3a185a82e99699d1851b5cbb155bbc23065",
-      "bytes": 21380
+      "sha256": "91579725e94b4f78ceb1c72e03271b7f52f73971c8850c9114564566e34c14f7",
+      "bytes": 22127
     },
     "assignment_prompts": {}
   },
@@ -154,8 +158,8 @@
   "outputs": {
     "taxonomy": {
       "path": "data/output/rtfm/icpm2027_c12_guided_stability_rep5/round1/05_taxonomy/taxonomy.json",
-      "sha256": "d2c2d3592c04c7b74e1c005beca72aacff2d7c5728ce11cef9e96d18d1893741",
-      "bytes": 3406
+      "sha256": "6c343d41940ecd7c63dfccc77107407025537af1541ee4f11c917323c88845bd",
+      "bytes": 4111
     },
     "assignments": null,
     "discovery_metrics": null,
@@ -164,10 +168,10 @@
   "run_dir": "data/output/rtfm/icpm2027_c12_guided_stability_rep5",
   "round_dir": "data/output/rtfm/icpm2027_c12_guided_stability_rep5/round1",
   "environment": {
-    "host": "192.168.68.56",
-    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "host": "Mac-Daniel.local",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
     "python": "3.14.6",
-    "git_commit": "e46965fd78bf2f7ec0f730f01914caa35c42a298",
+    "git_commit": "b016cb958f1e0e53bd2da470637d081faa6b284e",
     "git_dirty": true
   },
   "estimated_llm_calls": {

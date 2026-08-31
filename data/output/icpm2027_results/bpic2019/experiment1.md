@@ -1,4 +1,4 @@
-# Experiment 1 — bpic2019
+# Experiment 1 — bpic2019 (axis: matching_regime)
 
 ## Variant scope (Task C7)
 
@@ -13,14 +13,12 @@ Step 5a reproduced the same anchor set across all 5 identical-input reruns for b
 
 ## Coverage and residual
 
-| condition                |   total_variants |   total_cases |   assigned_variants |   assigned_cases |   macro_coverage_C_V |   micro_coverage_C_C |   residual_variants |   residual_variants_pct |   residual_cases |   residual_cases_pct |
-|:-------------------------|-----------------:|--------------:|--------------------:|-----------------:|---------------------:|---------------------:|--------------------:|------------------------:|-----------------:|---------------------:|
-| e1_guided_no_sample_rep1 |            11973 |        251734 |                9258 |           207308 |             0.77324  |             0.82352  |                2715 |                22.676   |            44426 |            17.648    |
-| e1_guided_no_sample_rep2 |            11973 |        251734 |                9267 |           208431 |             0.773991 |             0.827981 |                2706 |                22.6009  |            43303 |            17.2019   |
-| e1_guided_rep1           |            11973 |        251734 |                9389 |           208660 |             0.784181 |             0.828891 |                2584 |                21.5819  |            43074 |            17.1109   |
-| e1_guided_rep2           |            11973 |        251734 |                9339 |           208543 |             0.780005 |             0.828426 |                2634 |                21.9995  |            43191 |            17.1574   |
-| e1_open_rep1             |            11973 |        251734 |               10529 |           228884 |             0.879395 |             0.90923  |                1444 |                12.0605  |            22850 |             9.07704  |
-| e1_open_rep2             |            11973 |        251734 |               11201 |           250025 |             0.935522 |             0.993211 |                 772 |                 6.44784 |             1709 |             0.678891 |
+| condition      |   total_variants |   total_cases |   assigned_variants |   assigned_cases |   macro_coverage_C_V |   micro_coverage_C_C |   residual_variants |   residual_variants_pct |   residual_cases |   residual_cases_pct |
+|:---------------|-----------------:|--------------:|--------------------:|-----------------:|---------------------:|---------------------:|--------------------:|------------------------:|-----------------:|---------------------:|
+| e1_guided_rep1 |            11973 |        251734 |                9389 |           208660 |             0.784181 |             0.828891 |                2584 |                21.5819  |            43074 |            17.1109   |
+| e1_guided_rep2 |            11973 |        251734 |                9339 |           208543 |             0.780005 |             0.828426 |                2634 |                21.9995  |            43191 |            17.1574   |
+| e1_open_rep1   |            11973 |        251734 |               10529 |           228884 |             0.879395 |             0.90923  |                1444 |                12.0605  |            22850 |             9.07704  |
+| e1_open_rep2   |            11973 |        251734 |               11201 |           250025 |             0.935522 |             0.993211 |                 772 |                 6.44784 |             1709 |             0.678891 |
 
 _Higher coverage is not better categorization: a larger taxonomy or a broad catch-all category can trivially raise $C_V$/$C_C$ while carrying less semantic information (Task D2)._
 
@@ -112,6 +110,13 @@ _AMI/NMI measure divergence between two partitions, not classification accuracy:
 
 
 _Read on the D1-primary `own_cluster` convention. Where the open arm's rep1-rep2 AMI is lower than the guided arm's, every "guided vs. open" figure for this dataset should be reported with that band, and the open arm's instability noted as a limit on the strength of the paired contrast (Task E7, extended to the open arm)._
+
+### Replicate residual-set Jaccard (§6)
+
+Jaccard similarity of an arm's two replicate residual variant-sets, on this axis. A value near 1 means the arm puts the same variants outside every category across identical-input reruns; near 0 means it does not. §6 reads the guided-over-open gap as evidence that the declared frame stabilizes the residual boundary, not only the category set.
+
+- guided: 0.82
+- open: 0.16
 
 ## Partition divergence (optional, Task D1)
 

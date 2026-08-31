@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "8c3730da85e1a90f",
+  "latency_seconds": 2.8009475830003794,
+  "input_tokens": 8833,
+  "output_tokens": 586,
+  "prompt_chars": 27667,
+  "response_chars": 1792,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Non-Critical Admission\",\n      \"description\": \"Patient is admitted to a non-critical inpatient ward (Admission NC), advancing the patient toward a documented disposition while engaging standard ward resources.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative id=15 (Admission NC). The narrative sample shows this alternative occurring frequently as a standard ward placement (e.g. in V0008, V0625, V0605), without requiring subdivision or combination.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0625\",\n        \"V0605\",\n        \"V0551\",\n        \"V0449\",\n        \"V0192\",\n        \"V0441\",\n        \"V0317\",\n        \"V0273\",\n        \"V0068\",\n        \"V0071\",\n        \"V0070\",\n        \"V0069\",\n        \"V0067\",\n        \"V0066\",\n        \"V0065\",\n        \"V0064\",\n        \"V0063\",\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Intensive Care Admission\",\n      \"description\": \"Patient is admitted to an intensive care inpatient ward (Admission IC). This alternative incurs a negative contribution (-25) to the softgoal 'Minimize time-to-treatment' due to intensive placement overhead, and contributes to overall patient disposition under goal id=5.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative id=16 (Admission IC). The narrative sample evidences its realization in more complex, high-duration or intensive pathways (such as V0605, V0317, V0068, V0710) where intensive care management is triggered.\",\n      \"evidence_variant_ids\": [\n        \"V0605\",\n        \"V0551\",\n        \"V0317\",\n        \"V0068\",\n        \"V0145\",\n        \"V0710\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0041148999999999995
+}

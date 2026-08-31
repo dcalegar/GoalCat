@@ -3,58 +3,53 @@
     {
       "category_id": "timely_payment",
       "name": "Resolve via timely payment",
-      "description": "Fine is settled promptly through payment, maximizing timely fine revenue and helping minimize administrative and enforcement costs, measured against average time to case closure and time to fine dispatch.",
+      "description": "Resolution of the fine case through payment realization, advancing the 'Maximize timely fine revenue' softgoal and helping 'Minimize administrative & enforcement cost'. Judged against indicator id=114 (Average time to case closure).",
       "anchor_ids": [
         "12"
       ],
-      "rationale": "Maps 1:1 to declared alternative task id 12 as observed in frequent variants such as V0002 and V0004.",
+      "rationale": "Maps 1:1 to declared alternative id=12 as supported by variants like V0002 and V0007.",
       "evidence_variant_ids": [
         "V0002",
-        "V0003",
-        "V0004",
         "V0007"
       ]
     },
     {
-      "category_id": "enforceable_resolution",
-      "name": "Fine becomes enforceable and is resolved",
-      "description": "Fine proceeds through notification and penalty addition, balancing revenue maximization against due-process preservation, measured against average time to case closure.",
+      "category_id": "merged_closure",
+      "name": "Merged 13+20",
+      "description": "Resolution through merged enforcement and credit collection procedures, helping 'Maximize timely fine revenue' while hurting 'Minimize administrative & enforcement cost' and preserving due-process rights. Judged against indicator id=114.",
       "anchor_ids": [
-        "5"
+        "13"
       ],
-      "rationale": "Maps 1:1 to declared alternative goal id 5 representing cases requiring notifications and penalties before ultimate resolution or credit collection, as seen in variants like V0001.",
+      "rationale": "Maps 1:1 to declared alternative id=13 as observed in variants like V0001.",
       "evidence_variant_ids": [
         "V0001",
-        "V0009",
-        "V0010"
+        "V0009"
       ]
     },
     {
       "category_id": "administrative_appeal",
       "name": "Resolve via administrative appeal to the Prefecture",
-      "description": "Fine resolution is pursued via an administrative appeal submitted to the Prefecture, preserving offender due-process rights while potentially increasing administrative costs and impacting revenue timing, measured against time to appeal filing (Prefecture).",
+      "description": "Resolution via administrative appeal processes, preserving the offender's due-process rights (softgoal id=14) while impacting administration costs and revenue. Judged against indicator id=113.",
       "anchor_ids": [
         "14"
       ],
-      "rationale": "Maps 1:1 to declared alternative task id 14, instantiated in variants where administrative appeal procedures are carried out.",
+      "rationale": "Maps 1:1 to declared alternative id=14 as reflected in variants such as V0008.",
       "evidence_variant_ids": [
         "V0008",
-        "V0057",
-        "V0135"
+        "V0057"
       ]
     },
     {
       "category_id": "judicial_appeal",
       "name": "Resolve via judicial appeal to the Judge",
-      "description": "Fine resolution is pursued via judicial appeal to a judge, strongly making for the preservation of offender's due-process rights while hurting administrative cost minimization and fine revenue, measured against time to appeal filing (Judge).",
+      "description": "Resolution through judicial appeals to the Judge, making a strong positive contribution to preserving offender's due-process rights while hurting cost and revenue softgoals. Judged against indicator id=175.",
       "anchor_ids": [
         "19"
       ],
-      "rationale": "Maps 1:1 to declared alternative task id 19, observed in variants involving direct judicial challenges.",
+      "rationale": "Maps 1:1 to declared alternative id=19, observed in variants such as V0103 and V0140.",
       "evidence_variant_ids": [
         "V0103",
-        "V0140",
-        "V0176"
+        "V0140"
       ]
     }
   ]

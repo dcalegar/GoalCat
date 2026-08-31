@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "8c3730da85e1a90f",
+  "latency_seconds": 2.2086941670022497,
+  "input_tokens": 8833,
+  "output_tokens": 443,
+  "prompt_chars": 27667,
+  "response_chars": 1648,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Admission to Non-Critical Ward\",\n      \"description\": \"Patient is admitted to an inpatient non-critical ward. Advances the goal of reaching a documented disposition and contributes to minimizing time-to-treatment or avoiding post-discharge deterioration, evaluated against post-discharge ER return indicators.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Admission NC (id=15) under the OR decomposition of Patient is admitted to an inpatient ward (id=5). The narrative sample shows this alternative realized in standard inpatient ward admissions (e.g., variant V0008).\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0625\",\n        \"V0449\",\n        \"V0192\",\n        \"V0441\",\n        \"V0068\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Admission to Intensive Care\",\n      \"description\": \"Patient is admitted to an intensive care inpatient ward. Associated with intensive monitoring and treatment paths, having a negative contribution to minimizing time-to-treatment softgoals, and evaluated against post-discharge performance indicators.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Admission IC (id=16) under the OR decomposition of Patient is admitted to an inpatient ward (id=5). The narrative sample shows this alternative realized in more severe cases requiring intensive care pathways (e.g., variant V0605).\",\n      \"evidence_variant_ids\": [\n        \"V0605\",\n        \"V0317\",\n        \"V0068\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0037574
+}

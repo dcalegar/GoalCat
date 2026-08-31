@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "2b1c9da20d7b87e9",
+  "latency_seconds": 13.546358457999304,
+  "input_tokens": 8842,
+  "output_tokens": 554,
+  "prompt_chars": 27681,
+  "response_chars": 1854,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"release_a\",\n      \"name\": \"Release A\",\n      \"description\": \"Patient discharge pathway A, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return indicators.\",\n      \"anchor_ids\": [\n        \"17\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to declared alternative Release A (id=17), supported by variants like V0008, V0066, V0070.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0066\",\n        \"V0070\"\n      ]\n    },\n    {\n      \"category_id\": \"release_b\",\n      \"name\": \"Release B\",\n      \"description\": \"Patient discharge pathway B, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return indicators.\",\n      \"anchor_ids\": [\n        \"18\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to declared alternative Release B (id=18), supported by variants like V0068 and V0145.\",\n      \"evidence_variant_ids\": [\n        \"V0068\",\n        \"V0145\"\n      ]\n    },\n    {\n      \"category_id\": \"release_c\",\n      \"name\": \"Release C\",\n      \"description\": \"Patient discharge pathway C, supporting discharge tracking and evaluated against standard post-discharge recovery metrics.\",\n      \"anchor_ids\": [\n        \"19\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to declared alternative Release C (id=19), supported by variant V0710.\",\n      \"evidence_variant_ids\": [\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"release_d\",\n      \"name\": \"Release D\",\n      \"description\": \"Patient discharge pathway D, representing specialized or extended inpatient release outcomes.\",\n      \"anchor_ids\": [\n        \"20\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to declared alternative Release D (id=20), supported by variant V0273.\",\n      \"evidence_variant_ids\": [\n        \"V0273\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0040376
+}

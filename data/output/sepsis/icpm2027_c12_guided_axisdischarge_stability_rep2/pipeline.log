@@ -1,0 +1,13 @@
+2026-08-31 14:32:15,112 [INFO] goalcat: Run environment: host=Mac-Daniel.local, platform=macOS-26.6.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-31 14:32:15,113 [INFO] goalcat: ICPM 2027 condition run starting: run_id=icpm2027_c12_guided_axisdischarge_stability_rep2, steps=[5], taxonomy_mode=intent_guided, goal_model=sepsis_goal_model.jucm
+2026-08-31 14:32:15,116 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-31 14:32:15,116 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_c12_guided_axisdischarge_stability_rep2/04_sampling/narrative_sample.csv
+2026-08-31 14:32:15,123 [INFO] goalcat: Inducing taxonomy from 33 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/sepsis_goal_model.jucm
+2026-08-31 14:32:20,312 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=e5bcdd04b07b26ef, latency=3.14s)
+2026-08-31 14:32:20,316 [INFO] goalcat: Induced 5 categories: release_a, release_b, release_c, release_d, release_e
+2026-08-31 14:32:20,333 [INFO] goalcat: Taxonomy grounding check: no problems found.
+2026-08-31 14:32:20,333 [INFO] goalcat: Axis partition check: 5 categories partition the declared axis (17, 18, 19, 20, 21).
+2026-08-31 14:32:20,335 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_c12_guided_axisdischarge_stability_rep2/round1/05_taxonomy/taxonomy.json
+2026-08-31 14:32:20,335 [INFO] goalcat: Step 5a complete.
+2026-08-31 14:32:20,335 [INFO] goalcat: Peak RSS after Step 5a: 326.1 MiB
+2026-08-31 14:32:20,335 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_c12_guided_axisdischarge_stability_rep2

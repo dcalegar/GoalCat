@@ -4,15 +4,15 @@ The taxonomy was derived by subdividing a declared goal-model axis — every cat
 
 === TAXONOMY CATEGORIES ===
 - category_id=timely_payment | name=Resolve via timely payment
-  description: Resolution of the fine case through prompt voluntary payment, advancing 'Maximize timely fine revenue' (Make +100) and 'Minimize administrative & enforcement cost' (Help +50), judged against 'Average time to case closure' (Indicator 114).
+  description: Resolution of the fine case through prompt payment by the offender. This category advances the softgoal 'Maximize timely fine revenue' (Make +100) and helps 'Minimize administrative & enforcement cost' (Help +50), judged against performance indicators like time to fine dispatch and average time to case closure.
 - category_id=delinquent_payment | name=Resolve via delinquent payment
-  description: Resolution of the fine case through late payment after penalties are added, supporting 'Maximize timely fine revenue' (Help +50), judged against 'Average time to case closure' (Indicator 114).
-- category_id=administrative_appeal | name=Resolve via administrative appeal to the Prefecture
-  description: Resolution of the case through an administrative appeal lodged with the Prefecture, preserving offender's due-process rights (Help +50) while impacting costs and revenue (SomeNegative -25), judged against indicator 113.
-- category_id=judicial_appeal | name=Resolve via judicial appeal to the Judge
-  description: Resolution of the case through a judicial appeal to the Judge, making a strong contribution to due-process rights (Make +100) but hurting administrative costs (Hurt -50), judged against indicator 175.
+  description: Resolution of the fine case through late payment after penalties are applied. This category helps 'Maximize timely fine revenue' (Help +50).
+- category_id=administrative_appeal_prefecture | name=Resolve via administrative appeal to the Prefecture
+  description: Resolution of the fine case through an administrative appeal submitted to the Prefecture. This category preserves offender's due-process rights (Help +50) while harming administrative cost and timely revenue.
+- category_id=judicial_appeal_judge | name=Resolve via judicial appeal to the Judge
+  description: Resolution of the fine case through a judicial appeal brought before a Judge. This category makes a strong positive contribution to preserving the offender's due-process rights (Make +100) but hurts administrative cost.
 - category_id=coercive_credit_collection | name=Resolve via coercive credit collection
-  description: Resolution of the case through coercive credit collection measures, helping timely revenue (Help +50) but hurting enforcement costs (Hurt -50), judged against indicator 114.
+  description: Resolution of the fine case through coercive credit collection measures. This category helps revenue (Help +50) but hurts administrative cost.
 
 === NARRATIVES TO CLASSIFY (50) ===
 How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
@@ -121,4 +121,4 @@ How to read each line below: one line is one process *variant* — a distinct ac
 - variant_id=V0200 | frequency=1 (0.0%) | duration_median=278d | outcome=Appeal to Judge
   narrative: Create Fine Send Fine (+46d) Insert Fine Notification (+7d) Insert Date Appeal to Prefecture (+19d) Add penalty (+41d) Send Appeal to Prefecture (+12d) Receive Result Appeal from Prefecture (+83d) Appeal to Judge (+70d)
 
-For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids.
+For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids. When a category does match, category_id must be copied verbatim, character-for-character, from one of the category_id values listed above under === TAXONOMY CATEGORIES === — never a paraphrase, abbreviation, or reworded variant of a category's name or description, even if it reads more naturally. A category_id that does not appear above exactly as written cannot be matched back to that category afterward, silently corrupting the result.

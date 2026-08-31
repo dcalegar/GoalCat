@@ -4,13 +4,13 @@ The taxonomy was derived directly from a narrative sample, with no external decl
 
 === TAXONOMY CATEGORIES ===
 - category_id=direct_payment | name=Direct Payment
-  description: Fines that are paid quickly or directly after creation, characterized by very short trace lengths and minimal administrative overhead without reaching escalation stages.
-- category_id=standard_fine_lifecycle | name=Standard Fine Lifecycle
-  description: Typical administrative handling involving fine creation, sending, notification, addition of penalties, and eventual resolution through standard payment or credit collection.
-- category_id=payment_rework_loops | name=Payment Rework Loops
-  description: Cases that involve multiple repeated payment activities over an extended duration, indicating installments, split payments, or processing errors.
-- category_id=appeal_and_litigation | name=Appeal and Litigation Path
-  description: Complex variants involving formal appeals to the prefecture or judge, resulting in extended durations and prefecture result notifications.
+  description: Cases where the fine is created and promptly paid with little to no intervening notification or penalty steps, resulting in very short durations and straightforward fulfillment.
+- category_id=standard_collection | name=Standard Collection / Escalation
+  description: Standard processing involving fine creation, fine notifications, penalties, and eventual escalation to credit collection after extended periods of non-payment.
+- category_id=payment_rework | name=Payment Rework Loop
+  description: Cases characterized by multiple repeated payment attempts or fragmented installments over a prolonged trace length and duration.
+- category_id=appeal_process | name=Appeal and Prefecture Handling
+  description: Complex lifecycle paths that involve formal appeals to the prefecture or judge, results notifications, and deeply extended durations spanning multiple years.
 
 === NARRATIVES TO CLASSIFY (50) ===
 How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
@@ -119,4 +119,4 @@ How to read each line below: one line is one process *variant* — a distinct ac
 - variant_id=V0200 | frequency=1 (0.0%) | duration_median=278d | outcome=Appeal to Judge
   narrative: Create Fine Send Fine (+46d) Insert Fine Notification (+7d) Insert Date Appeal to Prefecture (+19d) Add penalty (+41d) Send Appeal to Prefecture (+12d) Receive Result Appeal from Prefecture (+83d) Appeal to Judge (+70d)
 
-For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids.
+For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids. When a category does match, category_id must be copied verbatim, character-for-character, from one of the category_id values listed above under === TAXONOMY CATEGORIES === — never a paraphrase, abbreviation, or reworded variant of a category's name or description, even if it reads more naturally. A category_id that does not appear above exactly as written cannot be matched back to that category afterward, silently corrupting the result.

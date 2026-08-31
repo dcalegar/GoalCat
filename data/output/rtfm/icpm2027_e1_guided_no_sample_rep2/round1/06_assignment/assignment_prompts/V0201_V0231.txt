@@ -4,15 +4,15 @@ The taxonomy was derived by subdividing a declared goal-model axis — every cat
 
 === TAXONOMY CATEGORIES ===
 - category_id=timely_payment | name=Resolve via timely payment
-  description: Resolution of the fine case through prompt voluntary payment by the offender, advancing the softgoal to maximize timely fine revenue and helping to minimize administrative and enforcement cost.
+  description: Cases resolved through prompt payment of the fine, advancing the softgoal Maximize timely fine revenue and helping Minimize administrative and enforcement cost, judged against Indicator 114 Average time to case closure.
 - category_id=delinquent_payment | name=Resolve via delinquent payment
-  description: Resolution of the fine case through payment after penalties have been added and the fine becomes enforceable, helping to maximize timely fine revenue.
+  description: Cases resolved via payment after penalties are applied, helping Maximize timely fine revenue, judged against Indicator 114 Average time to case closure.
 - category_id=administrative_appeal | name=Resolve via administrative appeal to the Prefecture
-  description: Resolution of the fine case through an administrative appeal process directed to the Prefecture, preserving offender's due-process rights while impacting administrative cost and revenue.
-- category_id=judicial_appeal | name=Resolve via judicial appeal toometr to the Judge
-  description: Resolution of the fine case through a judicial appeal brought before a judge, strongly making the softgoal to preserve offender's due-process rights while hurting administrative cost and revenue.
+  description: Cases involving an administrative appeal lodged with the Prefecture, balancing the preservation of due-process rights against administrative costs, judged by Indicator 113 Time to appeal filing, Prefecture.
+- category_id=judicial_appeal | name=Resolve via judicial appeal to the Judge
+  description: Cases involving a judicial appeal to a judge, strongly making Preserve offender's due-process rights while hurting cost-efficiency, judged against Indicator 175 Time to appeal filing, Judge.
 - category_id=coercive_credit_collection | name=Resolve via coercive credit collection
-  description: Resolution of the fine case through coercive credit collection procedures, helping fine revenue but hurting enforcement costs.
+  description: Cases resolved through forced credit collection measures, helping revenue but hurting enforcement costs and due-process rights, judged against Indicator 114 Average time to case closure.
 
 === NARRATIVES TO CLASSIFY (31) ===
 How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
@@ -83,4 +83,4 @@ How to read each line below: one line is one process *variant* — a distinct ac
 - variant_id=V0231 | frequency=1 (0.0%) | duration_median=239d | outcome=Payment
   narrative: Create Fine Send Fine (+81d) Insert Date Appeal to Prefecture (+3d) Send Appeal to Prefecture (+1d) Insert Fine Notification (+2d) Appeal to Judge (+1d) Add penalty (+59d) Payment (+92d)
 
-For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids.
+For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids. When a category does match, category_id must be copied verbatim, character-for-character, from one of the category_id values listed above under === TAXONOMY CATEGORIES === — never a paraphrase, abbreviation, or reworded variant of a category's name or description, even if it reads more naturally. A category_id that does not appear above exactly as written cannot be matched back to that category afterward, silently corrupting the result.

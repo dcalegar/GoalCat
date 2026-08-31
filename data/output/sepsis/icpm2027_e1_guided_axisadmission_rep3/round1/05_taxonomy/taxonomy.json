@@ -1,0 +1,31 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Non-Critical Ward Admission",
+      "description": "Represents admission of the patient to a non-critical inpatient ward (Admission NC). This pathway supports standard inpatient care following sepsis screening and initial workup and treatment.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=15 (Admission NC) from the OR decomposition of goal id=5. Supported by frequent and extreme variant samples such as V0008, V0551, and V0317 where patients are transitioned to non-critical care.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0551",
+        "V0317"
+      ]
+    },
+    {
+      "category_id": "admission_ic",
+      "name": "Intensive Care Ward Admission",
+      "description": "Represents admission of the patient to an intensive care inpatient ward (Admission IC). This pathway is chosen for severe cases requiring intensive monitoring and treatment, impacting the goal softgoal 'Minimize time-to-treatment' with a negative contribution (-25) due to intensive transfer overhead.",
+      "anchor_ids": [
+        "16"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=16 (Admission IC) from the OR decomposition of goal id=5. Supported by variant samples such as V0605 and V0317 which show direct realization of intensive care ward admission.",
+      "evidence_variant_ids": [
+        "V0605",
+        "V0317"
+      ]
+    }
+  ]
+}

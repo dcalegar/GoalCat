@@ -1,0 +1,67 @@
+{
+  "categories": [
+    {
+      "category_id": "release_a",
+      "name": "Release A",
+      "description": "Represents the standard discharge pathway for patients after successful treatment and ward admission, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release A (id=17) under the discharge goal decomposition (id=6). Supported by frequent variants like V0008, V0070, and V0069.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066"
+      ]
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release B",
+      "description": "Represents an alternative discharge pathway following ward treatment, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return.",
+      "anchor_ids": [
+        "18"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release B (id=18) under the discharge goal decomposition (id=6). Supported by rare/alternative variants such as V0068 and V0145.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Represents a specific discharge route for long-stay or complex admitted patients, measured against post-discharge ER return.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release C (id=19) under the discharge goal decomposition (id=6), observed in long complex cases such as V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Represents a distinct discharge pathway for admitted cases, measured against post-discharge ER return.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release D (id=20) under the discharge goal decomposition (id=6), evidenced in sample variant V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release E",
+      "description": "Represents an alternative discharge pathway under the mutually exclusive discharge goal decomposition.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release E (id=21) under the discharge goal decomposition (id=6). Maintained as a distinct category per the XOR constraint even without high representation in the current sample.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

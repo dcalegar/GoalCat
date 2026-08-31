@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "8c3730da85e1a90f",
+  "latency_seconds": 2.6545532080017438,
+  "input_tokens": 8833,
+  "output_tokens": 583,
+  "prompt_chars": 27667,
+  "response_chars": 1914,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Admission Non-Critical (NC)\",\n      \"description\": \"Patient is admitted to a non-critical inpatient ward, contributing to the standard inpatient care pathway. It is measured against discharge and readmission indicators and affects the softgoal of avoiding post-discharge deterioration.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared OR alternative Admission NC (id=15) based on the goal model decomposition. The narrative sample shows this alternative realized in standard inpatient ward admissions (e.g., variant V0008), supporting recovery without intensive care requirements.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0551\",\n        \"V0449\",\n        \"V0192\",\n        \"V0441\",\n        \"V0317\",\n        \"V0273\",\n        \"V0068\",\n        \"V0072\",\n        \"V0071\",\n        \"V0070\",\n        \"V0069\",\n        \"V0067\",\n        \"V0066\",\n        \"V0065\",\n        \"V0064\",\n        \"V0063\",\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Admission Intensive Care (IC)\",\n      \"description\": \"Patient is admitted to an intensive care inpatient ward. It connects to the softgoal to minimize time-to-treatment via a negative contribution (-25) due to resource-intensive transfers, and performance is evaluated against post-discharge outcomes.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared OR alternative Admission IC (id=16) from the goal model. The narrative sample confirms its realization in severe patient pathways requiring intensive care monitoring (e.g., variant V0605 and V0317), reflecting the organization's critical care track.\",\n      \"evidence_variant_ids\": [\n        \"V0605\",\n        \"V0551\",\n        \"V0317\",\n        \"V0068\",\n        \"V0145\",\n        \"V0710\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0041074
+}

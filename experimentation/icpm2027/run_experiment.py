@@ -81,6 +81,15 @@ def _logger() -> logging.Logger:
     return logging.getLogger("icpm2027.driver")
 
 
+def _axis_suffix(dataset: DatasetSpec, axis: str | None) -> str:
+    """The filename segment naming an axis, empty unless the dataset declares more than one.
+
+    Mirrors `ConditionSpec.run_id`'s rule so a single-axis dataset's cross-run artifacts keep the
+    paths its frozen results already use, and a multi-axis one gets one file per partition.
+    """
+    return f"_axis{axis}" if axis and len(dataset.axes) > 1 else ""
+
+
 def _read_assignments(result: ConditionResult) -> pd.DataFrame | None:
     """A condition's Step 6 output, or None if it did not get that far (a dry run, or a
     stability-only condition that ran Step 5 alone)."""
@@ -136,9 +145,19 @@ def verify_freeze(
     Returns whether every row passed. Failing rows are logged as errors and the report is written
     either way — a failed verification is evidence, not a reason to produce no record of it.
     """
-    run_dirs = {label: result.run_dir for label, result in results.items() if not result.skipped}
+    # `skipped` means the condition was already complete and was resumed, not that it produced
+    # nothing — its manifest is on disk and is exactly what this verifies. Filtering it out would
+    # silently disable the check on every re-run, which is when it is most likely to matter.
+    run_dirs = {
+        label: result.run_dir
+        for label, result in results.items()
+        if (result.run_dir / "manifest.json").exists()
+    }
     if len(run_dirs) < 2:
-        logger.info("Freeze verification skipped for %s: needs at least two conditions.", title)
+        logger.info(
+            "Freeze verification skipped for %s: %d condition(s) have a manifest, needs two.",
+            title, len(run_dirs),
+        )
         return True
     checks = check_run_dirs(run_dirs, perturbed=perturbed)
     path = write_freeze_report(title, checks, RESULTS_DIR / dataset_id, stem)
@@ -256,12 +275,13 @@ def run_e1(
         dataset_id=dataset.dataset_id,
         scope_record=base.scope,
         stability=stability,
+        axis=axis,
         notes=report_mod.KNOWN_FINDINGS.get(dataset.dataset_id, []),
     )
     if dry_run:
         return Experiment1Result(dataset.dataset_id, results, dataset_report)
 
-    axis_suffix = f"_axis{axis}" if axis else ""
+    axis_suffix = _axis_suffix(dataset, axis)
     if not verify_freeze(
         f"{dataset.dataset_id} Experiment 1{f' (axis {axis})' if axis else ''}",
         results, dataset.dataset_id, f"freeze_e1{axis_suffix}", logger,
@@ -281,7 +301,11 @@ def run_e1(
         compute_coverage(df, variants_df, cid) for cid, df in sorted(assignments.items())
     ]
 
-    guided_id, open_id = "e1_guided_rep1", "e1_open_rep1"
+    # condition_id already carries the axis segment (ConditionSpec.condition_id), so this needs
+    # no axis-specific branch — it would silently miss every guided_id lookup on a multi-axis
+    # dataset otherwise, since "e1_guided_rep1" only exists there without an axis suffix.
+    guided_id = ConditionSpec(dataset=dataset, arm="guided", replicate=1, experiment="e1", axis=axis).condition_id
+    open_id = ConditionSpec(dataset=dataset, arm="open", replicate=1, experiment="e1", axis=axis).condition_id
     if guided_id in assignments and open_id in assignments:
         dataset_report.contingency = contingency_matrix(
             assignments[guided_id], assignments[open_id], variants_df, "guided", "open"
@@ -303,12 +327,19 @@ def run_e1(
     # it has (Task C12 tests the guided taxonomy only).
     d1_resid = d1.get("residual_handling", "own_cluster") if (guided_id in assignments and open_id in assignments) else "own_cluster"
     d1_weight = d1.get("weighting", "variant") if (guided_id in assignments and open_id in assignments) else "variant"
-    for arm, attr in (("guided", "guided_replicate_divergence"), ("open", "open_replicate_divergence")):
-        r1, r2 = f"e1_{arm}_rep1", f"e1_{arm}_rep2"
+    for arm, attr, jaccard_attr in (
+        ("guided", "guided_replicate_divergence", "guided_residual_jaccard"),
+        ("open", "open_replicate_divergence", "open_residual_jaccard"),
+    ):
+        r1 = ConditionSpec(dataset=dataset, arm=arm, replicate=1, experiment="e1", axis=axis).condition_id
+        r2 = ConditionSpec(dataset=dataset, arm=arm, replicate=2, experiment="e1", axis=axis).condition_id
         if r1 in assignments and r2 in assignments:
             setattr(dataset_report, attr, compute_divergence(
                 assignments[r1], assignments[r2], variants_df, f"{arm}_rep1", f"{arm}_rep2",
                 primary_residual_handling=d1_resid, primary_weighting=d1_weight,
+            ))
+            setattr(dataset_report, jaccard_attr, report_mod.replicate_residual_jaccard(
+                dataset_report.coverage_reports, r1, r2
             ))
 
     # Task C3 — the structural baseline. No LLM cost, so it always runs when the guided arm exists.
@@ -342,9 +373,12 @@ def run_e1(
                 taxonomy_path,
                 assignments[guided_id],
                 variants_df,
+                axis_root=dataset.axis_root(axis),
             )
 
-    path = dataset_report.write(RESULTS_DIR / dataset.dataset_id / "experiment1.md")
+    path = dataset_report.write(
+        RESULTS_DIR / dataset.dataset_id / f"experiment1{axis_suffix}.md"
+    )
     logger.info("Wrote Experiment 1 report: %s", path)
     return Experiment1Result(dataset.dataset_id, results, dataset_report)
 
@@ -361,6 +395,8 @@ def reassignment_rates(
     perturbed_anchors: dict[str, frozenset[str]],
     target_anchors: Collection[str],
     variants_df: pd.DataFrame,
+    *,
+    collateral_population: Collection[str] | None = None,
 ) -> dict[str, Any]:
     """TargetReassignment and CollateralReassignment (§4), with categories matched by `anchor_ids`.
 
@@ -376,6 +412,11 @@ def reassignment_rates(
     guaranteed to move because its element no longer exists — so the second target's movement was
     reported as damage to bystanders. On RTFM's merge that single substitution accounted for 41 of
     the 59 "collateral" variants and inflated the rate from 12.9% to 32.6%.
+
+    `collateral_population`, when given, is used verbatim as the collateral set instead of deriving
+    it from `baseline`'s own target/other split. `replicate_reassignment_null` passes one fixed
+    population for every pair so the denominator stops moving with Step 6 assignment noise (see
+    that function).
     """
     target_anchors = set(target_anchors)
     if not target_anchors:
@@ -390,11 +431,16 @@ def reassignment_rates(
         return table.get(category_id, frozenset())
 
     target_variants, other_variants = [], []
-    for variant_id, category_id in base_by_variant.items():
-        if anchors_of(category_id, baseline_anchors) & target_anchors:
-            target_variants.append(variant_id)
-        else:
-            other_variants.append(variant_id)
+    if collateral_population is not None:
+        collateral_set = set(collateral_population)
+        other_variants = list(collateral_population)
+        target_variants = [v for v in base_by_variant if v not in collateral_set]
+    else:
+        for variant_id, category_id in base_by_variant.items():
+            if anchors_of(category_id, baseline_anchors) & target_anchors:
+                target_variants.append(variant_id)
+            else:
+                other_variants.append(variant_id)
 
     def changed(variant_id: str) -> bool:
         before = anchors_of(base_by_variant.get(variant_id), baseline_anchors)
@@ -415,7 +461,7 @@ def reassignment_rates(
         "TargetReassignment": rate(target_variants),
         "CollateralReassignment": rate(other_variants),
         "note": (
-            "CollateralReassignment is interpretable only against the replicate noise floor from "
+            "CollateralReassignment is interpretable only against the replicate range from "
             "Task C2 — without it, collateral change cannot be distinguished from ordinary "
             "run-to-run variance (Experiment 2's design constraint)."
         ),
@@ -427,38 +473,69 @@ def replicate_reassignment_null(
     target_anchors: Collection[str],
     variants_df: pd.DataFrame,
 ) -> dict[str, Any]:
-    """The null distribution CollateralReassignment has to be read against.
+    """The replicate-to-replicate range CollateralReassignment has to be read against.
 
     §4 reports collateral reassignment as a percentage of variants that moved, then argues it is
     "at or below the replicate noise floor" — but the only noise floor the paper computes is an
     AMI between replicates. A percentage and a mutual-information score are not commensurable, so
-    that comparison established nothing. This measures the floor in the *same* unit: how much the
-    identical, unperturbed condition moves between two replicate runs, over the same collateral
-    population, under the same anchor-based matching rule.
+    that comparison established nothing. This measures the same quantity in the *same* unit: how
+    much the identical, unperturbed condition moves between two replicate runs, over one fixed
+    collateral population, under the same anchor-based matching rule.
+
+    The collateral population is taken once from `replicates[0]` and reused for every pair.
+    Deriving it per-pair (from whichever replicate came first in the pair) let the Step 6
+    assignment noise this function exists to measure also move the denominator — 188, then 189,
+    then 187 on RTFM — so the ten pair rates were not on a common base.
 
     Every unordered pair of `replicates` contributes one observation, so k replicates give
-    k(k-1)/2. Returns the observations plus their range, which is what a claim of "no larger than
-    run-to-run variance" needs in place of a single point.
+    k(k-1)/2. Those pairs are not independent (10 from 5 runs), so the result is a *descriptive
+    min-max range across replicate pairs*, not a null distribution in the statistical sense.
     """
+    if len(replicates) < 2:
+        return {"k": len(replicates), "pairs": [], "note": "fewer than two replicates — no range"}
+
+    target_anchors_set = set(target_anchors)
+    base_assignments, base_anchors = replicates[0]
+    base_by_variant = dict(zip(base_assignments["variant_id"], base_assignments["category_id"]))
+
+    def _anchors_of(category_id: Any) -> frozenset[str]:
+        if not isinstance(category_id, str):
+            return frozenset()
+        return base_anchors.get(category_id, frozenset())
+
+    fixed_collateral = [
+        variant_id
+        for variant_id, category_id in base_by_variant.items()
+        if not (_anchors_of(category_id) & target_anchors_set)
+    ]
+
     observations: list[float] = []
     pairs: list[dict[str, Any]] = []
     for i in range(len(replicates)):
         for j in range(i + 1, len(replicates)):
             (asg_i, anch_i), (asg_j, anch_j) = replicates[i], replicates[j]
-            rates = reassignment_rates(asg_i, asg_j, anch_i, anch_j, target_anchors, variants_df)
+            rates = reassignment_rates(
+                asg_i, asg_j, anch_i, anch_j, target_anchors, variants_df,
+                collateral_population=fixed_collateral,
+            )
             collateral = rates["CollateralReassignment"]
             observations.append(collateral["rate"])
             pairs.append({"pair": [i + 1, j + 1], **collateral})
-    if not observations:
-        return {"k": len(replicates), "pairs": [], "note": "fewer than two replicates — no null"}
     ordered = sorted(observations)
     return {
         "k": len(replicates),
         "n_pairs": len(observations),
+        "collateral_population": len(fixed_collateral),
         "mean": sum(observations) / len(observations),
         "min": ordered[0],
         "max": ordered[-1],
         "pairs": pairs,
+        "note": (
+            f"Descriptive min-max of the collateral reassignment rate over the {len(observations)} "
+            f"unordered pairs of {len(replicates)} unperturbed guided replicates, on one fixed "
+            f"collateral population ({len(fixed_collateral)} variants, from replicate 1). The pairs "
+            "are not independent, so this is a replicate range, not a null distribution."
+        ),
     }
 
 
@@ -696,7 +773,7 @@ def run_e2(
             }
         )
 
-    suffix = f"_axis{axis}" if axis else ""
+    suffix = _axis_suffix(dataset, axis)
     if not verify_freeze(
         f"{dataset.dataset_id} Experiment 2{f' (axis {axis})' if axis else ''}",
         {"baseline": baseline_result, **{r.condition.condition_id: r for r in perturbed_results}},
@@ -772,8 +849,7 @@ def main(argv: list[str] | None = None) -> int:
         )
 
     def _stability_path(axis: str | None) -> Path:
-        suffix = f"_axis{axis}" if axis else ""
-        return RESULTS_DIR / args.dataset / f"stability{suffix}.json"
+        return RESULTS_DIR / args.dataset / f"stability{_axis_suffix(dataset, axis)}.json"
 
     def _load_stability(axis: str | None) -> report_mod.InductionStability | None:
         path = _stability_path(axis)

@@ -37,3 +37,44 @@
 2026-08-29 09:32:31,434 [INFO] goalcat: Step 7b complete.
 2026-08-29 09:32:31,434 [INFO] goalcat: Peak RSS after Step 7b: 1395.8 MiB
 2026-08-29 09:32:31,435 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_e2_guided_pertB_merge_13_20_rep1
+2026-08-31 15:21:52,616 [INFO] goalcat: Run environment: host=Mac-Daniel.local, platform=macOS-26.6.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-31 15:21:52,617 [WARNING] goalcat: Config drift: run directory /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e2_guided_pertB_merge_13_20_rep1 was started under different settings (changed keys: ['axis_root']) — artifacts reused from this directory may not match the current config.
+2026-08-31 15:21:52,618 [INFO] goalcat: ICPM 2027 condition run starting: run_id=icpm2027_e2_guided_pertB_merge_13_20_rep1, steps=[5, 6], taxonomy_mode=intent_guided, goal_model=perturbed/rtfm_goal_model__pertB_merge_13_20.jucm
+2026-08-31 15:21:52,621 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-31 15:21:52,621 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e2_guided_pertB_merge_13_20_rep1/04_sampling/narrative_sample.csv
+2026-08-31 15:21:52,627 [INFO] goalcat: Inducing taxonomy from 34 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/perturbed/rtfm_goal_model__pertB_merge_13_20.jucm
+2026-08-31 15:22:05,926 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=96b7be952d20eeeb, latency=11.42s)
+2026-08-31 15:22:05,927 [INFO] goalcat: Induced 4 categories: timely_payment, merged_closure, administrative_appeal, judicial_appeal
+2026-08-31 15:22:05,934 [INFO] goalcat: Taxonomy grounding check: no problems found.
+2026-08-31 15:22:05,934 [INFO] goalcat: Axis partition check: 4 categories partition the declared axis (12, 13, 14, 19).
+2026-08-31 15:22:05,935 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e2_guided_pertB_merge_13_20_rep1/round1/05_taxonomy/taxonomy.json
+2026-08-31 15:22:05,936 [INFO] goalcat: Step 5a complete.
+2026-08-31 15:22:05,936 [INFO] goalcat: Peak RSS after Step 5a: 380.7 MiB
+2026-08-31 15:22:05,937 [INFO] goalcat: Step 6 (narrative assignment) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-31 15:22:05,937 [INFO] goalcat: Loading profiles/narratives from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e2_guided_pertB_merge_13_20_rep1
+2026-08-31 15:22:05,946 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e2_guided_pertB_merge_13_20_rep1/round1/05_taxonomy/taxonomy.json
+2026-08-31 15:22:05,949 [INFO] goalcat: Assigning 231 narratives against 4 categories (model=gemini/gemini-3.5-flash-lite, batch_size=50, concurrency=5)
+2026-08-31 15:22:11,651 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=117e753d9f48e48c, latency=5.68s)
+2026-08-31 15:22:13,086 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b763f73a9ffca62c, latency=7.13s)
+2026-08-31 15:22:13,317 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=ad89faadd3e19ed4, latency=7.35s)
+2026-08-31 15:22:13,698 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=0b8829f43f290041, latency=7.73s)
+2026-08-31 15:22:27,598 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=c0c46498a0881b1b, latency=21.64s)
+2026-08-31 15:22:27,604 [INFO] goalcat: Assigned 214/231 narratives to a category, 17 residual, 0 still pending
+2026-08-31 15:22:27,604 [INFO] goalcat: Assignment grounding check: no problems found.
+2026-08-31 15:22:27,783 [INFO] goalcat: Saved assignment outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e2_guided_pertB_merge_13_20_rep1/round1/06_assignment
+2026-08-31 15:22:27,783 [INFO] goalcat: Step 6 complete.
+2026-08-31 15:22:27,783 [INFO] goalcat: Peak RSS after Step 6: 402.5 MiB
+2026-08-31 15:22:27,784 [INFO] goalcat: Task C13: running Step 7b (indicator satisfaction) for run_id=icpm2027_e2_guided_pertB_merge_13_20_rep1
+2026-08-31 15:22:27,785 [INFO] goalcat: Step 7b (indicator satisfaction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-08-31 15:22:27,785 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e2_guided_pertB_merge_13_20_rep1/01_variants/variants.csv
+2026-08-31 15:22:27,812 [INFO] goalcat: Loading assignments from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e2_guided_pertB_merge_13_20_rep1/round1/06_assignment/assignments.csv
+2026-08-31 15:22:27,813 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e2_guided_pertB_merge_13_20_rep1/round1/05_taxonomy/taxonomy.json
+2026-08-31 15:23:59,862 [INFO] goalcat: Step 7b: scope __baseline__ — 4/4 indicators measured, 150370 cases
+2026-08-31 15:24:32,168 [INFO] goalcat: Step 7b: scope timely_payment — 4/4 indicators measured, 66574 cases
+2026-08-31 15:24:34,154 [INFO] goalcat: Step 7b: scope administrative_appeal — 4/4 indicators measured, 3904 cases
+2026-08-31 15:24:34,472 [INFO] goalcat: Step 7b: scope judicial_appeal — 4/4 indicators measured, 531 cases
+2026-08-31 15:24:34,488 [INFO] goalcat: Step 7b: scope merged_closure — 4/4 indicators measured, 18 cases
+2026-08-31 15:24:34,510 [INFO] goalcat: Saved indicator outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e2_guided_pertB_merge_13_20_rep1/round1/07b_indicators
+2026-08-31 15:24:34,510 [INFO] goalcat: Step 7b complete.
+2026-08-31 15:24:34,510 [INFO] goalcat: Peak RSS after Step 7b: 1394.6 MiB
+2026-08-31 15:24:34,512 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_e2_guided_pertB_merge_13_20_rep1

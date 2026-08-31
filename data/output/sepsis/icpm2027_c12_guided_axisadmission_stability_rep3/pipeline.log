@@ -1,0 +1,13 @@
+2026-08-31 14:31:44,080 [INFO] goalcat: Run environment: host=Mac-Daniel.local, platform=macOS-26.6.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-31 14:31:44,081 [INFO] goalcat: ICPM 2027 condition run starting: run_id=icpm2027_c12_guided_axisadmission_stability_rep3, steps=[5], taxonomy_mode=intent_guided, goal_model=sepsis_goal_model.jucm
+2026-08-31 14:31:44,084 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-08-31 14:31:44,084 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_c12_guided_axisadmission_stability_rep3/04_sampling/narrative_sample.csv
+2026-08-31 14:31:44,091 [INFO] goalcat: Inducing taxonomy from 33 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/sepsis_goal_model.jucm
+2026-08-31 14:31:48,198 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=8c3730da85e1a90f, latency=2.21s)
+2026-08-31 14:31:48,199 [INFO] goalcat: Induced 2 categories: admission_nc, admission_ic
+2026-08-31 14:31:48,207 [WARNING] goalcat: Taxonomy grounding check: admission_nc/admission_ic: share evidence_variant_ids: ['V0068']
+2026-08-31 14:31:48,207 [INFO] goalcat: Axis partition check: 2 categories partition the declared axis (15, 16).
+2026-08-31 14:31:48,209 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_c12_guided_axisadmission_stability_rep3/round1/05_taxonomy/taxonomy.json
+2026-08-31 14:31:48,209 [INFO] goalcat: Step 5a complete.
+2026-08-31 14:31:48,209 [INFO] goalcat: Peak RSS after Step 5a: 367.5 MiB
+2026-08-31 14:31:48,209 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_c12_guided_axisadmission_stability_rep3

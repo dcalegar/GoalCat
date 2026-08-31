@@ -139,10 +139,13 @@ def check_pair(manifests: dict[str, dict], *, perturbed: bool = False) -> list[F
         note="Prompt-template set hashed as a whole; a wording change to any template fails this row.")
     add("Assignment batch size (Task C10)", "same", lambda m: m.get("assignment_batch_size"))
     axis_values = {label: m.get("axis") for label, m in manifests.items()}
+    # Every arm that reads a goal model carries an axis, which is `guided_no_sample` as well as
+    # `guided`. Keyed on the manifest's own goal-model record rather than on an arm-name list, so a
+    # future arm cannot silently fall on the wrong side of this row.
     guided_axes = {
         label: value
         for label, value in axis_values.items()
-        if manifests[label].get("arm") == "guided"
+        if not manifests[label].get("inputs", {}).get("goal_model_absent_by_design", True)
     }
     checks.append(
         FreezeCheck(

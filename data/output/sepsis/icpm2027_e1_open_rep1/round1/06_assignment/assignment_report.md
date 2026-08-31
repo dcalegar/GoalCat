@@ -4,61 +4,61 @@ Run: `icpm2027_e1_open_rep1` | Log: `sepsis` | Taxonomy mode: `open` | Assignmen
 
 846 variants, 1050 cases total.
 
-## Fast ER Triage & Minimal Diagnostics (`fast_er_triage`)
+## Rapid Triage and Outpatient Evaluation (`rapid_triage_and_discharge`)
 
-Short, rapid cases that conclude immediately at triage or with basic lab tests (Leucocytes/CRP) within minutes and without hospitalization or intensive interventions.
+Short-duration, low-length paths consisting primarily of initial emergency room registration, triage, and rapid blood work or sepsis screening without subsequent inpatient admission.
 
-**Taxonomy-derivation rationale (Step 5):** Grounded in variants like V0001, V0002, V0003, and V0292, which show extremely short durations (minutes) and very low trace lengths ending in triage or quick lab results.
-
-**Goal-model linkage:** (no goal model)
-
-**Coverage:** macro 48/846 variants (5.7%) · micro 152/1050 cases (14.5%)
-
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 4.63, nearest other category `acute_iv_treatment` at mean distance 5.55
-
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.463, nearest other category `acute_iv_treatment` at mean distance 0.492
-
-## Acute ER Care with IV Intervention (`acute_iv_treatment`)
-
-Standard acute sepsis care pathways involving triage, comprehensive blood work (CRP, Leucocytes, LacticAcid), and administration of intravenous liquids and antibiotics within a short duration.
-
-**Taxonomy-derivation rationale (Step 5):** Grounded in frequent variants like V0004, V0005, V0006, V0007, and V0009, which feature standard diagnostic panels followed by IV therapy within hours.
+**Taxonomy-derivation rationale (Step 5):** These variants represent low-acuity or fast-resolved cases where patients spend minutes to hours in the ER and are processed with minimal steps.
 
 **Goal-model linkage:** (no goal model)
 
-**Coverage:** macro 67/846 variants (7.9%) · micro 115/1050 cases (11.0%)
+**Coverage:** macro 93/846 variants (11.0%) · micro 200/1050 cases (19.0%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 5.67, nearest other category `fast_er_triage` at mean distance 5.55
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 4.96, nearest other category `acute_medical_intervention` at mean distance 7.66
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.472, nearest other category `fast_er_triage` at mean distance 0.492
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.480, nearest other category `acute_medical_intervention` at mean distance 0.594
 
-## Standard Hospital Admission and Release (`standard_admission_release`)
+## Acute Medical Intervention (`acute_medical_intervention`)
 
-Cases requiring formal hospital admission (Admission NC or Admission IC) followed by a standard inpatient stay and subsequent discharge (Release A, B, C, or D).
+Standard acute care pathways that involve extensive diagnostics (CRP, Leucocytes, Lactic Acid) followed by active treatment such as IV liquids and IV antibiotics within a moderate duration.
 
-**Taxonomy-derivation rationale (Step 5):** Grounded in variants that incorporate ward admissions and end in regular release outcomes over a span of days, such as V0008, V0068, and V0070.
-
-**Goal-model linkage:** (no goal model)
-
-**Coverage:** macro 482/846 variants (57.0%) · micro 511/1050 cases (48.7%)
-
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 8.96, nearest other category `acute_iv_treatment` at mean distance 9.35
-
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.369, nearest other category `chronic_rework_readmission` at mean distance 0.430
-
-## Chronic Rework and Readmission (`chronic_rework_readmission`)
-
-Extreme outliers characterized by extensive loops, highly repeated lab tests (CRP, LacticAcid, Leucocytes) and ward admissions, spanning multiple months and frequently culminating in returns to the ER or prolonged stays.
-
-**Taxonomy-derivation rationale (Step 5):** Grounded in extremely long and complex variants like V0317, V0551, V0605, V0625, and V0710, where extensive rework and long durations dominate the process profile.
+**Taxonomy-derivation rationale (Step 5):** Characterized by moderate trace lengths and durations of hours to days, leading to treatment interventions like IV antibiotics.
 
 **Goal-model linkage:** (no goal model)
 
-**Coverage:** macro 238/846 variants (28.1%) · micro 261/1050 cases (24.9%)
+**Coverage:** macro 49/846 variants (5.8%) · micro 94/1050 cases (9.0%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 19.03, nearest other category `standard_admission_release` at mean distance 15.38
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 8.31, nearest other category `rapid_triage_and_discharge` at mean distance 7.66
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.314, nearest other category `standard_admission_release` at mean distance 0.430
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.522, nearest other category `short_inpatient_admission` at mean distance 0.486
+
+## Short Inpatient Admission and Release (`short_inpatient_admission`)
+
+Cases requiring short-term ward admission (Admission NC or Admission IC) spanning a few days, concluding with a standard patient release.
+
+**Taxonomy-derivation rationale (Step 5):** Captures standard inpatient stays that are moderately prolonged compared to pure ER visits, but lacking chronic or extreme complications.
+
+**Goal-model linkage:** (no goal model)
+
+**Coverage:** macro 342/846 variants (40.4%) · micro 365/1050 cases (34.8%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 8.33, nearest other category `acute_medical_intervention` at mean distance 8.67
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.297, nearest other category `chronic_rework_and_readmission` at mean distance 0.477
+
+## Chronic Rework and Readmission (`chronic_rework_and_readmission`)
+
+Extremely long, highly complex paths involving heavy repetition of diagnostics and admissions (rework), frequently resulting in patient return to the ER or extended recovery.
+
+**Taxonomy-derivation rationale (Step 5):** Identified by high trace lengths, extensive durations spanning dozens to hundreds of days, and repeated diagnostic tests or ward admissions.
+
+**Goal-model linkage:** (no goal model)
+
+**Coverage:** macro 357/846 variants (42.2%) · micro 386/1050 cases (36.8%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 16.28, nearest other category `short_inpatient_admission` at mean distance 13.51
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.305, nearest other category `short_inpatient_admission` at mean distance 0.477
 
 ## Divergence between structural and profile distance
 
@@ -66,42 +66,36 @@ Flagged for review, not resolved automatically — the two metrics measure diffe
 
 **Same category, structurally far apart** (possibly a category covering two distinct control-flow patterns):
 
-- `V0098` / `V0710` (category `chronic_rework_readmission`): structural=179, profile=0.646
-- `V0686` / `V0710` (category `chronic_rework_readmission`): structural=179, profile=0.683
-- `V0710` / `V0828` (category `chronic_rework_readmission`): structural=179, profile=0.674
-- `V0045` / `V0710` (category `chronic_rework_readmission`): structural=178, profile=0.694
-- `V0614` / `V0710` (category `chronic_rework_readmission`): structural=178, profile=0.677
-- `V0650` / `V0710` (category `chronic_rework_readmission`): structural=178, profile=0.601
-- `V0658` / `V0710` (category `chronic_rework_readmission`): structural=178, profile=0.584
-- `V0710` / `V0823` (category `chronic_rework_readmission`): structural=178, profile=0.690
-- `V0026` / `V0710` (category `chronic_rework_readmission`): structural=177, profile=0.638
-- `V0033` / `V0710` (category `chronic_rework_readmission`): structural=177, profile=0.597
+- `V0350` / `V0710` (category `chronic_rework_and_readmission`): structural=180, profile=0.670
+- `V0497` / `V0710` (category `chronic_rework_and_readmission`): structural=180, profile=0.751
+- `V0098` / `V0710` (category `chronic_rework_and_readmission`): structural=179, profile=0.646
+- `V0424` / `V0710` (category `chronic_rework_and_readmission`): structural=179, profile=0.731
+- `V0686` / `V0710` (category `chronic_rework_and_readmission`): structural=179, profile=0.683
+- `V0045` / `V0710` (category `chronic_rework_and_readmission`): structural=178, profile=0.694
+- `V0101` / `V0710` (category `chronic_rework_and_readmission`): structural=178, profile=0.522
+- `V0110` / `V0710` (category `chronic_rework_and_readmission`): structural=178, profile=0.677
+- `V0180` / `V0710` (category `chronic_rework_and_readmission`): structural=178, profile=0.607
+- `V0242` / `V0710` (category `chronic_rework_and_readmission`): structural=178, profile=0.585
 
 **Different category, structurally near-identical** (the TP/TA-style case — categories distinguished on business intent the activity sequence alone would not show):
 
-- `V0003` (`fast_er_triage`) / `V0379` (`acute_iv_treatment`): structural=1, profile=0.388
-- `V0004` (`acute_iv_treatment`) / `V0679` (`fast_er_triage`): structural=1, profile=0.024
-- `V0007` (`acute_iv_treatment`) / `V0040` (`standard_admission_release`): structural=1, profile=0.336
-- `V0008` (`standard_admission_release`) / `V0686` (`chronic_rework_readmission`): structural=1, profile=0.454
-- `V0011` (`acute_iv_treatment`) / `V0510` (`fast_er_triage`): structural=1, profile=0.019
-- `V0011` (`acute_iv_treatment`) / `V0679` (`fast_er_triage`): structural=1, profile=0.002
-- `V0012` (`acute_iv_treatment`) / `V0510` (`fast_er_triage`): structural=1, profile=0.041
-- `V0013` (`fast_er_triage`) / `V0713` (`acute_iv_treatment`): structural=1, profile=0.398
-- `V0016` (`standard_admission_release`) / `V0041` (`chronic_rework_readmission`): structural=1, profile=0.115
-- `V0016` (`standard_admission_release`) / `V0052` (`chronic_rework_readmission`): structural=1, profile=0.429
+- `V0004` (`acute_medical_intervention`) / `V0415` (`rapid_triage_and_discharge`): structural=1, profile=0.361
+- `V0004` (`acute_medical_intervention`) / `V0679` (`rapid_triage_and_discharge`): structural=1, profile=0.024
+- `V0004` (`acute_medical_intervention`) / `V0713` (`rapid_triage_and_discharge`): structural=1, profile=0.044
+- `V0006` (`acute_medical_intervention`) / `V0148` (`rapid_triage_and_discharge`): structural=1, profile=0.011
+- `V0007` (`acute_medical_intervention`) / `V0040` (`short_inpatient_admission`): structural=1, profile=0.336
+- `V0007` (`acute_medical_intervention`) / `V0056` (`rapid_triage_and_discharge`): structural=1, profile=0.033
+- `V0007` (`acute_medical_intervention`) / `V0148` (`rapid_triage_and_discharge`): structural=1, profile=0.004
+- `V0008` (`short_inpatient_admission`) / `V0686` (`chronic_rework_and_readmission`): structural=1, profile=0.454
+- `V0008` (`short_inpatient_admission`) / `V0707` (`rapid_triage_and_discharge`): structural=1, profile=0.425
+- `V0009` (`acute_medical_intervention`) / `V0148` (`rapid_triage_and_discharge`): structural=1, profile=0.022
 
 ## Residual
 
-11/846 variants (1.3%), 11/1050 cases (1.0%) unassigned.
+5/846 variants (0.6%), 5/1050 cases (0.5%) unassigned.
 
-- `V0417`: Does not fit any category cleanly due to ending back at ER triage.
-- `V0636`: The case does not fit any standard category because it terminates abnormally at a LacticAcid activity instead of a release or ER return.
-- `V0644`: The case terminates with a CRP lab test instead of concluding with a standard release or ER return.
-- `V0645`: The case is truncated, terminating on a LacticAcid activity without reaching a formal release or admission resolution.
-- `V0703`: The case ends with IV Liquid rather than an admission or discharge, making it an incomplete or non-standard trajectory.
-- `V0707`: The process concludes at Admission NC, lacking a complete hospital stay or final release sequence.
-- `V0764`: Incomplete case concluding prematurely at ER Sepsis Triage without standard treatments or admissions.
-- `V0772`: Incomplete process ending abruptly in a repeated CRP activity.
-- `V0774`: Truncated trace that does not progress to any treatment or admission.
-- `V0775`: Incomplete trace ending at CRP without reaching a release or admission.
-- `V0778`: Truncated trace ending unexpectedly at Leucocytes.
+- `V0365`: Path ends unexpectedly with diagnostic activities rather than standard inpatient admission or release, fitting none of the clean categories.
+- `V0374`: Very short path that concludes prematurely with a diagnostic test (Leucocytes) instead of a discharge or admission outcome.
+- `V0462`: Very short duration sequence ending prematurely with a diagnostic outcome (CRP) rather than standard discharge or admission flow.
+- `V0516`: Incomplete path ending abruptly with Leucocytes without standard triage or admission conclusion.
+- `V0517`: Very short incomplete sequence ending in ER Triage without treatment or discharge.

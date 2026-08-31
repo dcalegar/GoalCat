@@ -27,6 +27,12 @@ as opposed to `experimentation/examples/`'s illustrative per-log demos with no f
 Every piece above has been exercised against the real `data/goals/*.jucm` files and/or the real
 RTFM log (`data/logs/rtfm.xes.gz`) during development — not run against fixtures only.
 
+**[`RUNS.md`](RUNS.md)** inventories every run directory that currently exists under
+`data/output/{rtfm,sepsis,bpic2019}/icpm2027_*` and every cross-run artifact under
+`data/output/icpm2027_results/` — what each one is, which paper number it feeds, and what was
+deleted as superseded. The paper reports aggregates only; this is the map back to the run that
+produced them.
+
 ## How to run it
 
 ```bash

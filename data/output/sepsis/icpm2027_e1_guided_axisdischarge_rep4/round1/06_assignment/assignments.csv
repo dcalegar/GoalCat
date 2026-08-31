@@ -1,0 +1,847 @@
+variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
+V0001,,This variant ends in ER Sepsis Triage and does not reach any discharge pathway.,,release_a,2.0,,0.3996862471103668
+V0002,,This variant stops at CRP testing without reaching a discharge pathway.,,release_a,2.0,,0.3868909180164337
+V0003,,This variant terminates at Leucocytes testing before any discharge activity occurs.,,release_a,2.0,,0.3938073217868805
+V0004,,This variant ends with IV Antibiotics administration and does not include a release step.,,release_a,2.0,,0.3561701476573944
+V0005,,This variant ends at LacticAcid testing without proceeding to admission or discharge.,,release_a,2.0,,0.38819071650505066
+V0006,,This variant ends with IV Antibiotics and does not reach a discharge pathway.,,release_b,2.0,,0.33371415734291077
+V0007,,This variant concludes with IV Antibiotics and lacks a discharge milestone.,,release_b,2.0,,0.33662155270576477
+V0008,release_a,"This variant culminates in Release A, representing the standard discharge pathway.",7.0,release_b,2.0,0.3583371639251709,0.3369273245334625
+V0009,,This variant terminates at IV Antibiotics without any subsequent discharge.,,release_a,2.0,,0.3448009192943573
+V0010,,This variant ends in ER Sepsis Triage and does not represent a discharge pathway.,,release_a,2.0,,0.3493982255458832
+V0011,,This variant ends at IV Antibiotics and does not reach a release milestone.,,release_b,2.0,,0.3334716260433197
+V0012,,This variant finishes with IV Antibiotics without reaching a discharge pathway.,,release_a,2.0,,0.3901524841785431
+V0013,,This variant ends at Leucocytes testing and does not include admission or discharge.,,release_a,3.0,,0.3775876760482788
+V0014,release_a,"This variant successfully reaches Release A, mapping to the standard discharge pathway.",8.0,release_b,2.0,0.35419216752052307,0.34107232093811035
+V0015,release_a,This variant concludes with Release A following standard guideline windows and care.,4.0,release_b,3.0,0.032105639576911926,0.34168222546577454
+V0016,release_a,"This variant ends in Release A, representing the standard discharge pathway.",2.0,release_b,3.0,0.019671423360705376,0.3370905816555023
+V0017,,This variant terminates at ER Sepsis Triage without reaching a discharge milestone.,,release_a,3.0,,0.3776973485946655
+V0018,release_a,"This variant ends in Release A, fulfilling the standard discharge pathway criteria.",6.0,release_c,3.0,0.35329899191856384,0.34196552634239197
+V0019,,This variant ends with IV Antibiotics and does not feature a discharge event.,,release_a,3.0,,0.34530603885650635
+V0020,,This variant ends at CRP without progressing to discharge.,,release_a,3.0,,0.38946422934532166
+V0021,release_a,"Although it resulted in a return to ER, the initial hospital discharge path is Release A.",5.0,release_b,4.0,0.37657347321510315,0.005273167043924332
+V0022,release_a,"This variant culminates in Release A, which represents the standard discharge pathway.",6.0,release_c,1.0,0.35275718569755554,0.34250733256340027
+V0023,release_a,This variant involves an initial discharge via Release A before a subsequent return to ER.,8.0,release_c,4.0,0.381185382604599,0.009885069914162159
+V0024,,This variant stops at Admission NC without completing a discharge path.,,release_a,3.0,,0.004364368971437216
+V0025,,This variant terminates at IV Antibiotics without a discharge step.,,release_a,2.0,,0.33436623215675354
+V0026,release_a,This variant uses Release A as its discharge step before a later return to ER.,4.0,release_d,4.0,0.5235127806663513,0.1811208873987198
+V0027,,This variant ends with IV Antibiotics and does not reach discharge.,,release_b,3.0,,0.3358197510242462
+V0028,release_a,This variant discharges through Release A before a later return to the ER.,5.0,release_b,2.0,0.40845003724098206,0.007231835275888443
+V0029,,This variant ends at Leucocytes testing without reaching any release pathway.,,release_b,2.0,,0.3802293837070465
+V0030,release_a,"This variant terminates at Release A, reflecting the standard discharge pathway.",4.0,release_e,4.0,0.02100117690861225,0.3360888957977295
+V0031,,This variant stops at LacticAcid without progressing to hospital admission or discharge.,,release_b,3.0,,0.3646189868450165
+V0032,release_a,This variant follows the Release A discharge pathway prior to an ER return.,4.0,release_d,5.0,0.3569237291812897,0.01437660213559866
+V0033,release_a,This variant includes a standard Release A discharge prior to an eventual return to ER.,6.0,release_d,4.0,0.592096209526062,0.16679668426513672
+V0034,,This variant concludes with IV Liquid administration and lacks a discharge milestone.,,release_a,2.0,,0.33619096875190735
+V0035,release_a,This variant completes via the Release A standard discharge pathway.,1.0,release_c,2.0,0.0010516488691791892,0.3336624205112457
+V0036,,This variant ends at CRP without reaching a discharge event.,,release_b,3.0,,0.39477190375328064
+V0037,release_b,"This variant explicitly culminates in Release B, representing the alternative discharge pathway following extended monitoring.",5.0,release_a,1.0,0.3478574752807617,0.33376121520996094
+V0038,,This variant ends with IV Antibiotics without any release event.,,release_a,3.0,,0.33445248007774353
+V0039,release_a,This variant reaches completion through the Release A discharge pathway.,4.0,release_b,4.0,0.11114964634180069,0.33401814103126526
+V0040,,This variant ends at Admission NC and does not reach a discharge pathway.,,release_b,1.0,,0.009225305169820786
+V0041,release_a,"This variant concludes with Release A, representing the standard discharge pathway.",2.0,release_c,3.0,0.13479755818843842,0.3335843086242676
+V0042,release_a,"This variant culminates in Release A, aligning with the standard discharge pathway.",4.0,release_b,3.0,0.022312326356768608,0.33477774262428284
+V0043,,This variant terminates at LacticAcid testing without reaching admission or release.,,release_a,2.0,,0.37702012062072754
+V0044,release_a,This variant finishes via the Release A standard discharge pathway.,4.0,release_b,3.0,0.02539287507534027,0.3349694311618805
+V0045,release_a,This variant utilizes the Release A discharge pathway before a subsequent ER return.,8.0,release_d,3.0,0.718054473400116,0.3387773036956787
+V0046,release_a,"This variant concludes with Release A, indicating the standard discharge pathway.",4.0,release_c,4.0,0.0067435819655656815,0.3337673246860504
+V0047,release_a,This variant successfully reaches Release A for standard patient discharge.,6.0,release_c,3.0,0.3735239803791046,0.33553382754325867
+V0048,release_a,"This variant ends in Release A, representing the standard discharge pathway.",2.0,release_d,2.0,0.009391166269779205,0.33444809913635254
+V0049,release_a,This variant includes a Release A discharge step prior to an eventual return to ER.,7.0,release_c,5.0,0.4325404167175293,0.007240867242217064
+V0050,,This variant terminates at CRP testing and does not reach any discharge pathway.,,release_a,3.0,,0.38090047240257263
+V0051,release_a,"Outcome is Release A, representing the standard discharge pathway for patients treated within guideline windows.",3.0,release_c,3.0,0.12346086651086807,0.3335767686367035
+V0052,,"Outcome is Return ER, which does not match any of the standard release categories.",,release_a,1.0,,0.0010482902871444821
+V0053,release_a,"Outcome is Release A, representing the standard discharge pathway.",9.0,release_b,4.0,0.37642717361450195,0.3340359926223755
+V0054,,"Outcome is Return ER, falling outside the defined release pathways.",,release_a,1.0,,0.0006520826718769968
+V0055,,"Outcome is Return ER, which does not fit any release category.",,release_a,1.0,,0.0034876607824116945
+V0056,,"Outcome is IV Antibiotics, lacking a final discharge outcome.",,release_a,3.0,,0.3599989414215088
+V0057,release_a,"Outcome is Release A, realizing the standard discharge pathway.",4.0,release_b,3.0,0.3740958869457245,0.33496198058128357
+V0058,release_a,"Outcome is Release A, realizing the standard discharge pathway.",8.0,release_b,3.0,0.36885058879852295,0.33370938897132874
+V0059,release_a,"Outcome is Release A, realizing the standard discharge pathway.",2.0,release_d,3.0,0.02981525845825672,0.339391827583313
+V0060,,"Outcome is Return ER, not matching any successful release category.",,release_a,1.0,,0.001005847123451531
+V0061,release_a,"Outcome is Release A, realizing the standard discharge pathway.",4.0,release_d,2.0,0.0007724848110228777,0.33482837677001953
+V0062,,"Outcome is IV Antibiotics, which is not a discharge category.",,release_a,2.0,,0.33633720874786377
+V0063,release_a,"Outcome is Release A, realizing the standard discharge pathway.",12.0,release_b,6.0,0.011443265713751316,0.33602777123451233
+V0064,release_a,"Outcome is Release A, realizing the standard discharge pathway.",6.0,release_b,4.0,0.17691172659397125,0.3362339437007904
+V0065,release_a,"Outcome is Release A, realizing the standard discharge pathway.",3.0,release_c,3.0,0.11968076229095459,0.3368700444698334
+V0066,release_a,"Outcome is Release A, realizing the standard discharge pathway.",6.0,release_b,2.0,0.37688684463500977,0.3344956636428833
+V0067,release_a,"Outcome is Release A, realizing the standard discharge pathway.",6.0,release_b,3.0,0.0029650742653757334,0.33353617787361145
+V0068,release_b,"Outcome is Release B, representing the alternative discharge pathway following extended monitoring.",5.0,release_a,4.0,0.0,0.33354225754737854
+V0069,release_a,"Outcome is Release A, realizing the standard discharge pathway.",5.0,release_b,4.0,0.0015147315571084619,0.33458080887794495
+V0070,release_a,"Outcome is Release A, realizing the standard discharge pathway.",5.0,release_d,2.0,0.18676352500915527,0.3402844965457916
+V0071,,"Outcome is Return ER, which does not map to any release category.",,release_a,3.0,,0.0008149051573127508
+V0072,,"Outcome is Return ER, not matching any successful discharge category.",,release_a,2.0,,0.00031539765768684447
+V0073,release_a,"Outcome is Release A, realizing the standard discharge pathway.",5.0,release_b,4.0,0.010937991552054882,0.3346960246562958
+V0074,,"Outcome is Return ER, which is outside the release categories.",,release_a,1.0,,0.02142423205077648
+V0075,,"Outcome is Return ER, which does not fit any release category.",,release_a,4.0,,0.0016834265552461147
+V0076,release_b,"Outcome is Release B, representing the alternative discharge pathway following extended monitoring.",2.0,release_a,2.0,0.35440078377723694,0.33370938897132874
+V0077,release_b,"Outcome is Release B, representing the alternative discharge pathway following extended monitoring.",5.0,release_a,4.0,0.24737389385700226,0.3457289934158325
+V0078,,"Outcome is Return ER, failing to match any release category.",,release_a,5.0,,0.0014013733016327024
+V0079,release_a,"Outcome is Release A, realizing the standard discharge pathway.",7.0,release_b,4.0,0.18680007755756378,0.34032106399536133
+V0080,,"Outcome is Return ER, not a matching discharge category.",,release_a,4.0,,0.00043312355410307646
+V0081,,"Outcome is IV Liquid, which is not a discharge pathway.",,release_b,3.0,,0.3669639527797699
+V0082,release_a,"Outcome is Release A, realizing the standard discharge pathway.",7.0,release_b,3.0,0.3512932360172272,0.3469698131084442
+V0083,,"Outcome is Return ER, which does not fit any release category.",,release_a,2.0,,0.0001340450980933383
+V0084,release_c,"Outcome is Release C, representing a specific discharge pathway for long-stay complex cases.",5.0,release_b,3.0,0.1383093148469925,0.33340534567832947
+V0085,,"Outcome is Return ER, failing to match any release category.",,release_a,2.0,,0.00043503878987394273
+V0086,release_a,"Outcome is Release A, realizing the standard discharge pathway.",6.0,release_d,3.0,0.017602602019906044,0.3350217342376709
+V0087,release_a,"Outcome is Release A, realizing the standard discharge pathway.",5.0,release_c,5.0,0.11804351210594177,0.33558574318885803
+V0088,,"Outcome is IV Antibiotics, which is not a discharge pathway.",,release_a,4.0,,0.3839285373687744
+V0089,,"Outcome is Return ER, which does not match any release category.",,release_a,5.0,,0.0004765109915751964
+V0090,release_a,"Outcome is Release A, realizing the standard discharge pathway.",6.0,release_c,3.0,0.01084654126316309,0.3347874581813812
+V0091,release_c,"Outcome is Release C, representing a specific discharge pathway for long-stay complex cases.",13.0,release_a,8.0,0.08758944272994995,0.3336044251918793
+V0092,,"Outcome is LacticAcid, which is not a discharge category.",,release_a,2.0,,0.09228887408971786
+V0093,release_d,"Outcome is Release D, representing a specific discharge pathway for extended rework cases.",6.0,release_a,2.0,0.14002251625061035,0.3338777720928192
+V0094,,"Outcome is Return ER, failing to match any release category.",,release_a,1.0,,0.0006598744075745344
+V0095,release_a,"Outcome is Release A, realizing the standard discharge pathway.",5.0,release_e,2.0,0.027589203789830208,0.33716580271720886
+V0096,release_a,"Outcome is Release A, realizing the standard discharge pathway.",6.0,release_b,3.0,0.3450358808040619,0.3675326108932495
+V0097,release_a,"Outcome is Release A, realizing the standard discharge pathway.",4.0,release_b,3.0,0.11947042495012283,0.3370126783847809
+V0098,,"Outcome is Return ER, which does not fit any release category.",,release_a,1.0,,0.0015429140767082572
+V0099,release_a,"Outcome is Release A, realizing the standard discharge pathway.",4.0,release_b,3.0,0.11388862878084183,0.3333558142185211
+V0100,release_a,"Outcome is Release A, realizing the standard discharge pathway.",4.0,release_b,1.0,0.011971186846494675,0.3336627781391144
+V0101,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",8.0,release_d,6.0,0.4339168965816498,0.00861735362559557
+V0102,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",4.0,release_c,3.0,0.12366106361150742,0.33377695083618164
+V0103,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",6.0,release_d,5.0,0.13370709121227264,0.33426615595817566
+V0104,release_a,The narrative contains Release A as the discharge pathway before an ER return.,9.0,release_b,4.0,0.7519389986991882,0.33464565873146057
+V0105,release_b,"The narrative outcome is Release B, realizing the alternative discharge pathway following extended monitoring.",9.0,release_a,4.0,0.021725786849856377,0.3333390951156616
+V0106,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",9.0,release_c,3.0,0.1710604429244995,0.3368864953517914
+V0107,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",6.0,release_c,5.0,0.0018695996841415763,0.3337821066379547
+V0108,release_a,The narrative contains Release A as the discharge pathway before an ER return.,4.0,release_c,4.0,0.3602675199508667,0.011032790876924992
+V0109,release_a,The narrative contains Release A as the discharge pathway before an ER return.,7.0,release_d,5.0,0.6321039795875549,0.11197053641080856
+V0110,release_a,The narrative contains Release A as the discharge pathway before an ER return.,8.0,release_b,4.0,0.7559756636619568,0.3359905481338501
+V0111,,The process terminates at Admission NC without reaching any of the specified release categories.,,release_a,1.0,,0.0036192431580275297
+V0112,release_a,The narrative contains Release A as the discharge pathway before an ER return.,4.0,release_b,4.0,0.5122503638267517,0.009601925499737263
+V0113,release_b,"The narrative outcome is Release B, realizing the alternative discharge pathway following extended monitoring.",6.0,release_a,2.0,0.3651614487171173,0.3617938756942749
+V0114,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",6.0,release_b,4.0,0.12952905893325806,0.3365785777568817
+V0115,release_a,The narrative contains Release A as the discharge pathway before an ER return.,5.0,release_d,5.0,0.4346317946910858,0.009332234971225262
+V0116,release_a,The narrative contains Release A as the discharge pathway before an ER return.,5.0,release_c,3.0,0.3973322808742523,0.0038859627675265074
+V0117,release_d,"The narrative contains Release D as the discharge pathway, realizing the extended rework cases pathway.",7.0,release_a,2.0,0.3800358474254608,0.006395623087882996
+V0118,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",5.0,release_c,6.0,0.02351069450378418,0.3358060121536255
+V0119,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",6.0,release_b,5.0,0.005869217216968536,0.3333382308483124
+V0120,release_a,The narrative contains Release A as the discharge pathway before an ER return.,9.0,release_c,5.0,0.5615741610527039,0.17297738790512085
+V0121,release_a,The narrative contains Release A as the discharge pathway before an ER return.,5.0,release_c,4.0,0.4019385874271393,0.0007203731220215559
+V0122,release_a,The narrative contains Release A as the discharge pathway.,3.0,release_c,2.0,0.02365449257194996,0.3359498083591461
+V0123,release_a,The narrative contains Release A as the discharge pathway before an ER return.,10.0,release_c,6.0,0.4779900014400482,0.00400783633813262
+V0124,release_a,The narrative contains Release A as the discharge pathway before an ER return.,4.0,release_d,5.0,0.3409994840621948,0.030300823971629143
+V0125,release_a,The narrative contains Release A as the discharge pathway before an ER return.,12.0,release_b,9.0,0.5457794666290283,0.04005826637148857
+V0126,release_a,The narrative contains Release A as the discharge pathway before an ER return.,6.0,release_d,4.0,0.5605289340019226,0.13412079215049744
+V0127,,The process terminates at LacticAcid without reaching any of the specified release categories.,,release_b,2.0,,0.3333404064178467
+V0128,release_a,The narrative contains Release A as the discharge pathway before an ER return.,14.0,release_e,10.0,0.5329296588897705,0.02720847725868225
+V0129,release_a,The narrative contains Release A as the discharge pathway before an ER return.,21.0,release_b,14.0,0.5593193769454956,0.0024876133538782597
+V0130,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",4.0,release_b,4.0,0.017284253612160683,0.3347034156322479
+V0131,release_a,The narrative contains Release A as the discharge pathway before an ER return.,9.0,release_d,5.0,0.6757638454437256,0.24110810458660126
+V0132,,The process terminates at IV Antibiotics without reaching any of the specified release categories.,,release_b,4.0,,0.3541009724140167
+V0133,,The process terminates at IV Antibiotics without reaching any of the specified release categories.,,release_a,4.0,,0.3394845724105835
+V0134,release_a,The narrative contains Release A as the discharge pathway before an ER return.,17.0,release_d,11.0,0.583596408367157,0.0031509532127529383
+V0135,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",5.0,release_b,3.0,0.023595251142978668,0.33349481225013733
+V0136,release_a,The narrative contains Release A as the discharge pathway before an ER return.,19.0,release_e,11.0,0.5339788794517517,0.0030190572142601013
+V0137,,The process terminates at LacticAcid without reaching any of the specified release categories.,,release_a,2.0,,0.10903880000114441
+V0138,release_c,"The narrative outcome is Release C, realizing the specific discharge pathway for long-stay complex cases.",2.0,release_a,2.0,0.13761679828166962,0.33340248465538025
+V0139,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",21.0,release_d,14.0,0.17193593084812164,0.3903258740901947
+V0140,release_a,The narrative contains Release A as the discharge pathway before an ER return.,7.0,release_b,7.0,0.5417365431785583,0.004738577641546726
+V0141,release_a,The narrative contains Release A as the discharge pathway before an ER return.,8.0,release_b,8.0,0.5246993899345398,0.0189781803637743
+V0142,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",4.0,release_c,3.0,0.001326782046817243,0.33476877212524414
+V0143,release_a,The narrative contains Release A as the discharge pathway before an ER return.,7.0,release_b,4.0,0.35053348541259766,0.02076682634651661
+V0144,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",6.0,release_c,5.0,0.11948191374540329,0.33702418208122253
+V0145,release_b,"The narrative outcome is Release B, realizing the alternative discharge pathway following extended monitoring.",107.0,release_a,47.0,0.2256491780281067,0.3359471559524536
+V0146,,The process terminates at Leucocytes without reaching any of the specified release categories.,,release_a,4.0,,0.28501901030540466
+V0147,release_b,"The narrative outcome is Release B, realizing the alternative discharge pathway following extended monitoring.",5.0,release_a,2.0,0.0019673386123031378,0.3335767686367035
+V0148,,The process terminates at IV Antibiotics without reaching any of the specified release categories.,,release_a,2.0,,0.34093284606933594
+V0149,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway within guideline windows.",7.0,release_b,5.0,0.010956640355288982,0.3346773386001587
+V0150,release_b,"The narrative outcome is Release B, realizing the alternative discharge pathway following extended monitoring.",7.0,release_a,4.0,0.02203805185854435,0.33352211117744446
+V0151,release_d,The narrative outcomes in Release D and exhibits extended rework characteristics.,15.0,release_a,8.0,0.44845911860466003,0.001840634853579104
+V0152,release_a,Standard discharge pathway ending in Release A within normal windows.,9.0,release_b,6.0,0.36529484391212463,0.33369848132133484
+V0153,release_a,Standard discharge pathway leading to Release A.,8.0,release_b,3.0,0.34495189785957336,0.35031259059906006
+V0154,release_a,"Discharged with Release A after standard care steps, despite subsequent return.",5.0,release_c,7.0,0.5831647515296936,0.002719367854297161
+V0155,release_a,Discharged with Release A.,5.0,release_d,4.0,0.5457952618598938,0.008797337301075459
+V0156,release_a,Standard care pathway concluding with Release A.,6.0,release_b,2.0,0.3404201567173004,0.3720165193080902
+V0157,release_a,Follows standard pathway ending in Release A.,9.0,release_b,6.0,0.36988842487335205,0.0014119163388386369
+V0158,release_a,Standard progression concluding with Release A.,4.0,release_c,3.0,0.11334645003080368,0.3338530361652374
+V0159,release_a,Concludes with Release A following routine pathway.,6.0,release_c,5.0,0.11300596594810486,0.33419349789619446
+V0160,release_a,Standard discharge via Release A before returning.,5.0,release_d,5.0,0.4676210880279541,0.004806386306881905
+V0161,release_a,Ends in Release A.,7.0,release_c,5.0,0.5540851950645447,0.017087256535887718
+V0162,release_b,Concludes with Release B representing extended monitoring pathway.,5.0,release_a,2.0,0.12079416960477829,0.33335936069488525
+V0163,release_a,Standard discharge via Release A.,5.0,release_c,5.0,0.4118538796901703,0.003860282711684704
+V0164,release_a,Standard discharge via Release A with ICU admission.,9.0,release_d,6.0,0.5119829773902893,0.006261757109314203
+V0165,release_a,Routine pathway concluding with Release A.,6.0,release_b,3.0,0.3473024368286133,0.34796205163002014
+V0166,release_a,Routine pathway concluding with Release A.,7.0,release_b,4.0,0.11503958702087402,0.3340848386287689
+V0167,release_a,Routine pathway concluding with Release A.,8.0,release_b,7.0,0.13154567778110504,0.3462560176849365
+V0168,release_a,Routine pathway concluding with Release A.,11.0,release_b,8.0,0.5330873131752014,0.02736610174179077
+V0169,release_a,Routine pathway concluding with Release A.,4.0,release_b,4.0,0.1294543296098709,0.3366532623767853
+V0170,release_b,"Ends in Release B, representing extended monitoring.",7.0,release_c,3.0,0.1337714046239853,0.3337897062301636
+V0171,release_a,Standard discharge via Release A.,7.0,release_d,6.0,0.35005292296409607,0.021247394382953644
+V0172,release_a,Standard discharge via Release A.,17.0,release_c,8.0,0.3667529821395874,0.004547347780317068
+V0173,release_a,Standard discharge via Release A.,8.0,release_d,5.0,0.019414307549595833,0.33683347702026367
+V0174,release_a,Standard discharge via Release A.,45.0,release_b,22.0,0.4959068298339844,0.009814383462071419
+V0175,release_a,Standard discharge via Release A.,4.0,release_c,4.0,0.11968446522951126,0.3368663489818573
+V0176,release_a,Standard discharge via Release A.,7.0,release_d,6.0,0.007348929066210985,0.33350467681884766
+V0177,release_a,Standard discharge via Release A.,3.0,release_d,3.0,0.12539371848106384,0.33354225754737854
+V0178,release_a,Standard discharge via Release A.,16.0,release_c,10.0,0.13707147538661957,0.3339240849018097
+V0179,release_a,Standard discharge via Release A.,6.0,release_d,6.0,0.5299767851829529,0.007021170109510422
+V0180,release_a,Standard discharge via Release A.,10.0,release_b,5.0,0.7212004065513611,0.23568369448184967
+V0181,release_a,Discharged via Release A before further lab activities.,9.0,release_b,6.0,0.3402564525604248,0.3349968194961548
+V0182,release_a,Standard discharge via Release A.,18.0,release_c,12.0,0.17405353486537933,0.33389338850975037
+V0183,release_a,Standard discharge via Release A.,10.0,release_d,7.0,0.4985331594944,0.013016493059694767
+V0184,release_a,Standard discharge via Release A.,5.0,release_b,4.0,0.24335922300815582,0.44497060775756836
+V0185,release_a,Standard discharge via Release A.,17.0,release_c,11.0,0.18160349130630493,0.3336044251918793
+V0186,release_a,Standard discharge via Release A.,6.0,release_d,4.0,0.1885729879140854,0.33885976672172546
+V0187,,Incomplete case lacking any discharge or release activity.,,release_a,4.0,,0.3404557704925537
+V0188,release_a,Standard discharge via Release A.,7.0,release_e,3.0,0.24864481389522552,0.44489288330078125
+V0189,release_a,Standard discharge via Release A.,3.0,release_c,4.0,0.01215276401489973,0.33348122239112854
+V0190,release_a,Standard discharge via Release A.,7.0,release_b,4.0,0.1782805323600769,0.33486512303352356
+V0191,release_a,Standard discharge via Release A.,9.0,release_b,6.0,0.37861502170562744,0.007314686197787523
+V0192,release_a,Standard discharge via Release A.,6.0,release_d,3.0,0.5606868267059326,0.023688888177275658
+V0193,release_a,Standard discharge via Release A.,9.0,release_d,6.0,0.012381316162645817,0.3369658291339874
+V0194,release_a,Standard discharge via Release A.,7.0,release_c,4.0,0.001262041972950101,0.33387282490730286
+V0195,release_a,Standard discharge via Release A.,6.0,release_e,6.0,0.01760113425552845,0.3350203037261963
+V0196,release_e,Concludes with Release E representing alternative discharge pathway E.,24.0,release_d,15.0,0.37534478306770325,0.002719367854297161
+V0197,,Incomplete case missing a formal release or discharge outcome.,,release_a,2.0,,0.2589362859725952
+V0198,release_a,Standard discharge via Release A.,7.0,release_b,3.0,0.3580136299133301,0.3402493894100189
+V0199,release_a,Standard discharge via Release A.,8.0,release_c,5.0,0.36960601806640625,0.0016942891525104642
+V0200,release_a,Standard discharge via Release A.,3.0,release_d,4.0,0.35005903244018555,0.021241284906864166
+V0201,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",22.0,release_d,12.0,0.5161122679710388,0.010391023941338062
+V0202,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_b,2.0,0.030353354290127754,0.3399299383163452
+V0203,release_a,"The narrative ends with Release A (followed by Return ER), corresponding to the standard discharge pathway.",7.0,release_b,6.0,0.3568527400493622,0.014447581022977829
+V0204,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_d,2.0,0.009158190339803696,0.3342151343822479
+V0205,release_d,"The narrative explicitly ends with Release D, representing the extended rework discharge pathway.",17.0,release_e,9.0,0.012281385250389576,0.33384642004966736
+V0206,release_b,"The narrative explicitly ends with Release B, representing the alternative discharge pathway following extended monitoring.",5.0,release_a,3.0,0.36165082454681396,0.3340359926223755
+V0207,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",5.0,release_b,3.0,0.017885610461235046,0.33530476689338684
+V0208,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",8.0,release_c,8.0,0.12557198107242584,0.33372053503990173
+V0209,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",7.0,release_b,2.0,0.36717113852500916,0.3346366882324219
+V0210,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",6.0,release_d,5.0,0.4106534421443939,0.005060744937509298
+V0211,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",5.0,release_d,3.0,0.3863699436187744,0.014848300255835056
+V0212,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",6.0,release_c,5.0,0.4719017446041107,0.0005257689044810832
+V0213,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",9.0,release_d,5.0,0.6808157563209534,0.2360561490058899
+V0214,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_b,3.0,0.024503521621227264,0.3340801000595093
+V0215,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",8.0,release_d,4.0,0.011083726771175861,0.3356682360172272
+V0216,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",8.0,release_b,4.0,0.5014142990112305,0.015897588804364204
+V0217,,The variant terminates at IV Antibiotics without reaching any of the defined discharge outcomes.,,release_a,4.0,,0.36824917793273926
+V0218,release_b,"The narrative explicitly ends with Release B, representing the alternative discharge pathway following extended monitoring.",14.0,release_a,10.0,0.197331503033638,0.33996978402137756
+V0219,,The variant terminates at Leucocytes without reaching any of the defined discharge outcomes.,,release_a,2.0,,0.23908162117004395
+V0220,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",5.0,release_d,4.0,0.3791884481906891,0.007888146676123142
+V0221,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",6.0,release_b,5.0,0.2547841966152191,0.44998446106910706
+V0222,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",12.0,release_c,7.0,0.12164369225502014,0.3357127606868744
+V0223,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",2.0,release_c,3.0,0.22686541080474854,0.4474475383758545
+V0224,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",5.0,release_c,3.0,0.445306658744812,0.02000712789595127
+V0225,release_b,"The narrative explicitly ends with Release B, representing the alternative discharge pathway following extended monitoring.",7.0,release_a,4.0,0.25549080967903137,0.34730076789855957
+V0226,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",6.0,release_b,3.0,0.13080579042434692,0.33530184626579285
+V0227,release_d,"The narrative explicitly ends with Release D before a return to ER, corresponding to the extended rework discharge pathway.",7.0,release_a,3.0,0.336277037858963,0.0005257689044810832
+V0228,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",6.0,release_b,3.0,0.22803883254528046,0.44627413153648376
+V0229,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",6.0,release_c,5.0,0.3454981744289398,0.050131842494010925
+V0230,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",5.0,release_c,4.0,0.49763378500938416,0.012117087841033936
+V0231,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",5.0,release_d,4.0,0.5322328209877014,0.004765125457197428
+V0232,,The variant terminates at IV Antibiotics without reaching any of the defined discharge outcomes.,,release_b,3.0,,0.3529844284057617
+V0233,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",7.0,release_c,3.0,0.37796077132225037,0.006660438608378172
+V0234,,The variant terminates at Leucocytes without reaching any of the defined discharge outcomes.,,release_a,3.0,,0.37387049198150635
+V0235,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",7.0,release_c,3.0,0.19568486511707306,0.3492058515548706
+V0236,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",8.0,release_b,3.0,0.3561495244503021,0.34211352467536926
+V0237,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",5.0,release_b,5.0,0.45367488265037537,0.01875261403620243
+V0238,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",6.0,release_b,5.0,0.11225828528404236,0.3338310420513153
+V0239,release_c,"The narrative explicitly ends with Release C, representing the specific discharge pathway for long-stay complex cases.",10.0,release_b,6.0,0.019804323092103004,0.3335825204849243
+V0240,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_d,3.0,0.021410800516605377,0.335679292678833
+V0241,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",9.0,release_e,6.0,0.4958292543888092,0.0103125786408782
+V0242,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",8.0,release_d,2.0,0.5796899199485779,0.16935761272907257
+V0243,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",27.0,release_c,15.0,0.565980851650238,0.07910116761922836
+V0244,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",9.0,release_d,6.0,0.1152462363243103,0.33387815952301025
+V0245,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",11.0,release_d,8.0,0.1329369843006134,0.3360151946544647
+V0246,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",8.0,release_b,5.0,0.1163354143500328,0.33423009514808655
+V0247,release_b,"The narrative explicitly ends with Release B, representing the alternative discharge pathway following extended monitoring.",13.0,release_a,8.0,0.1072438582777977,0.33369529247283936
+V0248,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",13.0,release_b,8.0,0.5263988971710205,0.020677702501416206
+V0249,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_b,4.0,0.03802604600787163,0.3411509096622467
+V0250,release_a,"The narrative ends with Release A before a return to ER, matching the standard discharge pathway.",7.0,release_b,4.0,0.41397619247436523,0.0017379781929776073
+V0251,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",12.0,release_b,7.0,0.5149354338645935,0.009214191697537899
+V0252,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",2.0,release_d,4.0,0.11488107591867447,0.3342433273792267
+V0253,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",5.0,release_b,3.0,0.3507746160030365,0.3617938756942749
+V0254,release_d,"The narrative ends with Release D, representing an extended rework discharge pathway.",17.0,release_a,9.0,0.02873574197292328,0.3336470127105713
+V0255,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",4.0,release_b,4.0,0.12586812674999237,0.33401668071746826
+V0256,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",7.0,release_b,5.0,0.5181689858436584,0.0036832736805081367
+V0257,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",13.0,release_c,12.0,0.11115211248397827,0.33431413769721985
+V0258,release_b,"The narrative ends with Release B, representing alternative discharge following extended monitoring.",8.0,release_a,5.0,0.1732284426689148,0.33365729451179504
+V0259,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",4.0,release_c,4.0,0.007049110252410173,0.33346179127693176
+V0260,,The process terminates at IV Antibiotics without reaching any discharge pathway.,,release_a,3.0,,0.344614714384079
+V0261,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",7.0,release_d,7.0,0.3885883092880249,0.012629917822778225
+V0262,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",8.0,release_d,6.0,0.35769930481910706,0.013600993901491165
+V0263,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",6.0,release_c,4.0,0.3947267532348633,0.006491479929536581
+V0264,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",4.0,release_b,4.0,0.12015745788812637,0.3363933265209198
+V0265,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",5.0,release_c,5.0,0.5435858368873596,0.1722855120897293
+V0266,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",7.0,release_e,3.0,0.11427375674247742,0.33584651350975037
+V0267,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",7.0,release_b,3.0,0.11479227989912033,0.3363650143146515
+V0268,,The process terminates at Leucocytes without reaching any discharge pathway.,,release_a,2.0,,0.07482597976922989
+V0269,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",7.0,release_d,2.0,0.4139559268951416,0.0017582564614713192
+V0270,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",8.0,release_b,7.0,0.4069158732891083,0.005697633605450392
+V0271,release_b,"The narrative ends with Release B, representing alternative discharge following extended monitoring.",10.0,release_a,7.0,0.17887942492961884,0.33333897590637207
+V0272,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",7.0,release_b,4.0,0.012360755354166031,0.3369452655315399
+V0273,release_d,"The narrative ends with Release D, representing an extended rework discharge pathway.",74.0,release_b,43.0,0.10799303650856018,0.33679652214050293
+V0274,release_c,"The narrative ends with Release C, representing the specific discharge pathway for long-stay complex cases.",6.0,release_a,1.0,0.33583006262779236,0.34070172905921936
+V0275,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",19.0,release_d,15.0,0.12243270874023438,0.33714303374290466
+V0276,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",2.0,release_c,4.0,0.023349961265921593,0.33374011516571045
+V0277,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",13.0,release_b,10.0,0.5435965657234192,0.037875328212976456
+V0278,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",7.0,release_d,4.0,0.0031043048948049545,0.33367541432380676
+V0279,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",9.0,release_b,6.0,0.34746694564819336,0.0238333810120821
+V0280,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",11.0,release_c,7.0,0.40363314747810364,0.0024149182718247175
+V0281,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",9.0,release_c,5.0,0.005374075844883919,0.33546218276023865
+V0282,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",5.0,release_b,4.0,0.00286960625089705,0.33344075083732605
+V0283,release_c,"The narrative ends with Release C, representing the specific discharge pathway for long-stay complex cases.",22.0,release_d,10.0,0.3554837703704834,0.001129603828303516
+V0284,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",6.0,release_b,6.0,0.5250242352485657,0.003172004595398903
+V0285,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",10.0,release_b,6.0,0.1307632476091385,0.3338414430618286
+V0286,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",10.0,release_b,6.0,0.34432974457740784,0.3509347438812256
+V0287,,The process terminates at CRP without reaching any discharge pathway.,,release_a,2.0,,0.3802435100078583
+V0288,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",5.0,release_d,4.0,0.3451882600784302,0.026112079620361328
+V0289,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",5.0,release_d,4.0,0.03741628676652908,0.3417607247829437
+V0290,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",8.0,release_d,6.0,0.5527238845825195,0.015725955367088318
+V0291,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",5.0,release_b,4.0,0.2685576379299164,0.4639088213443756
+V0292,,The process terminates at Leucocytes without reaching any discharge pathway.,,release_a,2.0,,0.4186955988407135
+V0293,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",5.0,release_b,2.0,0.1883738785982132,0.3448047637939453
+V0294,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",6.0,release_d,4.0,0.1162233054637909,0.33376553654670715
+V0295,,The process terminates at IV Antibiotics without reaching any discharge pathway.,,release_a,2.0,,0.33373406529426575
+V0296,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",5.0,release_d,4.0,0.4447011947631836,0.02140643261373043
+V0297,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",5.0,release_c,3.0,0.4078069031238556,0.006588665768504143
+V0298,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",3.0,release_c,5.0,0.019775275141000748,0.33719444274902344
+V0299,release_a,"The narrative ends with Release A, representing standard discharge following guideline pathways.",11.0,release_c,7.0,0.01313516404479742,0.3375544846057892
+V0300,release_a,"The narrative ends with Release A prior to a readmission, representing standard discharge pathway.",17.0,release_d,10.0,0.5944108963012695,0.013965456746518612
+V0301,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",7.0,release_e,4.0,0.3647029399871826,0.006597386207431555
+V0302,,The process terminates at ER Sepsis Triage and does not complete a discharge pathway.,,release_a,4.0,,0.3863014876842499
+V0303,release_a,The narrative finishes via Release A before returning to the ER.,7.0,release_c,5.0,0.5169448256492615,0.004907504189759493
+V0304,release_a,The narrative successfully completes through Release A.,8.0,release_b,4.0,0.12200472503900528,0.3345460593700409
+V0305,,The process ends at IV Antibiotics without reaching any discharge pathway.,,release_a,4.0,,0.38954201340675354
+V0306,release_a,The narrative terminates with Release A as the discharge activity.,9.0,release_b,6.0,0.16843460500240326,0.3447110652923584
+V0307,release_a,The process concludes via Release A prior to a post-discharge ER return.,5.0,release_c,2.0,0.39765432476997375,0.003563901409506798
+V0308,release_a,Discharge is achieved through Release A.,9.0,release_b,5.0,0.4599235951900482,0.009890234097838402
+V0309,release_b,The narrative goes through Release B beforeAdmission NC.,8.0,release_a,3.0,0.772127628326416,0.3983713686466217
+V0310,release_a,The case is completed via Release A.,6.0,release_c,5.0,0.12346229702234268,0.3335781991481781
+V0311,release_a,Discharge occurs via Release A before the patient returns to the ER.,17.0,release_c,11.0,0.5166639685630798,0.010942717082798481
+V0312,release_a,The narrative concludes with Release A.,7.0,release_b,6.0,0.04256701469421387,0.33793333172798157
+V0313,release_c,"The narrative ends with Release C, indicating the long-stay complex case pathway.",4.0,release_a,4.0,0.02167687751352787,0.3333558142185211
+V0314,release_c,The narrative concludes with Release C.,7.0,release_a,5.0,0.0055399625562131405,0.33351871371269226
+V0315,release_a,The process concludes with Release A.,25.0,release_c,14.0,0.15206541121006012,0.3372878134250641
+V0316,release_e,The narrative explicitly terminates with Release E.,9.0,release_a,3.0,0.09367720037698746,0.3334403932094574
+V0317,release_a,The patient is discharged via Release A prior to an ER return.,159.0,release_b,67.0,0.5974743962287903,0.07397598773241043
+V0318,release_a,Discharge is completed through Release A.,23.0,release_d,14.0,0.14380550384521484,0.3406583368778229
+V0319,release_a,The workflow concludes with Release A.,12.0,release_e,7.0,0.011034891940653324,0.33561941981315613
+V0320,release_a,The case is finalized via Release A.,6.0,release_d,4.0,0.6313574910163879,0.11271701008081436
+V0321,release_a,The process terminates via Release A.,8.0,release_d,6.0,0.5650357604026794,0.008204028010368347
+V0322,,The case ends at IV Antibiotics without reaching discharge.,,release_a,3.0,,0.3656140863895416
+V0323,release_a,The narrative finishes at Release A.,9.0,release_b,2.0,0.3878300189971924,0.3333403766155243
+V0324,release_a,Discharge is recorded as Release A.,28.0,release_d,17.0,0.5462358593940735,0.0011538139078766108
+V0325,,The case stops at IV Antibiotics.,,release_a,3.0,,0.43959906697273254
+V0326,release_a,The narrative ends with Release A.,3.0,release_c,4.0,0.019190499559044838,0.3366096317768097
+V0327,release_a,The workflow concludes with Release A.,6.0,release_c,4.0,0.476846843957901,0.002864725887775421
+V0328,release_a,Discharge is processed through Release A.,7.0,release_b,5.0,0.4349214732646942,0.009621920995414257
+V0329,release_a,The case ends with Release A.,16.0,release_b,9.0,0.1304979771375656,0.33357617259025574
+V0330,,The narrative terminates at IV Liquid without reaching a discharge category.,,release_b,2.0,,0.33358609676361084
+V0331,release_a,The process is completed via Release A.,14.0,release_d,8.0,0.03213052079081535,0.3344758450984955
+V0332,release_b,"The narrative ends with Release B, representing the extended monitoring discharge pathway.",6.0,release_a,2.0,0.2784082293510437,0.3702181577682495
+V0333,release_b,The case terminates with Release B.,13.0,release_a,8.0,0.08355250954627991,0.33387038111686707
+V0334,release_d,"The narrative ends with Release D, representing the extended rework pathway.",25.0,release_a,14.0,0.43670937418937683,0.0011538139078766108
+V0335,release_a,Discharge occurs via Release A before an ER return.,6.0,release_c,5.0,0.4600311815738678,0.012396258302032948
+V0336,,The process terminates at CRP and does not reach any discharge activity.,,release_a,1.0,,0.3399571478366852
+V0337,release_a,The workflow completes with Release A.,6.0,release_d,4.0,0.020748088136315346,0.3363419771194458
+V0338,release_a,The narrative concludes with Release A.,5.0,release_b,4.0,0.11216028779745102,0.3350287973880768
+V0339,release_a,Discharge is achieved via Release A.,22.0,release_b,16.0,0.541016161441803,0.10406583547592163
+V0340,release_a,The case ends with Release A.,6.0,release_e,4.0,0.02235785685479641,0.33473220467567444
+V0341,release_a,The narrative terminates with Release A.,4.0,release_d,4.0,0.12386686354875565,0.3339827358722687
+V0342,,The case ends at CRP without reaching a discharge point.,,release_a,3.0,,0.3888669013977051
+V0343,release_a,The process finishes through Release A.,6.0,release_b,4.0,0.11507910490036011,0.33665183186531067
+V0344,release_b,The narrative ends with Release B.,10.0,release_c,3.0,0.1462228149175644,0.33389756083488464
+V0345,release_a,Discharge is completed via Release A.,16.0,release_d,11.0,0.19094865024089813,0.33592021465301514
+V0346,release_a,The workflow concludes with Release A.,16.0,release_c,11.0,0.604303777217865,0.023858383297920227
+V0347,release_d,"The narrative concludes with Release D, indicating the extended rework pathway.",8.0,release_a,5.0,0.5113713145256042,0.0008567627519369125
+V0348,release_a,The process ends via Release A prior to an ER return.,6.0,release_d,7.0,0.4597119390964508,0.006395623087882996
+V0349,,The case terminates at ER Sepsis Triage without discharge.,,release_a,5.0,,0.349503755569458
+V0350,release_a,The narrative concludes with Release A.,9.0,release_d,3.0,0.7490032315254211,0.33337751030921936
+V0351,release_a,"The narrative results in Release A, representing the standard discharge pathway for patients treated within guideline windows.",9.0,release_b,4.0,0.3534245789051056,0.34183990955352783
+V0352,,"The outcome is Return ER, and the variant shows repeated admissions and lab work, falling outside standard guideline release pathways.",,release_a,3.0,,0.00026249856455251575
+V0353,,"The narrative ends in Return ER following extended checks, which does not map to any standard release category.",,release_a,2.0,,0.0003271280147600919
+V0354,release_a,"The narrative terminates with Release A, matching the standard discharge pathway.",18.0,release_b,14.0,0.17172251641750336,0.34213200211524963
+V0355,release_a,"The narrative ends with Release A after initial treatment, aligning with the standard pathway.",6.0,release_b,6.0,0.1738481968641281,0.34000635147094727
+V0356,release_a,"The outcome is Release A, representing the standard discharge pathway.",11.0,release_c,7.0,0.1330258548259735,0.33678796887397766
+V0357,,The narrative ends in Return ER after multiple monitoring cycles and rework.,,release_a,2.0,,0.002906508045271039
+V0358,,"The process terminates with Return ER, failing to fit any successful release category.",,release_a,2.0,,0.0016633850755169988
+V0359,,"The outcome is Return ER following prolonged post-discharge readmission, not aligning with structured discharge categories.",,release_a,3.0,,0.00034061408950947225
+V0360,release_a,"The case concludes with Release A, matching the standard discharge pathway.",6.0,release_b,5.0,0.3412771224975586,0.35398736596107483
+V0361,release_a,"The narrative ends in Release A, indicating standard discharge.",6.0,release_b,3.0,0.1413494348526001,0.3367006480693817
+V0362,release_a,"The narrative concludes with Release A, matching the standard discharge pathway.",3.0,release_b,4.0,0.013962063938379288,0.33483877778053284
+V0363,release_a,"The outcome is Release A, representing standard discharge.",4.0,release_d,4.0,0.019865697249770164,0.33722439408302307
+V0364,,"The case ends with Return ER, which is not part of the valid release pathways.",,release_a,2.0,,0.0009366095182485878
+V0365,,"The outcome is Leucocytes rather than a discharge pathway, representing an incomplete or ongoing path.",,release_a,6.0,,0.06894596666097641
+V0366,,"The narrative ends in Return ER, making it part of the residual rather than standard release categories.",,release_a,3.0,,0.0009089004597626626
+V0367,,The extensive rework and final Return ER outcome place this variant in the residual.,,release_a,11.0,,8.911366603570059e-05
+V0368,,"The process stops at Admission NC, representing an incomplete pathway without a final release event.",,release_a,2.0,,0.010571219027042389
+V0369,,The narrative terminates with Return ER after multiple rework iterations.,,release_a,6.0,,0.0037863878533244133
+V0370,,"The case results in Return ER, falling outside the defined successful discharge categories.",,release_a,4.0,,0.0015839594416320324
+V0371,release_b,"The narrative culminates in Release B, representing the alternative discharge pathway following extended monitoring.",5.0,release_a,3.0,0.36474713683128357,0.3336716592311859
+V0372,release_a,"Despite rework, the final outcome is Release A, mapping to the standard discharge pathway.",13.0,release_e,8.0,0.18496711552143097,0.33384689688682556
+V0373,release_a,"The narrative concludes with Release A, representing standard discharge.",6.0,release_b,3.0,0.0,0.3340558707714081
+V0374,,The trace stops at Leucocytes without achieving a terminal release outcome.,,release_a,2.0,,0.06948789209127426
+V0375,release_a,"The narrative finishes with Release A, indicating standard discharge.",10.0,release_d,7.0,0.18458987772464752,0.3342241048812866
+V0376,release_c,"The narrative terminates with Release C, representing the specific discharge pathway for long-stay complex cases.",6.0,release_a,3.0,0.007629280909895897,0.3339240849018097
+V0377,release_a,"The narrative ends in Release A, aligning with the standard discharge pathway.",3.0,release_d,5.0,0.012095569632947445,0.3335384130477905
+V0378,,The process ends at IV Antibiotics without reaching a discharge destination.,,release_a,2.0,,0.33538034558296204
+V0379,,"The trace terminates at IV Antibiotics, lacking a final discharge event.",,release_a,2.0,,0.33912718296051025
+V0380,release_a,"The narrative successfully concludes with Release A, matching the standard discharge pathway.",8.0,release_b,4.0,0.35188421607017517,0.34338030219078064
+V0381,release_a,"The outcome is Release A, mapping to the standard discharge pathway.",6.0,release_b,3.0,0.13453328609466553,0.33384859561920166
+V0382,,The variant ends in Return ER after multiple admission and test cycles.,,release_a,3.0,,0.0014465018175542355
+V0383,release_a,"The narrative concludes with Release A, representing standard discharge.",8.0,release_b,5.0,0.3605184257030487,0.3347460925579071
+V0384,release_b,"The narrative terminates with Release B, reflecting the alternative discharge pathway following extended monitoring.",10.0,release_a,6.0,0.1950094848871231,0.333635538816452
+V0385,,"The case ends in Return ER following heavy rework, falling outside standard release categories.",,release_a,7.0,,0.00834730826318264
+V0386,,"The outcome is Return ER, which does not match any valid release category.",,release_a,2.0,,0.0011227871291339397
+V0387,release_a,"The narrative concludes with Release A, aligning with standard discharge.",5.0,release_c,5.0,0.13203240931034088,0.3351106345653534
+V0388,release_a,"The case results in Release A, representing standard discharge.",7.0,release_c,5.0,0.02088853530585766,0.336201548576355
+V0389,release_a,"The narrative ends in Release A, matching the standard discharge pathway.",6.0,release_b,3.0,0.3667081892490387,0.3351118564605713
+V0390,release_b,"The narrative ends with Release B, representing the alternative discharge pathway following extended monitoring.",7.0,release_a,3.0,0.012797337956726551,0.3335118293762207
+V0391,release_a,"The outcome is Release A, mapping to the standard discharge pathway.",5.0,release_c,4.0,0.12925733625888824,0.34396764636039734
+V0392,release_a,"The narrative terminates in Release A, indicating standard discharge.",4.0,release_d,4.0,0.2516014873981476,0.4469527304172516
+V0393,release_b,The narrative concludes with Release B after extended monitoring and multiple checks.,19.0,release_a,9.0,0.03321772441267967,0.3334762752056122
+V0394,release_a,"The case ends with Release A, representing standard discharge.",7.0,release_b,5.0,0.02713523618876934,0.3367117941379547
+V0395,release_a,"The narrative results in Release A, aligning with standard discharge.",0.0,release_c,3.0,0.0030918216798454523,0.3336629569530487
+V0396,release_a,"The outcome is Release A, matching the standard discharge pathway.",4.0,release_d,1.0,0.007652990985661745,0.3333362340927124
+V0397,release_a,"The narrative concludes with Release A, representing standard discharge.",7.0,release_d,6.0,0.1330137401819229,0.33357277512550354
+V0398,,The outcome is Return ER following prolonged loops and rework.,,release_a,6.0,,0.0005707857781089842
+V0399,release_b,"The narrative finishes with Release B, matching the alternative discharge pathway following extended monitoring.",7.0,release_a,2.0,0.43542158603668213,0.39499858021736145
+V0400,release_a,"The narrative results in Release A, representing standard discharge.",5.0,release_b,3.0,0.18478882312774658,0.33830979466438293
+V0401,release_b,"The narrative outcome is Release B, which matches the category for the alternative discharge pathway following extended monitoring.",9.0,release_a,5.0,0.1129515990614891,0.3336580693721771
+V0402,release_a,"The narrative outcome is Release A, corresponding to the standard discharge pathway.",7.0,release_b,5.0,0.42172011733055115,0.0035794225987046957
+V0403,release_a,"The narrative sequence concludes with Release A prior to returning to the ER, aligning with the standard discharge pathway.",9.0,release_b,7.0,0.5066825151443481,0.038399506360292435
+V0404,release_a,"The narrative concludes with Release A, matching the standard discharge pathway category.",6.0,release_d,5.0,0.542000949382782,0.005003033671528101
+V0405,release_a,"The narrative ends with Release A, which realizes the standard discharge pathway.",5.0,release_d,4.0,0.03715738654136658,0.34201958775520325
+V0406,release_a,"The narrative concludes with Release A, matching the standard discharge pathway category.",6.0,release_b,4.0,0.1872083693742752,0.34072935581207275
+V0407,release_b,"The narrative outcome is Release B, realizing the alternative discharge pathway following extended monitoring.",5.0,release_a,5.0,0.14288106560707092,0.3375103771686554
+V0408,release_a,"The narrative ends with Release A before the patient returned to the ER, realizing the standard discharge pathway.",7.0,release_b,4.0,0.36884400248527527,0.0024563290644437075
+V0409,release_a,"The narrative ends with Release A before the return to the ER, aligning with the standard discharge pathway.",7.0,release_b,4.0,0.523804247379303,0.0019520153291523457
+V0410,release_d,"The narrative concludes with Release D, directly realizing the extended rework cases discharge pathway.",6.0,release_a,1.0,0.14332804083824158,0.33346179127693176
+V0411,release_a,"Despite subsequent events, the narrative contains Release A as a discharge step, realizing the standard discharge pathway.",10.0,release_b,7.0,0.4510399401187897,0.3389069736003876
+V0412,release_a,"The narrative includes Release A before the patient's return to the ER, realizing the standard discharge pathway.",11.0,release_d,5.0,0.38301101326942444,0.011710703372955322
+V0413,release_a,"The narrative concludes with Release A prior to the return to the ER, aligning with the standard discharge pathway.",7.0,release_b,3.0,0.7616219520568848,0.33573511242866516
+V0414,release_a,"The narrative ends with Release A before returning to the ER, realizing the standard discharge pathway.",7.0,release_b,5.0,0.38063982129096985,0.00933949276804924
+V0415,,"The outcome is Admission NC without any discharge event, so it does not fit any of the release categories.",,release_a,1.0,,0.005220815073698759
+V0416,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway.",8.0,release_b,4.0,0.3773532211780548,0.3348008692264557
+V0417,,"The narrative ends at ER Triage without reaching any discharge pathway, leaving it in the residual.",,release_a,3.0,,0.7037296891212463
+V0418,release_a,"The narrative includes Release A prior to the return to the ER, realizing the standard discharge pathway.",4.0,release_d,5.0,0.39080414175987244,0.010414083488285542
+V0419,release_a,"The narrative outcome is Release A, matching the standard discharge pathway.",4.0,release_b,3.0,0.006929136347025633,0.333581805229187
+V0420,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway.",7.0,release_b,4.0,0.3541838824748993,0.3440791368484497
+V0421,release_b,"The narrative outcome is Release B, realizing the alternative discharge pathway following extended monitoring.",7.0,release_a,4.0,0.00939370971173048,0.33376553654670715
+V0422,release_a,"The narrative includes Release A before the patient's return to the ER, aligning with the standard discharge pathway.",11.0,release_c,7.0,0.541064977645874,0.035343777388334274
+V0423,release_c,"The narrative outcome is Release C, realizing the specific discharge pathway for long-stay complex cases.",6.0,release_a,4.0,0.01725548319518566,0.33396363258361816
+V0424,release_a,"The narrative includes Release A prior to the return to the ER, realizing the standard discharge pathway.",7.0,release_b,4.0,0.6807168126106262,0.34070172905921936
+V0425,release_a,"The narrative outcome is Release A, matching the standard discharge pathway.",3.0,release_c,2.0,0.009443518705666065,0.3345004618167877
+V0426,release_c,"The narrative outcome is Release C, realizing the specific discharge pathway for long-stay complex cases.",4.0,release_a,2.0,0.018275557085871696,0.33333656191825867
+V0427,release_c,"The narrative includes Release C prior to returning to the ER, realizing the long-stay complex cases discharge pathway.",8.0,release_a,4.0,0.3918193578720093,0.0019520153291523457
+V0428,release_c,"The narrative outcome is Release C, realizing the specific discharge pathway for long-stay complex cases.",10.0,release_a,6.0,0.12931039929389954,0.33356547355651855
+V0429,,"The narrative ends at IV Antibiotics without reaching a discharge pathway, placing it in the residual.",,release_a,2.0,,0.34038498997688293
+V0430,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway.",8.0,release_b,4.0,0.11297767609357834,0.33333897590637207
+V0431,release_a,"The narrative outcome is Release A, matching the standard discharge pathway.",2.0,release_d,3.0,0.017186198383569717,0.33460533618927
+V0432,release_b,"The narrative outcome is Release B, realizing the alternative discharge pathway following extended monitoring.",11.0,release_a,9.0,0.2100725919008255,0.35271087288856506
+V0433,release_c,"The narrative outcome is Release C, realizing the specific discharge pathway for long-stay complex cases.",6.0,release_a,2.0,0.22553741931915283,0.34123948216438293
+V0434,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway.",7.0,release_d,5.0,0.114795982837677,0.33636870980262756
+V0435,release_a,"The narrative includes Release A before the patient returned to the ER, realizing the standard discharge pathway.",36.0,release_d,20.0,0.5407514572143555,0.004330573603510857
+V0436,release_b,"The narrative outcome is Release B, realizing the alternative discharge pathway following extended monitoring.",8.0,release_a,5.0,0.0316169448196888,0.3347119092941284
+V0437,release_d,"The narrative outcome is Release D, realizing the specific discharge pathway for extended rework cases.",30.0,release_a,16.0,0.5003300905227661,0.009890234097838402
+V0438,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway.",11.0,release_c,5.0,0.015729742124676704,0.3349599540233612
+V0439,release_a,"The narrative outcome is Release A, matching the standard discharge pathway.",28.0,release_b,12.0,0.04492342844605446,0.34028974175453186
+V0440,release_a,"The narrative includes Release A prior to the return to the ER, realizing the standard discharge pathway.",11.0,release_c,5.0,0.5549911260604858,0.001840634853579104
+V0441,release_a,"The narrative includes Release A before the patient returned to the ER, realizing the standard discharge pathway.",5.0,release_c,3.0,0.4477877616882324,0.022488228976726532
+V0442,release_a,"The narrative includes Release A prior to the return to the ER, realizing the standard discharge pathway.",8.0,release_d,6.0,0.5169638991355896,0.0048883757553994656
+V0443,release_a,"The narrative includes Release A before returning to the ER, realizing the standard discharge pathway.",5.0,release_d,2.0,0.38548505306243896,0.014184721745550632
+V0444,release_c,"The narrative outcome is Release C, realizing the specific discharge pathway for long-stay complex cases.",6.0,release_a,3.0,0.1267877072095871,0.333497554063797
+V0445,release_a,"The narrative outcome is Release A, matching the standard discharge pathway.",4.0,release_c,3.0,0.12412271648645401,0.33423861861228943
+V0446,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway.",5.0,release_c,4.0,0.12185689806938171,0.33469390869140625
+V0447,release_c,"The narrative includes Release C before the return to the ER, realizing the long-stay complex cases discharge pathway.",10.0,release_a,5.0,0.5094826221466064,0.0008237233851104975
+V0448,release_a,"The narrative includes Release A prior to the return to the ER, realizing the standard discharge pathway.",11.0,release_c,7.0,0.5232654213905334,0.017544230446219444
+V0449,release_a,"The narrative includes Release A before returning to the ER, realizing the standard discharge pathway.",6.0,release_b,6.0,0.5590407848358154,0.0533195324242115
+V0450,release_a,"The narrative outcome is Release A, realizing the standard discharge pathway.",5.0,release_b,4.0,0.008204394020140171,0.33340534567832947
+V0451,release_a,"Outcome is Release A, representing the standard discharge pathway within guideline windows.",6.0,release_b,2.0,0.33916035294532776,0.35910263657569885
+V0452,release_a,"Outcome is Release A, representing the standard discharge pathway within guideline windows.",25.0,release_b,15.0,0.19181139767169952,0.33678293228149414
+V0453,,"The variant outcome is Return ER, and none of the release discharge pathways fit the residual trajectory.",,release_a,4.0,,8.86566485860385e-05
+V0454,,"The variant outcome is Return ER, outside standard successful completion pathways.",,release_a,1.0,,0.001255317940376699
+V0455,release_a,"Outcome is Release A, representing the standard discharge pathway.",5.0,release_c,4.0,0.12430762499570847,0.3333817720413208
+V0456,release_a,"Outcome is Release A, representing the standard discharge pathway.",6.0,release_b,4.0,0.13240103423595428,0.3337065875530243
+V0457,release_a,"Outcome is Release A, representing the standard discharge pathway.",18.0,release_b,14.0,0.18620212376117706,0.3340547978878021
+V0458,,The variant outcome is Return ER.,,release_a,2.0,,0.0016738661797717214
+V0459,release_a,"Outcome is Release A, representing the standard discharge pathway.",7.0,release_c,3.0,0.11213082820177078,0.33499935269355774
+V0460,,The variant outcome is Return ER.,,release_a,2.0,,0.0018495162948966026
+V0461,release_a,"Outcome is Release A, representing the standard discharge pathway.",6.0,release_b,5.0,0.12730231881141663,0.3354508578777313
+V0462,,"Outcome is CRP, which does not match any of the standard discharge categories.",,release_a,1.0,,0.35143592953681946
+V0463,,The variant outcome is Return ER.,,release_a,2.0,,0.007995419204235077
+V0464,,The variant outcome is Return ER.,,release_a,3.0,,0.0017006737180054188
+V0465,release_a,"Outcome is Release A, representing the standard discharge pathway.",7.0,release_b,6.0,0.023782795295119286,0.33335936069488525
+V0466,release_a,"Outcome is Release A, representing the standard discharge pathway.",3.0,release_c,4.0,0.13220679759979248,0.3352849781513214
+V0467,,The variant outcome is Return ER.,,release_a,3.0,,0.00017481461691204458
+V0468,,The variant outcome is Return ER.,,release_a,4.0,,0.0004104606050532311
+V0469,,The variant outcome is Return ER.,,release_a,4.0,,0.00023641105508431792
+V0470,release_d,"Outcome is Release D, representing the discharge pathway for extended rework cases.",5.0,release_a,2.0,0.14845110476016998,0.3334691524505615
+V0471,release_a,"Outcome is Release A, representing the standard discharge pathway.",6.0,release_b,3.0,0.022154198959469795,0.33493587374687195
+V0472,release_a,"Outcome is Release A, representing the standard discharge pathway.",5.0,release_d,3.0,0.017999133095145226,0.3354182541370392
+V0473,,The variant outcome is Return ER.,,release_a,2.0,,0.0029911352321505547
+V0474,,The variant outcome is Return ER.,,release_a,2.0,,0.0005330360145308077
+V0475,release_a,"Outcome is Release A, representing the standard discharge pathway.",5.0,release_b,4.0,0.006034303922206163,0.3335033357143402
+V0476,,The variant outcome is Return ER.,,release_a,4.0,,0.0044742790050804615
+V0477,release_a,"Outcome is Release A, representing the standard discharge pathway.",6.0,release_b,4.0,0.11488638073205948,0.33423805236816406
+V0478,release_a,"Outcome is Release A, representing the standard discharge pathway.",7.0,release_b,5.0,0.12619125843048096,0.33433976769447327
+V0479,,The variant outcome is Return ER.,,release_a,2.0,,0.0003767184680327773
+V0480,release_a,"Outcome is Release A, representing the standard discharge pathway.",6.0,release_b,3.0,0.0019310899078845978,0.33416447043418884
+V0481,release_a,"Outcome is Release A, representing the standard discharge pathway.",10.0,release_b,6.0,0.12303701788187027,0.3345555067062378
+V0482,,The variant outcome is Return ER.,,release_a,2.0,,0.0004347429203335196
+V0483,release_b,"Outcome is Release B, representing the alternative discharge pathway following extended monitoring.",28.0,release_a,12.0,0.059152472764253616,0.3373398780822754
+V0484,,The variant outcome is Return ER.,,release_a,4.0,,0.0017211405793204904
+V0485,release_a,"Outcome is Release A, representing the standard discharge pathway.",22.0,release_c,16.0,0.1819707155227661,0.33397164940834045
+V0486,release_d,"Outcome is Release D, representing the discharge pathway for extended rework cases.",10.0,release_b,5.0,0.0,0.33352580666542053
+V0487,release_a,"Outcome is Release A, representing the standard discharge pathway.",7.0,release_c,7.0,0.17686547338962555,0.33369529247283936
+V0488,,"Outcome is IV Liquid, not a discharge category.",,release_a,3.0,,0.34470176696777344
+V0489,release_a,"Outcome is Release A, representing the standard discharge pathway.",8.0,release_b,5.0,0.342968225479126,0.35229626297950745
+V0490,release_a,"Outcome is Release A, representing the standard discharge pathway.",4.0,release_c,4.0,0.17918892204761505,0.3346656262874603
+V0491,release_a,"Outcome is Release A, representing the standard discharge pathway.",4.0,release_b,3.0,0.02208336442708969,0.3350067138671875
+V0492,,"Outcome is IV Liquid, not a discharge category.",,release_a,3.0,,0.33516204357147217
+V0493,release_b,"Outcome is Release B, representing the alternative discharge pathway following extended monitoring.",4.0,release_a,2.0,0.13393361866474152,0.3339519202709198
+V0494,release_a,"Outcome is Release A, representing the standard discharge pathway.",7.0,release_b,6.0,0.005504873115569353,0.3336927890777588
+V0495,,"Outcome is IV Antibiotics, not a discharge category.",,release_a,3.0,,0.33587193489074707
+V0496,release_a,"Outcome is Release A, representing the standard discharge pathway.",8.0,release_c,5.0,0.1203174814581871,0.3350277841091156
+V0497,,The variant outcome is Return ER.,,release_a,2.0,,0.019925547763705254
+V0498,release_d,"Outcome is Release D, representing the discharge pathway for extended rework cases.",8.0,release_a,4.0,0.11551537364721298,0.33487775921821594
+V0499,release_a,"Outcome is Release A, representing the standard discharge pathway.",4.0,release_c,4.0,0.13080675899982452,0.33530083298683167
+V0500,release_a,"Outcome is Release A, representing the standard discharge pathway.",8.0,release_b,4.0,0.18954356014728546,0.343064546585083
+V0501,,The narrative ends with IV Liquid and does not reach any discharge pathway.,,release_a,2.0,,0.33455419540405273
+V0502,,The narrative ends with Admission NC and does not reach any discharge pathway.,,release_a,2.0,,0.014295171946287155
+V0503,release_b,"The narrative ends with Release B, realizing the alternative discharge pathway following extended monitoring.",6.0,release_a,2.0,0.37633016705513,0.3359071910381317
+V0504,,"The narrative ends with Return ER after Release A, representing a post-discharge readmission rather than a successful standard pathway.",,release_a,2.0,,0.00030690510175190866
+V0505,,"The narrative ends with Return ER after Release A, indicating a readmission.",,release_a,1.0,,0.00033978806459344923
+V0506,release_a,The narrative concludes with Release A within guideline windows.,2.0,release_c,3.0,0.019740747287869453,0.3371599018573761
+V0507,,The narrative ends with IV Antibiotics and does not reach discharge.,,release_b,3.0,,0.33435705304145813
+V0508,,The narrative ends with Return ER after Release A.,,release_a,5.0,,1.1670806998154148e-05
+V0509,release_a,The narrative concludes with Release A.,4.0,release_b,3.0,0.012055911123752594,0.33357807993888855
+V0510,,The narrative ends with IV Antibiotics.,,release_a,2.0,,0.34890270233154297
+V0511,release_a,The narrative concludes with Release A.,10.0,release_b,9.0,0.19318290054798126,0.3361193835735321
+V0512,release_a,The narrative concludes with Release A.,6.0,release_e,7.0,0.12957002222537994,0.33653759956359863
+V0513,release_a,The narrative concludes with Release A.,4.0,release_b,5.0,0.1373872309923172,0.3339282274246216
+V0514,release_a,The narrative concludes with Release A.,11.0,release_d,7.0,0.13011221587657928,0.33341261744499207
+V0515,,The narrative ends with Return ER.,,release_a,4.0,,0.00010612983169266954
+V0516,,The narrative ends with Leucocytes.,,release_a,6.0,,0.1273200362920761
+V0517,,The narrative ends with ER Triage.,,release_a,2.0,,0.6990668177604675
+V0518,release_a,The narrative concludes with Release A.,6.0,release_d,4.0,0.03562776371836662,0.3435492217540741
+V0519,,The narrative ends with Return ER.,,release_a,2.0,,0.0002972402435261756
+V0520,,The narrative ends with Return ER.,,release_a,1.0,,0.0032373873982578516
+V0521,release_a,The narrative concludes with Release A.,7.0,release_c,6.0,0.11749535799026489,0.33503758907318115
+V0522,release_b,The narrative concludes with Release B.,20.0,release_d,9.0,0.11910214275121689,0.33336952328681946
+V0523,release_a,The narrative concludes with Release A.,6.0,release_b,6.0,0.1672120839357376,0.3407348394393921
+V0524,release_a,The narrative concludes with Release A.,4.0,release_d,3.0,0.002867941977456212,0.33343908190727234
+V0525,release_a,The narrative concludes with Release A.,4.0,release_d,2.0,0.16978365182876587,0.3433620035648346
+V0526,,The narrative ends with Return ER.,,release_a,2.0,,0.001960309222340584
+V0527,release_a,The narrative concludes with Release A.,8.0,release_b,5.0,0.17244131863117218,0.3414131700992584
+V0528,,The narrative ends with Return ER.,,release_a,6.0,,0.0037639227230101824
+V0529,,The narrative ends with Return ER.,,release_a,1.0,,0.0016916814493015409
+V0530,,The narrative ends with Return ER.,,release_a,3.0,,0.002235871972516179
+V0531,,The narrative ends with Return ER.,,release_a,5.0,,0.06679265201091766
+V0532,release_a,The narrative concludes with Release A.,4.0,release_c,3.0,0.003327644430100918,0.3338777720928192
+V0533,release_a,The narrative concludes with Release A.,4.0,release_e,4.0,0.008130259811878204,0.3337897062301636
+V0534,release_a,The narrative concludes with Release A.,5.0,release_d,3.0,0.12686927616596222,0.3350178301334381
+V0535,,The narrative ends with Return ER.,,release_a,3.0,,0.0003073322877753526
+V0536,release_a,The narrative concludes with Release A.,5.0,release_c,4.0,0.12587818503379822,0.3340267241001129
+V0537,release_a,The narrative concludes with Release A.,7.0,release_c,6.0,0.019439060240983963,0.33685818314552307
+V0538,release_a,The narrative concludes with Release A.,12.0,release_c,9.0,0.1359579712152481,0.33352580666542053
+V0539,,The narrative ends with Return ER.,,release_a,2.0,,0.0003822969738394022
+V0540,release_b,The narrative concludes with Release B.,7.0,release_a,4.0,0.009863734245300293,0.3335843086242676
+V0541,release_a,The narrative concludes with Release A.,8.0,release_c,3.0,0.35655853152275085,0.33870598673820496
+V0542,release_a,The narrative concludes with Release A.,8.0,release_b,8.0,0.12341006845235825,0.33812037110328674
+V0543,,The narrative ends with Return ER.,,release_a,12.0,,0.004500335548073053
+V0544,release_a,The narrative concludes with Release A.,5.0,release_b,4.0,0.017493711784482002,0.33491286635398865
+V0545,release_a,The narrative concludes with Release A.,4.0,release_e,3.0,0.0028047196101397276,0.33337584137916565
+V0546,,The narrative ends with Return ER.,,release_a,2.0,,0.0001831106055760756
+V0547,release_b,The narrative concludes with Release B.,18.0,release_a,10.0,0.027221789583563805,0.3333817720413208
+V0548,release_a,The narrative concludes with Release A.,8.0,release_b,5.0,0.16990940272808075,0.34394514560699463
+V0549,,The narrative ends with IV Liquid.,,release_a,3.0,,0.3337417542934418
+V0550,release_b,The narrative concludes with Release B.,8.0,release_a,3.0,0.2006756067276001,0.3768188953399658
+V0551,release_a,"The narrative concludes with Release A, representing the standard discharge pathway for patients treated within guideline windows.",73.0,release_b,36.0,0.2062937468290329,0.3345264494419098
+V0552,release_b,"The narrative concludes with Release B, representing an alternative discharge pathway following extended monitoring.",14.0,release_c,6.0,0.1275031715631485,0.3337821066379547
+V0553,release_e,"The narrative concludes with Release E, representing the alternative discharge pathway E for completed cases.",18.0,release_a,8.0,0.0,0.3345264494419098
+V0554,release_a,"The narrative concludes with Release A, matching the standard discharge pathway.",4.0,release_c,3.0,0.11526113003492355,0.3338632881641388
+V0555,release_b,"The narrative concludes with Release B, reflecting the alternative discharge pathway following extended monitoring.",6.0,release_a,4.0,0.22606010735034943,0.33605316281318665
+V0556,,"The narrative ends with Return ER, which does not correspond to any of the designated release categories.",,release_a,3.0,,0.0004735417023766786
+V0557,release_a,"The narrative concludes with Release A, representing standard discharge.",6.0,release_b,3.0,0.12162355333566666,0.3356926441192627
+V0558,,"The narrative ends with Return ER, falling outside the release categories.",,release_a,3.0,,0.0017119027907028794
+V0559,,"The narrative ends with Return ER, which is outside the scope of release pathways.",,release_a,4.0,,0.00030402603442780674
+V0560,,"The narrative ends with Return ER, so no release category applies.",,release_a,3.0,,0.0016740934224799275
+V0561,release_a,"The narrative concludes with Release A, realizing the standard discharge pathway.",6.0,release_c,5.0,0.0008267084485851228,0.33488258719444275
+V0562,release_a,"The narrative concludes with Release A, realizing standard discharge.",7.0,release_c,5.0,0.0009546878864057362,0.33356547355651855
+V0563,release_a,"The narrative concludes with Release A, standard discharge pathway.",13.0,release_c,8.0,0.1774846315383911,0.3363698720932007
+V0564,,"The narrative ends with Return ER, thus no release category fits.",,release_a,2.0,,0.003712746547535062
+V0565,,The narrative terminates at Admission NC without reaching any release outcome.,,release_a,3.0,,0.017176801338791847
+V0566,release_a,"The narrative concludes with Release A, standard discharge.",6.0,release_b,6.0,0.11489537358283997,0.3364681005477905
+V0567,,"The narrative ends with Return ER, which does not match any release category.",,release_a,2.0,,0.0013297502882778645
+V0568,release_a,"The narrative concludes with Release A, standard discharge pathway.",7.0,release_b,7.0,0.17457731068134308,0.3333696126937866
+V0569,release_a,"The narrative concludes with Release A, standard discharge pathway.",2.0,release_d,2.0,0.12108049541711807,0.3354702889919281
+V0570,release_a,"The narrative concludes with Release A, standard discharge pathway.",14.0,release_c,7.0,0.12628255784511566,0.3336900472640991
+V0571,release_b,"The narrative concludes with Release B, representing the alternative discharge pathway following extended monitoring.",28.0,release_a,14.0,0.11622101068496704,0.3337017297744751
+V0572,release_a,"The narrative concludes with Release A, standard discharge pathway.",20.0,release_b,13.0,0.14023634791374207,0.3370891809463501
+V0573,,"The narrative ends with Return ER, making it part of the residual.",,release_a,2.0,,5.731179771828465e-05
+V0574,release_a,"The narrative concludes with Release A, standard discharge pathway.",13.0,release_b,10.0,0.18105822801589966,0.33387038111686707
+V0575,,The narrative terminates at Leucocytes without reaching a release outcome.,,release_a,2.0,,0.06940972059965134
+V0576,release_a,"The narrative concludes with Release A, standard discharge pathway.",8.0,release_c,7.0,0.13836102187633514,0.33371222019195557
+V0577,,"The narrative ends with Return ER, falling into the residual.",,release_a,9.0,,0.003199820639565587
+V0578,,"The narrative ends with Return ER, no release category matches.",,release_a,2.0,,0.0014760210178792477
+V0579,,"The narrative ends with Return ER, outside of the release taxonomy.",,release_a,21.0,,0.0014930098550394177
+V0580,,The narrative terminates at CRP without reaching any release outcome.,,release_a,2.0,,0.34905365109443665
+V0581,release_d,"The narrative concludes with Release D, representing a specific discharge pathway for extended rework cases.",5.0,release_a,3.0,0.3378317058086395,0.002080401172861457
+V0582,release_a,"The narrative concludes with Release A, standard discharge pathway.",6.0,release_b,4.0,0.17418259382247925,0.33605316281318665
+V0583,release_a,"The narrative concludes with Release A, standard discharge pathway.",4.0,release_c,4.0,0.11739408224821091,0.33493635058403015
+V0584,,The narrative terminates at IV Liquid without reaching a release outcome.,,release_a,3.0,,0.33377358317375183
+V0585,,The narrative terminates at LacticAcid without reaching a release outcome.,,release_a,3.0,,0.34067413210868835
+V0586,release_b,"The narrative concludes with Release B, alternative discharge pathway following extended monitoring.",4.0,release_a,1.0,0.11932045966386795,0.3333382308483124
+V0587,,The narrative terminates at CRP without reaching a release outcome.,,release_a,2.0,,0.4022698402404785
+V0588,release_c,"The narrative concludes with Release C, representing a specific discharge pathway for long-stay complex cases.",12.0,release_a,5.0,0.542354941368103,0.004931775387376547
+V0589,release_b,"The narrative concludes with Release B, alternative discharge pathway following extended monitoring.",9.0,release_a,5.0,0.1817622035741806,0.33431413769721985
+V0590,,"The narrative ends with Return ER, not fitting any release category.",,release_a,4.0,,0.0020043847616761923
+V0591,,"The narrative ends with Return ER, falling into the residual.",,release_a,2.0,,0.007256778422743082
+V0592,,The narrative terminates at IV Antibiotics without reaching a release outcome.,,release_a,4.0,,0.3633485734462738
+V0593,release_a,"The narrative concludes with Release A, standard discharge pathway.",4.0,release_c,4.0,0.0035627076867967844,0.3336507976055145
+V0594,release_b,"The narrative concludes with Release B, alternative discharge pathway following extended monitoring.",7.0,release_a,4.0,0.10034871846437454,0.3404475748538971
+V0595,,"The narrative ends with Return ER, outside of the release categories.",,release_a,4.0,,0.0016271689673885703
+V0596,release_a,"The narrative concludes with Release A, standard discharge pathway.",6.0,release_b,4.0,0.010943234898149967,0.33469077944755554
+V0597,release_a,"The narrative concludes with Release A, standard discharge pathway.",10.0,release_c,8.0,0.17447529733181,0.3334716260433197
+V0598,release_e,"The narrative concludes with Release E, alternative discharge pathway E for completed cases.",14.0,release_a,7.0,0.08387475460767746,0.3335825204849243
+V0599,release_a,"The narrative concludes with Release A, standard discharge pathway.",6.0,release_b,5.0,0.02740439958870411,0.3369809687137604
+V0600,release_a,"The narrative concludes with Release A, standard discharge pathway.",25.0,release_e,16.0,0.1838604062795639,0.33495357632637024
+V0601,release_c,"The narrative culminates in Release C, directly realizing the specific discharge pathway for long-stay complex cases.",0.0,release_a,2.0,0.13279515504837036,0.33337584137916565
+V0602,release_d,"The narrative culminates in Release D, directly realizing the specific discharge pathway for extended rework cases.",7.0,release_a,5.0,0.10042574256658554,0.3333696126937866
+V0603,release_e,"The narrative culminates in Release E, directly realizing alternative discharge pathway E for completed cases.",9.0,release_a,2.0,0.17411257326602936,0.33371493220329285
+V0604,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",6.0,release_b,5.0,0.012525954283773899,0.3371104896068573
+V0605,release_a,"The narrative records an initial Release A path before returning to the ER, aligning with the standard discharge pathway category.",10.0,release_d,8.0,0.5606526732444763,0.0549314059317112
+V0606,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",6.0,release_b,5.0,0.017453694716095924,0.334872841835022
+V0607,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",9.0,release_c,5.0,0.1281360536813736,0.3362846076488495
+V0608,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",4.0,release_b,4.0,0.11634991317987442,0.3338921368122101
+V0609,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",7.0,release_d,6.0,0.005638937000185251,0.33355870842933655
+V0610,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",4.0,release_b,3.0,0.12229632586240768,0.3342544734477997
+V0611,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",9.0,release_c,6.0,0.18584905564785004,0.3337017297744751
+V0612,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",5.0,release_c,5.0,0.12985199689865112,0.33625563979148865
+V0613,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",4.0,release_d,4.0,0.19409890472888947,0.347619891166687
+V0614,release_a,"The narrative records a discharge via Release A prior to returning to the ER, aligning with the standard discharge category.",7.0,release_b,2.0,0.7550907731056213,0.33687540888786316
+V0615,release_c,"The narrative culminates in Release C, directly realizing the specific discharge pathway for long-stay complex cases.",5.0,release_a,2.0,0.5079033970832825,0.0017379781929776073
+V0616,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",4.0,release_c,4.0,0.17796112596988678,0.3351845443248749
+V0617,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",5.0,release_c,3.0,0.13780364394187927,0.3335118293762207
+V0618,release_c,"The narrative culminates in Release C, directly realizing the specific discharge pathway for long-stay complex cases.",8.0,release_a,5.0,0.0,0.33340775966644287
+V0619,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",7.0,release_b,4.0,0.18482203781604767,0.3383430242538452
+V0620,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",5.0,release_e,3.0,0.1242072805762291,0.33891761302948
+V0621,release_b,"The narrative culminates in Release B, realizing the alternative discharge pathway following extended monitoring.",4.0,release_a,3.0,0.40973857045173645,0.40637096762657166
+V0622,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",21.0,release_d,13.0,0.11480683088302612,0.3360072076320648
+V0623,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",5.0,release_c,3.0,0.02508305013179779,0.334659606218338
+V0624,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",5.0,release_c,3.0,0.1759398728609085,0.33791467547416687
+V0625,release_a,The narrative records an initial Release A path before a subsequent return to the ER.,4.0,release_d,2.0,0.44705113768577576,0.021751584485173225
+V0626,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",5.0,release_c,3.0,0.235670268535614,0.4450700283050537
+V0627,release_a,The narrative records an initial Release A path before a subsequent return to the ER.,14.0,release_b,13.0,0.5593385696411133,0.002506805816665292
+V0628,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",5.0,release_b,4.0,0.1957898885011673,0.34931087493896484
+V0629,release_e,"The narrative culminates in Release E, realizing the alternative discharge pathway E for completed cases.",0.0,release_d,6.0,0.15986932814121246,0.33996978402137756
+V0630,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",10.0,release_b,8.0,0.12487488985061646,0.33958521485328674
+V0631,release_a,The narrative records an initial Release A path before returning to the ER.,5.0,release_d,3.0,0.3813908100128174,0.010090467520058155
+V0632,release_a,The narrative records an initial Release A path before returning to the ER.,4.0,release_c,2.0,0.42244407534599304,0.002855469472706318
+V0633,release_d,"The narrative records an initial Release D path before returning to the ER, realizing the pathway for extended rework cases.",0.0,release_a,3.0,0.48728999495506287,0.0007203731220215559
+V0634,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",6.0,release_c,4.0,0.01951301097869873,0.33693215250968933
+V0635,release_a,The narrative records an initial Release A path before returning to the ER.,6.0,release_c,5.0,0.5523849129676819,0.015387039631605148
+V0636,,"The narrative ends with LacticAcid instead of a recognized release activity, meaning it falls into the residual category.",,release_a,2.0,,0.0962497815489769
+V0637,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",4.0,release_d,3.0,0.13090573251247406,0.3352018892765045
+V0638,release_a,The narrative records an initial Release A path before returning to the ER.,6.0,release_d,4.0,0.6017413139343262,0.021295899525284767
+V0639,release_a,The narrative records an initial Release A path before returning to the ER.,8.0,release_b,7.0,0.5363761186599731,0.008705905638635159
+V0640,release_a,The narrative records an initial Release A path before returning to the ER.,9.0,release_c,5.0,0.375944584608078,0.0046442607417702675
+V0641,release_a,The narrative records an initial Release A path before returning to the ER.,3.0,release_d,4.0,0.42615628242492676,0.0008567627519369125
+V0642,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",10.0,release_c,7.0,0.12796489894390106,0.34267520904541016
+V0643,release_a,The narrative records an initial Release A path before returning to the ER.,23.0,release_e,11.0,0.5301176309585571,0.014964391477406025
+V0644,,"The narrative ends with CRP instead of a recognized release activity, meaning it falls into the residual category.",,release_b,1.0,,0.3505743443965912
+V0645,,"The narrative ends with LacticAcid instead of a recognized release activity, meaning it falls into the residual category.",,release_a,2.0,,0.3411502540111542
+V0646,release_a,The narrative records an initial Release A path before a subsequent return to the ER.,14.0,release_c,8.0,0.46538424491882324,0.3377629518508911
+V0647,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",3.0,release_b,3.0,0.23361027240753174,0.44516268372535706
+V0648,release_a,"The narrative culminates in Release A, representing the standard discharge pathway for patients treated within guideline windows.",8.0,release_d,6.0,0.009981869719922543,0.3345663845539093
+V0649,release_a,The narrative records an initial Release A path before returning to the ER.,8.0,release_c,6.0,0.465440034866333,0.006987418979406357
+V0650,release_a,The narrative records an initial Release A path before returning to the ER.,8.0,release_b,3.0,0.7623789310455322,0.22538095712661743
+V0651,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",8.0,release_b,4.0,0.6120254397392273,0.1867259293794632
+V0652,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",4.0,release_c,4.0,0.6032029986381531,0.11768632382154465
+V0653,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",4.0,release_b,5.0,0.12456247955560684,0.33395564556121826
+V0654,,"The narrative does not reach any discharge or release activity, ending at Leucocytes.",,release_a,4.0,,0.08748802542686462
+V0655,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",8.0,release_b,6.0,0.19064147770404816,0.3404475748538971
+V0656,release_d,"The narrative concludes with Release D, corresponding to extended rework cases.",10.0,release_c,6.0,0.01688617654144764,0.33352211117744446
+V0657,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",3.0,release_c,3.0,0.17284822463989258,0.3410062789916992
+V0658,release_a,"The narrative contains Release A before an ER return, realizing the standard discharge pathway.",7.0,release_b,4.0,0.5791469216346741,0.16990059614181519
+V0659,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",7.0,release_b,3.0,0.36235904693603516,0.33376121520996094
+V0660,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",18.0,release_d,11.0,0.12488680332899094,0.3337271511554718
+V0661,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",19.0,release_b,12.0,0.125078022480011,0.333635538816452
+V0662,release_a,"The narrative contains Release A before an ER return, realizing the standard discharge pathway.",10.0,release_c,7.0,0.510653018951416,0.004931775387376547
+V0663,,The narrative terminates at Admission NC and does not reach a release category.,,release_a,1.0,,0.011053969152271748
+V0664,,The narrative terminates at IV Liquid and does not reach a release category.,,release_a,4.0,,0.367952436208725
+V0665,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",4.0,release_c,4.0,0.0016397853614762425,0.33401191234588623
+V0666,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",7.0,release_b,2.0,0.14529982209205627,0.3406510353088379
+V0667,release_a,"The narrative contains Release A before an ER return, realizing the standard discharge pathway.",7.0,release_b,2.0,0.41811707615852356,0.0008237233851104975
+V0668,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",6.0,release_c,3.0,0.37848249077796936,0.3336716592311859
+V0669,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",3.0,release_b,4.0,0.019894901663064957,0.33719518780708313
+V0670,release_a,"The narrative contains Release A followed by an ER return and further tests, realizing the standard discharge pathway.",10.0,release_d,4.0,0.3412564992904663,0.33360064029693604
+V0671,release_a,"The narrative contains Release A before an ER return, realizing the standard discharge pathway.",8.0,release_b,4.0,0.3897935450077057,0.011424671858549118
+V0672,release_b,"The narrative concludes with Release B, representing the alternative discharge pathway following extended monitoring.",19.0,release_a,12.0,0.17641283571720123,0.33423009514808655
+V0673,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",9.0,release_b,6.0,0.11280732601881027,0.33438006043434143
+V0674,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",39.0,release_d,22.0,0.1586337387561798,0.3359471559524536
+V0675,release_d,"The narrative concludes with Release D before an ER return, corresponding to extended rework cases.",7.0,release_a,6.0,0.40084752440452576,0.0009016120457090437
+V0676,,The narrative terminates at IV Antibiotics and does not reach a release category.,,release_a,4.0,,0.3567776679992676
+V0677,release_a,"The narrative contains Release A before an ER return, realizing the standard discharge pathway.",8.0,release_b,3.0,0.7208595871925354,0.3359721601009369
+V0678,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",6.0,release_b,5.0,0.12911875545978546,0.3369888365268707
+V0679,,The narrative terminates at IV Antibiotics and does not reach a release category.,,release_a,2.0,,0.33444395661354065
+V0680,release_a,"The narrative contains Release A before an ER return, realizing the standard discharge pathway.",9.0,release_d,7.0,0.4819602966308594,0.012146451510488987
+V0681,release_a,"The narrative contains Release A before an ER return, realizing the standard discharge pathway.",5.0,release_d,5.0,0.5709636807441711,0.16974543035030365
+V0682,release_b,"The narrative concludes with Release B, representing the alternative discharge pathway following extended monitoring.",9.0,release_a,6.0,0.08563952893018723,0.33532166481018066
+V0683,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",8.0,release_d,6.0,0.13010737299919128,0.33340775966644287
+V0684,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",5.0,release_b,4.0,0.11334199458360672,0.3338575065135956
+V0685,,The narrative terminates at IV Antibiotics and does not reach a release category.,,release_a,2.0,,0.3453831672668457
+V0686,release_a,"The narrative contains Release A before an ER return, realizing the standard discharge pathway.",8.0,release_b,3.0,0.7618957161903381,0.33600887656211853
+V0687,release_a,"The narrative contains Release A before an ER return, realizing the standard discharge pathway.",5.0,release_d,4.0,0.4812520444393158,0.004264625255018473
+V0688,release_a,"The narrative contains Release A before an ER return, realizing the standard discharge pathway.",5.0,release_b,4.0,0.38270512223243713,0.011404822580516338
+V0689,,The narrative terminates at IV Antibiotics and does not reach a release category.,,release_a,4.0,,0.3464854955673218
+V0690,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",10.0,release_b,8.0,0.11829904466867447,0.33365729451179504
+V0691,release_b,"The narrative concludes with Release B, representing the alternative discharge pathway following extended monitoring.",6.0,release_a,2.0,0.39462682604789734,0.35420385003089905
+V0692,release_b,"The narrative concludes with Release B, representing the alternative discharge pathway following extended monitoring.",6.0,release_a,3.0,0.3737633228302002,0.3333403766155243
+V0693,release_a,"The narrative contains Release A before an ER return, realizing the standard discharge pathway.",5.0,release_c,5.0,0.5078041553497314,0.11563631892204285
+V0694,,The narrative terminates at ER Sepsis Triage and does not reach a release category.,,release_a,4.0,,0.4308895766735077
+V0695,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",3.0,release_c,5.0,0.12188635021448135,0.3357062041759491
+V0696,release_a,"The narrative contains Release A before an ER return, realizing the standard discharge pathway.",10.0,release_b,7.0,0.595866858959198,0.01542141567915678
+V0697,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",7.0,release_b,3.0,0.028815872967243195,0.3383924663066864
+V0698,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",4.0,release_d,4.0,0.13921120762825012,0.33456242084503174
+V0699,release_a,"The narrative concludes with Release A, representing the standard discharge pathway.",6.0,release_b,5.0,0.021823721006512642,0.3352663516998291
+V0700,release_b,"The narrative concludes with Release B, representing the alternative discharge pathway following extended monitoring.",6.0,release_a,2.0,0.2397448867559433,0.33369848132133484
+V0701,release_c,"The narrative terminates with Release C, representing the specific discharge pathway for long-stay complex cases.",8.0,release_a,3.0,0.004107105545699596,0.3336900472640991
+V0702,release_a,"The narrative terminates with Release A, representing the standard discharge pathway for patients treated within guideline windows.",4.0,release_b,4.0,0.11376291513442993,0.3334365785121918
+V0703,,The narrative terminates with IV Liquid and does not reach any discharge pathway category.,,release_a,2.0,,0.33499279618263245
+V0704,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",5.0,release_c,6.0,0.12231535464525223,0.3363982141017914
+V0705,,"The narrative ends with Return ER, which indicates an ER return rather than a successful standard or alternative release pathway.",,release_a,1.0,,0.0007216189987957478
+V0706,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",6.0,release_b,1.0,0.3876369893550873,0.333533376455307
+V0707,,The narrative terminates with Admission NC and does not reach a discharge category.,,release_a,1.0,,0.0033132981043308973
+V0708,,The narrative terminates with IV Antibiotics and does not reach a release category.,,release_b,5.0,,0.3469402492046356
+V0709,release_b,"The narrative terminates with Release B, representing the alternative discharge pathway following extended monitoring.",0.0,release_a,2.0,0.11250493675470352,0.3341047465801239
+V0710,release_c,"The narrative terminates with Release C, representing the discharge pathway for long-stay complex cases.",173.0,release_a,70.0,0.14292915165424347,0.3349083364009857
+V0711,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",6.0,release_b,3.0,0.1184830293059349,0.33602526783943176
+V0712,,"The narrative ends with Return ER, indicating a post-discharge ER return after Release A.",,release_a,7.0,,2.603729626571294e-05
+V0713,,The narrative terminates with IV Antibiotics and does not reach a discharge category.,,release_a,3.0,,0.3506447970867157
+V0714,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",5.0,release_c,4.0,0.014271717518568039,0.33452916145324707
+V0715,release_b,"The narrative terminates with Release B, representing the alternative discharge pathway following extended monitoring.",8.0,release_a,4.0,0.2136198729276657,0.3562581539154053
+V0716,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",6.0,release_b,2.0,0.12294775247573853,0.33464479446411133
+V0717,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",6.0,release_d,4.0,0.1163993775844574,0.33394160866737366
+V0718,release_d,"The narrative terminates with Release D, representing the specific discharge pathway for extended rework cases.",20.0,release_a,13.0,0.4685699939727783,0.003502768697217107
+V0719,,"The narrative ends with Return ER following Release A, representing a post-discharge ER return.",,release_a,2.0,,0.0003360187401995063
+V0720,,The narrative ends with Return ER following Release A.,,release_a,2.0,,0.0006664472748525441
+V0721,,The narrative ends with Return ER following Release A.,,release_a,5.0,,0.00034471272374503314
+V0722,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",6.0,release_b,3.0,0.030566910281777382,0.34014347195625305
+V0723,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",7.0,release_b,5.0,0.12103677541017532,0.33551403880119324
+V0724,,The narrative ends with Return ER following Release A.,,release_a,2.0,,0.0038763836491853
+V0725,release_d,"The narrative terminates with Release D, representing the discharge pathway for extended rework cases.",10.0,release_a,2.0,0.2604072391986847,0.33486512303352356
+V0726,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",18.0,release_b,11.0,0.12152110785245895,0.33719244599342346
+V0727,,The narrative ends with Return ER following Release A.,,release_a,2.0,,0.00011380133219063282
+V0728,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",6.0,release_b,5.0,0.12429950386285782,0.3390098512172699
+V0729,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",6.0,release_c,6.0,0.12431582063436508,0.3390261232852936
+V0730,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",4.0,release_c,3.0,0.019125016406178474,0.3365441560745239
+V0731,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",7.0,release_d,3.0,0.1927531510591507,0.34647223353385925
+V0732,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",8.0,release_b,3.0,0.3382016122341156,0.34988364577293396
+V0733,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",7.0,release_d,3.0,0.1293123960494995,0.33679521083831787
+V0734,,The narrative ends with Return ER following Release A.,,release_a,1.0,,0.003758639097213745
+V0735,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",6.0,release_d,3.0,0.3521595001220703,0.3461035192012787
+V0736,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",5.0,release_c,4.0,0.00692564295604825,0.33358529210090637
+V0737,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",6.0,release_c,4.0,0.017700202763080597,0.335119366645813
+V0738,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",5.0,release_b,4.0,0.04166660085320473,0.3375103771686554
+V0739,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",8.0,release_d,6.0,0.12459003925323486,0.33930036425590515
+V0740,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",7.0,release_d,5.0,0.01307212095707655,0.3341048061847687
+V0741,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",6.0,release_b,4.0,0.020024066790938377,0.33706602454185486
+V0742,,The narrative terminates with LacticAcid and does not reach a discharge category.,,release_a,3.0,,0.10897424817085266
+V0743,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",8.0,release_b,3.0,0.006469020154327154,0.33393803238868713
+V0744,,The narrative ends with Return ER following Release A.,,release_a,7.0,,0.0016184194246307015
+V0745,,The narrative ends with Return ER following Release A.,,release_b,5.0,,0.027911365032196045
+V0746,,The narrative ends with Return ER following Release A.,,release_a,11.0,,0.002483796328306198
+V0747,release_c,"The narrative terminates with Release C, representing the discharge pathway for long-stay complex cases.",5.0,release_a,5.0,0.09371375292539597,0.33414873480796814
+V0748,,The narrative ends with Return ER following Release A.,,release_a,2.0,,0.001174799632281065
+V0749,release_a,"The narrative terminates with Release A, representing the standard discharge pathway.",4.0,release_c,2.0,0.01933428831398487,0.3367534577846527
+V0750,,The narrative terminates with IV Antibiotics and does not reach a discharge category.,,release_a,3.0,,0.34315261244773865
+V0751,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_b,3.0,0.016238927841186523,0.3336580693721771
+V0752,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",19.0,release_d,8.0,0.49797067046165466,0.007750561460852623
+V0753,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",6.0,release_b,4.0,0.38896262645721436,0.012255621142685413
+V0754,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",5.0,release_d,4.0,0.35295626521110535,0.018344061449170113
+V0755,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",5.0,release_e,4.0,0.13073661923408508,0.3353709876537323
+V0756,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",31.0,release_d,15.0,0.5853000283241272,0.004854610655456781
+V0757,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",6.0,release_d,6.0,0.467947393655777,0.004480055999010801
+V0758,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_c,3.0,0.152573361992836,0.3479245603084564
+V0759,,The narrative terminates at IV Antibiotics without reaching any discharge pathway.,,release_a,3.0,,0.3767373561859131
+V0760,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",6.0,release_b,5.0,0.11591225862503052,0.3361785113811493
+V0761,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",6.0,release_c,6.0,0.021136274561285973,0.33595380187034607
+V0762,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",23.0,release_b,14.0,0.14742188155651093,0.34193137288093567
+V0763,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",41.0,release_b,21.0,0.5409237146377563,0.004158315248787403
+V0764,,The narrative terminates at ER Sepsis Triage without reaching any discharge pathway.,,release_a,3.0,,0.33717337250709534
+V0765,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",6.0,release_b,7.0,0.543454110622406,0.006456186529248953
+V0766,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",6.0,release_b,3.0,0.18897582590579987,0.3424968421459198
+V0767,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",9.0,release_b,2.0,0.7238037586212158,0.33363866806030273
+V0768,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",9.0,release_b,4.0,0.34586942195892334,0.3493950664997101
+V0769,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_b,4.0,0.009754717350006104,0.3343392312526703
+V0770,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",7.0,release_b,7.0,0.5343071818351746,0.010774829424917698
+V0771,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_b,2.0,0.11359056830406189,0.3336088955402374
+V0772,,The narrative terminates at CRP without reaching any discharge pathway.,,release_a,2.0,,0.35271406173706055
+V0773,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",5.0,release_b,2.0,0.1832064390182495,0.33672741055488586
+V0774,,The narrative terminates at ER Sepsis Triage without reaching any discharge pathway.,,release_a,3.0,,0.35368454456329346
+V0775,,The narrative terminates at CRP without reaching any discharge pathway.,,release_a,2.0,,0.35355398058891296
+V0776,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_c,3.0,0.12937931716442108,0.3367283046245575
+V0777,,The narrative terminates at Leucocytes without reaching any discharge pathway.,,release_b,4.0,,0.3730004131793976
+V0778,,The narrative terminates at Leucocytes without reaching any discharge pathway.,,release_b,4.0,,0.24414904415607452
+V0779,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",6.0,release_b,3.0,0.3433597981929779,0.027940519154071808
+V0780,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",15.0,release_c,8.0,0.02350321225821972,0.3357985317707062
+V0781,release_c,"The narrative ends with Release C, realizing the specific discharge pathway for long-stay complex cases.",8.0,release_a,5.0,0.11267659813165665,0.33335208892822266
+V0782,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",8.0,release_c,5.0,0.014905020594596863,0.3357846736907959
+V0783,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",7.0,release_d,6.0,0.009774407371878624,0.33435893058776855
+V0784,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",9.0,release_b,7.0,0.024828901514410973,0.337124228477478
+V0785,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",5.0,release_d,6.0,0.5334028005599976,0.011679232120513916
+V0786,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",8.0,release_c,6.0,0.11636849492788315,0.33756887912750244
+V0787,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",6.0,release_d,5.0,0.484387069940567,0.001129603828303516
+V0788,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",3.0,release_d,3.0,0.01727651245892048,0.3346956670284271
+V0789,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_b,4.0,0.12589673697948456,0.33404529094696045
+V0790,release_d,"The narrative ends with Release D, realizing the specific discharge pathway for extended rework cases.",9.0,release_a,4.0,0.017393022775650024,0.3333390951156616
+V0791,,The narrative terminates at IV Antibiotics without reaching any discharge pathway.,,release_b,3.0,,0.36149027943611145
+V0792,release_b,"The narrative ends with Release B, representing the alternative discharge pathway following extended monitoring.",4.0,release_a,2.0,0.11752891540527344,0.3333362340927124
+V0793,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",6.0,release_e,6.0,0.12587149441242218,0.33382460474967957
+V0794,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",10.0,release_c,6.0,0.3798917829990387,0.008591464720666409
+V0795,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",41.0,release_d,20.0,0.18839800357818604,0.33336952328681946
+V0796,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",8.0,release_b,3.0,0.34884127974510193,0.3464232385158539
+V0797,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",7.0,release_e,5.0,0.5360963344573975,0.0009016120457090437
+V0798,release_a,"The narrative includes Release A prior to a return to ER, realizing the standard discharge pathway.",4.0,release_d,3.0,0.3991566002368927,0.0020616312976926565
+V0799,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",6.0,release_b,4.0,0.06015260890126228,0.34764230251312256
+V0800,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",6.0,release_c,4.0,0.12972429394721985,0.34443461894989014
+V0801,release_a,"The narrative ends with Release A, representing the standard discharge pathway for patients treated within guideline windows.",6.0,release_c,4.0,0.11580577492713928,0.3362849950790405
+V0802,release_d,"The narrative ends with Release D, representing a specific discharge pathway for extended rework cases.",7.0,release_a,2.0,0.024389848113059998,0.33333656191825867
+V0803,release_b,"The narrative ends with Release B, representing an alternative discharge pathway following extended monitoring.",8.0,release_a,6.0,0.10299691557884216,0.3430957794189453
+V0804,,"The narrative ends with Return ER, which does not fit any of the discharge categories.",,release_a,2.0,,0.0007471114513464272
+V0805,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",31.0,release_d,14.0,0.13778677582740784,0.3346395790576935
+V0806,,"The narrative ends with Return ER, which is outside the specified discharge success categories.",,release_a,3.0,,8.696131408214569e-05
+V0807,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",6.0,release_b,2.0,0.19349636137485504,0.3457289934158325
+V0808,,"The narrative ends with Return ER, indicating readmission and failing to realize any successful release category.",,release_a,2.0,,2.477323323546443e-05
+V0809,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",8.0,release_b,6.0,0.12358067184686661,0.33401188254356384
+V0810,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_d,4.0,0.11998850107192993,0.33656227588653564
+V0811,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",7.0,release_d,5.0,0.11664677411317825,0.3345414698123932
+V0812,,"The narrative ends with Return ER, meaning it does not realize a successful release category.",,release_a,1.0,,0.015375559218227863
+V0813,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",13.0,release_b,9.0,0.0204737838357687,0.33389756083488464
+V0814,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",5.0,release_c,4.0,0.010679256170988083,0.33495473861694336
+V0815,,"The narrative ends with Return ER, which does not qualify for any release category.",,release_a,4.0,,9.928982035489753e-05
+V0816,,"The narrative terminates at IV Antibiotics, which is an intermediate treatment step rather than a discharge outcome.",,release_b,4.0,,0.3515796959400177
+V0817,release_c,The narrative records a specific pathway for long-stay complex cases leading up to Release C.,12.0,release_a,6.0,0.4634896218776703,0.0014119163388386369
+V0818,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",14.0,release_c,5.0,0.017375094816088676,0.33335208892822266
+V0819,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",5.0,release_b,6.0,0.1116095557808876,0.33348116278648376
+V0820,,"The narrative terminates at LacticAcid, which is an intermediate diagnostic step.",,release_a,2.0,,0.36585330963134766
+V0821,,"The narrative ends with Return ER, indicating readmission.",,release_a,4.0,,0.0005316729075275362
+V0822,,"The narrative ends with Return ER, indicating readmission.",,release_a,23.0,,0.0005752397119067609
+V0823,,"The narrative ends with Return ER, indicating readmission.",,release_a,1.0,,0.006757034454494715
+V0824,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",5.0,release_b,4.0,0.0059882719069719315,0.335931658744812
+V0825,,"The narrative ends with Return ER, indicating readmission.",,release_a,1.0,,0.001801188918761909
+V0826,,"The narrative terminates at Admission NC, which is an intermediate hospitalization step.",,release_b,2.0,,0.033031780272722244
+V0827,,"The narrative ends with Return ER, indicating readmission.",,release_a,3.0,,6.181454068610037e-07
+V0828,,"The narrative ends with Return ER, indicating readmission.",,release_a,3.0,,0.021267281845211983
+V0829,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_c,4.0,0.11634213477373123,0.3357486426830292
+V0830,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",9.0,release_d,7.0,0.11498779058456421,0.33656051754951477
+V0831,release_d,"The narrative ends with Release D, representing a specific discharge pathway for extended rework cases.",8.0,release_a,4.0,0.13306941092014313,0.333497554063797
+V0832,,"The narrative terminates at IV Antibiotics, an intermediate treatment step.",,release_a,2.0,,0.36087003350257874
+V0833,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",11.0,release_c,7.0,0.1222868338227272,0.33530569076538086
+V0834,,"The narrative ends with Return ER, indicating readmission.",,release_a,9.0,,0.001514973002485931
+V0835,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",2.0,release_c,2.0,0.02010655775666237,0.3369835317134857
+V0836,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",8.0,release_e,8.0,0.11811388283967972,0.3339768648147583
+V0837,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",5.0,release_b,6.0,0.005714736878871918,0.333482950925827
+V0838,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",7.0,release_b,3.0,0.367399662733078,0.334408164024353
+V0839,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",6.0,release_d,5.0,0.017743350937962532,0.33516252040863037
+V0840,release_b,"The narrative ends with Release B, representing an alternative discharge pathway following extended monitoring.",55.0,release_a,22.0,0.2657969295978546,0.3886915147304535
+V0841,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",6.0,release_d,2.0,0.05981720983982086,0.34730687737464905
+V0842,,"The narrative ends with Return ER, indicating readmission.",,release_a,3.0,,5.056213922216557e-05
+V0843,,"The narrative terminates at IV Liquid, which is an intermediate care activity.",,release_b,1.0,,0.33354461193084717
+V0844,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",14.0,release_b,10.0,0.170301616191864,0.3886915147304535
+V0845,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",18.0,release_b,12.0,0.12453168630599976,0.33418187499046326
+V0846,release_a,"The narrative ends with Release A, representing the standard discharge pathway.",4.0,release_c,3.0,0.12457901239395142,0.3392893373966217

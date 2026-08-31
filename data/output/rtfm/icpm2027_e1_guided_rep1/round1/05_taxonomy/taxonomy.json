@@ -3,13 +3,14 @@
     {
       "category_id": "timely_payment",
       "name": "Resolve via timely payment",
-      "description": "Resolution of the fine case through early payment by the offender. Advances the 'Maximize timely fine revenue' softgoal and helps 'Minimize administrative & enforcement cost'. Measured against indicator 'Time to fine dispatch (days)' and 'Average time to case closure (days)'.",
+      "description": "Cases resolved through prompt payment by the offender, advancing the softgoal 'Maximize timely fine revenue' and helping 'Minimize administrative & enforcement cost', judged against indicator 'Time to fine dispatch (days)' and 'Average time to case closure (days)'.",
       "anchor_ids": [
         "12"
       ],
-      "rationale": "Maps 1:1 to declared alternative task 12 as observed in frequent variants such as V0002.",
+      "rationale": "Mapped 1:1 to the declared alternative id=12. Supported by frequent narrative variants such as V0002 and V0007 where payment occurs shortly after fine creation.",
       "evidence_variant_ids": [
         "V0002",
+        "V0003",
         "V0007",
         "V0012"
       ]
@@ -17,11 +18,11 @@
     {
       "category_id": "delinquent_payment",
       "name": "Resolve via delinquent payment",
-      "description": "Resolution of the fine case through payment after notifications and penalties have been applied. Helps 'Maximize timely fine revenue'. Measured against indicator 'Average time to case closure (days)'.",
+      "description": "Cases where payment occurs after penalties have been added and notifications sent, helping 'Maximize timely fine revenue', judged against 'Average time to case closure (days)'.",
       "anchor_ids": [
         "13"
       ],
-      "rationale": "Maps 1:1 to declared alternative task 13 as seen in variants where payment occurs after penalty addition such as V0004 and V0006.",
+      "rationale": "Mapped 1:1 to the declared alternative id=13. Supported by variants like V0004, V0005, and V0006 where payments happen subsequent to penalty additions and reminders.",
       "evidence_variant_ids": [
         "V0004",
         "V0005",
@@ -32,43 +33,46 @@
     {
       "category_id": "administrative_appeal",
       "name": "Resolve via administrative appeal to the Prefecture",
-      "description": "Resolution path involving administrative appeal to the Prefecture. Preserves offender's due-process rights while impacting enforcement costs and revenue. Measured against indicator 'Time to appeal filing, Prefecture (days)'.",
+      "description": "Cases involving formal administrative appeals directed to the Prefecture, preserving 'Preserve offender's due-process rights' while impacting 'Minimize administrative & enforcement cost' and 'Maximize timely fine revenue', measured using 'Time to appeal filing, Prefecture (days)'.",
       "anchor_ids": [
         "14"
       ],
-      "rationale": "Maps 1:1 to declared alternative task 14 representing administrative appeals observed in variants like V0008 and V0057.",
+      "rationale": "Mapped 1:1 to the declared alternative id=14. Supported by variants like V0008, V0057, and V00135 containing steps such as 'Insert Date Appeal to Prefecture' and 'Send Appeal to Prefecture'.",
       "evidence_variant_ids": [
         "V0008",
         "V0057",
+        "V0135",
         "V0137"
       ]
     },
     {
       "category_id": "judicial_appeal",
       "name": "Resolve via judicial appeal to the Judge",
-      "description": "Resolution path involving judicial appeal to the Judge. Strongly preserves due-process rights but hurts enforcement cost and revenue. Measured against indicator 'Time to appeal filing, Judge (days)'.",
+      "description": "Cases involving judicial appeals escalated to a Judge, maximizing 'Preserve offender's due-process rights' while hurting 'Minimize administrative & enforcement cost' and 'Maximize timely fine revenue', judged against 'Time to appeal filing, Judge (days)'.",
       "anchor_ids": [
         "19"
       ],
-      "rationale": "Maps 1:1 to declared alternative task 19 representing judicial appeals found in variants like V0103 and V0140.",
+      "rationale": "Mapped 1:1 to the declared alternative id=19. Supported by variants like V0103, V0176, and V0140 containing the 'Appeal to Judge' activity.",
       "evidence_variant_ids": [
         "V0103",
         "V0176",
-        "V0140"
+        "V0140",
+        "V0144"
       ]
     },
     {
       "category_id": "coercive_credit_collection",
       "name": "Resolve via coercive credit collection",
-      "description": "Resolution path via coercive credit collection for unpaid or unresolved fines. Helps revenue but hurts cost and due-process softgoals. Measured against indicator 'Average time to case closure (days)'.",
+      "description": "Cases routed to coercive enforcement and credit collection agencies, helping 'Maximize timely fine revenue' but hurting 'Minimize administrative & enforcement cost', evaluated against 'Average time to case closure (days)'.",
       "anchor_ids": [
         "20"
       ],
-      "rationale": "Maps 1:1 to declared alternative task 20 representing credit collection endpoints observed in high-duration variants like V0001 and V0009.",
+      "rationale": "Mapped 1:1 to the declared alternative id=20. Supported by variants like V0001, V0009, and V00134 ending with 'Send for Credit Collection'.",
       "evidence_variant_ids": [
         "V0001",
         "V0009",
-        "V0010"
+        "V0010",
+        "V00134"
       ]
     }
   ]

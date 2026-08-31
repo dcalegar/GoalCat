@@ -3,14 +3,14 @@ You are deciding, for each of several process-variant narratives, which single t
 The taxonomy was derived directly from a narrative sample, with no external declaration to anchor to — 'realize' means the narrative matches the recurring pattern the category describes.
 
 === TAXONOMY CATEGORIES ===
-- category_id=fast_er_triage | name=Fast ER Triage & Minimal Diagnostics
-  description: Short, rapid cases that conclude immediately at triage or with basic lab tests (Leucocytes/CRP) within minutes and without hospitalization or intensive interventions.
-- category_id=acute_iv_treatment | name=Acute ER Care with IV Intervention
-  description: Standard acute sepsis care pathways involving triage, comprehensive blood work (CRP, Leucocytes, LacticAcid), and administration of intravenous liquids and antibiotics within a short duration.
-- category_id=standard_admission_release | name=Standard Hospital Admission and Release
-  description: Cases requiring formal hospital admission (Admission NC or Admission IC) followed by a standard inpatient stay and subsequent discharge (Release A, B, C, or D).
-- category_id=chronic_rework_readmission | name=Chronic Rework and Readmission
-  description: Extreme outliers characterized by extensive loops, highly repeated lab tests (CRP, LacticAcid, Leucocytes) and ward admissions, spanning multiple months and frequently culminating in returns to the ER or prolonged stays.
+- category_id=rapid_triage_and_discharge | name=Rapid Triage and Outpatient Evaluation
+  description: Short-duration, low-length paths consisting primarily of initial emergency room registration, triage, and rapid blood work or sepsis screening without subsequent inpatient admission.
+- category_id=acute_medical_intervention | name=Acute Medical Intervention
+  description: Standard acute care pathways that involve extensive diagnostics (CRP, Leucocytes, Lactic Acid) followed by active treatment such as IV liquids and IV antibiotics within a moderate duration.
+- category_id=short_inpatient_admission | name=Short Inpatient Admission and Release
+  description: Cases requiring short-term ward admission (Admission NC or Admission IC) spanning a few days, concluding with a standard patient release.
+- category_id=chronic_rework_and_readmission | name=Chronic Rework and Readmission
+  description: Extremely long, highly complex paths involving heavy repetition of diagnostics and admissions (rework), frequently resulting in patient return to the ER or extended recovery.
 
 === NARRATIVES TO CLASSIFY (46) ===
 How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.

@@ -1,0 +1,65 @@
+{
+  "categories": [
+    {
+      "category_id": "release_a",
+      "name": "Release A",
+      "description": "Represents the standard discharge pathway for admitted sepsis patients, contributing to the avoidance of post-discharge deterioration and measured against post-discharge ER return indicators.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release A (id=17), observed frequently in the narrative sample (e.g. V0008, V0070) concluding successful inpatient treatment without subdivision.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0070",
+        "V0065"
+      ]
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release B",
+      "description": "Represents an alternative discharge pathway for admitted sepsis patients, contributing to avoiding post-discharge deterioration and monitored via post-discharge ER return rates.",
+      "anchor_ids": [
+        "18"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release B (id=18), observed in specific variants such as V0068 and V0145.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Represents an alternative discharge route for complex or extended inpatient stays, tracked against post-discharge ER return outcomes.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release C (id=19), evidenced by long-running complex traces like V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Represents a specialized or alternate discharge pathway for patients after prolonged clinical management, measured by post-discharge ER return metrics.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release D (id=20), found in extended variants such as V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release E",
+      "description": "Represents a distinct terminal discharge category for admitted cases reaching final disposition.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release E (id=21) as specified in the goal model's XOR decomposition for discharged cases.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

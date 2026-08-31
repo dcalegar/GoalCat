@@ -12,11 +12,11 @@ Satisfaction is on GRL's [-100, +100] scale, converted from the measured value b
 | Scope | Measured | Satisfaction | Cases | Measured | Not applicable | No start | No end | Coverage |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | whole log | 87.5 | +4 | 150370 | 103987 | 0 | 0 | 46383 | 69% |
-| coercive_credit_collection | 84.1 | +9 | 59012 | 59012 | 0 | 0 | 0 | 100% |
-| timely_payment | 66.8 | +38 | 49653 | 3270 | 0 | 0 | 46383 | 7% |
-| delinquent_payment | 91.5 | +0 | 16963 | 16963 | 0 | 0 | 0 | 100% |
-| administrative_appeal | 90.2 | +0 | 3637 | 3637 | 0 | 0 | 0 | 100% |
-| judicial_appeal | 100.4 | -3 | 342 | 342 | 0 | 0 | 0 | 100% |
+| coercive_credit_collection | 84.1 | +9 | 58988 | 58988 | 0 | 0 | 0 | 100% |
+| timely_payment | 66.8 | +38 | 49620 | 3237 | 0 | 0 | 46383 | 7% |
+| delinquent_payment | 91.5 | +0 | 16937 | 16937 | 0 | 0 | 0 | 100% |
+| administrative_appeal | 90.2 | +0 | 3701 | 3701 | 0 | 0 | 0 | 100% |
+| judicial_appeal | 100.3 | -3 | 372 | 372 | 0 | 0 | 0 | 100% |
 
 ## Time to appeal filing, Prefecture (days) (id 113)
 
@@ -27,11 +27,11 @@ Satisfaction is on GRL's [-100, +100] scale, converted from the measured value b
 | Scope | Measured | Satisfaction | Cases | Measured | Not applicable | No start | No end | Coverage |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | whole log | 48.6 | +100 | 150370 | 4036 | 146182 | 145 | 7 | 96% |
-| coercive_credit_collection | 41.9 | +100 | 59012 | 281 | 58731 | 0 | 0 | 100% |
-| timely_payment | 67.3 | -12 | 49653 | 35 | 49613 | 4 | 1 | 88% |
-| delinquent_payment | 26.6 | +100 | 16963 | 60 | 16898 | 0 | 5 | 92% |
-| administrative_appeal | 49.9 | +100 | 3637 | 3505 | 0 | 132 | 0 | 96% |
-| judicial_appeal | 35.8 | +100 | 342 | 148 | 190 | 3 | 1 | 97% |
+| coercive_credit_collection | 40.7 | +100 | 58988 | 263 | 58725 | 0 | 0 | 100% |
+| timely_payment | — | — | 49620 | 0 | 49617 | 3 | 0 | 0% |
+| delinquent_payment | 26.2 | +100 | 16937 | 42 | 16889 | 0 | 6 | 88% |
+| administrative_appeal | 49.9 | +100 | 3701 | 3566 | 3 | 132 | 0 | 96% |
+| judicial_appeal | 38.1 | +100 | 372 | 165 | 200 | 6 | 1 | 96% |
 
 ## Time to appeal filing, Judge (days) (id 175)
 
@@ -42,11 +42,11 @@ Satisfaction is on GRL's [-100, +100] scale, converted from the measured value b
 | Scope | Measured | Satisfaction | Cases | Measured | Not applicable | No start | No end | Coverage |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | whole log | 95.9 | -100 | 150370 | 538 | 149815 | 17 | 0 | 97% |
-| coercive_credit_collection | 61.1 | -100 | 59012 | 147 | 58865 | 0 | 0 | 100% |
-| timely_payment | 100.7 | -100 | 49653 | 11 | 49642 | 0 | 0 | 100% |
-| delinquent_payment | 131.8 | -100 | 16963 | 43 | 16920 | 0 | 0 | 100% |
-| administrative_appeal | 88.6 | -100 | 3637 | 7 | 3627 | 3 | 0 | 70% |
-| judicial_appeal | 106.9 | -100 | 342 | 328 | 0 | 14 | 0 | 96% |
+| coercive_credit_collection | 44.6 | -48 | 58988 | 126 | 58862 | 0 | 0 | 100% |
+| timely_payment | — | — | 49620 | 0 | 49620 | 0 | 0 | 0% |
+| delinquent_payment | 131.8 | -100 | 16937 | 43 | 16894 | 0 | 0 | 100% |
+| administrative_appeal | 119.5 | -100 | 3701 | 14 | 3687 | 0 | 0 | 100% |
+| judicial_appeal | 108.8 | -100 | 372 | 355 | 0 | 17 | 0 | 95% |
 
 ## Average time to case closure (days) (id 114)
 
@@ -56,11 +56,11 @@ Satisfaction is on GRL's [-100, +100] scale, converted from the measured value b
 | Scope | Measured | Satisfaction | Cases | Measured | Not applicable | No start | No end | Coverage |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | whole log | 378.7 | -100 | 150370 | 126840 | 0 | 0 | 23530 | 84% |
-| coercive_credit_collection | 690.5 | -100 | 59012 | 59012 | 0 | 0 | 0 | 100% |
-| timely_payment | 17.8 | +100 | 49653 | 49653 | 0 | 0 | 0 | 100% |
-| delinquent_payment | 357.6 | -96 | 16963 | 16963 | 0 | 0 | 0 | 100% |
-| administrative_appeal | 316.8 | -73 | 3637 | 542 | 0 | 0 | 3095 | 15% |
-| judicial_appeal | 527.0 | -100 | 342 | 296 | 0 | 0 | 46 | 87% |
+| coercive_credit_collection | 690.3 | -100 | 58988 | 58988 | 0 | 0 | 0 | 100% |
+| timely_payment | 17.4 | +100 | 49620 | 49620 | 0 | 0 | 0 | 100% |
+| delinquent_payment | 357.8 | -96 | 16937 | 16937 | 0 | 0 | 0 | 100% |
+| administrative_appeal | 328.5 | -80 | 3701 | 610 | 0 | 0 | 3091 | 16% |
+| judicial_appeal | 575.5 | -100 | 372 | 322 | 0 | 0 | 50 | 87% |
 
 ## Propagated softgoal satisfaction
 
@@ -70,7 +70,7 @@ Only softgoals carry a value: indicators are the sole seeds, and they reach the 
 
 | Softgoal | whole log | administrative_appeal | coercive_credit_collection | delinquent_payment | judicial_appeal | timely_payment |
 |---|---|---|---|---|---|---|
-| Maximize timely fine revenue | -48 | -36 | -46 | -48 | -52 | +69 |
-| Minimize administrative & enforcement cost | -50 | -36 | -50 | -48 | -50 | +50 |
-| Preserve offender's due-process rights | +0 | +0 | +0 | +0 | +0 | -56 |
+| Maximize timely fine revenue | -48 | -40 | -46 | -48 | -52 | +69 |
+| Minimize administrative & enforcement cost | -50 | -40 | -50 | -48 | -50 | +50 |
+| Preserve offender's due-process rights | +0 | +0 | +26 | +0 | +0 | +0 |
 

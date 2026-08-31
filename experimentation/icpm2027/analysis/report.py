@@ -168,15 +168,42 @@ def declared_alternative_coverage(
     taxonomy_path: Path,
     assignments_df: pd.DataFrame,
     variants_df: pd.DataFrame,
+    axis_root: str | None = None,
 ) -> list[DeclaredAlternativeCoverage]:
     """Joins the goal model's declared OR-alternatives to the induced taxonomy and the resulting
     assignment, so an alternative that never became a category — or became an empty one — is
-    visible as its own row rather than as an absence."""
+    visible as its own row rather than as an absence.
+
+    `axis_root` scopes the enumeration to one declared axis. A dataset that declares several
+    independent frontiers (Sepsis: admission under element 5, discharge under element 6) otherwise
+    pools every alternative in the model into one denominator, so the admission report reads
+    "2 of 7 declared alternatives realized" when its own frontier has exactly two. With it set,
+    only the Or/Xor points at or below the resolved axis root are enumerated."""
     model = read_jucm(goal_model_path)
     names = {element_id: element.name for element_id, element in model.elements.items()}
+
+    children: dict[str, list[str]] = {}
+    for link in model.decompositions:
+        children.setdefault(link.src, []).append(link.dest)
+
+    or_points = declared_alternatives(model)
+    if axis_root is not None:
+        # Every Or/Xor-decomposed element at or below the axis root, reached over decomposition
+        # links of any type (an axis frontier descends through intervening And nodes).
+        in_axis = {axis_root} if axis_root in or_points else set()
+        stack = list(children.get(axis_root, []))
+        while stack:
+            current = stack.pop()
+            if current in in_axis:
+                continue
+            if current in or_points:
+                in_axis.add(current)
+            stack.extend(children.get(current, []))
+        or_points = {parent: kids for parent, kids in or_points.items() if parent in in_axis}
+
     alternatives: list[str] = []
-    for children in declared_alternatives(model).values():
-        for child in children:
+    for kids in or_points.values():
+        for child in kids:
             if child not in alternatives:
                 alternatives.append(child)
 
@@ -185,10 +212,6 @@ def declared_alternative_coverage(
     for category in taxonomy.get("categories", []):
         for anchor in category.get("anchor_ids") or []:
             category_by_anchor.setdefault(anchor, category["category_id"])
-
-    children: dict[str, list[str]] = {}
-    for link in model.decompositions:
-        children.setdefault(link.src, []).append(link.dest)
 
     def descendants(element_id: str) -> list[str]:
         """Every element below `element_id`, over decomposition links of any type — an OR
@@ -237,6 +260,27 @@ def declared_alternative_coverage(
     return rows
 
 
+def replicate_residual_jaccard(
+    coverage_reports: list[CoverageReport], rep1_label: str, rep2_label: str
+) -> float | None:
+    """Jaccard similarity of one arm's two replicate residual variant-sets.
+
+    §6 reads this as direct evidence that the declared frame stabilizes *what is not a category*:
+    a guided arm that puts the same variants in the residual across identical-input reruns has a
+    Jaccard near 1, an open arm that does not has one near 0. Computed here per axis, so a
+    two-axis dataset (Sepsis) reports one value for each frontier rather than one pooled figure.
+    Returns None when either replicate is missing; 1.0 when both residuals are empty.
+    """
+    by_label = {report.condition_label: report for report in coverage_reports}
+    rep1, rep2 = by_label.get(rep1_label), by_label.get(rep2_label)
+    if rep1 is None or rep2 is None:
+        return None
+    set1, set2 = set(rep1.residual_variant_ids), set(rep2.residual_variant_ids)
+    if not set1 and not set2:
+        return 1.0
+    return len(set1 & set2) / len(set1 | set2)
+
+
 KNOWN_FINDINGS: dict[str, list[str]] = {
     "rtfm": [
         (
@@ -270,6 +314,9 @@ class DatasetReport:
 
     dataset_id: str
     scope_record: dict[str, Any]
+    #: Which declared axis this report covers, on a dataset that declares several (Sepsis). None
+    #: on a single-axis dataset, where the heading would only repeat what the file name says.
+    axis: str | None = None
     coverage_reports: list[CoverageReport] = field(default_factory=list)
     contingency: ContingencyResult | None = None
     divergence: DivergenceResult | None = None
@@ -277,6 +324,10 @@ class DatasetReport:
     #: The open arm's is the only stability signal it has (Task C12 covers the guided taxonomy only).
     guided_replicate_divergence: DivergenceResult | None = None
     open_replicate_divergence: DivergenceResult | None = None
+    #: §6 residual-stability evidence — Jaccard of each arm's two replicate residual variant-sets,
+    #: per axis. None until the two replicates of the arm have both run.
+    guided_residual_jaccard: float | None = None
+    open_residual_jaccard: float | None = None
     declared_coverage: list[DeclaredAlternativeCoverage] = field(default_factory=list)
     stability: InductionStability | None = None
     structural_contingency: ContingencyResult | None = None
@@ -327,7 +378,10 @@ class DatasetReport:
         return missing
 
     def to_markdown(self) -> str:
-        parts = [f"# Experiment 1 — {self.dataset_id}", "", self._scope_section(), ""]
+        heading = f"# Experiment 1 — {self.dataset_id}"
+        if self.axis:
+            heading += f" (axis: {self.axis})"
+        parts = [heading, "", self._scope_section(), ""]
 
         if self.stability is not None:
             parts += ["## Step 5a induction stability (Task C12)", "", self.stability.qualification(self.dataset_id), ""]
@@ -406,7 +460,10 @@ class DatasetReport:
                 "",
                 "Guided arm only. Each goal-model indicator is *measured* from the log and converted "
                 "through its own `KPIEvalValueSet`, then propagated up the goal model --- no LLM call. "
-                "This is the one result not exposed to the LLM-dependence threat. Indicators with low "
+                "The measurement operator is therefore the one part of the pipeline not exposed to "
+                "the LLM-dependence threat, but only the `whole log` row is free of it outright: "
+                "every per-category row is measured over the sublog Step 6 assigned, so it inherits "
+                "that step's variance even though computing it does not. Indicators with low "
                 "applicability are reported as coverage, never as bad values.",
                 "",
                 body.strip(),
@@ -449,6 +506,23 @@ class DatasetReport:
                     "dataset should be reported with that band, and the open arm's instability noted "
                     "as a limit on the strength of the paired contrast (Task E7, extended to the open "
                     "arm)._",
+                    "",
+                ]
+            if self.guided_residual_jaccard is not None or self.open_residual_jaccard is not None:
+                def _fmt(value: float | None) -> str:
+                    return f"{value:.2f}" if value is not None else "n/a (one replicate missing)"
+
+                parts += [
+                    "### Replicate residual-set Jaccard (§6)",
+                    "",
+                    "Jaccard similarity of an arm's two replicate residual variant-sets, on this "
+                    "axis. A value near 1 means the arm puts the same variants outside every "
+                    "category across identical-input reruns; near 0 means it does not. §6 reads the "
+                    "guided-over-open gap as evidence that the declared frame stabilizes the "
+                    "residual boundary, not only the category set.",
+                    "",
+                    f"- guided: {_fmt(self.guided_residual_jaccard)}",
+                    f"- open: {_fmt(self.open_residual_jaccard)}",
                     "",
                 ]
 

@@ -1,26 +1,142 @@
 {
   "dataset": "rtfm",
+  "axis": "resolution",
+  "axis_root": "4",
   "findings": [
     {
       "kind": "A",
-      "perturbation_id": "pertA_remove_19",
+      "perturbation_id": "pertA_remove_20",
       "targets": [
-        "19"
+        "20"
       ],
-      "target_anchor": "19",
+      "valid": true,
+      "target_anchors": [
+        "20"
+      ],
       "TargetReassignment": {
-        "n": 65,
-        "changed": 65,
+        "n": 43,
+        "changed": 43,
         "rate": 1.0,
-        "cases_changed": 397
+        "cases_changed": 59012
       },
       "CollateralReassignment": {
-        "n": 166,
-        "changed": 12,
-        "rate": 0.07228915662650602,
-        "cases_changed": 42
+        "n": 188,
+        "changed": 25,
+        "rate": 0.13297872340425532,
+        "cases_changed": 3465
       },
-      "note": "CollateralReassignment is interpretable only against the replicate noise floor from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+      "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint).",
+      "CollateralReassignmentNull": {
+        "k": 5,
+        "n_pairs": 10,
+        "collateral_population": 188,
+        "mean": 0.17872340425531913,
+        "min": 0.09574468085106383,
+        "max": 0.26063829787234044,
+        "pairs": [
+          {
+            "pair": [
+              1,
+              2
+            ],
+            "n": 188,
+            "changed": 27,
+            "rate": 0.14361702127659576,
+            "cases_changed": 186
+          },
+          {
+            "pair": [
+              1,
+              3
+            ],
+            "n": 188,
+            "changed": 21,
+            "rate": 0.11170212765957446,
+            "cases_changed": 93
+          },
+          {
+            "pair": [
+              1,
+              4
+            ],
+            "n": 188,
+            "changed": 28,
+            "rate": 0.14893617021276595,
+            "cases_changed": 167
+          },
+          {
+            "pair": [
+              1,
+              5
+            ],
+            "n": 188,
+            "changed": 43,
+            "rate": 0.22872340425531915,
+            "cases_changed": 542
+          },
+          {
+            "pair": [
+              2,
+              3
+            ],
+            "n": 188,
+            "changed": 18,
+            "rate": 0.09574468085106383,
+            "cases_changed": 153
+          },
+          {
+            "pair": [
+              2,
+              4
+            ],
+            "n": 188,
+            "changed": 33,
+            "rate": 0.17553191489361702,
+            "cases_changed": 275
+          },
+          {
+            "pair": [
+              2,
+              5
+            ],
+            "n": 188,
+            "changed": 40,
+            "rate": 0.2127659574468085,
+            "cases_changed": 628
+          },
+          {
+            "pair": [
+              3,
+              4
+            ],
+            "n": 188,
+            "changed": 35,
+            "rate": 0.18617021276595744,
+            "cases_changed": 152
+          },
+          {
+            "pair": [
+              3,
+              5
+            ],
+            "n": 188,
+            "changed": 42,
+            "rate": 0.22340425531914893,
+            "cases_changed": 561
+          },
+          {
+            "pair": [
+              4,
+              5
+            ],
+            "n": 188,
+            "changed": 49,
+            "rate": 0.26063829787234044,
+            "cases_changed": 671
+          }
+        ],
+        "note": "Descriptive min-max of the collateral reassignment rate over the 10 unordered pairs of 5 unperturbed guided replicates, on one fixed collateral population (188 variants, from replicate 1). The pairs are not independent, so this is a replicate range, not a null distribution."
+      }
     },
     {
       "kind": "B",
@@ -29,20 +145,135 @@
         "13",
         "20"
       ],
-      "target_anchor": "13",
+      "valid": true,
+      "target_anchors": [
+        "13",
+        "20"
+      ],
       "TargetReassignment": {
-        "n": 50,
-        "changed": 50,
+        "n": 85,
+        "changed": 85,
         "rate": 1.0,
-        "cases_changed": 16947
+        "cases_changed": 75929
       },
       "CollateralReassignment": {
-        "n": 181,
-        "changed": 59,
-        "rate": 0.3259668508287293,
-        "cases_changed": 59399
+        "n": 146,
+        "changed": 38,
+        "rate": 0.2602739726027397,
+        "cases_changed": 64
       },
-      "note": "CollateralReassignment is interpretable only against the replicate noise floor from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+      "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint).",
+      "CollateralReassignmentNull": {
+        "k": 5,
+        "n_pairs": 10,
+        "collateral_population": 146,
+        "mean": 0.1684931506849315,
+        "min": 0.04794520547945205,
+        "max": 0.2534246575342466,
+        "pairs": [
+          {
+            "pair": [
+              1,
+              2
+            ],
+            "n": 146,
+            "changed": 15,
+            "rate": 0.10273972602739725,
+            "cases_changed": 137
+          },
+          {
+            "pair": [
+              1,
+              3
+            ],
+            "n": 146,
+            "changed": 7,
+            "rate": 0.04794520547945205,
+            "cases_changed": 47
+          },
+          {
+            "pair": [
+              1,
+              4
+            ],
+            "n": 146,
+            "changed": 25,
+            "rate": 0.17123287671232876,
+            "cases_changed": 154
+          },
+          {
+            "pair": [
+              1,
+              5
+            ],
+            "n": 146,
+            "changed": 32,
+            "rate": 0.2191780821917808,
+            "cases_changed": 413
+          },
+          {
+            "pair": [
+              2,
+              3
+            ],
+            "n": 146,
+            "changed": 12,
+            "rate": 0.0821917808219178,
+            "cases_changed": 138
+          },
+          {
+            "pair": [
+              2,
+              4
+            ],
+            "n": 146,
+            "changed": 24,
+            "rate": 0.1643835616438356,
+            "cases_changed": 239
+          },
+          {
+            "pair": [
+              2,
+              5
+            ],
+            "n": 146,
+            "changed": 37,
+            "rate": 0.2534246575342466,
+            "cases_changed": 530
+          },
+          {
+            "pair": [
+              3,
+              4
+            ],
+            "n": 146,
+            "changed": 22,
+            "rate": 0.1506849315068493,
+            "cases_changed": 115
+          },
+          {
+            "pair": [
+              3,
+              5
+            ],
+            "n": 146,
+            "changed": 35,
+            "rate": 0.23972602739726026,
+            "cases_changed": 452
+          },
+          {
+            "pair": [
+              4,
+              5
+            ],
+            "n": 146,
+            "changed": 37,
+            "rate": 0.2534246575342466,
+            "cases_changed": 537
+          }
+        ],
+        "note": "Descriptive min-max of the collateral reassignment rate over the 10 unordered pairs of 5 unperturbed guided replicates, on one fixed collateral population (146 variants, from replicate 1). The pairs are not independent, so this is a replicate range, not a null distribution."
+      }
     }
   ]
 }

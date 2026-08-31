@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "28672d24245719a6",
+  "latency_seconds": 21.851983083997766,
+  "input_tokens": 2065,
+  "output_tokens": 553,
+  "prompt_chars": 8561,
+  "response_chars": 1934,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"release_a\",\n      \"name\": \"Release A\",\n      \"description\": \"Discharge pathway Release A for admitted cases. Advances the softgoal Avoid post-discharge deterioration through Help contributions.\",\n      \"anchor_ids\": [\n        \"17\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to declared alternative Release A (id=17) under the OR decomposition of goal id=6.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"release_b\",\n      \"name\": \"Release B\",\n      \"description\": \"Discharge pathway Release B for admitted cases. Advances the softgoal Avoid post-discharge deterioration through Help contributions.\",\n      \"anchor_ids\": [\n        \"18\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to declared alternative Release B (id=18) under the OR decomposition of goal id=6.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"release_c\",\n      \"name\": \"Release C\",\n      \"description\": \"Discharge pathway Release C for admitted cases.\",\n      \"anchor_ids\": [\n        \"19\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to declared alternative Release C (id=19) under the OR decomposition of goal id=6.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"release_d\",\n      \"name\": \"Release D\",\n      \"description\": \"Discharge pathway Release D for admitted cases.\",\n      \"anchor_ids\": [\n        \"20\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to declared alternative Release D (id=20) under the OR decomposition of goal id=6.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"release_e\",\n      \"name\": \"Release E\",\n      \"description\": \"Discharge pathway Release E for admitted cases.\",\n      \"anchor_ids\": [\n        \"21\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to declared alternative Release E (id=21) under the OR decomposition of goal id=6.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.002002
+}

@@ -3,51 +3,51 @@
     {
       "category_id": "timely_payment",
       "name": "Resolve via timely payment",
-      "description": "Resolution of the fine case through prompt voluntary payment, advancing 'Maximize timely fine revenue' (Make +100) and 'Minimize administrative & enforcement cost' (Help +50), judged against 'Average time to case closure' (Indicator 114).",
+      "description": "Resolution of the fine case through prompt payment by the offender. This category advances the softgoal 'Maximize timely fine revenue' (Make +100) and helps 'Minimize administrative & enforcement cost' (Help +50), judged against performance indicators like time to fine dispatch and average time to case closure.",
       "anchor_ids": [
         "12"
       ],
-      "rationale": "Mapped 1:1 to the declared OR alternative 12, as instructed by the default rule.",
+      "rationale": "Mapped 1:1 to the declared alternative id=12 as the default under the goal model decomposition, representing prompt payment resolution.",
       "evidence_variant_ids": []
     },
     {
       "category_id": "delinquent_payment",
       "name": "Resolve via delinquent payment",
-      "description": "Resolution of the fine case through late payment after penalties are added, supporting 'Maximize timely fine revenue' (Help +50), judged against 'Average time to case closure' (Indicator 114).",
+      "description": "Resolution of the fine case through late payment after penalties are applied. This category helps 'Maximize timely fine revenue' (Help +50).",
       "anchor_ids": [
         "13"
       ],
-      "rationale": "Mapped 1:1 to the declared OR alternative 13 under the default mapping rule.",
+      "rationale": "Mapped 1:1 to the declared alternative id=13 as the default under the goal model decomposition, representing late payment after enforceability.",
       "evidence_variant_ids": []
     },
     {
-      "category_id": "administrative_appeal",
+      "category_id": "administrative_appeal_prefecture",
       "name": "Resolve via administrative appeal to the Prefecture",
-      "description": "Resolution of the case through an administrative appeal lodged with the Prefecture, preserving offender's due-process rights (Help +50) while impacting costs and revenue (SomeNegative -25), judged against indicator 113.",
+      "description": "Resolution of the fine case through an administrative appeal submitted to the Prefecture. This category preserves offender's due-process rights (Help +50) while harming administrative cost and timely revenue.",
       "anchor_ids": [
         "14"
       ],
-      "rationale": "Mapped 1:1 to the declared XOR alternative 14, following the default rule.",
+      "rationale": "Mapped 1:1 to the declared alternative id=14 as the default under the goal model decomposition. Although it contains AND-decomposed descendant tasks, anchor_ids names only the alternative's own id.",
       "evidence_variant_ids": []
     },
     {
-      "category_id": "judicial_appeal",
+      "category_id": "judicial_appeal_judge",
       "name": "Resolve via judicial appeal to the Judge",
-      "description": "Resolution of the case through a judicial appeal to the Judge, making a strong contribution to due-process rights (Make +100) but hurting administrative costs (Hurt -50), judged against indicator 175.",
+      "description": "Resolution of the fine case through a judicial appeal brought before a Judge. This category makes a strong positive contribution to preserving the offender's due-process rights (Make +100) but hurts administrative cost.",
       "anchor_ids": [
         "19"
       ],
-      "rationale": "Mapped 1:1 to the declared XOR alternative 19 under the default rule.",
+      "rationale": "Mapped 1:1 to the declared alternative id=19 as the default under the goal model decomposition, representing judicial resolution.",
       "evidence_variant_ids": []
     },
     {
       "category_id": "coercive_credit_collection",
       "name": "Resolve via coercive credit collection",
-      "description": "Resolution of the case through coercive credit collection measures, helping timely revenue (Help +50) but hurting enforcement costs (Hurt -50), judged against indicator 114.",
+      "description": "Resolution of the fine case through coercive credit collection measures. This category helps revenue (Help +50) but hurts administrative cost.",
       "anchor_ids": [
         "20"
       ],
-      "rationale": "Mapped 1:1 to the declared OR alternative 20, following the default rule.",
+      "rationale": "Mapped 1:1 to the declared alternative id=20 as the default under the goal model decomposition, representing coercive credit recovery.",
       "evidence_variant_ids": []
     }
   ]

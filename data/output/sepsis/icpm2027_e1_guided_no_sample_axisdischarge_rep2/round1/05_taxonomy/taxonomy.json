@@ -1,0 +1,54 @@
+{
+  "categories": [
+    {
+      "category_id": "release_a",
+      "name": "Release A",
+      "description": "Discharge pathway Release A for admitted cases. Advances the softgoal Avoid post-discharge deterioration through Help contributions.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release A (id=17) under the OR decomposition of goal id=6.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release B",
+      "description": "Discharge pathway Release B for admitted cases. Advances the softgoal Avoid post-discharge deterioration through Help contributions.",
+      "anchor_ids": [
+        "18"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release B (id=18) under the OR decomposition of goal id=6.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Discharge pathway Release C for admitted cases.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release C (id=19) under the OR decomposition of goal id=6.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Discharge pathway Release D for admitted cases.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release D (id=20) under the OR decomposition of goal id=6.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release E",
+      "description": "Discharge pathway Release E for admitted cases.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release E (id=21) under the OR decomposition of goal id=6.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

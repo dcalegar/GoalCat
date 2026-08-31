@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "8c3730da85e1a90f",
+  "latency_seconds": 35.083122666001145,
+  "input_tokens": 8833,
+  "output_tokens": 411,
+  "prompt_chars": 27667,
+  "response_chars": 1506,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Non-Critical Ward Admission\",\n      \"description\": \"Represents admission of the patient to a non-critical inpatient ward (Admission NC). This pathway supports standard inpatient care following sepsis screening and initial workup and treatment.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared alternative id=15 (Admission NC) from the OR decomposition of goal id=5. Supported by frequent and extreme variant samples such as V0008, V0551, and V0317 where patients are transitioned to non-critical care.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0551\",\n        \"V0317\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Intensive Care Ward Admission\",\n      \"description\": \"Represents admission of the patient to an intensive care inpatient ward (Admission IC). This pathway is chosen for severe cases requiring intensive monitoring and treatment, impacting the goal softgoal 'Minimize time-to-treatment' with a negative contribution (-25) due to intensive transfer overhead.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared alternative id=16 (Admission IC) from the OR decomposition of goal id=5. Supported by variant samples such as V0605 and V0317 which show direct realization of intensive care ward admission.\",\n      \"evidence_variant_ids\": [\n        \"V0605\",\n        \"V0317\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0036774
+}

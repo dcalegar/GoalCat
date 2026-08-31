@@ -4,13 +4,13 @@ The taxonomy was derived by subdividing a declared goal-model axis — every cat
 
 === TAXONOMY CATEGORIES ===
 - category_id=timely_payment | name=Resolve via timely payment
-  description: Fine is settled promptly through payment, maximizing timely fine revenue and helping minimize administrative and enforcement costs, measured against average time to case closure and time to fine dispatch.
-- category_id=enforceable_resolution | name=Fine becomes enforceable and is resolved
-  description: Fine proceeds through notification and penalty addition, balancing revenue maximization against due-process preservation, measured against average time to case closure.
+  description: Resolution of the fine case through payment realization, advancing the 'Maximize timely fine revenue' softgoal and helping 'Minimize administrative & enforcement cost'. Judged against indicator id=114 (Average time to case closure).
+- category_id=merged_closure | name=Merged 13+20
+  description: Resolution through merged enforcement and credit collection procedures, helping 'Maximize timely fine revenue' while hurting 'Minimize administrative & enforcement cost' and preserving due-process rights. Judged against indicator id=114.
 - category_id=administrative_appeal | name=Resolve via administrative appeal to the Prefecture
-  description: Fine resolution is pursued via an administrative appeal submitted to the Prefecture, preserving offender due-process rights while potentially increasing administrative costs and impacting revenue timing, measured against time to appeal filing (Prefecture).
+  description: Resolution via administrative appeal processes, preserving the offender's due-process rights (softgoal id=14) while impacting administration costs and revenue. Judged against indicator id=113.
 - category_id=judicial_appeal | name=Resolve via judicial appeal to the Judge
-  description: Fine resolution is pursued via judicial appeal to a judge, strongly making for the preservation of offender's due-process rights while hurting administrative cost minimization and fine revenue, measured against time to appeal filing (Judge).
+  description: Resolution through judicial appeals to the Judge, making a strong positive contribution to preserving offender's due-process rights while hurting cost and revenue softgoals. Judged against indicator id=175.
 
 === NARRATIVES TO CLASSIFY (50) ===
 How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.

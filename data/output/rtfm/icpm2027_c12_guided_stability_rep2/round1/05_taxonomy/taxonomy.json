@@ -3,71 +3,85 @@
     {
       "category_id": "timely_payment",
       "name": "Resolve via timely payment",
-      "description": "Resolution of the fine case through early payment before enforcement actions are triggered, strongly advancing timely fine revenue and helping minimize administrative costs.",
+      "description": "Cases resolved directly through payment without enforcement steps, advancing 'Maximize timely fine revenue' and 'Minimize administrative & enforcement cost', judged against indicator 'Time to fine dispatch (days)'.",
       "anchor_ids": [
         "12"
       ],
-      "rationale": "Maps 1:1 to the declared alternative id=12 as supported by frequent variants such as V0002 where payment occurs directly after fine creation.",
+      "rationale": "Mapped 1:1 to the declared alternative id=12, supported by variants such as V0002 where payment occurs shortly after fine creation.",
       "evidence_variant_ids": [
         "V0002",
         "V0007",
-        "V0012"
+        "V0012",
+        "V0193"
       ]
     },
     {
       "category_id": "delinquent_payment",
       "name": "Resolve via delinquent payment",
-      "description": "Resolution of the fine case through payment occurring after penalties or enforcement procedures have started, helping maximize fine revenue.",
+      "description": "Cases where payment occurs later, after penalties or notifications, advancing 'Maximize timely fine revenue', judged against average closure time indicators.",
       "anchor_ids": [
         "13"
       ],
-      "rationale": "Maps 1:1 to the declared alternative id=13, evidenced by variants like V0004 and V0006 where payment happens following notification and penalties.",
+      "rationale": "Mapped 1:1 to the declared alternative id=13, evidenced by variants like V0004 and V0006 where payment follows fine notifications and added penalties.",
       "evidence_variant_ids": [
         "V0004",
         "V0005",
-        "V0006"
+        "V0006",
+        "V0009",
+        "V0010",
+        "V0048",
+        "V0153",
+        "V0151",
+        "V0147",
+        "V0141"
       ]
     },
     {
       "category_id": "administrative_appeal",
       "name": "Resolve via administrative appeal to the Prefecture",
-      "description": "Resolution sought through an administrative appeal filed with the Prefecture, preserving due-process rights while potentially impacting enforcement costs and timely revenue.",
+      "description": "Cases involving administrative appeals submitted to the Prefecture, preserving due process rights while impacting administrative costs, judged against 'Time to appeal filing, Prefecture (days)'.",
       "anchor_ids": [
         "14"
       ],
-      "rationale": "Maps 1:1 to the declared alternative id=14, observed in variants such as V0008, V0057, and V0135 which contain appeal preparation and transmission steps.",
+      "rationale": "Mapped 1:1 to the declared alternative id=14, supported by variants such as V0008, V0057, and V0135 that explicitly contain administrative appeal steps.",
       "evidence_variant_ids": [
         "V0008",
         "V0057",
-        "V0135"
+        "V0135",
+        "V0137",
+        "V0138"
       ]
     },
     {
       "category_id": "judicial_appeal",
       "name": "Resolve via judicial appeal to the Judge",
-      "description": "Resolution sought through a judicial appeal to the Judge, maximizing the offender's due-process rights while hurting administrative cost efficiency.",
+      "description": "Cases involving judicial appeals to a judge, strongly preserving due process rights and hurting administrative cost reduction, judged against 'Time to appeal filing, Judge (days)'.",
       "anchor_ids": [
         "19"
       ],
-      "rationale": "Maps 1:1 to the declared alternative id=19, identified in variants such as V0103 and V0140 featuring judge appeal activities.",
+      "rationale": "Mapped 1:1 to the declared alternative id=19, observed in variants such as V0103, V0176, and V0140 containing judicial appeal actions.",
       "evidence_variant_ids": [
         "V0103",
+        "V0176",
         "V0140",
-        "V0176"
+        "V0139",
+        "V0134"
       ]
     },
     {
       "category_id": "coercive_credit_collection",
       "name": "Resolve via coercive credit collection",
-      "description": "Resolution via coercive credit collection actions when payment is not voluntarily received, helping revenue but hurting administrative costs.",
+      "description": "Cases that fail voluntary resolution and are sent for coercive credit collection, maximizing revenue while hurting cost minimization, judged against case closure indicators.",
       "anchor_ids": [
         "20"
       ],
-      "rationale": "Maps 1:1 to the declared alternative id=20, supported by variants such as V0001, V0009, and V0010 culminating in credit collection.",
+      "rationale": "Mapped 1:1 to the declared alternative id=20, backed by high-duration variants such as V0001, V0009, and V0134 culminating in credit collection.",
       "evidence_variant_ids": [
         "V0001",
         "V0009",
-        "V0010"
+        "V0010",
+        "V0135",
+        "V0134"
       ]
     }
   ]

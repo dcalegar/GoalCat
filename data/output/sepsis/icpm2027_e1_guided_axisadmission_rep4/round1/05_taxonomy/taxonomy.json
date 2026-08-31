@@ -1,0 +1,49 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission NC",
+      "description": "Patient is admitted to a non-critical inpatient ward. This contributes to general inpatient care after stabilization or initial sepsis workup in the emergency department.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to the declared OR alternative Admission NC (id=15), as evidenced by frequent occurrences in standard inpatient paths such as variant V0008, and measured by discharge outcomes.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0273",
+        "V0068",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063",
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "admission_ic",
+      "name": "Admission IC",
+      "description": "Patient is admitted to an intensive care inpatient ward. This alternative has a negative contribution link to minimizing time-to-treatment due to higher transfer overhead, but is utilized for severe cases.",
+      "anchor_ids": [
+        "16"
+      ],
+      "rationale": "Mapped 1:1 to the declared OR alternative Admission IC (id=16), as observed in severe and complex variants like V0605 and V0317.",
+      "evidence_variant_ids": [
+        "V0605",
+        "V0551",
+        "V0317",
+        "V0068",
+        "V0145",
+        "V0710"
+      ]
+    }
+  ]
+}
