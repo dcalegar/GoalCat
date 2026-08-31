@@ -1,0 +1,70 @@
+{
+  "k": 5,
+  "stable": true,
+  "distinct_anchor_sets": 1,
+  "category_sets": [
+    [
+      "consignment_consumption",
+      "three_way_after_gr",
+      "three_way_before_gr",
+      "two_way_match"
+    ],
+    [
+      "consignement_consumption",
+      "three_way_matched_after_gr",
+      "three_way_matched_before_gr",
+      "two_way_matched"
+    ],
+    [
+      "consignment_consumption",
+      "three_way_matched_after_gr",
+      "three_way_matched_before_gr",
+      "two_way_matched"
+    ],
+    [
+      "resolve_via_consignment_consumption",
+      "three_way_matched_after_gr",
+      "three_way_matched_before_gr",
+      "two_way_matched"
+    ],
+    [
+      "consignment_consumption",
+      "three_way_after_gr",
+      "three_way_before_gr",
+      "two_way_matched"
+    ]
+  ],
+  "anchor_sets": [
+    [
+      "13",
+      "5",
+      "6",
+      "7"
+    ],
+    [
+      "13",
+      "5",
+      "6",
+      "7"
+    ],
+    [
+      "13",
+      "5",
+      "6",
+      "7"
+    ],
+    [
+      "13",
+      "5",
+      "6",
+      "7"
+    ],
+    [
+      "13",
+      "5",
+      "6",
+      "7"
+    ]
+  ],
+  "qualification": "Step 5a reproduced the same anchor set across all 5 identical-input reruns for bpic2019; category *labels* reworded cosmetically between some reruns (e.g. added qualifiers with no change in the anchored goal-model element), which is expected LLM phrasing variance, not induction instability (\u00a74: categories are matched by anchor_ids, never by name). This dataset's figures below are not subject to Task E7's qualification."
+}

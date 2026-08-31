@@ -1,0 +1,58 @@
+{
+  "categories": [
+    {
+      "category_id": "three_way_matched_after_gr",
+      "name": "3-way matched, invoice recorded after goods receipt",
+      "description": "Represents items resolved via 3-way matching where the goods receipt precedes the invoice receipt. This alternative makes a strong positive contribution to preserving value-matching control integrity and is judged against the Time to clearance, 3-way after GR (days) indicator.",
+      "anchor_ids": [
+        "5"
+      ],
+      "rationale": "Directly maps to the declared OR alternative 5 in the goal model. Supported by frequent variants like V0001 and V0002 where Record Goods Receipt precedes Vendor creates invoice and Record Invoice Receipt.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0002",
+        "V0004"
+      ]
+    },
+    {
+      "category_id": "three_way_matched_before_gr",
+      "name": "3-way matched, invoice recorded before goods receipt",
+      "description": "Represents items resolved via 3-way matching where the invoice is recorded before the goods receipt occurs. This alternative helps maximize working-capital efficiency and preserve control integrity, and is judged against the Time to clearance, 3-way before GR (days) indicator.",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Directly maps to declared OR alternative 6 in the goal model, where the invoice arrives before the goods receipt (e.g., variant V0007).",
+      "evidence_variant_ids": [
+        "V0007",
+        "V0008",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "two_way_matched",
+      "name": "2-way matched (no goods receipt required)",
+      "description": "Represents items resolved through a 2-way match where no goods receipt is required. This helps minimize procurement and matching overhead, and is judged against the Time to clearance, 2-way match (days) indicator.",
+      "anchor_ids": [
+        "7"
+      ],
+      "rationale": "Directly maps to declared OR alternative 7 in the goal model for cases skipping goods receipt requirements.",
+      "evidence_variant_ids": [
+        "V0003",
+        "V0064"
+      ]
+    },
+    {
+      "category_id": "consignment_consumption",
+      "name": "Resolve via consignment consumption",
+      "description": "Represents items resolved via consignment stock consumption. This helps minimize procurement and matching overhead, and is judged against exception/rework rates and clearance indicators.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Directly maps to declared OR alternative task 13 in the goal model.",
+      "evidence_variant_ids": [
+        "V0009",
+        "V0014"
+      ]
+    }
+  ]
+}

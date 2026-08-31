@@ -1,0 +1,27 @@
+2026-08-29 09:34:10,174 [INFO] goalcat: Run environment: host=192.168.68.56, platform=macOS-26.5.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-29 09:34:10,174 [INFO] goalcat: Step 1 (variant extraction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/bpic2019.xes.gz
+2026-08-29 09:35:00,193 [INFO] goalcat: Loaded event log: 1595923 events, 251734 cases
+2026-08-29 09:35:02,340 [INFO] goalcat: Extracted 11973 variants. Top variant: Create Purchase Order Item > Vendor creates invoice > Record Goods Receipt > Record Invoice Receipt > Clear Invoice (frequency=50286, 20.0%)
+2026-08-29 09:35:02,453 [INFO] goalcat: Saved variants to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/icpm2027_base/01_variants/variants.csv
+2026-08-29 09:35:02,453 [INFO] goalcat: Step 1 complete.
+2026-08-29 09:35:02,453 [INFO] goalcat: Peak RSS after Step 1: 2605.6 MiB
+2026-08-29 09:35:02,626 [INFO] goalcat: Step 2 (multi-view profiling) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/bpic2019.xes.gz
+2026-08-29 09:35:02,626 [INFO] goalcat: Loading variants from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/icpm2027_base/01_variants/variants.csv
+2026-08-29 09:35:53,646 [INFO] goalcat: Profiling 11973 variants against 1595923 events
+2026-08-29 09:38:52,268 [INFO] goalcat: Profiled 11973 variants. Top variant representative case: 4507006527_00010 (outcome=Clear Invoice, duration_median=5551560s)
+2026-08-29 09:38:52,770 [INFO] goalcat: Saved profiles to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/icpm2027_base/02_profiling/profiles.csv and /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/icpm2027_base/02_profiling/profiles.json
+2026-08-29 09:38:52,770 [INFO] goalcat: Step 2 complete.
+2026-08-29 09:38:52,770 [INFO] goalcat: Peak RSS after Step 2: 3558.9 MiB
+2026-08-29 09:38:52,802 [INFO] goalcat: Step 3 (textualization) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/bpic2019.xes.gz
+2026-08-29 09:38:52,802 [INFO] goalcat: Loading profiles from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/icpm2027_base/02_profiling/profiles.csv
+2026-08-29 09:38:53,132 [INFO] goalcat: Rendering narratives for 11973 variants
+2026-08-29 09:39:00,245 [INFO] goalcat: Rendered 11973 narratives. Example (top variant): Create Purchase Order Item (handled by resource user_040) Vendor creates invoice (+15h) Record Goods Receipt (handled by
+2026-08-29 09:39:00,357 [INFO] goalcat: Saved narratives to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/icpm2027_base/03_textualization/narratives.csv
+2026-08-29 09:39:00,357 [INFO] goalcat: Step 3 complete.
+2026-08-29 09:39:00,357 [INFO] goalcat: Peak RSS after Step 3: 3558.9 MiB
+2026-08-29 09:39:00,388 [INFO] goalcat: Step 4 (narrative sampling) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/bpic2019.xes.gz
+2026-08-29 09:39:00,389 [INFO] goalcat: Loading profiles/narratives from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/icpm2027_base
+2026-08-29 09:39:00,825 [INFO] goalcat: Sampled 35 unique variants (frequent=10, rare=10, extreme=5 per direction, before dedup)
+2026-08-29 09:39:00,828 [INFO] goalcat: Saved narrative sample to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/icpm2027_base/04_sampling/narrative_sample.csv
+2026-08-29 09:39:00,828 [INFO] goalcat: Step 4 complete.
+2026-08-29 09:39:00,828 [INFO] goalcat: Peak RSS after Step 4: 3558.9 MiB

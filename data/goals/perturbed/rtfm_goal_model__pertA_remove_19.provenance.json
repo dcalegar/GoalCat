@@ -1,0 +1,23 @@
+{
+  "schema": "icpm2027/perturbation/2",
+  "perturbation_id": "pertA_remove_19",
+  "kind": "A - alternative removal",
+  "targets": [
+    "19"
+  ],
+  "base_model": {
+    "path": "data/goals/rtfm_goal_model.jucm",
+    "sha256": "7fb7e8f3c5c5631799d27ba18d38ae6f017ed9b7e3a13d034c37412d51c2f5b4"
+  },
+  "output": {
+    "path": "data/goals/perturbed/rtfm_goal_model__pertA_remove_19.jucm",
+    "sha256": "74306abc18a36e7f30bb071bdd6a9d92518c861caf65410e03975abefd3616c4"
+  },
+  "goal_model_filename": "perturbed/rtfm_goal_model__pertA_remove_19.jucm",
+  "generated_on": "2026-08-29",
+  "notes": [
+    "Removed element 19 (Task: 'Resolve via judicial appeal to the Judge') and 4 link(s) touching it (decomposition and/or contribution).",
+    "7's children are now ['14'] (was including 19).",
+    "7 now has a single child under a Xor operator \u2014 a degenerate decomposition, a consequence of this perturbation, not an authoring choice. Report this if it affects the result."
+  ]
+}

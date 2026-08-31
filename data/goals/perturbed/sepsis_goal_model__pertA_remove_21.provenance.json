@@ -1,0 +1,22 @@
+{
+  "schema": "icpm2027/perturbation/2",
+  "perturbation_id": "pertA_remove_21",
+  "kind": "A - alternative removal",
+  "targets": [
+    "21"
+  ],
+  "base_model": {
+    "path": "data/goals/sepsis_goal_model.jucm",
+    "sha256": "5a4f9e9950f9a4cb05b3aec772f07a6b0ab3956a423360f804983bb6f032d58f"
+  },
+  "output": {
+    "path": "data/goals/perturbed/sepsis_goal_model__pertA_remove_21.jucm",
+    "sha256": "11008027d003ca3469ad23bf8813d099b6b5512c8035b66713fdf59ece547398"
+  },
+  "goal_model_filename": "perturbed/sepsis_goal_model__pertA_remove_21.jucm",
+  "generated_on": "2026-08-29",
+  "notes": [
+    "Removed element 21 (Task: 'Release E') and 1 link(s) touching it (decomposition and/or contribution).",
+    "6's children are now ['17', '18', '19', '20'] (was including 21)."
+  ]
+}

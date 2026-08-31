@@ -1,0 +1,61 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Fine is settled promptly through payment, maximizing timely fine revenue and helping minimize administrative and enforcement costs, measured against average time to case closure and time to fine dispatch.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task id 12 as observed in frequent variants such as V0002 and V0004.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0003",
+        "V0004",
+        "V0007"
+      ]
+    },
+    {
+      "category_id": "enforceable_resolution",
+      "name": "Fine becomes enforceable and is resolved",
+      "description": "Fine proceeds through notification and penalty addition, balancing revenue maximization against due-process preservation, measured against average time to case closure.",
+      "anchor_ids": [
+        "5"
+      ],
+      "rationale": "Maps 1:1 to declared alternative goal id 5 representing cases requiring notifications and penalties before ultimate resolution or credit collection, as seen in variants like V0001.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0009",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Fine resolution is pursued via an administrative appeal submitted to the Prefecture, preserving offender due-process rights while potentially increasing administrative costs and impacting revenue timing, measured against time to appeal filing (Prefecture).",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task id 14, instantiated in variants where administrative appeal procedures are carried out.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0135"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Fine resolution is pursued via judicial appeal to a judge, strongly making for the preservation of offender's due-process rights while hurting administrative cost minimization and fine revenue, measured against time to appeal filing (Judge).",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task id 19, observed in variants involving direct judicial challenges.",
+      "evidence_variant_ids": [
+        "V0103",
+        "V0140",
+        "V0176"
+      ]
+    }
+  ]
+}

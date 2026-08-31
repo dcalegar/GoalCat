@@ -1,0 +1,38 @@
+You are deciding, for each of several process-variant narratives, which single taxonomy category (if any) it realizes.
+
+The taxonomy was derived by subdividing a declared goal-model axis — every category is traceable to specific goal-model elements, so 'realize' means the narrative satisfies that declared alternative.
+
+=== TAXONOMY CATEGORIES ===
+- category_id=resolve_via_timely_or_delinquent_payment | name=Resolve via timely or delinquent payment
+  description: Represents the resolution of a fine via either timely or delinquent payment, advancing Maximize timely fine revenue and minimizing administrative and enforcement costs, evaluated against Average time to case closure.
+- category_id=resolve_via_administrative_appeal_to_the_prefecture | name=Resolve via administrative appeal to the Prefecture
+  description: Represents handling the case through an administrative appeal to the Prefecture, preserving due-process rights while impacting administrative costs and revenue.
+- category_id=resolve_via_judicial_appeal_to_the_judge | name=Resolve via judicial appeal to the Judge
+  description: Represents contesting the fine via a judicial appeal to the Judge, strongly supporting due-process rights but hurting administrative cost efficiency.
+- category_id=resolve_via_coercive_credit_collection | name=Resolve via coercive credit collection
+  description: Represents resolving an enforceable fine through coercive credit collection, helping revenue but hurting administrative costs.
+
+=== NARRATIVES TO CLASSIFY (8) ===
+How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
+- frequency is how many cases share that sequence, with that count as a share of all cases in the log in parentheses; duration_median is the median case duration for that variant, written compactly on the same scale as the waits inside the narrative ("134d", "3h", "45m"); outcome is the variant's final activity.
+- The activity sequence shown after "narrative:" is that of a single representative case (the one whose duration is closest to the variant's median), so a "(+34d)" after an activity is that case's waiting time since the preceding activity, not a variant-wide average. Activities are listed in the order they occurred. A "(handled by resource R)" clause, where present, names the resource that performed that activity in the representative case. A trailing "Rework observed: ..." sentence, where present, is a variant-level count over the variant's own cases, not part of the representative case's sequence.
+- Activity labels come from the event log and need not match a category's wording verbatim: a logged activity realizes a category by meaning, not by string equality.
+
+- variant_id=V0001 | frequency=1 (12.5%) | duration_median=134d | outcome=Send Fine
+  narrative: Create Fine Send Fine (+134d)
+- variant_id=V0002 | frequency=1 (12.5%) | duration_median=971d | outcome=Send for Credit Collection
+  narrative: Create Fine Send Fine (+132d) Insert Fine Notification (+34d) Add penalty (+60d) Send for Credit Collection (+745d)
+- variant_id=V0003 | frequency=1 (12.5%) | duration_median=550d | outcome=Payment
+  narrative: Create Fine Send Fine (+130d) Insert Fine Notification (+16d) Add penalty (+60d) Payment (+344d)
+- variant_id=V0004 | frequency=1 (12.5%) | duration_median=1d | outcome=Payment
+  narrative: Create Fine Payment (+1d)
+- variant_id=V0005 | frequency=1 (12.5%) | duration_median=136d | outcome=Appeal to Judge
+  narrative: Create Fine Send Fine (+46d) Insert Fine Notification (+9d) Add penalty (+60d) Appeal to Judge (+21d)
+- variant_id=V0006 | frequency=1 (12.5%) | duration_median=78d | outcome=Receive Result Appeal from Prefecture
+  narrative: Create Fine Send Fine Insert Fine Notification Insert Date Appeal to Prefecture (+5d) Send Appeal to Prefecture (+35d) Add penalty (+20d) Receive Result Appeal from Prefecture (+18d)
+- variant_id=V0007 | frequency=1 (12.5%) | duration_median=225d | outcome=Payment
+  narrative: Create Fine Send Fine (+119d) Insert Fine Notification (+6d) Add penalty (+60d) Payment (+10d) Payment (+30d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0008 | frequency=1 (12.5%) | duration_median=209d | outcome=Payment
+  narrative: Create Fine Send Fine (+130d) Insert Fine Notification (+9d) Payment (+45d) Add penalty (+15d) Payment (+10d) Rework observed: Payment was repeated (seen in 1 cases).
+
+For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids. When a category does match, category_id must be copied verbatim, character-for-character, from one of the category_id values listed above under === TAXONOMY CATEGORIES === — never a paraphrase, abbreviation, or reworded variant of a category's name or description, even if it reads more naturally. A category_id that does not appear above exactly as written cannot be matched back to that category afterward, silently corrupting the result.

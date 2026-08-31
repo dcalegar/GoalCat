@@ -22,3 +22,18 @@ variant_scope:
 # builds the LUPIN input from a fixed field set; no case attribute reaches it). Excluded from the
 # narrative by construction; used only by analysis/heldout.py, after assignment.
 heldout_case_attribute: "case:Item Category"
+
+# Maps each declared goal-model alternative (by anchor id) to the `case:Item Category` value that
+# names the same regime. Axis-aligned by construction — the goal model was authored knowing this
+# attribute exists (see analysis/heldout.py's CAVEAT and README Task C1). Observed value counts
+# (per case, 2026-08-31): "3-way match, invoice before GR" 221,010; "3-way match, invoice after
+# GR" 15,182; Consignment 14,498; "2-way match" 1,044.
+heldout_label_map:
+  "5": "3-way match, invoice after GR"      # matched_after_gr  — 3-way, invoice recorded after goods receipt
+  "6": "3-way match, invoice before GR"     # matched_before_gr — 3-way, invoice recorded before goods receipt
+  "7": "2-way match"                        # two_way_matched   — no goods receipt required
+  "13": "Consignment"                       # consignment_consumption
+# Consignment has no distinguishing activity label in the log, so its recovery figure is reported
+# but flagged as not comparable to the other three (README, Task C1).
+heldout_incomparable_labels:
+  - "Consignment"

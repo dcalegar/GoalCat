@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "f7812aae134a93dc",
+  "latency_seconds": 30.41511908301618,
+  "input_tokens": 6119,
+  "output_tokens": 615,
+  "prompt_chars": 21105,
+  "response_chars": 2399,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"timely_payment\",\n      \"name\": \"Resolve via timely payment\",\n      \"description\": \"Fine is settled promptly through payment, maximizing timely fine revenue and helping minimize administrative and enforcement costs, measured against average time to case closure and time to fine dispatch.\",\n      \"anchor_ids\": [\"12\"],\n      \"rationale\": \"Maps 1:1 to declared alternative task id 12 as observed in frequent variants such as V0002 and V0004.\",\n      \"evidence_variant_ids\": [\"V0002\", \"V0003\", \"V0004\", \"V0007\"]\n    },\n    {\n      \"category_id\": \"enforceable_resolution\",\n      \"name\": \"Fine becomes enforceable and is resolved\",\n      \"description\": \"Fine proceeds through notification and penalty addition, balancing revenue maximization against due-process preservation, measured against average time to case closure.\",\n      \"anchor_ids\": [\"5\"],\n      \"rationale\": \"Maps 1:1 to declared alternative goal id 5 representing cases requiring notifications and penalties before ultimate resolution or credit collection, as seen in variants like V0001.\",\n      \"evidence_variant_ids\": [\"V0001\", \"V0009\", \"V0010\"]\n    },\n    {\n      \"category_id\": \"administrative_appeal\",\n      \"name\": \"Resolve via administrative appeal to the Prefecture\",\n      \"description\": \"Fine resolution is pursued via an administrative appeal submitted to the Prefecture, preserving offender due-process rights while potentially increasing administrative costs and impacting revenue timing, measured against time to appeal filing (Prefecture).\",\n      \"anchor_ids\": [\"14\"],\n      \"rationale\": \"Maps 1:1 to declared alternative task id 14, instantiated in variants where administrative appeal procedures are carried out.\",\n      \"evidence_variant_ids\": [\"V0008\", \"V0057\", \"V0135\"]\n    },\n    {\n      \"category_id\": \"judicial_appeal\",\n      \"name\": \"Resolve via judicial appeal to the Judge\",\n      \"description\": \"Fine resolution is pursued via judicial appeal to a judge, strongly making for the preservation of offender's due-process rights while hurting administrative cost minimization and fine revenue, measured against time to appeal filing (Judge).\",\n      \"anchor_ids\": [\"19\"],\n      \"rationale\": \"Maps 1:1 to declared alternative task id 19, observed in variants involving direct judicial challenges.\",\n      \"evidence_variant_ids\": [\"V0103\", \"V0140\", \"V0176\"]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0033732
+}

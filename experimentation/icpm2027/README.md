@@ -47,7 +47,12 @@ python -m experimentation.icpm2027.run_experiment --dataset rtfm --experiment e2
 `--dry-run` resolves and logs every condition, with its LLM-call estimate, and launches nothing.
 It still builds the shared base if absent (Steps 1-4 are deterministic and LLM-free), because the
 call estimate depends on the variant count they produce. Re-running resumes: a condition whose run
-directory is already complete is skipped unless `--force`.
+directory is already complete (holds both `05_taxonomy/taxonomy.json` and
+`06_assignment/assignments.csv`) is skipped unless `--force`. An *incomplete* condition is resumed
+in place — `run_condition` skips Step 5a whenever `05_taxonomy/taxonomy.json` already exists, so the
+resumed Step 6 retries only its still-pending narratives against the same frozen taxonomy rather than
+re-inducing one (re-induction regenerates the `category_id` slugs and would corrupt the partial
+`assignments.csv`). `--force` clears the round directory first, so it does re-induce.
 
 Run `stability` before `e1` on any dataset whose goal model is mostly AND-decomposed above the leaf
 level. It is the cheapest check here and a negative result changes how every other number from that
@@ -58,13 +63,25 @@ dataset must be reported (Task E7) and disqualifies it from Experiment 2.
 Not yet built, in roughly the following priority order:
 
 - **Task C4** — RTFM's rule-based baseline (terminal-activity rule reproducing {TP,TA,TB,TC,TD}).
-- **Task C1** — the BPIC 2019 label-recovery comparison (`case:Item Category` vs. Step 6's guided
-  assignment). Report it as label recovery under an axis-aligned frame, not as independent ground
-  truth: the goal model's organizing axis and that attribute carry the same four labels by
-  construction, and T9 (Consignment) has no activity label at all, so its agreement figure is not
-  comparable to the other three.
-- **`rtfm_mini`'s Task C8 demonstration** (boolean-vector collapse of two rework variants) —
-  `baselines/structural_clustering.py` makes this immediate to produce once wanted.
+- ~~**Task C1**~~ — **done, 2026-08-31.** `analysis/heldout.py` + `configs/bpic2019.yaml`'s
+  `heldout_label_map`; run with `python -m experimentation.icpm2027.analysis.heldout --dataset bpic2019`.
+  Report at `data/output/icpm2027_results/bpic2019/label_recovery.md`. Low agreement (case-weighted
+  18–25%), driven mostly by a definitional axis mismatch — `case:Item Category` is an SAP PO-line
+  *configuration* attribute, the guided categories key on *observed* GR/invoice order — plus a
+  residual LLM-ordering error. Report with that framing, never as accuracy.
+- ~~**`rtfm_mini`'s Task C8 demonstration**~~ — **done, 2026-08-31.** Two real installment-payment
+  cases (`A10009`, `A10798`) added to `data/logs/rtfm_mini.xes.gz`; they share an activity set with
+  the single-payment case `A10000`, so all three map to one boolean activity-presence vector and
+  one structural cluster while their narratives stay distinct. Artifact:
+  `data/output/icpm2027_results/rtfm_mini/c8_boolean_vector_collapse.md`. This run also fixed a
+  `build_activity_vectors` defect (it vectorized characters, not activities, when handed a raw
+  `read_csv` frame) — the Task C3 structural baseline in all three E1 reports was regenerated.
+- **Task C15** — the feasibility & resource-characterization report (`project/FEASIBILITY_CHARACTERIZATION.md`
+  in the paper repo): execution environment, approximate wall-clock/cost, and a sensitivity analysis
+  over model choice, hardware, and configuration for industrial adoption. Builds on `analysis/timing.py`
+  plus the `estimated_cost_usd` roll-up in `goalcat.llm.usage_summary`; generated after the last frozen
+  run and, unlike Task C9, may draw on non-frozen runs. Its terminal item is one local-LLM (Ollama) run
+  for RTFM and Sepsis, Step 6 only, for a measured cheap-model comparison point.
 - **Tests.** There are none, here or anywhere in the repository. The modules have been exercised
   against real logs and real `.jucm` files, which is not the same thing as a regression suite.
 
@@ -79,14 +96,20 @@ perturbations, and every condition this package runs all point at `.jucm` files 
 ## Before running anything for real
 
 1. **Pre-registration is now resolved** — C5, C6, C7, C10, C13, D1, D6, D7 and the degenerate-OR
-   policy are all `status: decided` as of 2026-08-25, so `prereg.require()` passes for all three
-   datasets. Re-read them before running: `C5_label_list_control` is the one deliberately marked as
-   the most revisitable (the label-list arm is supported in code and costs only budget to enable),
-   and `C6_sepsis_perturbations` is set to `false` partly on a validity ground that would change if
-   Sepsis's Step 5a induction ever became stable. Do not edit a decision after the run it governs
-   has executed — supersede it with a new `protocol_version`.
+   policy are all `status: decided`, so `prereg.require()` passes for all three datasets. Re-read
+   them before running: `C5_label_list_control` is the one deliberately marked as the most
+   revisitable (the label-list arm is supported in code and costs only budget to enable);
+   `C6_sepsis_perturbations` was flipped to `true` on 2026-08-29 after Sepsis's Step 5a induction
+   was re-verified stable, so Experiment 2 now runs on Sepsis as well as RTFM (its runs already
+   exist under `data/output/sepsis/icpm2027_e2_*`); and `C10_assignment_batch_size` carries a
+   2026-08-29 BPIC 2019 amendment (batch size 50 → 25, wall-clock grounds only). Do not edit a
+   decision after the run it governs has executed — supersede it, or amend only an as-yet-unexecuted
+   portion with a dated `amended_on` note (as C10 did for BPIC 2019).
 2. Confirm `GEMINI_API_KEY` is exported and the account is off the free tier before a full-scale
-   run. At the pre-registered `assignment_batch_size=50`, the full 11,973-variant BPIC 2019 scope
-   is roughly 240 Step-6 calls per condition. Use `--dry-run` to see
-   `conditions.estimated_llm_calls()` for every condition before anything is billed.
+   run. `assignment_batch_size` is `50` for RTFM and Sepsis but `25` for BPIC 2019 — a
+   pre-registered per-dataset exception added 2026-08-29 on wall-clock/reliability grounds
+   (`C10_assignment_batch_size.exceptions.bpic2019`), after two full-scope BPIC 2019 runs at 50 saw
+   ~5-15% of Step 6 batches exceed the 120 s timeout and abort the condition. At 25 the full
+   11,973-variant BPIC 2019 scope is roughly 480 Step-6 calls per condition (~240 at 50). Use
+   `--dry-run` to see `conditions.estimated_llm_calls()` for every condition before anything is billed.
 3. Run `--experiment stability` (Task C12) before committing a dataset's budget to `e1`.

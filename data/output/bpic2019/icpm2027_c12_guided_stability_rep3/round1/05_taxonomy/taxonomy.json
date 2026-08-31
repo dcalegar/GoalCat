@@ -1,0 +1,56 @@
+{
+  "categories": [
+    {
+      "category_id": "three_way_matched_after_gr",
+      "name": "3-way matched, invoice recorded after goods receipt",
+      "description": "Purchase order item is resolved via a 3-way match where the goods receipt is recorded before the invoice receipt, advancing value-matching control integrity and working-capital efficiency while incurring matching overhead, judged against Indicator 17.",
+      "anchor_ids": [
+        "5"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id 5, supported by frequent process variants like V0001 and V0002 where goods receipt precedes invoice creation/receipt.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0002",
+        "V0004",
+        "V0005",
+        "V0008"
+      ]
+    },
+    {
+      "category_id": "three_way_matched_before_gr",
+      "name": "3-way matched, invoice recorded before goods receipt",
+      "description": "Purchase order item is resolved via a 3-way match where the invoice is recorded before the goods receipt, helping control integrity and timely clearance, judged against Indicator 18.",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id 6, evidenced by variants such as V0007 where invoice receipt occurs prior to goods receipt.",
+      "evidence_variant_ids": [
+        "V0007"
+      ]
+    },
+    {
+      "category_id": "two_way_matched",
+      "name": "2-way matched (no goods receipt required)",
+      "description": "Purchase order item is resolved via a 2-way match where no goods receipt is required, minimizing procurement overhead and evaluated against Indicator 19.",
+      "anchor_ids": [
+        "7"
+      ],
+      "rationale": "Maps 1:1 to declared alternative id 7 as part of the OR-decomposition for item resolution regimes.",
+      "evidence_variant_ids": [
+        "V0064"
+      ]
+    },
+    {
+      "category_id": "consignment_consumption",
+      "name": "Resolve via consignment consumption",
+      "description": "Purchase order item is resolved via consignment consumption, reducing matching overhead and evaluated against timely clearance and exception indicators.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Maps 1:1 to declared alternative id 13 representing the consignment resolution path.",
+      "evidence_variant_ids": [
+        "V2944"
+      ]
+    }
+  ]
+}

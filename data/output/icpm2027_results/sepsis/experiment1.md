@@ -82,16 +82,50 @@ _Higher coverage is not better categorization: a larger taxonomy or a broad catc
 
 ## Secondary — guided vs. structural (HDBSCAN) (Task C3)
 
-| row_category   |   (residual) |   cluster_0 |   cluster_1 |   cluster_10 |   cluster_11 |   cluster_2 |   cluster_3 |   cluster_4 |   cluster_5 |   cluster_6 |   cluster_7 |   cluster_8 |   cluster_9 |
-|:---------------|-------------:|------------:|------------:|-------------:|-------------:|------------:|------------:|------------:|------------:|------------:|------------:|------------:|------------:|
-| (residual)     |            7 |          12 |           8 |           16 |            0 |           7 |          53 |           0 |           0 |           0 |           1 |           8 |           0 |
-| admission_ic   |            3 |           0 |           0 |           24 |            2 |           0 |           0 |           0 |           0 |           2 |           0 |           0 |           0 |
-| admission_nc   |            5 |           0 |           0 |           24 |            0 |           0 |           2 |           6 |           0 |           0 |           3 |          10 |           0 |
-| release_a      |            6 |           0 |           0 |          437 |            0 |           0 |           0 |          51 |           0 |           4 |          48 |           0 |           0 |
-| release_b      |            2 |           0 |           0 |            0 |            0 |           0 |           0 |           0 |           7 |           1 |           0 |           0 |          44 |
-| release_c      |            0 |           0 |           0 |           20 |            0 |           0 |           0 |           4 |           0 |           0 |           1 |           0 |           0 |
-| release_d      |            2 |           0 |           0 |            0 |           17 |           0 |           0 |           3 |           0 |           0 |           0 |           0 |           0 |
-| release_e      |            0 |           0 |           0 |            3 |            0 |           0 |           0 |           3 |           0 |           0 |           0 |           0 |           0 |
+| row_category   |   (residual) |   cluster_0 |   cluster_1 |   cluster_10 |   cluster_11 |   cluster_12 |   cluster_13 |   cluster_14 |   cluster_15 |   cluster_16 |   cluster_17 |   cluster_18 |   cluster_19 |   cluster_2 |   cluster_20 |   cluster_21 |   cluster_22 |   cluster_23 |   cluster_24 |   cluster_25 |   cluster_26 |   cluster_3 |   cluster_4 |   cluster_5 |   cluster_6 |   cluster_7 |   cluster_8 |   cluster_9 |
+|:---------------|-------------:|------------:|------------:|-------------:|-------------:|-------------:|-------------:|-------------:|-------------:|-------------:|-------------:|-------------:|-------------:|------------:|-------------:|-------------:|-------------:|-------------:|-------------:|-------------:|-------------:|------------:|------------:|------------:|------------:|------------:|------------:|------------:|
+| (residual)     |            7 |          12 |           8 |            0 |            0 |            0 |            0 |            0 |            0 |            0 |            0 |            8 |            0 |           0 |            1 |            0 |            0 |            0 |           13 |            3 |            0 |           6 |           7 |           0 |           0 |           0 |           0 |          47 |
+| admission_ic   |            5 |           0 |           0 |            0 |            0 |            0 |            0 |            0 |            2 |            0 |            0 |            0 |            0 |           0 |            0 |            0 |            0 |            0 |            0 |           13 |           11 |           0 |           0 |           0 |           0 |           0 |           0 |           0 |
+| admission_nc   |            4 |           0 |           0 |            0 |            1 |            0 |            0 |            0 |            0 |            0 |            0 |           10 |            1 |           2 |            2 |            0 |            0 |           15 |            9 |            0 |            0 |           0 |           0 |           1 |           0 |           0 |           3 |           2 |
+| release_a      |           16 |           0 |           0 |           10 |           22 |            0 |            0 |            0 |            0 |            0 |            0 |            0 |           11 |          19 |           13 |            8 |            5 |          228 |          151 |           22 |           20 |           0 |           0 |           0 |          10 |           0 |          11 |           0 |
+| release_b      |           12 |           0 |           0 |            0 |            0 |            0 |            0 |            0 |            0 |           29 |            7 |            0 |            0 |           0 |            0 |            0 |            0 |            0 |            0 |            0 |            0 |           0 |           0 |           0 |           0 |           6 |           0 |           0 |
+| release_c      |            2 |           0 |           0 |            0 |            0 |           15 |            6 |            0 |            0 |            0 |            0 |            0 |            0 |           0 |            0 |            0 |            0 |            0 |            0 |            0 |            0 |           0 |           0 |           2 |           0 |           0 |           0 |           0 |
+| release_d      |            4 |           0 |           0 |            0 |            0 |            0 |            0 |            9 |            8 |            0 |            0 |            0 |            0 |           0 |            0 |            0 |            0 |            0 |            0 |            0 |            0 |           0 |           0 |           1 |           0 |           0 |           0 |           0 |
+| release_e      |            5 |           0 |           0 |            0 |            0 |            0 |            0 |            0 |            0 |            0 |            0 |            0 |            0 |           0 |            0 |            0 |            0 |            0 |            0 |            0 |            0 |           0 |           0 |           1 |           0 |           0 |           0 |           0 |
+
+## Replicate stability (Task C2)
+
+rep1 vs. rep2 of each arm, same convention as the paired contrast below. Read the "guided vs. open" divergence against these: a cross-arm difference no larger than an arm's own rep1-rep2 movement is not separable from run-to-run variance. The open arm has no anchors, so this is its only stability check — Task C12 tests the guided taxonomy alone.
+
+### guided rep1 vs. rep2
+
+**guided_rep1 vs. guided_rep2** — partition divergence (Task D1)
+
+| residual_handling   | weighting   |      AMI |      NMI |   n_observations | primary   |
+|:--------------------|:------------|---------:|---------:|-----------------:|:----------|
+| own_cluster         | variant     | 0.575966 | 0.585924 |              846 | True      |
+| own_cluster         | case        | 0.631132 | 0.637861 |             1050 | False     |
+| exclude             | variant     | 0.650615 | 0.660712 |              656 | False     |
+| exclude             | case        | 0.652548 | 0.662123 |              708 | False     |
+
+_AMI/NMI measure divergence between two partitions, not classification accuracy: neither partition is ground truth, so agreement between the arms is not evidence that either is correct._
+
+
+### open rep1 vs. rep2
+
+**open_rep1 vs. open_rep2** — partition divergence (Task D1)
+
+| residual_handling   | weighting   |      AMI |      NMI |   n_observations | primary   |
+|:--------------------|:------------|---------:|---------:|-----------------:|:----------|
+| own_cluster         | variant     | 0.406108 | 0.412444 |              846 | True      |
+| own_cluster         | case        | 0.536665 | 0.540075 |             1050 | False     |
+| exclude             | variant     | 0.391578 | 0.396075 |              814 | False     |
+| exclude             | case        | 0.546978 | 0.549148 |             1018 | False     |
+
+_AMI/NMI measure divergence between two partitions, not classification accuracy: neither partition is ground truth, so agreement between the arms is not evidence that either is correct._
+
+
+_Read on the D1-primary `own_cluster` convention. Where the open arm's rep1-rep2 AMI is lower than the guided arm's, every "guided vs. open" figure for this dataset should be reported with that band, and the open arm's instability noted as a limit on the strength of the paired contrast (Task E7, extended to the open arm)._
 
 ## Partition divergence (optional, Task D1)
 

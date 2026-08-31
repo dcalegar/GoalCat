@@ -266,9 +266,15 @@ class DatasetReport:
     coverage_reports: list[CoverageReport] = field(default_factory=list)
     contingency: ContingencyResult | None = None
     divergence: DivergenceResult | None = None
+    #: Task C2 replicate noise floor — rep1 vs rep2 of each arm, same convention as `divergence`.
+    #: The open arm's is the only stability signal it has (Task C12 covers the guided taxonomy only).
+    guided_replicate_divergence: DivergenceResult | None = None
+    open_replicate_divergence: DivergenceResult | None = None
     declared_coverage: list[DeclaredAlternativeCoverage] = field(default_factory=list)
     stability: InductionStability | None = None
     structural_contingency: ContingencyResult | None = None
+    #: Task C4 — RTFM-only deterministic activity-rule baseline vs. the guided partition.
+    rule_contingency: ContingencyResult | None = None
     notes: list[str] = field(default_factory=list)
     """Curated qualitative findings for this dataset (Markdown, one entry per finding), rendered
     verbatim under '## Notable findings'. Populated from `KNOWN_FINDINGS` below — hand-investigated
@@ -363,6 +369,26 @@ class DatasetReport:
             parts += [f"- Merge: {m}" for m in changes["merges"]] or ["- No merges identified."]
             parts.append("")
 
+        if self.rule_contingency is not None:
+            changes = declared_distinction_changes(self.rule_contingency)
+            parts += [
+                f"## Secondary — {self.rule_contingency.row_label} vs. "
+                f"{self.rule_contingency.col_label} (Task C4)",
+                "",
+                "A deterministic activity-rule classifier (no LLM, no fit — "
+                "`baselines/rule_based_rtfm.py`). Close agreement here means the guided arm's five "
+                "declared alternatives are recoverable from a handful of hand-written rules on this "
+                "log, which the paper must report as a bound on the guided arm's added value here.",
+                "",
+                self.rule_contingency.to_markdown("variant"),
+                "",
+                self.rule_contingency.to_markdown("case"),
+                "",
+            ]
+            parts += [f"- Split: {s}" for s in changes["splits"]] or ["- No splits identified."]
+            parts += [f"- Merge: {m}" for m in changes["merges"]] or ["- No merges identified."]
+            parts.append("")
+
         if self.structural_contingency is not None:
             parts += [
                 f"## Secondary — {self.structural_contingency.row_label} vs. "
@@ -376,6 +402,31 @@ class DatasetReport:
             parts += ["## Notable findings", ""]
             parts += [f"- {note}" for note in self.notes]
             parts.append("")
+
+        if self.guided_replicate_divergence is not None or self.open_replicate_divergence is not None:
+            parts += [
+                "## Replicate stability (Task C2)",
+                "",
+                "rep1 vs. rep2 of each arm, same convention as the paired contrast below. Read the "
+                "\"guided vs. open\" divergence against these: a cross-arm difference no larger than "
+                "an arm's own rep1-rep2 movement is not separable from run-to-run variance. The open "
+                "arm has no anchors, so this is its only stability check — Task C12 tests the guided "
+                "taxonomy alone.",
+                "",
+            ]
+            if self.guided_replicate_divergence is not None:
+                parts += ["### guided rep1 vs. rep2", "", self.guided_replicate_divergence.to_markdown(), ""]
+            if self.open_replicate_divergence is not None:
+                parts += ["### open rep1 vs. rep2", "", self.open_replicate_divergence.to_markdown(), ""]
+            if self.open_replicate_divergence is not None and self.guided_replicate_divergence is not None:
+                parts += [
+                    "_Read on the D1-primary `own_cluster` convention. Where the open arm's rep1-rep2 "
+                    "AMI is lower than the guided arm's, every \"guided vs. open\" figure for this "
+                    "dataset should be reported with that band, and the open arm's instability noted "
+                    "as a limit on the strength of the paired contrast (Task E7, extended to the open "
+                    "arm)._",
+                    "",
+                ]
 
         if self.divergence is not None:
             parts += ["## Partition divergence (optional, Task D1)", "", self.divergence.to_markdown(), ""]

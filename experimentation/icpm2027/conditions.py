@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import logging
 import math
+import shutil
 import subprocess
 import sys
 from dataclasses import dataclass
@@ -228,6 +229,13 @@ def execute_condition(
     if already_complete(condition) and not force:
         logger.info("Condition %s already complete — skipping (use --force to re-run).", condition.condition_id)
         return ConditionResult(condition, run_dir, round_dir, run_dir / "manifest.json", skipped=True, reason="already complete")
+
+    if force and round_dir.exists():
+        # `run_condition` skips Step 5a when 05_taxonomy/taxonomy.json is present (resume safety),
+        # so a forced re-run has to start from a clean round dir or it would silently reuse the
+        # stale taxonomy. Steps 1-4 live under run_dir, not round_dir, and are re-copied below.
+        shutil.rmtree(round_dir)
+        logger.info("Condition %s: --force — cleared %s for a clean re-run.", condition.condition_id, round_dir)
 
     started_at = now_iso()
     materialize_condition_inputs(base, run_dir, logger)

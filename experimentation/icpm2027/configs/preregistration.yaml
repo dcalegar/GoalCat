@@ -51,8 +51,10 @@ decisions:
       default: 50
       # Per-dataset exceptions. Each must be justified on call-count/wall-clock accounting only
       # (Task C10), never against observed categorization quality. Empty = one value everywhere.
-      exceptions: {}
+      exceptions:
+        bpic2019: 25
     decided_on: "2026-08-19"
+    amended_on: "2026-08-29"
     rationale: >-
       50 everywhere (raised from 20), on call-count/wall-clock grounds only, per Task C10's
       required basis — not against observed categorization quality. Google AI Studio billing was
@@ -66,6 +68,21 @@ decisions:
       case studies under experimentation/examples/ (not the frozen protocol) are the first runs
       to exercise batch_size=50, and should be watched for any assignment-quality regression
       before the first real frozen run under this protocol_version.
+      .
+      AMENDMENT 2026-08-29 — bpic2019 exception added, batch_size 50 -> 25, on wall-clock/
+      reliability grounds only (Task C10's permitted basis), never against categorization quality.
+      Two full-scope BPIC 2019 Step-6 runs at batch_size=50 (the example study 20260829_080358 and
+      the first frozen e1_guided_rep1 attempt) both degraded on gemini-3.5-flash-lite: per-call
+      latency on a 50-narrative BPIC batch (mean narrative ~1,285 chars, ~17k input tokens/call)
+      routinely exceeded the protocol's 120 s timeout, so ~5% of batches (602/11,973 in the
+      example study; ~6 of the first 40 in the frozen attempt) exhausted all 3 retries and the
+      condition aborted with IncompleteAssignmentError. rtfm (231 variants, ~711-char narratives)
+      and sepsis (846 variants) show no such degradation at 50 and keep the default. At
+      batch_size=25 each BPIC call carries ~half the tokens and lands within the 120 s ceiling;
+      cost rises from ~$18 to ~$32 across the four E1 conditions and call count from ~964 to
+      ~1,920, both far below the verified rate limits. This amends an as-yet-unexecuted portion
+      of the decision (no frozen BPIC 2019 run had completed), so rtfm/sepsis results already
+      produced under protocol_version 1.0.0 are unaffected and no version bump is required.
 
   C6_sepsis_perturbations:
     task: C6

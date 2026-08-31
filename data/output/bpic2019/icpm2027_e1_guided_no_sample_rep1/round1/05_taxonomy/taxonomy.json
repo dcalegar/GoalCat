@@ -1,0 +1,44 @@
+{
+  "categories": [
+    {
+      "category_id": "matched_invoice_after_goods_receipt",
+      "name": "3-way matched, invoice recorded after goods receipt",
+      "description": "Item is resolved via 3-way matching where the invoice is recorded after the goods receipt. This alternative makes a strong positive contribution to preserving value-matching control integrity and is measured against the time to clearance after goods receipt indicator.",
+      "anchor_ids": [
+        "5"
+      ],
+      "rationale": "Maps 1:1 to the declared OR alternative id=5 in the goal model, representing the standard control-heavy matching regime.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "matched_invoice_before_goods_receipt",
+      "name": "3-way matched, invoice recorded before goods receipt",
+      "description": "Item is resolved via 3-way matching where the invoice is recorded before the goods receipt. This alternative helps maximize working-capital efficiency and is measured against the time to clearance before goods receipt indicator.",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Maps 1:1 to the declared OR alternative id=6 in the goal model, representing early invoicing prior to goods receipt.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "two_way_matched",
+      "name": "2-way matched (no goods receipt required)",
+      "description": "Item is resolved via 2-way matching where no goods receipt is required. This alternative helps minimize procurement overhead and is measured against the 2-way match time to clearance indicator.",
+      "anchor_ids": [
+        "7"
+      ],
+      "rationale": "Maps 1:1 to the declared OR alternative id=7 in the goal model, representing simplified matching without goods receipt.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "resolve_via_consignment_consumption",
+      "name": "Resolve via consignment consumption",
+      "description": "Item is resolved via consignment consumption. This alternative helps minimize procurement overhead and is measured against general exception and rework rates.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Maps 1:1 to the declared OR alternative id=13 in the goal model, representing resolution through consignment.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

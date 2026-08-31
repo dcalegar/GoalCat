@@ -55,6 +55,7 @@ from .analysis import report as report_mod
 from .analysis.contingency import contingency_matrix
 from .analysis.coverage import compute_coverage
 from .analysis.divergence import compute_divergence
+from .baselines.rule_based_rtfm import run_rule_baseline
 from .baselines.structural_clustering import run_structural_clustering
 from .conditions import ConditionResult, execute_condition, round_dir_of
 from .goalmodel import perturb
@@ -229,11 +230,32 @@ def run_e1(
             primary_weighting=d1.get("weighting", "variant"),
         )
 
+    # Task C2 — replicate noise floor. rep1 vs rep2 of each arm, same convention as the paired
+    # contrast, so "guided vs open" divergence can be read against how far each arm moves between
+    # identical-input runs. The open arm carries no anchors, so this is the only stability signal
+    # it has (Task C12 tests the guided taxonomy only).
+    d1_resid = d1.get("residual_handling", "own_cluster") if (guided_id in assignments and open_id in assignments) else "own_cluster"
+    d1_weight = d1.get("weighting", "variant") if (guided_id in assignments and open_id in assignments) else "variant"
+    for arm, attr in (("guided", "guided_replicate_divergence"), ("open", "open_replicate_divergence")):
+        r1, r2 = f"e1_{arm}_rep1", f"e1_{arm}_rep2"
+        if r1 in assignments and r2 in assignments:
+            setattr(dataset_report, attr, compute_divergence(
+                assignments[r1], assignments[r2], variants_df, f"{arm}_rep1", f"{arm}_rep2",
+                primary_residual_handling=d1_resid, primary_weighting=d1_weight,
+            ))
+
     # Task C3 — the structural baseline. No LLM cost, so it always runs when the guided arm exists.
     if guided_id in assignments:
         structural = run_structural_clustering(variants_df)
         dataset_report.structural_contingency = contingency_matrix(
             assignments[guided_id], structural.as_assignments_df(), variants_df, "guided", "structural (HDBSCAN)"
+        )
+
+    # Task C4 — RTFM-only deterministic activity-rule baseline. No LLM cost.
+    if guided_id in assignments and dataset.dataset_id == "rtfm":
+        rule = run_rule_baseline(variants_df)
+        dataset_report.rule_contingency = contingency_matrix(
+            assignments[guided_id], rule.as_assignments_df(), variants_df, "guided", "rule baseline"
         )
 
     # Declared-alternative coverage — guided arm only; open categories have no anchors.
@@ -363,14 +385,23 @@ def run_e2(
 
     model = read_jucm(goal_model_path)
     or_points = declared_alternatives(model)
-    leaves = [child for children in or_points.values() for child in children if child not in or_points]
+    # A declared alternative is a leaf only if it is not itself decomposed further — neither an
+    # OR-point (a key in `or_points`) nor the source of any Decomposition link (an AND-decomposed
+    # sub-tree, e.g. rtfm's element 5). Perturbation B may only merge true leaves; merging a
+    # decomposed alternative would orphan its children and perturb.merge_alternatives() refuses.
+    _decomposed = {link.src for link in model.decompositions}
+
+    def _is_leaf(element_id: str) -> bool:
+        return element_id not in or_points and element_id not in _decomposed
+
+    leaves = [child for children in or_points.values() for child in children if _is_leaf(child)]
 
     perturbations = []
     if leaves:
         perturbations.append(("A", perturb.remove_alternative(model, leaves[-1])))
     for parent, children in or_points.items():
         if len(children) >= 2:
-            merged = [c for c in children if c not in or_points][:2]
+            merged = [c for c in children if _is_leaf(c)][:2]
             if len(merged) == 2:
                 perturbations.append(
                     ("B", perturb.merge_alternatives(model, merged, f"Merged {merged[0]}+{merged[1]}"))

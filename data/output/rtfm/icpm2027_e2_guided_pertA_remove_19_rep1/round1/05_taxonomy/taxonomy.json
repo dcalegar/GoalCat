@@ -1,0 +1,64 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Timely Payment",
+      "description": "Resolution of the fine via prompt payment shortly after issuance, maximizing timely fine revenue and helping minimize administrative and enforcement costs, evaluated against the time to fine dispatch and average time to case closure indicators.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Maps 1:1 to task id=12 as a declared alternative under the OR decomposition of goal id=4. Supported by variants like V0002 and V0007.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0007",
+        "V0012"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Delinquent Payment",
+      "description": "Resolution of the fine via late payment after enforcement steps and penalties have been applied, supporting timely fine revenue and evaluated against average time to case closure.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Maps 1:1 to task id=13 as a declared alternative under the OR decomposition of goal id=6. Supported by multiple variants showing payments occurring after notifications and penalties, such as V0004, V0005, and V0006.",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0005",
+        "V0006",
+        "V0009",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal_prefecture",
+      "name": "Administrative Appeal to the Prefecture",
+      "description": "Contested appeal processed through the Prefecture, helping preserve offender's due-process rights while potentially increasing administrative costs and impacting timely fine revenue, evaluated against time to appeal filing in the Prefecture.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Maps 1:1 to the task cluster representing the administrative appeal path (task id=14) under the XOR decomposition of goal id=7. Supported by sample variants such as V0008, V0057, and V0135.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0135",
+        "V0137"
+      ]
+    },
+    {
+      "category_id": "coercive_credit_collection",
+      "name": "Coercive Credit Collection",
+      "description": "Resolution via coercive credit collection after all other recovery and appeal paths are exhausted, helping fine revenue but hurting administrative costs and offender due-process rights, evaluated against average time to case closure.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Maps 1:1 to task id=20 as a declared alternative under the OR decomposition of goal id=6. Supported by frequent and extreme variants ending in credit collection, such as V0001.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0057",
+        "V0134",
+        "V0138"
+      ]
+    }
+  ]
+}

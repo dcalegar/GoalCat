@@ -1,0 +1,57 @@
+{
+  "categories": [
+    {
+      "category_id": "three_way_matched_after_gr",
+      "name": "3-way matched, invoice recorded after goods receipt",
+      "description": "Item is resolved via 3-way matching where the invoice is recorded after goods receipt. This process makes value-matching control integrity (+100) while incurring procurement and matching overhead (-25). Performance is judged against Indicator 17 (Time to clearance, 3-way after GR, days) and Indicator 20 (3-way matching compliance).",
+      "anchor_ids": [
+        "5"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=5 in the goal model. This path is evidenced by frequent variants such as V0001, V0002, V0004, and V0005 where goods receipt precedes invoice recording.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0002",
+        "V0004",
+        "V0005"
+      ]
+    },
+    {
+      "category_id": "three_way_matched_before_gr",
+      "name": "3-way matched, invoice recorded before goods receipt",
+      "description": "Item is resolved via 3-way matching where the invoice is recorded before goods receipt. This process helps preserve value-matching control integrity (+50) and helps maximize working-capital efficiency (+50). Performance is judged against Indicator 18 (Time to clearance, 3-way before GR, days) and Indicator 20.",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=6 in the goal model. Evidenced by variants such as V0007 and V0008 where invoice receipt occurs before goods receipt.",
+      "evidence_variant_ids": [
+        "V0007",
+        "V0008"
+      ]
+    },
+    {
+      "category_id": "two_way_matched",
+      "name": "2-way matched (no goods receipt required)",
+      "description": "Item is resolved via 2-way matching where no goods receipt is required. This process helps minimize procurement and matching overhead (+50) with some negative impact on control integrity (-25). Performance is judged against Indicator 19 (Time to clearance, 2-way match, days).",
+      "anchor_ids": [
+        "7"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=7 in the goal model. Service-oriented and goods-free variants like V0064 and V0068 reflect this execution pattern.",
+      "evidence_variant_ids": [
+        "V0064",
+        "V0068"
+      ]
+    },
+    {
+      "category_id": "resolve_via_consignment_consumption",
+      "name": "Resolve via consignment consumption",
+      "description": "Item is resolved via consignment consumption. This path helps minimize procurement and matching overhead (+50) while having some negative impact on control integrity (-25). Performance is judged against overall exception and clearance metrics.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=13 in the goal model. This specific approach represents alternative resolution regimes present in specialized supply scenarios.",
+      "evidence_variant_ids": [
+        "V0014"
+      ]
+    }
+  ]
+}

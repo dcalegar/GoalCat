@@ -1,0 +1,9 @@
+variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
+V0001,,"The narrative ends with Send Fine and does not complete payment, appeal, or credit collection.",,resolve_via_timely_or_delinquent_payment,1.0,,0.3340510427951813
+V0002,resolve_via_coercive_credit_collection,"The process ends with Send for Credit Collection, which corresponds directly to coercive credit collection.",0.0,resolve_via_timely_or_delinquent_payment,1.0,0.0,0.36088287830352783
+V0003,resolve_via_timely_or_delinquent_payment,"The process ends with Payment after a penalty, representing delinquent payment resolution.",0.0,resolve_via_coercive_credit_collection,1.0,0.3766453266143799,0.36088287830352783
+V0004,resolve_via_timely_or_delinquent_payment,"The process concludes immediately with Payment, realizing timely fine payment.",3.0,resolve_via_coercive_credit_collection,4.0,0.5958051681518555,0.5444914698600769
+V0005,resolve_via_judicial_appeal_to_the_judge,"The process terminates with Appeal to Judge, representing a judicial appeal.",0.0,resolve_via_coercive_credit_collection,1.0,0.0,0.36026421189308167
+V0006,resolve_via_administrative_appeal_to_the_prefecture,The process involves an appeal to the Prefecture and ends with receiving the appeal result.,0.0,resolve_via_coercive_credit_collection,3.0,0.0,0.36026421189308167
+V0007,resolve_via_timely_or_delinquent_payment,The process concludes with Payment actions after fine notification and penalties.,1.0,resolve_via_coercive_credit_collection,2.0,0.0,0.6910495162010193
+V0008,resolve_via_timely_or_delinquent_payment,The case is resolved through payments following fine notifications and penalties.,1.0,resolve_via_coercive_credit_collection,2.0,0.003584473393857479,0.6874650120735168

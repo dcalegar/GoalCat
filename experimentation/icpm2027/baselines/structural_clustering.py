@@ -53,15 +53,23 @@ def build_activity_vectors(variants_df: pd.DataFrame) -> tuple[np.ndarray, tuple
     the (scoped) log — the representation itself, decoupled from clustering so it can be unit
     tested and reused (e.g. for a future non-HDBSCAN comparison) on its own.
 
-    `variants_df` is expected in the shape `goalcat.extraction.variants.load_variants()` produces:
-    an `activity_sequence` column of tuples and a `variant_id` column.
+    `variants_df` needs a `variant_id` column and an `activity_sequence` column, either as tuples
+    (the shape `goalcat.extraction.variants.load_variants()` produces) or as the `>`-joined string
+    the raw `01_variants/variants.csv` stores — a plain `pd.read_csv` of that file gives the
+    latter, and iterating it without splitting would vectorize *characters*, not activities.
     """
-    vocabulary = sorted({activity for sequence in variants_df["activity_sequence"] for activity in sequence})
+
+    def _activities(sequence) -> list[str]:
+        if isinstance(sequence, str):
+            return [a.strip() for a in sequence.split(">")]
+        return list(sequence)
+
+    vocabulary = sorted({activity for sequence in variants_df["activity_sequence"] for activity in _activities(sequence)})
     index = {activity: position for position, activity in enumerate(vocabulary)}
 
     matrix = np.zeros((len(variants_df), len(vocabulary)), dtype=bool)
     for row, sequence in enumerate(variants_df["activity_sequence"]):
-        for activity in set(sequence):
+        for activity in set(_activities(sequence)):
             matrix[row, index[activity]] = True
 
     return matrix, tuple(vocabulary), list(variants_df["variant_id"])

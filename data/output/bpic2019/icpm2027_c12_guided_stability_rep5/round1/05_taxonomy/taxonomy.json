@@ -1,0 +1,58 @@
+{
+  "categories": [
+    {
+      "category_id": "three_way_after_gr",
+      "name": "3-way matched, invoice recorded after goods receipt",
+      "description": "Standard 3-way matching process where the goods receipt occurs prior to the vendor invoice recording. Advances value-matching control integrity and works against procurement overhead.",
+      "anchor_ids": [
+        "5"
+      ],
+      "rationale": "Directly maps to goal model alternative 5. Supported by frequent variants like V0001, V0002, and V0005 where Record Goods Receipt precedes invoice recording activities.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0002",
+        "V0005"
+      ]
+    },
+    {
+      "category_id": "three_way_before_gr",
+      "name": "3-way matched, invoice recorded before goods receipt",
+      "description": "Process variant where the invoice is received and recorded before the goods receipt is posted. Helps working-capital efficiency and value-matching control integrity.",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Directly maps to goal model alternative 6. Supported by variants such as V0004 and V0007 where invoice recording precedes goods receipt execution.",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0007",
+        "V0008"
+      ]
+    },
+    {
+      "category_id": "two_way_matched",
+      "name": "2-way matched (no goods receipt required)",
+      "description": "Streamlined matching process requiring only invoice recording and clearance without any goods receipt. Helps minimize procurement and matching overhead.",
+      "anchor_ids": [
+        "7"
+      ],
+      "rationale": "Directly maps to goal model alternative 7, characterized by invoice clearance without goods receipt tasks.",
+      "evidence_variant_ids": [
+        "V0009"
+      ]
+    },
+    {
+      "category_id": "consignment_consumption",
+      "name": "Resolve via consignment consumption",
+      "description": "Resolution of purchase order items through consignment inventory consumption. Helps minimize procurement and matching overhead.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Maps to goal model alternative task 13, representing resolution via consignment consumption patterns in specialized variants.",
+      "evidence_variant_ids": [
+        "V0064",
+        "V0162",
+        "V0244"
+      ]
+    }
+  ]
+}

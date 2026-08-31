@@ -1,0 +1,12 @@
+2026-08-29 09:39:18,335 [INFO] goalcat: Run environment: host=192.168.68.56, platform=macOS-26.5.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-29 09:39:18,336 [INFO] goalcat: ICPM 2027 condition run starting: run_id=icpm2027_c12_guided_stability_rep1, steps=[5], taxonomy_mode=intent_guided, goal_model=bpic2019_goal_model.jucm
+2026-08-29 09:39:18,337 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/bpic2019.xes.gz
+2026-08-29 09:39:18,337 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/icpm2027_c12_guided_stability_rep1/04_sampling/narrative_sample.csv
+2026-08-29 09:39:18,342 [INFO] goalcat: Inducing taxonomy from 35 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/bpic2019_goal_model.jucm
+2026-08-29 09:41:14,333 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=92bc49773318d3d1, latency=114.64s)
+2026-08-29 09:41:14,334 [INFO] goalcat: Induced 4 categories: three_way_after_gr, three_way_before_gr, two_way_match, consignment_consumption
+2026-08-29 09:41:14,341 [INFO] goalcat: Taxonomy grounding check: no problems found.
+2026-08-29 09:41:14,344 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/icpm2027_c12_guided_stability_rep1/round1/05_taxonomy/taxonomy.json
+2026-08-29 09:41:14,344 [INFO] goalcat: Step 5a complete.
+2026-08-29 09:41:14,344 [INFO] goalcat: Peak RSS after Step 5a: 388.5 MiB
+2026-08-29 09:41:14,344 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_c12_guided_stability_rep1

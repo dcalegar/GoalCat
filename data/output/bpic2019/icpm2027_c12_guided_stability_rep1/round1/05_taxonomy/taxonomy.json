@@ -1,0 +1,54 @@
+{
+  "categories": [
+    {
+      "category_id": "three_way_after_gr",
+      "name": "3-Way Match, Invoice Recorded After Goods Receipt",
+      "description": "The item follows a 3-way matching control regime where the invoice is recorded after the goods receipt is completed. Advances the softgoal of preserving value-matching control integrity and maximizes working-capital efficiency, measured against Indicator 17 (Time to clearance, 3-way after GR).",
+      "anchor_ids": [
+        "5"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=5 in the goal model, representing the standard post-GR invoice recording path frequently observed in variants such as V0001 and V0002.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0002"
+      ]
+    },
+    {
+      "category_id": "three_way_before_gr",
+      "name": "3-Way Match, Invoice Recorded Before Goods Receipt",
+      "description": "The item follows a 3-way matching control regime where the invoice is recorded prior to the goods receipt. Helps maximize working-capital efficiency and helps preserve control integrity, measured against Indicator 18 (Time to clearance, 3-way before GR).",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=6 in the goal model, representing variants where invoice processing precedes goods receipt as supported by narrative sequences in the sample.",
+      "evidence_variant_ids": [
+        "V0005",
+        "V0007"
+      ]
+    },
+    {
+      "category_id": "two_way_match",
+      "name": "2-Way Match (No Goods Receipt Required)",
+      "description": "The item follows a 2-way matching regime where goods receipt is bypassed or not required. Helps minimize procurement and matching overhead while slightly impacting value-matching control integrity, measured against Indicator 19 (Time to clearance, 2-way match).",
+      "anchor_ids": [
+        "7"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=7 in the goal model, representing simplified workflows that do not mandate goods receipt.",
+      "evidence_variant_ids": [
+        "V0003"
+      ]
+    },
+    {
+      "category_id": "consignment_consumption",
+      "name": "Resolve via Consignment Consumption",
+      "description": "The item is resolved and cleared through consignment consumption tracking. Helps minimize procurement overhead, measured against clearance times and indicator performance.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=13 in the goal model, corresponding to consignment-based resolution paths.",
+      "evidence_variant_ids": [
+        "V0064"
+      ]
+    }
+  ]
+}

@@ -15,15 +15,16 @@ build/
 .claude/
 project/
 
-# Example pipeline run outputs: only rtfm_mini is pushed to GitHub, as a
-# complete end-to-end example. Every other example run (bpic2019,
-# rtfm, sepsis) stays local-only — reproduce them via
-# experimentation/examples/ instead. See experimentation/README.md for the
-# time/cost/memory/disk footprint of each before running one.
+# Example pipeline run outputs. rtfm_mini is the committed end-to-end example;
+# rtfm, sepsis and bpic2019 carry the tracked ICPM 2027 replication runs. Any
+# other ad-hoc run stays local-only — reproduce it via experimentation/examples/
+# instead. See experimentation/README.md for the time/cost/memory/disk footprint
+# of each before running one.
 data/output/*
 !data/output/rtfm_mini/
 !data/output/rtfm/
 !data/output/sepsis/
+!data/output/bpic2019/
 !data/output/icpm2027_results/
 
 # Pairwise distance matrices: CSV is redundant with parquet. Applies within
@@ -32,6 +33,22 @@ data/output/*/*/round1/06_assignment/profile_distances.csv
 data/output/*/*/round1/06_assignment/structural_distances.csv
 data/output/*/*/round2/06_assignment/profile_distances.csv
 data/output/*/*/round2/06_assignment/structural_distances.csv
+
+# BPIC 2019 pairwise distance matrices, parquet form: 200-720 MB each on the
+# 11,973-variant scope (n(n-1)/2 growth), above GitHub's 100 MB per-file limit.
+# Derived data, regenerable by re-running Step 6. rtfm/sepsis parquet twins are
+# small (~4 MB) and stay tracked; this rule is scoped to bpic2019 only.
+data/output/bpic2019/*/round1/06_assignment/profile_distances.parquet
+data/output/bpic2019/*/round1/06_assignment/structural_distances.parquet
+data/output/bpic2019/*/round2/06_assignment/profile_distances.parquet
+data/output/bpic2019/*/round2/06_assignment/structural_distances.parquet
+
+# BPIC 2019 profiles.json (79 MB) and lupin_input.json (54 MB): committed only in
+# gzipped form (profiles.json.gz / lupin_input.json.gz, ~2.5 MB and ~1.4 MB). The
+# raw files are ignored — run `gunzip -k` on the .gz before the pipeline or the
+# analysis scripts read the run directory. See data/output/bpic2019/README.md.
+data/output/bpic2019/*/02_profiling/profiles.json
+data/output/bpic2019/*/03_textualization/lupin_input.json
 
 # Bundled archives of a full multi-log run (data/fullrun_<date>.zip). Hundreds of MB —
 # above GitHub's 100 MB per-file limit, and redundant with the run directories above.

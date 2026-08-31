@@ -187,6 +187,12 @@ class DatasetSpec:
     role: str
     variant_scope: dict[str, Any]
     heldout_case_attribute: str | None
+    #: Task C1: maps a goal-model anchor id (as a string) to the `heldout_case_attribute` value
+    #: that names the same declared alternative. Only bpic2019 sets this.
+    heldout_label_map: dict[str, str] | None
+    #: Held-out labels whose recovery figure is not comparable to the others (no distinguishing
+    #: activity label in the log — the Consignment / T9 case for bpic2019).
+    heldout_incomparable_labels: list[str]
 
     @classmethod
     def load(cls, dataset_id: str) -> "DatasetSpec":
@@ -207,6 +213,8 @@ class DatasetSpec:
             role=raw["role"],
             variant_scope=raw["variant_scope"],
             heldout_case_attribute=raw.get("heldout_case_attribute"),
+            heldout_label_map={str(k): v for k, v in (raw.get("heldout_label_map") or {}).items()} or None,
+            heldout_incomparable_labels=list(raw.get("heldout_incomparable_labels") or []),
         )
 
     @property

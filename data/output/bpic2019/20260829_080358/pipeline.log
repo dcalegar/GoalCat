@@ -1,0 +1,314 @@
+2026-08-29 08:03:58,227 [INFO] goalcat: Run environment: host=192.168.68.56, platform=macOS-26.5.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-08-29 08:03:58,228 [INFO] goalcat: example_run: starting full pipeline for bpic2019, run_id=20260829_080358
+2026-08-29 08:03:58,229 [INFO] goalcat: Step 1 (variant extraction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/bpic2019.xes.gz
+2026-08-29 08:04:50,426 [INFO] goalcat: Loaded event log: 1595923 events, 251734 cases
+2026-08-29 08:04:52,553 [INFO] goalcat: Extracted 11973 variants. Top variant: Create Purchase Order Item > Vendor creates invoice > Record Goods Receipt > Record Invoice Receipt > Clear Invoice (frequency=50286, 20.0%)
+2026-08-29 08:04:52,665 [INFO] goalcat: Saved variants to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/20260829_080358/01_variants/variants.csv
+2026-08-29 08:04:52,665 [INFO] goalcat: Step 1 complete.
+2026-08-29 08:04:52,665 [INFO] goalcat: Peak RSS after Step 1: 3109.6 MiB
+2026-08-29 08:04:52,667 [INFO] goalcat: Step 2 (multi-view profiling) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/bpic2019.xes.gz
+2026-08-29 08:05:41,521 [INFO] goalcat: Profiling 11973 variants against 1595923 events
+2026-08-29 08:08:45,477 [INFO] goalcat: Profiled 11973 variants. Top variant representative case: 4507006527_00010 (outcome=Clear Invoice, duration_median=5551560s)
+2026-08-29 08:08:46,005 [INFO] goalcat: Saved profiles to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/20260829_080358/02_profiling/profiles.csv and /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/20260829_080358/02_profiling/profiles.json
+2026-08-29 08:08:46,005 [INFO] goalcat: Step 2 complete.
+2026-08-29 08:08:46,005 [INFO] goalcat: Peak RSS after Step 2: 3109.6 MiB
+2026-08-29 08:08:46,007 [INFO] goalcat: Step 3 (textualization) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/bpic2019.xes.gz
+2026-08-29 08:08:46,007 [INFO] goalcat: Rendering narratives for 11973 variants
+2026-08-29 08:08:53,963 [INFO] goalcat: Rendered 11973 narratives. Example (top variant): Create Purchase Order Item (handled by resource user_040) Vendor creates invoice (+15h) Record Goods Receipt (handled by
+2026-08-29 08:08:54,076 [INFO] goalcat: Saved narratives to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/20260829_080358/03_textualization/narratives.csv
+2026-08-29 08:08:54,076 [INFO] goalcat: Step 3 complete.
+2026-08-29 08:08:54,076 [INFO] goalcat: Peak RSS after Step 3: 3109.6 MiB
+2026-08-29 08:08:54,077 [INFO] goalcat: Step 4 (narrative sampling) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/bpic2019.xes.gz
+2026-08-29 08:08:54,087 [INFO] goalcat: Sampled 35 unique variants (frequent=10, rare=10, extreme=5 per direction, before dedup)
+2026-08-29 08:08:54,089 [INFO] goalcat: Saved narrative sample to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/20260829_080358/04_sampling/narrative_sample.csv
+2026-08-29 08:08:54,089 [INFO] goalcat: Step 4 complete.
+2026-08-29 08:08:54,089 [INFO] goalcat: Peak RSS after Step 4: 3109.6 MiB
+2026-08-29 08:08:54,091 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/bpic2019.xes.gz
+2026-08-29 08:08:54,091 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/20260829_080358/04_sampling/narrative_sample.csv
+2026-08-29 08:08:54,095 [INFO] goalcat: Inducing taxonomy from 35 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/bpic2019_goal_model.jucm
+2026-08-29 08:09:20,932 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=92bc49773318d3d1, latency=25.25s)
+2026-08-29 08:09:20,933 [INFO] goalcat: Induced 4 categories: three_way_matched_after_gr, three_way_matched_before_gr, two_way_matched, consignment_consumption
+2026-08-29 08:09:20,939 [INFO] goalcat: Taxonomy grounding check: no problems found.
+2026-08-29 08:09:20,941 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/20260829_080358/round1/05_taxonomy/taxonomy.json
+2026-08-29 08:09:20,941 [INFO] goalcat: Step 5a complete.
+2026-08-29 08:09:20,941 [INFO] goalcat: Peak RSS after Step 5a: 3109.6 MiB
+2026-08-29 08:09:20,943 [INFO] goalcat: Step 6 (narrative assignment) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/bpic2019.xes.gz
+2026-08-29 08:09:20,943 [INFO] goalcat: Loading profiles/narratives from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/20260829_080358
+2026-08-29 08:09:21,416 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/20260829_080358/round1/05_taxonomy/taxonomy.json
+2026-08-29 08:09:21,428 [INFO] goalcat: Assigning 11973 narratives against 4 categories (model=gemini/gemini-3.5-flash-lite, batch_size=50, concurrency=5)
+2026-08-29 08:09:28,527 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=eec5bbb0f8578123, latency=6.87s)
+2026-08-29 08:09:29,693 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b26255cbcf0206ed, latency=8.04s)
+2026-08-29 08:09:39,521 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=16b27f0637d33f0c, latency=9.83s)
+2026-08-29 08:09:41,399 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=0c58628ffa7e16c4, latency=12.87s)
+2026-08-29 08:10:17,372 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4765b3c91bbb3012, latency=55.71s)
+2026-08-29 08:10:19,845 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=9ef60885f7fe3415, latency=58.19s)
+2026-08-29 08:10:19,909 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=8a8692cf78b93ca0, latency=58.25s)
+2026-08-29 08:10:21,027 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=23f1f0788103e904, latency=39.63s)
+2026-08-29 08:10:45,708 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=03121ab92b07884c, latency=66.19s)
+2026-08-29 08:11:32,708 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4698968537a0ec49, latency=72.86s)
+2026-08-29 08:11:32,835 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=6953996a0634746f, latency=72.93s)
+2026-08-29 08:11:33,422 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=53807c1de382e338, latency=72.39s)
+2026-08-29 08:12:18,521 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=76160e3719d953a4, latency=92.81s)
+2026-08-29 08:13:25,042 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=93d237c061e752ce, latency=112.21s)
+2026-08-29 08:13:26,373 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f0daa69116bd1561, latency=113.67s)
+2026-08-29 08:13:33,269 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=afed0acf8056dace, latency=119.85s)
+2026-08-29 08:15:09,826 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a9e7f2f55b0c2524, latency=104.78s)
+2026-08-29 08:15:12,253 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f12e6560fd785a0b, latency=98.98s)
+2026-08-29 08:15:12,866 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4fadc10b7dde64af, latency=106.49s)
+2026-08-29 08:15:58,886 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=172564b16551ea6f, latency=220.37s)
+2026-08-29 08:17:04,280 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=da3b6f32a1d8179f, latency=114.45s)
+2026-08-29 08:17:04,476 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=3a60e97b62f916b1, latency=111.61s)
+2026-08-29 08:18:01,110 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f367f045e3b5a5ad, latency=56.83s)
+2026-08-29 08:18:10,829 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=450d521eb2535d96, latency=178.58s)
+2026-08-29 08:18:17,654 [WARNING] goalcat: Assignment batch call failed for 50 narratives, will remain pending: litellm.Timeout: Connection timed out. Timeout passed=120.0, time taken=120.001 seconds LiteLLM Retried: 3 times
+2026-08-29 08:18:26,099 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a5bf8ad5454681fe, latency=8.44s)
+2026-08-29 08:21:01,078 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=7ebac1f995aa6152, latency=236.60s)
+2026-08-29 08:21:58,168 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=69622aec2322dc2b, latency=237.06s)
+2026-08-29 08:22:08,306 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=62a320a1de8e026a, latency=237.48s)
+2026-08-29 08:23:52,857 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=0915c133673c5d1b, latency=114.69s)
+2026-08-29 08:23:54,508 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=23a042abfeddfb7f, latency=475.63s)
+2026-08-29 08:24:06,988 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b30ab181f79d701c, latency=340.89s)
+2026-08-29 08:24:17,849 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=062a97b173e4564e, latency=196.77s)
+2026-08-29 08:25:08,531 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=c3c9757d3afcdc1b, latency=74.02s)
+2026-08-29 08:25:31,571 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2244a2164d35d5a9, latency=98.71s)
+2026-08-29 08:25:38,328 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a63799f6f5b145eb, latency=210.03s)
+2026-08-29 08:25:47,954 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=ec46961e032782df, latency=39.42s)
+2026-08-29 08:25:51,233 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=06d6cc66a2b77025, latency=93.38s)
+2026-08-29 08:27:18,613 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=376e33ff4a913ce6, latency=107.04s)
+2026-08-29 08:27:56,269 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=904aa27b1b678a3a, latency=128.31s)
+2026-08-29 08:28:00,540 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2ce81240a6a8e678, latency=129.31s)
+2026-08-29 08:28:09,165 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=44797923bafe0ac4, latency=8.62s)
+2026-08-29 08:28:16,470 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=920ebc1d5fd254a6, latency=7.30s)
+2026-08-29 08:28:23,910 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b90c95f6d15fc02e, latency=7.44s)
+2026-08-29 08:29:07,330 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b75353bf13160b78, latency=108.72s)
+2026-08-29 08:29:13,165 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=c18df0761826b53a, latency=214.84s)
+2026-08-29 08:29:14,291 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f388da49846d5519, latency=78.02s)
+2026-08-29 08:29:23,610 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=c8fe99d6c92873de, latency=59.70s)
+2026-08-29 08:29:25,043 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=ea316fd3f3d92def, latency=318.06s)
+2026-08-29 08:29:36,832 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=c52dfcfdf17a638c, latency=23.67s)
+2026-08-29 08:29:39,490 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=bfc5c4607524d8f3, latency=32.16s)
+2026-08-29 08:29:43,576 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=6b9b53faededbac0, latency=18.53s)
+2026-08-29 08:29:46,746 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=e6a19146d17f0bcc, latency=23.13s)
+2026-08-29 08:30:07,552 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=be9a98438c4a3c3c, latency=30.72s)
+2026-08-29 08:30:13,378 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=619f21e3a1922c1e, latency=59.09s)
+2026-08-29 08:30:46,636 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=cbc1521de155f589, latency=63.06s)
+2026-08-29 08:30:55,446 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=ad03e618923999a4, latency=75.95s)
+2026-08-29 08:30:58,535 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b533c47bb9a3a530, latency=45.16s)
+2026-08-29 08:31:00,353 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=8062467299bbbba1, latency=52.80s)
+2026-08-29 08:31:01,312 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=c29844410cbd5f9f, latency=74.56s)
+2026-08-29 08:31:03,745 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=e9167e205ff17bec, latency=8.30s)
+2026-08-29 08:31:29,861 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=cf8cab673d3891c8, latency=43.22s)
+2026-08-29 08:31:33,666 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=e0e08875610d45f4, latency=33.31s)
+2026-08-29 08:31:35,828 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=eefd3ec6da392381, latency=32.08s)
+2026-08-29 08:31:42,739 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=3b6eb277fb297a93, latency=6.91s)
+2026-08-29 08:31:46,153 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=8f840d2435111e4c, latency=16.29s)
+2026-08-29 08:31:49,348 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=7e70881933dd75d1, latency=15.68s)
+2026-08-29 08:31:56,464 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=5eaa5c010e24e992, latency=13.72s)
+2026-08-29 08:31:58,689 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=7f66df37fc9143c7, latency=60.15s)
+2026-08-29 08:31:59,543 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=29ad04c78281775f, latency=10.19s)
+2026-08-29 08:32:01,757 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=0b0429dec1845657, latency=15.60s)
+2026-08-29 08:32:06,339 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=3fc8e39164484cec, latency=7.65s)
+2026-08-29 08:32:07,826 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4d76855bfb425a4b, latency=8.28s)
+2026-08-29 08:32:08,605 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f640e25894c641f0, latency=12.14s)
+2026-08-29 08:32:08,623 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4e208252b04fe3be, latency=6.86s)
+2026-08-29 08:32:14,065 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f93ca3c3a865ff5b, latency=7.73s)
+2026-08-29 08:32:15,255 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=67627ea9cfa4d42e, latency=73.94s)
+2026-08-29 08:32:16,890 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=8faf2c9c3ce619dc, latency=9.06s)
+2026-08-29 08:32:17,292 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=6c541f1c80b1d63b, latency=8.69s)
+2026-08-29 08:32:17,612 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=7a0553b559c95089, latency=8.99s)
+2026-08-29 08:32:22,918 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=cfeb94e51b0fd219, latency=8.85s)
+2026-08-29 08:32:23,473 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=009137fb0ef6712e, latency=8.22s)
+2026-08-29 08:32:24,104 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=1e78ddd923f7e4f1, latency=7.21s)
+2026-08-29 08:32:25,063 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=920576a0a8591af2, latency=7.77s)
+2026-08-29 08:32:25,883 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=79dc5a9e40ee30b3, latency=8.27s)
+2026-08-29 08:32:30,880 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=41c3e039e086c451, latency=7.96s)
+2026-08-29 08:32:31,881 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=7948a2d563e78323, latency=7.77s)
+2026-08-29 08:32:34,310 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=9664633e624bf911, latency=10.84s)
+2026-08-29 08:32:39,295 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=e284d207d18fa857, latency=8.41s)
+2026-08-29 08:32:39,767 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=49a21325e653d4d6, latency=7.89s)
+2026-08-29 08:32:41,810 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=71fee8b17ec72270, latency=7.50s)
+2026-08-29 08:32:48,359 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=83a8af0f04e7ea6d, latency=9.06s)
+2026-08-29 08:32:48,428 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=bfae6aff86549ea2, latency=6.62s)
+2026-08-29 08:32:57,133 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=255c80675994866c, latency=8.70s)
+2026-08-29 08:33:01,691 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=bef91283d5f0ce5e, latency=13.33s)
+2026-08-29 08:33:03,819 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=ef1cac6852e0efcf, latency=6.68s)
+2026-08-29 08:33:08,974 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=27072cdca5d517f6, latency=7.28s)
+2026-08-29 08:33:16,590 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2f66502a395a4dd4, latency=7.61s)
+2026-08-29 08:33:24,960 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=84daa3d7ee7dc05a, latency=8.37s)
+2026-08-29 08:33:32,016 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=9f1a181cadc99246, latency=7.06s)
+2026-08-29 08:33:32,694 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=105ac9ba2b0394d4, latency=67.63s)
+2026-08-29 08:33:33,383 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=fa02b1afb1802419, latency=67.50s)
+2026-08-29 08:33:39,454 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=9d44a4496d5a04e5, latency=7.44s)
+2026-08-29 08:33:39,878 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=0b513b5f1e00c7a6, latency=7.18s)
+2026-08-29 08:33:41,748 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=68d1f776f8edcdf4, latency=8.36s)
+2026-08-29 08:33:43,985 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=49e8c29481e09bd1, latency=64.22s)
+2026-08-29 08:33:46,538 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=534a16776f9c0856, latency=7.08s)
+2026-08-29 08:33:48,247 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=06f8b81f979e30cc, latency=8.37s)
+2026-08-29 08:33:48,750 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=565f564fce104441, latency=7.00s)
+2026-08-29 08:33:51,534 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b833bb9fa5f2cff1, latency=7.55s)
+2026-08-29 08:34:03,272 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4b9aadc005c97dbd, latency=15.02s)
+2026-08-29 08:34:05,619 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f01f5bcd95e4fc33, latency=16.87s)
+2026-08-29 08:35:15,378 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=1e354fd262742155, latency=69.75s)
+2026-08-29 08:35:24,951 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=922c5dc1ab8d0c2a, latency=81.68s)
+2026-08-29 08:35:32,250 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=7a424194d3e22813, latency=7.30s)
+2026-08-29 08:35:35,781 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a0880914dd46123a, latency=151.96s)
+2026-08-29 08:35:40,783 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=1b48af4ad800787d, latency=8.53s)
+2026-08-29 08:35:43,333 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=39edf7dd63344771, latency=7.55s)
+2026-08-29 08:35:50,679 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=bf77ea0f5a3de868, latency=9.89s)
+2026-08-29 08:35:52,222 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=98401cacf2a6a2e5, latency=8.89s)
+2026-08-29 08:35:59,786 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=1cd48fd29cd7c230, latency=7.56s)
+2026-08-29 08:36:00,308 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=be69f7a64cdf2d00, latency=128.77s)
+2026-08-29 08:36:02,049 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=478df1602766a2a2, latency=135.51s)
+2026-08-29 08:36:08,803 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=073fd327a9f93f4c, latency=9.02s)
+2026-08-29 08:36:09,036 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=fad75aaf36dfd30f, latency=18.36s)
+2026-08-29 08:36:21,866 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=d2138c573e95f29e, latency=19.82s)
+2026-08-29 08:36:25,500 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=dee41a06ce1f56cf, latency=25.19s)
+2026-08-29 08:36:28,263 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=bf3ef0e8b263e3e4, latency=19.23s)
+2026-08-29 08:36:28,747 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=94d57e694d49b81c, latency=19.94s)
+2026-08-29 08:36:35,739 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=46fdced5ba0091bf, latency=13.87s)
+2026-08-29 08:36:41,576 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=62e5d6f9801b8d83, latency=13.31s)
+2026-08-29 08:36:44,654 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f53a746a7d4c33f7, latency=19.15s)
+2026-08-29 08:37:10,359 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b30d29f47b6e2d0d, latency=114.98s)
+2026-08-29 08:37:14,139 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=c48ccf11fc6682fd, latency=38.40s)
+2026-08-29 08:37:14,359 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=d507fd0ea802d0d3, latency=32.78s)
+2026-08-29 08:37:14,452 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2ae9d8b7b907e74f, latency=45.70s)
+2026-08-29 08:37:16,431 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=6c6183dc43862cb9, latency=31.78s)
+2026-08-29 08:37:20,085 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=34d825b2a63daca7, latency=9.72s)
+2026-08-29 08:37:21,762 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4ea178f872a4b073, latency=7.62s)
+2026-08-29 08:37:24,174 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=0ea08294856d76b0, latency=7.74s)
+2026-08-29 08:37:33,187 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=5f2a27bcf7afd9f6, latency=13.10s)
+2026-08-29 08:37:35,233 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f4f73ff79c59f3e0, latency=11.06s)
+2026-08-29 08:37:42,297 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=1a4a73725609a06e, latency=27.84s)
+2026-08-29 08:37:45,029 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2a51cffe6dcfe9c0, latency=9.79s)
+2026-08-29 08:37:50,268 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=cef8a770825d827b, latency=17.08s)
+2026-08-29 08:37:55,352 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2e32c44f0fc1e071, latency=13.05s)
+2026-08-29 08:37:56,710 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=097b14f0fb232610, latency=11.68s)
+2026-08-29 08:38:11,281 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=c6acef1d95dd9162, latency=21.01s)
+2026-08-29 08:38:12,407 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2b4cd5993c31af7e, latency=17.05s)
+2026-08-29 08:38:22,427 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=69ddfb694a47d30f, latency=25.72s)
+2026-08-29 08:39:21,425 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=c663a096044f0e2b, latency=70.14s)
+2026-08-29 08:39:21,933 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=65933c1da9367c84, latency=69.52s)
+2026-08-29 08:39:24,654 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=832874342d5b2a05, latency=62.23s)
+2026-08-29 08:39:30,022 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=fa1d333cb3ad090c, latency=128.26s)
+2026-08-29 08:40:08,066 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=de0c249348ed7daa, latency=46.13s)
+2026-08-29 08:40:08,441 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=232d0c5409e394ae, latency=174.08s)
+2026-08-29 08:40:10,096 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=de283a64de56525d, latency=40.07s)
+2026-08-29 08:40:13,394 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=9011d8bb88fa55b9, latency=48.74s)
+2026-08-29 08:40:18,965 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=928db23fb98f6e32, latency=10.52s)
+2026-08-29 08:42:07,531 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=fd23a4e283a4e4e0, latency=119.46s)
+2026-08-29 08:47:21,881 [WARNING] goalcat: Assignment batch call failed for 50 narratives, will remain pending: litellm.Timeout: Connection timed out. Timeout passed=120.0, time taken=120.005 seconds LiteLLM Retried: 3 times
+2026-08-29 08:48:10,423 [WARNING] goalcat: Assignment batch call failed for 50 narratives, will remain pending: litellm.Timeout: Connection timed out. Timeout passed=120.0, time taken=120.002 seconds LiteLLM Retried: 3 times
+2026-08-29 08:48:13,723 [WARNING] goalcat: Assignment batch call failed for 50 narratives, will remain pending: litellm.Timeout: Connection timed out. Timeout passed=120.0, time taken=120.001 seconds LiteLLM Retried: 3 times
+2026-08-29 08:48:19,291 [WARNING] goalcat: Assignment batch call failed for 50 narratives, will remain pending: litellm.Timeout: Connection timed out. Timeout passed=120.0, time taken=120.003 seconds LiteLLM Retried: 3 times
+2026-08-29 08:50:07,922 [WARNING] goalcat: Assignment batch call failed for 50 narratives, will remain pending: litellm.Timeout: Connection timed out. Timeout passed=120.0, time taken=120.004 seconds LiteLLM Retried: 3 times
+2026-08-29 08:50:47,379 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=12eff9f350f513d5, latency=205.49s)
+2026-08-29 08:51:22,597 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f4b4c64bc1be2ec5, latency=188.87s)
+2026-08-29 08:52:04,454 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f08f45245208d1c9, latency=116.53s)
+2026-08-29 08:52:04,593 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a6425100ec10ad4c, latency=234.17s)
+2026-08-29 08:52:07,040 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=d321d5e47bf759a0, latency=227.75s)
+2026-08-29 08:52:07,632 [WARNING] goalcat: LLM structured-output validation failed (attempt 1/3, model=gemini/gemini-3.5-flash-lite, prompt_hash=44b0218e818f323c): 1 validation error for AssignmentBatch
+  Value error, Duplicate variant_id values in assignment batch: ['V8501', 'V8502', 'V8503', 'V8504', 'V8505', 'V8506', 'V8507', 'V8508', 'V8508', 'V8509', 'V8510', 'V8511', 'V8512', 'V8513', 'V8514', 'V8515', 'V8516', 'V8517', 'V8518', 'V8519', 'V8520', 'V8521', 'V8522', 'V8523', 'V8524', 'V8525', 'V8526', 'V8527', 'V8528', 'V8529', 'V8530', 'V8531', 'V8532', 'V8533', 'V8534', 'V8535', 'V8536', 'V8537', 'V8538', 'V8539', 'V8540', 'V8541', 'V8542', 'V8543', 'V8544', 'V8545', 'V8546', 'V8547', 'V8548', 'V8549', 'V8550'] [type=value_error, input_value={'assignments': [{'varian...ay matched after GR.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+2026-08-29 08:52:11,629 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=68fb671ee5d3b46b, latency=7.17s)
+2026-08-29 08:53:14,627 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=635cebf8ab146941, latency=112.03s)
+2026-08-29 08:54:13,391 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=cefed62d2a3d9f68, latency=128.80s)
+2026-08-29 08:55:12,693 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=1ff2819a87cc643d, latency=118.06s)
+2026-08-29 09:00:07,363 [WARNING] goalcat: Assignment batch call failed for 50 narratives, will remain pending: litellm.Timeout: Connection timed out. Timeout passed=120.0, time taken=120.004 seconds LiteLLM Retried: 3 times
+2026-08-29 09:00:07,888 [WARNING] goalcat: Assignment batch call failed for 50 narratives, will remain pending: litellm.Timeout: Connection timed out. Timeout passed=120.0, time taken=120.004 seconds LiteLLM Retried: 3 times
+2026-08-29 09:00:11,909 [WARNING] goalcat: Assignment batch call failed for 50 narratives, will remain pending: litellm.Timeout: Connection timed out. Timeout passed=120.0, time taken=120.005 seconds LiteLLM Retried: 3 times
+2026-08-29 09:00:18,471 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=ac7100bc2c7cc926, latency=10.58s)
+2026-08-29 09:00:20,021 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=42862af9060d6b26, latency=12.65s)
+2026-08-29 09:00:22,660 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=ccf24f7bc73b55e9, latency=10.75s)
+2026-08-29 09:00:26,362 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=0a4a922a96d482d6, latency=7.89s)
+2026-08-29 09:00:31,670 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a8c7a76f2b0e4c5b, latency=9.01s)
+2026-08-29 09:00:38,080 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=9dc5e290562e89da, latency=18.06s)
+2026-08-29 09:00:38,461 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=e207fdb5341ff8d0, latency=12.10s)
+2026-08-29 09:00:46,475 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=85b211856049129f, latency=333.78s)
+2026-08-29 09:00:54,628 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b3e45503f3582ece, latency=16.16s)
+2026-08-29 09:00:55,214 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=d8abdd7dd014e326, latency=23.54s)
+2026-08-29 09:01:02,795 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=243bf719a4b153ef, latency=24.71s)
+2026-08-29 09:01:03,298 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=084e15623e38d6e9, latency=8.67s)
+2026-08-29 09:01:12,748 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=5e3d3556cc159b2e, latency=9.95s)
+2026-08-29 09:01:13,669 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=79aaeb0eacaabf21, latency=10.37s)
+2026-08-29 09:01:19,711 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=060befbc701eaccb, latency=33.24s)
+2026-08-29 09:01:30,186 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=eef41a832b940d8b, latency=16.52s)
+2026-08-29 09:01:35,323 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=6f1db765b8d4e874, latency=40.11s)
+2026-08-29 09:01:43,712 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=105bf329f0d86a62, latency=8.39s)
+2026-08-29 09:01:56,089 [WARNING] goalcat: LLM structured-output validation failed (attempt 1/3, model=gemini/gemini-3.5-flash-lite, prompt_hash=dd719061d9dfb5d1): 1 validation error for AssignmentBatch
+  Value error, Duplicate variant_id values in assignment batch: ['V8851', 'V8852', 'V8853', 'V8854', 'V8855', 'V8856', 'V8857', 'V8858', 'V8859', 'V8860', 'V8861', 'V8862', 'V8863', 'V8864', 'V8865', 'V8866', 'V8867', 'V8868', 'V8869', 'V8870', 'V8871', 'V8872', 'V8873', 'V8874', 'V8875', 'V8876', 'V8877', 'V8878', 'V8879', 'V8880', 'V8881', 'V8882', 'V8883', 'V8884', 'V8885', 'V8886', 'V8887', 'V8888', 'V8889', 'V8890', 'V8891', 'V8892', 'V8900', 'V8893', 'V8894', 'V8900', 'V8895', 'V8896', 'V8897', 'V8898', 'V8899'] [type=value_error, input_value={'assignments': [{'varian...eceipt is processed.'}]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+2026-08-29 09:02:18,701 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=beca1233cae695f6, latency=65.95s)
+2026-08-29 09:02:34,763 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=5559805ad45234e7, latency=75.05s)
+2026-08-29 09:02:38,554 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=013b3e40eb1e3ddc, latency=54.84s)
+2026-08-29 09:02:42,954 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=dd719061d9dfb5d1, latency=46.86s)
+2026-08-29 09:02:42,955 [WARNING] goalcat: Assignment batch response returned unexpected variant_id V8994 — discarded
+2026-08-29 09:02:42,955 [WARNING] goalcat: Assignment batch response missing 1/50 narratives, will remain pending: ['V8894']
+2026-08-29 09:03:08,864 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=07f2284535e3a25f, latency=25.91s)
+2026-08-29 09:04:07,856 [WARNING] goalcat: Assignment batch call failed for 50 narratives, will remain pending: litellm.ServiceUnavailableError: GeminiException - {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.",
+    "status": "UNAVAILABLE"
+  }
+}
+ LiteLLM Retried: 3 times
+2026-08-29 09:04:10,404 [WARNING] goalcat: Assignment batch call failed for 50 narratives, will remain pending: litellm.ServiceUnavailableError: GeminiException - {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.",
+    "status": "UNAVAILABLE"
+  }
+}
+ LiteLLM Retried: 3 times
+2026-08-29 09:04:24,228 [WARNING] goalcat: Assignment batch call failed for 50 narratives, will remain pending: litellm.ServiceUnavailableError: GeminiException - {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.",
+    "status": "UNAVAILABLE"
+  }
+}
+ LiteLLM Retried: 3 times
+2026-08-29 09:04:34,980 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=9ca0eccc7033b32c, latency=136.28s)
+2026-08-29 09:04:44,301 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=81337db989e2dfa4, latency=129.54s)
+2026-08-29 09:04:44,302 [WARNING] goalcat: Assignment batch response returned unexpected variant_id V100100 — discarded
+2026-08-29 09:04:44,302 [WARNING] goalcat: Assignment batch response missing 1/50 narratives, will remain pending: ['V10100']
+2026-08-29 09:04:50,342 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=c479a9d6216603bc, latency=39.94s)
+2026-08-29 09:04:52,390 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a3d259cc504f3abe, latency=8.09s)
+2026-08-29 09:04:58,330 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4d7877ed99ff7bac, latency=7.99s)
+2026-08-29 09:05:06,522 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=1efe61d95316f073, latency=8.19s)
+2026-08-29 09:05:13,683 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=72706b89c110d86e, latency=7.16s)
+2026-08-29 09:05:22,290 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b2413a4f7d9d936b, latency=8.61s)
+2026-08-29 09:05:31,098 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=130f625189a360a1, latency=8.81s)
+2026-08-29 09:05:37,961 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=11d534953e1fb9e6, latency=62.98s)
+2026-08-29 09:05:39,598 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=89adc7069fea33b3, latency=8.50s)
+2026-08-29 09:05:47,280 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=860ca28df9ac2d82, latency=158.41s)
+2026-08-29 09:05:56,392 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=39ad6bcd5a0f9f58, latency=9.11s)
+2026-08-29 09:06:11,033 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=37cd3c95c59b8e50, latency=78.64s)
+2026-08-29 09:06:23,548 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=57f4035dda929fd9, latency=119.32s)
+2026-08-29 09:06:31,104 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=583f55caaf4fcd65, latency=51.51s)
+2026-08-29 09:06:32,333 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=280f890468fed634, latency=54.37s)
+2026-08-29 09:06:37,860 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2f447bf1a4febba0, latency=41.47s)
+2026-08-29 09:06:39,707 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=9dda381cc65580d7, latency=8.60s)
+2026-08-29 09:06:40,427 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4cc62e4a625ab78f, latency=8.09s)
+2026-08-29 09:06:45,032 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=d8806f8609c31424, latency=7.17s)
+2026-08-29 09:06:47,387 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=805fa1a0fa9f9c89, latency=7.68s)
+2026-08-29 09:06:47,796 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b2bf0c5c4dbeabab, latency=7.37s)
+2026-08-29 09:06:49,435 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=604e6ad56b735480, latency=25.89s)
+2026-08-29 09:06:53,325 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=686b0b007e3a8792, latency=8.29s)
+2026-08-29 09:06:53,352 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=cfb111e2f34f96f3, latency=42.32s)
+2026-08-29 09:06:55,580 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4e31d57d4b4d57a5, latency=8.19s)
+2026-08-29 09:06:55,586 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4611dc17e953838e, latency=7.79s)
+2026-08-29 09:06:56,092 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=bf49b20a2ed79334, latency=6.65s)
+2026-08-29 09:07:00,493 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=8795aaafb09fa73e, latency=7.17s)
+2026-08-29 09:07:02,746 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f3bee7ed4461c293, latency=6.65s)
+2026-08-29 09:07:03,362 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=408ffb8b005d04f9, latency=10.01s)
+2026-08-29 09:07:03,508 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=9486bda31db61dd4, latency=7.92s)
+2026-08-29 09:07:04,590 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2a4b3c4f5ebfd16e, latency=9.01s)
+2026-08-29 09:07:08,174 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=6fe925c30dc7f3da, latency=4.81s)
+2026-08-29 09:07:09,197 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4863421615b8a556, latency=6.45s)
+2026-08-29 09:07:09,336 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=8d382a00d822b8f2, latency=8.84s)
+2026-08-29 09:07:09,453 [INFO] goalcat: Assigned 8946/11371 narratives to a category, 2425 residual, 602 still pending
+2026-08-29 09:07:09,453 [WARNING] goalcat: 602 narratives still pending after this attempt (API errors): ['V0451', 'V0452', 'V0453', 'V0454', 'V0455', 'V0456', 'V0457', 'V0458', 'V0459', 'V0460', 'V0461', 'V0462', 'V0463', 'V0464', 'V0465', 'V0466', 'V0467', 'V0468', 'V0469', 'V0470', 'V0471', 'V0472', 'V0473', 'V0474', 'V0475', 'V0476', 'V0477', 'V0478', 'V0479', 'V0480', 'V0481', 'V0482', 'V0483', 'V0484', 'V0485', 'V0486', 'V0487', 'V0488', 'V0489', 'V0490', 'V0491', 'V0492', 'V0493', 'V0494', 'V0495', 'V0496', 'V0497', 'V0498', 'V0499', 'V0500', 'V7751', 'V7752', 'V7753', 'V7754', 'V7755', 'V7756', 'V7757', 'V7758', 'V7759', 'V7760', 'V7761', 'V7762', 'V7763', 'V7764', 'V7765', 'V7766', 'V7767', 'V7768', 'V7769', 'V7770', 'V7771', 'V7772', 'V7773', 'V7774', 'V7775', 'V7776', 'V7777', 'V7778', 'V7779', 'V7780', 'V7781', 'V7782', 'V7783', 'V7784', 'V7785', 'V7786', 'V7787', 'V7788', 'V7789', 'V7790', 'V7791', 'V7792', 'V7793', 'V7794', 'V7795', 'V7796', 'V7797', 'V7798', 'V7799', 'V7800', 'V8051', 'V8052', 'V8053', 'V8054', 'V8055', 'V8056', 'V8057', 'V8058', 'V8059', 'V8060', 'V8061', 'V8062', 'V8063', 'V8064', 'V8065', 'V8066', 'V8067', 'V8068', 'V8069', 'V8070', 'V8071', 'V8072', 'V8073', 'V8074', 'V8075', 'V8076', 'V8077', 'V8078', 'V8079', 'V8080', 'V8081', 'V8082', 'V8083', 'V8084', 'V8085', 'V8086', 'V8087', 'V8088', 'V8089', 'V8090', 'V8091', 'V8092', 'V8093', 'V8094', 'V8095', 'V8096', 'V8097', 'V8098', 'V8099', 'V8100', 'V8101', 'V8102', 'V8103', 'V8104', 'V8105', 'V8106', 'V8107', 'V8108', 'V8109', 'V8110', 'V8111', 'V8112', 'V8113', 'V8114', 'V8115', 'V8116', 'V8117', 'V8118', 'V8119', 'V8120', 'V8121', 'V8122', 'V8123', 'V8124', 'V8125', 'V8126', 'V8127', 'V8128', 'V8129', 'V8130', 'V8131', 'V8132', 'V8133', 'V8134', 'V8135', 'V8136', 'V8137', 'V8138', 'V8139', 'V8140', 'V8141', 'V8142', 'V8143', 'V8144', 'V8145', 'V8146', 'V8147', 'V8148', 'V8149', 'V8150', 'V8151', 'V8152', 'V8153', 'V8154', 'V8155', 'V8156', 'V8157', 'V8158', 'V8159', 'V8160', 'V8161', 'V8162', 'V8163', 'V8164', 'V8165', 'V8166', 'V8167', 'V8168', 'V8169', 'V8170', 'V8171', 'V8172', 'V8173', 'V8174', 'V8175', 'V8176', 'V8177', 'V8178', 'V8179', 'V8180', 'V8181', 'V8182', 'V8183', 'V8184', 'V8185', 'V8186', 'V8187', 'V8188', 'V8189', 'V8190', 'V8191', 'V8192', 'V8193', 'V8194', 'V8195', 'V8196', 'V8197', 'V8198', 'V8199', 'V8200', 'V8201', 'V8202', 'V8203', 'V8204', 'V8205', 'V8206', 'V8207', 'V8208', 'V8209', 'V8210', 'V8211', 'V8212', 'V8213', 'V8214', 'V8215', 'V8216', 'V8217', 'V8218', 'V8219', 'V8220', 'V8221', 'V8222', 'V8223', 'V8224', 'V8225', 'V8226', 'V8227', 'V8228', 'V8229', 'V8230', 'V8231', 'V8232', 'V8233', 'V8234', 'V8235', 'V8236', 'V8237', 'V8238', 'V8239', 'V8240', 'V8241', 'V8242', 'V8243', 'V8244', 'V8245', 'V8246', 'V8247', 'V8248', 'V8249', 'V8250', 'V8501', 'V8502', 'V8503', 'V8504', 'V8505', 'V8506', 'V8507', 'V8508', 'V8509', 'V8510', 'V8511', 'V8512', 'V8513', 'V8514', 'V8515', 'V8516', 'V8517', 'V8518', 'V8519', 'V8520', 'V8521', 'V8522', 'V8523', 'V8524', 'V8525', 'V8526', 'V8527', 'V8528', 'V8529', 'V8530', 'V8531', 'V8532', 'V8533', 'V8534', 'V8535', 'V8536', 'V8537', 'V8538', 'V8539', 'V8540', 'V8541', 'V8542', 'V8543', 'V8544', 'V8545', 'V8546', 'V8547', 'V8548', 'V8549', 'V8550', 'V8701', 'V8702', 'V8703', 'V8704', 'V8705', 'V8706', 'V8707', 'V8708', 'V8709', 'V8710', 'V8711', 'V8712', 'V8713', 'V8714', 'V8715', 'V8716', 'V8717', 'V8718', 'V8719', 'V8720', 'V8721', 'V8722', 'V8723', 'V8724', 'V8725', 'V8726', 'V8727', 'V8728', 'V8729', 'V8730', 'V8731', 'V8732', 'V8733', 'V8734', 'V8735', 'V8736', 'V8737', 'V8738', 'V8739', 'V8740', 'V8741', 'V8742', 'V8743', 'V8744', 'V8745', 'V8746', 'V8747', 'V8748', 'V8749', 'V8750', 'V8751', 'V8752', 'V8753', 'V8754', 'V8755', 'V8756', 'V8757', 'V8758', 'V8759', 'V8760', 'V8761', 'V8762', 'V8763', 'V8764', 'V8765', 'V8766', 'V8767', 'V8768', 'V8769', 'V8770', 'V8771', 'V8772', 'V8773', 'V8774', 'V8775', 'V8776', 'V8777', 'V8778', 'V8779', 'V8780', 'V8781', 'V8782', 'V8783', 'V8784', 'V8785', 'V8786', 'V8787', 'V8788', 'V8789', 'V8790', 'V8791', 'V8792', 'V8793', 'V8794', 'V8795', 'V8796', 'V8797', 'V8798', 'V8799', 'V8800', 'V8894', 'V9851', 'V9852', 'V9853', 'V9854', 'V9855', 'V9856', 'V9857', 'V9858', 'V9859', 'V9860', 'V9861', 'V9862', 'V9863', 'V9864', 'V9865', 'V9866', 'V9867', 'V9868', 'V9869', 'V9870', 'V9871', 'V9872', 'V9873', 'V9874', 'V9875', 'V9876', 'V9877', 'V9878', 'V9879', 'V9880', 'V9881', 'V9882', 'V9883', 'V9884', 'V9885', 'V9886', 'V9887', 'V9888', 'V9889', 'V9890', 'V9891', 'V9892', 'V9893', 'V9894', 'V9895', 'V9896', 'V9897', 'V9898', 'V9899', 'V9900', 'V10100', 'V10101', 'V10102', 'V10103', 'V10104', 'V10105', 'V10106', 'V10107', 'V10108', 'V10109', 'V10110', 'V10111', 'V10112', 'V10113', 'V10114', 'V10115', 'V10116', 'V10117', 'V10118', 'V10119', 'V10120', 'V10121', 'V10122', 'V10123', 'V10124', 'V10125', 'V10126', 'V10127', 'V10128', 'V10129', 'V10130', 'V10131', 'V10132', 'V10133', 'V10134', 'V10135', 'V10136', 'V10137', 'V10138', 'V10139', 'V10140', 'V10141', 'V10142', 'V10143', 'V10144', 'V10145', 'V10146', 'V10147', 'V10148', 'V10149', 'V10150', 'V10251', 'V10252', 'V10253', 'V10254', 'V10255', 'V10256', 'V10257', 'V10258', 'V10259', 'V10260', 'V10261', 'V10262', 'V10263', 'V10264', 'V10265', 'V10266', 'V10267', 'V10268', 'V10269', 'V10270', 'V10271', 'V10272', 'V10273', 'V10274', 'V10275', 'V10276', 'V10277', 'V10278', 'V10279', 'V10280', 'V10281', 'V10282', 'V10283', 'V10284', 'V10285', 'V10286', 'V10287', 'V10288', 'V10289', 'V10290', 'V10291', 'V10292', 'V10293', 'V10294', 'V10295', 'V10296', 'V10297', 'V10298', 'V10299', 'V10300'] — re-run against run_id=20260829_080358 to retry just these.
+2026-08-29 09:07:09,455 [INFO] goalcat: Assignment grounding check: no problems found.
+2026-08-29 09:14:10,774 [INFO] goalcat: Saved assignment outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/bpic2019/20260829_080358/round1/06_assignment
+2026-08-29 09:14:10,785 [INFO] goalcat: Peak RSS after Step 6: 3771.4 MiB

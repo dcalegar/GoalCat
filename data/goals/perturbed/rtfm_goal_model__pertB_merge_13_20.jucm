@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:grl.kpimodel="http:///grl/kpimodel.ecore" xmlns:urn="http:///urn.ecore" name="RTFM Goal Model" author="EXPERIMENTAL CONSTRUCT — B - alternative merge, perturbation_id=pertB_merge_13_20, targets=['13', '20'], generated from /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/rtfm_goal_model.jucm (sha256=7fb7e8f3c5c56317) by experimentation/icpm2027/goalmodel/perturb.py for Experiment 2. Not a frozen organizational goal model — the declared alternatives 13 and 20 have been merged into a single alternative 13 ('Merged 13+20')." specVersion="1.0" urnVersion="1.27" nextGlobalID="249">
+  <grlspec>
+    <intElements id="2" name="Every issued fine reaches a lawful, documented closure" type="Goal" decompositionType="And"/>
+    <intElements id="3" name="Fine is issued and formally communicated" type="Goal" decompositionType="And"/>
+    <intElements id="4" name="Fine case is resolved" type="Goal" decompositionType="Or"/>
+    <intElements id="5" name="Fine becomes enforceable and is resolved" type="Goal" decompositionType="And"/>
+    <intElements id="6" name="Enforced case is closed" type="Goal" decompositionType="Or"/>
+    <intElements id="7" name="Contested appeal is resolved" type="Goal" decompositionType="Xor"/>
+    <intElements id="8" name="Create Fine" type="Task"/>
+    <intElements id="9" name="Send Fine" type="Task"/>
+    <intElements id="10" name="Insert Fine Notification" type="Task"/>
+    <intElements id="11" name="Add Penalty" type="Task"/>
+    <intElements id="12" name="Resolve via timely payment" type="Task"/>
+    <intElements id="13" name="Merged 13+20" type="Task"/>
+    <intElements id="14" name="Resolve via administrative appeal to the Prefecture" type="Task" decompositionType="And"/>
+    <intElements id="15" name="Insert Date Appeal to Prefecture" type="Task"/>
+    <intElements id="16" name="Send Appeal to Prefecture" type="Task"/>
+    <intElements id="17" name="Receive Result Appeal from Prefecture" type="Task"/>
+    <intElements id="18" name="Notify Result Appeal to Offender" type="Task"/>
+    <intElements id="19" name="Resolve via judicial appeal to the Judge" type="Task"/>
+    <intElements id="21" name="Minimize administrative &amp; enforcement cost"/>
+    <intElements id="22" name="Maximize timely fine revenue"/>
+    <intElements id="23" name="Preserve offender's due-process rights"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" id="112" name="Time to fine dispatch (days)" type="Indicator">
+      <metadata name="goalcat:measure" value="duration_days"/>
+      <metadata name="goalcat:from" value="Create Fine"/>
+      <metadata name="goalcat:to" value="Send Fine"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="statutory"/>
+      <metadata name="goalcat:source" value="threshold 90 d and worst 360 d: Art. 201 D.Lgs. 285/1992 (ordinary notification term; extended term for parties resident abroad). target 30 d: L. 241/1990 art. 2 c.2, the default term for concluding an administrative proceeding, applied by analogy as an operational aspiration -- the specific term in Art. 201 is what binds."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" id="113" name="Time to appeal filing, Prefecture (days)" type="Indicator">
+      <metadata name="goalcat:measure" value="duration_days"/>
+      <metadata name="goalcat:from" value="Insert Fine Notification"/>
+      <metadata name="goalcat:to" value="Insert Date Appeal to Prefecture|Send Appeal to Prefecture"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:applies_when" value="Insert Date Appeal to Prefecture|Send Appeal to Prefecture"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="statutory"/>
+      <metadata name="goalcat:source" value="threshold 60 d: Art. 203 D.Lgs. 285/1992, the window for a ricorso al Prefetto; corroborated by the Delay Prefecture' &lt; 60 days guard in Mannhardt et al. (2016, Fig. 8). target == threshold because an admissibility window is a boundary, not a gradient. worst 120 d illustrative (2x the window)."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" id="175" name="Time to appeal filing, Judge (days)" type="Indicator">
+      <metadata name="goalcat:measure" value="duration_days"/>
+      <metadata name="goalcat:from" value="Insert Fine Notification"/>
+      <metadata name="goalcat:to" value="Appeal to Judge"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:applies_when" value="Appeal to Judge"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="statutory"/>
+      <metadata name="goalcat:source" value="threshold 30 d: Art. 204-bis D.Lgs. 285/1992, the window for a ricorso al Giudice di Pace -- half the Prefecture window, which v1.1 collapsed into a single 60-day indicator taken from Mannhardt et al. (2016, Fig. 8)'s Delay Judge' guard rather than from the statute. worst 60 d illustrative (2x)."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" id="114" name="Average time to case closure (days)" type="Indicator">
+      <metadata name="goalcat:measure" value="duration_days"/>
+      <metadata name="goalcat:from" value="Create Fine"/>
+      <metadata name="goalcat:to" value="Payment|Send for Credit Collection|Receive Result Appeal from Prefecture|Notify Result Appeal to Offender"/>
+      <metadata name="goalcat:to_occurrence" value="last"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="external-by-analogy"/>
+      <metadata name="goalcat:source" value="threshold 180 d: L. 241/1990 art. 2, which caps any administrative proceeding's term at 180 days. target 150 d: Art. 201's 90-day notification term plus Art. 203's 60-day payment/appeal window, i.e. the earliest lawful completion of an uncontested case. worst 365 d illustrative. Replaces v1.1's acknowledged invented placeholder."/>
+    </intElements>
+    <actors id="1" name="Traffic Police Back-Office"/>
+    <links xsi:type="grl:Decomposition" id="24" src="3" dest="2"/>
+    <links xsi:type="grl:Decomposition" id="25" src="4" dest="2"/>
+    <links xsi:type="grl:Decomposition" id="26" src="8" dest="3"/>
+    <links xsi:type="grl:Decomposition" id="27" src="9" dest="3"/>
+    <links xsi:type="grl:Decomposition" id="28" src="12" dest="4"/>
+    <links xsi:type="grl:Decomposition" id="29" src="5" dest="4"/>
+    <links xsi:type="grl:Decomposition" id="30" src="10" dest="5"/>
+    <links xsi:type="grl:Decomposition" id="31" src="11" dest="5"/>
+    <links xsi:type="grl:Decomposition" id="32" src="6" dest="5"/>
+    <links xsi:type="grl:Decomposition" id="33" src="13" dest="6"/>
+    <links xsi:type="grl:Decomposition" id="34" src="7" dest="6"/>
+    <links xsi:type="grl:Decomposition" id="36" src="14" dest="7"/>
+    <links xsi:type="grl:Decomposition" id="37" src="19" dest="7"/>
+    <links xsi:type="grl:Decomposition" id="38" src="15" dest="14"/>
+    <links xsi:type="grl:Decomposition" id="39" src="16" dest="14"/>
+    <links xsi:type="grl:Decomposition" id="40" src="17" dest="14"/>
+    <links xsi:type="grl:Decomposition" id="41" src="18" dest="14"/>
+    <links xsi:type="grl:Contribution" id="42" src="12" dest="22" contribution="Make" quantitativeContribution="100"/>
+    <links xsi:type="grl:Contribution" id="43" src="12" dest="21" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="44" src="13" dest="22" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="45" src="11" dest="22" contribution="SomePositive"/>
+    <links xsi:type="grl:Contribution" id="46" src="11" dest="23" contribution="SomeNegative" quantitativeContribution="-25"/>
+    <links xsi:type="grl:Contribution" id="47" src="14" dest="23" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="48" src="14" dest="21" contribution="SomeNegative" quantitativeContribution="-25"/>
+    <links xsi:type="grl:Contribution" id="49" src="14" dest="22" contribution="SomeNegative" quantitativeContribution="-25"/>
+    <links xsi:type="grl:Contribution" id="50" src="19" dest="23" contribution="Make" quantitativeContribution="100"/>
+    <links xsi:type="grl:Contribution" id="51" src="19" dest="21" contribution="Hurt" quantitativeContribution="-50"/>
+    <links xsi:type="grl:Contribution" id="52" src="19" dest="22" contribution="SomeNegative" quantitativeContribution="-25"/>
+    <links xsi:type="grl:Contribution" id="54" src="13" dest="21" contribution="Hurt" quantitativeContribution="-50"/>
+    <links xsi:type="grl:Contribution" id="55" src="13" dest="23" contribution="SomeNegative" quantitativeContribution="-25"/>
+    <links xsi:type="grl:Contribution" id="176" src="112" dest="22" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="177" src="113" dest="23" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="178" src="175" dest="23" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="179" src="114" dest="22" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="180" src="114" dest="21" quantitativeContribution="50"/>
+  
+    <indicatorGroup name="Time" id="115" isRedesignCategory="true" indicators="112 113 175 114" />
+    
+    <groups name="KPI Baseline (v1.2)" id="117" strategies="118" />
+    
+    <strategies name="Conversion baseline, v1.2" id="118" author="goalcat (v1.2, artificial)" type="Private" group="117">
+      <evaluations intElement="112">
+        <kpiEvalValueSet targetValue="30" thresholdValue="90" worstValue="360" unit="days" qualitativeEvaluationValue="Not measured in this baseline (Step G v1.2): the value set is the conversion, and Step 7b writes one measured EvaluationStrategy per category -- see rtfmGM_description.md SS6" />
+      </evaluations>
+      <evaluations intElement="113">
+        <kpiEvalValueSet targetValue="60" thresholdValue="60" worstValue="120" unit="days" qualitativeEvaluationValue="Not measured in this baseline (Step G v1.2): the value set is the conversion, and Step 7b writes one measured EvaluationStrategy per category -- see rtfmGM_description.md SS6" />
+      </evaluations>
+      <evaluations intElement="175">
+        <kpiEvalValueSet targetValue="30" thresholdValue="30" worstValue="60" unit="days" qualitativeEvaluationValue="Not measured in this baseline (Step G v1.2): the value set is the conversion, and Step 7b writes one measured EvaluationStrategy per category -- see rtfmGM_description.md SS6" />
+      </evaluations>
+      <evaluations intElement="114">
+        <kpiEvalValueSet targetValue="150" thresholdValue="180" worstValue="365" unit="days" qualitativeEvaluationValue="Not measured in this baseline (Step G v1.2): the value set is the conversion, and Step 7b writes one measured EvaluationStrategy per category -- see rtfmGM_description.md SS6" />
+      </evaluations>
+    </strategies>
+    
+    <impactModel />
+    
+    <featureModel />
+  
+  </grlspec>
+  <urndef>
+    <specDiagrams xsi:type="grl:GRLGraph" name="RTFM Goal Model" id="187">
+      <contRefs xsi:type="grl:ActorRef" id="213" name="Traffic Police Back-Office" x="180" y="40" width="1480" height="980" contDef="1" nodes="188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 209 210 211 212">
+        <label/>
+      </contRefs>
+      <nodes xsi:type="grl:IntentionalElementRef" id="188" name="Every issued fine reaches a lawful, documented closure" x="1080" y="80" def="2" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="189" name="Fine is issued and formally communicated" x="200" y="180" def="3" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="190" name="Fine case is resolved" x="420" y="180" def="4" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="191" name="Fine becomes enforceable and is resolved" x="420" y="280" def="5" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="192" name="Enforced case is closed" x="640" y="380" def="6" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="193" name="Contested appeal is resolved" x="420" y="480" def="7" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="194" name="Create Fine" x="640" y="280" def="8" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="195" name="Send Fine" x="860" y="280" def="9" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="196" name="Insert Fine Notification" x="200" y="380" def="10" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="197" name="Add Penalty" x="420" y="380" def="11" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="198" name="Resolve via timely payment" x="200" y="280" def="12" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="199" name="Merged 13+20" x="200" y="480" def="13" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="200" name="Resolve via administrative appeal to the Prefecture" x="200" y="580" def="14" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="201" name="Insert Date Appeal to Prefecture" x="200" y="680" def="15" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="202" name="Send Appeal to Prefecture" x="420" y="680" def="16" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="203" name="Receive Result Appeal from Prefecture" x="640" y="680" def="17" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="204" name="Notify Result Appeal to Offender" x="860" y="680" def="18" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="205" name="Resolve via judicial appeal to the Judge" x="420" y="580" def="19" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="206" name="Minimize administrative &amp; enforcement cost" x="200" y="780" def="21">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="207" name="Maximize timely fine revenue" x="420" y="780" def="22">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="208" name="Preserve offender's due-process rights" x="640" y="780" def="23">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="209" name="Time to fine dispatch (days)" x="200" y="80" def="112" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="210" name="Time to appeal filing, Prefecture (days)" x="420" y="80" def="113" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="211" name="Time to appeal filing, Judge (days)" x="860" y="80" def="175" contRef="213">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="212" name="Average time to case closure (days)" x="640" y="80" def="114" contRef="213">
+        <label/>
+      </nodes>
+      <connections xsi:type="grl:LinkRef" id="214" source="189" target="188" link="24"/>
+      <connections xsi:type="grl:LinkRef" id="215" source="190" target="188" link="25"/>
+      <connections xsi:type="grl:LinkRef" id="216" source="194" target="189" link="26"/>
+      <connections xsi:type="grl:LinkRef" id="217" source="195" target="189" link="27"/>
+      <connections xsi:type="grl:LinkRef" id="218" source="198" target="190" link="28"/>
+      <connections xsi:type="grl:LinkRef" id="219" source="191" target="190" link="29"/>
+      <connections xsi:type="grl:LinkRef" id="220" source="196" target="191" link="30"/>
+      <connections xsi:type="grl:LinkRef" id="221" source="197" target="191" link="31"/>
+      <connections xsi:type="grl:LinkRef" id="222" source="192" target="191" link="32"/>
+      <connections xsi:type="grl:LinkRef" id="223" source="199" target="192" link="33"/>
+      <connections xsi:type="grl:LinkRef" id="224" source="193" target="192" link="34"/>
+      <connections xsi:type="grl:LinkRef" id="225" source="200" target="193" link="36"/>
+      <connections xsi:type="grl:LinkRef" id="226" source="205" target="193" link="37"/>
+      <connections xsi:type="grl:LinkRef" id="227" source="201" target="200" link="38"/>
+      <connections xsi:type="grl:LinkRef" id="228" source="202" target="200" link="39"/>
+      <connections xsi:type="grl:LinkRef" id="229" source="203" target="200" link="40"/>
+      <connections xsi:type="grl:LinkRef" id="230" source="204" target="200" link="41"/>
+      <connections xsi:type="grl:LinkRef" id="231" source="198" target="207" link="42"/>
+      <connections xsi:type="grl:LinkRef" id="232" source="198" target="206" link="43"/>
+      <connections xsi:type="grl:LinkRef" id="233" source="199" target="207" link="44"/>
+      <connections xsi:type="grl:LinkRef" id="234" source="197" target="207" link="45"/>
+      <connections xsi:type="grl:LinkRef" id="235" source="197" target="208" link="46"/>
+      <connections xsi:type="grl:LinkRef" id="236" source="200" target="208" link="47"/>
+      <connections xsi:type="grl:LinkRef" id="237" source="200" target="206" link="48"/>
+      <connections xsi:type="grl:LinkRef" id="238" source="200" target="207" link="49"/>
+      <connections xsi:type="grl:LinkRef" id="239" source="205" target="208" link="50"/>
+      <connections xsi:type="grl:LinkRef" id="240" source="205" target="206" link="51"/>
+      <connections xsi:type="grl:LinkRef" id="241" source="205" target="207" link="52"/>
+      <connections xsi:type="grl:LinkRef" id="242" source="199" target="206" link="54"/>
+      <connections xsi:type="grl:LinkRef" id="243" source="199" target="208" link="55"/>
+      <connections xsi:type="grl:LinkRef" id="244" source="209" target="207" link="176"/>
+      <connections xsi:type="grl:LinkRef" id="245" source="210" target="208" link="177"/>
+      <connections xsi:type="grl:LinkRef" id="246" source="211" target="208" link="178"/>
+      <connections xsi:type="grl:LinkRef" id="247" source="212" target="207" link="179"/>
+      <connections xsi:type="grl:LinkRef" id="248" source="212" target="206" link="180"/>
+    </specDiagrams>
+  </urndef>
+</urn:URNspec>

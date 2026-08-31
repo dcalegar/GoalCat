@@ -88,6 +88,16 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     for step in steps:
+        # Resume safety: a frozen condition's taxonomy is induced once. If Step 5a has already run
+        # for this run/round, reuse it — re-inducing regenerates the category_id slugs even when the
+        # taxonomy is semantically identical, which corrupts a partial Step 6 whose assignments.csv
+        # is keyed to the earlier slugs. Delete 05_taxonomy/ (or use the driver's --force) to redo it.
+        if step == 5 and (config.taxonomy_dir / "taxonomy.json").exists():
+            logger.info(
+                "Step 5a: taxonomy.json already present for run_id=%s round=%s — skipping induction, "
+                "reusing the frozen taxonomy (resume).", args.run_id, args.round,
+            )
+            continue
         _STEP_FUNCTIONS[step](args.config, args.run_id, round=args.round)
 
     if args.indicators:

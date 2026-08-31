@@ -1,0 +1,37 @@
+{
+  "log_filename": "rtfm_mini.xes.gz",
+  "goal_model_filename": "rtfm_mini_goal_model.jucm",
+  "output_dir": "/Users/danielcalegari/vsc-workspace/GoalCat/data/output",
+  "case_id_key": "case:concept:name",
+  "activity_key": "concept:name",
+  "timestamp_key": "time:timestamp",
+  "resource_key": "org:resource",
+  "sample_frequent_n": 6,
+  "sample_rare_n": 6,
+  "sample_extreme_n": 6,
+  "taxonomy_mode": "intent_guided",
+  "discovery_noise_threshold": 0.0,
+  "discovery_precision_timeout_seconds": null,
+  "skip_precision": false,
+  "skip_indicators": false,
+  "review_precision_flag_threshold": 0.3,
+  "prune_pairwise_distances_on_finalize": false,
+  "skip_pairwise_distances": false,
+  "llm": {
+    "taxonomy_model": "gemini/gemini-3.5-flash-lite",
+    "assignment_model": "gemini/gemini-3.5-flash-lite",
+    "description_model": "gemini/gemini-3.5-flash-lite",
+    "temperature": 0,
+    "timeout_seconds": 120,
+    "max_retries": 3,
+    "concurrency": 5,
+    "requests_per_minute": null,
+    "assignment_batch_size": 50,
+    "pricing_usd_per_million_tokens": {
+      "gemini/gemini-3.5-flash-lite": {
+        "input": 0.3,
+        "output": 2.5
+      }
+    }
+  }
+}

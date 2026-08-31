@@ -1,0 +1,232 @@
+variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
+V0001,enforceable_resolution,"The narrative follows notification and penalty addition ending in credit collection, which represents the enforceable resolution path.",1.0,judicial_appeal,1.0,0.0030249180272221565,0.0017314013093709946
+V0002,timely_payment,The fine is settled promptly through payment right after creation.,5.0,judicial_appeal,2.0,0.5608961582183838,0.15407751500606537
+V0003,,"The case ends in sending the fine without resolution or further progression, leaving it outside final resolution categories.",,timely_payment,1.0,,0.03026524744927883
+V0004,enforceable_resolution,"The process proceeds through notification, penalty addition, and ultimately resolves via payment.",1.0,timely_payment,1.0,0.3581055700778961,6.770990876248106e-05
+V0005,enforceable_resolution,"Involves notification, penalty addition, and payment realization.",1.0,judicial_appeal,1.0,0.7149856686592102,0.0007711097714491189
+V0006,timely_payment,"Fine is resolved via payment shortly after sending and notification, emphasizing prompt payment.",2.0,enforceable_resolution,1.0,0.026891911402344704,0.003936717752367258
+V0007,timely_payment,Quick resolution via payment following fine dispatch.,4.0,judicial_appeal,1.0,0.40347614884376526,0.00334247131831944
+V0008,administrative_appeal,Involves submission of an administrative appeal to the Prefecture.,2.0,timely_payment,1.0,0.3540813624858856,0.11682271212339401
+V0009,enforceable_resolution,Proceeds via notification and penalty before ending up in credit collection.,0.0,judicial_appeal,1.0,0.00436506187543273,0.00039125734474509954
+V0010,enforceable_resolution,"Involves notification, payment, penalty, and collection steps characteristic of enforcement.",2.0,timely_payment,1.0,0.008292004466056824,0.0035356851294636726
+V0011,administrative_appeal,Pursued through an administrative appeal to the Prefecture.,3.0,timely_payment,1.0,0.34813210368156433,0.11087346822023392
+V0012,timely_payment,Fine is settled promptly through payment.,5.0,enforceable_resolution,1.0,0.7654795050621033,0.3342154026031494
+V0013,administrative_appeal,Involves an administrative appeal to the Prefecture resulting in notification and payment.,2.0,judicial_appeal,1.0,0.004248257726430893,0.0031689032912254333
+V0014,judicial_appeal,Involves an appeal to the judge representing judicial appeal.,4.0,enforceable_resolution,1.0,0.0,0.0032684020698070526
+V0015,administrative_appeal,Proceeds directly with an administrative appeal to the Prefecture.,4.0,timely_payment,1.0,0.3750112056732178,0.13775254786014557
+V0016,administrative_appeal,Resolution pursued via administrative appeal to the Prefecture followed by results and payment.,2.0,judicial_appeal,1.0,0.003469478338956833,0.00037261247052811086
+V0017,judicial_appeal,Involves an appeal to the judge followed by enforcement actions.,4.0,enforceable_resolution,1.0,0.3598497211933136,0.0004219587426632643
+V0018,timely_payment,Resolved via prompt payment following initial steps.,3.0,enforceable_resolution,1.0,0.026644207537174225,0.0038775841239839792
+V0019,administrative_appeal,Includes administrative appeal steps to the Prefecture before final credit collection.,2.0,judicial_appeal,1.0,0.3908348083496094,0.0002084532316075638
+V0020,administrative_appeal,Pursued via administrative appeal to the Prefecture.,2.0,judicial_appeal,1.0,0.37945786118507385,0.0028892019763588905
+V0021,enforceable_resolution,Resolved through multiple payments under standard enforcement procedures.,2.0,timely_payment,1.0,0.6767797470092773,0.0020457857754081488
+V0022,administrative_appeal,"Involves notification, penalty, and administrative appeal to the Prefecture.",3.0,judicial_appeal,1.0,0.013098791241645813,0.0011584743624553084
+V0023,timely_payment,Settled promptly through payment.,5.0,judicial_appeal,1.0,0.0761258602142334,0.03226066008210182
+V0024,enforceable_resolution,"Follows standard enforcement path including notification, penalty, and payment.",2.0,timely_payment,1.0,0.7294878363609314,0.003827358828857541
+V0025,administrative_appeal,Involves administrative appeal to the Prefecture and eventual collection.,3.0,judicial_appeal,1.0,0.38904187083244324,0.0017573813674971461
+V0026,enforceable_resolution,"Proceeds via payment, notification, penalty, and credit collection.",2.0,timely_payment,1.0,0.00011408588761696592,0.0028892019763588905
+V0027,judicial_appeal,Includes an appeal to the judge following administrative appeal proceedings.,1.0,administrative_appeal,1.0,0.3709205090999603,0.33392608165740967
+V0028,timely_payment,Resolved through timely payment without administrative or enforcement delays.,3.0,enforceable_resolution,2.0,0.05621231719851494,0.012347117066383362
+V0029,judicial_appeal,Proceeds with an appeal to the judge.,3.0,enforceable_resolution,1.0,0.39605453610420227,0.3334622085094452
+V0030,administrative_appeal,Involves administrative appeal steps to the Prefecture.,1.0,judicial_appeal,1.0,0.3452891409397125,0.0035430535208433867
+V0031,judicial_appeal,Involves an appeal to the judge before payment.,4.0,enforceable_resolution,1.0,0.008281029760837555,0.005012627691030502
+V0032,administrative_appeal,Involves administrative appeal to the Prefecture and receiving results.,2.0,judicial_appeal,1.0,0.3607853651046753,0.016697769984602928
+V0033,judicial_appeal,Involves both administrative appeal elements and a subsequent appeal to the judge.,2.0,administrative_appeal,1.0,0.005550093483179808,0.004574260208755732
+V0034,administrative_appeal,Follows the administrative appeal path to the Prefecture.,2.0,judicial_appeal,1.0,0.3404230773448944,0.0007117166533134878
+V0035,judicial_appeal,Involves administrative appeal steps ending in an appeal to the judge.,1.0,administrative_appeal,1.0,0.37573733925819397,0.3336153030395508
+V0036,timely_payment,Settled through payments following fine dispatch.,3.0,enforceable_resolution,1.0,0.02700127102434635,0.003827358828857541
+V0037,judicial_appeal,Includes an appeal to the judge followed by payment.,4.0,enforceable_resolution,1.0,0.3496917486190796,0.00041855929885059595
+V0038,administrative_appeal,Pursued via administrative appeal to the Prefecture.,2.0,judicial_appeal,1.0,0.34431394934654236,0.00022634101333096623
+V0039,administrative_appeal,Involves administrative appeal to the Prefecture and subsequent payment.,3.0,timely_payment,1.0,0.015396426431834698,5.510637038241839e-06
+V0040,judicial_appeal,Involves an appeal to the judge resulting in credit collection.,4.0,enforceable_resolution,1.0,0.3597249984741211,0.0005467074806801975
+V0041,administrative_appeal,Involves an administrative appeal to the Prefecture and notification of results.,3.0,judicial_appeal,1.0,0.005790786352008581,0.0019301939755678177
+V0042,administrative_appeal,Includes administrative appeal to the Prefecture followed by payment.,2.0,judicial_appeal,1.0,0.004411292728036642,0.0030058680567890406
+V0043,enforceable_resolution,Involves standard enforcement actions ending in credit collection.,2.0,judicial_appeal,2.0,0.005964191630482674,0.0012078725267201662
+V0044,timely_payment,Fine settled via payments after initial notice and penalty.,1.0,enforceable_resolution,1.0,0.015555381774902344,0.0007711097714491189
+V0045,enforceable_resolution,"Follows standard enforcement path with notification, penalty, and multiple payments.",3.0,timely_payment,1.0,0.669196367263794,0.0002470270555932075
+V0046,administrative_appeal,Pursued via administrative appeal to the Prefecture.,1.0,judicial_appeal,1.0,0.35078164935112,0.00903556402772665
+V0047,judicial_appeal,Involves both administrative and judicial appeals to the judge.,2.0,administrative_appeal,1.0,0.37176430225372314,0.33358433842658997
+V0048,timely_payment,Settled promptly through payment without enforcement overhead.,4.0,enforceable_resolution,1.0,0.061231356114149094,0.017366157844662666
+V0049,administrative_appeal,Involves administrative appeal processes and notification of results.,3.0,timely_payment,1.0,0.008708514273166656,0.00022560743673238903
+V0050,administrative_appeal,Pursued via administrative appeal to the Prefecture and subsequent payment.,2.0,timely_payment,1.0,0.0062783160246908665,0.002417723648250103
+V0051,administrative_appeal,The narrative includes appeal steps to the Prefecture and culminates in credit collection after administrative processing.,3.0,judicial_appeal,1.0,0.3906230628490448,0.00042022744310088456
+V0052,administrative_appeal,The narrative centers around submitting an administrative appeal to the Prefecture.,4.0,timely_payment,1.0,0.39846178889274597,0.030946234241127968
+V0053,administrative_appeal,"The process involves fine notification, an administrative appeal to the Prefecture, and subsequent penalty and appeal actions.",3.0,timely_payment,2.0,0.3598765432834625,0.1226179301738739
+V0054,timely_payment,"Despite administrative appeal steps, the case ultimately resolves through prompt fine payment.",1.0,enforceable_resolution,1.0,0.3370448648929596,0.0010657456004992127
+V0055,administrative_appeal,The sequence is dominated by administrative appeal milestones with the Prefecture.,4.0,enforceable_resolution,2.0,0.42955175042152405,0.00014372426085174084
+V0056,judicial_appeal,The narrative includes a progression from administrative appeal to judicial appeal before payment.,2.0,administrative_appeal,1.0,0.004910557065159082,0.005213795695453882
+V0057,administrative_appeal,The case involves administrative appeal procedures with the Prefecture.,2.0,timely_payment,2.0,0.43226656317710876,0.0016907023964449763
+V0058,administrative_appeal,The process concludes with receiving the result of an administrative appeal from the Prefecture.,3.0,timely_payment,1.0,0.33566614985466003,0.013087053783237934
+V0059,administrative_appeal,The workflow follows the administrative appeal path to the Prefecture before credit collection.,4.0,judicial_appeal,1.0,0.41504478454589844,0.014363235794007778
+V0060,timely_payment,The fine is settled directly and repeatedly through payment activities.,3.0,enforceable_resolution,2.0,0.021022694185376167,0.00174392678309232
+V0061,timely_payment,The case proceeds through administrative steps but ultimately resolves via payment.,1.0,administrative_appeal,1.0,0.0,0.00014356824976857752
+V0062,administrative_appeal,The narrative involves an administrative appeal to the Prefecture followed by payment.,2.0,timely_payment,1.0,0.0,0.000877381069585681
+V0063,judicial_appeal,The process quickly escalates and resolves via a judicial appeal to the Judge.,5.0,timely_payment,1.0,0.4125152826309204,0.3344395160675049
+V0064,timely_payment,"After receiving the administrative appeal results, the fine is resolved via payment.",3.0,administrative_appeal,1.0,0.3339037597179413,0.0013996813213452697
+V0065,timely_payment,The administrative appeal process concludes with payment of the fine.,4.0,administrative_appeal,1.0,0.3473677337169647,0.0005637810099869967
+V0066,administrative_appeal,The narrative focuses on the administrative appeal process directed to the Prefecture.,1.0,judicial_appeal,1.0,0.40591859817504883,0.02348942868411541
+V0067,enforceable_resolution,The fine fails to be paid and ends up being sent for credit collection.,2.0,timely_payment,1.0,0.3352893888950348,0.004667853005230427
+V0068,judicial_appeal,The process includes both administrative and judicial appeals before ending in credit collection.,2.0,administrative_appeal,1.0,0.3568780720233917,0.00044623573194257915
+V0069,judicial_appeal,The workflow includes administrative steps and concludes with a judicial appeal to the Judge.,2.0,administrative_appeal,1.0,0.3822631537914276,0.3339477777481079
+V0070,administrative_appeal,The process completes with notifying the offender of the Prefecture's appeal result.,2.0,judicial_appeal,1.0,0.35541296005249023,0.013666859827935696
+V0071,enforceable_resolution,"Payments are attempted after penalties, but the case ultimately proceeds to credit collection.",1.0,judicial_appeal,1.0,0.3362753689289093,0.0036818550433963537
+V0072,timely_payment,The fine is resolved through multiple repeated payment transactions after penalty addition.,6.0,judicial_appeal,2.0,0.028718262910842896,0.0007445686496794224
+V0073,timely_payment,The case involves an administrative appeal sequence that eventually resolves via payment.,4.0,administrative_appeal,1.0,0.01050391886383295,0.0001076495973393321
+V0074,enforceable_resolution,"An initial payment attempt fails or is insufficient, and the case proceeds to credit collection.",1.0,judicial_appeal,1.0,0.0191967710852623,0.00037775616510771215
+V0075,timely_payment,"After an administrative appeal sequence, the fine is resolved via payment.",2.0,administrative_appeal,1.0,0.3334769010543823,0.0021136580035090446
+V0076,administrative_appeal,The narrative tracks an administrative appeal path that eventually results in credit collection.,3.0,timely_payment,1.0,0.371698260307312,0.00039125734474509954
+V0077,,"The narrative is incomplete or anomalous, ending prematurely with Send Fine after appeal steps.",,administrative_appeal,1.0,,0.02757914364337921
+V0078,timely_payment,The fine is resolved through repeated payments after penalty addition.,4.0,enforceable_resolution,1.0,0.003538029035553336,0.002549698343500495
+V0079,timely_payment,The fine is resolved via multiple payment transactions following penalties.,5.0,judicial_appeal,1.0,0.003266340820118785,0.00282138679176569
+V0080,timely_payment,The fine is settled promptly through multiple payment events.,3.0,enforceable_resolution,1.0,0.04022882878780365,0.003636368550360203
+V0081,timely_payment,"Despite mixing appeal steps and penalties, the case resolves via payment.",3.0,administrative_appeal,1.0,0.33605456352233887,7.54167849663645e-05
+V0082,judicial_appeal,The process incorporates both administrative and judicial appeals before credit collection.,2.0,administrative_appeal,1.0,0.36509081721305847,0.004819119814783335
+V0083,administrative_appeal,The narrative features a payment followed by an administrative appeal to the Prefecture.,3.0,timely_payment,2.0,0.3423764705657959,0.10511782020330429
+V0084,judicial_appeal,The workflow includes administrative and judicial appeals before proceeding to credit collection.,3.0,administrative_appeal,1.0,0.3722755014896393,0.0010727621847763658
+V0085,timely_payment,The case includes fine and notification steps followed by payment.,3.0,enforceable_resolution,1.0,0.34691503643989563,0.0036469774786382914
+V0086,administrative_appeal,The process involves an administrative appeal to the Prefecture.,2.0,timely_payment,1.0,0.3467461168766022,0.10948748141527176
+V0087,timely_payment,The fine is resolved through a series of payment transactions.,2.0,enforceable_resolution,1.0,0.03652767837047577,0.005699049215763807
+V0088,enforceable_resolution,Partial or repeated payments do not prevent the case from going to credit collection.,1.0,timely_payment,1.0,0.3356989920139313,0.004258255939930677
+V0089,timely_payment,The administrative appeal process concludes with payment.,3.0,administrative_appeal,1.0,0.34358465671539307,0.000877381069585681
+V0090,timely_payment,The process includes an administrative appeal that quickly results in payment.,3.0,administrative_appeal,1.0,0.3820250928401947,0.0029763460624963045
+V0091,judicial_appeal,The narrative includes both administrative and judicial appeal steps before resolving via payment.,3.0,administrative_appeal,1.0,0.02404324896633625,0.004266120493412018
+V0092,administrative_appeal,The case follows an administrative appeal path and concludes with credit collection.,3.0,timely_payment,1.0,0.391693115234375,0.0006498422590084374
+V0093,,"The sequence is unusual, starting with a judicial appeal before sending the fine.",,timely_payment,1.0,,0.04559949040412903
+V0094,timely_payment,An administrative appeal process is followed by fine payment.,3.0,administrative_appeal,1.0,0.3359791338443756,0.0
+V0095,timely_payment,The administrative appeal and notification steps are followed by payment.,3.0,administrative_appeal,1.0,0.0011347323888912797,0.0012783006532117724
+V0096,judicial_appeal,The narrative escalates directly to a judicial appeal to the Judge.,4.0,administrative_appeal,1.0,0.43620267510414124,0.3333333432674408
+V0097,administrative_appeal,The process includes an appeal to the judge followed by an administrative appeal to the Prefecture.,4.0,judicial_appeal,2.0,0.38720703125,0.1499483734369278
+V0098,judicial_appeal,The workflow incorporates administrative review and a judicial appeal.,3.0,administrative_appeal,1.0,0.36751654744148254,0.0029017154593020678
+V0099,judicial_appeal,The narrative features a mix of judicial appeal and administrative appeal actions.,3.0,administrative_appeal,1.0,0.37731948494911194,0.0018641023198142648
+V0100,timely_payment,"Following administrative appeal and notification, the fine is resolved via multiple payments.",7.0,judicial_appeal,1.0,0.02392524480819702,0.00018590420950204134
+V0101,timely_payment,The process involves administrative appeal steps but ultimately concludes with fine payment.,3.0,administrative_appeal,1.0,0.05627499893307686,0.0020700593013316393
+V0102,judicial_appeal,The process explicitly ends with an appeal to the judge.,0.0,timely_payment,1.0,0.36650586128234863,0.3334102928638458
+V0103,administrative_appeal,The narrative progresses through administrative appeal steps and concludes with sending an appeal to the Prefecture.,3.0,judicial_appeal,1.0,0.45023253560066223,0.016196124255657196
+V0104,administrative_appeal,The narrative involves administrative appeal notifications and processing.,1.0,timely_payment,1.0,0.3493216037750244,0.009658778086304665
+V0105,judicial_appeal,The process includes administrative appeal handling and culminates in a judicial appeal.,1.0,timely_payment,1.0,0.3657413423061371,0.333636075258255
+V0106,enforceable_resolution,The fine undergoes administrative processing with penalties and ultimately is sent for credit collection.,2.0,timely_payment,1.0,0.008214956149458885,0.0012909957440569997
+V0107,judicial_appeal,The process goes through administrative appeal steps before ending in an appeal to a judge.,2.0,administrative_appeal,1.0,0.36033451557159424,0.33360815048217773
+V0108,enforceable_resolution,The fine involves administrative appeal and payment attempts before being sent for credit collection.,4.0,administrative_appeal,1.0,0.014588698744773865,0.0002084532316075638
+V0109,timely_payment,The narrative includes administrative appeal actions but ends with a payment.,3.0,administrative_appeal,1.0,0.34062135219573975,6.770990876248106e-05
+V0110,timely_payment,The process includes an administrative appeal path and concludes with payment.,4.0,administrative_appeal,1.0,0.3376065492630005,5.510637038241839e-06
+V0111,enforceable_resolution,The process incorporates administrative appeal activities before ending in credit collection.,4.0,administrative_appeal,2.0,0.0,0.0030032878275960684
+V0112,timely_payment,The narrative involves administrative appeal processing and ultimately results in payments.,3.0,administrative_appeal,1.0,0.0011376558104529977,0.0012812240747734904
+V0113,timely_payment,The case involves administrative appeal handling and concludes with payment.,4.0,administrative_appeal,1.0,0.3475588858127594,0.00037261247052811086
+V0114,timely_payment,The narrative involves administrative appeal steps and concludes with payments.,2.0,administrative_appeal,1.0,0.019141066819429398,0.0028145748656243086
+V0115,administrative_appeal,The process focuses on administrative appeal activities and notification.,1.0,timely_payment,2.0,0.3408292531967163,0.0009168292745016515
+V0116,timely_payment,The narrative includes penalty and administrative appeal steps before settling via payment.,2.0,enforceable_resolution,1.0,0.36598578095436096,0.0032684020698070526
+V0117,timely_payment,"Despite passing through multiple appeal avenues, the case ultimately resolves via payment.",4.0,judicial_appeal,1.0,0.03245711699128151,0.0008214598638005555
+V0118,administrative_appeal,The process centers on administrative appeal activities and sending the appeal to the Prefecture.,3.0,judicial_appeal,2.0,0.36228033900260925,0.12502169609069824
+V0119,administrative_appeal,The sequence includes multiple appeal steps and concludes with sending an appeal to the Prefecture.,2.0,judicial_appeal,1.0,0.3944946527481079,0.03491337224841118
+V0120,judicial_appeal,The narrative incorporates administrative appeal steps and finishes with an appeal to the judge.,2.0,timely_payment,1.0,0.3948511779308319,0.33359038829803467
+V0121,timely_payment,The case includes mixed appeal activities and ends in payment.,4.0,administrative_appeal,1.0,0.3824945390224457,0.004266120493412018
+V0122,timely_payment,"The process includes penalty application and an appeal to a judge, but ultimately resolves via payment.",3.0,enforceable_resolution,1.0,0.04014039784669876,0.00019684644939843565
+V0123,enforceable_resolution,"The fine receives penalties, payments, and ultimately proceeds to credit collection.",2.0,timely_payment,2.0,0.3358534574508667,0.009144050069153309
+V0124,administrative_appeal,The narrative includes administrative appeal setup and concludes with sending the appeal to the Prefecture.,4.0,timely_payment,2.0,0.3498164713382721,0.11255785077810287
+V0125,administrative_appeal,The process focuses on initiating and sending an administrative appeal to the Prefecture.,5.0,timely_payment,2.0,0.38870787620544434,0.15144924819469452
+V0126,timely_payment,The narrative mixes appeal steps with penalty additions and concludes in payment.,2.0,administrative_appeal,1.0,0.04022882878780365,0.003636368550360203
+V0127,timely_payment,The process includes administrative appeal activities and concludes with fine payments.,3.0,administrative_appeal,1.0,0.012745614163577557,0.0035808782558888197
+V0128,timely_payment,The process goes through administrative appeal steps and is resolved via payment.,3.0,administrative_appeal,1.0,0.34831467270851135,7.92998071119655e-06
+V0129,enforceable_resolution,The process includes administrative and appeal activities before ultimately ending in credit collection.,4.0,administrative_appeal,2.0,0.02432987093925476,0.0004219587426632643
+V0130,timely_payment,"The narrative contains administrative appeal steps and penalty additions, resolving with payment.",0.0,enforceable_resolution,1.0,0.0024513588286936283,0.002594927093014121
+V0131,timely_payment,"The process involves administrative appeal and penalty steps, concluding with payment.",3.0,judicial_appeal,1.0,0.3364619016647339,0.00020512867195066065
+V0132,timely_payment,"The narrative includes mixed penalty, appeal, and payment activities, resolving with payment.",3.0,enforceable_resolution,2.0,0.005430904682725668,0.001130731892772019
+V0133,enforceable_resolution,The process proceeds through penalties and administrative notices before ending in credit collection.,2.0,judicial_appeal,2.0,0.017365233972668648,0.002126693492755294
+V0134,enforceable_resolution,The narrative touches upon multiple appeal processes before finally being sent for credit collection.,5.0,administrative_appeal,1.0,0.037406448274850845,0.0010727621847763658
+V0135,enforceable_resolution,The process involves administrative appeals and notifications before ending in credit collection.,4.0,administrative_appeal,2.0,0.010829906910657883,0.0017573813674971461
+V0136,timely_payment,"The narrative includes appeal notification and penalty steps, ending with a payment.",2.0,enforceable_resolution,2.0,0.3556608259677887,0.0004445431986823678
+V0137,administrative_appeal,The process centers on administrative appeal activities and notifying the offender of the result.,0.0,timely_payment,1.0,0.33494266867637634,0.0018641023198142648
+V0138,enforceable_resolution,The case involves administrative appeal handling and ultimately proceeds to credit collection.,4.0,administrative_appeal,2.0,0.021382508799433708,0.00044623573194257915
+V0139,timely_payment,The process incorporates multiple appeal stages (administrative and judicial) but eventually resolves through payment.,4.0,administrative_appeal,1.0,0.3473614454269409,0.0032005980610847473
+V0140,timely_payment,The narrative mixes judicial and administrative appeal steps before resolving with payment.,3.0,administrative_appeal,1.0,0.3486649990081787,0.0018970329547300935
+V0141,timely_payment,The process includes administrative appeal setup and ultimately settles through multiple payments.,10.0,enforceable_resolution,2.0,0.017944198101758957,0.0004111852904316038
+V0142,timely_payment,The narrative contains appeal and penalty actions before settling through payment.,4.0,administrative_appeal,1.0,0.008196158334612846,0.0016345223411917686
+V0143,timely_payment,"The process involves initial appeal preparation and penalty addition, concluding with payment.",8.0,enforceable_resolution,1.0,0.04616100713610649,0.00041855929885059595
+V0144,administrative_appeal,"The narrative focuses on appeal and penalty handling, concluding with sending an administrative appeal.",3.0,timely_payment,1.0,0.4174292981624603,0.1801706701517105
+V0145,administrative_appeal,The process includes penalty and payment interactions before concluding with sending an administrative appeal.,4.0,enforceable_resolution,2.0,0.40308400988578796,0.16582536697387695
+V0146,timely_payment,The narrative covers administrative and judicial appeal activities before ultimately resolving via payment.,5.0,judicial_appeal,2.0,0.02598266862332821,0.0018715179758146405
+V0147,timely_payment,"The process involves judicial appeal and penalty additions, resolving ultimately through payment.",11.0,judicial_appeal,1.0,0.04751897230744362,0.0008783331722952425
+V0148,timely_payment,The narrative includes a judicial appeal and penalty step before settling with payment.,9.0,judicial_appeal,1.0,0.029215803369879723,0.0002470270555932075
+V0149,timely_payment,"The process includes administrative appeal actions and penalty application, ending in payment.",3.0,enforceable_resolution,1.0,0.01521530095487833,0.0031400825828313828
+V0150,timely_payment,The process involves penalty addition and direct resolution through payment.,7.0,enforceable_resolution,2.0,0.04179137945175171,0.0010515599278733134
+V0151,judicial_appeal,"The narrative includes an appeal to a judge alongside payment steps, leaning into judicial appeal.",12.0,timely_payment,1.0,0.3385738432407379,0.0021674446761608124
+V0152,judicial_appeal,"Involves an appeal to the judge, resulting in a receive result appeal from the prefecture / judge process path.",4.0,enforceable_resolution,2.0,0.34036991000175476,0.031143391504883766
+V0153,judicial_appeal,Contains an appeal to a judge before subsequent payment actions.,16.0,timely_payment,3.0,0.33382129669189453,0.0004091657465323806
+V0154,judicial_appeal,Direct appeal to judge early in the trace followed by payment.,7.0,timely_payment,1.0,0.024459108710289,0.000651701120659709
+V0155,timely_payment,Resolves via prompt payments after fine notification and penalty addition without appeals.,5.0,judicial_appeal,1.0,0.025018632411956787,0.0022520101629197598
+V0156,administrative_appeal,Involves submitting an administrative appeal to the Prefecture.,4.0,timely_payment,2.0,0.35730981826782227,0.12005119770765305
+V0157,timely_payment,Settled promptly through multiple payment transactions after fine notification and penalty.,3.0,enforceable_resolution,1.0,0.06500238180160522,0.021137183532118797
+V0158,judicial_appeal,Involves both prefecture appeal steps and a subsequent appeal to a judge.,3.0,administrative_appeal,1.0,0.3934709131717682,0.001717108185403049
+V0159,administrative_appeal,Involves administrative appeal to the Prefecture followed by payment realization.,1.0,timely_payment,1.0,0.00848290603607893,0.0
+V0160,,"Ends in credit collection rather than timely payment, enforcement, or appeals.",,enforceable_resolution,1.0,,0.014430433511734009
+V0161,,Ends in credit collection despite mixed appeal actions.,,timely_payment,1.0,,0.000573894300032407
+V0162,judicial_appeal,Involves an appeal to the judge alongside prefecture appeal and fine resolution via payment.,4.0,timely_payment,1.0,0.04437333717942238,7.92998071119655e-06
+V0163,,Ends in credit collection after prefecture appeal steps.,,administrative_appeal,2.0,,0.0034023327752947807
+V0164,administrative_appeal,Goes through prefecture appeal and results in payment.,3.0,enforceable_resolution,3.0,0.016958454623818398,0.0051088216714560986
+V0165,judicial_appeal,Involves both administrative and judicial appeals before ending in credit collection.,3.0,administrative_appeal,1.0,0.3871096670627594,0.013761392794549465
+V0166,judicial_appeal,Includes both prefecture appeal and an appeal to a judge before payment.,4.0,timely_payment,1.0,0.35058990120887756,0.0004796349676325917
+V0167,judicial_appeal,Involves both administrative appeal to the prefecture and a subsequent appeal to a judge.,3.0,administrative_appeal,1.0,0.382258802652359,0.0006101335748098791
+V0168,administrative_appeal,Involves fine processing and an administrative appeal to the Prefecture.,3.0,timely_payment,2.0,0.35486188530921936,0.11760324239730835
+V0169,,Ends in credit collection after repeated payments failed to close the case in time.,,enforceable_resolution,1.0,,0.007022737059742212
+V0170,judicial_appeal,Involves an appeal to the judge before ending in credit collection.,4.0,enforceable_resolution,1.0,0.7057072520256042,0.03161358833312988
+V0171,administrative_appeal,Involves an administrative appeal to the Prefecture and subsequent payment.,3.0,timely_payment,1.0,0.3505497872829437,0.002549698343500495
+V0172,judicial_appeal,Involves both administrative appeal and an appeal to a judge.,3.0,administrative_appeal,1.0,0.006005100905895233,0.004119252320379019
+V0173,,Ends in credit collection after uncoordinated payments.,,enforceable_resolution,1.0,,0.011315968818962574
+V0174,enforceable_resolution,Proceeds through standard fine enforcement and penalty addition leading to payment.,3.0,timely_payment,1.0,0.6779298782348633,0.001270742155611515
+V0175,judicial_appeal,Involves both administrative appeal and appeal to a judge.,3.0,administrative_appeal,1.0,0.3802241086959839,0.0007117166533134878
+V0176,judicial_appeal,Involves an appeal to a judge following an administrative appeal.,4.0,administrative_appeal,1.0,0.3935236930847168,0.0017698799492791295
+V0177,judicial_appeal,Includes appeal to a judge and credit collection / prefecture appeal elements.,4.0,administrative_appeal,1.0,0.3934445083141327,0.0016907023964449763
+V0178,administrative_appeal,Realizes the administrative appeal process to the Prefecture.,1.0,timely_payment,2.0,0.3411359488964081,0.0006101335748098791
+V0179,administrative_appeal,Goes through administrative appeal to the Prefecture and notifies result.,2.0,judicial_appeal,1.0,0.34256455302238464,0.0029017154593020678
+V0180,administrative_appeal,Involves administrative appeal to the Prefecture and subsequent payment.,4.0,timely_payment,1.0,0.3524326980113983,0.002533257007598877
+V0181,administrative_appeal,Involves administrative appeal to the Prefecture and payment.,3.0,timely_payment,1.0,0.3443184792995453,0.00014356824976857752
+V0182,,Involves prefecture appeal steps but ultimately ends in credit collection.,,administrative_appeal,2.0,,0.000797182263340801
+V0183,judicial_appeal,Includes an appeal to a judge followed by fine payment.,6.0,enforceable_resolution,1.0,0.35459092259407043,0.0031226808205246925
+V0184,judicial_appeal,Includes an appeal to a judge followed by fine payment.,4.0,enforceable_resolution,1.0,0.3475320637226105,0.0017913879128172994
+V0185,judicial_appeal,Includes administrative appeal followed by an appeal to a judge.,2.0,administrative_appeal,1.0,0.3686337471008301,0.33413437008857727
+V0186,administrative_appeal,Involves administrative appeal to the Prefecture and subsequent payments.,4.0,enforceable_resolution,2.0,0.3685731887817383,0.00018590420950204134
+V0187,judicial_appeal,Includes an appeal to a judge followed by fine payments.,7.0,timely_payment,1.0,0.36536315083503723,0.0025022265035659075
+V0188,timely_payment,Resolved via prompt payments with penalty addition.,6.0,judicial_appeal,2.0,0.007208028808236122,0.0006463925237767398
+V0189,administrative_appeal,Involves administrative appeal to the Prefecture and payment resolution.,4.0,enforceable_resolution,2.0,0.04053938388824463,0.0029763460624963045
+V0190,administrative_appeal,Involves administrative appeal to the Prefecture and payment resolution.,4.0,enforceable_resolution,2.0,0.34497126936912537,0.00174392678309232
+V0191,administrative_appeal,Involves administrative appeal to the Prefecture and result notification.,2.0,judicial_appeal,2.0,0.34517374634742737,0.001086155534721911
+V0192,administrative_appeal,Involves administrative appeal to the Prefecture and receiving the result.,3.0,timely_payment,1.0,0.3340458869934082,0.010041721165180206
+V0193,enforceable_resolution,Proceeds via standard fine sending and payment actions without appeals.,4.0,timely_payment,1.0,0.7965899109840393,0.3342154026031494
+V0194,administrative_appeal,Involves administrative appeal to the Prefecture.,4.0,timely_payment,2.0,0.3738410174846649,0.1365823596715927
+V0195,administrative_appeal,Involves administrative appeal to the Prefecture and subsequent payment.,4.0,timely_payment,1.0,0.3628174066543579,0.0004111852904316038
+V0196,administrative_appeal,Involves administrative appeal to the Prefecture and payment.,5.0,timely_payment,2.0,0.06235658749938011,0.00334247131831944
+V0197,administrative_appeal,Involves administrative appeal to the Prefecture and payment.,4.0,timely_payment,1.0,0.010754254646599293,0.0004445431986823678
+V0198,judicial_appeal,Involves both administrative appeal and a subsequent appeal to a judge before payment.,4.0,timely_payment,1.0,0.33558496832847595,0.0008214598638005555
+V0199,judicial_appeal,Involves an appeal to a judge alongside administrative appeal steps.,6.0,timely_payment,1.0,0.012155338190495968,0.0018970329547300935
+V0200,judicial_appeal,Involves both administrative appeal and a final appeal to a judge.,2.0,administrative_appeal,1.0,0.37769874930381775,0.3333333432674408
+V0201,judicial_appeal,"The process involves both prefecture and judge appeals before ultimately concluding with payment, strongly featuring a judicial appeal phase.",3.0,administrative_appeal,1.0,0.009738174267113209,0.006469771731644869
+V0202,administrative_appeal,The narrative includes an administrative appeal to the Prefecture and finishes with the notification of the appeal result.,3.0,judicial_appeal,1.0,0.3428609371185303,0.003198102116584778
+V0203,judicial_appeal,The narrative features a late appeal to the judge following prefecture result notification and eventually results in payment.,2.0,timely_payment,1.0,0.009601114317774773,0.00633271224796772
+V0204,judicial_appeal,"The fine proceeds with a penalty and payment, but also includes a judicial appeal step before final settlement.",4.0,enforceable_resolution,1.0,0.3432588279247284,0.0011031822068616748
+V0205,judicial_appeal,"The case escalates directly to a judicial appeal after fine creation, notification, and penalty addition.",3.0,timely_payment,1.0,0.3477230370044708,0.3341393768787384
+V0206,judicial_appeal,"Includes elements of both prefecture and judicial appeal, ending with the result of the prefecture appeal.",4.0,administrative_appeal,1.0,0.38460031151771545,0.00022634101333096623
+V0207,administrative_appeal,"The process includes an appeal to the Prefecture along with fine notification and penalty addition, concluding in payment.",5.0,timely_payment,1.0,0.030388392508029938,0.0020309840328991413
+V0208,administrative_appeal,"Involves an early appeal to the Prefecture followed by fine dispatch, notification, penalty, and final payment.",5.0,timely_payment,1.0,0.014462393708527088,0.00020512867195066065
+V0209,judicial_appeal,"Involves an appeal to the judge shortly after fine notification, followed by penalty addition and repeated payment events.",4.0,enforceable_resolution,1.0,0.37396255135536194,0.013738270848989487
+V0210,judicial_appeal,Includes an administrative appeal pathway followed by a judicial appeal before final payment.,4.0,administrative_appeal,1.0,0.032871346920728683,0.013094217516481876
+V0211,administrative_appeal,"The process is routed through an administrative appeal to the Prefecture, followed by notification and subsequent payments.",7.0,timely_payment,2.0,0.35507360100746155,0.0001076495973393321
+V0212,judicial_appeal,The case goes through both administrative appeal steps and concludes with an appeal to the judge.,2.0,administrative_appeal,1.0,0.37209847569465637,0.3339185416698456
+V0213,administrative_appeal,"The narrative follows an administrative appeal path, resulting in notification and subsequent credit collection after payment attempts.",4.0,timely_payment,1.0,0.7031639218330383,0.0036818550433963537
+V0214,judicial_appeal,Involves both administrative and judicial appeals before ending in credit collection.,3.0,administrative_appeal,1.0,0.35551634430885315,0.00037775616510771215
+V0215,judicial_appeal,Features both prefecture appeal activities and a subsequent long-delayed appeal to the judge.,2.0,administrative_appeal,1.0,0.38889527320861816,0.00014372426085174084
+V0216,judicial_appeal,Goes through an administrative appeal process and concludes with a judicial appeal before payment.,3.0,administrative_appeal,1.0,0.006467930506914854,0.003656423417851329
+V0217,enforceable_resolution,"The fine proceeds directly through notification and penalty addition, followed by multiple payment events without any appeal.",9.0,timely_payment,1.0,0.6750113368034363,0.00019684644939843565
+V0218,enforceable_resolution,"Proceeds via notification and penalty addition, leading to payments and eventually uncollected status sent to credit collection.",9.0,timely_payment,2.0,0.33815184235572815,0.011442438699305058
+V0219,administrative_appeal,"Includes an administrative appeal to the Prefecture after initial fine creation and payment, ending with the appeal result notification.",2.0,judicial_appeal,2.0,0.3794908821582794,0.03774479404091835
+V0220,administrative_appeal,"Involves an administrative appeal to the Prefecture after a penalty is added, with payments interspersed.",4.0,timely_payment,1.0,0.36606982350349426,0.003636368550360203
+V0221,administrative_appeal,Follows an administrative appeal route with notification and prefecture results before concluding.,2.0,timely_payment,1.0,0.004043310880661011,0.00018271838780492544
+V0222,judicial_appeal,"Features an appeal to the judge occurring early in the process, followed by penalties and repeated payments.",7.0,timely_payment,1.0,0.3759479224681854,0.015723606571555138
+V0223,administrative_appeal,"Includes an administrative appeal to the Prefecture and subsequent penalty addition, ending in payment.",4.0,timely_payment,1.0,0.01323674339801073,0.0010205215075984597
+V0224,judicial_appeal,Includes both an administrative appeal and a subsequent judicial appeal before penalty addition and payment.,12.0,timely_payment,2.0,0.3387969434261322,0.0023905152920633554
+V0225,judicial_appeal,Features both administrative and judicial appeal steps prior to penalties and payments.,7.0,timely_payment,3.0,0.35815420746803284,0.0020700593013316393
+V0226,administrative_appeal,"Involves an administrative appeal to the Prefecture, results notification, and subsequent payments.",3.0,judicial_appeal,2.0,0.3508100211620331,0.0028099610935896635
+V0227,administrative_appeal,"An administrative appeal to the Prefecture is initiated early, followed by fine notification, penalties, and payment.",3.0,timely_payment,1.0,0.012517914175987244,0.0006682809325866401
+V0228,administrative_appeal,Features an administrative appeal setup followed by penalty addition and payments.,3.0,enforceable_resolution,1.0,0.33790040016174316,0.0006463925237767398
+V0229,administrative_appeal,"Proceeds through an administrative appeal to the Prefecture, receives results, notifies the offender, and ultimately sends the fine to credit collection.",3.0,judicial_appeal,1.0,0.3833785355091095,0.0012909957440569997
+V0230,judicial_appeal,Combines an administrative appeal with a subsequent judicial appeal before ending in payment.,7.0,timely_payment,1.0,0.34468910098075867,0.00040257369983009994
+V0231,judicial_appeal,Includes both administrative appeal actions and a judicial appeal step before penalty and payment.,6.0,administrative_appeal,1.0,0.05236237868666649,0.0006508347578346729

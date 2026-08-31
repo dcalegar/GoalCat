@@ -1,0 +1,22 @@
+{
+  "schema": "icpm2027/perturbation/2",
+  "perturbation_id": "pertB_merge_15_16",
+  "kind": "B - alternative merge",
+  "targets": [
+    "15",
+    "16"
+  ],
+  "base_model": {
+    "path": "data/goals/sepsis_goal_model.jucm",
+    "sha256": "5a4f9e9950f9a4cb05b3aec772f07a6b0ab3956a423360f804983bb6f032d58f"
+  },
+  "output": {
+    "path": "data/goals/perturbed/sepsis_goal_model__pertB_merge_15_16.jucm",
+    "sha256": "2d8bf2ec37d6b76d6246e0e0f6a74338d56381f21ce8871e8d310a545b994dcf"
+  },
+  "goal_model_filename": "perturbed/sepsis_goal_model__pertB_merge_15_16.jucm",
+  "generated_on": "2026-08-29",
+  "notes": [
+    "Merged 15 ('Admission NC') and 16 ('Admission IC') into 15 ('Merged 15+16')."
+  ]
+}

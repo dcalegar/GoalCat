@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "3396770c528211f9",
+  "latency_seconds": 3.418487582996022,
+  "input_tokens": 2243,
+  "output_tokens": 569,
+  "prompt_chars": 9270,
+  "response_chars": 2356,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"matched_invoice_after_goods_receipt\",\n      \"name\": \"3-way matched, invoice recorded after goods receipt\",\n      \"description\": \"Item is resolved via 3-way matching where the invoice is recorded after the goods receipt. This alternative makes a strong positive contribution to preserving value-matching control integrity and is measured against the time to clearance after goods receipt indicator.\",\n      \"anchor_ids\": [\n        \"5\"\n      ],\n      \"rationale\": \"Maps 1:1 to the declared OR alternative id=5 in the goal model, representing the standard control-heavy matching regime.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"matched_invoice_before_goods_receipt\",\n      \"name\": \"3-way matched, invoice recorded before goods receipt\",\n      \"description\": \"Item is resolved via 3-way matching where the invoice is recorded before the goods receipt. This alternative helps maximize working-capital efficiency and is measured against the time to clearance before goods receipt indicator.\",\n      \"anchor_ids\": [\n        \"6\"\n      ],\n      \"rationale\": \"Maps 1:1 to the declared OR alternative id=6 in the goal model, representing early invoicing prior to goods receipt.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"two_way_matched\",\n      \"name\": \"2-way matched (no goods receipt required)\",\n      \"description\": \"Item is resolved via 2-way matching where no goods receipt is required. This alternative helps minimize procurement overhead and is measured against the 2-way match time to clearance indicator.\",\n      \"anchor_ids\": [\n        \"7\"\n      ],\n      \"rationale\": \"Maps 1:1 to the declared OR alternative id=7 in the goal model, representing simplified matching without goods receipt.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"resolve_via_consignment_consumption\",\n      \"name\": \"Resolve via consignment consumption\",\n      \"description\": \"Item is resolved via consignment consumption. This alternative helps minimize procurement overhead and is measured against general exception and rework rates.\",\n      \"anchor_ids\": [\n        \"13\"\n      ],\n      \"rationale\": \"Maps 1:1 to the declared OR alternative id=13 in the goal model, representing resolution through consignment.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0020954000000000003
+}

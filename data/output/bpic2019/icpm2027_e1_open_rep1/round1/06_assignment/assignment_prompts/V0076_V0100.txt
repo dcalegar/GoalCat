@@ -1,0 +1,74 @@
+You are deciding, for each of several process-variant narratives, which single taxonomy category (if any) it realizes.
+
+The taxonomy was derived directly from a narrative sample, with no external declaration to anchor to — 'realize' means the narrative matches the recurring pattern the category describes.
+
+=== TAXONOMY CATEGORIES ===
+- category_id=standard_procure_to_pay | name=Standard Procure-to-Pay
+  description: Standard, high-frequency procurement paths where purchase orders are created, goods and invoice receipts are recorded, and invoices are cleared without significant delays or complications.
+- category_id=quick_cancellation_or_completion | name=Quick Cancellation or Early Termination
+  description: Short-lived variants featuring very low trace lengths and rapid execution times, typically resulting in purchase order deletion, basic creation, or initial goods receipt without full invoice processing.
+- category_id=service_entry_execution | name=Service Entry Sheet Processing
+  description: Procurement paths focusing specifically on the recording of service entry sheets and goods receipts with minimal overhead or intermediate steps.
+- category_id=srm_integration_failure | name=SRM System Transfer Failure
+  description: Complex procurement variants originating in the SRM subsystem that suffer from transfer failures or communication issues with execution systems.
+- category_id=extreme_rework_and_delay | name=Extreme Rework and Administrative Delay
+  description: Extremely long-running variants characterized by massive trace lengths, repetitive loops of invoice creation, cancellations, payment block removals, and multi-year durations.
+
+=== NARRATIVES TO CLASSIFY (25) ===
+How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
+- frequency is how many cases share that sequence, with that count as a share of all cases in the log in parentheses; duration_median is the median case duration for that variant, written compactly on the same scale as the waits inside the narrative ("134d", "3h", "45m"); outcome is the variant's final activity.
+- The activity sequence shown after "narrative:" is that of a single representative case (the one whose duration is closest to the variant's median), so a "(+34d)" after an activity is that case's waiting time since the preceding activity, not a variant-wide average. Activities are listed in the order they occurred. A "(handled by resource R)" clause, where present, names the resource that performed that activity in the representative case. A trailing "Rework observed: ..." sentence, where present, is a variant-level count over the variant's own cases, not part of the representative case's sequence.
+- Activity labels come from the event log and need not match a category's wording verbatim: a logged activity realizes a category by meaning, not by string equality.
+
+- variant_id=V0076 | frequency=245 (0.1%) | duration_median=119d | outcome=Record Invoice Receipt
+  narrative: Create Purchase Order Item (handled by resource user_084) Change Quantity (handled by resource user_084) (+82d) Record Goods Receipt (handled by resource batch_03) (+12h) Vendor creates invoice (+9d) Record Invoice Receipt (handled by resource user_013) (+28d)
+- variant_id=V0077 | frequency=242 (0.1%) | duration_median=49d | outcome=Record Invoice Receipt
+  narrative: Create Purchase Requisition Item (handled by resource batch_16) Create Purchase Order Item (handled by resource user_057) (+12h) Change Quantity (handled by resource user_057) (+11d) Vendor creates invoice (+2d) Record Goods Receipt (handled by resource user_034) (+13h) Record Invoice Receipt (handled by resource user_013) (+34d)
+- variant_id=V0078 | frequency=217 (0.1%) | duration_median=18d | outcome=Record Invoice Receipt
+  narrative: Vendor creates invoice Create Purchase Order Item (handled by resource user_602) (+16d) Change Approval for Purchase Order (handled by resource user_603) (+3h) Record Invoice Receipt (handled by resource user_359) (+1d)
+- variant_id=V0079 | frequency=213 (0.1%) | duration_median=183d | outcome=Cancel Invoice Receipt
+  narrative: Create Purchase Order Item (handled by resource user_040) Cancel Goods Receipt (handled by resource batch_11) (+2d) Vendor creates debit memo (+75d) Cancel Invoice Receipt (handled by resource user_015) (+106d)
+- variant_id=V0080 | frequency=212 (0.1%) | duration_median=10h | outcome=Change Approval for Purchase Order
+  narrative: Create Purchase Order Item (handled by resource user_084) Delete Purchase Order Item (handled by resource user_084) (+10h) Change Approval for Purchase Order (handled by resource user_084)
+- variant_id=V0081 | frequency=208 (0.1%) | duration_median=112d | outcome=Clear Invoice
+  narrative: Create Purchase Order Item (handled by resource user_417) Vendor creates invoice (+11d) Record Invoice Receipt (handled by resource user_235) (+2d) Remove Payment Block (handled by resource user_015) (+5h) Record Goods Receipt (handled by resource user_031) (+2d) Clear Invoice (handled by resource user_002) (+97d)
+- variant_id=V0082 | frequency=205 (0.1%) | duration_median=120d | outcome=Clear Invoice
+  narrative: Create Purchase Requisition Item (handled by resource user_417) Create Purchase Order Item (handled by resource user_417) (+12h) Change Approval for Purchase Order (handled by resource user_059) (+5d) Receive Order Confirmation (handled by resource user_029) (+1h) Record Goods Receipt (handled by resource user_065) (+21m) Vendor creates invoice (+13h) Record Invoice Receipt (handled by resource user_235) (+5d) Clear Invoice (+109d)
+- variant_id=V0083 | frequency=203 (0.1%) | duration_median=80d | outcome=Clear Invoice
+  narrative: Vendor creates invoice Create Purchase Order Item (handled by resource user_134) (+8d) Record Goods Receipt (handled by resource batch_02) (+2d) Record Invoice Receipt (handled by resource user_015) (+69d) Remove Payment Block (handled by resource user_015) (+4m) Clear Invoice (handled by resource user_005) (+1d)
+- variant_id=V0084 | frequency=202 (0.1%) | duration_median=38d | outcome=Record Invoice Receipt
+  narrative: Create Purchase Requisition Item (handled by resource batch_16) Create Purchase Order Item (handled by resource user_057) (+14h) Change Quantity (handled by resource user_068) (+21h) Record Goods Receipt (handled by resource user_058) (+20d) Vendor creates invoice (+11h) Record Invoice Receipt (handled by resource user_235) (+16d)
+- variant_id=V0085 | frequency=200 (0.1%) | duration_median=26d | outcome=Record Goods Receipt
+  narrative: Create Purchase Requisition Item (handled by resource user_480) Create Purchase Order Item (handled by resource user_142) (+18h) Record Goods Receipt (handled by resource batch_06) (+15d) Record Goods Receipt (handled by resource batch_06) (+11d) Rework observed: Record Goods Receipt was repeated (seen in 200 cases).
+- variant_id=V0086 | frequency=199 (0.1%) | duration_median=76d | outcome=Clear Invoice
+  narrative: Create Purchase Order Item (handled by resource user_040) Change Price (handled by resource user_040) (+3h) Vendor creates invoice (+2d) Record Goods Receipt (handled by resource user_029) (+2d) Record Invoice Receipt (handled by resource user_013) (+35d) Remove Payment Block (handled by resource batch_00) (+34d) Clear Invoice (handled by resource user_002) (+3d)
+- variant_id=V0087 | frequency=198 (0.1%) | duration_median=89d | outcome=Clear Invoice
+  narrative: Create Purchase Requisition Item (handled by resource batch_08) Create Purchase Order Item (handled by resource user_142) (+2d) Change Quantity (handled by resource user_142) (+21h) Vendor creates invoice (+45d) Record Goods Receipt (handled by resource user_080) (+4d) Record Invoice Receipt (handled by resource user_019) (+16d) Clear Invoice (handled by resource user_002) (+22d)
+- variant_id=V0088 | frequency=194 (0.1%) | duration_median=55d | outcome=Clear Invoice
+  narrative: Create Purchase Order Item (handled by resource user_042) Cancel Goods Receipt (handled by resource user_224) (+32m) Vendor creates debit memo (+11d) Cancel Invoice Receipt (handled by resource user_001) (+16d) Clear Invoice (handled by resource user_002) (+28d)
+- variant_id=V0089 | frequency=190 (0.1%) | duration_median=65d | outcome=Clear Invoice
+  narrative: Create Purchase Order Item (handled by resource user_036) Change Price (handled by resource user_040) (+1d) Vendor creates invoice (+2d) Record Invoice Receipt (handled by resource user_015) (+11h) Record Goods Receipt (handled by resource user_029) (+6h) Remove Payment Block (handled by resource batch_02) (+9h) Clear Invoice (handled by resource user_002) (+62d)
+- variant_id=V0090 | frequency=190 (0.1%) | duration_median=35d | outcome=Remove Payment Block
+  narrative: Create Purchase Order Item (handled by resource user_574) Receive Order Confirmation (handled by resource user_029) (+2d) Vendor creates invoice (+14d) Record Goods Receipt (handled by resource user_107) (+4d) Record Invoice Receipt (handled by resource batch_00) (+9d) Remove Payment Block (handled by resource user_015) (+7d)
+- variant_id=V0091 | frequency=189 (0.1%) | duration_median=196d | outcome=Cancel Invoice Receipt
+  narrative: Create Purchase Order Item (handled by resource user_045) Cancel Goods Receipt (handled by resource batch_14) (+14d) Cancel Invoice Receipt (handled by resource batch_01) (+182d)
+- variant_id=V0092 | frequency=188 (0.1%) | duration_median=22d | outcome=Remove Payment Block
+  narrative: Create Purchase Order Item (handled by resource user_325) Vendor creates invoice (+9d) Record Invoice Receipt (handled by resource user_235) (+2d) Record Goods Receipt (handled by resource user_137) (+11d) Remove Payment Block (handled by resource batch_02) (+9h)
+- variant_id=V0093 | frequency=187 (0.1%) | duration_median=79d | outcome=Clear Invoice
+  narrative: Create Purchase Order Item (handled by resource user_060) Receive Order Confirmation (handled by resource user_029) (+19m) Record Goods Receipt (handled by resource user_155) (+10d) Record Invoice Receipt (handled by resource user_020) (+8h) Vendor creates invoice (+7h) Clear Invoice (handled by resource user_002) (+69d)
+- variant_id=V0094 | frequency=180 (0.1%) | duration_median=101d | outcome=Clear Invoice
+  narrative: Create Purchase Order Item (handled by resource user_147) Change Approval for Purchase Order (handled by resource user_146) (+6h) Vendor creates invoice (+8d) Record Goods Receipt (handled by resource batch_06) (+3d) Record Invoice Receipt (handled by resource user_019) (+19h) Clear Invoice (handled by resource user_002) (+89d)
+- variant_id=V0095 | frequency=180 (0.1%) | duration_median=5d | outcome=Cancel Goods Receipt
+  narrative: Create Purchase Order Item (handled by resource user_045) Cancel Goods Receipt (handled by resource user_369) (+5d)
+- variant_id=V0096 | frequency=177 (0.1%) | duration_median=85d | outcome=Clear Invoice
+  narrative: Create Purchase Order Item (handled by resource user_045) Record Goods Receipt (handled by resource user_049) (+12d) Record Goods Receipt (handled by resource user_049) (+4m) Vendor creates invoice (+11h) Record Invoice Receipt (handled by resource user_019) (+7d) Clear Invoice (handled by resource user_002) (+66d) Rework observed: Record Goods Receipt was repeated (seen in 177 cases).
+- variant_id=V0097 | frequency=174 (0.1%) | duration_median=9d | outcome=Change Quantity
+  narrative: Create Purchase Requisition Item (handled by resource user_286) Create Purchase Order Item (handled by resource user_286) (+23h) Change Quantity (handled by resource user_286) (+8d)
+- variant_id=V0098 | frequency=172 (0.1%) | duration_median=50d | outcome=Record Invoice Receipt
+  narrative: Create Purchase Order Item (handled by resource user_102) Change Quantity (handled by resource user_102) (+1d) Vendor creates invoice (+43d) Record Goods Receipt (handled by resource user_258) (+4d) Record Invoice Receipt (handled by resource user_235) (+2d)
+- variant_id=V0099 | frequency=147 (0.1%) | duration_median=30d | outcome=Record Goods Receipt
+  narrative: Create Purchase Requisition Item (handled by resource user_558) Release Purchase Requisition (handled by resource user_558) (+1d) Create Purchase Order Item (handled by resource user_591) (+2m) Record Goods Receipt (handled by resource user_098) (+29d)
+- variant_id=V0100 | frequency=145 (0.1%) | duration_median=104d | outcome=Clear Invoice
+  narrative: Create Purchase Order Item (handled by resource user_147) Change Quantity (handled by resource user_141) (+33d) Change Quantity (handled by resource user_141) (+51m) Record Goods Receipt (handled by resource batch_06) (+8d) Vendor creates invoice (+10h) Record Invoice Receipt (handled by resource user_012) (+1d) Clear Invoice (handled by resource user_002) (+61d) Rework observed: Change Quantity was repeated (seen in 145 cases).
+
+For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids. When a category does match, category_id must be copied verbatim, character-for-character, from one of the category_id values listed above under === TAXONOMY CATEGORIES === — never a paraphrase, abbreviation, or reworded variant of a category's name or description, even if it reads more naturally. A category_id that does not appear above exactly as written cannot be matched back to that category afterward, silently corrupting the result.

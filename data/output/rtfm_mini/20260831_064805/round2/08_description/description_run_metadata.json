@@ -1,0 +1,16 @@
+{
+  "call": {
+    "provider": "gemini",
+    "model": "gemini/gemini-3.5-flash-lite",
+    "backend": "remote",
+    "temperature": 0.0,
+    "prompt_hash": "94470d8361ee89a2",
+    "latency_seconds": 3.470553958963137,
+    "input_tokens": 1712,
+    "output_tokens": 550,
+    "prompt_chars": 7232,
+    "response_chars": 2322,
+    "raw_response": "{\n  \"assessments\": [\n    {\n      \"category_id\": \"resolve_via_timely_or_delinquent_payment\",\n      \"goal_alignment\": \"The discovered pattern shows moderate concentration across 4 variants and 4 cases with moderate waiting-time variability, and the model is tightly bounded with a fitness of 1.00 and precision of 0.81. However, the measured satisfaction indicates negative outcomes, specifically a score of -13 for time to fine dispatch (statutory, 75% coverage) and -35 for average time to case closure (external-by-analogy), demonstrating that while the tasks of resolving via timely or delinquent payment are executed according to the process model, they fall short of meeting the underlying performance goals efficiently.\"\n    },\n    {\n      \"category_id\": \"resolve_via_administrative_appeal_to_the_prefecture\",\n      \"goal_alignment\": \"The category consists of a single variant and case, perfectly bounded by the model with a fitness of 1.00 and precision of 1.00. The measured satisfaction indicators confirm strong goal alignment, showing positive scores of +100 for time to fine dispatch, time to appeal filing to the Prefecture, and average time to case closure, fully supporting the task of resolving via administrative appeal.\"\n    },\n    {\n      \"category_id\": \"resolve_via_judicial_appeal_to_the_judge\",\n      \"goal_alignment\": \"The category contains a single case following a tightly bounded model with 1.00 fitness and 1.00 precision. Measured satisfaction shows a positive score of +73 for time to fine dispatch, but a failing score of -100 for time to appeal filing to the Judge (statutory), indicating that while the judicial appeal task is executed, it suffers significant delay against the statutory threshold, sitting awkwardly against the efficiency aspect of the goal.\"\n    },\n    {\n      \"category_id\": \"resolve_via_coercive_credit_collection\",\n      \"goal_alignment\": \"The single case in this category is tightly bounded by the model (1.00 fitness, 1.00 precision). Measured satisfaction shows negative outcomes with a score of -15 for time to fine dispatch (statutory) and a failing score of -100 for average time to case closure (external-by-analogy, 971.0 days), reflecting poor performance in achieving efficient case resolution despite the process being structurally well-defined.\"\n    }\n  ]\n}",
+    "estimated_cost_usd": 0.0018885999999999998
+  }
+}

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:grl.kpimodel="http:///grl/kpimodel.ecore" xmlns:urn="http:///urn.ecore" name="Sepsis Goal Model" author="EXPERIMENTAL CONSTRUCT — B - alternative merge, perturbation_id=pertB_merge_15_16, targets=['15', '16'], generated from /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/sepsis_goal_model.jucm (sha256=5a4f9e9950f9a4cb) by experimentation/icpm2027/goalmodel/perturb.py for Experiment 2. Not a frozen organizational goal model — the declared alternatives 15 and 16 have been merged into a single alternative 15 ('Merged 15+16')." specVersion="1.0" urnVersion="1.27" nextGlobalID="164">
+  <grlspec>
+    <intElements id="2" name="Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition" type="Goal" decompositionType="And"/>
+    <intElements id="3" name="Patient is registered and screened for sepsis" type="Goal" decompositionType="And"/>
+    <intElements id="4" name="Sepsis workup and treatment are performed" type="Goal" decompositionType="And"/>
+    <intElements id="5" name="Patient is admitted to an inpatient ward" type="Goal" decompositionType="Or"/>
+    <intElements id="6" name="Admitted case reaches a captured discharge" type="Goal" decompositionType="Or"/>
+    <intElements id="7" name="ER Registration" type="Task"/>
+    <intElements id="8" name="ER Triage" type="Task"/>
+    <intElements id="9" name="ER Sepsis Triage" type="Task"/>
+    <intElements id="10" name="Leucocytes" type="Task"/>
+    <intElements id="11" name="CRP" type="Task"/>
+    <intElements id="12" name="LacticAcid" type="Task"/>
+    <intElements id="13" name="IV Liquid" type="Task"/>
+    <intElements id="14" name="IV Antibiotics" type="Task"/>
+    <intElements id="15" name="Merged 15+16" type="Task"/>
+    <intElements id="17" name="Release A" type="Task"/>
+    <intElements id="18" name="Release B" type="Task"/>
+    <intElements id="19" name="Release C" type="Task"/>
+    <intElements id="20" name="Release D" type="Task"/>
+    <intElements id="21" name="Release E" type="Task"/>
+    <intElements id="22" name="Minimize time-to-treatment"/>
+    <intElements id="23" name="Avoid post-discharge deterioration"/>
+    <intElements xsi:type="grl.kpimodel:Indicator" id="24" name="Time to antibiotics (hours)" type="Indicator">
+      <metadata name="goalcat:measure" value="duration_hours"/>
+      <metadata name="goalcat:from" value="ER Sepsis Triage"/>
+      <metadata name="goalcat:to" value="IV Antibiotics"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="guideline"/>
+      <metadata name="goalcat:source" value="target 1 h or less, threshold 1.8 h, worst 3 h: the 1-hour antibiotic-administration window of the Surviving Sepsis Campaign 2016 international guideline (Rhodes et al., 2017), identified by Mannhardt &amp; Blinde (2017, SS2) as the applicable rule for this exact log. worst/threshold/target reused verbatim from Ghasemi (2021, Ch.8, Table 19), set after physician consultation. See sepsisGM_description.md SS6."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" id="25" name="Time to lactate measurement (hours)" type="Indicator">
+      <metadata name="goalcat:measure" value="duration_hours"/>
+      <metadata name="goalcat:from" value="ER Sepsis Triage"/>
+      <metadata name="goalcat:to" value="LacticAcid"/>
+      <metadata name="goalcat:to_occurrence" value="first"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="guideline"/>
+      <metadata name="goalcat:source" value="target 3 h or less, threshold 5 h, worst 7 h: the 3-hour lactate-measurement window of the Surviving Sepsis Campaign 2016 guideline (Rhodes et al., 2017) via Mannhardt &amp; Blinde (2017, SS2). worst/threshold/target reused verbatim from Ghasemi (2021, Ch.8, Table 19), physician-consulted. See sepsisGM_description.md SS6."/>
+    </intElements>
+    <intElements xsi:type="grl.kpimodel:Indicator" id="26" name="Post-discharge ER return (binary)" type="Indicator">
+      <metadata name="goalcat:measure" value="trace_contains"/>
+      <metadata name="goalcat:to" value="Return ER"/>
+      <metadata name="goalcat:aggregate" value="mean"/>
+      <metadata name="goalcat:provenance" value="illustrative"/>
+      <metadata name="goalcat:source" value="target 0 (no return), worst 1 (returned): reused from Ghasemi (2021, Ch.8) as a common healthcare-system goal, not traced to a guideline window and with no threshold defined in the source. Measured as the presence of Return ER anywhere in the case, over every case in scope; a case with no captured discharge counts as no return -- see sepsisGM_description.md SS6/SS7."/>
+    </intElements>
+    <actors id="1" name="Emergency Department care team"/>
+    <links xsi:type="grl:Decomposition" id="27" src="3" dest="2"/>
+    <links xsi:type="grl:Decomposition" id="28" src="4" dest="2"/>
+    <links xsi:type="grl:Decomposition" id="29" src="5" dest="2"/>
+    <links xsi:type="grl:Decomposition" id="30" src="6" dest="2"/>
+    <links xsi:type="grl:Decomposition" id="31" src="7" dest="3"/>
+    <links xsi:type="grl:Decomposition" id="32" src="8" dest="3"/>
+    <links xsi:type="grl:Decomposition" id="33" src="9" dest="3"/>
+    <links xsi:type="grl:Decomposition" id="34" src="10" dest="4"/>
+    <links xsi:type="grl:Decomposition" id="35" src="11" dest="4"/>
+    <links xsi:type="grl:Decomposition" id="36" src="12" dest="4"/>
+    <links xsi:type="grl:Decomposition" id="37" src="13" dest="4"/>
+    <links xsi:type="grl:Decomposition" id="38" src="14" dest="4"/>
+    <links xsi:type="grl:Decomposition" id="39" src="15" dest="5"/>
+    <links xsi:type="grl:Decomposition" id="41" src="17" dest="6"/>
+    <links xsi:type="grl:Decomposition" id="42" src="18" dest="6"/>
+    <links xsi:type="grl:Decomposition" id="43" src="19" dest="6"/>
+    <links xsi:type="grl:Decomposition" id="44" src="20" dest="6"/>
+    <links xsi:type="grl:Decomposition" id="45" src="21" dest="6"/>
+    <links xsi:type="grl:Contribution" id="46" src="14" dest="22" contribution="Make" quantitativeContribution="100"/>
+    <links xsi:type="grl:Contribution" id="47" src="12" dest="22" contribution="Make" quantitativeContribution="100"/>
+    <links xsi:type="grl:Contribution" id="48" src="15" dest="22" contribution="SomeNegative" quantitativeContribution="-25"/>
+    <links xsi:type="grl:Contribution" id="49" src="17" dest="23" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="50" src="18" dest="23" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="106" src="24" dest="22" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="107" src="25" dest="22" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" id="108" src="26" dest="23" quantitativeContribution="50"/>
+  
+    <indicatorGroup name="Time-to-treatment" id="51" isRedesignCategory="true" indicators="24 25" />
+    
+    <indicatorGroup name="Outcome" id="52" isRedesignCategory="true" indicators="26" />
+    
+    <groups name="KPI Baseline (v1.1)" id="53" strategies="54" />
+    
+    <strategies name="Reused from Ghasemi (2021), physician-consulted, v1.1" id="54" author="goalcat (v1.1, reused with attribution)" type="Private" group="53">
+      <evaluations intElement="24">
+        <kpiEvalValueSet targetValue="1" thresholdValue="1.8" worstValue="3" unit="hours" qualitativeEvaluationValue="Reused verbatim from Ghasemi (2021, Ch.8, Table 19), physician-consulted; traced to Rhodes et al. (2017) via Mannhardt &amp; Blinde (2017, SS2) -- see sepsisGM_description.md SS6/SS8" />
+      </evaluations>
+      <evaluations intElement="25">
+        <kpiEvalValueSet targetValue="3" thresholdValue="5" worstValue="7" unit="hours" qualitativeEvaluationValue="Reused verbatim from Ghasemi (2021, Ch.8, Table 19), physician-consulted; traced to Rhodes et al. (2017) via Mannhardt &amp; Blinde (2017, SS2) -- see sepsisGM_description.md SS6/SS8" />
+      </evaluations>
+      <evaluations intElement="26">
+        <kpiEvalValueSet targetValue="0" worstValue="1" unit="binary" qualitativeEvaluationValue="Reused from Ghasemi (2021, Ch.8) as a common healthcare-system goal, not itself traced to a guideline window; no threshold defined in the source -- see sepsisGM_description.md SS6/SS8" />
+      </evaluations>
+    </strategies>
+    
+    <impactModel />
+    
+    <featureModel />
+  
+  </grlspec>
+  <urndef>
+    <specDiagrams xsi:type="grl:GRLGraph" name="Sepsis Goal Model" id="112">
+      <contRefs xsi:type="grl:ActorRef" id="137" name="Emergency Department care team" x="180" y="40" width="3460" height="580" contDef="1" nodes="113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 134 135 136">
+        <label/>
+      </contRefs>
+      <nodes xsi:type="grl:IntentionalElementRef" id="113" name="Every patient with suspected sepsis is screened, treated within guideline windows, and reaches a documented disposition" x="200" y="80" def="2" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="114" name="Patient is registered and screened for sepsis" x="200" y="180" def="3" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="115" name="Sepsis workup and treatment are performed" x="420" y="180" def="4" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="116" name="Patient is admitted to an inpatient ward" x="640" y="180" def="5" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="117" name="Admitted case reaches a captured discharge" x="860" y="180" def="6" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="118" name="ER Registration" x="2620" y="280" def="7" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="119" name="ER Triage" x="2840" y="280" def="8" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="120" name="ER Sepsis Triage" x="3060" y="280" def="9" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="121" name="Leucocytes" x="200" y="280" def="10" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="122" name="CRP" x="420" y="280" def="11" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="123" name="LacticAcid" x="640" y="280" def="12" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="124" name="IV Liquid" x="860" y="280" def="13" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="125" name="IV Antibiotics" x="1080" y="280" def="14" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="126" name="Merged 15+16" x="1300" y="280" def="15" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="127" name="Release A" x="1520" y="280" def="17" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="128" name="Release B" x="1740" y="280" def="18" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="129" name="Release C" x="1960" y="280" def="19" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="130" name="Release D" x="2180" y="280" def="20" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="131" name="Release E" x="2400" y="280" def="21" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="132" name="Minimize time-to-treatment" x="200" y="380" def="22">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="133" name="Avoid post-discharge deterioration" x="420" y="380" def="23">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="134" name="Time to antibiotics (hours)" x="420" y="80" def="24" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="135" name="Time to lactate measurement (hours)" x="640" y="80" def="25" contRef="137">
+        <label/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" id="136" name="Post-discharge ER return (binary)" x="860" y="80" def="26" contRef="137">
+        <label/>
+      </nodes>
+      <connections xsi:type="grl:LinkRef" id="138" source="114" target="113" link="27"/>
+      <connections xsi:type="grl:LinkRef" id="139" source="115" target="113" link="28"/>
+      <connections xsi:type="grl:LinkRef" id="140" source="116" target="113" link="29"/>
+      <connections xsi:type="grl:LinkRef" id="141" source="117" target="113" link="30"/>
+      <connections xsi:type="grl:LinkRef" id="142" source="118" target="114" link="31"/>
+      <connections xsi:type="grl:LinkRef" id="143" source="119" target="114" link="32"/>
+      <connections xsi:type="grl:LinkRef" id="144" source="120" target="114" link="33"/>
+      <connections xsi:type="grl:LinkRef" id="145" source="121" target="115" link="34"/>
+      <connections xsi:type="grl:LinkRef" id="146" source="122" target="115" link="35"/>
+      <connections xsi:type="grl:LinkRef" id="147" source="123" target="115" link="36"/>
+      <connections xsi:type="grl:LinkRef" id="148" source="124" target="115" link="37"/>
+      <connections xsi:type="grl:LinkRef" id="149" source="125" target="115" link="38"/>
+      <connections xsi:type="grl:LinkRef" id="150" source="126" target="116" link="39"/>
+      <connections xsi:type="grl:LinkRef" id="151" source="127" target="117" link="41"/>
+      <connections xsi:type="grl:LinkRef" id="152" source="128" target="117" link="42"/>
+      <connections xsi:type="grl:LinkRef" id="153" source="129" target="117" link="43"/>
+      <connections xsi:type="grl:LinkRef" id="154" source="130" target="117" link="44"/>
+      <connections xsi:type="grl:LinkRef" id="155" source="131" target="117" link="45"/>
+      <connections xsi:type="grl:LinkRef" id="156" source="125" target="132" link="46"/>
+      <connections xsi:type="grl:LinkRef" id="157" source="123" target="132" link="47"/>
+      <connections xsi:type="grl:LinkRef" id="158" source="126" target="132" link="48"/>
+      <connections xsi:type="grl:LinkRef" id="159" source="127" target="133" link="49"/>
+      <connections xsi:type="grl:LinkRef" id="160" source="128" target="133" link="50"/>
+      <connections xsi:type="grl:LinkRef" id="161" source="134" target="132" link="106"/>
+      <connections xsi:type="grl:LinkRef" id="162" source="135" target="132" link="107"/>
+      <connections xsi:type="grl:LinkRef" id="163" source="136" target="133" link="108"/>
+    </specDiagrams>
+  </urndef>
+</urn:URNspec>

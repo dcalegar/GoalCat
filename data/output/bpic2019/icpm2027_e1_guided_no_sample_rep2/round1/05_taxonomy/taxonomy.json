@@ -1,0 +1,44 @@
+{
+  "categories": [
+    {
+      "category_id": "matched_invoice_after_goods_receipt",
+      "name": "3-way matched, invoice recorded after goods receipt",
+      "description": "Resolves the purchase order item through a standard 3-way match where goods receipt occurs prior to invoice recording, advancing the Preserve value-matching control integrity softgoal while being measured against the Time to clearance, 3-way after GR indicator.",
+      "anchor_ids": [
+        "5"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=5 under the OR-decomposition of id=4. Advances control integrity while balancing procurement overhead.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "matched_invoice_before_goods_receipt",
+      "name": "3-way matched, invoice recorded before goods receipt",
+      "description": "Resolves the purchase order item through a 3-way match where the invoice is recorded before the goods receipt, helping both working-capital efficiency and control integrity, measured against the Time to clearance, 3-way before GR indicator.",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=6 under the OR-decomposition of id=4. Balances clearance speed with control maintenance.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "two_way_matched",
+      "name": "2-way matched (no goods receipt required)",
+      "description": "Resolves the purchase order item via a 2-way match without requiring a goods receipt, helping minimize procurement and matching overhead while being measured against the Time to clearance, 2-way match indicator.",
+      "anchor_ids": [
+        "7"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=7 under the OR-decomposition of id=4. Directly targets reduction of matching overhead.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "resolve_via_consignment_consumption",
+      "name": "Resolve via consignment consumption",
+      "description": "Resolves the purchase order item through consignment consumption, helping minimize overhead and measured against exception and clearance metrics.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=13 under the OR-decomposition of id=4. Represents direct inventory/consignment settlement.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

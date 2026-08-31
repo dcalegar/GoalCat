@@ -1,0 +1,48 @@
+{
+  "dataset": "sepsis",
+  "findings": [
+    {
+      "kind": "A",
+      "perturbation_id": "pertA_remove_21",
+      "targets": [
+        "21"
+      ],
+      "target_anchor": "21",
+      "TargetReassignment": {
+        "n": 6,
+        "changed": 6,
+        "rate": 1.0,
+        "cases_changed": 6
+      },
+      "CollateralReassignment": {
+        "n": 840,
+        "changed": 187,
+        "rate": 0.2226190476190476,
+        "cases_changed": 230
+      },
+      "note": "CollateralReassignment is interpretable only against the replicate noise floor from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+    },
+    {
+      "kind": "B",
+      "perturbation_id": "pertB_merge_15_16",
+      "targets": [
+        "15",
+        "16"
+      ],
+      "target_anchor": "15",
+      "TargetReassignment": {
+        "n": 50,
+        "changed": 50,
+        "rate": 1.0,
+        "cases_changed": 53
+      },
+      "CollateralReassignment": {
+        "n": 796,
+        "changed": 697,
+        "rate": 0.8756281407035176,
+        "cases_changed": 746
+      },
+      "note": "CollateralReassignment is interpretable only against the replicate noise floor from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "policy": "all",
+  "top_n": 1000,
+  "min_case_coverage": 0.8,
+  "source": "preregistration.yaml:C7_bpic2019_variant_scope",
+  "preregistered": true,
+  "decided_on": "2026-08-25",
+  "applied_policy": "all",
+  "variants_total": 11973,
+  "variants_kept": 11973,
+  "cases_total": 251734,
+  "cases_kept": 251734,
+  "case_coverage_of_full_log": 1.0
+}

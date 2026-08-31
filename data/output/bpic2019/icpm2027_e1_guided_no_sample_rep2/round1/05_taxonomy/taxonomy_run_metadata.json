@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "3396770c528211f9",
+  "latency_seconds": 16.62096383300377,
+  "input_tokens": 2243,
+  "output_tokens": 597,
+  "prompt_chars": 9270,
+  "response_chars": 2420,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"matched_invoice_after_goods_receipt\",\n      \"name\": \"3-way matched, invoice recorded after goods receipt\",\n      \"description\": \"Resolves the purchase order item through a standard 3-way match where goods receipt occurs prior to invoice recording, advancing the Preserve value-matching control integrity softgoal while being measured against the Time to clearance, 3-way after GR indicator.\",\n      \"anchor_ids\": [\n        \"5\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative id=5 under the OR-decomposition of id=4. Advances control integrity while balancing procurement overhead.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"matched_invoice_before_goods_receipt\",\n      \"name\": \"3-way matched, invoice recorded before goods receipt\",\n      \"description\": \"Resolves the purchase order item through a 3-way match where the invoice is recorded before the goods receipt, helping both working-capital efficiency and control integrity, measured against the Time to clearance, 3-way before GR indicator.\",\n      \"anchor_ids\": [\n        \"6\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative id=6 under the OR-decomposition of id=4. Balances clearance speed with control maintenance.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"two_way_matched\",\n      \"name\": \"2-way matched (no goods receipt required)\",\n      \"description\": \"Resolves the purchase order item via a 2-way match without requiring a goods receipt, helping minimize procurement and matching overhead while being measured against the Time to clearance, 2-way match indicator.\",\n      \"anchor_ids\": [\n        \"7\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative id=7 under the OR-decomposition of id=4. Directly targets reduction of matching overhead.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"resolve_via_consignment_consumption\",\n      \"name\": \"Resolve via consignment consumption\",\n      \"description\": \"Resolves the purchase order item through consignment consumption, helping minimize overhead and measured against exception and clearance metrics.\",\n      \"anchor_ids\": [\n        \"13\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative id=13 under the OR-decomposition of id=4. Represents direct inventory/consignment settlement.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0021654
+}

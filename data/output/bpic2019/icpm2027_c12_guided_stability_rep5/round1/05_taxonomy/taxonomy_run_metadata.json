@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "92bc49773318d3d1",
+  "latency_seconds": 24.018901917006588,
+  "input_tokens": 70506,
+  "output_tokens": 628,
+  "prompt_chars": 265303,
+  "response_chars": 2365,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"three_way_after_gr\",\n      \"name\": \"3-way matched, invoice recorded after goods receipt\",\n      \"description\": \"Standard 3-way matching process where the goods receipt occurs prior to the vendor invoice recording. Advances value-matching control integrity and works against procurement overhead.\",\n      \"anchor_ids\": [\n        \"5\"\n      ],\n      \"rationale\": \"Directly maps to goal model alternative 5. Supported by frequent variants like V0001, V0002, and V0005 where Record Goods Receipt precedes invoice recording activities.\",\n      \"evidence_variant_ids\": [\n        \"V0001\",\n        \"V0002\",\n        \"V0005\"\n      ]\n    },\n    {\n      \"category_id\": \"three_way_before_gr\",\n      \"name\": \"3-way matched, invoice recorded before goods receipt\",\n      \"description\": \"Process variant where the invoice is received and recorded before the goods receipt is posted. Helps working-capital efficiency and value-matching control integrity.\",\n      \"anchor_ids\": [\n        \"6\"\n      ],\n      \"rationale\": \"Directly maps to goal model alternative 6. Supported by variants such as V0004 and V0007 where invoice recording precedes goods receipt execution.\",\n      \"evidence_variant_ids\": [\n        \"V0004\",\n        \"V0007\",\n        \"V0008\"\n      ]\n    },\n    {\n      \"category_id\": \"two_way_matched\",\n      \"name\": \"2-way matched (no goods receipt required)\",\n      \"description\": \"Streamlined matching process requiring only invoice recording and clearance without any goods receipt. Helps minimize procurement and matching overhead.\",\n      \"anchor_ids\": [\n        \"7\"\n      ],\n      \"rationale\": \"Directly maps to goal model alternative 7, characterized by invoice clearance without goods receipt tasks.\",\n      \"evidence_variant_ids\": [\n        \"V0009\"\n      ]\n    },\n    {\n      \"category_id\": \"consignment_consumption\",\n      \"name\": \"Resolve via consignment consumption\",\n      \"description\": \"Resolution of purchase order items through consignment inventory consumption. Helps minimize procurement and matching overhead.\",\n      \"anchor_ids\": [\n        \"13\"\n      ],\n      \"rationale\": \"Maps to goal model alternative task 13, representing resolution via consignment consumption patterns in specialized variants.\",\n      \"evidence_variant_ids\": [\n        \"V0064\",\n        \"V0162\",\n        \"V0244\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0227218
+}

@@ -1,0 +1,2523 @@
+# Step 6 — Narrative assignment report
+
+Run: `20260829_080358` | Log: `bpic2019` | Taxonomy mode: `intent_guided` | Assignment model: `gemini/gemini-3.5-flash-lite`
+
+11371 variants, 250411 cases total.
+
+**602 variants still pending** (API calls failed every attempt this run, not yet a residual): V0451, V0452, V0453, V0454, V0455, V0456, V0457, V0458, V0459, V0460, V0461, V0462, V0463, V0464, V0465, V0466, V0467, V0468, V0469, V0470, V0471, V0472, V0473, V0474, V0475, V0476, V0477, V0478, V0479, V0480, V0481, V0482, V0483, V0484, V0485, V0486, V0487, V0488, V0489, V0490, V0491, V0492, V0493, V0494, V0495, V0496, V0497, V0498, V0499, V0500, V7751, V7752, V7753, V7754, V7755, V7756, V7757, V7758, V7759, V7760, V7761, V7762, V7763, V7764, V7765, V7766, V7767, V7768, V7769, V7770, V7771, V7772, V7773, V7774, V7775, V7776, V7777, V7778, V7779, V7780, V7781, V7782, V7783, V7784, V7785, V7786, V7787, V7788, V7789, V7790, V7791, V7792, V7793, V7794, V7795, V7796, V7797, V7798, V7799, V7800, V8051, V8052, V8053, V8054, V8055, V8056, V8057, V8058, V8059, V8060, V8061, V8062, V8063, V8064, V8065, V8066, V8067, V8068, V8069, V8070, V8071, V8072, V8073, V8074, V8075, V8076, V8077, V8078, V8079, V8080, V8081, V8082, V8083, V8084, V8085, V8086, V8087, V8088, V8089, V8090, V8091, V8092, V8093, V8094, V8095, V8096, V8097, V8098, V8099, V8100, V8101, V8102, V8103, V8104, V8105, V8106, V8107, V8108, V8109, V8110, V8111, V8112, V8113, V8114, V8115, V8116, V8117, V8118, V8119, V8120, V8121, V8122, V8123, V8124, V8125, V8126, V8127, V8128, V8129, V8130, V8131, V8132, V8133, V8134, V8135, V8136, V8137, V8138, V8139, V8140, V8141, V8142, V8143, V8144, V8145, V8146, V8147, V8148, V8149, V8150, V8151, V8152, V8153, V8154, V8155, V8156, V8157, V8158, V8159, V8160, V8161, V8162, V8163, V8164, V8165, V8166, V8167, V8168, V8169, V8170, V8171, V8172, V8173, V8174, V8175, V8176, V8177, V8178, V8179, V8180, V8181, V8182, V8183, V8184, V8185, V8186, V8187, V8188, V8189, V8190, V8191, V8192, V8193, V8194, V8195, V8196, V8197, V8198, V8199, V8200, V8201, V8202, V8203, V8204, V8205, V8206, V8207, V8208, V8209, V8210, V8211, V8212, V8213, V8214, V8215, V8216, V8217, V8218, V8219, V8220, V8221, V8222, V8223, V8224, V8225, V8226, V8227, V8228, V8229, V8230, V8231, V8232, V8233, V8234, V8235, V8236, V8237, V8238, V8239, V8240, V8241, V8242, V8243, V8244, V8245, V8246, V8247, V8248, V8249, V8250, V8501, V8502, V8503, V8504, V8505, V8506, V8507, V8508, V8509, V8510, V8511, V8512, V8513, V8514, V8515, V8516, V8517, V8518, V8519, V8520, V8521, V8522, V8523, V8524, V8525, V8526, V8527, V8528, V8529, V8530, V8531, V8532, V8533, V8534, V8535, V8536, V8537, V8538, V8539, V8540, V8541, V8542, V8543, V8544, V8545, V8546, V8547, V8548, V8549, V8550, V8701, V8702, V8703, V8704, V8705, V8706, V8707, V8708, V8709, V8710, V8711, V8712, V8713, V8714, V8715, V8716, V8717, V8718, V8719, V8720, V8721, V8722, V8723, V8724, V8725, V8726, V8727, V8728, V8729, V8730, V8731, V8732, V8733, V8734, V8735, V8736, V8737, V8738, V8739, V8740, V8741, V8742, V8743, V8744, V8745, V8746, V8747, V8748, V8749, V8750, V8751, V8752, V8753, V8754, V8755, V8756, V8757, V8758, V8759, V8760, V8761, V8762, V8763, V8764, V8765, V8766, V8767, V8768, V8769, V8770, V8771, V8772, V8773, V8774, V8775, V8776, V8777, V8778, V8779, V8780, V8781, V8782, V8783, V8784, V8785, V8786, V8787, V8788, V8789, V8790, V8791, V8792, V8793, V8794, V8795, V8796, V8797, V8798, V8799, V8800, V8894, V9851, V9852, V9853, V9854, V9855, V9856, V9857, V9858, V9859, V9860, V9861, V9862, V9863, V9864, V9865, V9866, V9867, V9868, V9869, V9870, V9871, V9872, V9873, V9874, V9875, V9876, V9877, V9878, V9879, V9880, V9881, V9882, V9883, V9884, V9885, V9886, V9887, V9888, V9889, V9890, V9891, V9892, V9893, V9894, V9895, V9896, V9897, V9898, V9899, V9900, V10100, V10101, V10102, V10103, V10104, V10105, V10106, V10107, V10108, V10109, V10110, V10111, V10112, V10113, V10114, V10115, V10116, V10117, V10118, V10119, V10120, V10121, V10122, V10123, V10124, V10125, V10126, V10127, V10128, V10129, V10130, V10131, V10132, V10133, V10134, V10135, V10136, V10137, V10138, V10139, V10140, V10141, V10142, V10143, V10144, V10145, V10146, V10147, V10148, V10149, V10150, V10251, V10252, V10253, V10254, V10255, V10256, V10257, V10258, V10259, V10260, V10261, V10262, V10263, V10264, V10265, V10266, V10267, V10268, V10269, V10270, V10271, V10272, V10273, V10274, V10275, V10276, V10277, V10278, V10279, V10280, V10281, V10282, V10283, V10284, V10285, V10286, V10287, V10288, V10289, V10290, V10291, V10292, V10293, V10294, V10295, V10296, V10297, V10298, V10299, V10300. Re-run Step 6 against run `20260829_080358` to retry only these.
+
+## 3-way matched, invoice recorded after goods receipt (`three_way_matched_after_gr`)
+
+Represents items resolved via 3-way matching where the goods receipt precedes the invoice receipt. This alternative makes a strong positive contribution to preserving value-matching control integrity and is judged against the Time to clearance, 3-way after GR (days) indicator.
+
+**Taxonomy-derivation rationale (Step 5):** Directly maps to the declared OR alternative 5 in the goal model. Supported by frequent variants like V0001 and V0002 where Record Goods Receipt precedes Vendor creates invoice and Record Invoice Receipt.
+
+**Goal-model linkage:** 5 (Goal): 3-way matched, invoice recorded after goods receipt
+
+**Coverage:** macro 5529/11371 variants (48.6%) · micro 162356/250411 cases (64.8%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 31.12, nearest other category `three_way_matched_before_gr` at mean distance 23.66
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.406, nearest other category `three_way_matched_before_gr` at mean distance 0.412
+
+## 3-way matched, invoice recorded before goods receipt (`three_way_matched_before_gr`)
+
+Represents items resolved via 3-way matching where the invoice is recorded before the goods receipt occurs. This alternative helps maximize working-capital efficiency and preserve control integrity, and is judged against the Time to clearance, 3-way before GR (days) indicator.
+
+**Taxonomy-derivation rationale (Step 5):** Directly maps to declared OR alternative 6 in the goal model, where the invoice arrives before the goods receipt (e.g., variant V0007).
+
+**Goal-model linkage:** 6 (Goal): 3-way matched, invoice recorded before goods receipt
+
+**Coverage:** macro 3293/11371 variants (29.0%) · micro 47137/250411 cases (18.8%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 15.06, nearest other category `three_way_matched_after_gr` at mean distance 23.66
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.412, nearest other category `three_way_matched_after_gr` at mean distance 0.412
+
+## 2-way matched (no goods receipt required) (`two_way_matched`)
+
+Represents items resolved through a 2-way match where no goods receipt is required. This helps minimize procurement and matching overhead, and is judged against the Time to clearance, 2-way match (days) indicator.
+
+**Taxonomy-derivation rationale (Step 5):** Directly maps to declared OR alternative 7 in the goal model for cases skipping goods receipt requirements.
+
+**Goal-model linkage:** 7 (Goal): 2-way matched (no goods receipt required)
+
+**Coverage:** macro 89/11371 variants (0.8%) · micro 238/250411 cases (0.1%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 88.11, nearest other category `three_way_matched_before_gr` at mean distance 68.76
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.297, nearest other category `consignment_consumption` at mean distance 0.334
+
+## Resolve via consignment consumption (`consignment_consumption`)
+
+Represents items resolved via consignment stock consumption. This helps minimize procurement and matching overhead, and is judged against exception/rework rates and clearance indicators.
+
+**Taxonomy-derivation rationale (Step 5):** Directly maps to declared OR alternative task 13 in the goal model.
+
+**Goal-model linkage:** 13 (Task): Resolve via consignment consumption
+
+**Coverage:** macro 35/11371 variants (0.3%) · micro 79/250411 cases (0.0%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 79.48, nearest other category `three_way_matched_before_gr` at mean distance 63.85
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.358, nearest other category `two_way_matched` at mean distance 0.334
+
+## Divergence between structural and profile distance
+
+Flagged for review, not resolved automatically — the two metrics measure different things (control-flow vs. business profile) and disagreement is informative on its own.
+
+**Same category, structurally far apart** (possibly a category covering two distinct control-flow patterns):
+
+- `V3341` / `V6776` (category `three_way_matched_after_gr`): structural=988, profile=0.727
+- `V6096` / `V6776` (category `three_way_matched_after_gr`): structural=988, profile=0.717
+- `V6112` / `V6776` (category `three_way_matched_after_gr`): structural=988, profile=0.729
+- `V0027` / `V6776` (category `three_way_matched_after_gr`): structural=987, profile=0.722
+- `V0106` / `V6776` (category `three_way_matched_after_gr`): structural=987, profile=0.721
+- `V0279` / `V6776` (category `three_way_matched_after_gr`): structural=987, profile=0.719
+- `V0421` / `V6776` (category `three_way_matched_after_gr`): structural=987, profile=0.720
+- `V0437` / `V6776` (category `three_way_matched_after_gr`): structural=987, profile=0.722
+- `V0848` / `V6776` (category `three_way_matched_after_gr`): structural=987, profile=0.721
+- `V1042` / `V6776` (category `three_way_matched_after_gr`): structural=987, profile=0.716
+
+**Different category, structurally near-identical** (the TP/TA-style case — categories distinguished on business intent the activity sequence alone would not show):
+
+- `V0001` (`three_way_matched_after_gr`) / `V0004` (`three_way_matched_before_gr`): structural=1, profile=0.005
+- `V0001` (`three_way_matched_after_gr`) / `V0015` (`three_way_matched_before_gr`): structural=1, profile=0.343
+- `V0001` (`three_way_matched_after_gr`) / `V0025` (`three_way_matched_before_gr`): structural=1, profile=0.000
+- `V0001` (`three_way_matched_after_gr`) / `V0035` (`three_way_matched_before_gr`): structural=1, profile=0.004
+- `V0001` (`three_way_matched_after_gr`) / `V0045` (`three_way_matched_before_gr`): structural=1, profile=0.339
+- `V0001` (`three_way_matched_after_gr`) / `V0072` (`three_way_matched_before_gr`): structural=1, profile=0.006
+- `V0001` (`three_way_matched_after_gr`) / `V0119` (`three_way_matched_before_gr`): structural=1, profile=0.005
+- `V0001` (`three_way_matched_after_gr`) / `V0135` (`three_way_matched_before_gr`): structural=1, profile=0.004
+- `V0001` (`three_way_matched_after_gr`) / `V0148` (`three_way_matched_before_gr`): structural=1, profile=0.005
+- `V0001` (`three_way_matched_after_gr`) / `V0183` (`three_way_matched_before_gr`): structural=1, profile=0.004
+
+## Residual
+
+2425/11371 variants (21.3%), 40601/250411 cases (16.2%) unassigned.
+
+- `V0003`: The process ends at Record Goods Receipt without an invoice being recorded or cleared.
+- `V0009`: The purchase order item is deleted, so no matching or execution occurs.
+- `V0012`: Process stops at Record Goods Receipt without any invoice handling.
+- `V0014`: Incomplete process ending immediately at Create Purchase Order Item.
+- `V0024`: Incomplete trace ending with Create Purchase Order Item.
+- `V0029`: Purchase order item is deleted.
+- `V0034`: Trace ends at Record Goods Receipt without invoice handling.
+- `V0037`: Purchase order item is deleted.
+- `V0039`: Trace ends at Record Goods Receipt without invoice activities.
+- `V0042`: Incomplete trace with repeated goods receipt and no invoice activities.
+- `V0046`: Trace stops at Record Goods Receipt without invoices.
+- `V0054`: This narrative involves purchase order changes and releases, not invoice and goods receipt matching.
+- `V0055`: The purchase order item is deleted, meaning it never completes a matching or purchasing cycle.
+- `V0062`: Involves a service entry sheet which does not fit standard material 3-way or 2-way match categories.
+- `V0063`: The process terminates at Record Goods Receipt without an invoice clearance or receipt.
+- `V0064`: Involves service entry sheet and ends there without full matching or invoicing steps.
+- `V0068`: Only involves purchase order creation and change approval.
+- `V0071`: Involves changing the delivery indicator only.
+- `V0073`: Process ends with Record Goods Receipt without invoicing.
+- `V0079`: Involves cancellation of goods receipt and invoice receipt.
+- `V0080`: Involves deletion and change approval for purchase order.
+- `V0085`: Process ends with repeated goods receipts and no invoice activities.
+- `V0088`: Involves cancellation steps rather than normal matching.
+- `V0091`: Involves cancellations of goods and invoice receipts.
+- `V0095`: Involves cancelling a goods receipt.
+- `V0097`: Involves quantity changes on requisition and purchase order without matching/invoicing.
+- `V0099`: Process terminates at goods receipt without invoicing.
+- `V0105`: This variant ends at Change Price without completing a matching or clearance process.
+- `V0108`: The variant consists only of purchase order creation and repeated goods receipts without invoice or matching activities.
+- `V0110`: The purchase order item is deleted, so no matching or clearance occurs.
+- `V0113`: The process terminates at Receive Order Confirmation without reaching invoice processing or matching.
+- `V0114`: The process terminates at Record Goods Receipt without any invoice handling.
+- `V0115`: The purchase order item is deleted.
+- `V0121`: The purchase order item is blocked, terminating the process without matching.
+- `V0122`: Process ends at Receive Order Confirmation.
+- `V0128`: Variant ends at Change Price.
+- `V0130`: Involves approval modifications only.
+- `V0139`: Terminates at Record Goods Receipt without invoice handling.
+- `V0140`: Variant ends at Change Quantity.
+- `V0141`: Variant ends at Change Delivery Indicator.
+- `V0144`: Terminates at Create Purchase Order Item.
+- `V0146`: Terminates at Change Price.
+- `V0159`: Process only involves goods receipt creation and cancellation without reaching invoice processing or matching.
+- `V0162`: Process only involves service entry sheets and goods receipt, with no invoice matching.
+- `V0163`: Process terminates at change delivery indicator after goods receipt without invoice activities.
+- `V0166`: Process terminates at order change/deletion without reaching invoice matching.
+- `V0167`: Process terminates at delete purchase order item.
+- `V0170`: Process terminates at goods receipt with quantity changes; no invoice matching.
+- `V0174`: Process terminates at block purchase order item.
+- `V0180`: Process consists solely of multiple goods receipts without invoice processing.
+- `V0191`: Process terminates at change quantity without invoice handling.
+- `V0209`: The purchase order item is deleted before any matching or receiving takes place.
+- `V0210`: The process involves cancellations and debit memos without a standard matching completion.
+- `V0212`: The variant ends at Record Goods Receipt without an invoice receipt.
+- `V0213`: The variant ends at Record Goods Receipt without an invoice receipt.
+- `V0243`: Involves a goods receipt and delivery indicator change without invoicing.
+- `V0244`: Consists only of goods receipts and service entry sheets without matching or clearing.
+- `V0246`: Variant ends at Record Goods Receipt without any invoice handling.
+- `V0253`: This narrative ends with SRM transmission without reaching invoice clearance or matching stages, so no taxonomy category fits.
+- `V0257`: The variant represents cancellations rather than a completed match or consumption process.
+- `V0260`: The process terminates at change quantity without a matching or invoicing cycle.
+- `V0262`: The process only reaches record goods receipt and does not complete a clearance or matching cycle.
+- `V0265`: The purchase order item is deleted, preventing any matching or clearance.
+- `V0267`: The process terminates at goods receipt without invoicing or matching.
+- `V0281`: The process terminates at cancellation of goods receipt.
+- `V0307`: The process ends with deleting the purchase order item rather than clearing or matching an invoice, making it part of the residual.
+- `V0310`: The process ends at Record Goods Receipt without an invoice receipt or clearing step, so it does not fit any matching category.
+- `V0313`: The variant ends with a goods receipt and lacks invoice recording or clearance.
+- `V0315`: The process terminates at 'Vendor creates invoice' after a goods receipt and invoice receipt, without completing clearance or matching.
+- `V0316`: This variant only covers procurement setup and order creation in SRM, ending before any receiving or matching occurs.
+- `V0319`: The process ends at Record Goods Receipt without any invoice or payment processing.
+- `V0327`: The process terminates with a deleted purchase order item.
+- `V0329`: The narrative consists of debit memos, cancellations, and price changes without a normal matching or clearance path.
+- `V0333`: The process results in a cancelled goods receipt without completing invoice clearance.
+- `V0334`: The process terminates at Record Service Entry Sheet without involving invoice receipt or matching.
+- `V0337`: The process ends with a cancelled invoice receipt and debit memo, not representing a standard match.
+- `V0351`: This variant ends with Record Invoice Receipt after purchase order changes and does not complete a full 3-way match clearance cycle.
+- `V0354`: The process only consists of creating the PO and recording goods receipts, without reaching an invoice receipt or clearance.
+- `V0356`: Terminates at Change Price without completing goods receipt, invoice receipt, or clearance.
+- `V0357`: Involves cancellations of goods receipt and invoice receipt, making it an exception flow rather than a standard matched category.
+- `V0363`: Ends with Record Goods Receipt without reaching invoice receipt or clearance.
+- `V0367`: Involves cancellation of invoice receipt after clearing, representing an exceptional flow.
+- `V0368`: Terminates with Delete Purchase Order Item.
+- `V0369`: Service entry sheets are used without invoice processing or clearance.
+- `V0375`: Complex rework flow featuring multiple cancellations and repeated clearances.
+- `V0377`: Terminates at Record Goods Receipt.
+- `V0379`: Terminates at Delete Purchase Order Item.
+- `V0381`: Service entry sheet workflow without invoice clearance.
+- `V0384`: Terminates at Record Goods Receipt.
+- `V0394`: Involves a cancellation of invoice receipt long after clearance.
+- `V0397`: Terminates at Delete Purchase Order Item.
+- `V0399`: Involves goods receipt cancellation and change of delivery indicator without invoicing.
+- `V0400`: SRM process ending in Record Goods Receipt without invoice handling.
+- `V0404`: The process concludes with Change Delivery Indicator and lacks standard invoice recording or matching completion steps.
+- `V0411`: The variant consists entirely of repetitive goods receipts and service entry sheets without completing an invoice or matching cycle.
+- `V0436`: Process only contains service entry sheets and goods receipt, without invoice handling.
+- `V0443`: Process is deleted early and does not reach goods receipt or invoice matching.
+- `V0448`: Process contains only goods receipts and service entry sheets without invoice activities.
+- `V0521`: The variant lacks a clear invoice or goods receipt standard sequence to categorize definitively into 3-way or 2-way matching categories.
+- `V0523`: The process ends at Record Goods Receipt without an invoice clearance or matching flow.
+- `V0559`: The process terminates at Record Goods Receipt without an invoice receipt or clearance, fitting none of the matching categories.
+- `V0561`: The order is deleted, meaning no matching or clearance took place.
+- `V0577`: Process ends at Record Goods Receipt without an invoice or clearance.
+- `V0582`: Process ends at Record Goods Receipt without any invoice or clearance.
+- `V0607`: Involves a Service Entry Sheet rather than a traditional goods receipt, not cleanly fitting standard material GR categories.
+- `V0610`: Case stops at Record Goods Receipt without an invoice clearance path.
+- `V0612`: Involves service entry sheet processing rather than standard inventory GR.
+- `V0624`: Incomplete or non-standard flow without standard goods receipt or invoice clearance.
+- `V0625`: Variant ends prematurely at vendor invoice without clearance.
+- `V0628`: Involves service entry sheets and does not follow standard 3-way match or 2-way match patterns.
+- `V0638`: Variant consists only of repeated goods receipts without invoice activities.
+- `V0643`: Purchase order item is deleted, not matching any clearance or matching category.
+- `V0651`: This narrative involves creating and deleting a purchase order item and changing price, without any goods receipt or invoice matching activities.
+- `V0652`: This narrative only records a goods receipt and quantity changes, but does not complete an invoice clearance or standard matching process.
+- `V0658`: The process ends at Record Goods Receipt without any invoice creation or clearance.
+- `V0663`: The process ends in Cancel Goods Receipt and does not complete a matching or clearance process.
+- `V0664`: The process ends at Change Delivery Indicator without involving invoice matching or clearance.
+- `V0670`: Involves only purchase requisition/order creation and quantity changes; no goods receipt or invoice matching.
+- `V0672`: Ends at Record Goods Receipt without any invoice processing.
+- `V0675`: Involves only approval changes and purchase order item creation without matching or clearance.
+- `V0676`: Involves only approval changes and purchase order item creation without matching or clearance.
+- `V0680`: Ends at Receive Order Confirmation without goods receipt or invoice clearance.
+- `V0696`: Involves cancellations and payment block removal without standard goods receipt or invoice matching flow.
+- `V0698`: Ends at Record Goods Receipt without any invoice processing or clearance.
+- `V0702`: The variant only shows quantity and delivery indicator adjustments followed by goods receipt, without completing a full invoice matching or clearing flow.
+- `V0705`: Incomplete order processing limited to price and quantity changes.
+- `V0714`: The process terminates at Record Goods Receipt without an invoice receipt or clearing.
+- `V0715`: Incomplete process ending at Change Quantity.
+- `V0724`: Process stops at Record Goods Receipt with no invoice activities.
+- `V0725`: Process stops at Record Goods Receipt.
+- `V0727`: Process fails in SRM transfer after multiple error states.
+- `V0739`: Process terminates at Record Goods Receipt.
+- `V0754`: The purchase order item was deleted before any matching or fulfillment could occur, so no category applies.
+- `V0759`: The variant features service entry sheets and goods receipts without an invoice receipt or clearing step, thus not fitting standard matching categories.
+- `V0769`: The process stops at record goods receipt without any invoice creation or matching.
+- `V0774`: Process concludes at goods receipt with quantity changes, lacking invoice processing.
+- `V0783`: The process involves a goods receipt followed by a cancellation, without reaching invoice steps.
+- `V0786`: Process consists solely of goods receipts and service entry sheets without invoice matching.
+- `V0821`: The process terminates at Record Goods Receipt without any invoice creation or matching.
+- `V0823`: The process involves goods receipt and cancellation without an invoice creation or matching.
+- `V0834`: The process ends with Change Delivery Indicator without any goods receipt or invoice activities.
+- `V0840`: The process terminates with Delete Purchase Order Item without receiving or invoicing.
+- `V0842`: The process consists entirely of quantity changes on the purchase order item without execution.
+- `V0843`: The purchase order item is deleted before any execution or matching takes place.
+- `V0852`: The process only goes as far as transmitting an SRM change; no invoice or matching process is completed.
+- `V0859`: The process variant ends at Record Goods Receipt without any invoice or matching activities.
+- `V0878`: Variant ends at Record Goods Receipt without an invoice.
+- `V0881`: Variant ends at Record Goods Receipt without an invoice.
+- `V0883`: Variant ends at Record Goods Receipt without an invoice.
+- `V0892`: Variant ends at Record Goods Receipt without an invoice.
+- `V0895`: Variant only involves purchase order changes and prices; no goods receipt or invoice.
+- `V0911`: The process terminates at Record Goods Receipt without invoice creation or clearance, so it does not realize any matching category.
+- `V0912`: The process ends with a Change Delivery Indicator and contains no invoice receipt or matching cycle.
+- `V0928`: The purchase order item is deleted, with no goods receipt or invoice matching occurring.
+- `V0932`: The process results in a cancelled goods receipt and has no invoice matching sequence.
+- `V0946`: The variant consists entirely of service entry sheets and goods receipts without any invoice processing.
+- `V0955`: The variant ends at Record Goods Receipt without an invoice receipt or clearance, leaving it incomplete for matching categories.
+- `V0957`: The process terminates at Record Goods Receipt without reaching invoice recording or matching.
+- `V0959`: The purchase order is deleted early on, so no matching or financial clearance takes place.
+- `V0964`: The purchase order item is deleted, resulting in no invoice or goods receipt processing.
+- `V0971`: Process terminates at Record Goods Receipt without invoice handling.
+- `V0976`: Order is deleted, so no matching takes place.
+- `V0978`: Process ends with Change Quantity without invoice or completion steps.
+- `V0983`: Process ends at Record Goods Receipt without invoice processing.
+- `V0993`: Variant ends at Change Delivery Indicator without invoice processing.
+- `V0998`: Process involves service entry sheets and goods receipts repeatedly but lacks invoice receipt and clearance steps.
+- `V1002`: This variant records service entry sheets and repeated goods receipts without a standard 3-way match or 2-way match completion.
+- `V1006`: The variant ends with a price change and does not complete matching or invoicing.
+- `V1007`: The process terminates at goods receipt cancellation without completing a clearance or matching.
+- `V1009`: This variant consists mainly of repeated purchase order approval changes and does not represent a standard matching flow.
+- `V1012`: Involves repeated transfers and service entry sheets that do not fit a clean matching category.
+- `V1013`: The purchase order item is deleted after extensive SRM rework.
+- `V1016`: Contains multiple service entry sheets without completing a standard matching or clearance cycle.
+- `V1025`: Involves purchase order approvals and deletions without invoice matching.
+- `V1026`: Ends in goods receipt cancellations.
+- `V1041`: Variant consists of repeated goods receipts without reaching invoice creation or matching.
+- `V1045`: Involves deletion and reactivation of purchase order items without invoice processing.
+- `V1052`: The process ends at Record Goods Receipt without an invoice receipt or clearance, leaving it incomplete for matching categories.
+- `V1078`: Process ends at Record Service Entry Sheet without matching or clearing activities.
+- `V1084`: Process ends at Record Goods Receipt without invoice handling.
+- `V1090`: Involves cancellations and does not follow a clean matching pattern.
+- `V1101`: The variant ends in deleting the purchase order item and does not complete a matching process.
+- `V1103`: This variant only records service entry sheets and goods receipts without completing an invoice matching cycle.
+- `V1131`: Variant does not contain an invoice receipt or clearing activity.
+- `V1132`: Variant terminates at price change without invoice clearance.
+- `V1133`: Variant consists only of price changes.
+- `V1135`: Variant ends at vendor invoice creation without matching completion.
+- `V1138`: Variant represents SRM processing ending in goods receipt without matching.
+- `V1139`: Variant is cancelled early.
+- `V1145`: Variant deletes the purchase order item.
+- `V1154`: The process terminates at Record Goods Receipt without invoice receipt or clearance activities, so it does not fit any matching categories.
+- `V1159`: This variant only handles purchase order changes and does not execute purchasing, receiving, or invoicing matching.
+- `V1164`: Involves goods and service entry sheets with subsequent cancellation, without reaching an invoice matching or clearing stage.
+- `V1167`: Ends at Record Goods Receipt without completing an invoice cycle.
+- `V1168`: Consists entirely of repeated goods receipts and service entry sheets without matching or clearing.
+- `V1174`: Terminates at Change Price; no matching or receiving completed.
+- `V1179`: Ends at Record Goods Receipt without invoice creation or matching.
+- `V1180`: Purely a purchase order lifecycle/approval change variant.
+- `V1182`: Only consists of approval changes.
+- `V1193`: Ends at Change Delivery Indicator without matching or invoice clearance.
+- `V1202`: The process only consists of order creation, service entry sheets, and goods receipts without any invoicing or matching steps.
+- `V1209`: The process terminates at Record Goods Receipt without any invoice creation or matching.
+- `V1220`: The process only involves service entry sheets and goods receipts, with no invoice processing.
+- `V1225`: The process terminates at Change Delivery Indicator without any invoice or goods receipt matching.
+- `V1226`: The variant consists solely of service entry sheets and goods receipts.
+- `V1239`: Process ends with Record Goods Receipt without any invoicing activities.
+- `V1261`: The purchase order item was deleted, so no matching or invoice clearing occurred.
+- `V1264`: Consists only of purchase order creation and repeated goods receipts without invoice activities.
+- `V1269`: Involves service entry sheets and goods receipts without any invoice processing or matching conclusion.
+- `V1300`: Consists of service entry sheets and goods receipts without any invoice processing or matching conclusion.
+- `V1305`: The process ends at Record Goods Receipt without any invoice recording or matching activities.
+- `V1309`: The variant involves purchase order quantity changes and ends at Change Delivery Indicator without involving any invoice matching.
+- `V1311`: This narrative deals strictly with purchase order releases, approval changes, and deletion/reactivation, without invoices or goods receipts.
+- `V1345`: The process consists of PO creation, multiple goods receipts, and a change delivery indicator without any invoice receipt or clearing.
+- `V1356`: The process terminates at Record Goods Receipt without an invoice receipt or clearance, leaving it incomplete for matching categories.
+- `V1359`: The order item is deleted, failing to complete a standard matching and clearance lifecycle.
+- `V1361`: The process ends with Change Delivery Indicator and does not conclude with invoice matching or clearance.
+- `V1362`: Only service entry sheets and goods receipts are recorded without invoice creation or matching.
+- `V1367`: The process ends with Cancel Invoice Receipt without clearing or completing a standard match.
+- `V1394`: The process terminates at Vendor creates invoice without goods receipt or invoice matching.
+- `V1396`: The process ends with Change Price and does not involve invoice matching or clearance.
+- `V1408`: Process terminates at Record Goods Receipt without invoice handling.
+- `V1416`: Terminates at Cancel Goods Receipt without matching an invoice.
+- `V1417`: Terminates at Record Goods Receipt without invoice processing.
+- `V1418`: Terminates at Cancel Goods Receipt.
+- `V1426`: Terminates at Record Goods Receipt without invoice involvement.
+- `V1429`: Terminates at Cancel Goods Receipt.
+- `V1430`: Terminates at Record Service Entry Sheet without invoice processing.
+- `V1434`: Terminates at Record Service Entry Sheet without invoice processing.
+- `V1449`: Terminates at Record Goods Receipt without invoice handling.
+- `V1457`: The process ends in Cancel Goods Receipt and does not complete a standard matching or clearance cycle.
+- `V1462`: Process stops at Record Goods Receipt without an invoice receipt or clearance.
+- `V1484`: Process consists solely of goods receipts and service entry sheets without matching or invoicing.
+- `V1504`: The process terminates at Record Goods Receipt without an invoice receipt or clearing step, thus not fitting any full matching or consumption lifecycle category.
+- `V1511`: This variant involves service entry sheets and goods receipts without invoice creation or matching completion, making it a residual case.
+- `V1514`: Variant consists entirely of service entry sheets and goods receipts without an invoice matching lifecycle.
+- `V1518`: The process lacks invoice creation and matching steps, consisting only of service entry and goods receipt.
+- `V1520`: Terminates with a change delivery indicator and goods receipts/cancellations, without reaching invoice matching or clearance.
+- `V1524`: The sequence involves only goods receipt and cancellation activities without invoice recording.
+- `V1526`: Involves multiple service entry sheets, goods receipts, and payment blocking without a clean 3-way match completion.
+- `V1533`: Consists of service entry sheets and goods receipts only, lacking invoice matching.
+- `V1550`: Consists solely of service entry sheets and goods receipts without an invoice matching process.
+- `V1558`: The process terminates at Record Goods Receipt without an invoice receipt or clearing step, so it does not fit any matching category.
+- `V1578`: The process terminates at Change Quantity after a goods receipt without an invoice or clearance.
+- `V1579`: Process ends at Record Goods Receipt without invoice handling or clearing.
+- `V1581`: Terminates at Record Goods Receipt without invoice processing.
+- `V1591`: Variant ends in Delete Purchase Order Item without an invoice or clearance.
+- `V1602`: The purchase order item was deleted before any invoice or goods receipt occurred, so none of the matching categories apply.
+- `V1611`: The process involves service entry sheets and goods receipts without any invoicing or matching steps, leaving it outside the matching categories.
+- `V1618`: The purchase order item was deleted and reactivated, but the process does not reach any invoice matching or clearance.
+- `V1621`: Process terminates at goods receipt activities without invoice processing.
+- `V1644`: Process contains cancellations and payment block removals without standard matching execution.
+- `V1669`: Variant ends with Cancel Invoice Receipt without full clearance or matching.
+- `V1670`: Incomplete or irregular sequence ending in Record Invoice Receipt following cancellation flows.
+- `V1685`: Item was deleted, so no matching or invoice clearance occurred.
+- `V1693`: Variant ends at Record Goods Receipt without invoice creation or matching.
+- `V1697`: Service entry sheet and goods receipt loop without invoice or matching.
+- `V1700`: Variant consists purely of service entry sheets and goods receipts without invoicing.
+- `V1707`: Process stops at Record Goods Receipt without invoice clearance.
+- `V1714`: Variant consists entirely of service entry sheets and goods receipts without invoice activities.
+- `V1716`: Terminates early at Change Delivery Indicator.
+- `V1718`: Process ends with Cancel Goods Receipt.
+- `V1723`: Only contains goods receipts and service entry sheets.
+- `V1724`: Lacks a standard goods receipt and invoice sequence.
+- `V1725`: Terminates at Create Purchase Order Item.
+- `V1739`: Contains only service entry sheets and goods receipts.
+- `V1741`: Terminates at Cancel Goods Receipt.
+- `V1742`: Contains only service entry sheets and goods receipts.
+- `V1766`: The narrative deals only with service entry sheets and goods receipts without completing an invoice matching process.
+- `V1784`: Process stops at goods receipt without invoice recording or clearance.
+- `V1785`: Purchase order item is deleted before fulfillment.
+- `V1791`: SRM process results in deletion.
+- `V1807`: The process variant ends at Record Goods Receipt without an invoice creation or matching step, so it does not realize any matching category.
+- `V1822`: The variant involves goods receipt and quantity changes followed by delivery indicator changes, but no invoice creation or matching, so it does not realize a matching category.
+- `V1823`: The variant involves service entry sheets and goods receipt cancellations without reaching any invoice matching or clearance steps.
+- `V1826`: The process variant results in a deleted purchase order item and does not involve invoicing or matching activities.
+- `V1828`: The variant concludes with a change delivery indicator and quantity updates without involving invoice receipts or matching.
+- `V1829`: The variant terminates at Record Goods Receipt without any invoice receipt or matching process.
+- `V1837`: The variant terminates at Record Goods Receipt without reaching invoice creation or matching.
+- `V1838`: The variant ends at Change Approval for Purchase Order and does not contain any goods receipt or invoice activities.
+- `V1841`: The variant results in purchase order item deletion and does not involve any receipt or matching activities.
+- `V1847`: The variant ends with a change delivery indicator after goods receipt without any invoice creation or matching.
+- `V1851`: The narrative shows creation and deletion of purchase order items without completing a standard matching or clearance process.
+- `V1857`: The process ends with deleting the purchase order item, lacking any matching or invoicing workflow.
+- `V1860`: Process is focused on changing the delivery indicator rather than a standard matching or clearance cycle.
+- `V1874`: Involves service entry sheet and goods receipt without standard matching or invoice processing.
+- `V1881`: Process consists solely of service entry sheets and goods receipts without invoicing.
+- `V1885`: Consists of service entry sheets and goods receipts only.
+- `V1890`: Process consists exclusively of quantity changes.
+- `V1892`: Involves requisition and deletion of purchase order item.
+- `V1893`: Ends at goods receipt without invoicing.
+- `V1894`: Consists of purchase order approval and quantity changes.
+- `V1903`: The process terminates with SRM transfer failure and does not clearly complete a standard matching lifecycle.
+- `V1904`: The variant ends with changing delivery indicator and experiences severe transfer issues, not fitting a standard matching process.
+- `V1906`: The purchase order item is deleted after numerous SRM transaction loops, leaving no clear matching execution.
+- `V1907`: The process stalls in SRM transfer steps and does not reach any invoice or matching lifecycle.
+- `V1910`: The process stops at record goods receipt without invoice creation or matching.
+- `V1931`: The purchase order item is deleted, not resulting in an invoice clearance.
+- `V1952`: The variant ends with cancellation of goods receipt and does not complete a full matching or clearance cycle.
+- `V1953`: The variant only creates service entry sheets and goods receipts without proceeding to invoicing or clearance.
+- `V1962`: Variant consists entirely of goods receipts and service entry sheets without invoice processing.
+- `V1972`: Only goods receipts and service entry sheets are recorded.
+- `V1975`: Variant ends with change of delivery indicator and does not complete matching.
+- `V1998`: Only goods receipts and service entry sheets are recorded.
+- `V2004`: The variant ends with a blocked purchase order item and does not complete matching or invoicing.
+- `V2013`: The process only records service entry sheets and goods receipts without reaching an invoice matching or clearing stage.
+- `V2014`: The process stops at recording goods receipts and service entry sheets without invoice handling.
+- `V2022`: Process terminates at goods receipt without invoicing.
+- `V2023`: Process terminates at goods receipt without invoicing.
+- `V2029`: Involves only delivery indicator changes, no matching or invoicing.
+- `V2032`: Process terminates at goods receipt without invoicing.
+- `V2033`: Process terminates at goods receipt without invoicing.
+- `V2038`: Involves cancellations and memo creation without standard matching and completion.
+- `V2040`: Process terminates at goods receipt without invoicing.
+- `V2041`: Ends in purchase order deletion without invoicing.
+- `V2050`: Process terminates at goods receipt without invoicing.
+- `V2055`: The case ends in deleting the purchase order item, so it is neither matched nor cleared as an invoice.
+- `V2057`: Involves service entry sheets and does not complete standard invoice clearing/matching flow.
+- `V2058`: Process terminates at Record Service Entry Sheet without matching or invoice clearance.
+- `V2064`: Heavy service entry and goods receipt rework without clear standard matching categorization.
+- `V2065`: Consists primarily of service entry sheets and goods receipts without invoice clearance.
+- `V2074`: Contains multiple service entry sheets and goods receipts without reaching invoice clearing.
+- `V2102`: The process variant ends at Record Goods Receipt without any invoice receipt or clearance activities, so it does not fit any matching category.
+- `V2104`: The narrative has no standard invoice receipt or goods receipt sequence in proper order and consists primarily of cancellations and debit memos.
+- `V2133`: The variant only contains purchase order creation and goods receipt cancellations/recordings without invoice processing.
+- `V2134`: The variant only contains service entry sheets and goods receipts without any invoice processing.
+- `V2156`: The narrative does not conclude with invoice clearing or a standard matching outcome.
+- `V2160`: The purchase order item is deleted, not fully cleared through a standard 2-way or 3-way match.
+- `V2164`: The narrative consists entirely of service entry and goods receipt activities without invoice recording.
+- `V2171`: The process terminates at Record Goods Receipt without invoice handling.
+- `V2172`: The process involves service entries and goods receipts without invoice clearance.
+- `V2173`: The process involves service entries and goods receipts without invoice clearance.
+- `V2181`: The purchase order item is deleted.
+- `V2183`: The process involves purchase order changes and deletion without invoicing or goods receipt matching.
+- `V2184`: The process involves purchase order modifications and ultimate deletion.
+- `V2188`: The process contains service sheets and goods receipts without an invoice clearing outcome.
+- `V2192`: The process ends with a change quantity action without matching or invoice clearing.
+- `V2199`: The process stops at Purchase Order creation (SRM workflow).
+- `V2226`: The process ends at Record Goods Receipt without an invoice clearing or matching completion.
+- `V2249`: The process variant ends with the cancellation of goods receipt and deletion of the purchase order item, without matching or clearance.
+- `V2250`: The process variant ends with record goods receipt and service entry sheets, with no invoice matching or clearing performed.
+- `V2251`: The narrative only shows PO creation and Goods Receipt/Service Entry Sheet recording without full invoice processing or clearance.
+- `V2258`: This variant ends in purchase order changes and does not complete invoice processing or matching.
+- `V2259`: This variant terminates with purchase order modifications and does not involve goods or invoice matching.
+- `V2260`: Only service entries and goods receipts are recorded without any invoice processing steps.
+- `V2270`: Variant consists entirely of PO changes and ends in deletion, with no matching or invoices.
+- `V2281`: Only service entry sheets and goods receipts are processed without any invoicing steps.
+- `V2298`: Variant involves cancellations and changes without completing a standard match or clearance.
+- `V2299`: Variant contains cancellations and invoice reversal flows without a standard matching process.
+- `V2318`: Process ends with Record Goods Receipt without matching an invoice.
+- `V2325`: No standard matching sequence is completed; ends with clearance after cancellations without a proper GR/IR timeline.
+- `V2338`: Process only includes purchase order, goods receipts, and service entry sheets without invoice actions.
+- `V2347`: Process terminates at goods receipt without invoicing.
+- `V2361`: Invoice receipt is recorded without a preceding goods receipt in the sequence, and the case ends prematurely with a canceled invoice receipt without standard matching/clearance.
+- `V2370`: Case terminates at Record Goods Receipt without any invoice creation or matching activities.
+- `V2373`: Variant ends at Record Goods Receipt without invoice creation or matching.
+- `V2378`: Variant terminates early at Change Quantity without invoice activities.
+- `V2381`: Variant terminates at Record Goods Receipt without invoice processing.
+- `V2382`: Purchase order item is deleted, resulting in no invoice matching or clearance.
+- `V2384`: Variant terminates at Record Goods Receipt without invoice activities.
+- `V2387`: Variant ends at Record Goods Receipt without invoicing.
+- `V2388`: Variant ends at Record Goods Receipt without invoice processing.
+- `V2398`: Variant terminates at Record Goods Receipt without invoicing.
+- `V2406`: The narrative only involves purchase order and goods receipt activities without completing an invoice or matching cycle.
+- `V2410`: The process contains credit memos and cancellations without completing a standard matching and clearance lifecycle.
+- `V2452`: The process variant ends with Record Goods Receipt and does not contain an invoice receipt or clearance activity.
+- `V2461`: The process terminates at Record Goods Receipt without any invoice or matching lifecycle completion.
+- `V2469`: This is a purchase order manipulation variant without any goods receipt or invoice matching activities.
+- `V2481`: Process terminates at Record Goods Receipt without invoice handling.
+- `V2497`: Variant ends in Delete Purchase Order Item with no goods receipt or invoice activity.
+- `V2499`: Variant terminates at Record Goods Receipt without any invoice handling.
+- `V2505`: The process concludes with Record Service Entry Sheet without standard invoice clearance or matching completion.
+- `V2507`: Variant ends at Record Goods Receipt without invoice handling.
+- `V2520`: Features service entry sheets and mixed service/goods receipt handling not fitting standard 3-way/2-way match classification.
+- `V2524`: Process ends at Record Goods Receipt with multiple service entry sheets.
+- `V2525`: Involves service entry sheets and non-standard sequence.
+- `V2531`: Order item deleted, does not complete matching or clearance.
+- `V2537`: Ends at Record Goods Receipt with order blocks.
+- `V2541`: Ends at Record Goods Receipt with multiple service entry sheets.
+- `V2543`: Involves service entry sheets and non-standard execution.
+- `V2545`: Ends with Change Delivery Indicator without invoice clearance.
+- `V2549`: Ends at Record Goods Receipt with service entry sheets.
+- `V2551`: The variant consists entirely of goods receipt and service entry sheet creations without any invoice receipt or clearing activities, making it part of the residual.
+- `V2553`: The variant ends with a change delivery indicator and lacks invoice processing, so it does not realize any matching category.
+- `V2555`: The variant consists primarily of goods receipts and service entry sheets without invoice matching, making it part of the residual.
+- `V2560`: The process ends with a change delivery indicator without reaching invoice receipt or clearing.
+- `V2565`: The process ends at record goods receipt without invoice posting or matching.
+- `V2567`: Variant concludes with change approval and involves no receiving or invoicing.
+- `V2568`: Variant terminates at record goods receipt without invoicing or matching.
+- `V2569`: Variant terminates at record goods receipt without invoicing or matching.
+- `V2597`: Variant concludes with service entry sheet and cancellation without invoice matching.
+- `V2612`: The process terminates at Record Goods Receipt without any invoice receipt or clearing.
+- `V2614`: Process involves service entry sheets and goods receipts without an invoice matching phase.
+- `V2615`: Process consists solely of goods receipts and service entry sheets without invoices.
+- `V2617`: Involves service entry sheets and goods receipts without invoicing.
+- `V2622`: Involves service entry sheets and goods receipts without invoice processing.
+- `V2628`: Consists of multiple goods receipts and service entry sheets without invoicing.
+- `V2636`: Terminates at goods receipt without invoicing.
+- `V2637`: Terminates at goods receipt without invoicing.
+- `V2645`: Consists of service entry sheets and goods receipts without invoicing.
+- `V2646`: Consists of goods receipts and service entry sheets without invoicing.
+- `V2647`: SRM process results in deletion without completing procurement execution or invoicing.
+- `V2650`: Terminates at SRM change transmission without reaching execution, goods receipt, or invoice.
+- `V2679`: The narrative ends with Record Goods Receipt without completing an invoice matching or clearing cycle, so it does not fit any of the standard matching categories.
+- `V2680`: This variant only covers purchase order creation and approval iterations without reaching goods receipt or invoice matching, making it part of the residual.
+- `V2682`: The process terminates at Record Goods Receipt without an invoice receipt or matching process, falling outside the defined taxonomy categories.
+- `V2690`: The purchase order item is deleted, meaning no goods receipt or invoice matching occurs, placing it in the residual.
+- `V2699`: The process consists entirely of service entry sheets and goods receipts without an invoice receipt or matching process, falling into the residual.
+- `V2701`: The narrative only covers purchase requisition and purchase order creation/changes, without reaching any invoice or goods receipt matching stages.
+- `V2729`: The narrative involves storage location changes, cancellations, and price changes without a standard goods receipt and invoice lifecycle.
+- `V2735`: Contains only goods receipt and delivery indicator updates without invoicing activities.
+- `V2736`: Ends in a cancelled goods receipt without reaching invoicing or clearance.
+- `V2750`: Represents purchase order modifications and approval changes without matching or invoicing.
+- `V2751`: The process ends with cancelling the goods receipt and lacks standard matching and completion steps.
+- `V2754`: The process stops at recording a service entry sheet and does not complete a full invoice clearance or standard match flow.
+- `V2758`: Terminates at recording goods receipt without an invoice receipt or clearance.
+- `V2762`: Involves repeated service entry sheets and goods receipts without reaching invoice matching or clearance.
+- `V2764`: Ends in cancelled goods receipts without completing invoice processes.
+- `V2765`: Short process ending in a cancelled goods receipt.
+- `V2781`: Consists excessively of repeated goods receipts without reaching an invoice stage.
+- `V2790`: Contains multiple service entry sheets and goods receipts without an invoice matching process.
+- `V2791`: Terminates at service entry sheet recording without reaching invoice processing.
+- `V2792`: Ends in a cancelled goods receipt without invoice completion.
+- `V2804`: The process primarily involves service entry sheets and goods receipt cancellations without a complete standard matching cycle.
+- `V2810`: The process ends at goods receipt without invoicing.
+- `V2811`: Involves service entry sheets and multiple goods receipt cancellations without standard matching.
+- `V2817`: Service entry and goods receipt heavy variant without invoicing.
+- `V2818`: Service entries and goods receipt cancellation dominant variant.
+- `V2825`: Service entry sheet and goods receipt cancellations without matching.
+- `V2831`: Stops at vendor creates invoice without invoice receipt or matching.
+- `V2839`: Service entry and goods receipt cycle without invoice.
+- `V2840`: Service entry and goods receipt cycle without invoice.
+- `V2842`: Purchase order changes and deletion without execution.
+- `V2843`: Goods receipt heavy variant without invoice.
+- `V2861`: The variant consists primarily of changing delivery indicators without standard matching steps.
+- `V2866`: Represents service entry sheet and goods receipt loops without a complete matching or clearance path.
+- `V2871`: Bulk service entry and goods receipt repetitions without standard matching sequence.
+- `V2872`: Ends in a cancelled goods receipt without proper matching or clearance.
+- `V2877`: Ends in change delivery indicator without reaching invoice matching or clearance.
+- `V2881`: Consists of price and approval changes without receiving or invoice steps.
+- `V2882`: Ends in goods receipt without invoice or matching steps.
+- `V2886`: Only involves goods receipt and quantity changes.
+- `V2891`: Ends in cancelled goods receipt.
+- `V2895`: Ends in purchase order item deletion.
+- `V2903`: The process involves goods receipts and service entry sheets but terminates in Cancel Goods Receipt without a proper invoice lifecycle or standard matching process.
+- `V2906`: The variant ends with a Record Goods Receipt and lacks an invoice receipt or clearing step, so it does not fit any matching categories.
+- `V2907`: This variant consists purely of requisition, order, and repeated price changes without any goods receipt or invoice matching activities.
+- `V2911`: Terminates at Change Approval for Purchase Order with no goods receipt or invoice processing.
+- `V2914`: Terminates at Change Price without goods receipts or invoices.
+- `V2915`: Terminates at Cancel Goods Receipt with extensive cancellation rework and no invoice completion.
+- `V2917`: Terminates at Record Goods Receipt without any invoice processing.
+- `V2937`: Process consists entirely of approval changes and order creation without invoices or goods receipts.
+- `V2940`: Process contains only approvals and order creation without financial clearing or receipts.
+- `V2944`: Process terminates in SRM Transfer Failed with complex failed integration states and excessive rework.
+- `V2945`: Involves debit memos, cancelled invoice receipts, and multiple rework loops outside standard clean matching.
+- `V2947`: Terminates in SRM Transfer Failed with extensive failures and multiple re-creations.
+- `V2949`: Terminates in SRM Transfer Failed with repetitive multi-cycle invoice and goods receipt loops.
+- `V2950`: Extremely convoluted variant ending in SRM Transfer Failed with extensive rework, cancellations, and multiple system state loops.
+- `V2987`: Process is dominated by SRM transfer activities and order cancellations without invoice or goods receipt matching.
+- `V3017`: The narrative terminates early at transaction completion without goods or invoice receipt activities.
+- `V3036`: Narrative ends with Record Invoice Receipt without a complete clearance or standard matching confirmation.
+- `V3069`: The process variant contains excessive rework, cancellations, and complex service entries that do not cleanly map to standard matching categories.
+- `V3070`: The variant features lengthy iterations and service sheet entries without a clean matching definition.
+- `V3071`: Contains cancelled invoices and service entries forming part of the residual.
+- `V3073`: Complex rework and repeated cancellations place this variant into the residual category.
+- `V3074`: Excessive loops and cancellations place this in the residual category.
+- `V3075`: Numerous service sheet records and repeated invoice cancellations result in a residual classification.
+- `V3076`: Extensive repetition of service entry sheets and invoice clearings makes this part of the residual.
+- `V3077`: Highly complex service entry loops and invoice cancellations fall under the residual category.
+- `V3078`: Contains numerous service entry sheets and repeated clearance steps, fitting the residual category.
+- `V3079`: Complex service entry and repeated cancellations make it part of the residual.
+- `V3080`: Too many service sheet iterations and cancellations for a clean matching category.
+- `V3081`: Extensive service entry and price changes fall into the residual.
+- `V3082`: Complex service entry sheets and multiple invoice clearances place this in the residual.
+- `V3083`: Too many service entry sheets and price changes for standard matching.
+- `V3084`: Repetitive service sheet recording and price changes fit the residual.
+- `V3085`: Service entry sheet loops place this in the residual.
+- `V3086`: Service entry and price changes make it part of the residual.
+- `V3087`: Extensive service sheet and cancellation loops fall into the residual.
+- `V3088`: Complex service entry and clearing loops place this in the residual.
+- `V3089`: Repeated service entry sheets without a clean matching pattern form part of the residual.
+- `V3090`: Incomplete process ending in goods receipt with heavy service sheet repetition fits the residual.
+- `V3095`: Extensive service entry sheet creation and cancellation cycles place this in the residual.
+- `V3099`: Highly complex service entry iterations place this in the residual.
+- `V3100`: Extensive service entry and invoice cancellation cycles place this in the residual.
+- `V3120`: The process variant terminates with Change Delivery Indicator and does not conclude through a standard matching or clearance category.
+- `V3121`: The variant terminates with Record Goods Receipt and lacks invoice matching or clearance activities.
+- `V3124`: The variant consists entirely of service entry sheets and goods receipts, terminating without any invoicing or matching activities.
+- `V3125`: The variant consists entirely of service entry sheets and goods receipts, terminating without any invoicing or matching activities.
+- `V3126`: The variant consists entirely of service entry sheets and goods receipts, terminating without any invoicing or matching activities.
+- `V3127`: The variant consists entirely of service entry sheets and goods receipts, terminating without any invoicing or matching activities.
+- `V3173`: The variant focuses on cancellations, quantity changes, and goods receipts without an invoice matching phase, hence it belongs to the residual.
+- `V3177`: The process ends with the deletion and reactivation of a purchase order item without invoicing or matching, falling into the residual category.
+- `V3185`: The variant consists entirely of service entry sheets and goods receipts without any invoice creation or clearance, falling into the residual.
+- `V3186`: The sequence contains only service entry sheets and goods receipts without an invoice matching lifecycle, representing the residual.
+- `V3187`: The variant only records purchase order creation, service entry sheets, and goods receipts, belonging to the residual.
+- `V3188`: No invoice activities are present; the trace is strictly goods receipts and service entry sheets, falling into the residual.
+- `V3189`: Consists solely of service entry sheets and goods receipts without invoice processing, placing it in the residual.
+- `V3226`: The process ends at Record Goods Receipt without invoice creation or clearance, leaving it incomplete for matching categories.
+- `V3227`: The trace terminates at Record Goods Receipt without an invoice phase.
+- `V3228`: The process terminates at Record Goods Receipt without reaching invoice matching or clearance.
+- `V3229`: The process ends at Record Service Entry Sheet without any invoice activities.
+- `V3230`: The process terminates at Record Goods Receipt without any invoice receipt or matching steps.
+- `V3250`: The trace ends at Record Goods Receipt without reaching invoice recording or matching.
+- `V3271`: The purchase order item was deleted, so no matching or clearance occurred.
+- `V3346`: The variant contains cancellations and payment block removals without a clear standard 3-way or 2-way match sequence.
+- `V3359`: The narrative only involves service entry sheets and goods receipts without any invoicing or matching steps, leaving it in the residual.
+- `V3360`: The process consists entirely of purchase order item creation, service entry sheets, and goods receipts with no invoice activities, hence it belongs to the residual.
+- `V3361`: Only service entry sheets and goods receipts are recorded; no invoice or matching sequence exists.
+- `V3362`: The narrative lacks invoice creation and receipt steps, representing only goods receipts and service entry sheets.
+- `V3363`: Involves only order creation, goods receipts, and service entry sheets without any invoice processing.
+- `V3385`: The process only contains order creation, deletions, and a goods receipt without any invoice processing, placing it in the residual.
+- `V3393`: Contains only order creation, goods receipts, and service entry sheets without invoices, falling into the residual.
+- `V3394`: Lacks invoice recording and matching steps, consisting solely of service entry sheets and goods receipts.
+- `V3395`: Comprises only purchase order items, goods receipts, and service entry sheets without invoicing.
+- `V3396`: Contains only goods receipts and service entry sheets with no invoice activities, making it part of the residual.
+- `V3397`: Consists solely of order creation, goods receipts, and service entry sheets without any invoice processing.
+- `V3438`: Incomplete flow ending at Record Goods Receipt without invoice clearance or payment.
+- `V3439`: Incomplete flow ending at Record Goods Receipt without invoice clearance or payment.
+- `V3440`: Incomplete flow ending at Record Service Entry Sheet without invoice clearance or payment.
+- `V3441`: Incomplete flow ending at Record Goods Receipt without invoice clearance or payment.
+- `V3500`: The process terminates at Record Goods Receipt without reaching invoice recording or clearance, so it fits none of the matching or consumption categories.
+- `V3513`: The variant ends in record goods receipt without reaching invoice receipt or invoice clearance, so it does not fit any matching category.
+- `V3514`: The process terminates at record goods receipt without invoicing or matching.
+- `V3515`: The process terminates at record service entry sheet without invoicing or matching.
+- `V3516`: Terminates at record goods receipt without invoice processing.
+- `V3551`: The variant ends in Change Currency and does not reach the stage of matching or clearing an invoice.
+- `V3561`: The process variant ends prematurely at Record Service Entry Sheet without any invoice creation or clearance.
+- `V3562`: The process variant ends at Record Goods Receipt without proceeding to invoice matching or clearing.
+- `V3563`: The process variant terminates at Record Goods Receipt without reaching invoice processing.
+- `V3564`: The process variant ends at Record Goods Receipt without any invoice receipt or clearing.
+- `V3565`: The process variant terminates at Record Goods Receipt without invoice involvement.
+- `V3566`: The process variant ends at Record Goods Receipt without invoice receipt or clearance.
+- `V3567`: The process variant terminates at Record Goods Receipt without proceeding to invoicing.
+- `V3590`: The process variant terminates at Record Goods Receipt without any invoice recording or clearance.
+- `V3597`: The process variant ends at Record Goods Receipt without any invoice processing.
+- `V3598`: The process variant ends at Record Goods Receipt without any invoice processing.
+- `V3607`: The variant ends at Record Goods Receipt without an invoice receipt or matching process completion.
+- `V3608`: The variant terminates at Record Goods Receipt without reaching invoice recording or matching.
+- `V3609`: The variant terminates at Record Service Entry Sheet without reaching invoice recording or matching.
+- `V3610`: The variant terminates at Record Goods Receipt without reaching invoice recording or matching.
+- `V3611`: The variant terminates at Record Goods Receipt without reaching invoice recording or matching.
+- `V3642`: The narrative does not contain a goods receipt event, making it a 2-way match or residual case.
+- `V3660`: The case ends with Record Service Entry Sheet without an invoice clearance or standard matching completion.
+- `V3661`: The case terminates at Record Goods Receipt without invoice receipt or matching clearance.
+- `V3662`: The case ends at Record Service Entry Sheet without invoice resolution.
+- `V3663`: Terminates at Record Goods Receipt without matching or invoicing.
+- `V3683`: The process terminates at Change Delivery Indicator without matching or invoice clearance.
+- `V3693`: Process ends with Delete Purchase Order Item, representing a cancellation rather than fulfillment.
+- `V3702`: The process ends in a blocked purchase order item without invoice clearance or standard matching completion.
+- `V3703`: The process involves an invoice receipt cancellation and lacks a clean final matching conclusion.
+- `V3715`: Variant ends in a quantity change without completing invoice clearance or matching.
+- `V3718`: Process terminates prematurely at record goods receipt without any invoice or matching steps.
+- `V3719`: Process terminates at record service entry sheet without invoice or matching steps.
+- `V3720`: Process terminates at record goods receipt without invoice or matching steps.
+- `V3721`: Process terminates at record goods receipt without invoice or matching steps.
+- `V3722`: Process terminates at record service entry sheet without invoice or matching steps.
+- `V3723`: Process terminates at record goods receipt without invoice or matching steps.
+- `V3724`: Process terminates at record goods receipt without invoice or matching steps.
+- `V3729`: Variant ends in a repeated record invoice receipt without successful final clearance.
+- `V3740`: Process ends with a change delivery indicator rather than a standard invoice clearance.
+- `V3741`: Process terminates at a repeated record invoice receipt without successful final clearance.
+- `V3743`: Process terminates in a cancelled invoice receipt.
+- `V3744`: Process terminates in a cancelled invoice receipt.
+- `V3745`: Process terminates in a record invoice receipt after multiple cancellations.
+- `V3749`: Process ends with a cancelled invoice receipt.
+- `V3750`: Process ends with a cancelled invoice receipt.
+- `V3802`: The narrative contains extensive rework and cancellations, and does not cleanly fit the standard matching alternatives.
+- `V3804`: Process is incomplete or heavily disrupted, ending at Record Invoice Receipt without a clean matching and clearance profile.
+- `V3805`: Multiple cancellations and repeated clearing attempts prevent classification into a standard matching category.
+- `V3811`: Variant ends prematurely at Record Goods Receipt without invoice creation or matching.
+- `V3812`: Variant terminates at Record Goods Receipt without reaching invoice processing or matching.
+- `V3813`: Variant stops at Record Service Entry Sheet without progressing to invoice steps.
+- `V3814`: Process terminates early at Record Goods Receipt without matching or invoice handling.
+- `V3821`: Process is cancelled at invoice receipt stage and does not complete normal matching.
+- `V3824`: Process involves cancellation of invoice receipt and unusual loop patterns.
+- `V3825`: Involves invoice cancellations and does not fit a standard straight-through matching category.
+- `V3829`: Incomplete process ending in record invoice receipt without clearance.
+- `V3830`: Cancelled invoice receipt with abnormal sequence of events.
+- `V3831`: Terminates with a cancelled invoice receipt.
+- `V3832`: Unusual ordering with invoice activities occurring before purchase order item creation.
+- `V3850`: Terminates at goods receipt without reaching invoice processing.
+- `V3851`: The narrative only contains purchase order creation, service entry sheets, and goods receipts without any invoice record or clearance activities.
+- `V3852`: The narrative consists solely of purchase order item creation, goods receipts, and service entry sheets; no invoice processing or matching to an invoice is present.
+- `V3853`: The process variant ends with goods receipts and service entry sheets without recording or clearing an invoice.
+- `V3854`: This narrative represents operational execution (PO, service entry sheets, goods receipts) and does not involve invoice matching or clearance.
+- `V3855`: This narrative is limited to goods receipts and service entry sheets following purchase order creation, lacking invoice handling.
+- `V3870`: The case involves purchase order creation, goods receipts, and an invoice receipt, but does not complete clearance or resolve fully within the specified categories.
+- `V3886`: The case ends with Change Delivery Indicator and does not involve invoice matching or clearance.
+- `V3887`: The case ends with Change Delivery Indicator without reaching invoice receipt or clearance.
+- `V3898`: The narrative consists entirely of service entry sheets and goods receipts following PO creation, without invoices.
+- `V3899`: The narrative contains only goods receipts and service entry sheets without invoice activities.
+- `V3900`: The variant is restricted to purchase order creation, service entry sheets, and goods receipts, lacking invoice handling.
+- `V3901`: The narrative only shows creation and goods/service receipt activities without invoice processing or clearing.
+- `V3902`: The narrative contains only purchase order and goods receipt/service entry sheet steps; no invoice processing is present.
+- `V3903`: The variant ends in service entries and goods receipts without any invoice record or clearance.
+- `V3904`: Only goods receipt and service entry activities occur; no invoice handling is completed.
+- `V3924`: No standard goods receipt followed by invoice receipt or vice versa can be identified cleanly due to cancellations and debit memos without matching.
+- `V3933`: The process terminates at goods receipt without any invoice processing.
+- `V3942`: Contains only order creation, service entry sheets, and goods receipts without invoicing steps.
+- `V3943`: Only service entries and goods receipts are present; no invoices.
+- `V3944`: Only goods receipts and service entry sheets are present.
+- `V3945`: Process ends with goods receipts and service entry sheets; no invoice processing.
+- `V3946`: Contains only goods receipts and service entry sheets.
+- `V3947`: Process contains only order creation, service entries, and goods receipts.
+- `V3951`: The narrative consists mainly of repeated creation and cancellation of goods receipts and service entry sheets without showing a complete standard 3-way or 2-way match process.
+- `V4013`: The process variant ends with a goods receipt and lacks an invoice creation or invoice receipt activity, so it does not fit any matching category.
+- `V4014`: The process variant ends with a goods receipt and lacks invoice activities, making it part of the residual.
+- `V4015`: The narrative lacks invoice creation and invoice receipt activities, meaning it does not fit any of the 2-way or 3-way matching categories.
+- `V4016`: The variant consists solely of purchase order items, goods receipts, and service entry sheets without any invoice processing, falling into the residual.
+- `V4017`: The variant terminates at goods receipt without any invoice recording or matching activities.
+- `V4018`: The process ends at record service entry sheet without invoice handling, making it part of the residual.
+- `V4019`: The sequence contains only purchase order, service entry sheets, and goods receipts without invoice steps.
+- `V4039`: The variant lacks goods receipt recording in the active sequence, preventing standard matching categorization.
+- `V4069`: The variant ends at Record Goods Receipt without completing the matching or invoice clearance process.
+- `V4070`: Incomplete process variant terminating at Record Goods Receipt.
+- `V4071`: Incomplete process ending with a goods receipt without invoice handling or clearing.
+- `V4072`: Incomplete process variant terminating at Record Goods Receipt.
+- `V4073`: Incomplete process variant terminating at Record Goods Receipt.
+- `V4074`: Incomplete process variant terminating at Record Goods Receipt.
+- `V4075`: Incomplete process variant terminating at Record Service Entry Sheet.
+- `V4124`: Variant ends with Change Delivery Indicator without invoice or clearance activities, fitting the residual category.
+- `V4129`: Variant ends at Record Goods Receipt without completing matching or invoicing.
+- `V4130`: Variant ends at Record Goods Receipt without completing matching or invoicing.
+- `V4131`: Variant ends at Record Goods Receipt without completing matching or invoicing.
+- `V4132`: Variant ends at Record Service Entry Sheet without completing matching or invoicing.
+- `V4140`: Variant ends with Record Invoice Receipt after cancellations and does not complete standard matching or clearance.
+- `V4143`: Variant consists entirely of purchase order blocking and deletion activities without fulfillment or invoicing.
+- `V4150`: Variant concludes with Change Delivery Indicator without invoices, receipts, or clearance.
+- `V4159`: The case ends with a goods receipt and does not reach invoice creation or clearance.
+- `V4160`: The process concludes at a goods receipt without any invoice processing or matching.
+- `V4161`: The process stops at record goods receipt without completing matching or invoice clearance.
+- `V4162`: The variant ends with a service entry sheet and does not complete matching or invoice clearing.
+- `V4163`: The variant terminates at record goods receipt before any matching occurs.
+- `V4169`: The process flow contains extensive rework and cancellations without a clean resolution fitting standard matching categories.
+- `V4170`: The case terminates with an invoice receipt following goods receipt, but lacks clearance or completion.
+- `V4172`: The variant contains extensive loops, cancellations, and ends on an unresolved record invoice receipt.
+- `V4182`: The order item was deleted and reactivated, ending in deletion without matching or clearance.
+- `V4196`: The variant ends at record goods receipt without reaching invoicing or clearance.
+- `V4197`: The variant concludes at record goods receipt with no invoice matching.
+- `V4198`: The process terminates at record goods receipt.
+- `V4199`: The process terminates at record goods receipt.
+- `V4200`: The variant terminates at record service entry sheet.
+- `V4201`: The narrative only involves the creation of purchase order items, goods receipts, and service entry sheets without completing an invoice recording or matching process.
+- `V4215`: The process ends with cancelling the goods receipt and does not represent a successfully cleared matching case.
+- `V4220`: The narrative stops at record invoice receipt without proceeding to clear the invoice or finalize matching.
+- `V4252`: The process terminates at Record Goods Receipt without an invoice creation, invoice receipt, or clearance, so it does not fit any matching or consignment consumption category.
+- `V4253`: The process terminates at Record Goods Receipt without an invoice being created or cleared, thus not fulfilling any of the matching categories.
+- `V4254`: The process terminates at Record Service Entry Sheet and does not contain invoice creation or matching steps.
+- `V4255`: The process ends at Record Service Entry Sheet without any invoice creation, receipt, or clearance steps.
+- `V4256`: The process terminates at Record Goods Receipt and lacks invoicing or matching activities.
+- `V4302`: The process terminates at Record Service Entry Sheet without reaching invoice receipt or clearance, leaving it incomplete for matching categories.
+- `V4303`: The variant consists solely of order creation, numerous service entry sheets, and goods receipts without any invoice creation or matching events.
+- `V4304`: The process ends at Record Goods Receipt without any invoice or financial settlement activities.
+- `V4305`: The narrative only contains purchase order creation, goods receipts, and service entry sheets without reaching invoicing stages.
+- `V4306`: The narrative stops at Record Goods Receipt without an invoice being recorded or matched.
+- `V4330`: The process ends at Record Invoice Receipt without invoice clearance or completion of the full cycle.
+- `V4331`: The process terminates at Record Invoice Receipt without clearing the invoice.
+- `V4340`: The process ends at Record Goods Receipt without any invoice or payment steps.
+- `V4341`: The narrative terminates at Record Goods Receipt without reaching invoice recording or matching.
+- `V4342`: The process stops at Record Goods Receipt without any invoice processing.
+- `V4343`: The variant ends at Record Goods Receipt without an invoice.
+- `V4344`: The process terminates at Record Goods Receipt without reaching invoice handling.
+- `V4345`: The process ends with a change to the delivery indicator and does not reach invoice matching.
+- `V4364`: The process variant lacks a recorded goods receipt or invoice receipt, making it part of the residual.
+- `V4385`: The variant contains cancellations and payment block removal without standard goods or invoice receipts, falling into the residual.
+- `V4386`: The variant contains cancellations and payment block removal without standard goods or invoice receipts, falling into the residual.
+- `V4398`: The variant ends with Delete Purchase Order Item without an invoice lifecycle, making it part of the residual.
+- `V4406`: The process terminates at Record Goods Receipt without an invoice receipt or invoice clearance, so it does not fit any matching category.
+- `V4407`: Terminates at Record Goods Receipt without invoice creation or matching.
+- `V4408`: Stops at Record Service Entry Sheet without reaching invoice matching or clearance.
+- `V4409`: Incomplete process ending in Record Goods Receipt with no invoice matching.
+- `V4410`: Ends at Record Goods Receipt without invoice processing.
+- `V4411`: Stops at Record Service Entry Sheet and Goods Receipt without invoicing.
+- `V4424`: Process only consists of order creation, service entry sheets, and goods/cancel goods receipts; no invoice or matching.
+- `V4429`: No invoicing or matching activities present.
+- `V4430`: No invoicing activities present.
+- `V4431`: No invoicing activities present.
+- `V4432`: No invoicing activities present.
+- `V4433`: No invoicing activities present.
+- `V4434`: No invoicing activities present.
+- `V4435`: No invoicing activities present.
+- `V4475`: The process terminates at Record Goods Receipt without invoice receipt or clearance, leaving it outside matching categories.
+- `V4476`: Terminates at Record Goods Receipt without matching invoice activities.
+- `V4477`: Ends at Record Goods Receipt with no invoice matching process present.
+- `V4478`: Terminates at Record Service Entry Sheet without matching invoice activities.
+- `V4479`: Ends at Record Goods Receipt without invoice matching steps.
+- `V4504`: The process terminates at Record Goods Receipt without any invoice or matching activities.
+- `V4505`: The process terminates at Record Goods Receipt without any invoice or matching activities.
+- `V4506`: The process terminates at Record Goods Receipt without any invoice or matching activities.
+- `V4507`: The process terminates at Record Goods Receipt without any invoice or matching activities.
+- `V4508`: The process terminates at Record Goods Receipt without any invoice or matching activities.
+- `V4509`: The process terminates at Record Service Entry Sheet without reaching invoice creation or matching.
+- `V4510`: The process terminates at Record Goods Receipt without any invoice or matching activities.
+- `V4546`: The process terminates with service entry sheets and goods receipts without any invoice handling.
+- `V4547`: The process consists entirely of goods receipts, service entry sheets, and cancellations without reaching invoice processing.
+- `V4548`: The process terminates at Record Goods Receipt without any invoice or matching activities.
+- `V4549`: The process terminates at Record Goods Receipt without reaching invoice processing.
+- `V4550`: The process terminates at Record Goods Receipt without any invoice or matching activities.
+- `V4551`: The variant ends with Record Service Entry Sheet and does not contain an invoice receipt or invoice clearing event, so it cannot be matched to any 3-way, 2-way, or consignment category.
+- `V4552`: The variant ends with Change Delivery Indicator and does not contain invoice processing steps.
+- `V4569`: The process consists entirely of purchase order creation, goods receipts, and service entry sheets without any invoice steps.
+- `V4685`: This variant only involves purchase order creation, currency change, and deletion without any matching or clearing activities.
+- `V4686`: Process ends with item deletion and does not complete a procurement matching or clearing cycle.
+- `V4693`: Involves only service entry sheets and goods receipts without reaching invoice or clearance stages.
+- `V4694`: Consists solely of goods receipts and service entry sheets without invoice or clearance activities.
+- `V4695`: Contains only goods receipts and service entry sheets without completing a matching or clearance workflow.
+- `V4696`: Only goods receipts and service entry sheets are present, with no invoice or clearance steps.
+- `V4723`: The narrative only involves goods receipts and terminates without an invoice receipt or clearance, leaving it in the residual.
+- `V4727`: The process involves only purchase order item creation, goods receipts, and a cancellation without invoice activities, placing it in the residual.
+- `V4729`: The process ends with changing the delivery indicator after goods receipts and cancellations, with no invoice activities, fitting the residual.
+- `V4763`: The narrative does not culminate in invoice matching/clearance, ending instead on service entry sheet recording.
+- `V4764`: The process does not involve invoice matching or clearance.
+- `V4765`: The process consists entirely of service entry sheets and goods receipts without an invoice lifecycle.
+- `V4766`: Incomplete procurement cycle ending in goods receipt without invoice handling.
+- `V4767`: Process stops at goods receipt and service entry sheets without involving invoices.
+- `V4777`: The order item is deleted after clearance, making it part of the residual.
+- `V4790`: Incomplete procurement cycle without invoicing.
+- `V4791`: Incomplete procurement cycle without invoicing.
+- `V4792`: Incomplete procurement cycle without invoicing.
+- `V4793`: Incomplete procurement cycle without invoicing.
+- `V4794`: Incomplete procurement cycle without invoicing.
+- `V4795`: Incomplete procurement cycle without invoicing.
+- `V4796`: Incomplete procurement cycle without invoicing.
+- `V4797`: Incomplete procurement cycle without invoicing.
+- `V4812`: The variant ends with Change Delivery Indicator and does not complete a standard matching or clearance workflow.
+- `V4840`: The variant involves service entry and goods receipt cancellations without reaching invoice clearance or matching.
+- `V4841`: The variant consists entirely of service entry and goods receipt creation without reaching invoice matching or clearance.
+- `V4842`: The variant consists entirely of service entry and goods receipt creation without reaching invoice matching or clearance.
+- `V4843`: The variant consists entirely of service entry and goods receipt activities without reaching invoice matching or clearance.
+- `V4844`: The variant consists of service entry and goods receipt activities without reaching invoice matching or clearance.
+- `V4845`: The variant consists of service entry and goods receipt activities without reaching invoice matching or clearance.
+- `V4846`: The variant consists of service entry and goods receipt activities without reaching invoice matching or clearance.
+- `V4847`: The variant consists of service entry and goods receipt activities without reaching invoice matching or clearance.
+- `V4852`: The process is heavily tangled with repeated entries, multiple invoice receipts, and cancellations without a clear clean 3-way or 2-way match structure.
+- `V4855`: This narrative has extreme rework, multiple invoice receipts, cancellations, and duplicate events that do not cleanly fit any standard taxonomy category.
+- `V4870`: The case involves multiple invoice receipts, cancellations, and payment block removals, ending in a cancelled invoice receipt.
+- `V4872`: The process ends prematurely at Record Service Entry Sheet without an invoice or clearance step.
+- `V4873`: The process consists entirely of repetitive goods receipts and service entry sheets, ending without an invoice.
+- `V4874`: The variant involves multiple changes to quantity/price and ends in a cancelled invoice receipt.
+- `V4875`: The process includes debit memos, cancellations, and repeated clearance steps.
+- `V4877`: The process involves cancellations of goods receipts and invoice receipts, ending in a cancelled invoice receipt.
+- `V4878`: The process involves debit memos, cancellations of goods receipts, and cancelled invoice receipts.
+- `V4880`: The process includes cancellations of invoice receipts and debit memos.
+- `V4881`: The process includes cancelled invoice receipts, debit memos, and multiple clearance iterations.
+- `V4883`: The process involves debit memos, cancelled invoice receipts, and ends in item deletion.
+- `V4885`: The process consists almost entirely of service entry sheets and goods receipts, ending at Record Goods Receipt without invoicing.
+- `V4887`: The sequence is composed of service entry sheets and goods receipts, terminating without an invoice.
+- `V4888`: The process includes debit memos and cancelled invoice receipts.
+- `V4889`: An anomalous variant where a goods receipt is recorded long after the invoice has already been cleared.
+- `V4890`: The process terminates by deleting the purchase order item.
+- `V4891`: The process involves deleting and reactivating the purchase order item.
+- `V4892`: The process includes cancelled goods receipts, cancelled invoice receipts, and multiple clearance steps.
+- `V4895`: The process ends in a cancelled goods receipt.
+- `V4896`: The process ends in a goods receipt following a cancellation.
+- `V4897`: The process involves late invoice receipts and multiple invoice receipt events.
+- `V4899`: The process involves cancelled goods receipts and a cancelled invoice receipt.
+- `V4900`: This is an extremely convoluted process variant featuring dozens of repeated invoices, goods receipts, cancellations, and debit memos.
+- `V4909`: The process terminates at Record Service Entry Sheet without reaching invoice receipt or clearance, so it does not realize any matching category.
+- `V4910`: The process ends at Record Goods Receipt without any invoice or matching activities.
+- `V4911`: The process terminates at Record Goods Receipt without completing any invoice matching or clearance.
+- `V4912`: The process ends at Record Goods Receipt and does not involve any invoice activities.
+- `V4913`: The process ends at Record Service Entry Sheet without any invoice receipt or matching.
+- `V4922`: The process terminates with a Cancel Goods Receipt without reaching invoice matching or clearance.
+- `V4937`: The process ends with deleting the purchase order item and does not complete matching or clearing.
+- `V4939`: The process terminates at SRM: Transaction Completed after purchase order deletion, without matching or clearance.
+- `V4962`: The process terminates at Change Price before any matching or invoice receipt takes place.
+- `V5009`: The process variant ends with deleting the purchase order item and changing indicators rather than proceeding to invoice matching or clearance.
+- `V5010`: The process variant ends with deleting the purchase order item and changing indicators rather than invoice matching or clearance.
+- `V5019`: The process ends abruptly with a goods receipt long after invoice processing and payment block removals, failing to form a standard matched clearance cycle.
+- `V5042`: The narrative consists entirely of service entry sheets and goods receipts without reaching invoice receipt or clearance.
+- `V5043`: The process terminates at goods receipt without progressing to invoice receipt or clearance.
+- `V5044`: The narrative consists of service entry sheets and goods receipts without reaching invoice receipt or clearance.
+- `V5045`: The process terminates at goods receipt without progressing to invoice receipt or clearance.
+- `V5046`: The narrative concludes with service entry sheets and goods receipts without reaching invoice processing.
+- `V5047`: The narrative terminates at goods receipt without progressing to invoice receipt or clearance.
+- `V5068`: The narrative terminates after goods receipt and cancellation without reaching invoice receipt or clearance, leaving it outside the matching categories.
+- `V5090`: The process terminates at Record Goods Receipt without reaching invoice receipt or clearance, leaving it in the residual.
+- `V5091`: The process terminates at Record Goods Receipt without reaching invoice receipt or clearance.
+- `V5092`: The process terminates at Record Goods Receipt without reaching invoice receipt or clearance.
+- `V5093`: The process terminates at Record Goods Receipt without reaching invoice receipt or clearance.
+- `V5094`: The process terminates at Record Goods Receipt without reaching invoice receipt or clearance.
+- `V5108`: The variant contains cancellations and storage location changes without a complete matching flow.
+- `V5148`: The variant ends in deletion and change of delivery indicator without standard matching or clearing.
+- `V5153`: The process ended with deleting the purchase order item without reaching invoice clearance or matching.
+- `V5160`: Process stops at record invoice receipt without clearance or proper 3-way completion.
+- `V5161`: Only goods receipts and service entry sheets are recorded, ending without invoice matching.
+- `V5162`: Incomplete execution ending on record goods receipt.
+- `V5163`: Process only includes goods receipts and service entry sheets.
+- `V5164`: Only service entry sheets and goods receipts are logged.
+- `V5165`: No invoice activities are present; process halts at goods receipt.
+- `V5183`: No invoice activities present; stops at goods receipt.
+- `V5184`: Only goods receipts and quantity changes.
+- `V5185`: Incomplete process ending in goods receipt.
+- `V5187`: No invoice receipt or clearing steps present.
+- `V5189`: No invoice activities present.
+- `V5202`: The process terminates at Record Goods Receipt without any invoice creation or matching activities, making it part of the residual.
+- `V5203`: The trace stops at Record Goods Receipt without reaching invoice recording or matching.
+- `V5204`: The variant ends with Record Goods Receipt without proceeding to invoice processes.
+- `V5205`: The process concludes at Record Service Entry Sheet without vendor invoicing or matching.
+- `V5206`: The sequence terminates at Record Goods Receipt without any matching or invoicing steps.
+- `V5207`: The trace ends with Record Goods Receipt and does not reach invoice handling.
+- `V5208`: The narrative ends at Record Service Entry Sheet without invoice processing.
+- `V5212`: The process ends in goods receipt cancellation and quantity adjustments without invoicing.
+- `V5232`: The trace terminates at Record Goods Receipt without reaching invoice matching.
+- `V5233`: The process ends at Record Goods Receipt without any invoice processing.
+- `V5235`: The process stops at Record Goods Receipt without invoicing.
+- `V5236`: The trace ends at Record Service Entry Sheet without invoicing.
+- `V5237`: The trace terminates at Record Goods Receipt without invoice handling.
+- `V5265`: The process terminates at Record Goods Receipt without any matching or invoice clearance, so no category fits.
+- `V5266`: Process terminates at Record Goods Receipt with no invoice activity.
+- `V5267`: Process ends with Record Goods Receipt and lacks invoicing.
+- `V5268`: Process ends with Record Goods Receipt without invoicing steps.
+- `V5269`: Process ends at Record Goods Receipt without any matching/invoicing.
+- `V5294`: Process ends at Record Goods Receipt without matching/invoicing.
+- `V5304`: The process ends with Record Service Entry Sheet and does not reach invoice clearance or matching completion.
+- `V5305`: The process terminates at Record Goods Receipt without any invoice creation or matching.
+- `V5306`: The process ends at Record Goods Receipt before any invoicing or matching activities.
+- `V5307`: The process terminates at Record Goods Receipt without reaching invoice recording or clearance.
+- `V5308`: The process ends with Record Goods Receipt and lacks invoice matching steps.
+- `V5309`: The variant ends at Record Goods Receipt without completing an invoice cycle.
+- `V5310`: The variant terminates at Record Goods Receipt and does not progress to invoicing or matching.
+- `V5313`: The process ends with a cancelled goods receipt and a changed delivery indicator, rather than successful invoice clearance.
+- `V5315`: The process ends at Record Invoice Receipt with a changed delivery indicator, without completing clearance.
+- `V5316`: The process terminates at Record Invoice Receipt after multiple cancellations and re-recordings, without final invoice clearance.
+- `V5317`: The process ends with a Cancel Invoice Receipt activity, indicating an unresolved or cancelled invoice.
+- `V5318`: The variant ends at Record Invoice Receipt following multiple cancellations and re-entries without final success.
+- `V5320`: The process ends with Cancel Goods Receipt and does not involve invoicing or matching.
+- `V5323`: The process terminates with Cancel Invoice Receipt, representing an aborted or reversed invoice.
+- `V5326`: The process ends with Remove Payment Block after multiple cancellations and rework, without a clean final clearance.
+- `V5328`: The process terminates at Record Invoice Receipt after an initial clearing and does not complete successfully.
+- `V5329`: The process ends with Cancel Invoice Receipt, meaning no successful final matching and clearance was achieved.
+- `V5330`: The process ends at Record Invoice Receipt after a long delay following a prior clearance.
+- `V5333`: The process terminates at Record Service Entry Sheet without reaching invoice creation or matching.
+- `V5334`: The variant ends at Record Goods Receipt without progressing to invoicing.
+- `V5335`: The process ends with Record Goods Receipt without any invoicing activity.
+- `V5336`: The process ends at Record Goods Receipt before any invoice-related steps.
+- `V5337`: The process terminates at Record Goods Receipt without reaching invoice processing.
+- `V5342`: The process terminates at Record Invoice Receipt after a prior clearance and long delay, remaining incomplete.
+- `V5343`: The process ends at Record Invoice Receipt after an earlier clearance, indicating incomplete final resolution.
+- `V5346`: The process ends at Change Quantity and does not involve goods receipt or invoicing.
+- `V5348`: The process ends at Record Invoice Receipt following a prior clearance, without a clean successful final state.
+- `V5367`: No goods receipt or invoice receipt activities are present; the process terminates at approval changes.
+- `V5368`: No goods receipt or invoice receipt activities are present.
+- `V5369`: Process terminates at goods receipt with no invoice interaction.
+- `V5373`: Only goods receipts and service entry sheets are present; no invoices or matching occur.
+- `V5374`: Only goods receipts and service entry sheets are present.
+- `V5375`: Only goods receipts and service entry sheets are present.
+- `V5376`: Only goods receipts and service entry sheets are present.
+- `V5395`: Only goods receipts and changes are present; no invoices are recorded.
+- `V5396`: Only goods receipts are present.
+- `V5397`: Only goods receipts and changes are present.
+- `V5398`: Only goods receipts and cancellations are present.
+- `V5399`: Only goods receipts and changes are present.
+- `V5400`: Only goods receipts and changes are present.
+- `V5404`: The process variant ends with Change Delivery Indicator and does not involve full invoicing or matching cycles.
+- `V5406`: The process terminates at Record Goods Receipt without completing any invoice recording or matching.
+- `V5408`: The process only contains creation, goods receipts, and service entry sheets, without invoice processing.
+- `V5409`: Terminates at Record Goods Receipt without proceeding to invoice matching.
+- `V5410`: Involves only service entry sheets and goods receipts without reaching invoice matching.
+- `V5411`: Short variant consisting only of PO creation, goods receipts, and service entry sheets.
+- `V5412`: Consists solely of goods receipts and service entry sheets.
+- `V5413`: Consists of goods receipts and service entry sheets only.
+- `V5457`: The variant deals only with PO blocking and deletion, with no invoice or goods receipt matching.
+- `V5475`: Variant only involves goods receipt and its cancellation without invoice processing.
+- `V5478`: Process ends at goods receipt without an invoice.
+- `V5482`: Process consists solely of service entry sheets and goods receipts.
+- `V5483`: Process consists solely of service entry sheets and goods receipts.
+- `V5484`: Process consists solely of service entry sheets and goods receipts.
+- `V5485`: Process consists solely of service entry sheets and goods receipts.
+- `V5486`: Process consists solely of service entry sheets and goods receipts.
+- `V5487`: Process consists solely of service entry sheets and goods receipts.
+- `V5516`: The variant ends at Record Goods Receipt without an invoice creation or matching lifecycle.
+- `V5517`: The variant ends at Record Goods Receipt without involving an invoice.
+- `V5518`: The variant ends at Record Goods Receipt without an invoice stage.
+- `V5519`: The process terminates with Record Goods Receipt without any invoice handling.
+- `V5536`: The variant consists only of purchase order creation, deletion, and reactivation without goods receipt or invoice matching.
+- `V5555`: The process terminates at Record Service Entry Sheet without reaching invoice creation, receipt, or clearance, so no matching category applies.
+- `V5556`: The variant ends at Record Goods Receipt without any invoicing activities, making it incomplete regarding the match categories.
+- `V5557`: The variant concludes with Record Goods Receipt without invoice handling, rendering it outside the scope of matching or consignment categories.
+- `V5560`: The trace only contains creation, service entry, and goods receipt activities without any invoicing or payment steps.
+- `V5561`: The case stops at Record Goods Receipt without any invoice recording or matching steps.
+- `V5562`: The sequence consists entirely of purchase order creation, service entry, and goods receipts without invoicing.
+- `V5563`: The process trace ends at Record Goods Receipt without reaching any invoice-related activities.
+- `V5581`: The variant contains cancellations and debit memos without a standard goods receipt and invoice receipt matching flow.
+- `V5587`: The sequence only records purchase order creation and multiple goods receipts without any invoice processing.
+- `V5598`: The variant terminates at Record Service Entry Sheet without reaching any invoicing steps.
+- `V5599`: The variant ends at Record Goods Receipt without any invoice handling.
+- `V5600`: The process ends at Record Goods Receipt with no invoicing or matching activities.
+- `V5601`: The narrative only records the purchase order, service entry sheets, and goods receipts without showing any invoice creation, invoice receipt, or matching process leading to clearance.
+- `V5602`: The variant stops at recording goods receipts and service entry sheets; no invoice activities are present.
+- `V5603`: This narrative involves creating a purchase order, goods receipts, and service entry sheets, but lacks any invoice processing or matching.
+- `V5604`: Only procurement setup and goods receipt/service entry activities occur; invoice clearance or matching steps are missing.
+- `V5634`: The process terminates at goods receipt and service entry sheets without any invoice processing.
+- `V5635`: The narrative consists of goods receipts and service entry sheets only, with no invoice matching or clearance.
+- `V5636`: Process ends with goods receipt and service entry sheets without invoice activities.
+- `V5637`: Contains only purchase order, service entry sheets, and goods receipts.
+- `V5659`: The process terminates at Record Goods Receipt without any invoice or clearance steps, hence no matching category fits.
+- `V5690`: The process consists entirely of service entry sheets and goods receipts without invoice activities, so no category applies.
+- `V5691`: Variant terminates at goods receipt without invoicing or matching clearance, hence no matching category fits.
+- `V5692`: Process ends at goods receipt without invoicing steps, making categorization inapplicable.
+- `V5693`: Only goods receipts and service entry sheets are present, so no invoicing category fits.
+- `V5694`: Consists solely of goods receipts and service entry sheets, with no invoice activities.
+- `V5695`: Consists solely of goods receipts and service entry sheets, lacking any invoice matching process.
+- `V5696`: Process contains only service entry sheets and goods receipts, with no invoice lifecycle activities.
+- `V5751`: The variant involves repeated recording of Service Entry Sheets and Goods Receipts without a complete invoice-to-pay or matching lifecycle.
+- `V5752`: The process consists entirely of SES and Goods Receipt steps without culminating in an invoice receipt or matching process.
+- `V5753`: This narrative shows intensive goods receipt and service entry activities with no invoice matching.
+- `V5754`: The trace is dominated by extensive service entry sheets and goods receipts without an invoice matching cycle.
+- `V5755`: Consists of multiple service entry sheets and goods receipts terminating in service entry without invoice handling.
+- `V5756`: Involves repetitive goods receipts and service entry sheets without reaching invoice clearing or matching.
+- `V5757`: Extensive repetition of goods receipts and service entry sheets without invoice recording or matching.
+- `V5765`: The trace consists heavily of repeated goods receipt actions and modifications without a complete invoice matching and clearing flow.
+- `V5783`: Trace consists of interspersed service entry sheets and goods receipts without invoice processing.
+- `V5784`: Consists of service entry and goods receipt cancellations and repetitions without an invoice lifecycle.
+- `V5785`: Contains only service entry sheets and goods receipts without an invoice matching phase.
+- `V5786`: Repetitive service entry and goods receipt actions without invoice processing.
+- `V5787`: Involves multiple service entries and goods receipts without reaching invoice matching.
+- `V5788`: Dominated by service entry sheets and goods receipts with no invoice receipt.
+- `V5789`: Comprises goods receipts and service entry sheets without an invoice matching flow.
+- `V5826`: Incomplete process ending in Record Goods Receipt without matching or invoicing.
+- `V5827`: Incomplete process ending in Record Goods Receipt without matching or invoicing.
+- `V5828`: Incomplete process ending in Record Goods Receipt without matching or invoicing.
+- `V5829`: Incomplete process ending in Record Goods Receipt without matching or invoicing.
+- `V5830`: Incomplete process ending in Record Goods Receipt without matching or invoicing.
+- `V5831`: Incomplete process ending in Record Service Entry Sheet without invoicing.
+- `V5832`: Incomplete process ending in Record Goods Receipt without invoicing.
+- `V5842`: Terminates in Change Delivery Indicator without invoice or matching.
+- `V5844`: Terminates in Record Goods Receipt without invoicing.
+- `V5855`: The process terminates at Record Goods Receipt without any invoice creation or clearance steps, thus not fitting any complete matching category.
+- `V5856`: The variant ends with Record Goods Receipt without proceeding to invoice recording or clearance.
+- `V5857`: Terminates at Record Goods Receipt without any invoice or payment handling.
+- `V5861`: The sequence involves cancellation of goods receipt and invoice receipt with debit memos, but lacks a standard matched clearance flow.
+- `V5886`: The process ends at Record Invoice Receipt without reaching invoice clearance or final matching resolution.
+- `V5887`: Terminates at Record Goods Receipt without invoice handling or clearance.
+- `V5890`: Process ends with Record Goods Receipt and service entry sheets, lacking invoice processing.
+- `V5891`: Terminates at Record Goods Receipt without any invoice stages.
+- `V5892`: Terminates at Record Goods Receipt with no invoice or clearance steps.
+- `V5893`: Terminates at Record Goods Receipt without invoice matching or clearance.
+- `V5894`: Ends at Record Goods Receipt without proceeding to invoice steps.
+- `V5895`: Ends at Record Goods Receipt without invoice handling.
+- `V5922`: The purchase order item was deleted without completing any matching or invoicing process.
+- `V5928`: The process terminates with service entry sheet recording and does not reach invoice clearance or matching.
+- `V5929`: The process terminates with goods receipt and does not complete matching or invoicing.
+- `V5930`: The process terminates after service entry and goods receipt without an invoice matching phase.
+- `V5931`: Process ends at goods receipt without reaching invoicing or matching.
+- `V5932`: Process terminates at goods receipt without invoice processing.
+- `V5933`: Process terminates at service entry without reaching invoice matching.
+- `V5934`: Process terminates at goods receipt without matching or invoicing.
+- `V5943`: The purchase order item was deleted after cancellations without completing matching.
+- `V5948`: Purchase order item was deleted following a cancelled goods receipt.
+- `V5957`: The sequence lacks a standard invoice receipt activity and focuses mainly on quantity changes and debit memos, making it part of the residual.
+- `V5965`: No invoice receipt or matching process takes place, so it does not fit any of the defined matching categories.
+- `V6010`: The process terminates at Record Goods Receipt without an invoice receipt or invoice clearing, so it does not fit any complete matching category.
+- `V6011`: The process ends at Record Goods Receipt without reaching invoice recording or clearance.
+- `V6013`: The process terminates at Record Service Entry Sheet without matching or invoice clearance.
+- `V6014`: The process terminates at Record Goods Receipt without reaching invoice recording or clearance.
+- `V6015`: The process terminates at Record Goods Receipt without reaching invoice recording or clearance.
+- `V6031`: The process terminates at Change Price without completing invoice recording, matching, or clearance.
+- `V6063`: The process ends at Record Goods Receipt without any invoice or clearing steps, making it an incomplete procurement cycle that does not fit standard matching categories.
+- `V6064`: The process ends at Record Goods Receipt without invoicing or matching, thus not fitting any clearance category.
+- `V6065`: The process stops at Record Goods Receipt without any invoice or payment processing.
+- `V6066`: Terminates at Record Goods Receipt without reaching invoice matching or clearance.
+- `V6067`: Process terminates at Record Goods Receipt without any invoice handling.
+- `V6068`: Process terminates at Record Service Entry Sheet without vendor invoicing or matching.
+- `V6069`: Process terminates at Record Service Entry Sheet without invoice processing.
+- `V6070`: Process terminates at Record Goods Receipt without invoice handling.
+- `V6113`: The process terminates with a cancelled goods receipt and no invoice clearance or final matching state.
+- `V6132`: The process consists solely of PO, SES, and GR activities without invoice recording or clearing, falling into the residual.
+- `V6133`: Contains only SES and GR activities without invoice processing.
+- `V6134`: Contains only service entry and goods receipt activities.
+- `V6135`: Contains only goods receipt and service entry activities without an invoice.
+- `V6136`: Consists solely of service entry sheets and goods receipts.
+- `V6137`: Involves only goods receipts and service entry sheets.
+- `V6138`: Involves only goods receipts and service entry sheets without financial clearing.
+- `V6166`: The process terminates at Record Goods Receipt without an invoice creation or matching lifecycle.
+- `V6167`: The process terminates at Record Goods Receipt without reaching invoice matching.
+- `V6168`: The process terminates at Record Goods Receipt without reaching invoice matching.
+- `V6169`: The process terminates at Record Goods Receipt without reaching invoice matching.
+- `V6170`: The process terminates at Record Goods Receipt without reaching invoice matching.
+- `V6200`: The process terminates at Record Goods Receipt without reaching invoice matching.
+- `V6201`: This variant only contains PO creation, service entry sheets, and goods receipts without any invoice receipt or clearing activities, so it does not realize any matching or consumption category.
+- `V6202`: This variant only contains PO creation, goods receipts, and service entry sheets without any invoice recording or matching.
+- `V6203`: The narrative stops at goods receipt and service entry sheets without any invoice processing or matching.
+- `V6204`: Only goods receipts and service entry sheets are recorded, with no invoice lifecycle events.
+- `V6205`: Process stops at goods receipts and service entry sheets without involving invoices or matching.
+- `V6224`: Involves complex service entry sheets and goods receipts with multiple cancellations and invoice receipts, not fitting a clean standard 3-way match profile.
+- `V6246`: Contains only goods receipts and service entry sheets without any invoice processing.
+- `V6247`: Contains only goods receipts and service entry sheets without invoice activities.
+- `V6248`: Contains only goods receipts and service entry sheets without invoice activities.
+- `V6249`: Contains only goods receipts and service entry sheets without invoice activities.
+- `V6250`: Contains only goods receipts and service entry sheets without invoice activities.
+- `V6251`: The variant only creates service entry sheets and goods receipts, but never reaches an invoice recording or clearing step, so it fits none of the matching or consignment categories.
+- `V6297`: Only service entry sheets and goods receipts are recorded without any invoice or clearance steps, so it fits none of the matching categories.
+- `V6298`: Only service entry sheets and goods receipts are recorded without reaching invoice handling, so it fits none of the categories.
+- `V6299`: The variant consists entirely of service entry sheets and goods receipts without invoice recording or clearing, fitting none of the categories.
+- `V6300`: The variant consists exclusively of goods receipts and service entry sheets without any invoice steps, fitting none of the categories.
+- `V6301`: The narrative involves service entry sheets and goods receipts without an invoice matching sequence, so it does not fit the matching categories.
+- `V6302`: The narrative consists of repetitive service entry sheets and goods receipts without a clear invoice matching process.
+- `V6303`: The narrative features repeated service entry sheets and goods receipts with no invoice matching pattern.
+- `V6311`: The process only involves PO creation, order confirmation, and deletion/reactivation items without any matching or invoicing steps.
+- `V6322`: The narrative is dominated by extensive service entry sheets and goods receipt cancellations without a clean 2-way, 3-way, or consignment pattern.
+- `V6334`: The process contains only service entry sheets and goods receipts without any invoice processing steps.
+- `V6335`: The narrative consists entirely of service entry sheets and goods receipts with no invoice recorded.
+- `V6336`: The narrative involves multiple service entry sheets and goods receipts without an invoice lifecycle.
+- `V6337`: The narrative is limited to goods receipts and service entry sheets without an invoice.
+- `V6338`: The narrative is composed of goods receipts and service entry sheets only.
+- `V6339`: The narrative consists of service entry sheets and goods receipts without invoice matching.
+- `V6340`: The narrative contains only service entry sheets and goods receipts without invoicing activities.
+- `V6362`: The purchase order item was blocked, and the process did not result in a standard matching or clearance completion.
+- `V6375`: The process terminates at Record Goods Receipt without invoice receipt or clearance.
+- `V6376`: The process terminates at Record Goods Receipt without completing a full invoice matching cycle.
+- `V6377`: The process ends at Record Goods Receipt without invoice recording or clearance steps.
+- `V6378`: Terminates at Record Goods Receipt without reaching invoice matching or clearance.
+- `V6379`: Terminates at Record Goods Receipt without invoice clearance.
+- `V6380`: Terminates at Record Goods Receipt without invoice matching or clearance.
+- `V6394`: The process results in a change delivery indicator without completing invoice clearance.
+- `V6402`: The process terminates at Record Goods Receipt without any invoice receipt or clearing activities, so it does not fit any matching or consumption category.
+- `V6413`: Process stops at Record Goods Receipt without invoicing or matching steps.
+- `V6414`: Process stops at Record Goods Receipt without invoicing or matching steps.
+- `V6415`: Process stops at Record Goods Receipt without invoicing or matching steps.
+- `V6416`: Process stops at Record Goods Receipt without invoicing or matching steps.
+- `V6417`: Process stops at Record Goods Receipt without invoicing or matching steps.
+- `V6418`: Process stops at Record Goods Receipt without invoicing or matching steps.
+- `V6419`: Process stops at Record Service Entry Sheet without invoicing or matching steps.
+- `V6433`: Terminates at Record Goods Receipt without matching or invoicing.
+- `V6444`: Terminates at Record Goods Receipt without matching or invoicing.
+- `V6445`: Terminates at Record Goods Receipt without matching or invoicing.
+- `V6446`: Terminates at Record Goods Receipt without matching or invoicing.
+- `V6447`: Terminates at Record Goods Receipt without matching or invoicing.
+- `V6448`: Terminates at Record Service Entry Sheet without matching or invoicing.
+- `V6449`: Terminates at Record Goods Receipt without matching or invoicing.
+- `V6466`: Process only involves goods receipt activities without completing a full matching or invoice clearance cycle.
+- `V6473`: Incomplete flow with multiple goods receipts and record invoice receipt, but no invoice clearance.
+- `V6492`: Incomplete flow with only purchase order, service entry sheets, and goods receipts.
+- `V6493`: Incomplete flow with only purchase order, service entry sheets, and goods receipts.
+- `V6494`: Incomplete flow containing only purchase order, goods receipts, and service entry sheets.
+- `V6495`: Incomplete flow with only service entry sheets and goods receipts.
+- `V6496`: Incomplete flow containing only goods receipts and service entry sheets.
+- `V6497`: Incomplete flow containing only service entry sheets and goods receipts.
+- `V6520`: The process terminates at Cancel Goods Receipt without reaching invoice clearance or matching completion.
+- `V6529`: The process ends at Record Goods Receipt without any invoice or matching activities.
+- `V6530`: The process ends at Record Goods Receipt without reaching invoice matching or clearance.
+- `V6531`: The process ends at Record Goods Receipt without reaching invoice activities.
+- `V6532`: The process ends at Record Service Entry Sheet without reaching invoice creation or matching.
+- `V6601`: The process variant ends with Record Goods Receipt without any invoice creation or clearance steps, thus not realizing any of the clearance or matching categories.
+- `V6614`: The variant ends with Record Service Entry Sheet and does not reach invoice clearance or matching completion.
+- `V6616`: The process variant concludes at Record Goods Receipt without any invoice processing steps.
+- `V6617`: The variant stops at Record Service Entry Sheet without reaching invoice creation or matching.
+- `V6618`: The variant ends with Record Goods Receipt and does not contain invoice matching or clearance.
+- `V6619`: The variant terminates at Record Goods Receipt with no invoice activities.
+- `V6627`: The variant terminates with Record Goods Receipt and includes no invoice processing.
+- `V6645`: The variant lacks a proper goods receipt prior to invoice handling, leaving it outside standard matching categories.
+- `V6662`: The process variant ends at record service entry sheet without reaching matching or invoice clearance.
+- `V6663`: Variant concludes with goods receipt and service entries without an invoice matching or clearing flow.
+- `V6664`: Ends at record goods receipt without invoicing or clearance.
+- `V6665`: Terminates at record goods receipt without invoice processing.
+- `V6666`: Terminates at record goods receipt without invoicing or clearance steps.
+- `V6667`: Terminates at record goods receipt without proceeding to matching or clearance.
+- `V6668`: Process stops at record service entry sheet without completing an invoice clearing or matching path.
+- `V6669`: Process stops at record goods receipt without invoice recording or matching.
+- `V6687`: Terminates at record goods receipt without reaching matching or clearance steps.
+- `V6704`: The process terminates at Record Service Entry Sheet and does not reach invoice creation or clearance, so it cannot be matched to any of the final clearance categories.
+- `V6705`: The process ends at Record Goods Receipt without reaching invoice recording or clearance.
+- `V6706`: The variant ends prematurely at Record Goods Receipt without any invoice handling activities.
+- `V6707`: The variant terminates at Record Goods Receipt and lacks invoice recording and clearing steps.
+- `V6709`: The invoice is recorded before the goods receipt, but the process does not successfully complete clearance as it ends with an extra invoice receipt after cancellation/rework.
+- `V6721`: The process terminates with a Change Quantity activity rather than invoice clearance.
+- `V6733`: Terminates at Change Approval for Purchase Order without involving goods or invoice receipts.
+- `V6739`: Ends in Cancel Invoice Receipt with mixed ordering and no successful clearance.
+- `V6742`: Terminates at Record Goods Receipt without reaching invoice processing.
+- `V6743`: Terminates at Record Goods Receipt without invoice handling.
+- `V6744`: Terminates at Record Goods Receipt without invoice handling.
+- `V6746`: Terminates at Record Goods Receipt without invoice steps.
+- `V6747`: Terminates at Record Goods Receipt without invoice processing.
+- `V6748`: Terminates at Record Goods Receipt without invoice processing.
+- `V6749`: Terminates at Record Goods Receipt without invoice processing.
+- `V6750`: Terminates at Record Service Entry Sheet without reaching invoice creation or clearance.
+- `V6762`: The process terminates at change approval without reaching invoice clearing or matching completion.
+- `V6763`: The sequence consists of purchase order modifications and approvals without concluding with matching or clearance.
+- `V6779`: The process ends at record goods receipt without any invoice or matching steps.
+- `V6780`: The process terminates at record service entry sheet without invoice processing.
+- `V6781`: The process ends at record goods receipt without reaching invoice clearance.
+- `V6782`: The process terminates at record goods receipt without reaching invoice matching or clearance.
+- `V6783`: The process ends at record goods receipt without invoice handling.
+- `V6785`: The process ends at record goods receipt without invoicing or matching.
+- `V6786`: The process terminates at record goods receipt without invoice processing.
+- `V6787`: The process ends at record service entry sheet without reaching invoice processing.
+- `V6795`: The process ends at record service entry sheet without invoicing.
+- `V6811`: The process terminates at record service entry sheet without reaching invoice creation or matching/clearing.
+- `V6812`: The process terminates at record goods receipt without completing invoice matching.
+- `V6813`: The process ends at record goods receipt with no invoice activities present.
+- `V6814`: The process ends at record goods receipt without reaching invoicing.
+- `V6815`: Process ends with record goods receipt, lacking invoice processing.
+- `V6816`: Process terminates at record service entry sheet without invoicing steps.
+- `V6817`: Process ends at record goods receipt without invoice clearing or matching completion.
+- `V6826`: The process ends with the deletion of the purchase order item rather than successful invoice clearance.
+- `V6836`: No goods receipt or invoice receipt matching pattern is present; involves payment block removal and clearance.
+- `V6837`: Process is aborted early with a goods receipt cancellation.
+- `V6842`: Process terminates at record goods receipt without invoice processing.
+- `V6843`: Process terminates at record goods receipt without invoice processing.
+- `V6844`: Process terminates at record goods receipt without invoice processing.
+- `V6845`: Process terminates at record goods receipt without invoice processing.
+- `V6846`: Process terminates at record goods receipt without invoice processing.
+- `V6847`: Process terminates at record goods receipt without invoice processing.
+- `V6860`: The narrative contains cancellations and lacks a clean 3-way or 2-way matching flow.
+- `V6861`: Contains multiple debit memos and cancellations which do not cleanly map to standard matching categories.
+- `V6874`: Process terminates at Record Goods Receipt without invoice clearance or matching completion.
+- `V6875`: Process terminates at Record Goods Receipt without reaching invoice matching or clearance.
+- `V6876`: Process ends at Record Goods Receipt without concluding the invoice lifecycle.
+- `V6877`: Process ends at Record Goods Receipt.
+- `V6881`: Process terminates at Record Goods Receipt without invoicing.
+- `V6882`: Process terminates at Record Service Entry Sheet without reaching invoice lifecycle milestones.
+- `V6889`: Process terminates at Record Goods Receipt.
+- `V6897`: Process terminates at Record Goods Receipt.
+- `V6898`: Process terminates at Record Goods Receipt.
+- `V6899`: Process terminates at Record Goods Receipt.
+- `V6900`: Process terminates at Record Goods Receipt.
+- `V6901`: The narrative only contains purchase order creation, service entry sheets, and goods receipts without any invoice creation, invoice receipt, or matching steps.
+- `V6902`: The narrative only contains purchase order creation, service entry sheets, and goods receipts without any invoice creation, invoice receipt, or matching steps.
+- `V6903`: The narrative ends with changing delivery indicator and contains no invoicing or matching steps.
+- `V6954`: The process terminates at Record Goods Receipt without an invoice creation or clearance, leaving it outside the matching categories.
+- `V6955`: The process ends at Record Goods Receipt without matching an invoice or reaching clearance.
+- `V6956`: The process terminates early at Record Goods Receipt without invoice handling.
+- `V6957`: The variant ends with a Record Goods Receipt event and does not complete an invoice matching or clearance lifecycle.
+- `V6958`: The variant stops at Record Goods Receipt without progressing to invoice processing.
+- `V6959`: The process concludes at Record Service Entry Sheet without matching or clearing an invoice.
+- `V6960`: The process ends at Record Goods Receipt without completing an invoice cycle.
+- `V6961`: The narrative stops at Record Goods Receipt and does not execute any invoice matching or clearance.
+- `V6980`: The process terminates at Cancel Goods Receipt and does not reach invoice matching or clearance.
+- `V7007`: The process variant ends at Record Goods Receipt without invoice creation, receipt, or clearance, so none of the invoice matching categories apply.
+- `V7008`: The narrative terminates at Record Goods Receipt without any invoice handling or payment clearance steps.
+- `V7009`: The process only consists of order creation, service entry sheets, and goods receipts without reaching invoice processing.
+- `V7010`: Stops at Record Goods Receipt with no invoicing or matching actions recorded.
+- `V7011`: Ends at Record Goods Receipt without invoice receipt or payment clearing.
+- `V7012`: Terminates with a Record Service Entry Sheet activity and lacks invoice or matching steps.
+- `V7024`: Involves blocking and reactivating a purchase order item without any invoicing or goods receipt activities.
+- `V7034`: Process terminates at Record Goods Receipt without reaching invoice processing or clearance.
+- `V7035`: Process ends with Record Goods Receipt and service entry sheets, lacking invoicing steps.
+- `V7036`: Terminates at Record Goods Receipt without any invoice or clearance steps.
+- `V7037`: Ends at Record Goods Receipt with no invoice matching or clearing performed.
+- `V7038`: Stops at Record Goods Receipt without any invoice receipt or payment clearance.
+- `V7042`: Variant ends at Change Quantity without any goods receipt or invoice matching activities.
+- `V7073`: The narrative terminates at Record Goods Receipt without an invoice receipt or clearance step, hence it does not fit any completed matching category.
+- `V7074`: The narrative only contains order creation, service entries, and goods receipts without reaching invoice recording or matching.
+- `V7075`: Ends at Record Goods Receipt without invoice handling.
+- `V7076`: Terminates at Record Service Entry Sheet without reaching invoice receipt or matching.
+- `V7077`: Contains only goods receipts and service entry sheets without completing an invoice matching process.
+- `V7078`: Terminates at Record Goods Receipt without invoice handling.
+- `V7094`: Process terminates at Cancel Invoice Receipt without a complete matching and clearing cycle.
+- `V7099`: Process ends with deletion of the purchase order item rather than successful invoice clearance.
+- `V7107`: The process terminates at 'Record Goods Receipt' without reaching invoice creation or clearance.
+- `V7108`: The process terminates at 'Record Goods Receipt' without invoice matching.
+- `V7109`: The process ends at 'Record Goods Receipt' with no invoice or clearance steps.
+- `V7110`: The process ends at 'Record Goods Receipt' without matching or clearing an invoice.
+- `V7111`: The process ends at 'Record Goods Receipt' without invoice processing.
+- `V7112`: The process terminates at 'Record Service Entry Sheet' without invoice matching.
+- `V7113`: The process terminates at 'Record Service Entry Sheet' without reaching invoice clearance.
+- `V7126`: Process ends at 'Record Goods Receipt' without invoice processing.
+- `V7132`: Process ends prematurely at 'Record Goods Receipt' after cancellations and re-entries.
+- `V7144`: Process ends at 'Record Goods Receipt' without invoice matching.
+- `V7145`: Process terminates at 'Record Service Entry Sheet'/'Record Goods Receipt' without invoice processing.
+- `V7146`: Process terminates at 'Record Goods Receipt' without invoice matching.
+- `V7147`: Process terminates at 'Record Goods Receipt' without invoice processing.
+- `V7148`: Process terminates at 'Record Goods Receipt' without invoice matching.
+- `V7149`: Process terminates at 'Record Goods Receipt' without invoice matching.
+- `V7150`: Process terminates at 'Record Service Entry Sheet' without invoice processing.
+- `V7183`: The process terminates at Record Service Entry Sheet without an invoice or matching activity, leaving it in the residual.
+- `V7184`: The variant ends at Record Service Entry Sheet with no invoice receipt or matching process, making it part of the residual.
+- `V7185`: The sequence terminates at Record Goods Receipt without any invoice recording or matching, falling into the residual.
+- `V7186`: The process ends at Record Goods Receipt without reaching invoice matching or clearance, placing it in the residual.
+- `V7187`: Terminates at Record Goods Receipt without invoices or matching steps, fitting the residual category.
+- `V7188`: Ends at Record Service Entry Sheet without invoice processing, placing it in the residual.
+- `V7189`: Process concludes at Record Goods Receipt with no invoice activities, belonging to the residual.
+- `V7190`: Process ends with Record Service Entry Sheet without matching or invoicing, fitting the residual.
+- `V7223`: The process terminates at Cancel Goods Receipt without reaching invoice clearance or matching completion.
+- `V7225`: The process ends at Record Goods Receipt without any invoice or matching steps.
+- `V7232`: The process ends with Record Service Entry Sheet and includes no invoice activities.
+- `V7233`: The process terminates at Record Goods Receipt without invoice matching.
+- `V7234`: The process ends at Record Goods Receipt without invoice matching.
+- `V7235`: The process ends at Record Goods Receipt without invoice matching.
+- `V7236`: The process ends at Record Goods Receipt without invoice matching.
+- `V7237`: The process terminates with Record Service Entry Sheet and contains no invoice activities.
+- `V7256`: The process ends with Change Delivery Indicator without reaching invoice clearing or clear matching activities.
+- `V7260`: The variant only records purchase orders, service entry sheets, and goods receipts without proceeding to invoicing or matching.
+- `V7261`: The process concludes at Record Goods Receipt without any invoice creation or matching steps.
+- `V7262`: The variant terminates at Record Goods Receipt with no invoicing activities recorded.
+- `V7263`: The variant ends at Record Service Entry Sheet without reaching invoicing or matching.
+- `V7264`: The variant terminates at Record Service Entry Sheet with no invoice recorded.
+- `V7265`: The variant ends at Record Goods Receipt without any downstream invoice processing.
+- `V7266`: The variant ends at Record Goods Receipt and does not contain invoice matching activities.
+- `V7274`: Terminates at Record Goods Receipt without reaching invoice receipt or clearance.
+- `V7297`: The variant ends with Change Quantity and does not reach standard invoice clearing or completion.
+- `V7298`: The variant terminates at Change Delivery Indicator without invoice clearance.
+- `V7302`: The process involves an invoice cancellation and debit memo with no clear standard 3-way or 2-way match completion, thus falling into the residual.
+- `V7305`: The purchase order item was deleted following a cancelled goods receipt and price change, making it part of the residual.
+- `V7314`: The process ends at Record Service Entry Sheet with no invoice receipt or clearing, falling into the residual.
+- `V7315`: The process ends prematurely at Record Goods Receipt without invoice handling, placing it in the residual.
+- `V7316`: The process terminates at Record Goods Receipt without invoice creation or matching, placing it in the residual.
+- `V7317`: The process ends at Record Goods Receipt without reaching invoice receipt or clearance, fitting the residual.
+- `V7319`: Process ends with Record Goods Receipt and does not complete invoice processing, belonging to the residual.
+- `V7320`: Process ends at Record Goods Receipt without reaching any matching or invoice activities, fitting the residual.
+- `V7321`: Process ends at Record Goods Receipt without invoice steps, belonging to the residual.
+- `V7354`: The process ends at Record Goods Receipt without an invoice creation or clearing step, so it does not fit any matched invoice category.
+- `V7357`: Process concludes with Record Goods Receipt and has no invoice or matching sequence.
+- `V7358`: Process terminates at Record Goods Receipt without any invoice processing.
+- `V7359`: Process ends with Record Goods Receipt with no invoice records.
+- `V7360`: Process ends at Record Goods Receipt without invoice handling.
+- `V7361`: Process terminates with Record Goods Receipt.
+- `V7362`: Process concludes at Record Goods Receipt without invoice actions.
+- `V7363`: Process ends at Record Service Entry Sheet without matching or invoicing.
+- `V7376`: Process ends at Record Service Entry Sheet without invoicing.
+- `V7377`: Process ends at Record Goods Receipt without invoicing.
+- `V7379`: Process ends at Record Goods Receipt without invoicing.
+- `V7380`: Process ends at Record Service Entry Sheet without invoicing.
+- `V7381`: Process ends at Record Goods Receipt without invoicing.
+- `V7393`: Process ends at Record Goods Receipt without invoicing.
+- `V7394`: Process ends at Record Goods Receipt without invoicing.
+- `V7395`: Process ends at Record Goods Receipt without invoicing.
+- `V7396`: Process ends at Record Goods Receipt without invoicing.
+- `V7421`: The case does not reach invoice clearance or matching; it ends with Change Delivery Indicator.
+- `V7425`: The process ends at Record Goods Receipt without an invoice receipt.
+- `V7426`: The process ends at Record Goods Receipt without an invoice receipt.
+- `V7427`: The process ends at Record Goods Receipt without an invoice receipt.
+- `V7431`: The purchase order item is deleted, avoiding any matching or invoice clearance.
+- `V7439`: The process terminates with Change Delivery Indicator without invoice or goods settlement.
+- `V7449`: The process ends at Record Service Entry Sheet without reaching invoice matching or clearance.
+- `V7450`: The process ends at Record Goods Receipt without reaching invoice matching or clearance.
+- `V7451`: The variant consists of a continuous stream of service entry sheets and goods receipts without a final invoice recording or clearance cycle fitting standard matching controls.
+- `V7452`: The variant mainly consists of repeated goods receipts and service entry sheets without showing a structured invoice receipt and clearance.
+- `V7458`: This narrative deals primarily with SRM transaction and workflow management without reaching standard invoice or goods receipt matching categories.
+- `V7473`: Narrative ends in SRM transfer status without reaching invoice or goods receipt matching completion.
+- `V7475`: Narrative terminates at SRM in transfer without reaching matching or invoice clearance.
+- `V7485`: Variant involves order creation and deletion cycles without matching or invoice receipt.
+- `V7526`: Variant ends in Record Goods Receipt without invoice activities or completion, fitting into residual.
+- `V7527`: Variant ends in Record Service Entry Sheet without invoice resolution, fitting into residual.
+- `V7528`: Variant ends in Record Service Entry Sheet without completing invoice clearance, fitting into residual.
+- `V7530`: Variant consists of service entry sheets and goods receipts without invoice activities, fitting into residual.
+- `V7531`: Variant consists of goods receipts and service entry sheets without invoicing, fitting into residual.
+- `V7532`: Variant terminates at Record Service Entry Sheet without invoice matching, fitting into residual.
+- `V7533`: Variant terminates at Record Goods Receipt without invoice matching, fitting into residual.
+- `V7534`: Variant terminates at Record Goods Receipt without invoice matching, fitting into residual.
+- `V7553`: The process terminates at Record Goods Receipt without an invoice creation, receipt, or clearance event.
+- `V7554`: The process ends at Record Goods Receipt without matching an invoice or clearing.
+- `V7555`: The process ends at Record Goods Receipt without an invoice.
+- `V7556`: The process ends at Record Goods Receipt without any invoice processing.
+- `V7557`: The process concludes with Record Goods Receipt and contains no invoice steps.
+- `V7558`: Terminates at Record Goods Receipt with no invoice generation or clearance.
+- `V7559`: Ends at Record Service Entry Sheet without reaching invoice receipt or clearance.
+- `V7560`: Ends at Record Goods Receipt with no invoice.
+- `V7577`: Process ends with a canceled goods receipt and lacks an invoice clearance cycle.
+- `V7584`: Terminates at Record Goods Receipt without invoice handling.
+- `V7585`: Terminates at Record Goods Receipt without invoice handling.
+- `V7586`: Terminates at Record Goods Receipt without invoice handling.
+- `V7587`: Terminates at Record Goods Receipt without invoice handling.
+- `V7588`: Terminates at Record Goods Receipt without invoice handling.
+- `V7589`: Terminates at Record Service Entry Sheet without invoice handling.
+- `V7590`: Terminates at Record Goods Receipt without invoice handling.
+- `V7596`: Process concludes prematurely at Record Invoice Receipt without full clearance matching the categories.
+- `V7628`: Variant ends at Record Goods Receipt without invoice creation or clearance, thus fitting none of the matching categories.
+- `V7629`: Variant ends at Record Goods Receipt without invoice creation or clearance, thus fitting none of the matching categories.
+- `V7630`: Variant ends at Change Delivery Indicator without invoice processing.
+- `V7637`: Variant ends at Record Service Entry Sheet without reaching invoice creation or clearance.
+- `V7640`: Variant ends at Record Service Entry Sheet without reaching invoice creation or clearance.
+- `V7641`: Variant ends at Record Goods Receipt without reaching invoice creation or clearance.
+- `V7642`: Variant ends at Record Goods Receipt without reaching invoice creation or clearance.
+- `V7643`: Variant ends at Record Goods Receipt without reaching invoice creation or clearance.
+- `V7644`: Variant ends at Record Goods Receipt without reaching invoice creation or clearance.
+- `V7645`: Variant ends at Record Service Entry Sheet without reaching invoice creation or clearance.
+- `V7673`: The process ends at Record Goods Receipt without an invoice receipt or clearance, leaving it outside the standard categories.
+- `V7676`: The case terminates at Record Goods Receipt with no invoice activities or clearance.
+- `V7677`: The trace only records service entry sheets and goods receipts without any invoice processing steps.
+- `V7678`: The process only involves service entry sheets and goods receipts, lacking invoice handling.
+- `V7679`: The trace only contains goods receipts and service entry sheets, with no invoice lifecycle events.
+- `V7680`: The process terminates at Record Service Entry Sheet without reaching invoice recording or matching.
+- `V7681`: The trace consists purely of service entry and goods receipt activities, with no invoices.
+- `V7707`: The process terminates at Record Goods Receipt without an invoice receipt or clearing.
+- `V7708`: The process terminates at Cancel Goods Receipt and lacks full invoice matching and clearing.
+- `V7709`: The process ends at Record Goods Receipt without reaching invoice recording or matching.
+- `V7710`: Incomplete procure-to-pay process ending on a goods receipt.
+- `V7711`: Terminates at Record Service Entry Sheet without invoice processing.
+- `V7712`: Ends at Record Goods Receipt without reaching invoicing.
+- `V7713`: Ends at Record Goods Receipt without invoicing steps.
+- `V7714`: Ends at Record Goods Receipt without completion of invoicing.
+- `V7716`: Process stalls at Record Invoice Receipt without reaching invoice clearance.
+- `V7735`: Incomplete process ending at Record Goods Receipt.
+- `V7736`: Incomplete process ending at Record Goods Receipt.
+- `V7737`: Incomplete process ending at Record Goods Receipt.
+- `V7738`: Incomplete process ending at Record Goods Receipt.
+- `V7739`: Incomplete process ending at Record Service Entry Sheet.
+- `V7740`: Incomplete process ending at Record Goods Receipt.
+- `V7741`: Incomplete process ending at Record Goods Receipt.
+- `V7743`: Terminates at Cancel Invoice Receipt without matching or completion.
+- `V7747`: Process stops at Record Invoice Receipt without clearing.
+- `V7811`: The process variant ends with a goods receipt and does not reach invoice clearance or matching completion.
+- `V7812`: The process terminates at goods receipt without invoicing or matching.
+- `V7813`: The process ends at goods receipt/service entry and does not complete matching.
+- `V7814`: The variant terminates at goods receipt without an invoice.
+- `V7815`: Variant ends at goods receipt without invoice matching.
+- `V7816`: The process stops at record service entry sheet without invoice processing.
+- `V7831`: The process flow diverges into price changes after clearance and does not cleanly fit standard matching categories.
+- `V7846`: Process terminates at goods receipt without invoice processing.
+- `V7847`: Process ends at goods receipt without reaching invoicing.
+- `V7848`: Process terminates at goods receipt without an invoice.
+- `V7849`: Process ends at service entry and goods receipt without reaching invoice clearing.
+- `V7850`: Process terminates at goods receipt without invoicing.
+- `V7851`: The narrative only involves the creation of purchase order items, service entry sheets, and goods receipts without any invoice recording or clearing, so it does not fit any matching or consignment consumption category.
+- `V7889`: The process ends with goods receipt and involves no invoice or matching activities.
+- `V7890`: The process ends with goods receipt and involves no invoice or matching activities.
+- `V7891`: The process ends with goods receipt and involves no invoice or matching activities.
+- `V7892`: The process ends with goods receipt and involves no invoice or matching activities.
+- `V7893`: The process ends with goods receipt and involves no invoice or matching activities.
+- `V7894`: The process ends with service entry sheet and involves no invoice or matching activities.
+- `V7912`: The narrative begins with vendor creating invoice before purchase order creation, making standard matching classification inapplicable.
+- `V7920`: The process terminates at record goods receipt without any invoice creation or matching.
+- `V7921`: The process terminates at record goods receipt without invoice creation.
+- `V7922`: The process terminates at record goods receipt without invoice creation.
+- `V7923`: The process terminates at record goods receipt without invoice creation.
+- `V7924`: The process terminates at record goods receipt without invoice creation.
+- `V7925`: The process terminates at record goods receipt without invoice creation.
+- `V7926`: The process terminates at record service entry sheet without invoice creation or matching.
+- `V7927`: The process terminates at record service entry sheet without invoice creation.
+- `V7944`: The process ends at update order confirmation without invoice creation or matching.
+- `V7952`: The process terminates at Record Goods Receipt without an invoice receipt or clearance, so it does not realize a matching category.
+- `V7953`: The process terminates at Record Service Entry Sheet/Goods Receipt without invoice processing.
+- `V7954`: The process ends at Record Goods Receipt without reaching invoice receipt or clearance.
+- `V7955`: The process ends at Record Goods Receipt and does not contain invoice processing steps.
+- `V7956`: The process terminates at Record Goods Receipt without an invoice receipt.
+- `V7957`: The process terminates at Record Goods Receipt without invoice handling.
+- `V7958`: The process terminates at Record Goods Receipt without an invoice receipt.
+- `V7959`: The process terminates at Record Goods Receipt without reaching invoice handling or matching.
+- `V7971`: The process terminates at Record Goods Receipt without invoice receipt or clearance.
+- `V7972`: The process terminates at Record Goods Receipt without invoice processing.
+- `V7988`: Process ends at Record Goods Receipt without invoice activities.
+- `V7989`: Process ends at Record Goods Receipt without invoice activities.
+- `V7990`: Process ends at Record Goods Receipt without invoice activities.
+- `V7991`: Process ends at Record Goods Receipt without invoice activities.
+- `V7992`: Process ends at Record Goods Receipt without invoice activities.
+- `V7993`: Process ends at Record Goods Receipt without invoice activities.
+- `V7994`: Process ends at Record Service Entry Sheet without invoice activities.
+- `V7995`: Process ends at Record Goods Receipt without invoice activities.
+- `V8002`: The process ends at Cancel Goods Receipt without reaching invoice recording or clearance, so it does not fit any of the matched or consignment categories.
+- `V8252`: The process ends at Record Goods Receipt without an invoice receipt or clearance, so it does not fit any complete matching/clearance category.
+- `V8253`: The process terminates at Record Goods Receipt without reaching invoice recording or clearance.
+- `V8254`: The process ends at Record Service Entry Sheet without an invoice receipt or clearance.
+- `V8255`: The process ends at Record Goods Receipt without reaching invoice receipt or clearance.
+- `V8256`: The process terminates at Record Goods Receipt without an invoice receipt or clearance.
+- `V8257`: The process ends at Record Goods Receipt without an invoice receipt or clearance.
+- `V8268`: The purchase order item is deleted before any invoice or matching can occur.
+- `V8270`: The process ends at Record Goods Receipt without reaching invoice receipt or clearance.
+- `V8291`: The process ends at Record Goods Receipt without reaching invoice receipt or clearance.
+- `V8292`: The process terminates at Record Goods Receipt without an invoice receipt or clearance.
+- `V8293`: The process ends at Record Goods Receipt without reaching invoice receipt or clearance.
+- `V8294`: The process terminates at Record Goods Receipt without an invoice receipt or clearance.
+- `V8295`: The process ends at Record Service Entry Sheet without an invoice receipt or clearance.
+- `V8296`: The process terminates at Record Goods Receipt without an invoice receipt or clearance.
+- `V8303`: The purchase order item was deleted rather than being fulfilled or matched.
+- `V8309`: The process ended at record goods receipt without invoice creation or clearance.
+- `V8310`: The process ended with goods receipt cancellation.
+- `V8314`: The process ended at record goods receipt without invoice processing.
+- `V8315`: The process ended at record goods receipt without invoice processing.
+- `V8316`: The process ended at record goods receipt without invoice processing.
+- `V8317`: The process ended at record goods receipt without invoice processing.
+- `V8318`: The process ended at record goods receipt without invoice processing.
+- `V8319`: The process ended at record goods receipt without invoice processing.
+- `V8320`: The process ended at record goods receipt without invoice processing.
+- `V8350`: The process ended at record goods receipt without invoice processing.
+- `V8351`: The variant sequence consists primarily of repeated service entry sheets and goods receipts without completing an invoice cycle or matching process.
+- `V8352`: The variant contains only order creation, goods receipts, and service entry sheets without any invoice processing.
+- `V8353`: The variant represents a partial purchasing process ending in goods receipts without invoicing.
+- `V8354`: The variant consists entirely of repeated goods receipts and service entry sheets without any invoice receipt or matching.
+- `V8361`: The process terminates at goods receipt and cancellation without involving invoice activities.
+- `V8375`: The process consists only of order creation, goods receipts, and service entry sheets without invoicing.
+- `V8376`: The process consists only of order creation, goods receipts, and service entry sheets without invoicing.
+- `V8377`: The process consists only of order creation, goods receipts, and service entry sheets without invoicing.
+- `V8378`: The process consists only of order creation, goods receipts, and service entry sheets without invoicing.
+- `V8379`: The process consists only of order creation, goods receipts, and service entry sheets without invoicing.
+- `V8380`: The process consists only of order creation, goods receipts, and service entry sheets without invoicing.
+- `V8389`: The process contains cancellations and order creation, but no proper goods receipt and invoice matching flow.
+- `V8394`: The variant ends in goods receipt without any invoice creation or matching.
+- `V8418`: The process terminates at Record Goods Receipt without an invoice creation or clearance, so it does not realize a matching category.
+- `V8419`: The process terminates at Record Goods Receipt without an invoice creation or clearance, so it does not realize a matching category.
+- `V8420`: The process terminates at Record Goods Receipt without an invoice creation or clearance, so it does not realize a matching category.
+- `V8421`: The process terminates at Record Goods Receipt without an invoice creation or clearance, so it does not realize a matching category.
+- `V8422`: The process terminates at Record Goods Receipt without an invoice creation or clearance, so it does not realize a matching category.
+- `V8423`: The process terminates at Record Service Entry Sheet without an invoice creation or clearance, so it does not realize a matching category.
+- `V8424`: The process terminates at Record Goods Receipt without an invoice creation or clearance, so it does not realize a matching category.
+- `V8440`: The process terminates at Record Goods Receipt without an invoice creation or clearance, so it does not realize a matching category.
+- `V8441`: The process terminates at Record Goods Receipt without an invoice creation or clearance, so it does not realize a matching category.
+- `V8442`: The process terminates at Record Goods Receipt without an invoice creation or clearance, so it does not realize a matching category.
+- `V8443`: The process terminates at Record Goods Receipt without an invoice creation or clearance, so it does not realize a matching category.
+- `V8444`: The process terminates at Record Goods Receipt without an invoice creation or clearance, so it does not realize a matching category.
+- `V8445`: The process terminates at Record Service Entry Sheet without an invoice creation or clearance, so it does not realize a matching category.
+- `V8446`: The process terminates at Record Goods Receipt without an invoice creation or clearance, so it does not realize a matching category.
+- `V8447`: The process terminates at Record Service Entry Sheet without an invoice creation or clearance, so it does not realize a matching category.
+- `V8470`: The process terminates at Record Goods Receipt without an invoice clearance or completion.
+- `V8471`: The process terminates at Record Goods Receipt without an invoice clearance or completion.
+- `V8472`: The process terminates at Record Goods Receipt without an invoice clearance or completion.
+- `V8477`: The process terminates at Record Goods Receipt without an invoice clearance or completion.
+- `V8478`: The process terminates at Record Goods Receipt without an invoice clearance or completion.
+- `V8486`: The process terminates at Change Quantity without successful invoice clearance.
+- `V8489`: The process terminates at Record Goods Receipt without an invoice clearance or completion.
+- `V8570`: The item was deleted before completion and does not fit standard matching categories.
+- `V8574`: Incomplete case ending in goods receipt without invoice processing.
+- `V8575`: Incomplete case ending in goods receipt without invoice processing.
+- `V8576`: Incomplete case ending in goods receipt without invoice processing.
+- `V8577`: Incomplete case ending in goods receipt without invoice processing.
+- `V8578`: Incomplete case ending in goods receipt without invoice processing.
+- `V8608`: The process terminates at Record Goods Receipt without any invoice creation, receipt, or clearance, leaving no match in the taxonomy categories.
+- `V8609`: The process concludes at Record Goods Receipt and does not reach invoice matching or clearance.
+- `V8610`: The sequence ends at Record Goods Receipt without completing an invoice matching process.
+- `V8611`: The process consists entirely of service entry sheets and goods receipts, ending at Record Goods Receipt without invoice handling.
+- `V8612`: Ends at Record Goods Receipt without invoice recording or clearance.
+- `V8613`: Process stops at Record Goods Receipt without invoicing or matching.
+- `V8641`: Terminates at Record Goods Receipt without invoicing or matching.
+- `V8642`: Terminates at Record Goods Receipt without invoice handling.
+- `V8643`: Terminates at Record Goods Receipt without invoice handling.
+- `V8644`: Terminates at Record Goods Receipt without invoice handling.
+- `V8645`: Terminates at Record Goods Receipt without invoice handling.
+- `V8646`: Terminates at Record Goods Receipt without invoice handling.
+- `V8647`: Terminates at Record Service Entry Sheet without invoice handling.
+- `V8650`: Process terminates at Change Quantity without reaching invoicing or clearance.
+- `V8662`: The narrative only involves purchase orders, service entry sheets, and goods receipts without reaching invoice clearing or clear matching alternative indicators.
+- `V8664`: The case terminates at Record Service Entry Sheet without invoice processing.
+- `V8665`: The case terminates at Record Goods Receipt without invoice processing.
+- `V8666`: The case terminates at Record Goods Receipt without invoice processing.
+- `V8667`: The case terminates at Record Goods Receipt without invoice processing.
+- `V8668`: The case terminates at Record Goods Receipt without invoice processing.
+- `V8669`: The case terminates at Record Service Entry Sheet without invoice processing.
+- `V8670`: The case terminates at Record Goods Receipt without invoice processing.
+- `V8671`: The case terminates at Record Goods Receipt without invoice processing.
+- `V8683`: Terminates at Record Service Entry Sheet without invoice processing.
+- `V8684`: Terminates at Record Goods Receipt without invoice processing.
+- `V8685`: Terminates at Record Goods Receipt without invoice processing.
+- `V8686`: Terminates at Record Goods Receipt without invoice processing.
+- `V8687`: Terminates at Record Goods Receipt without invoice processing.
+- `V8688`: Terminates at Record Goods Receipt without invoice processing.
+- `V8696`: The process terminates in Block Purchase Order Item rather than invoice clearance.
+- `V8697`: The process terminates in Delete Purchase Order Item.
+- `V8700`: Terminates at Record Goods Receipt without invoice processing.
+- `V8816`: The process variant ends with Record Goods Receipt without an invoice clearance or completion.
+- `V8817`: The process variant ends with Record Goods Receipt and lacks invoicing or matching completion.
+- `V8818`: The variant only contains goods receipts and service entry sheets without reaching invoice clearance.
+- `V8819`: The variant ends with Record Goods Receipt and lacks invoicing steps.
+- `V8820`: The variant ends at Record Goods Receipt without progressing to invoice handling.
+- `V8821`: The variant terminates at Record Goods Receipt without matching or clearing an invoice.
+- `V8841`: Variant ends at Record Goods Receipt without matching or invoicing.
+- `V8873`: The process ends at Record Goods Receipt without an invoice receipt or clearance, fitting none of the completed matching categories.
+- `V8874`: The process concludes at Record Service Entry Sheet without reaching invoice or clearance stages.
+- `V8877`: The process terminates at Record Goods Receipt without any invoice handling.
+- `V8878`: The process terminates at Record Goods Receipt without any invoice handling.
+- `V8879`: The process terminates at Record Goods Receipt without any invoice handling.
+- `V8880`: The process terminates at Record Goods Receipt without any invoice handling.
+- `V8881`: The process terminates at Record Service Entry Sheet without invoice processing.
+- `V8882`: The process terminates at Record Goods Receipt without invoice processing.
+- `V8911`: The process terminates at Record Service Entry Sheet without completing an invoice creation or matching lifecycle.
+- `V8912`: The case ends with Record Goods Receipt without any invoicing or matching activities.
+- `V8913`: The process ends at Record Goods Receipt without reaching invoice recording or matching.
+- `V8914`: The trace concludes at Record Goods Receipt without an invoice workflow.
+- `V8915`: The case finishes at Record Goods Receipt without progressing to billing or matching.
+- `V8916`: The process concludes at Record Service Entry Sheet without an invoice lifecycle.
+- `V8917`: The process ends at Record Service Entry Sheet without any invoicing steps.
+- `V8927`: The variant ends with Record Goods Receipt without matching or invoicing.
+- `V8928`: The variant ends with Record Goods Receipt without invoice matching.
+- `V8929`: The trace terminates at Record Goods Receipt without invoice processing.
+- `V8930`: The variant finishes at Record Goods Receipt without any invoicing steps.
+- `V8944`: The trace terminates at Record Goods Receipt without reaching invoice clearance.
+- `V8945`: The trace ends at Record Goods Receipt without matching or invoicing.
+- `V8946`: The process terminates at Record Goods Receipt without an invoice lifecycle.
+- `V8947`: The variant ends with Record Goods Receipt without any invoice processing.
+- `V8950`: The purchase order item was deleted, so no matching or invoicing lifecycle was completed.
+- `V8957`: The purchase order item is deleted before any invoice or goods receipt processing, so it does not fit any matching or consumption category.
+- `V8958`: The process terminates at record goods receipt without any invoice processing or matching.
+- `V8961`: The process ends at record goods receipt/service entry sheets without any invoice steps.
+- `V8962`: The process ends at record goods receipt/service entry sheets without invoice matching.
+- `V8963`: The process terminates at record goods receipt without invoice receipt steps.
+- `V8964`: The process terminates at record goods receipt without invoice steps.
+- `V8978`: The purchase order item is deleted, with no invoice or goods receipt matching.
+- `V8979`: Involves goods receipt and cancellation, but lacks invoice processing.
+- `V8982`: Terminates at goods receipt/service entry without invoicing.
+- `V8983`: Terminates at goods receipt without invoicing.
+- `V8984`: Terminates at goods receipt without invoicing.
+- `V8985`: Terminates at goods receipt without invoicing.
+- `V8986`: Terminates at goods receipt without invoicing.
+- `V8987`: Terminates at service entry sheet without invoicing.
+- `V8991`: Involves multiple goods receipts and a cancellation, with no invoicing.
+- `V8997`: Terminates at goods receipt without any invoice processing.
+- `V9000`: Order item is deleted immediately after creation, with no matching or invoicing.
+- `V9007`: The process ends at Record Goods Receipt without invoice recording or clearance, so it does not fit any matching category.
+- `V9008`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9009`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9010`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9011`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9012`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9013`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9031`: Process terminates at Record Service Entry Sheet without invoice recording or clearance.
+- `V9032`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9033`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9034`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9035`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9037`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9038`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9039`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9040`: Process terminates at Record Goods Receipt without matching or clearance.
+- `V9066`: The narrative only records purchase order items and goods receipts/service entry sheets without reaching invoice clearance or matching completion.
+- `V9067`: The process terminates at goods receipt without invoicing.
+- `V9071`: The narrative consists purely of goods receipts and service entry sheets without invoice processing.
+- `V9072`: Ends at goods receipt without invoice handling.
+- `V9073`: Only service entry sheets and goods receipts are logged.
+- `V9074`: Involves only goods receipts and service entry sheets.
+- `V9075`: Stops at service entry sheet without invoicing steps.
+- `V9087`: The process only contains price changes without any goods receipts or invoices.
+- `V9088`: The process terminates at goods receipt without invoicing.
+- `V9095`: Terminates at goods receipt without invoice processing.
+- `V9096`: Contains only goods receipts and service entry sheets.
+- `V9097`: Contains only goods receipts and service entry sheets.
+- `V9098`: Contains only goods receipts and service entry sheets.
+- `V9099`: Contains only goods receipts and service entry sheets.
+- `V9116`: The process terminates at Record Service Entry Sheet without matching or invoice clearance, so it does not fit any matching category.
+- `V9117`: The process terminates at Record Goods Receipt without any invoice matching or clearance.
+- `V9118`: The process terminates at Record Goods Receipt without invoice matching or clearance.
+- `V9119`: The process terminates at Record Goods Receipt without invoice matching or clearance.
+- `V9120`: The process terminates at Record Service Entry Sheet without invoice matching or clearance.
+- `V9121`: The process terminates at Record Goods Receipt without invoice matching or clearance.
+- `V9134`: The process terminates at Record Goods Receipt without invoice matching or clearance.
+- `V9135`: The process terminates at Record Goods Receipt without invoice matching or clearance.
+- `V9150`: The process terminates at Change Quantity without any invoice receipt or clearance.
+- `V9155`: The process ends at Record Goods Receipt without any invoice creation, invoice receipt, or invoice clearing, so it does not realize any of the invoice clearance matching categories.
+- `V9156`: The process terminates at Record Goods Receipt with no invoice processing steps present.
+- `V9157`: The process terminates at Record Goods Receipt without reaching invoice creation or matching.
+- `V9158`: The process terminates at Record Goods Receipt without any invoice handling.
+- `V9159`: The process ends at Record Goods Receipt without involving any invoice activities.
+- `V9165`: The case terminates with Change Delivery Indicator after goods receipt without any invoice processing.
+- `V9168`: The process terminates at Record Goods Receipt without reaching invoice handling.
+- `V9169`: The process terminates with Cancel Goods Receipt and does not involve invoice matching.
+- `V9174`: The process terminates at Record Goods Receipt without invoice receipt or clearing.
+- `V9175`: The process ends at Record Goods Receipt without any invoice processing.
+- `V9176`: The process terminates at Record Service Entry Sheet without invoice handling.
+- `V9177`: The process terminates at Record Goods Receipt without invoice steps.
+- `V9200`: The process terminates at Record Goods Receipt without reaching invoice activities.
+- `V9201`: The variant ends with Record Goods Receipt and does not contain invoice creation or matching activities.
+- `V9202`: The variant ends with Record Goods Receipt and does not contain invoice creation or matching activities.
+- `V9203`: The variant ends with Record Goods Receipt and does not contain invoice creation or matching activities.
+- `V9204`: The variant ends with Record Service Entry Sheet and does not contain invoice creation or matching activities.
+- `V9206`: The variant deals only with purchase order item modifications and deletion, without invoice or goods receipt matching.
+- `V9212`: The variant ends with Change Quantity and does not complete an invoice clearance process.
+- `V9213`: The variant ends with Change Quantity and does not complete an invoice clearance process.
+- `V9216`: The variant only includes goods receipts and service entry sheets without invoice recording or clearance.
+- `V9217`: The variant ends with Record Goods Receipt without any invoice handling.
+- `V9218`: The variant ends with Record Goods Receipt without any invoice handling.
+- `V9219`: The variant ends with Record Service Entry Sheet without any invoice handling.
+- `V9231`: The variant ends with Change Quantity without reaching invoice clearance.
+- `V9249`: The variant ends with Record Goods Receipt without any invoice handling.
+- `V9250`: The variant ends with Record Goods Receipt without any invoice handling.
+- `V9251`: This variant only records goods receipts and service entry sheets without completing an invoice receipt or clearing.
+- `V9252`: This variant only records purchase orders, goods receipts, and service entry sheets, ending without invoice activities.
+- `V9267`: The process terminates with a goods receipt and does not complete invoice processing.
+- `V9268`: Process ends at goods receipt without invoicing.
+- `V9269`: The purchase order item is deleted before reaching any matching or invoicing steps.
+- `V9270`: The purchase order item is deleted without reaching any matching or invoicing.
+- `V9273`: Ends at goods receipt without invoicing.
+- `V9274`: Ends at goods receipt without invoicing.
+- `V9281`: Variant terminates after goods receipt and service entry sheets without invoice activities.
+- `V9282`: Variant terminates after goods receipt and service entry sheets without invoice activities.
+- `V9283`: Variant terminates after goods receipt and service entry sheets without invoice activities.
+- `V9284`: Variant terminates after goods receipt and service entry sheets without invoice activities.
+- `V9285`: Variant terminates after goods receipt and service entry sheets without invoice activities.
+- `V9286`: Variant terminates after goods receipt and service entry sheets without invoice activities.
+- `V9287`: Variant terminates after goods receipt and service entry sheets without invoice activities.
+- `V9302`: The narrative only records goods receipt and service entry sheets without reaching invoice creation or matching.
+- `V9303`: The process terminates with a goods receipt and does not progress to invoice receipt or matching.
+- `V9304`: The process ends at goods receipt without invoicing or matching.
+- `V9305`: The process terminates at goods receipt without an invoice.
+- `V9306`: The process stops at recording a service entry sheet without reaching invoicing.
+- `V9307`: The process ends at goods receipt without invoice processing.
+- `V9323`: Process terminates at goods receipt without invoicing.
+- `V9324`: Process terminates at goods receipt without invoicing.
+- `V9325`: Process terminates at goods receipt without invoicing.
+- `V9326`: Process terminates at goods receipt without invoicing.
+- `V9327`: Process terminates with service entry without invoicing.
+- `V9328`: Process terminates at goods receipt without invoicing.
+- `V9344`: Process involves goods receipt and delivery indicator changes, but no invoicing or matching.
+- `V9345`: Process involves goods receipts and quantity/delivery changes without invoicing.
+- `V9349`: Process terminates at goods receipt without invoicing.
+- `V9350`: Process terminates at goods receipt without invoicing.
+- `V9351`: The narrative only covers creation and operational service entry and goods receipt activities without completing a full invoice-to-clearance or matching lifecycle.
+- `V9352`: The process sequence consists entirely of service entry and goods receipt steps and does not reach invoice entry or clearance.
+- `V9353`: The variant stops at operational order, service entry, and goods receipt without any invoice processing.
+- `V9354`: The narrative terminates at goods receipt and service entry activities without invoicing.
+- `V9374`: The narrative terminates at goods receipt without any invoice processing.
+- `V9375`: The narrative stops at goods receipt without invoice handling.
+- `V9376`: The process sequence ends at goods receipt without invoicing.
+- `V9377`: The process consists only of service entries and goods receipts.
+- `V9378`: The process finishes at service entry and goods receipt activities.
+- `V9379`: Process terminates at goods receipt without invoicing.
+- `V9380`: Process stops at goods receipt without reaching invoice steps.
+- `V9395`: Process terminates at goods receipt without invoicing.
+- `V9396`: Process terminates at service entry without invoicing.
+- `V9397`: Process terminates at goods receipt without invoicing.
+- `V9398`: Process terminates at goods receipt without invoicing.
+- `V9399`: Process terminates at goods receipt without invoicing.
+- `V9400`: Process terminates at service entry without invoicing.
+- `V9401`: The variant ends in Record Goods Receipt without completing an invoice or clearance cycle.
+- `V9402`: The variant ends in Record Service Entry Sheet without recording an invoice or clearing.
+- `V9414`: The process terminates at Record Service Entry Sheet without an invoice or clearance.
+- `V9415`: The process ends at Record Goods Receipt without invoicing.
+- `V9416`: The process terminates at Record Goods Receipt.
+- `V9417`: The process terminates at Record Goods Receipt.
+- `V9418`: The process terminates at Record Goods Receipt.
+- `V9419`: The process terminates at Record Goods Receipt.
+- `V9435`: The process ends at Record Goods Receipt without invoicing.
+- `V9442`: The process terminates at Record Goods Receipt without invoicing.
+- `V9443`: The process terminates at Record Goods Receipt without invoicing.
+- `V9444`: The process terminates at Record Goods Receipt without invoicing.
+- `V9445`: The process terminates at Record Goods Receipt without invoicing.
+- `V9446`: The process terminates at Record Service Entry Sheet without invoicing.
+- `V9447`: The process terminates at Record Goods Receipt without invoicing.
+- `V9448`: The process terminates at Record Goods Receipt without invoicing.
+- `V9459`: The process terminates at Record Goods Receipt without reaching invoice creation, receipt, or clearance, so no match category applies.
+- `V9469`: Process ends at Record Goods Receipt without invoicing or clearance.
+- `V9470`: Process ends at Record Goods Receipt without invoice handling.
+- `V9471`: Process ends at Record Service Entry Sheet without invoicing or clearance.
+- `V9472`: Process ends at Record Goods Receipt without invoice handling.
+- `V9473`: Process ends at Record Goods Receipt without invoice handling.
+- `V9475`: Terminates at Record Invoice Receipt without final clearance.
+- `V9476`: Terminates at Record Service Entry Sheet without invoice processing.
+- `V9480`: Terminates with Delete Purchase Order Item, so no matching category applies.
+- `V9483`: Terminates with SRM: Deleted, so no matching category applies.
+- `V9486`: Terminates at Record Invoice Receipt without final clearance.
+- `V9490`: Terminates with SRM: Deleted, so no matching category applies.
+- `V9491`: Terminates with SRM: Transaction Completed and item deletion, so no matching category applies.
+- `V9493`: Terminates at Record Invoice Receipt without final clearance.
+- `V9494`: Terminates at SRM: Change was Transmitted without execution or matching.
+- `V9496`: Terminates at SRM: Change was Transmitted without execution or matching.
+- `V9497`: Terminates at Record Invoice Receipt without final clearance.
+- `V9500`: Terminates at Record Invoice Receipt without final clearance.
+- `V9501`: The narrative ends with Record Goods Receipt and does not contain invoice matching activities.
+- `V9507`: The process terminates at Record Service Entry Sheet without reaching invoice receipt or matching.
+- `V9510`: Process ends at Record Goods Receipt without matching an invoice.
+- `V9511`: Process terminates at Create Purchase Order Item.
+- `V9523`: Process stops at Record Service Entry Sheet without invoice matching.
+- `V9531`: Process involves purchase order item changes and deletion/reactivation without matching.
+- `V9558`: The case ends with Change Delivery Indicator without reaching invoice clearance, so it does not fit a matching category.
+- `V9564`: The case terminates at Record Goods Receipt without an invoice being cleared.
+- `V9565`: The case terminates at Record Goods Receipt without an invoice being cleared.
+- `V9566`: The case terminates at Record Goods Receipt without an invoice being cleared.
+- `V9567`: The case terminates at Record Goods Receipt without an invoice being cleared.
+- `V9568`: The case terminates at Record Goods Receipt without an invoice being cleared.
+- `V9569`: The case terminates at Record Service Entry Sheet without reaching invoice clearance.
+- `V9570`: The case terminates at Record Goods Receipt without an invoice being cleared.
+- `V9596`: The case terminates at Record Goods Receipt without an invoice being cleared.
+- `V9599`: The case terminates at Record Goods Receipt without an invoice being cleared.
+- `V9600`: The case terminates at Record Service Entry Sheet without reaching invoice clearance.
+- `V9601`: The process only consists of purchase order creation, service entry sheets, and goods receipts without any invoice receipt or clearing steps.
+- `V9602`: The process ends with goods receipt creation and does not involve any invoice matching or clearing activities.
+- `V9603`: The process terminates at goods receipt without invoice receipt or payment clearance.
+- `V9604`: The process ends with goods receipts and service entry sheets; no invoice processing occurs.
+- `V9605`: The process consists entirely of PO creation, goods receipts, and service entry sheets.
+- `V9639`: Process contains service entry sheets and goods receipts but lacks invoice receipt or clearance.
+- `V9640`: Process contains service entry sheets and goods receipts but lacks invoice receipt or clearance.
+- `V9641`: Process contains service entry sheets and goods receipts but lacks invoice receipt or clearance.
+- `V9642`: Process contains service entry sheets and goods receipts but lacks invoice receipt or clearance.
+- `V9643`: Process contains service entry sheets and goods receipts but lacks invoice receipt or clearance.
+- `V9644`: Process contains service entry sheets and goods receipts but lacks invoice receipt or clearance.
+- `V9645`: Process contains service entry sheets and goods receipts but lacks invoice receipt or clearance.
+- `V9668`: The process terminates at Record Goods Receipt without an invoice or clearance step.
+- `V9670`: Process ends at Record Service Entry Sheet without matching or invoicing.
+- `V9671`: Process ends at Record Goods Receipt without matching or invoicing.
+- `V9672`: Process ends at Record Goods Receipt without invoicing or matching.
+- `V9673`: Process ends at Record Goods Receipt without invoicing or matching.
+- `V9674`: Process ends at Record Goods Receipt without invoicing or matching.
+- `V9675`: Process ends at Record Goods Receipt without invoicing or matching.
+- `V9678`: Process finishes with Change Delivery Indicator without any financial or receiving match.
+- `V9696`: Terminates at Change Delivery Indicator without invoice or matching.
+- `V9697`: Terminates at Change Delivery Indicator without invoice or matching.
+- `V9698`: Terminates at Record Goods Receipt without invoicing or matching.
+- `V9703`: The process ends at Record Goods Receipt without an invoice receipt or clearance, leaving it outside the standard matching categories.
+- `V9704`: Terminates at Record Goods Receipt without invoice handling.
+- `V9705`: Process ends with Record Goods Receipt and lacks invoicing and clearance.
+- `V9706`: Process finishes at Record Service Entry Sheet without reaching invoice clearance.
+- `V9707`: Involves service entries and goods receipts but does not progress to invoice matching or clearance.
+- `V9708`: Terminates early at Record Goods Receipt.
+- `V9721`: Terminates at Cancel Goods Receipt without reaching invoice matching or clearance.
+- `V9727`: Terminates at Change Quantity without GR, IR, or clearance.
+- `V9733`: Terminates at Record Goods Receipt without invoicing.
+- `V9734`: Terminates at Record Goods Receipt without invoicing.
+- `V9735`: Terminates at Record Goods Receipt without invoicing.
+- `V9736`: Terminates at Record Goods Receipt without invoicing.
+- `V9737`: Terminates at Record Goods Receipt without invoicing.
+- `V9753`: This narrative ends with Record Goods Receipt without any invoice or financial clearance steps, so it does not realize a matching category.
+- `V9758`: This narrative involves service entry sheets and goods receipts only without invoice processing or clearance.
+- `V9759`: The process focuses on quantity changes and goods receipt/cancellation without reaching invoice matching or clearance.
+- `V9760`: Contains service entry sheets and goods receipts only without any invoice activities.
+- `V9761`: The process terminates with a deleted purchase order item and does not complete matching or clearance.
+- `V9762`: Consists of service entry sheets and goods receipts without invoice handling.
+- `V9763`: Contains service entry sheets and goods receipts only, with no invoice matching.
+- `V9764`: Consists of goods receipts and service entry sheets without invoice matching.
+- `V9766`: Terminates at goods receipt without invoicing or matching.
+- `V9767`: Terminates at goods receipt without invoice processing.
+- `V9768`: Terminates at service entry sheet without invoice processing.
+- `V9769`: Terminates at goods receipt with service entry sheets, no invoice activities.
+- `V9770`: Terminates at goods receipt without invoice handling.
+- `V9771`: Terminates at goods receipt without invoice handling.
+- `V9772`: Terminates at service entry sheet without invoice handling.
+- `V9773`: Terminates at goods receipt without invoice handling.
+- `V9775`: Terminates with record goods receipt without any invoice record or clearance.
+- `V9776`: Terminates with record goods receipt without any invoice record or clearance.
+- `V9777`: Terminates with record goods receipt without any invoice record or clearance.
+- `V9778`: Terminates with record goods receipt without any invoice record or clearance.
+- `V9779`: Terminates early at change approval for purchase order without goods receipt or invoice.
+- `V9787`: Terminates early at change approval for purchase order without reaching goods receipt or invoice activities.
+- `V9790`: Terminates at goods receipt without any invoice record or clearance.
+- `V9791`: Terminates at goods receipt without any invoice record or clearance.
+- `V9906`: The process ends at Record Invoice Receipt with extensive quantity changes and lacks a clear clearance path.
+- `V9907`: Incomplete matching process terminating in Record Invoice Receipt with deletion and quantity changes.
+- `V9916`: The process terminates in Cancel Goods Receipt and has no invoice or clearance steps.
+- `V9918`: Process is dominated by continuous quantity changes and does not reach purchasing clearance.
+- `V9920`: Service entry and goods receipt loops only, concluding without invoice or clearance activities.
+- `V9921`: Service entry sheets and goods receipt loops only, ending without invoices.
+- `V9922`: Service entry sheets and goods receipt loops only, ending without invoices.
+- `V9923`: Service entry sheets and goods receipt loops only, ending without invoices.
+- `V9924`: Service entry sheets and goods receipt loops only, ending without invoices.
+- `V9925`: Service entry sheets and goods receipt loops only, ending without invoices.
+- `V9928`: Terminates at goods receipt without invoicing steps.
+- `V9929`: Terminates at goods receipt without invoicing steps.
+- `V9930`: Terminates at goods receipt without invoicing steps.
+- `V9931`: Terminates at goods receipt without invoicing steps.
+- `V9932`: Terminates at service entry sheet without invoicing steps.
+- `V9933`: Terminates at goods receipt without invoicing steps.
+- `V9934`: Terminates at service entry sheet without invoicing steps.
+- `V9935`: Terminates at goods receipt without invoicing steps.
+- `V9936`: Terminates at goods receipt with price and quantity changes, lacking an invoice.
+- `V9956`: The process terminates at Record Goods Receipt without an invoice receipt or clearing.
+- `V9957`: Process ends with Record Goods Receipt without reaching invoice clearing.
+- `V9958`: Process stops at Record Goods Receipt without financial matching or clearance.
+- `V9959`: Process terminates at Record Goods Receipt without invoice processing.
+- `V9960`: Variant ends prematurely at Record Goods Receipt.
+- `V9961`: Variant ends at Record Goods Receipt without invoicing or clearing steps.
+- `V9962`: Variant terminates at Record Goods Receipt.
+- `V9963`: Variant stops at Record Goods Receipt without clearance.
+- `V9964`: Variant ends at Record Goods Receipt.
+- `V9974`: Process ends with Record Invoice Receipt without clearing.
+- `V9982`: Process ends with Record Invoice Receipt without invoice clearance.
+- `V9989`: Process terminates at Record Goods Receipt.
+- `V9990`: Process terminates at Record Goods Receipt.
+- `V9991`: Process terminates at Record Goods Receipt.
+- `V9992`: Process terminates at Record Goods Receipt.
+- `V9993`: Process terminates at Record Goods Receipt.
+- `V10015`: Process is incomplete (ends at record goods receipt without invoice actions) and does not map cleanly to standard matching categories.
+- `V10016`: Process is incomplete (ends at record goods receipt without invoicing).
+- `V10017`: Process is incomplete (ends at record goods receipt without invoicing).
+- `V10018`: Process is incomplete, ending in goods receipt cancellations without an invoice.
+- `V10019`: Process is incomplete (ends at record goods receipt without invoicing).
+- `V10020`: Process is incomplete, ending in goods receipt cancellations without an invoice.
+- `V10021`: Process is incomplete, ending at record service entry sheet.
+- `V10022`: Process is incomplete, ending at record goods receipt.
+- `V10023`: Process is incomplete, ending at record goods receipt.
+- `V10034`: Process is incomplete, ending at record goods receipt without invoicing.
+- `V10041`: Process is incomplete, ending at record goods receipt without invoicing.
+- `V10042`: Process is incomplete, ending at record goods receipt without invoicing.
+- `V10043`: Process is incomplete, ending at record goods receipt without invoicing.
+- `V10044`: Process is incomplete, ending in goods receipt cancellation without invoicing.
+- `V10045`: Process is incomplete, ending at record goods receipt without invoicing.
+- `V10046`: Process is incomplete, ending at record goods receipt without invoicing.
+- `V10047`: Process is incomplete, ending at record goods receipt without invoicing.
+- `V10072`: The process terminates at Record Goods Receipt without invoice creation or matching.
+- `V10078`: Case concludes with Record Goods Receipt and does not contain invoice matching.
+- `V10079`: Case terminates at Record Goods Receipt without invoice handling.
+- `V10080`: Case terminates at Record Goods Receipt without invoice handling.
+- `V10081`: Case ends at Record Goods Receipt with no invoice activities.
+- `V10082`: Case finishes with Record Goods Receipt and lacks invoice matching.
+- `V10083`: Process stops at Record Goods Receipt without invoice processing.
+- `V10084`: Process terminates at Record Goods Receipt without reaching invoice matching.
+- `V10085`: Process ends with Record Goods Receipt and has no invoice steps.
+- `V10093`: Process involves invoice receipt and credit memos without a corresponding goods receipt matching sequence.
+- `V10096`: No goods receipt event is present; variant involves adjustments and cancellations without standard matching.
+- `V10181`: Does not involve standard matching/invoicing completion activities.
+- `V10182`: Does not involve invoicing activities.
+- `V10205`: The process ends with the deletion of the purchase order item without invoice clearance or standard matching completion.
+- `V10215`: The process concludes at record goods receipt without invoice receipt or clearing.
+- `V10216`: The process concludes at record goods receipt without any invoice processing.
+- `V10217`: The process concludes at record goods receipt without invoicing.
+- `V10218`: The process terminates at record goods receipt without any invoice lifecycle.
+- `V10219`: The process ends with cancel goods receipt and involves cancellation activities rather than a normal match.
+- `V10220`: The trace consists purely of service entry sheets and goods receipts without invoicing.
+- `V10221`: The trace consists purely of service entry sheets and goods receipts without invoicing.
+- `V10222`: The trace consists purely of service entry sheets and goods receipts without invoicing.
+- `V10223`: The trace consists purely of service entry sheets and goods receipts without invoicing.
+- `V10226`: The trace consists of goods receipts and service entry sheets without reaching invoice clearance.
+- `V10237`: The trace consists of purchase order items, service entry sheets, and goods receipts without reaching invoicing or clearance.
+- `V10238`: The trace consists of purchase order items, service entry sheets, and goods receipts without reaching invoicing or clearance.
+- `V10239`: The trace consists of purchase order items, service entry sheets, and goods receipts without reaching invoicing or clearance.
+- `V10241`: The trace consists of purchase order items, service entry sheets, and goods receipts without reaching invoicing or clearance.
+- `V10242`: The trace consists of purchase order items, service entry sheets, and goods receipts without reaching invoicing or clearance.
+- `V10248`: The process terminates at change quantity following a goods receipt, with no invoice or clearance activities.
+- `V10316`: The process ends at Record Goods Receipt without an invoice receipt or clearance, leaving it in the residual.
+- `V10317`: The process concludes at Record Goods Receipt without invoice matching steps, fitting the residual category.
+- `V10318`: The variant terminates at Record Goods Receipt without matching an invoice, making it part of the residual.
+- `V10335`: The process consists entirely of service entry sheets and goods receipts without any invoice processing or clearance, falling into the residual.
+- `V10336`: The variant ends with goods receipt and service entry sheets without invoice matching, placing it in the residual.
+- `V10337`: The narrative terminates at Record Goods Receipt without invoice handling, making it part of the residual.
+- `V10338`: The variant concludes at Record Goods Receipt without invoice receipt steps, fitting the residual category.
+- `V10339`: The sequence consists of service entry and goods receipt activities without invoice recording or clearance, falling into the residual.
+- `V10346`: The process results in a deleted purchase order item, which does not fit any standard matching or clearance category, placing it in the residual.
+- `V10353`: The process ends with Record Goods Receipt without any invoice creation, invoice receipt, or clearance, so it does not realize any matching or consumption category.
+- `V10360`: The variant contains only order creation, service entry sheets, and goods receipts without any invoicing steps, thus fitting none of the categories.
+- `V10361`: The variant consists entirely of service entry sheets and goods receipts without invoicing or clearance events.
+- `V10362`: The process terminates at Cancel Goods Receipt without reaching invoice recording or matching.
+- `V10363`: Process stops at Record Goods Receipt without any invoice handling.
+- `V10364`: Process terminates at Record Goods Receipt without reaching invoice recording.
+- `V10365`: Process stops at Record Goods Receipt with no invoicing activities.
+- `V10366`: Process concludes at Record Service Entry Sheet without matching or invoicing.
+- `V10367`: The purchase order item is deleted, resulting in cancellation of the procurement process before any matching or invoicing.
+- `V10382`: Process ends at Record Goods Receipt without invoicing or clearing.
+- `V10383`: Process concludes at Record Goods Receipt with no invoicing events.
+- `V10384`: Process terminates at Record Service Entry Sheet without invoicing or matching.
+- `V10385`: Process stops at Record Goods Receipt without invoice handling.
+- `V10386`: Process terminates at Record Goods Receipt without reaching invoice recording.
+- `V10387`: Process concludes at Record Goods Receipt with no invoicing steps.
+- `V10388`: Process ends at Record Service Entry Sheet without invoice processing.
+- `V10396`: Process terminates at Record Goods Receipt without any invoicing steps.
+- `V10397`: Process ends at Record Goods Receipt without invoice recording or matching.
+- `V10398`: Process concludes at Record Goods Receipt with no invoicing events.
+- `V10401`: The narrative only covers purchasing requisition, purchase orders, and goods receipts without any invoice processing or matching.
+- `V10402`: The process ends in deleting the purchase order item, lacking any matching or invoice clearance activities.
+- `V10403`: The sequence consists of creating items, quantity changes, and goods receipts without an invoice lifecycle.
+- `V10411`: The process terminates with a change delivery indicator after goods receipt cancellation, with no invoices present.
+- `V10430`: The process ends at record goods receipt without any invoice processing.
+- `V10431`: Only a payment term change is recorded on a purchase order item.
+- `V10433`: Involves service entry sheets and goods receipts only, without invoices.
+- `V10434`: Involves service entry sheets and goods receipts only, without invoice processing.
+- `V10435`: Involves service entry sheets and goods receipts only, without invoice processing.
+- `V10436`: Involves service entry sheets and goods receipts only, without invoice processing.
+- `V10437`: Involves service entry sheets and goods receipts only, without invoice processing.
+- `V10438`: Involves service entry sheets and goods receipts only, without invoice processing.
+- `V10439`: Involves service entry sheets and goods receipts only, without invoice processing.
+- `V10458`: The variant only records purchase orders, goods receipts, and service entry sheets without reaching an invoice receipt or completion, thus falling into the residual.
+- `V10459`: The variant consists solely of PO items, service entry sheets, and goods receipts without any invoice activities.
+- `V10460`: The variant ends at a goods receipt without involving vendor invoices or matching, placing it in the residual.
+- `V10462`: The variant terminates in canceled goods receipts without an invoice matching or clearing lifecycle.
+- `V10464`: The variant stops at service entry sheets and goods receipts without any invoice processing.
+- `V10465`: The variant contains only order creation, service entries, and goods receipts without invoicing.
+- `V10466`: The variant ends with a canceled goods receipt and lacks invoice matching.
+- `V10467`: The trace is an extensive sequence of service entry sheets and goods receipts terminating without an invoice.
+- `V10468`: The variant consists of order creation, goods receipts, and service entry sheets only.
+- `V10469`: The variant ends in a goods receipt without invoicing or matching.
+- `V10483`: The variant consists of service entries and goods receipts without an invoice matching lifecycle.
+- `V10484`: The variant ends at a goods receipt without invoice processing.
+- `V10485`: The variant contains only goods receipts and service entry sheets.
+- `V10486`: The variant terminates in goods receipt without invoice matching.
+- `V10488`: The variant terminates in a canceled goods receipt without reaching invoice matching.
+- `V10489`: The variant consists entirely of service entry sheets and goods receipts without invoice activities.
+- `V10490`: The variant concludes with a goods receipt and lacks invoice matching.
+- `V10502`: The process ends at Record Goods Receipt without any invoice creation or clearance, so it does not realize any matching category.
+- `V10504`: The process only contains purchase order creation and goods/delivery changes without any invoice or matching activities.
+- `V10505`: The process only involves goods receipts and delivery indicators without invoicing or clearing.
+- `V10511`: The process only records goods receipts and service entry sheets without involving invoices.
+- `V10512`: The process only contains goods receipts and service entry sheets without invoices.
+- `V10513`: The process consists only of goods receipts and service entry sheets without invoice activities.
+- `V10514`: The sequence contains only goods receipts and service entry sheets.
+- `V10517`: The narrative only involves goods receipts and service entry sheets.
+- `V10518`: The narrative only contains goods receipts and service entry sheets.
+- `V10519`: The narrative only contains goods receipts and service entry sheets.
+- `V10542`: The narrative only involves goods receipts and service entry sheets without invoices.
+- `V10543`: The narrative contains only goods receipts, service entry sheets, and cancellations without any invoice processing.
+- `V10544`: The narrative contains only goods receipts and service entry sheets.
+- `V10545`: The narrative contains only goods receipts and service entry sheets.
+- `V10546`: The narrative contains only goods receipts and service entry sheets.
+- `V10547`: The narrative contains only goods receipts and service entry sheets.
+- `V10548`: The narrative contains only goods receipts and service entry sheets.
+- `V10549`: The narrative contains only goods receipts and service entry sheets.
+- `V10565`: Process ends with repeated goods receipts without reaching an invoice receipt or clearance.
+- `V10566`: Process stalls at repeated goods receipts without invoice processing.
+- `V10567`: Process ends with repeated goods receipts without an invoice lifecycle.
+- `V10571`: Incomplete process ending in Record Service Entry Sheet without invoice steps.
+- `V10572`: Incomplete process ending in Record Goods Receipt without invoice handling.
+- `V10573`: Incomplete process ending in Record Goods Receipt without invoice handling.
+- `V10574`: Process terminated by canceling goods receipts.
+- `V10575`: Incomplete process ending in Record Goods Receipt without invoice handling.
+- `V10576`: Incomplete process ending in Record Goods Receipt without invoice handling.
+- `V10601`: The narrative only covers creation, service entry, and goods receipts without an invoice lifecycle or clearance.
+- `V10602`: The narrative ends with a goods receipt and lacks an invoice receipt or clearance process.
+- `V10603`: The process concludes at goods receipt without invoicing steps.
+- `V10604`: The variant involves canceling goods receipts and does not complete a purchasing or matching cycle.
+- `V10605`: The process terminates with a cancelled goods receipt and contains no matching or invoice clearing.
+- `V10606`: The variant ends on recording service entry sheets with no invoice handling or clearing.
+- `V10607`: The narrative only contains order creation, goods receipts, and service entry sheets.
+- `V10608`: The process stops at goods receipts and service entry sheets without involving invoices.
+- `V10618`: The variant ends with a delivery indicator change and does not reach clearance or matching completion.
+- `V10619`: The variant terminates with a delivery indicator change without reaching invoice clearance.
+- `V10620`: The variant ends with a goods receipt and does not contain invoice matching or clearance steps.
+- `V10623`: The process involves multiple cancellations and ends at goods receipt without full invoice lifecycle.
+- `V10626`: The narrative stops at service entry sheets without involving invoices or clearance.
+- `V10628`: The variant ends at service entry sheet recording without invoice clearance.
+- `V10629`: The process terminates at goods receipt without reaching the invoice stage.
+- `V10631`: The sequence ends at service entry sheet without invoice processing.
+- `V10632`: The process terminates with cancelled goods receipts and no invoice matching.
+- `V10633`: The variant ends at goods receipt without invoice operations.
+- `V10634`: The sequence consists primarily of service entry and goods receipt repetitions without reaching an invoice.
+- `V10635`: The narrative terminates at goods receipt without invoice processing.
+- `V10655`: The process terminates at Cancel Goods Receipt without reaching invoice recording or matching.
+- `V10657`: The process ends with Record Goods Receipt without any invoice receipt or matching activity.
+- `V10660`: The process concludes with a goods receipt and does not involve an invoice matching workflow.
+- `V10692`: Process ends with a delivery indicator change following a goods receipt cancellation, with no invoicing.
+- `V10701`: The process variant ends with cancelling goods receipts and lacks invoice receipt or clearance activities, so it does not realize any matching or consumption category.
+- `V10702`: The narrative only consists of PO creation, goods receipts, and service entry sheets without any invoice recording or matching conclusion.
+- `V10703`: The process ends in a cancelled goods receipt and does not reach any invoice-matching or consumption-resolution state.
+- `V10704`: The narrative consists purely of goods receipts and service entry sheets without completing an invoice or matching cycle.
+- `V10705`: Only goods receipts and service entry sheets are recorded, with no invoice or clearance steps present.
+- `V10706`: The process only contains order creation, goods receipts, and service entry sheets, lacking any invoice-related activities.
+- `V10721`: The process terminates at changing the delivery indicator without any invoice or goods receipt steps.
+- `V10728`: The process ends at recording a goods receipt without any invoice creation or clearance.
+- `V10738`: Process ends with recording service entry sheets without invoice activities.
+- `V10740`: Process ends with recording a goods receipt without invoice processing.
+- `V10741`: Process ends with recording a goods receipt without invoice processing.
+- `V10742`: Process ends with recording a goods receipt without invoice processing.
+- `V10743`: Process ends with recording a goods receipt without invoice processing.
+- `V10744`: Process ends with recording a goods receipt without invoice processing.
+- `V10745`: Process ends with recording a goods receipt without invoice processing.
+- `V10746`: Process ends with recording a service entry sheet without invoice processing.
+- `V10771`: Variant ends at Record Service Entry Sheet without matching or invoicing.
+- `V10772`: Variant ends at Record Goods Receipt without invoicing.
+- `V10773`: Variant ends at Record Goods Receipt without invoicing.
+- `V10774`: Variant ends at Cancel Goods Receipt without invoicing.
+- `V10775`: Variant ends at Record Goods Receipt without invoicing.
+- `V10776`: Variant ends at Cancel Goods Receipt without invoicing.
+- `V10777`: Variant ends at Record Goods Receipt without invoicing.
+- `V10778`: Variant ends at Record Service Entry Sheet without invoicing.
+- `V10779`: Variant ends at Record Goods Receipt without invoicing.
+- `V10783`: Variant ends in deletion of the purchase order item.
+- `V10791`: Variant ends at Record Goods Receipt without invoicing.
+- `V10793`: Variant ends with Change Delivery Indicator without invoicing.
+- `V10795`: Variant ends at Cancel Invoice Receipt without proper matching completion.
+- `V10796`: Variant ends at Change Quantity without invoice receipt.
+- `V10799`: Variant ends at Record Service Entry Sheet without invoicing.
+- `V10800`: Variant ends at Record Goods Receipt without invoicing.
+- `V10801`: The variant ends with Record Goods Receipt without any invoice creation or matching activity.
+- `V10802`: The variant ends with Record Goods Receipt and lacks any invoice processing or matching steps.
+- `V10803`: The narrative consists entirely of service entry sheets and goods receipts without any invoice recording or matching.
+- `V10804`: The process only contains order creation, service entry, and goods receipts without invoice receipt or matching.
+- `V10814`: The process terminates at Record Invoice Receipt and does not complete invoice clearing or full matching resolution.
+- `V10820`: The process ends at Record Goods Receipt without any invoice recording.
+- `V10841`: The process terminates at Record Service Entry Sheet without invoice or matching steps.
+- `V10842`: The variant ends at Record Goods Receipt without any invoice activity.
+- `V10843`: The variant ends at Record Goods Receipt without any invoice activity.
+- `V10844`: The variant ends in Cancel Goods Receipt without completing invoice matching.
+- `V10845`: The variant ends at Record Goods Receipt without any invoice activity.
+- `V10846`: The variant ends in Cancel Goods Receipt without completing invoice matching.
+- `V10847`: The variant ends in Cancel Goods Receipt without completing invoice matching.
+- `V10848`: The variant ends at Record Service Entry Sheet without invoice processing.
+- `V10849`: The variant ends at Record Goods Receipt without invoice processing.
+- `V10850`: The variant ends at Record Goods Receipt without invoice processing.
+- `V10865`: The process terminates at Record Goods Receipt without an invoice receipt or invoice clearing, leaving it outside the matching categories.
+- `V10866`: Terminates at Record Goods Receipt without reaching invoice matching or clearance.
+- `V10868`: Ends in Cancel Goods Receipt without proceeding to invoice matching or clearance.
+- `V10869`: Ends in Cancel Goods Receipt without completing matching or clearance.
+- `V10870`: Terminates at Record Goods Receipt without completing invoice matching or payment clearance.
+- `V10871`: Terminates at Record Goods Receipt without invoice receipt or clearing.
+- `V10872`: Terminates at Record Service Entry Sheet without matching or invoice clearance.
+- `V10873`: Ends with a record goods receipt following changes, without invoice processing.
+- `V10877`: Terminates at Change Quantity without invoice receipt or clearance.
+- `V10889`: Terminates at Delete Purchase Order Item, leaving no invoice or matching activity.
+- `V10892`: Terminates at Change Quantity with no receipt or invoice processing.
+- `V10895`: Terminates at Record Service Entry Sheet without invoice receipt or clearance.
+- `V10897`: Terminates at Record Goods Receipt without reaching invoice processing.
+- `V10898`: Terminates at Record Goods Receipt without invoice processing or clearing.
+- `V10899`: Terminates at Cancel Goods Receipt without reaching invoice receipt or clearance.
+- `V10900`: Terminates at Record Goods Receipt without reaching invoice receipt or clearance.
+- `V10901`: The variant consists entirely of repetitive creation of goods receipts and service entry sheets without any invoice or clearing activities.
+- `V10933`: Variant ends at service entry sheet and goods receipt with no invoice or clearing.
+- `V10934`: Variant ends at goods receipt without any invoice processing.
+- `V10935`: Variant ends at goods receipt without any invoice processing.
+- `V10936`: Variant ends at goods receipt without any invoice processing.
+- `V10937`: Variant ends at cancel goods receipt without any invoice processing.
+- `V10938`: Variant ends at record service entry sheet without any invoice processing.
+- `V10939`: Variant ends at record service entry sheet without any invoice processing.
+- `V10940`: Variant ends at record goods receipt without any invoice processing.
+- `V10941`: Variant ends at record service entry sheet without any invoice processing.
+- `V10945`: Variant ends at record goods receipt without any invoice processing.
+- `V10947`: Variant is purely centered on PO changes and deletion, with no goods receipt or invoice.
+- `V10966`: The narrative ends with service entry sheets and goods receipts without any invoice recording, so it does not fit standard 3-way or 2-way matching categories.
+- `V10967`: The process terminates at goods receipt without invoicing.
+- `V10969`: The process stops at record service entry sheet with no invoice activities.
+- `V10970`: The variant ends in a cancelled goods receipt without reaching invoicing.
+- `V10971`: The variant consists only of goods receipts and service entry sheets without invoices.
+- `V10973`: The narrative terminates at goods receipt without invoice handling.
+- `V10974`: The process only contains service entry sheets and goods receipts.
+- `V10975`: The variant terminates at goods receipt without reaching invoice processing.
+- `V10986`: The variant involves only goods receipts and service entry sheets without any invoices.
+- `V10987`: The process concludes at service entry sheets without invoice recording.
+- `V10988`: The narrative stops at goods receipt without invoicing.
+- `V11009`: The narrative only covers goods and service entries without an invoice or clearance step, falling outside the matching categories.
+- `V11020`: The variant ends in a purchase order block and does not complete matching or invoicing.
+- `V11027`: Variant ends in goods receipt cancellation without invoice processing.
+- `V11033`: Process terminates at service entry with no invoice or clearance.
+- `V11034`: Process only contains goods and service entries.
+- `V11035`: Process only contains goods and service entries.
+- `V11036`: Process only contains goods and service entries.
+- `V11037`: Variant terminates with goods receipt cancellation.
+- `V11038`: Process only contains goods and service entries.
+- `V11039`: Process only contains goods and service entries.
+- `V11040`: Process only contains goods and service entries.
+- `V11042`: Variant ends in goods receipt cancellation without invoicing.
+- `V11056`: The process terminates at Cancel Goods Receipt without reaching invoice recording or matching.
+- `V11057`: The variant ends at Vendor creates invoice and lacks invoice receipt or clearance.
+- `V11063`: Terminates at Record Goods Receipt without invoice creation or matching.
+- `V11066`: Terminates at Record Service Entry Sheet without invoice processing.
+- `V11067`: Terminates at Record Goods Receipt without matching or invoicing.
+- `V11068`: Terminates at Record Goods Receipt without invoicing.
+- `V11069`: Terminates at Cancel Goods Receipt without invoice matching.
+- `V11070`: Terminates at Record Goods Receipt without invoice processing.
+- `V11071`: Terminates at Record Service Entry Sheet without matching or invoices.
+- `V11072`: Terminates at Record Service Entry Sheet without invoice processing.
+- `V11073`: Terminates at Record Goods Receipt without invoicing.
+- `V11074`: Terminates at Record Service Entry Sheet without invoices.
+- `V11097`: Terminates at Change Delivery Indicator without invoice recording or matching.
+- `V11099`: Terminates at Record Goods Receipt without invoice processing.
+- `V11101`: The narrative shows multiple Service Entry Sheets and Goods Receipts without an invoice receipt or clear matching pattern, so it does not realize any of the defined matching or consignment consumption categories.
+- `V11102`: The process contains extensive Service Entry Sheets and Goods Receipts without any invoice activities.
+- `V11103`: Involves repeated service entry and goods receipt activities without an invoice.
+- `V11104`: Consists of service entry and goods receipt repetitions without reaching an invoice stage.
+- `V11106`: Sequence terminates at a Goods Receipt without invoice processing.
+- `V11107`: Ends in Cancel Goods Receipt with no invoice recorded.
+- `V11108`: Ends in repeated Cancel Goods Receipt actions without invoice processing.
+- `V11109`: Process terminates at a Service Entry Sheet without invoice records.
+- `V11110`: Terminates at a Goods Receipt without an invoice.
+- `V11111`: Contains multiple service entries and goods receipts without an invoice receipt.
+- `V11128`: Process consists solely of PO creation, GRs, and changes, without any invoice receipt.
+- `V11135`: Contains only goods receipts and service entry sheets without an invoice.
+- `V11136`: Contains only goods receipts and service entry sheets.
+- `V11137`: Contains only goods receipts and service entry sheets.
+- `V11138`: Contains only goods receipts and service entry sheets.
+- `V11139`: Ends in Cancel Goods Receipt without an invoice.
+- `V11140`: Contains only goods receipts and service entry sheets.
+- `V11141`: Contains only goods receipts and service entry sheets.
+- `V11147`: Terminates at Change Price without invoice or goods receipt steps.
+- `V11154`: The narrative only involves order creation, changes, and receiving order confirmations without any goods receipt or invoice processing, so it does not fit any matching or consignment category.
+- `V11157`: The process consists only of purchase requisition, order creation, quantity change, and approval changes, with no goods receipts or invoices.
+- `V11158`: The process only involves goods receipts and cancellations without any invoice creation or matching.
+- `V11160`: The variant consists solely of purchase orders, quantity changes, and goods receipts without any invoices.
+- `V11164`: Contains only goods receipts and service entry sheets without any invoices or matching steps.
+- `V11165`: Contains only service entry sheets and goods receipts without any invoicing activities.
+- `V11166`: Contains only goods receipts and service entry sheets without any invoice processing.
+- `V11167`: Contains only service entry sheets and goods receipts without any invoice processing.
+- `V11168`: Contains goods receipts, service entry sheets, and cancellations without any invoices.
+- `V11169`: Contains goods receipts, service entry sheets, and cancellations without any invoices.
+- `V11170`: Contains only goods receipts and service entry sheets without any invoices.
+- `V11171`: Contains only goods receipts and service entry sheets without any invoices.
+- `V11192`: Contains only purchase order changes and goods receipts without any invoice processing.
+- `V11193`: Contains only purchase order changes and goods receipts without any invoice processing.
+- `V11199`: Contains only service entry sheets, goods receipts, and cancellations without any invoice processing.
+- `V11202`: The narrative only covers purchase order and service/goods receipts without ever creating or recording an invoice.
+- `V11203`: The narrative only involves creation and receipt activities without proceeding to invoice creation or matching.
+- `V11204`: The process terminates at recording service entry sheets and goods receipts without reaching invoice processing.
+- `V11205`: The narrative consists purely of creation and receipt steps without any invoice recorded.
+- `V11206`: The narrative ends with service entry sheets and goods receipts without any vendor invoice or matching activities.
+- `V11213`: The narrative involves quantities and delivery indicators without any invoice creation or matching.
+- `V11222`: The narrative involves purchase orders, quantities, and goods receipts without any vendor invoice processing.
+- `V11240`: Process ends at service entry and goods receipt without an invoice.
+- `V11241`: Process ends without invoice creation or matching.
+- `V11244`: Process consists solely of service entry and goods receipt.
+- `V11245`: Process contains only service entry and goods receipt activities.
+- `V11246`: Process consists only of service entries and goods receipts.
+- `V11247`: Process terminates at goods receipt and service entry without invoice handling.
+- `V11248`: Process ends with service entry and goods receipt without an invoice.
+- `V11249`: Process consists only of service entry and goods receipt.
+- `V11250`: Process terminates with a cancelled goods receipt and no invoice.
+- `V11251`: The narrative only shows service entry sheets and goods receipts without any invoice creation or matching activities.
+- `V11252`: The narrative contains only service entry sheets and goods receipts without an invoice receipt or matching process.
+- `V11253`: The narrative consists entirely of service entry sheets and goods receipts with no invoice receipt activity present.
+- `V11273`: The narrative stops at goods receipt without any invoice creation or receipt.
+- `V11274`: The narrative stops at goods receipt without any invoice creation or receipt.
+- `V11275`: The narrative contains only goods receipts and service entry sheets with no invoice activities.
+- `V11276`: The narrative contains only goods receipts and service entry sheets.
+- `V11277`: The narrative contains only goods receipts and service entry sheets.
+- `V11278`: The narrative contains only goods receipts and service entry sheets.
+- `V11285`: The narrative ends with a goods receipt and has no invoice activities.
+- `V11287`: The narrative ends with a goods receipt and lacks invoice processing.
+- `V11289`: The narrative ends with a goods receipt and lacks invoice processing.
+- `V11299`: The narrative contains only goods receipts and service entry sheets without an invoice.
+- `V11300`: The narrative contains only goods receipts and service entry sheets without an invoice.
+- `V11302`: The process ends at Record Goods Receipt without completing an invoice recording or clearance.
+- `V11303`: The process ends in Cancel Goods Receipt and does not complete invoicing or matching.
+- `V11304`: The process ends at Record Goods Receipt without reaching invoice creation or matching.
+- `V11305`: The process terminates at Record Goods Receipt and does not progress to invoice activities.
+- `V11313`: The variant ends with a goods receipt and does not complete an invoice processing step.
+- `V11314`: The variant terminates at Record Goods Receipt without matching or invoicing.
+- `V11315`: The variant terminates in Cancel Goods Receipt without reaching invoice handling.
+- `V11316`: The variant ends with Cancel Goods Receipt and lacks invoicing activities.
+- `V11317`: The variant ends at Record Goods Receipt without invoice handling.
+- `V11318`: The variant ends at Record Service Entry Sheet without reaching invoice matching.
+- `V11319`: The variant ends at Record Service Entry Sheet without reaching invoice matching.
+- `V11339`: The process terminates at Change Delivery Indicator without reaching invoice creation or matching.
+- `V11344`: The process ends at Record Service Entry Sheet without reaching invoicing.
+- `V11345`: The process ends at Record Goods Receipt without invoice creation.
+- `V11346`: The process ends at Record Goods Receipt without invoice creation.
+- `V11347`: The process ends at Record Goods Receipt without invoice creation.
+- `V11348`: The process terminates at Cancel Goods Receipt without reaching invoicing.
+- `V11349`: The process ends at Record Goods Receipt without invoice creation.
+- `V11350`: The process ends at Record Goods Receipt without invoice creation.
+- `V11365`: The variant ends with deleting the purchase order item and lacks standard matching and invoice processing.
+- `V11371`: Process only involves purchase order, price changes, and goods receipts without matching or invoicing.
+- `V11373`: Process terminates at price change without invoice recording or matching.
+- `V11380`: Involves service entry sheets and goods receipts without invoice matching.
+- `V11382`: Contains only service entry sheets and goods receipts.
+- `V11383`: Contains only service entry sheets and goods receipts.
+- `V11384`: Terminates with cancel goods receipt.
+- `V11385`: Contains service entry sheets and goods receipts only.
+- `V11386`: Contains service entry sheets and goods receipts only.
+- `V11387`: Contains service entry sheets and goods receipts only.
+- `V11388`: Contains service entry sheets and goods receipts only.
+- `V11389`: Contains service entry sheets and goods receipts only.
+- `V11398`: Contains service entry sheets and goods receipts without invoicing.
+- `V11399`: Contains service entry sheets and goods receipts without invoicing.
+- `V11400`: Contains service entry sheets and goods receipts without invoicing.
+- `V11401`: The variant represents repetitive goods receipts and service entry sheets without completing an invoice matching or procurement resolution cycle.
+- `V11402`: The variant involves repeated goods receipts, service entry sheets, and subsequent cancellations, which does not constitute a standard matching process.
+- `V11403`: The narrative only shows creation and repetitive goods receipts/service entry sheets without any invoice or matching lifecycle.
+- `V11404`: The sequence consists purely of numerous goods receipts and service entry sheets without reaching an invoice or completion state.
+- `V11405`: The process ends at Change Quantity after goods receipt and does not proceed to invoice matching or resolution.
+- `V11417`: The variant ends in a cancellation of the goods receipt and does not complete an invoicing or matching workflow.
+- `V11422`: The variant consists solely of order creation, goods receipts, and service entry sheets without reaching an invoice or completion.
+- `V11423`: The variant consists only of goods receipts and service entry sheets without invoice activities.
+- `V11424`: The variant consists only of service entry sheets and goods receipts without invoice activities.
+- `V11425`: The variant consists only of service entry sheets and goods receipts without invoice activities.
+- `V11426`: The variant consists only of service entry sheets and goods receipts without invoice activities.
+- `V11427`: The variant consists only of goods receipts and service entry sheets without invoice activities.
+- `V11428`: The variant consists only of goods receipts and service entry sheets without invoice activities.
+- `V11429`: The variant consists only of goods receipts and service entry sheets without invoice activities.
+- `V11433`: The variant represents a debit memo, invoice cancellation, and deletion of the purchase order item rather than a standard matching cycle.
+- `V11435`: The variant ends with changes and goods receipts without completing a clear invoicing cycle.
+- `V11436`: The process consists only of creation, approvals, and quantity changes without goods receipts or invoices.
+- `V11437`: The process consists only of order changes and approvals without goods receipts or invoices.
+- `V11441`: The variant ends with goods receipts and delivery indicator changes without reaching an invoice.
+- `V11443`: The variant consists only of goods receipts and service entry sheets without invoice activities.
+- `V11444`: The variant consists only of goods receipts and service entry sheets without invoice activities.
+- `V11445`: The variant consists only of goods receipts and service entry sheets without invoice activities.
+- `V11446`: The variant consists only of goods receipts and service entry sheets without invoice activities.
+- `V11447`: The variant ends in a cancel goods receipt following service entry sheets and goods receipts without invoice activities.
+- `V11448`: The variant consists only of goods receipts and service entry sheets without invoice activities.
+- `V11449`: The variant consists only of goods receipts and service entry sheets without invoice activities.
+- `V11450`: The variant consists only of goods receipts and service entry sheets without invoice activities.
+- `V11451`: The variant represents repetitive service entry and goods receipt activities without completing an invoice clearance or standard matching flow.
+- `V11452`: The narrative consists of order creation, goods receipts, and multiple cancellations of goods receipts without completing any invoice matching process.
+- `V11468`: The process terminates at change delivery indicator without reaching invoice receipt or clearance.
+- `V11469`: The process involves price and quantity changes and goods receipt without an invoice or clearance step.
+- `V11470`: The process consists entirely of repeated quantity changes without purchase or invoice activities.
+- `V11472`: The process ends at record goods receipt without any invoice creation or matching.
+- `V11473`: The variant consists of service entries and goods receipts only, with no invoice processing.
+- `V11474`: The process only contains service entries and goods receipts without an invoice lifecycle.
+- `V11475`: The narrative stops at record goods receipt and service entries without invoice processing.
+- `V11476`: The narrative stops at record service entry sheet without invoice processing.
+- `V11477`: The narrative consists of service entry sheets and goods receipts without reaching any invoice stage.
+- `V11484`: The variant ends at change delivery indicator without invoice handling.
+- `V11485`: The variant ends at record goods receipt without any invoice processing.
+- `V11486`: The variant ends at change delivery indicator without invoice handling.
+- `V11487`: The variant ends at record goods receipt without invoice handling.
+- `V11489`: The purchase order item is deleted before any goods receipt or invoice activity.
+- `V11493`: The narrative consists entirely of service entries and goods receipts without reaching an invoice stage.
+- `V11494`: The narrative consists entirely of service entries and goods receipts without reaching an invoice stage.
+- `V11495`: The narrative consists entirely of service entries and goods receipts without reaching an invoice stage.
+- `V11496`: The narrative involves goods receipts followed by cancellations without any invoice processing.
+- `V11498`: The narrative terminates at record goods receipt without any invoice processing.
+- `V11499`: The narrative terminates at record goods receipt without any invoice processing.
+- `V11500`: The narrative terminates at record service entry sheet without any invoice processing.
+- `V11501`: The variant only contains order creation, goods receipts, and service entry sheets without any invoice recording or matching.
+- `V11502`: The variant consists solely of purchase order, goods receipts, and service entry sheet activities without an invoice.
+- `V11510`: The variant ends with price changes after goods receipt and does not reach invoice receipt or matching.
+- `V11513`: The process contains cancellations and debit memos without a standard goods receipt and invoice receipt sequence.
+- `V11522`: Variant consists only of purchase order, goods receipts, and service entry sheets.
+- `V11523`: Variant ends at record goods receipt without invoice activities.
+- `V11524`: Variant ends at record goods receipt without invoice activities.
+- `V11525`: Variant consists only of purchase order, service entry sheets, and goods receipts.
+- `V11526`: Variant consists only of purchase order, goods receipts, and service entry sheets.
+- `V11527`: Variant ends in cancel goods receipt without invoice processing.
+- `V11528`: Variant consists only of purchase order, goods receipts, and service entry sheets.
+- `V11529`: Variant consists only of purchase order, goods receipts, and service entry sheets.
+- `V11538`: Variant ends at record goods receipt without invoice processing.
+- `V11548`: Variant ends with change quantity after goods receipt without any invoice.
+- `V11551`: The variant represents a cancellation sequence rather than standard matching or consignment consumption.
+- `V11554`: This variant only contains purchase order creation, goods receipts, and service entry sheets without completing an invoice cycle.
+- `V11555`: Incomplete process variant ending in goods receipt without invoice processing.
+- `V11556`: Process involves cancellations of goods receipts and service entry sheets, not a successful matching category.
+- `V11557`: Process is focused on repeated goods receipts and service entry sheets without reaching an invoice step.
+- `V11558`: Process consists solely of goods receipts and service entry sheets.
+- `V11559`: Consists of goods receipts and service entry sheets without invoice matching.
+- `V11560`: Ends in a cancelled goods receipt without reaching any matching or invoice stage.
+- `V11561`: Consists of purchase orders, goods receipts, and service entry sheets.
+- `V11562`: Consists of purchase orders, goods receipts, and service entry sheets.
+- `V11568`: Variant does not contain an invoice creation or matching process.
+- `V11573`: Process consists of requisitions, price and quantity changes, with no invoice or goods receipt.
+- `V11577`: Process ends with vendor creating invoice without concluding with a standard invoice receipt or clearance.
+- `V11579`: Variant consists only of delivery indicators and goods receipt without invoicing.
+- `V11582`: Variant consists of goods receipts and service entry sheets without invoice activities.
+- `V11584`: Variant consists entirely of repeated service entry sheets and goods receipts without invoicing.
+- `V11586`: Variant consists of goods receipts and service entry sheets without invoicing.
+- `V11587`: Variant consists of goods receipts and service entry sheets without invoicing.
+- `V11588`: Variant consists of goods receipts and service entry sheets without invoicing.
+- `V11589`: Variant consists of goods receipts and service entry sheets without invoicing.
+- `V11590`: Variant consists of goods receipts and service entry sheets without invoicing.
+- `V11597`: Variant consists of goods receipts and service entry sheets without invoicing.
+- `V11598`: Variant consists of goods receipts and service entry sheets without invoicing.
+- `V11599`: Variant consists of goods receipts and service entry sheets without invoicing.
+- `V11600`: Variant consists of goods receipts and service entry sheets without invoicing.
+- `V11601`: This service-entry process variant does not contain standard invoice matching or consignment consumption milestones.
+- `V11602`: This is a complex service sheet and goods receipt loop without an invoice recording or clearance milestone.
+- `V11605`: Invoice receipt occurred before the goods receipts were recorded.
+- `V11609`: Service entry and goods receipt iterations without invoice processing.
+- `V11610`: Service entry and goods receipt loops without invoice handling.
+- `V11611`: Service entry and goods receipt loops without invoice handling.
+- `V11619`: Process ends at goods receipt without an invoice milestone.
+- `V11621`: Service entry and goods receipt loops without an invoice.
+- `V11622`: Service entry and goods receipt loops without an invoice.
+- `V11623`: Service entry and goods receipt loops without an invoice.
+- `V11624`: Service entry and goods receipt loops without an invoice.
+- `V11625`: Service entry and goods receipt loops without an invoice.
+- `V11632`: Process ends with goods receipts without any invoice recorded.
+- `V11633`: Process ends with a goods receipt without any invoice recorded.
+- `V11634`: Process ends with a price change without an invoice.
+- `V11641`: Process ends at goods receipt without any invoice.
+- `V11643`: Service entry and goods receipt loops without an invoice.
+- `V11644`: Service entry and goods receipt loops without an invoice.
+- `V11645`: Service entry and goods receipt loops without an invoice.
+- `V11646`: Service entry and goods receipt loops without an invoice.
+- `V11647`: Service entry and goods receipt loops without an invoice.
+- `V11648`: Process ends with a cancelled goods receipt without an invoice.
+- `V11649`: Service entry and goods receipt loops without an invoice.
+- `V11650`: Process ends with a cancelled goods receipt without an invoice.
+- `V11651`: This variant only contains order creation, service entry sheets, and goods receipts without any invoice receipt or clearing activities, hence it does not represent a complete matched purchasing cycle.
+- `V11652`: This variant only records purchase order items, service entry sheets, and goods receipts without any invoice processing, so it does not realize any matching category.
+- `V11653`: The narrative consists entirely of purchase order creation, goods receipts, and service entry sheets without any invoice recording or matching.
+- `V11657`: The process terminates at order confirmation and does not reach any invoice receipt, matching, or clearing stage.
+- `V11661`: The process contains only purchase order creation, goods receipts, and service entry sheets without involving invoices.
+- `V11662`: The variant consists exclusively of purchase order items, service entry sheets, and goods receipts without any invoice processing steps.
+- `V11663`: This variant only involves purchase order creation, service entry sheets, and goods receipts without reaching an invoice or matching phase.
+- `V11664`: The narrative consists only of purchase order items, goods receipts, and service entry sheets without any invoice receipt or matching activity.
+- `V11669`: The sequence involves only purchase order creation, service entry sheets, and goods receipts without any invoice records.
+- `V11670`: The process only contains purchase order items, goods receipts, and service entry sheets, lacking invoice processing.
+- `V11671`: The variant includes only purchase order items, service entry sheets, and goods receipts with no invoice or payment activities.
+- `V11672`: The narrative is composed entirely of purchase order creation, service entry sheets, and goods receipts.
+- `V11673`: The narrative is strictly composed of purchase order items, service entry sheets, and goods receipts without invoice handling.
+- `V11674`: The process ends in cancelled goods receipts after numerous service entry sheets and goods receipts, with no invoice matching.
+- `V11675`: The narrative consists of order items, goods receipts, service entry sheets, and ends with cancelled goods receipts without invoice matching.
+- `V11676`: The process consists of purchase orders, goods receipts, service entry sheets, and cancellation of goods receipts, with no invoice processing.
+- `V11677`: Contains only purchase order items, goods receipts, and service entry sheets without reaching invoice steps.
+- `V11678`: Includes only purchase order creation, service entry sheets, and goods receipts without any invoice records.
+- `V11679`: Consists solely of purchase order items, service entry sheets, and goods receipts with no invoice-related activities.
+- `V11681`: The variant involves purchase order items, service entry sheets, goods receipts, and multiple cancellations of goods receipts without invoice recording.
+- `V11684`: The narrative ends with vendor invoice creation after various goods receipts, service entry sheets, and cancellations, but does not complete a full invoice receipt or matching process.
+- `V11688`: The process terminates at goods receipt without any invoice creation or matching.
+- `V11689`: The variant ends in a cancelled goods receipt without reaching any invoice or matching activities.
+- `V11692`: The narrative consists of a purchase order, goods receipts, and cancellations without any invoice receipt or matching.
+- `V11695`: The process consists of a requisition, order, goods receipt, and cancellations without any invoice processing.
+- `V11696`: This variant consists entirely of purchase order creation and multiple goods receipts without any invoice recording.
+- `V11697`: The narrative comprises only service entry sheets and goods receipts without any invoice processing steps.
+- `V11698`: The sequence contains only purchase order items, service entry sheets, and goods receipts without invoice activities.
+- `V11699`: The variant consists exclusively of purchase order creation, service entry sheets, and goods receipts.
+- `V11700`: The process only involves purchase order items, goods receipts, and service entry sheets without reaching an invoice stage.
+- `V11701`: This narrative only involves creating the purchase order and recording service entry sheets and goods receipts; no invoice receipt or matching process is present.
+- `V11702`: The variant consists of PO creation, goods receipts, and service entry sheets without any invoice recording or matching.
+- `V11704`: The narrative involves invoice creation and cancellation before goods receipt and payment block management, not a straightforward 3-way match classification.
+- `V11714`: This variant only covers purchase requisition, PO creation, and goods receipt with cancellation; no invoice is involved.
+- `V11715`: This variant only contains PO creation and goods receipts without an invoice receipt.
+- `V11717`: This narrative only has PO creation, deletion, reactivation, and price change without any goods receipt or invoice matching.
+- `V11719`: This narrative only contains delivery indicator changes without any goods receipt or invoice.
+- `V11720`: This variant is purely service-entry-sheet and goods-receipt batch processing without invoices.
+- `V11721`: This variant only consists of service entry sheets and goods receipts without invoicing.
+- `V11722`: This variant only involves service entry sheets and goods receipts.
+- `V11723`: This narrative contains only service entry sheets and goods receipts.
+- `V11724`: This narrative contains only service entry sheets and goods receipts.
+- `V11725`: This narrative contains only service entry sheets and goods receipts.
+- `V11726`: This narrative contains only service entry sheets and goods receipts.
+- `V11727`: This narrative contains only service entry sheets and goods receipts.
+- `V11728`: This narrative contains only service entry sheets, goods receipts, and a cancellation of goods receipt.
+- `V11729`: This narrative contains only service entry sheets, goods receipts, and goods receipt cancellations.
+- `V11730`: This narrative contains only service entry sheets and goods receipts.
+- `V11731`: This narrative contains only service entry sheets and goods receipts.
+- `V11732`: This narrative contains only service entry sheets and goods receipts.
+- `V11746`: This narrative only involves PO creation, goods receipt, and a quantity change without an invoice.
+- `V11748`: This narrative contains only service entry sheets and goods receipts.
+- `V11749`: This narrative contains only service entry sheets and goods receipts.
+- `V11750`: This narrative contains only service entry sheets and goods receipts.
+- `V11751`: This variant only involves purchase order creation, service entry sheets, and goods receipts without any invoice processing or matching, so it does not realize any of the matching categories.
+- `V11752`: This variant only contains purchase order creation, service entry sheets, and goods receipts without any invoice processing or matching.
+- `V11753`: This variant only contains purchase order creation, service entry sheets, and goods receipts without any invoice processing or matching.
+- `V11754`: This variant ends with goods receipt cancellation and contains no invoice processing.
+- `V11755`: This variant consists solely of PO creation, service entry sheets, and goods receipts with no invoice matching.
+- `V11756`: This variant consists solely of PO creation, service entry sheets, and goods receipts with no invoice matching.
+- `V11757`: This variant consists solely of PO creation, service entry sheets, and goods receipts with no invoice matching.
+- `V11758`: This variant consists solely of PO creation, service entry sheets, and goods receipts with no invoice matching.
+- `V11761`: This variant involves purchase requisition/order creation, price changes, and quantity changes, but no goods receipts or invoice receipts.
+- `V11763`: This variant contains quantity changes and goods receipts, but lacks an invoice receipt or vendor invoice creation, so it cannot be matched.
+- `V11765`: This variant only includes purchase order creation, order confirmation, and a quantity change, with no goods or invoice receipts.
+- `V11766`: This variant ends with a change delivery indicator and lacks invoice creation and invoice receipt steps.
+- `V11767`: This variant only involves PO creation, goods receipts, and service entry sheets without invoice activities.
+- `V11768`: This variant only involves PO creation, goods receipts, and service entry sheets without invoice activities.
+- `V11769`: This variant only involves PO creation, goods receipts, and service entry sheets without invoice activities.
+- `V11770`: This variant only involves PO creation, goods receipts, and service entry sheets without invoice activities.
+- `V11771`: This variant only involves PO creation, goods receipts, and service entry sheets without invoice activities.
+- `V11772`: This variant only involves PO creation, goods receipts, and service entry sheets without invoice activities.
+- `V11773`: This variant involves PO creation, goods receipts, service entry sheets, and ends with cancelled goods receipts, lacking invoice processing.
+- `V11774`: This variant involves PO creation, goods receipts, service entry sheets, and cancelled goods receipts, lacking invoice processing.
+- `V11775`: This variant only involves PO creation, goods receipts, and service entry sheets without invoice activities.
+- `V11776`: This variant only involves PO creation, goods receipts, and service entry sheets without invoice activities.
+- `V11781`: This variant consists purely of repeated quantity changes with no goods receipts or invoice receipts.
+- `V11783`: This variant only involves purchase requisition, purchase order, approval changes, and price changes without any execution steps like goods receipt or invoicing.
+- `V11785`: This variant only involves PO creation, service entry sheets, and goods receipts without invoice processing.
+- `V11786`: This variant only involves PO creation, service entry sheets, and goods receipts without invoice processing.
+- `V11787`: This variant only involves PO creation, service entry sheets, and goods receipts without invoice processing.
+- `V11788`: This variant only involves PO creation, service entry sheets, and goods receipts without invoice processing.
+- `V11789`: This variant only involves PO creation, service entry sheets, and goods receipts without invoice processing.
+- `V11790`: This variant only involves PO creation, service entry sheets, and goods receipts without invoice processing.
+- `V11791`: This variant only involves PO creation, service entry sheets, and goods receipts without invoice processing.
+- `V11792`: This variant only involves PO creation, service entry sheets, and goods receipts without invoice processing.
+- `V11793`: This variant involves PO creation, service entry sheets, goods receipts, and ends with cancelled goods receipts without invoice processing.
+- `V11796`: This variant ends with cancelled goods receipts and has no invoice processing.
+- `V11802`: The variant ends in Record Goods Receipt without an invoice receipt or matching process completed.
+- `V11803`: The process ends in Change Price with no invoice or matching sequence.
+- `V11805`: Terminates at Record Goods Receipt with quantity changes and no invoice processing.
+- `V11806`: Only involves purchase order, service entry sheets, and goods receipts without any invoice recording.
+- `V11807`: Consists solely of repeated service entry sheets and goods receipts without invoice processing.
+- `V11808`: Consists of service entry sheets and goods receipts only, with no invoice receipt.
+- `V11809`: Involves order creation, goods receipts, and service entry sheets without reaching an invoice receipt.
+- `V11810`: Terminates at Record Service Entry Sheet with no invoice recorded.
+- `V11812`: Ends in Record Goods Receipt without invoice handling.
+- `V11813`: Ends in Record Service Entry Sheet without invoice processing.
+- `V11814`: Involves purchase order, goods receipts, and service entry sheets without an invoice.
+- `V11816`: Involves canceling goods receipt and invoice receipt with debit memo, not standard matching.
+- `V11817`: Terminates at Change Price with a canceled goods receipt.
+- `V11819`: Ends at Record Goods Receipt with no invoice matching.
+- `V11822`: Order confirmation updates only, no invoice or goods receipt matching.
+- `V11823`: Service entry and goods receipt loop without invoice processing.
+- `V11824`: Short sequence ending in Record Service Entry Sheet without invoice.
+- `V11825`: Involves service entry and goods receipt without invoice processing.
+- `V11826`: Terminates with a Cancel Goods Receipt.
+- `V11827`: Terminates at Record Goods Receipt with no invoice receipt.
+- `V11830`: Terminates at Change Quantity with no goods or invoice receipt.
+- `V11837`: Terminates at Record Goods Receipt without invoice handling.
+- `V11844`: Terminates at Record Service Entry Sheet without invoice processing.
+- `V11845`: Involves service entry and goods receipt loops without an invoice receipt.
+- `V11846`: Terminates at Record Service Entry Sheet without invoice processing.
+- `V11847`: Terminates at Record Goods Receipt without invoice handling.
+- `V11848`: Terminates at Record Goods Receipt without invoice processing.
+- `V11849`: Terminates with Cancel Goods Receipt.
+- `V11850`: Terminates with Cancel Goods Receipt.
+- `V11853`: The process ends at Record Goods Receipt without an invoice being recorded or cleared, making standard 3-way or 2-way matching inapplicable.
+- `V11855`: The variant consists primarily of cancellations without a clear matching or resolution path.
+- `V11858`: Process stops at Record Service Entry Sheet without reaching invoice creation or matching.
+- `V11859`: Process terminates at Record Goods Receipt without matching or invoicing steps.
+- `V11860`: Process terminates at Record Goods Receipt without matching or invoicing steps.
+- `V11861`: Process terminates at Record Service Entry Sheet without an invoice match.
+- `V11862`: Process consists mainly of service entries and goods receipts with cancellations, lacking a completed match cycle.
+- `V11863`: Process terminates at Record Service Entry Sheet without invoice resolution.
+- `V11864`: Process terminates at Record Service Entry Sheet without invoice resolution.
+- `V11865`: Process terminates in goods receipt cancellations.
+- `V11866`: Process terminates in goods receipt cancellations.
+- `V11868`: Terminates at Record Goods Receipt without an invoice.
+- `V11869`: Process terminates at Record Service Entry Sheet without an invoice match.
+- `V11871`: Terminates at Record Service Entry Sheet without invoicing.
+- `V11872`: Terminates at Record Service Entry Sheet without invoicing.
+- `V11873`: Terminates at Record Goods Receipt without invoicing.
+- `V11875`: Terminates at Record Goods Receipt without an invoice.
+- `V11877`: Terminates at Record Service Entry Sheet without invoicing.
+- `V11879`: Terminates at Record Goods Receipt without an invoice.
+- `V11882`: Terminates in goods receipt handling and cancellations without invoicing.
+- `V11883`: Terminates in goods receipt cancellation.
+- `V11884`: Terminates in goods receipt cancellation.
+- `V11885`: Terminates in goods receipt cancellation.
+- `V11886`: Terminates at Record Service Entry Sheet without invoicing.
+- `V11888`: Terminates at Record Service Entry Sheet without invoicing.
+- `V11889`: Terminates at Record Goods Receipt without invoicing.
+- `V11890`: Terminates at Record Goods Receipt without invoicing.
+- `V11901`: The process variant lacks a goods receipt step entirely, making it neither a 3-way match nor a 2-way match with explicit confirmation, and it does not represent consignment consumption.
+- `V11902`: No goods receipt activity is present in this variant, preventing classification into matching or consumption categories.
+- `V11903`: There is no goods receipt recorded in the activity sequence, so it cannot be matched against any defined procurement category.
+- `V11904`: Goods receipt is missing from the activity trace, leaving it outside the scope of matching and consignment consumption categories.
+- `V11905`: The variant does not include a goods receipt event, making it ineligible for matching or consignment categories.
+- `V11906`: Without a goods receipt recorded, this variant cannot be classified under 3-way or 2-way matching.
+- `V11907`: The sequence contains invoice and order changes but lacks a goods receipt event.
+- `V11908`: No goods receipt is present in the trace, precluding any matching category assignment.
+- `V11909`: The variant omits goods receipt, failing to satisfy the requirements for matching categories.
+- `V11910`: Goods receipt is absent from the event sequence.
+- `V11911`: The variant does not record a goods receipt.
+- `V11912`: No goods receipt activity is included.
+- `V11913`: The sequence lacks a goods receipt step.
+- `V11914`: Goods receipt is not present in the variant.
+- `V11915`: The variant contains invoice handling and approvals but no goods receipt.
+- `V11916`: No goods receipt is recorded in the trace.
+- `V11917`: The process lacks a goods receipt event.
+- `V11918`: Goods receipt is missing from the activity sequence.
+- `V11919`: The variant does not include goods receipt.
+- `V11920`: No goods receipt activity is present.
+- `V11921`: The variant lacks a goods receipt event.
+- `V11922`: Goods receipt is absent from the sequence.
+- `V11923`: The trace does not record a goods receipt.
+- `V11924`: No goods receipt event is present.
+- `V11925`: The variant omits goods receipt.
+- `V11926`: Goods receipt is missing from the sequence.
+- `V11927`: The process trace lacks a goods receipt.
+- `V11928`: No goods receipt activity is recorded.
+- `V11929`: The variant does not contain a goods receipt.
+- `V11930`: Goods receipt is absent from the activities.
+- `V11931`: The sequence lacks a goods receipt step.
+- `V11932`: No goods receipt is present.
+- `V11933`: The variant omits goods receipt.
+- `V11934`: Goods receipt is missing from the trace.
+- `V11935`: The process lacks a goods receipt event.
+- `V11936`: No goods receipt activity is recorded.
+- `V11937`: The variant does not contain a goods receipt.
+- `V11938`: Goods receipt is absent from the sequence.
+- `V11939`: The trace lacks a goods receipt.
+- `V11940`: No goods receipt activity is present.
+- `V11941`: The variant omits goods receipt.
+- `V11942`: Goods receipt is missing from the activities.
+- `V11943`: The process trace does not include a goods receipt.
+- `V11944`: No goods receipt event is recorded.
+- `V11945`: The variant lacks a goods receipt.
+- `V11946`: Goods receipt is absent from the sequence.
+- `V11947`: The trace does not contain a goods receipt.
+- `V11948`: No goods receipt activity is present.
+- `V11949`: The variant omits goods receipt.
+- `V11950`: Goods receipt is missing from the activity sequence.
+- `V11953`: The variant involves creation and deletion of purchase order items with change approvals, lacking a clear invoice receipt or clearing confirmation to map to standard matching categories.
+- `V11962`: The variant consists entirely of purchase order item creation and multiple change approvals without an invoice recording or matching event.
+- `V11963`: The variant consists entirely of change approvals and purchase order item creation without any invoice recording or matching event.

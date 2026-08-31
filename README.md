@@ -270,7 +270,7 @@ them the same way, so change them together if you change them at all:
 |---|---|---|
 | `concurrency` | `5` | Parallel in-flight LLM calls. |
 | `requests_per_minute` | `null` | Proactive request pacing; `null` disables it and relies on litellm's own retry backoff to absorb the rare `429`. |
-| `assignment_batch_size` | `50` | Narratives per Step 6 call — e.g. a 231-variant run costs ~5 calls instead of 231. Larger batches trade away per-narrative failure isolation: a failed/invalid batch response leaves every narrative in it pending, retried on the next call against the same `run_id`. |
+| `assignment_batch_size` | `50` | Narratives per Step 6 call — e.g. a 231-variant run costs ~5 calls instead of 231. Larger batches trade away per-narrative failure isolation: a failed/invalid batch response leaves every narrative in it pending, retried on the next call against the same `run_id`. The frozen ICPM 2027 protocol pins a per-dataset exception of `25` for BPIC 2019 (`experimentation/icpm2027/configs/preregistration.yaml`, `C10`), on wall-clock/reliability grounds, after batch `50` proved to time out and abort Step 6 at that log's ~1,285-char mean narrative. |
 | `max_retries` | `3` | litellm retries per call before failing the batch. |
 
 These values assume Gemini's **paid tier** is active on the Google AI Studio project behind

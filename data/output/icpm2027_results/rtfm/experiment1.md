@@ -74,20 +74,85 @@ _Higher coverage is not better categorization: a larger taxonomy or a broad catc
 - Merge: delinquent_payment (33), judicial_appeal (17), administrative_appeal (7), coercive_credit_collection (6), timely_payment (4), (residual) (1) -> payment_rework_loops
 - Merge: coercive_credit_collection (11), delinquent_payment (6), administrative_appeal (3), (residual) (1), judicial_appeal (1), timely_payment (1) -> standard_fine_lifecycle
 
+## Secondary — guided vs. rule baseline (Task C4)
+
+A deterministic activity-rule classifier (no LLM, no fit — `baselines/rule_based_rtfm.py`). Close agreement here means the guided arm's five declared alternatives are recoverable from a handful of hand-written rules on this log, which the paper must report as a bound on the guided arm's added value here.
+
+| row_category               |   (residual) |   administrative_appeal |   coercive_credit_collection |   delinquent_payment |   judicial_appeal |   timely_payment |
+|:---------------------------|-------------:|------------------------:|-----------------------------:|---------------------:|------------------:|-----------------:|
+| (residual)                 |            1 |                       1 |                            0 |                    0 |                 0 |                2 |
+| administrative_appeal      |            3 |                      50 |                            0 |                    4 |                 4 |                0 |
+| coercive_credit_collection |            0 |                      18 |                           15 |                    0 |                 8 |                0 |
+| delinquent_payment         |            0 |                      18 |                            0 |                   19 |                 2 |               11 |
+| judicial_appeal            |            0 |                       0 |                            0 |                    0 |                65 |                0 |
+| timely_payment             |            0 |                       4 |                            0 |                    0 |                 0 |                6 |
+
+| row_category               |   (residual) |   administrative_appeal |   coercive_credit_collection |   delinquent_payment |   judicial_appeal |   timely_payment |
+|:---------------------------|-------------:|------------------------:|-----------------------------:|---------------------:|------------------:|-----------------:|
+| (residual)                 |        20385 |                       4 |                            0 |                    0 |                 0 |              363 |
+| administrative_appeal      |            4 |                    3619 |                            0 |                   16 |                 6 |                0 |
+| coercive_credit_collection |            0 |                     264 |                        58601 |                    0 |               145 |                0 |
+| delinquent_payment         |            0 |                      62 |                            0 |                13384 |                 7 |             3494 |
+| judicial_appeal            |            0 |                       0 |                            0 |                    0 |               397 |                0 |
+| timely_payment             |            0 |                       9 |                            0 |                    0 |                 0 |            49610 |
+
+- Split: administrative_appeal -> administrative_appeal (50), delinquent_payment (4), judicial_appeal (4), (residual) (3)
+- Split: coercive_credit_collection -> administrative_appeal (18), coercive_credit_collection (15), judicial_appeal (8)
+- Split: delinquent_payment -> delinquent_payment (19), administrative_appeal (18), timely_payment (11), judicial_appeal (2)
+- Split: timely_payment -> timely_payment (6), administrative_appeal (4)
+- Merge: administrative_appeal (50), coercive_credit_collection (18), delinquent_payment (18), timely_payment (4), (residual) (1) -> administrative_appeal
+- Merge: delinquent_payment (19), administrative_appeal (4) -> delinquent_payment
+- Merge: judicial_appeal (65), coercive_credit_collection (8), administrative_appeal (4), delinquent_payment (2) -> judicial_appeal
+- Merge: delinquent_payment (11), timely_payment (6), (residual) (2) -> timely_payment
+
 ## Secondary — guided vs. structural (HDBSCAN) (Task C3)
 
-| row_category               |   (residual) |   cluster_0 |   cluster_1 |   cluster_2 |   cluster_3 |   cluster_4 |   cluster_5 |   cluster_6 |   cluster_7 |   cluster_8 |   cluster_9 |
-|:---------------------------|-------------:|------------:|------------:|------------:|------------:|------------:|------------:|------------:|------------:|------------:|------------:|
-| (residual)                 |            1 |           3 |           0 |           0 |           0 |           0 |           0 |           0 |           0 |           0 |           0 |
-| administrative_appeal      |            3 |           0 |           0 |          19 |           2 |           0 |           2 |          12 |          21 |           1 |           1 |
-| coercive_credit_collection |            3 |           0 |          12 |           0 |           0 |           1 |           2 |           0 |          18 |           5 |           0 |
-| delinquent_payment         |            0 |           0 |          20 |          16 |           1 |           0 |           1 |           4 |           7 |           1 |           0 |
-| judicial_appeal            |            9 |           0 |           0 |           0 |           8 |          16 |           0 |           0 |           0 |          28 |           4 |
-| timely_payment             |            0 |           5 |           1 |           2 |           0 |           0 |           0 |           0 |           2 |           0 |           0 |
+| row_category               |   (residual) |   cluster_0 |   cluster_1 |   cluster_10 |   cluster_11 |   cluster_12 |   cluster_13 |   cluster_14 |   cluster_2 |   cluster_3 |   cluster_4 |   cluster_5 |   cluster_6 |   cluster_7 |   cluster_8 |   cluster_9 |
+|:---------------------------|-------------:|------------:|------------:|-------------:|-------------:|-------------:|-------------:|-------------:|------------:|------------:|------------:|------------:|------------:|------------:|------------:|------------:|
+| (residual)                 |            1 |           2 |           1 |            0 |            0 |            0 |            0 |            0 |           0 |           0 |           0 |           0 |           0 |           0 |           0 |           0 |
+| administrative_appeal      |           19 |           0 |           5 |           10 |            0 |            0 |            1 |            0 |           0 |           0 |           0 |           0 |          12 |           0 |           7 |           7 |
+| coercive_credit_collection |            6 |           0 |           0 |            2 |           15 |            0 |            0 |            5 |           0 |           0 |          13 |           0 |           0 |           0 |           0 |           0 |
+| delinquent_payment         |            3 |           0 |           0 |            6 |            0 |            1 |            0 |            0 |          20 |           7 |           0 |           0 |           9 |           1 |           3 |           0 |
+| judicial_appeal            |           16 |           1 |           2 |            0 |            0 |           13 |           11 |            2 |           0 |           0 |           0 |          15 |           0 |           5 |           0 |           0 |
+| timely_payment             |            2 |           3 |           1 |            2 |            0 |            0 |            0 |            0 |           1 |           0 |           0 |           0 |           1 |           0 |           0 |           0 |
 
 ## Notable findings
 
 - **Open-mode replicate coverage swing traced to one ambiguous variant (2026-08-29).** `e1_open_rep1` and `e1_open_rep2` show identical variant-level coverage (229/231, 2 residual variants each) but a ~13.8-point gap in case-weighted coverage (99.995% vs. 86.2%). Root cause: variant V0003 (`Create Fine → Send Fine`, no further activity — an unresolved/still-open case) carries 20,385 cases (~13.6% of the whole log). Open-mode Step 6 classified it inconsistently across replicates — folded into the catch-all-like `standard_fine_lifecycle`/`standard_collection_or_payment` category in one replicate, left residual in the other — because open induction has no external criterion for "does not realize any category." **Guided mode classified the same variant as residual in both replicates**, with near-identical rationale each time ("does not resolve the case" / "remaining in the residual"): the goal model gives the LLM a stable boundary for what counts as resolved vs. residual that open induction lacks. This is a concrete, high-leverage illustration of exactly what Task C2's replicate design exists to catch — LLM-sampling noise can concentrate disproportionately in a single high-frequency variant, and case-weighted coverage is far more sensitive to it than variant-level coverage. Positive evidence for RQ1: the external semantic frame stabilizes the residual boundary, not only the category set.
+
+## Replicate stability (Task C2)
+
+rep1 vs. rep2 of each arm, same convention as the paired contrast below. Read the "guided vs. open" divergence against these: a cross-arm difference no larger than an arm's own rep1-rep2 movement is not separable from run-to-run variance. The open arm has no anchors, so this is its only stability check — Task C12 tests the guided taxonomy alone.
+
+### guided rep1 vs. rep2
+
+**guided_rep1 vs. guided_rep2** — partition divergence (Task D1)
+
+| residual_handling   | weighting   |      AMI |      NMI |   n_observations | primary   |
+|:--------------------|:------------|---------:|---------:|-----------------:|:----------|
+| own_cluster         | variant     | 0.714197 | 0.72477  |              231 | True      |
+| own_cluster         | case        | 0.996594 | 0.996594 |           150370 | False     |
+| exclude             | variant     | 0.700476 | 0.708159 |              227 | False     |
+| exclude             | case        | 0.995165 | 0.995165 |           129618 | False     |
+
+_AMI/NMI measure divergence between two partitions, not classification accuracy: neither partition is ground truth, so agreement between the arms is not evidence that either is correct._
+
+
+### open rep1 vs. rep2
+
+**open_rep1 vs. open_rep2** — partition divergence (Task D1)
+
+| residual_handling   | weighting   |      AMI |      NMI |   n_observations | primary   |
+|:--------------------|:------------|---------:|---------:|-----------------:|:----------|
+| own_cluster         | variant     | 0.670191 | 0.679625 |              231 | True      |
+| own_cluster         | case        | 0.76151  | 0.761521 |           150370 | False     |
+| exclude             | variant     | 0.689431 | 0.695243 |              227 | False     |
+| exclude             | case        | 0.900656 | 0.900659 |           129616 | False     |
+
+_AMI/NMI measure divergence between two partitions, not classification accuracy: neither partition is ground truth, so agreement between the arms is not evidence that either is correct._
+
+
+_Read on the D1-primary `own_cluster` convention. Where the open arm's rep1-rep2 AMI is lower than the guided arm's, every "guided vs. open" figure for this dataset should be reported with that band, and the open arm's instability noted as a limit on the strength of the paired contrast (Task E7, extended to the open arm)._
 
 ## Partition divergence (optional, Task D1)
 

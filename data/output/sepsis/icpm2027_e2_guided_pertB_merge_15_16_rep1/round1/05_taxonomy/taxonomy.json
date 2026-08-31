@@ -1,0 +1,79 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission NC",
+      "description": "Patient is admitted to a non-critical inpatient ward, realizing the inpatient admission goal (id=5). This advances the patient's care progression toward discharge while avoiding post-discharge deterioration and is evaluated against post-discharge outcomes.",
+      "anchor_ids": [
+        "5"
+      ],
+      "rationale": "Mapped 1:1 to the declared OR alternative id=5 (Admission NC represented by task id=15 'Merged 15+16'), as observed in multiple variants such as V0008, V0605, and V0551.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0605",
+        "V0551"
+      ]
+    },
+    {
+      "category_id": "release_a",
+      "name": "Release A",
+      "description": "Admitted case reaches discharge path A, contributing to avoiding post-discharge deterioration and measured via post-discharge ER return indicators.",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=17 under the XOR-decomposed goal id=6 'Admitted case reaches a captured discharge', supported by frequent occurrences in the narrative sample such as variant V0008.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0625",
+        "V0605"
+      ]
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release B",
+      "description": "Admitted case reaches discharge path B, helping avoid post-discharge deterioration and monitored via post-discharge ER return indicators.",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=18 under the XOR-decomposed goal id=6 'Admitted case reaches a captured discharge', supported by rare occurrences in the narrative sample such as variant V0068 and V0145.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Admitted case reaches discharge path C, supporting patient disposition and measured against post-discharge ER return indicators.",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=19 under the XOR-decomposed goal id=6 'Admitted case reaches a captured discharge', evidenced by long-running complex traces like variant V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Admitted case reaches discharge path D, supporting final disposition and measured against post-discharge ER return indicators.",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=20 under the XOR-decomposed goal id=6 'Admitted case reaches a captured discharge', supported by variant V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release E",
+      "description": "Admitted case reaches discharge path E, contributing to final successful patient disposition and measured against post-discharge ER return indicators.",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=21 under the XOR-decomposed goal id=6 'Admitted case reaches a captured discharge', completing the set of valid discharge options under goal id=6.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

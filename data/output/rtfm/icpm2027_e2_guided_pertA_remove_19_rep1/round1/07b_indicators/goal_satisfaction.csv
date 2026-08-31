@@ -1,0 +1,126 @@
+scope,scope_kind,category_name,element_id,element_type,element_name,satisfaction,is_measured_seed
+__baseline__,baseline,,2,Goal,"Every issued fine reaches a lawful, documented closure",0,False
+__baseline__,baseline,,3,Goal,Fine is issued and formally communicated,0,False
+__baseline__,baseline,,4,Goal,Fine case is resolved,0,False
+__baseline__,baseline,,5,Goal,Fine becomes enforceable and is resolved,0,False
+__baseline__,baseline,,6,Goal,Enforced case is closed,0,False
+__baseline__,baseline,,7,Goal,Contested appeal is resolved,0,False
+__baseline__,baseline,,8,Task,Create Fine,0,False
+__baseline__,baseline,,9,Task,Send Fine,0,False
+__baseline__,baseline,,10,Task,Insert Fine Notification,0,False
+__baseline__,baseline,,11,Task,Add Penalty,0,False
+__baseline__,baseline,,12,Task,Resolve via timely payment,0,False
+__baseline__,baseline,,13,Task,Resolve via delinquent payment,0,False
+__baseline__,baseline,,14,Task,Resolve via administrative appeal to the Prefecture,0,False
+__baseline__,baseline,,15,Task,Insert Date Appeal to Prefecture,0,False
+__baseline__,baseline,,16,Task,Send Appeal to Prefecture,0,False
+__baseline__,baseline,,17,Task,Receive Result Appeal from Prefecture,0,False
+__baseline__,baseline,,18,Task,Notify Result Appeal to Offender,0,False
+__baseline__,baseline,,20,Task,Resolve via coercive credit collection,0,False
+__baseline__,baseline,,21,Softgoal,Minimize administrative & enforcement cost,-50,False
+__baseline__,baseline,,22,Softgoal,Maximize timely fine revenue,-48,False
+__baseline__,baseline,,23,Softgoal,Preserve offender's due-process rights,0,False
+__baseline__,baseline,,112,Indicator,Time to fine dispatch (days),4,True
+__baseline__,baseline,,113,Indicator,"Time to appeal filing, Prefecture (days)",100,True
+__baseline__,baseline,,175,Indicator,"Time to appeal filing, Judge (days)",-100,True
+__baseline__,baseline,,114,Indicator,Average time to case closure (days),-100,True
+coercive_credit_collection,category,Coercive Credit Collection,2,Goal,"Every issued fine reaches a lawful, documented closure",0,False
+coercive_credit_collection,category,Coercive Credit Collection,3,Goal,Fine is issued and formally communicated,0,False
+coercive_credit_collection,category,Coercive Credit Collection,4,Goal,Fine case is resolved,0,False
+coercive_credit_collection,category,Coercive Credit Collection,5,Goal,Fine becomes enforceable and is resolved,0,False
+coercive_credit_collection,category,Coercive Credit Collection,6,Goal,Enforced case is closed,0,False
+coercive_credit_collection,category,Coercive Credit Collection,7,Goal,Contested appeal is resolved,0,False
+coercive_credit_collection,category,Coercive Credit Collection,8,Task,Create Fine,0,False
+coercive_credit_collection,category,Coercive Credit Collection,9,Task,Send Fine,0,False
+coercive_credit_collection,category,Coercive Credit Collection,10,Task,Insert Fine Notification,0,False
+coercive_credit_collection,category,Coercive Credit Collection,11,Task,Add Penalty,0,False
+coercive_credit_collection,category,Coercive Credit Collection,12,Task,Resolve via timely payment,0,False
+coercive_credit_collection,category,Coercive Credit Collection,13,Task,Resolve via delinquent payment,0,False
+coercive_credit_collection,category,Coercive Credit Collection,14,Task,Resolve via administrative appeal to the Prefecture,0,False
+coercive_credit_collection,category,Coercive Credit Collection,15,Task,Insert Date Appeal to Prefecture,0,False
+coercive_credit_collection,category,Coercive Credit Collection,16,Task,Send Appeal to Prefecture,0,False
+coercive_credit_collection,category,Coercive Credit Collection,17,Task,Receive Result Appeal from Prefecture,0,False
+coercive_credit_collection,category,Coercive Credit Collection,18,Task,Notify Result Appeal to Offender,0,False
+coercive_credit_collection,category,Coercive Credit Collection,20,Task,Resolve via coercive credit collection,0,False
+coercive_credit_collection,category,Coercive Credit Collection,21,Softgoal,Minimize administrative & enforcement cost,-50,False
+coercive_credit_collection,category,Coercive Credit Collection,22,Softgoal,Maximize timely fine revenue,-46,False
+coercive_credit_collection,category,Coercive Credit Collection,23,Softgoal,Preserve offender's due-process rights,0,False
+coercive_credit_collection,category,Coercive Credit Collection,112,Indicator,Time to fine dispatch (days),9,True
+coercive_credit_collection,category,Coercive Credit Collection,113,Indicator,"Time to appeal filing, Prefecture (days)",100,True
+coercive_credit_collection,category,Coercive Credit Collection,175,Indicator,"Time to appeal filing, Judge (days)",-100,True
+coercive_credit_collection,category,Coercive Credit Collection,114,Indicator,Average time to case closure (days),-100,True
+timely_payment,category,Timely Payment,2,Goal,"Every issued fine reaches a lawful, documented closure",0,False
+timely_payment,category,Timely Payment,3,Goal,Fine is issued and formally communicated,0,False
+timely_payment,category,Timely Payment,4,Goal,Fine case is resolved,0,False
+timely_payment,category,Timely Payment,5,Goal,Fine becomes enforceable and is resolved,0,False
+timely_payment,category,Timely Payment,6,Goal,Enforced case is closed,0,False
+timely_payment,category,Timely Payment,7,Goal,Contested appeal is resolved,0,False
+timely_payment,category,Timely Payment,8,Task,Create Fine,0,False
+timely_payment,category,Timely Payment,9,Task,Send Fine,0,False
+timely_payment,category,Timely Payment,10,Task,Insert Fine Notification,0,False
+timely_payment,category,Timely Payment,11,Task,Add Penalty,0,False
+timely_payment,category,Timely Payment,12,Task,Resolve via timely payment,0,False
+timely_payment,category,Timely Payment,13,Task,Resolve via delinquent payment,0,False
+timely_payment,category,Timely Payment,14,Task,Resolve via administrative appeal to the Prefecture,0,False
+timely_payment,category,Timely Payment,15,Task,Insert Date Appeal to Prefecture,0,False
+timely_payment,category,Timely Payment,16,Task,Send Appeal to Prefecture,0,False
+timely_payment,category,Timely Payment,17,Task,Receive Result Appeal from Prefecture,0,False
+timely_payment,category,Timely Payment,18,Task,Notify Result Appeal to Offender,0,False
+timely_payment,category,Timely Payment,20,Task,Resolve via coercive credit collection,0,False
+timely_payment,category,Timely Payment,21,Softgoal,Minimize administrative & enforcement cost,50,False
+timely_payment,category,Timely Payment,22,Softgoal,Maximize timely fine revenue,69,False
+timely_payment,category,Timely Payment,23,Softgoal,Preserve offender's due-process rights,0,False
+timely_payment,category,Timely Payment,112,Indicator,Time to fine dispatch (days),38,True
+timely_payment,category,Timely Payment,113,Indicator,"Time to appeal filing, Prefecture (days)",0,False
+timely_payment,category,Timely Payment,175,Indicator,"Time to appeal filing, Judge (days)",0,False
+timely_payment,category,Timely Payment,114,Indicator,Average time to case closure (days),100,True
+delinquent_payment,category,Delinquent Payment,2,Goal,"Every issued fine reaches a lawful, documented closure",0,False
+delinquent_payment,category,Delinquent Payment,3,Goal,Fine is issued and formally communicated,0,False
+delinquent_payment,category,Delinquent Payment,4,Goal,Fine case is resolved,0,False
+delinquent_payment,category,Delinquent Payment,5,Goal,Fine becomes enforceable and is resolved,0,False
+delinquent_payment,category,Delinquent Payment,6,Goal,Enforced case is closed,0,False
+delinquent_payment,category,Delinquent Payment,7,Goal,Contested appeal is resolved,0,False
+delinquent_payment,category,Delinquent Payment,8,Task,Create Fine,0,False
+delinquent_payment,category,Delinquent Payment,9,Task,Send Fine,0,False
+delinquent_payment,category,Delinquent Payment,10,Task,Insert Fine Notification,0,False
+delinquent_payment,category,Delinquent Payment,11,Task,Add Penalty,0,False
+delinquent_payment,category,Delinquent Payment,12,Task,Resolve via timely payment,0,False
+delinquent_payment,category,Delinquent Payment,13,Task,Resolve via delinquent payment,0,False
+delinquent_payment,category,Delinquent Payment,14,Task,Resolve via administrative appeal to the Prefecture,0,False
+delinquent_payment,category,Delinquent Payment,15,Task,Insert Date Appeal to Prefecture,0,False
+delinquent_payment,category,Delinquent Payment,16,Task,Send Appeal to Prefecture,0,False
+delinquent_payment,category,Delinquent Payment,17,Task,Receive Result Appeal from Prefecture,0,False
+delinquent_payment,category,Delinquent Payment,18,Task,Notify Result Appeal to Offender,0,False
+delinquent_payment,category,Delinquent Payment,20,Task,Resolve via coercive credit collection,0,False
+delinquent_payment,category,Delinquent Payment,21,Softgoal,Minimize administrative & enforcement cost,-48,False
+delinquent_payment,category,Delinquent Payment,22,Softgoal,Maximize timely fine revenue,-48,False
+delinquent_payment,category,Delinquent Payment,23,Softgoal,Preserve offender's due-process rights,0,False
+delinquent_payment,category,Delinquent Payment,112,Indicator,Time to fine dispatch (days),0,True
+delinquent_payment,category,Delinquent Payment,113,Indicator,"Time to appeal filing, Prefecture (days)",100,True
+delinquent_payment,category,Delinquent Payment,175,Indicator,"Time to appeal filing, Judge (days)",-100,True
+delinquent_payment,category,Delinquent Payment,114,Indicator,Average time to case closure (days),-97,True
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,2,Goal,"Every issued fine reaches a lawful, documented closure",0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,3,Goal,Fine is issued and formally communicated,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,4,Goal,Fine case is resolved,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,5,Goal,Fine becomes enforceable and is resolved,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,6,Goal,Enforced case is closed,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,7,Goal,Contested appeal is resolved,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,8,Task,Create Fine,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,9,Task,Send Fine,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,10,Task,Insert Fine Notification,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,11,Task,Add Penalty,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,12,Task,Resolve via timely payment,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,13,Task,Resolve via delinquent payment,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,14,Task,Resolve via administrative appeal to the Prefecture,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,15,Task,Insert Date Appeal to Prefecture,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,16,Task,Send Appeal to Prefecture,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,17,Task,Receive Result Appeal from Prefecture,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,18,Task,Notify Result Appeal to Offender,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,20,Task,Resolve via coercive credit collection,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,21,Softgoal,Minimize administrative & enforcement cost,-40,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,22,Softgoal,Maximize timely fine revenue,-40,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,23,Softgoal,Preserve offender's due-process rights,0,False
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,112,Indicator,Time to fine dispatch (days),0,True
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,113,Indicator,"Time to appeal filing, Prefecture (days)",100,True
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,175,Indicator,"Time to appeal filing, Judge (days)",-100,True
+administrative_appeal_prefecture,category,Administrative Appeal to the Prefecture,114,Indicator,Average time to case closure (days),-79,True

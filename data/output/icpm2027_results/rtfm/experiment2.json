@@ -1,0 +1,48 @@
+{
+  "dataset": "rtfm",
+  "findings": [
+    {
+      "kind": "A",
+      "perturbation_id": "pertA_remove_19",
+      "targets": [
+        "19"
+      ],
+      "target_anchor": "19",
+      "TargetReassignment": {
+        "n": 65,
+        "changed": 65,
+        "rate": 1.0,
+        "cases_changed": 397
+      },
+      "CollateralReassignment": {
+        "n": 166,
+        "changed": 12,
+        "rate": 0.07228915662650602,
+        "cases_changed": 42
+      },
+      "note": "CollateralReassignment is interpretable only against the replicate noise floor from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+    },
+    {
+      "kind": "B",
+      "perturbation_id": "pertB_merge_13_20",
+      "targets": [
+        "13",
+        "20"
+      ],
+      "target_anchor": "13",
+      "TargetReassignment": {
+        "n": 50,
+        "changed": 50,
+        "rate": 1.0,
+        "cases_changed": 16947
+      },
+      "CollateralReassignment": {
+        "n": 181,
+        "changed": 59,
+        "rate": 0.3259668508287293,
+        "cases_changed": 59399
+      },
+      "note": "CollateralReassignment is interpretable only against the replicate noise floor from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+    }
+  ]
+}

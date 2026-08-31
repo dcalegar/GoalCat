@@ -1,0 +1,80 @@
+{
+  "categories": [
+    {
+      "category_id": "standard_procure_to_pay",
+      "name": "Standard Procure-to-Pay",
+      "description": "Standard, high-frequency procurement paths where purchase orders are created, goods and invoice receipts are recorded, and invoices are cleared without significant delays or complications.",
+      "anchor_ids": [],
+      "rationale": "These variants represent the backbone of normal operations (high frequency, moderate duration, clean linear progression ending in Clear Invoice).",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0002",
+        "V0004",
+        "V0005",
+        "V0006",
+        "V0007",
+        "V0008",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "quick_cancellation_or_completion",
+      "name": "Quick Cancellation or Early Termination",
+      "description": "Short-lived variants featuring very low trace lengths and rapid execution times, typically resulting in purchase order deletion, basic creation, or initial goods receipt without full invoice processing.",
+      "anchor_ids": [],
+      "rationale": "Distinctly short trace lengths and minimal durations characterize these early-stage or aborted procurements.",
+      "evidence_variant_ids": [
+        "V0003",
+        "V0009",
+        "V0014",
+        "V0024",
+        "V0068"
+      ]
+    },
+    {
+      "category_id": "service_entry_execution",
+      "name": "Service Entry Sheet Processing",
+      "description": "Procurement paths focusing specifically on the recording of service entry sheets and goods receipts with minimal overhead or intermediate steps.",
+      "anchor_ids": [],
+      "rationale": "These variants group around service-oriented activities (Record Service Entry Sheet) with very low durations.",
+      "evidence_variant_ids": [
+        "V0064",
+        "V0162",
+        "V0244",
+        "V0271"
+      ]
+    },
+    {
+      "category_id": "srm_integration_failure",
+      "name": "SRM System Transfer Failure",
+      "description": "Complex procurement variants originating in the SRM subsystem that suffer from transfer failures or communication issues with execution systems.",
+      "anchor_ids": [],
+      "rationale": "Characterized by the presence of SRM lifecycle states and culminating explicitly in 'SRM: Transfer Failed (E.Sys.)'.",
+      "evidence_variant_ids": [
+        "V2944",
+        "V2952",
+        "V2950",
+        "V2949",
+        "V2947"
+      ]
+    },
+    {
+      "category_id": "extreme_rework_and_delay",
+      "name": "Extreme Rework and Administrative Delay",
+      "description": "Extremely long-running variants characterized by massive trace lengths, repetitive loops of invoice creation, cancellations, payment block removals, and multi-year durations.",
+      "anchor_ids": [],
+      "rationale": "These represent extreme outliers in terms of trace length (hundreds of activities), duration (years), and extensive rework observed across multiple steps.",
+      "evidence_variant_ids": [
+        "V1038",
+        "V5418",
+        "V3680",
+        "V3305",
+        "V3102",
+        "V3074",
+        "V2989",
+        "V2951",
+        "V6776"
+      ]
+    }
+  ]
+}

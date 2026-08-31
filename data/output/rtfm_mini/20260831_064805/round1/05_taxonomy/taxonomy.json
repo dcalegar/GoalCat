@@ -1,0 +1,66 @@
+{
+  "categories": [
+    {
+      "category_id": "resolve_via_timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Represents the resolution of a fine via timely payment, advancing Maximize timely fine revenue and minimizing administrative and enforcement costs, evaluated against Average time to case closure.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id 12 as observed in variant V0004 where the fine is directly settled.",
+      "evidence_variant_ids": [
+        "V0004"
+      ]
+    },
+    {
+      "category_id": "resolve_via_delinquent_payment",
+      "name": "Resolve via delinquent payment",
+      "description": "Represents the resolution of an enforceable fine via delinquent payment after notification and penalty addition, contributing to timely fine revenue.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id 13, evidenced by variants V0003, V0007, and V0008 where payment occurs following enforcement steps.",
+      "evidence_variant_ids": [
+        "V0003",
+        "V0007",
+        "V0008"
+      ]
+    },
+    {
+      "category_id": "resolve_via_administrative_appeal_to_the_prefecture",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Represents handling the case through an administrative appeal to the Prefecture, preserving due-process rights while impacting administrative costs and revenue.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id 14, observed in variant V0006 through insertion and sending of the appeal.",
+      "evidence_variant_ids": [
+        "V0006"
+      ]
+    },
+    {
+      "category_id": "resolve_via_judicial_appeal_to_the_judge",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Represents contesting the fine via a judicial appeal to the Judge, strongly supporting due-process rights but hurting administrative cost efficiency.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id 19, supported by variant V0005 ending in an appeal to the Judge.",
+      "evidence_variant_ids": [
+        "V0005"
+      ]
+    },
+    {
+      "category_id": "resolve_via_coercive_credit_collection",
+      "name": "Resolve via coercive credit collection",
+      "description": "Represents resolving an enforceable fine through coercive credit collection, helping revenue but hurting administrative costs.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id 20, evidenced by variant V0002 terminating with Send for Credit Collection.",
+      "evidence_variant_ids": [
+        "V0002"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "categories": [
+    {
+      "category_id": "three_way_matched_after_gr",
+      "name": "3-Way Matched, Invoice Recorded After Goods Receipt",
+      "description": "The purchase order item follows a 3-way matching control regime where the invoice is recorded after the goods receipt. This advances working-capital efficiency while preserving value-matching control integrity, judged against the Time to clearance, 3-way after GR indicator.",
+      "anchor_ids": [
+        "5"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=5. Supported by frequent process variants such as V0001, V0002, V0005, and V0010 where goods receipt consistently precedes invoice recording.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0002",
+        "V0005",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "three_way_matched_before_gr",
+      "name": "3-Way Matched, Invoice Recorded Before Goods Receipt",
+      "description": "The purchase order item follows a 3-way matching control regime where the invoice is recorded before the goods receipt. This helps maximize working-capital efficiency and preserve control integrity, judged against the Time to clearance, 3-way before GR indicator.",
+      "anchor_ids": [
+        "6"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=6. Supported by process variants such as V0004, V0007, and V0008 where invoice receipt occurs prior to goods receipt.",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0007",
+        "V0008"
+      ]
+    },
+    {
+      "category_id": "two_way_matched",
+      "name": "2-Way Matched (No Goods Receipt Required)",
+      "description": "The purchase order item is resolved via a 2-way match where no goods receipt is required. This helps minimize procurement and matching overhead, judged against the Time to clearance, 2-way match indicator.",
+      "anchor_ids": [
+        "7"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=7, representing service-based or streamlined items that omit goods receipt and directly record and clear invoices (e.g. V0064).",
+      "evidence_variant_ids": [
+        "V0064"
+      ]
+    },
+    {
+      "category_id": "consignement_consumption",
+      "name": "Resolve via Consignment Consumption",
+      "description": "The purchase order item is resolved via consignment consumption, helping minimize procurement and matching overhead while impacting value-matching control integrity.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=13 as specified in the goal-task decomposition under the OR-decomposed matching regime.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

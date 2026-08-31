@@ -1,0 +1,22 @@
+{
+  "schema": "icpm2027/perturbation/2",
+  "perturbation_id": "pertB_merge_13_20",
+  "kind": "B - alternative merge",
+  "targets": [
+    "13",
+    "20"
+  ],
+  "base_model": {
+    "path": "data/goals/rtfm_goal_model.jucm",
+    "sha256": "7fb7e8f3c5c5631799d27ba18d38ae6f017ed9b7e3a13d034c37412d51c2f5b4"
+  },
+  "output": {
+    "path": "data/goals/perturbed/rtfm_goal_model__pertB_merge_13_20.jucm",
+    "sha256": "7367d6b3f478d945fe6c84f93390f701a325f1d60c91b12c089d9f67f7c3f511"
+  },
+  "goal_model_filename": "perturbed/rtfm_goal_model__pertB_merge_13_20.jucm",
+  "generated_on": "2026-08-29",
+  "notes": [
+    "Merged 13 ('Resolve via delinquent payment') and 20 ('Resolve via coercive credit collection') into 13 ('Merged 13+20')."
+  ]
+}

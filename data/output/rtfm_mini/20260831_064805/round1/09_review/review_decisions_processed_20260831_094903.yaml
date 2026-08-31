@@ -1,0 +1,11 @@
+decision: revise
+notes: null
+renames: []
+merges:
+- category_ids:
+  - resolve_via_timely_payment
+  - resolve_via_delinquent_payment
+  reason: 'Scripted rework-loop demonstration (experimentation/examples/rtfm_mini/example_run.py):
+    merging the first two induced categories (resolve_via_timely_payment, resolve_via_delinquent_payment)
+    to exercise Step 9''s revise path end-to-end (new round, Steps 5-8 re-run).'
+splits: []
