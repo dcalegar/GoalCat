@@ -1,0 +1,22 @@
+{
+  "schema": "icpm2027/perturbation/2",
+  "perturbation_id": "pertA_remove_20",
+  "kind": "A - alternative removal",
+  "targets": [
+    "20"
+  ],
+  "base_model": {
+    "path": "data/goals/rtfm_goal_model.jucm",
+    "sha256": "7fb7e8f3c5c5631799d27ba18d38ae6f017ed9b7e3a13d034c37412d51c2f5b4"
+  },
+  "output": {
+    "path": "data/goals/perturbed/rtfm_goal_model__pertA_remove_20.jucm",
+    "sha256": "75260074ac4eecba65ee87de8bfc6764fe2fed592f76b24a56d6a743b2776e09"
+  },
+  "goal_model_filename": "perturbed/rtfm_goal_model__pertA_remove_20.jucm",
+  "generated_on": "2026-08-31",
+  "notes": [
+    "Removed element 20 (Task: 'Resolve via coercive credit collection') and 4 link(s) touching it (decomposition and/or contribution).",
+    "6's children are now ['13', '7'] (was including 20)."
+  ]
+}

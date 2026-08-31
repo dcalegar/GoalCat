@@ -65,6 +65,13 @@ def declared_alternatives(model: GRLModel) -> dict[str, list[str]]:
     return model.declared_alternatives()
 
 
+def axis_frontier(model: GRLModel, axis_root: str | None = None) -> list[str]:
+    """The ids `Category.anchor_ids` may legally name for this axis — see
+    `GRLModel.axis_frontier()`. Re-exported here beside `declared_ids()` because the two are the
+    anchoring rule and the resolution rule respectively, and callers reach for them together."""
+    return model.axis_frontier(axis_root)
+
+
 def declared_ids(model: GRLModel) -> set[str]:
     """Every id Step 5a's `anchor_ids` may legally reference — every intentional element
     (Goal/Task/Softgoal/Ressource), Indicators excluded. Indicators became visible to Step 5a when
@@ -109,7 +116,7 @@ def _roots(model: GRLModel) -> list[str]:
     ]
 
 
-def render_excerpt(model: GRLModel) -> str:
+def render_excerpt(model: GRLModel, axis_root: str | None = None) -> str:
     """The full text block Step 5a's `{goal_model_excerpt}` receives, in both the induction and
     the revision prompt.
     Deterministic (dict/list iteration order matches the `.jucm` file's own element order), so the
@@ -117,7 +124,13 @@ def render_excerpt(model: GRLModel) -> str:
     "Prompts: versioned" row (`experimentation/icpm2027/configs/protocol.yaml`) and by
     `icpm2027.goalmodel.perturb`, which hashes this text as a perturbation's provenance record.
     Changing this function's output format therefore invalidates those hashes: treat it as a
-    versioned artifact, not as free-form prompt wording."""
+    versioned artifact, not as free-form prompt wording.
+
+    `axis_root` names the Or/Xor point whose alternatives are the categorization axis. When given,
+    a closing block states that frontier explicitly, so an anchor above it (`taxonomy.py`'s
+    `check_axis_partition`, which rejects exactly that) is a rule the prompt states rather than one
+    the model has to infer from the indented operators. Omitting it reproduces the pre-axis output
+    byte for byte, which is what keeps a run whose manifest predates this parameter comparable."""
     lines = [f"Goal model: {model.name}", ""]
 
     if model.actors:
@@ -164,6 +177,25 @@ def render_excerpt(model: GRLModel) -> str:
             lines.append(
                 f"  - id={source.id} {source.name} --[{link.contribution}{quantitative}]--> {target_name}"
             )
+        lines.append("")
+
+    if axis_root is not None:
+        frontier = model.axis_frontier(axis_root)
+        root = model.element(axis_root)
+        lines.append(
+            f"Categorization axis: the alternatives of id={root.id} ({root.name}), decomposed "
+            f"{(root.decomposition_type or 'And').upper()}."
+        )
+        for element_id in frontier:
+            element = model.element(element_id)
+            lines.append(f"  - id={element.id} [{element.type}] {element.name}")
+        lines.append(
+            "These ids, and only these, are valid anchor_ids. Do not anchor to a parent or "
+            "ancestor of one of them: a coarser element is a different, broader goal, not the "
+            "alternative it contains. Do not anchor to an alternative of any other decomposition "
+            "point in the tree above — those belong to a different axis and a case may realize one "
+            "of them in addition to, not instead of, one of these."
+        )
         lines.append("")
 
     return "\n".join(lines).rstrip() + "\n"

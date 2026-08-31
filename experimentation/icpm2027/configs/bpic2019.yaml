@@ -8,6 +8,12 @@ activity_key: "concept:name"
 timestamp_key: "time:timestamp"
 resource_key: "org:resource"
 
+# One axis: Or 4 "Item is resolved per its matching regime", frontier 5/6/7/13. The three 3-way /
+# 2-way alternatives are themselves AND-decomposed into mandatory sub-steps, which is why they sit
+# on the frontier rather than their children.
+axes:
+  matching_regime: "4"
+
 # §5: large-scale case — high absolute diversity (11,973 variants / 251,734 cases).
 role: large_scale_case
 # Task C7: resolved from preregistration.yaml's C7_bpic2019_variant_scope decision, not fixed

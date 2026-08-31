@@ -32,6 +32,7 @@ from .llm.assignment import (
 from .llm.description import build_description_report, generate_descriptions_8, save_description_outputs
 from .llm.taxonomy import (
     Taxonomy,
+    check_axis_partition,
     check_taxonomy_grounding,
     induce_taxonomy_5a,
     induce_taxonomy_5b,
@@ -346,6 +347,26 @@ def run_step5a_taxonomy(
         logger.warning("Taxonomy grounding check: %s", problem)
     if not problems:
         logger.info("Taxonomy grounding check: no problems found.")
+
+    # Blocking, unlike every other check above: an induced taxonomy that is not a partition of one
+    # declared axis is not the object Step 6 assigns against, so continuing would produce numbers
+    # that silently describe a different categorization. Raising here is what stops the failure
+    # mode that reached publication once already (Experiment 2's merge runs re-anchored to
+    # AND-decomposed parents, and were reported as if the perturbed alternative had moved).
+    axis_problems = check_axis_partition(taxonomy, goal_model, config.axis_root)
+    if axis_problems:
+        for problem in axis_problems:
+            logger.error("Axis partition check: %s", problem)
+        raise ValueError(
+            f"Step 5a produced a taxonomy that is not a partition of the declared axis "
+            f"({len(axis_problems)} problem(s), logged above). Fix the goal model, name an "
+            f"axis_root in the run config, or re-run induction; the taxonomy was not saved."
+        )
+    logger.info(
+        "Axis partition check: %d categories partition the declared axis (%s).",
+        len(taxonomy.categories),
+        ", ".join(goal_model.axis_frontier(config.axis_root)),
+    )
 
     save_taxonomy(taxonomy, metadata, prompt, config.taxonomy_dir, config.llm.pricing_usd_per_million_tokens)
     logger.info("Saved taxonomy to: %s", config.taxonomy_dir / "taxonomy.json")

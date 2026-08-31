@@ -1,0 +1,22 @@
+{
+  "schema": "icpm2027/perturbation/2",
+  "perturbation_id": "pertB_merge_17_18",
+  "kind": "B - alternative merge",
+  "targets": [
+    "17",
+    "18"
+  ],
+  "base_model": {
+    "path": "data/goals/sepsis_goal_model.jucm",
+    "sha256": "5a4f9e9950f9a4cb05b3aec772f07a6b0ab3956a423360f804983bb6f032d58f"
+  },
+  "output": {
+    "path": "data/goals/perturbed/sepsis_goal_model__pertB_merge_17_18.jucm",
+    "sha256": "f8e4a6edecd0daebb37820715fe76427e4009c6c8bd99d56ed9cb6a8176d6bf7"
+  },
+  "goal_model_filename": "perturbed/sepsis_goal_model__pertB_merge_17_18.jucm",
+  "generated_on": "2026-08-31",
+  "notes": [
+    "Merged 17 ('Release A') and 18 ('Release B') into 17 ('Merged 17+18')."
+  ]
+}

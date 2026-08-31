@@ -258,6 +258,24 @@ def merge_alternatives(
             "shape, not just its granularity."
         )
 
+    siblings = base.children_of(parent_first)
+    if len(siblings) < 3:
+        # A merge that leaves the parent with one child produces a degenerate Or/Xor point: the
+        # decomposition no longer declares a choice, and Step 5a responds by anchoring *above* it,
+        # to the nearest And-decomposed ancestor. That is what happened to Sepsis's
+        # pertB_merge_15_16 run, whose taxonomy re-anchored all seven categories onto elements 5
+        # and 6 and was still reported. `remove_alternative` merely notes the same degeneracy; a
+        # merge cannot even be given the benefit of the doubt, because it always has a
+        # non-degenerate alternative available on a wider frontier.
+        raise ValueError(
+            f"merging {first_id!r} and {second_id!r} would leave {parent_first} "
+            f"({base.element(parent_first).name!r}) with a single child: it has only "
+            f"{len(siblings)} ({', '.join(siblings)}). A degenerate Or/Xor point declares no "
+            "choice, so the perturbed model no longer has the frontier the perturbation is "
+            "supposed to measure movement across. Merge two alternatives of a parent with at "
+            "least three children instead."
+        )
+
     model = _clone(base)
     notes: list[str] = []
 

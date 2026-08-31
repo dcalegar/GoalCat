@@ -81,10 +81,17 @@ def _llm_configurations(manifest: dict) -> Any:
     return sorted(out, key=lambda e: (e["role"], str(e["model"])))
 
 
-def check_pair(manifests: dict[str, dict]) -> list[FreezeCheck]:
+def check_pair(manifests: dict[str, dict], *, perturbed: bool = False) -> list[FreezeCheck]:
     """Runs every freeze-table row across two or more conditions of one within-log pair.
 
     `manifests` maps a display label (e.g. "guided_rep1") to that condition's parsed manifest.
+
+    `perturbed` inverts the goal-model row for an Experiment 2 comparison, where the goal model is
+    the one thing that is *supposed* to differ: the requirement becomes that every guided condition
+    read a *distinct* model, since two perturbations sharing a file would mean one of them did not
+    write the edit it claims. Every other row still demands identity — that is the point of running
+    this on E2 at all, and it is what would have caught each perturbed run using a newer
+    `prompt_assignment_batch.txt` than the baseline it was measured against.
     """
     checks: list[FreezeCheck] = []
 
@@ -131,6 +138,25 @@ def check_pair(manifests: dict[str, dict]) -> list[FreezeCheck]:
     add("Assignment mechanism", "same", lambda m: sorted(_extract(m, ("inputs", "prompt_templates"), {}).items()),
         note="Prompt-template set hashed as a whole; a wording change to any template fails this row.")
     add("Assignment batch size (Task C10)", "same", lambda m: m.get("assignment_batch_size"))
+    axis_values = {label: m.get("axis") for label, m in manifests.items()}
+    guided_axes = {
+        label: value
+        for label, value in axis_values.items()
+        if manifests[label].get("arm") == "guided"
+    }
+    checks.append(
+        FreezeCheck(
+            element="Categorization axis",
+            requirement="same across guided conditions (absent in open, by design)",
+            values=axis_values,
+            passed=len(set(guided_axes.values())) <= 1
+            and all(axis_values[label] is None for label in axis_values if label not in guided_axes),
+            note="Two guided conditions that induce against different Or frontiers partition "
+            "different things and are not a paired comparison. The open arm carries no axis for "
+            "the same reason it carries no goal model, and one open run serves every axis. Null "
+            "throughout on a dataset declaring a single axis.",
+        )
+    )
     add("Variant scope (Task C7)", "same", lambda m: _extract(m, ("variant_scope", "variants_kept")))
     add("Protocol version", "same", lambda m: m.get("protocol_version"))
 
@@ -149,17 +175,28 @@ def check_pair(manifests: dict[str, dict]) -> list[FreezeCheck]:
     open_absent = all(
         v["absent_by_design"] for v in goal_models.values() if v["arm"] in ("open", "label_list")
     )
-    guided_present_and_uniform = bool(guided_hashes) and len(set(guided_hashes.values())) == 1 and all(guided_hashes.values())
+    if perturbed:
+        guided_ok = bool(guided_hashes) and len(set(guided_hashes.values())) == len(guided_hashes) and all(guided_hashes.values())
+        requirement = "present, and distinct per perturbation"
+        note = (
+            "Experiment 2's one intended difference. Every guided condition must read a distinct, "
+            "present goal model: two conditions sharing a file means a perturbation did not write "
+            "the edit it claims to test."
+        )
+    else:
+        guided_ok = bool(guided_hashes) and len(set(guided_hashes.values())) == 1 and all(guided_hashes.values())
+        requirement = "present and frozen (guided) / absent (open)"
+        note = (
+            "Guided arms must all read one identical goal-model file; open and label-list "
+            "arms must have none configured at all — not merely be set to ignore one."
+        )
     checks.append(
         FreezeCheck(
             element="Goal model",
-            requirement="present and frozen (guided) / absent (open)",
+            requirement=requirement,
             values=goal_models,
-            passed=guided_present_and_uniform and open_absent,
-            note=(
-                "Guided arms must all read one identical goal-model file; open and label-list "
-                "arms must have none configured at all — not merely be set to ignore one."
-            ),
+            passed=guided_ok and open_absent,
+            note=note,
         )
     )
 
@@ -177,8 +214,10 @@ def check_pair(manifests: dict[str, dict]) -> list[FreezeCheck]:
     return checks
 
 
-def check_run_dirs(run_dirs: dict[str, Path]) -> list[FreezeCheck]:
-    return check_pair({label: read_manifest(path) for label, path in run_dirs.items()})
+def check_run_dirs(run_dirs: dict[str, Path], *, perturbed: bool = False) -> list[FreezeCheck]:
+    return check_pair(
+        {label: read_manifest(path) for label, path in run_dirs.items()}, perturbed=perturbed
+    )
 
 
 def render_freeze_report(title: str, checks: Iterable[FreezeCheck]) -> str:

@@ -9,6 +9,12 @@ activity_key: "concept:name"
 timestamp_key: "time:timestamp"
 resource_key: "org:resource"
 
+# The categorization axis: the Or point whose alternatives Step 5a anchors to. RTFM declares one
+# — Or 4 "Fine case is resolved", whose frontier descends through the nested Or 6 and Xor 7 to the
+# five leaf alternatives 12/13/14/19/20.
+axes:
+  resolution: "4"
+
 # §5: mechanism case — low relative diversity, high repetition (231 variants / 150,370 cases).
 role: mechanism_case
 # Whole log; no Task C7-style scope decision applies here.

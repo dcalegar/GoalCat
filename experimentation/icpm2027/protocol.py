@@ -193,6 +193,33 @@ class DatasetSpec:
     #: Held-out labels whose recovery figure is not comparable to the others (no distinguishing
     #: activity label in the log — the Consignment / T9 case for bpic2019).
     heldout_incomparable_labels: list[str]
+    #: The categorization axes this goal model declares, `{label: or_point_element_id}`, in the
+    #: order they are reported. A model whose And root joins several independent Or/Xor frontiers
+    #: has no single axis (see `goalcat.grl.GRLModel.axis_frontier`), so each frontier is declared
+    #: here and run as its own condition — Sepsis has two (admission, discharge) and is the reason
+    #: this is a mapping rather than a scalar. An empty mapping lets the model derive its own axis,
+    #: which only works when it declares exactly one frontier.
+    axes: dict[str, str]
+
+    @property
+    def axis_labels(self) -> list[str]:
+        return list(self.axes)
+
+    def axis_root(self, axis: str | None) -> str | None:
+        """The element id for `axis`, or the sole declared axis when `axis` is None."""
+        if axis is not None:
+            if axis not in self.axes:
+                raise KeyError(
+                    f"{self.dataset_id} declares no axis {axis!r} (known: {', '.join(self.axes) or 'none'})"
+                )
+            return self.axes[axis]
+        if len(self.axes) > 1:
+            raise ValueError(
+                f"{self.dataset_id} declares {len(self.axes)} axes ({', '.join(self.axes)}); a "
+                "condition must name one. Each frontier is a separate partition and they cannot "
+                "be induced together."
+            )
+        return next(iter(self.axes.values()), None)
 
     @classmethod
     def load(cls, dataset_id: str) -> "DatasetSpec":
@@ -215,6 +242,7 @@ class DatasetSpec:
             heldout_case_attribute=raw.get("heldout_case_attribute"),
             heldout_label_map={str(k): v for k, v in (raw.get("heldout_label_map") or {}).items()} or None,
             heldout_incomparable_labels=list(raw.get("heldout_incomparable_labels") or []),
+            axes={str(k): str(v) for k, v in (raw.get("axes") or {}).items()},
         )
 
     @property
@@ -252,6 +280,9 @@ class ConditionSpec:
     steps: tuple[int, ...] = (5, 6)
     label_list: tuple[str, ...] = ()
     experiment: str = "e1"
+    #: Which of the dataset's declared axes this condition induces against. None means "the sole
+    #: declared axis" and is an error on a dataset that declares several.
+    axis: str | None = None
 
     @property
     def taxonomy_mode(self) -> str:
@@ -271,6 +302,30 @@ class ConditionSpec:
         return self.goal_model_filename or self.dataset.goal_model_filename
 
     @property
+    def effective_axis(self) -> str | None:
+        """The axis label this condition actually induces against.
+
+        None for the open and label-list arms even when `axis` is set: those arms see no goal
+        model, so their partition does not depend on which frontier the guided arm was pointed at,
+        and one open run is the comparator for every axis. Normalizing here is what keeps the open
+        arm from being executed once per axis with byte-identical inputs, and keeps its run
+        directory name the axis-free one its frozen artifacts already use.
+        """
+        return self.axis if self.arm in _GOAL_MODEL_ARMS else None
+
+    @property
+    def effective_axis_root(self) -> str | None:
+        """The goal-model element id bounding this condition's axis, or None in the open arm.
+
+        The open arm sees no goal model at all, so it has no axis to be bounded by; returning None
+        keeps the freeze table's "Goal model: absent" row true of the axis as well.
+        """
+        if self.arm not in _GOAL_MODEL_ARMS:
+            return None
+        return self.dataset.axis_root(self.axis)
+
+
+    @property
     def withholds_narrative_sample(self) -> bool:
         """Task C11a: Step 5a runs with an empty narrative sample.
 
@@ -286,6 +341,11 @@ class ConditionSpec:
     @property
     def condition_id(self) -> str:
         parts = [self.experiment, self.arm]
+        if self.effective_axis and len(self.dataset.axes) > 1:
+            # Named only when the dataset declares several axes and the run directories must
+            # therefore be kept apart. A single-axis dataset keeps the names its frozen artifacts
+            # already use, and the axis is still recorded in the manifest either way.
+            parts.append(f"axis{self.effective_axis}")
         if self.tag:
             parts.append(self.tag)
         parts.append(f"rep{self.replicate}")
@@ -395,6 +455,7 @@ def render_condition_config(
         "resource_key": condition.dataset.resource_key,
         **protocol.sampling,
         "taxonomy_mode": condition.taxonomy_mode,
+        "axis_root": condition.effective_axis_root,
         **protocol.discovery,
         "llm": llm,
     }

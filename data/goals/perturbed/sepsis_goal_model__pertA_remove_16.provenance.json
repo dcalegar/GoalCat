@@ -1,0 +1,23 @@
+{
+  "schema": "icpm2027/perturbation/2",
+  "perturbation_id": "pertA_remove_16",
+  "kind": "A - alternative removal",
+  "targets": [
+    "16"
+  ],
+  "base_model": {
+    "path": "data/goals/sepsis_goal_model.jucm",
+    "sha256": "5a4f9e9950f9a4cb05b3aec772f07a6b0ab3956a423360f804983bb6f032d58f"
+  },
+  "output": {
+    "path": "data/goals/perturbed/sepsis_goal_model__pertA_remove_16.jucm",
+    "sha256": "e7e9df0d7ee112ef85068c6c49203e76bb5986f905a25fa46dc397058866d64b"
+  },
+  "goal_model_filename": "perturbed/sepsis_goal_model__pertA_remove_16.jucm",
+  "generated_on": "2026-08-31",
+  "notes": [
+    "Removed element 16 (Task: 'Admission IC') and 2 link(s) touching it (decomposition and/or contribution).",
+    "5's children are now ['15'] (was including 16).",
+    "5 now has a single child under a Or operator \u2014 a degenerate decomposition, a consequence of this perturbation, not an authoring choice. Report this if it affects the result."
+  ]
+}

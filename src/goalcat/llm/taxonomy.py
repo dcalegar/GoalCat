@@ -41,7 +41,7 @@ class Taxonomy(BaseModel):
         return self
 
 
-def _render_goal_model_excerpt(jucm_text: str) -> str:
+def _render_goal_model_excerpt(jucm_text: str, axis_root: str | None = None) -> str:
     """Renders the `.jucm` goal model's actors, decomposition tree, indicators, and contribution
     links — the same content the markdown-era `_extract_sections()` sliced out of §1-§5 (purpose,
     actors, decomposition, contributions), now read from the model directly rather than sliced out
@@ -56,7 +56,7 @@ def _render_goal_model_excerpt(jucm_text: str) -> str:
     forwarding the XMI; the README's "What the LLM actually sees of the goal model" section states
     the same rationale for readers who never open the code.
     """
-    return grl.render_excerpt(grl.parse_jucm(jucm_text))
+    return grl.render_excerpt(grl.parse_jucm(jucm_text), axis_root)
 
 
 def _format_narrative_block(row: pd.Series) -> str:
@@ -83,8 +83,10 @@ def _format_prior_taxonomy_block(prior_taxonomy: Taxonomy) -> str:
     return "\n".join(_format_prior_category_block(c) for c in prior_taxonomy.categories)
 
 
-def build_taxonomy_prompt(sample_df: pd.DataFrame, goal_model_text: str) -> str:
-    excerpt = _render_goal_model_excerpt(goal_model_text)
+def build_taxonomy_prompt(
+    sample_df: pd.DataFrame, goal_model_text: str, axis_root: str | None = None
+) -> str:
+    excerpt = _render_goal_model_excerpt(goal_model_text, axis_root)
     blocks = "\n".join(_format_narrative_block(row) for _, row in sample_df.iterrows())
     template = load_prompt_template("prompt_taxonomy_intent_guided.txt")
     return template.format(
@@ -95,9 +97,13 @@ def build_taxonomy_prompt(sample_df: pd.DataFrame, goal_model_text: str) -> str:
 
 
 def build_taxonomy_revision_prompt(
-    sample_df: pd.DataFrame, goal_model_text: str, prior_taxonomy: Taxonomy, revision_instructions: str
+    sample_df: pd.DataFrame,
+    goal_model_text: str,
+    prior_taxonomy: Taxonomy,
+    revision_instructions: str,
+    axis_root: str | None = None,
 ) -> str:
-    excerpt = _render_goal_model_excerpt(goal_model_text)
+    excerpt = _render_goal_model_excerpt(goal_model_text, axis_root)
     blocks = "\n".join(_format_narrative_block(row) for _, row in sample_df.iterrows())
     template = load_prompt_template("prompt_taxonomy_intent_guided_revision.txt")
     return template.format(
@@ -130,9 +136,11 @@ def induce_taxonomy_5a(
         )
     goal_model_text = config.goal_model_path.read_text(encoding="utf-8")
     if prior_taxonomy is not None:
-        prompt = build_taxonomy_revision_prompt(sample_df, goal_model_text, prior_taxonomy, revision_instructions)
+        prompt = build_taxonomy_revision_prompt(
+            sample_df, goal_model_text, prior_taxonomy, revision_instructions, config.axis_root
+        )
     else:
-        prompt = build_taxonomy_prompt(sample_df, goal_model_text)
+        prompt = build_taxonomy_prompt(sample_df, goal_model_text, config.axis_root)
 
     backend = LLMBackend(config.llm.taxonomy_model, config.llm, logger)
     taxonomy, metadata = asyncio.run(backend.generate_structured(prompt, Taxonomy))
@@ -216,6 +224,77 @@ def _resolve_anchor_labels(jucm_text: str, anchor_ids: list[str]) -> str:
     if not anchor_ids:
         return "(open induction — no goal model)"
     return grl.resolve_anchor_labels(grl.parse_jucm(jucm_text), anchor_ids)
+
+
+def check_axis_partition(
+    taxonomy: Taxonomy,
+    model: grl.GRLModel,
+    axis_root: str | None = None,
+) -> list[str]:
+    """Blocking checks that the induced taxonomy really is a partition of one declared axis.
+
+    Unlike `check_taxonomy_grounding()`, which is warn-only by design, every problem this returns
+    invalidates the run: a taxonomy that anchors off the axis, or that anchors two categories to
+    the same alternative, is not the object the method claims to produce, and every downstream
+    number computed from it (coverage, reassignment, indicator satisfaction per category) is
+    measuring something else. Two frozen runs failed exactly this way and were reported anyway —
+    the Experiment 2 merge perturbations, whose Step 5a re-anchored to And-decomposed *parents*
+    (RTFM to `5`, Sepsis to `5` and `6`) so that the perturbed alternative's id appeared nowhere in
+    the taxonomy and TargetReassignment read 100% by vanishing rather than by movement.
+
+    `model.axis_frontier()` raises `grl.AxisError` before any of these run when the model itself
+    declares no single axis; that is a modeling defect, not an induction defect, and the caller
+    must fix the model or name an `axis_root` rather than retry.
+    """
+    frontier = model.axis_frontier(axis_root)
+    on_axis = set(frontier)
+    problems: list[str] = []
+
+    for category in taxonomy.categories:
+        off_axis = [a for a in category.anchor_ids if a not in on_axis]
+        if off_axis:
+            labels = ", ".join(
+                f"{a} ({model.elements[a].name!r})" if a in model.elements else f"{a} (unresolvable)"
+                for a in off_axis
+            )
+            problems.append(
+                f"{category.category_id}: anchor_ids {labels} are not on the declared axis "
+                f"(frontier: {', '.join(frontier)}). An anchor above the frontier silently "
+                "re-scopes the category to a coarser goal; one on a different frontier makes the "
+                "taxonomy span two axes at once."
+            )
+
+        if len(category.anchor_ids) > 1:
+            parents = {model.parent_of(a) for a in category.anchor_ids if a in model.elements}
+            if len(parents) > 1:
+                problems.append(
+                    f"{category.category_id}: anchors {category.anchor_ids} sit under different "
+                    f"decomposition points {sorted(str(p) for p in parents)} — a category may "
+                    "combine alternatives only within one Or point."
+                )
+            else:
+                parent_id = next(iter(parents), None)
+                parent = model.elements.get(parent_id) if parent_id is not None else None
+                if parent is not None and parent.decomposition_type == "Xor":
+                    problems.append(
+                        f"{category.category_id}: anchors {category.anchor_ids} are children of "
+                        f"Xor point {parent_id} ({parent.name!r}). Per ITU-T Z.151 an Xor "
+                        "decomposition is satisfied by one and only one alternative, so they "
+                        "cannot co-occur in a case and cannot share a category."
+                    )
+
+    seen: dict[str, str] = {}
+    for category in taxonomy.categories:
+        for anchor_id in category.anchor_ids:
+            if anchor_id in seen:
+                problems.append(
+                    f"{seen[anchor_id]}/{category.category_id}: both anchor to {anchor_id} — "
+                    "the categories overlap, so the taxonomy is not a partition of the axis."
+                )
+            else:
+                seen[anchor_id] = category.category_id
+
+    return problems
 
 
 def check_taxonomy_grounding(

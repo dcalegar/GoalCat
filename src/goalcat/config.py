@@ -48,6 +48,12 @@ class LLMConfig:
 class PipelineConfig:
     log_filename: str
     goal_model_filename: str | None
+    #: Goal-model element id naming the Or/Xor decomposition point whose alternatives form the
+    #: categorization axis (Step 5a). None lets `GRLModel.axis_frontier()` derive it, which works
+    #: only when the model declares exactly one topmost Or/Xor frontier — RTFM and BPIC 2019 do,
+    #: Sepsis does not (its And root joins an admission frontier and a discharge frontier, so each
+    #: must be declared as its own axis and run separately). Ignored in open mode.
+    axis_root: str | None
     output_dir: Path
     case_id_key: str
     activity_key: str
@@ -226,6 +232,7 @@ def config_from_dict(raw: dict, run_id: str | None = None, round: int | None = N
     return PipelineConfig(
         log_filename=raw["log_filename"],
         goal_model_filename=raw.get("goal_model_filename"),
+        axis_root=raw.get("axis_root"),
         output_dir=resolved_output_dir,
         case_id_key=raw["case_id_key"],
         activity_key=raw["activity_key"],

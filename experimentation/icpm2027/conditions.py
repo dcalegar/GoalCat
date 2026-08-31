@@ -268,6 +268,8 @@ def execute_condition(
         arm=condition.arm,
         replicate=condition.replicate,
         tag=condition.tag,
+        axis=condition.effective_axis,
+        axis_root=condition.effective_axis_root,
         protocol_version=protocol.version,
         preregistered=not pending_decisions,
         pending_decisions=pending_decisions,

@@ -157,6 +157,8 @@ def build_manifest(
     arm: str,
     replicate: int,
     tag: str | None,
+    axis: str | None,
+    axis_root: str | None,
     protocol_version: str,
     preregistered: bool,
     pending_decisions: list[str],
@@ -187,6 +189,11 @@ def build_manifest(
         "arm": arm,
         "replicate": replicate,
         "tag": tag,
+        # Which declared axis this condition induced against, and the goal-model element bounding
+        # it. Recorded so freeze.py can require the arms of a pair to share one axis: two
+        # conditions that partition different frontiers are not a paired comparison.
+        "axis": axis,
+        "axis_root": axis_root,
         "steps_executed": list(steps),
         "started_at": started_at,
         "finished_at": finished_at,

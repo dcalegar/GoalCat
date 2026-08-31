@@ -15,7 +15,7 @@
     "sha256": "7367d6b3f478d945fe6c84f93390f701a325f1d60c91b12c089d9f67f7c3f511"
   },
   "goal_model_filename": "perturbed/rtfm_goal_model__pertB_merge_13_20.jucm",
-  "generated_on": "2026-08-29",
+  "generated_on": "2026-08-31",
   "notes": [
     "Merged 13 ('Resolve via delinquent payment') and 20 ('Resolve via coercive credit collection') into 13 ('Merged 13+20')."
   ]

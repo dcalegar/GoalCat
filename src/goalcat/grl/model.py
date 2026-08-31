@@ -42,6 +42,16 @@ CONTRIBUTION_WEIGHT: dict[str, int] = {
 }
 
 
+class AxisError(ValueError):
+    """A goal model does not declare a single categorization axis.
+
+    Raised by `GRLModel.axis_frontier()` when a subtree contains several independent Or/Xor
+    frontiers joined by an And decomposition. Its own type (rather than a bare `ValueError`) so
+    the experimentation harness can distinguish "this model cannot be used this way" from an
+    ordinary bad argument and report it as a modeling problem.
+    """
+
+
 @dataclass
 class ActorDef:
     """grl.ecore's `Actor` (the `URNmodelElement.id`/`name` pair only — this project's goal
@@ -191,6 +201,107 @@ class GRLModel:
                 if children:
                     out[element.id] = children
         return out
+
+    def or_points_below(self, element_id: str) -> list[str]:
+        """The *topmost* Or/Xor-decomposed elements at or below `element_id`, in document order.
+
+        "Topmost" means the recursion stops at the first Or/Xor point on each branch rather than
+        collecting every one: `axis_frontier()` needs to know how many independent decision
+        frontiers a subtree contains, and a frontier nested *inside* another one (RTFM's Xor 7
+        inside Or 6 inside Or 4) is part of that same frontier, not a second one.
+
+        Returns `[element_id]` itself when `element_id` is Or/Xor-decomposed.
+        """
+        element = self.elements.get(element_id)
+        if element is None:
+            return []
+        if element.decomposition_type in ("Or", "Xor") and self.children_of(element_id):
+            return [element_id]
+        found: list[str] = []
+        for child_id in self.children_of(element_id):
+            found.extend(self.or_points_below(child_id))
+        return found
+
+    def axis_frontier(self, axis_root: str | None = None) -> list[str]:
+        """The categorization axis a goal model declares: the alternatives reachable from
+        `axis_root` through Or/Xor decompositions, in document order.
+
+        This is the set `Category.anchor_ids` may legally name — narrower than `declared_ids()`
+        (`prompt.py`), which is only the set of ids that *resolve*. Descent rules:
+
+        - An Or/Xor point contributes its children.
+        - A child that contains exactly one Or/Xor point below it is not itself a frontier element;
+          the recursion descends into that point instead. This is what puts RTFM's `13/14/19/20`
+          rather than the And-decomposed `5` on the frontier.
+        - A child with no Or/Xor point below it is a frontier element, whether it is a leaf task
+          (RTFM `12`) or itself And-decomposed into mandatory sub-steps (BPIC `5`, `6`, `7`).
+
+        Raises `AxisError` when the subtree contains several *independent* Or/Xor frontiers joined
+        by an And decomposition. That is not a partition: a case realizes one alternative from each
+        frontier, so no single label can describe it. Sepsis is exactly this shape — its root And
+        joins `5` (admission) and `6` (discharge) — and each frontier must be declared as its own
+        axis. See ITU-T Z.151: `Xor` is "one and only one", `Or` is inclusive, and neither operator
+        makes the union of two frontiers exclusive.
+
+        With `axis_root` omitted, the model must declare exactly one topmost Or/Xor point, which is
+        used as the root; a model with several (Sepsis) raises rather than guessing.
+        """
+        if axis_root is None:
+            child_ids = {link.dest for link in self.decompositions}
+            roots = [
+                element.id
+                for element in self.elements.values()
+                if element.id not in child_ids and element.type not in ("Softgoal", "Indicator")
+            ]
+            tops: list[str] = []
+            for root_id in roots:
+                tops.extend(self.or_points_below(root_id))
+            if not tops:
+                raise AxisError(
+                    f"{self.source_path} declares no Or/Xor decomposition, so it declares no "
+                    "categorization axis. An unset GRL decompositionType defaults to And."
+                )
+            if len(tops) > 1:
+                raise AxisError(
+                    f"{self.source_path} declares {len(tops)} independent Or/Xor frontiers "
+                    f"({', '.join(f'{i} ({self.element(i).name!r})' for i in tops)}) joined by an "
+                    "And decomposition, so it has no single axis. Pass axis_root to choose one; "
+                    "each frontier is its own axis and must be run separately."
+                )
+            axis_root = tops[0]
+
+        root_element = self.element(axis_root)
+        if root_element.decomposition_type not in ("Or", "Xor"):
+            tops = self.or_points_below(axis_root)
+            if len(tops) != 1:
+                raise AxisError(
+                    f"axis_root={axis_root!r} ({root_element.name!r}) is "
+                    f"{root_element.decomposition_type or 'un'}-decomposed and contains "
+                    f"{len(tops)} Or/Xor frontiers ({', '.join(tops) or 'none'}); an axis root must "
+                    "resolve to exactly one."
+                )
+            axis_root = tops[0]
+
+        frontier: list[str] = []
+        self._collect_frontier(axis_root, frontier, set())
+        return frontier
+
+    def _collect_frontier(self, or_point_id: str, out: list[str], visited: set[str]) -> None:
+        if or_point_id in visited:
+            return
+        visited = visited | {or_point_id}
+        for child_id in self.children_of(or_point_id):
+            nested = self.or_points_below(child_id)
+            if not nested:
+                out.append(child_id)
+            elif len(nested) == 1:
+                self._collect_frontier(nested[0], out, visited)
+            else:
+                raise AxisError(
+                    f"alternative {child_id!r} ({self.element(child_id).name!r}) of Or/Xor point "
+                    f"{or_point_id!r} contains {len(nested)} independent Or/Xor frontiers "
+                    f"({', '.join(nested)}); it joins several axes and cannot sit on one."
+                )
 
     def contributions_from(self, source_id: str) -> list[ContributionLink]:
         return [link for link in self.contributions if link.src == source_id]

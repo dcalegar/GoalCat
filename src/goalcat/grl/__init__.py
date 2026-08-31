@@ -30,6 +30,7 @@ from .evaluation import PropagationResult, indicator_evaluation, is_one_sided, p
 from .measures import MeasureOutcome, MeasureSpec, measure_specs, measure_sublog
 from .model import (
     ActorDef,
+    AxisError,
     ContributionLink,
     DecompositionLink,
     GRLModel,
@@ -38,6 +39,7 @@ from .model import (
 )
 from .jucm_io import parse_jucm, read_jucm, write_jucm
 from .prompt import (
+    axis_frontier,
     declared_alternatives,
     declared_ids,
     grounding_problems,
@@ -47,6 +49,7 @@ from .prompt import (
 
 __all__ = [
     "ActorDef",
+    "AxisError",
     "ContributionLink",
     "DecompositionLink",
     "GRLModel",
@@ -55,6 +58,7 @@ __all__ = [
     "MeasureOutcome",
     "MeasureSpec",
     "PropagationResult",
+    "axis_frontier",
     "declared_alternatives",
     "declared_ids",
     "grounding_problems",

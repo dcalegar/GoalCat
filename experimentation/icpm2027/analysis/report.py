@@ -99,11 +99,17 @@ class DeclaredAlternativeCoverage:
 @dataclass(frozen=True)
 class InductionStability:
     """Task C12's result for one dataset: did k identical-input Step 5a reruns reproduce the
-    taxonomy? `category_sets`/`anchor_sets` hold one frozenset per rerun."""
+    taxonomy? `category_sets`/`anchor_sets` hold one frozenset per rerun.
+
+    An `anchor_sets` entry is the run's *category->anchors grouping* — one sorted tuple of anchor
+    ids per category — not the flat union of every anchor the run used. The union cannot
+    distinguish two categories anchored to one alternative each from a single category that
+    swallowed both, so it would have scored a run that collapsed the axis as stable.
+    """
 
     k: int
     category_sets: tuple[frozenset[str], ...]
-    anchor_sets: tuple[frozenset[str], ...]
+    anchor_sets: tuple[frozenset[tuple[str, ...]], ...]
 
     @property
     def categories_stable(self) -> bool:
@@ -116,6 +122,7 @@ class InductionStability:
 
     @property
     def anchors_stable(self) -> bool:
+        """Every rerun produced the same set of categories-with-their-anchors."""
         return len(set(self.anchor_sets)) <= 1
 
     @property

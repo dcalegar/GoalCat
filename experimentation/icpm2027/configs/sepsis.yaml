@@ -8,6 +8,14 @@ activity_key: "concept:name"
 timestamp_key: "time:timestamp"
 resource_key: "org:resource"
 
+# Two axes, not one. The root goal is AND-decomposed, and it joins two independent Or frontiers:
+# admission (Or 5) and discharge (Or 6). A case realizes one alternative from *each* — 782 of the
+# 1,050 traces contain an admission followed by a release — so their union is not a partition and
+# cannot be induced as a single taxonomy. Each frontier is its own axis and is run separately.
+axes:
+  admission: "5"
+  discharge: "6"
+
 # §5: cross-domain case — high relative diversity (846 variants / 1,050 cases).
 role: cross_domain_case
 variant_scope:
