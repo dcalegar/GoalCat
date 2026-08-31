@@ -287,3 +287,40 @@ def to_markdown(runs: list[RunTiming]) -> str:
     parts += ["Per-step detail:\n\n", step_table(runs).to_markdown(index=False), "\n\n"]
     parts += [f"_{CAVEAT}_\n"]
     return "".join(parts)
+
+
+def main(argv: list[str] | None = None) -> int:
+    """`python -m experimentation.icpm2027.analysis.timing` — parse every frozen `pipeline.log`
+    under `data/output/{rtfm,sepsis,bpic2019}/icpm2027_*/` (plus the shared bases, which hold
+    Steps 1-4) and write `data/output/icpm2027_results/timing.md`.
+
+    Concurrent-run contamination (see module docstring) is not detected here: cross-check
+    `started_at` windows before quoting a latency figure.
+    """
+    import argparse
+
+    from goalcat.config import REPO_ROOT
+
+    parser = argparse.ArgumentParser(description=main.__doc__)
+    parser.add_argument("--datasets", default="rtfm,sepsis,bpic2019")
+    args = parser.parse_args(argv)
+
+    runs: list[RunTiming] = []
+    for ds in [d.strip() for d in args.datasets.split(",") if d.strip()]:
+        ds_dir = REPO_ROOT / "data" / "output" / ds
+        if not ds_dir.is_dir():
+            continue
+        for run_dir in sorted(ds_dir.glob("icpm2027_*")):
+            log = run_dir / "pipeline.log"
+            if log.exists():
+                runs.append(parse_pipeline_log(log, dataset=ds, run_id=run_dir.name))
+
+    out = REPO_ROOT / "data" / "output" / "icpm2027_results" / "timing.md"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(to_markdown(runs), encoding="utf-8")
+    print(f"Parsed {len(runs)} runs; wrote {out}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -275,6 +275,9 @@ class DatasetReport:
     structural_contingency: ContingencyResult | None = None
     #: Task C4 — RTFM-only deterministic activity-rule baseline vs. the guided partition.
     rule_contingency: ContingencyResult | None = None
+    #: Task C13 — RTFM-only Step 7b indicator-satisfaction report (the markdown Step 7b already
+    #: writes), embedded so the one LLM-independent result is visible in the dataset report.
+    step7b_report: str | None = None
     notes: list[str] = field(default_factory=list)
     """Curated qualitative findings for this dataset (Markdown, one entry per finding), rendered
     verbatim under '## Notable findings'. Populated from `KNOWN_FINDINGS` below — hand-investigated
@@ -388,6 +391,20 @@ class DatasetReport:
             parts += [f"- Split: {s}" for s in changes["splits"]] or ["- No splits identified."]
             parts += [f"- Merge: {m}" for m in changes["merges"]] or ["- No merges identified."]
             parts.append("")
+
+        if self.step7b_report is not None:
+            body = self.step7b_report.split("\n", 1)[1] if self.step7b_report.startswith("# ") else self.step7b_report
+            parts += [
+                "## Indicator satisfaction (Task C13)",
+                "",
+                "Guided arm only. Each goal-model indicator is *measured* from the log and converted "
+                "through its own `KPIEvalValueSet`, then propagated up the goal model --- no LLM call. "
+                "This is the one result not exposed to the LLM-dependence threat. Indicators with low "
+                "applicability are reported as coverage, never as bad values.",
+                "",
+                body.strip(),
+                "",
+            ]
 
         if self.structural_contingency is not None:
             parts += [

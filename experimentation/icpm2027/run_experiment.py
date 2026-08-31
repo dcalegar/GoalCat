@@ -258,6 +258,13 @@ def run_e1(
             assignments[guided_id], rule.as_assignments_df(), variants_df, "guided", "rule baseline"
         )
 
+    # Task C13 — surface Step 7b's indicator-satisfaction report (guided arm; RTFM only per C13).
+    _guided = results.get(guided_id)
+    if _guided is not None:
+        step7b_path = _guided.round_dir / "07b_indicators" / "indicator_report.md"
+        if step7b_path.exists():
+            dataset_report.step7b_report = step7b_path.read_text(encoding="utf-8")
+
     # Declared-alternative coverage — guided arm only; open categories have no anchors.
     guided_result = results.get(guided_id)
     if guided_id in assignments and guided_result is not None and dataset.goal_model_filename:
