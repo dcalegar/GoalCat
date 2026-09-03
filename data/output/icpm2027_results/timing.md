@@ -2,67 +2,69 @@
 
 Per-run summary:
 
-| dataset   | run_id                                                  | complete   |   n_steps |   total_duration_s |   total_llm_calls |   total_llm_latency_s |
-|:----------|:--------------------------------------------------------|:-----------|----------:|-------------------:|------------------:|----------------------:|
-| rtfm      | icpm2027_base                                           | True       |         4 |              67.91 |                 0 |                  0    |
-| rtfm      | icpm2027_c12_guided_stability_rep1                      | True       |         2 |          234401    |                 2 |                 84.55 |
-| rtfm      | icpm2027_c12_guided_stability_rep2                      | True       |         2 |          234327    |                 2 |                  7.03 |
-| rtfm      | icpm2027_c12_guided_stability_rep3                      | True       |         2 |          234328    |                 2 |                 74.04 |
-| rtfm      | icpm2027_c12_guided_stability_rep4                      | True       |         2 |          234264    |                 2 |                 52.07 |
-| rtfm      | icpm2027_c12_guided_stability_rep5                      | True       |         2 |          234221    |                 2 |                  8.04 |
-| rtfm      | icpm2027_e1_guided_no_sample_rep1                       | True       |         6 |          230003    |                12 |                 94.89 |
-| rtfm      | icpm2027_e1_guided_no_sample_rep2                       | True       |         6 |          229065    |                12 |                170.7  |
-| rtfm      | icpm2027_e1_guided_rep1                                 | True       |         6 |          230767    |                12 |                460.51 |
-| rtfm      | icpm2027_e1_guided_rep2                                 | True       |         6 |          230489    |                12 |                254.97 |
-| rtfm      | icpm2027_e1_guided_rep3                                 | True       |         3 |             224.86 |                 6 |                104.61 |
-| rtfm      | icpm2027_e1_guided_rep4                                 | True       |         3 |             208.24 |                 6 |                121.01 |
-| rtfm      | icpm2027_e1_guided_rep5                                 | True       |         3 |             531.48 |                 6 |                 62.45 |
-| rtfm      | icpm2027_e1_open_rep1                                   | False      |         5 |             nan    |                12 |                184.73 |
-| rtfm      | icpm2027_e1_open_rep2                                   | True       |         4 |          229847    |                12 |                106.4  |
-| rtfm      | icpm2027_e2_guided_pertA_remove_20_rep1                 | True       |         3 |             139.91 |                 6 |                 44.83 |
-| rtfm      | icpm2027_e2_guided_pertB_merge_13_20_rep1               | True       |         6 |          194055    |                12 |                138.4  |
-| sepsis    | icpm2027_base                                           | True       |         4 |              12.01 |                 0 |                  0    |
-| sepsis    | icpm2027_c12_guided_axisadmission_stability_rep1        | True       |         1 |               5.59 |                 1 |                  2.8  |
-| sepsis    | icpm2027_c12_guided_axisadmission_stability_rep2        | True       |         1 |               5.04 |                 1 |                  3.07 |
-| sepsis    | icpm2027_c12_guided_axisadmission_stability_rep3        | True       |         1 |               4.12 |                 1 |                  2.21 |
-| sepsis    | icpm2027_c12_guided_axisadmission_stability_rep4        | True       |         1 |               5.09 |                 1 |                  2.82 |
-| sepsis    | icpm2027_c12_guided_axisadmission_stability_rep5        | True       |         1 |               4.78 |                 1 |                  2.65 |
-| sepsis    | icpm2027_c12_guided_axisdischarge_stability_rep1        | True       |         1 |               5.87 |                 1 |                  3.9  |
-| sepsis    | icpm2027_c12_guided_axisdischarge_stability_rep2        | True       |         1 |               5.22 |                 1 |                  3.14 |
-| sepsis    | icpm2027_c12_guided_axisdischarge_stability_rep3        | True       |         1 |               5.2  |                 1 |                  2.67 |
-| sepsis    | icpm2027_c12_guided_axisdischarge_stability_rep4        | True       |         1 |               5.14 |                 1 |                  3.21 |
-| sepsis    | icpm2027_c12_guided_axisdischarge_stability_rep5        | True       |         1 |               4.63 |                 1 |                  2.55 |
-| sepsis    | icpm2027_e1_guided_axisadmission_rep1                   | True       |         2 |              62.39 |                18 |                217.57 |
-| sepsis    | icpm2027_e1_guided_axisadmission_rep2                   | True       |         2 |              80.33 |                18 |                317.33 |
-| sepsis    | icpm2027_e1_guided_axisadmission_rep3                   | False      |         3 |             nan    |                18 |                324.71 |
-| sepsis    | icpm2027_e1_guided_axisadmission_rep4                   | True       |         2 |              45.99 |                18 |                146.4  |
-| sepsis    | icpm2027_e1_guided_axisadmission_rep5                   | True       |         2 |              59.02 |                18 |                183.16 |
-| sepsis    | icpm2027_e1_guided_axisdischarge_rep1                   | False      |         3 |             nan    |                18 |                138.14 |
-| sepsis    | icpm2027_e1_guided_axisdischarge_rep2                   | True       |         2 |              51.7  |                18 |                173.87 |
-| sepsis    | icpm2027_e1_guided_axisdischarge_rep3                   | True       |         2 |             132.63 |                18 |                523.47 |
-| sepsis    | icpm2027_e1_guided_axisdischarge_rep4                   | True       |         2 |              84.91 |                18 |                289.85 |
-| sepsis    | icpm2027_e1_guided_axisdischarge_rep5                   | True       |         2 |             146.91 |                18 |                379.97 |
-| sepsis    | icpm2027_e1_guided_no_sample_axisadmission_rep1         | True       |         2 |              50.54 |                18 |                168.26 |
-| sepsis    | icpm2027_e1_guided_no_sample_axisadmission_rep2         | True       |         2 |              48.38 |                18 |                183.7  |
-| sepsis    | icpm2027_e1_guided_no_sample_axisdischarge_rep1         | True       |         2 |              70.79 |                18 |                298.26 |
-| sepsis    | icpm2027_e1_guided_no_sample_axisdischarge_rep2         | True       |         2 |             153.2  |                18 |                434.8  |
-| sepsis    | icpm2027_e1_open_rep1                                   | True       |         4 |          198004    |                36 |                783.15 |
-| sepsis    | icpm2027_e1_open_rep2                                   | True       |         4 |          198732    |                36 |               1210.56 |
-| sepsis    | icpm2027_e2_guided_axisadmission_pertA_remove_16_rep1   | True       |         2 |              79.43 |                18 |                319.99 |
-| sepsis    | icpm2027_e2_guided_axisdischarge_pertA_remove_21_rep1   | True       |         2 |             124.22 |                18 |                413.07 |
-| sepsis    | icpm2027_e2_guided_axisdischarge_pertB_merge_17_18_rep1 | True       |         2 |              50.19 |                18 |                166.82 |
-| bpic2019  | icpm2027_base                                           | True       |         4 |             290.65 |                 0 |                  0    |
-| bpic2019  | icpm2027_c12_guided_stability_rep1                      | True       |         1 |             116.01 |                 1 |                114.64 |
-| bpic2019  | icpm2027_c12_guided_stability_rep2                      | True       |         1 |             104.87 |                 1 |                103.86 |
-| bpic2019  | icpm2027_c12_guided_stability_rep3                      | True       |         1 |              38.03 |                 1 |                 37.04 |
-| bpic2019  | icpm2027_c12_guided_stability_rep4                      | True       |         1 |              34.6  |                 1 |                 33.59 |
-| bpic2019  | icpm2027_c12_guided_stability_rep5                      | True       |         1 |              25.01 |                 1 |                 24.02 |
-| bpic2019  | icpm2027_e1_guided_no_sample_rep1                       | True       |         2 |            1572.78 |               480 |               4987.53 |
-| bpic2019  | icpm2027_e1_guided_no_sample_rep2                       | False      |         3 |             nan    |               481 |               6339.21 |
-| bpic2019  | icpm2027_e1_guided_rep1                                 | True       |         2 |            1133.14 |               480 |               4180.76 |
-| bpic2019  | icpm2027_e1_guided_rep2                                 | True       |         2 |            1531.23 |               480 |               4652.4  |
-| bpic2019  | icpm2027_e1_open_rep1                                   | False      |         3 |             nan    |               481 |               5191.45 |
-| bpic2019  | icpm2027_e1_open_rep2                                   | True       |         2 |            2113.81 |               480 |               7327.68 |
+| dataset   | run_id                                                  | complete   |   n_steps |   n_log_entries |   total_duration_s |    span_s |   total_llm_calls |   total_llm_latency_s |
+|:----------|:--------------------------------------------------------|:-----------|----------:|----------------:|-------------------:|----------:|------------------:|----------------------:|
+| rtfm      | icpm2027_base                                           | True       |         4 |               4 |              67.87 |     67.91 |                 0 |                  0    |
+| rtfm      | icpm2027_c12_guided_stability_rep1                      | True       |         1 |               2 |               6.93 | 234401    |                 2 |                 84.55 |
+| rtfm      | icpm2027_c12_guided_stability_rep2                      | True       |         1 |               2 |               6.15 | 234327    |                 2 |                  7.03 |
+| rtfm      | icpm2027_c12_guided_stability_rep3                      | True       |         1 |               2 |               6.2  | 234328    |                 2 |                 74.04 |
+| rtfm      | icpm2027_c12_guided_stability_rep4                      | True       |         1 |               2 |               6.63 | 234264    |                 2 |                 52.07 |
+| rtfm      | icpm2027_c12_guided_stability_rep5                      | True       |         1 |               2 |               6.09 | 234221    |                 2 |                  8.04 |
+| rtfm      | icpm2027_e1_guided_no_sample_rep1                       | True       |         3 |               6 |             184.41 | 230003    |                12 |                 94.89 |
+| rtfm      | icpm2027_e1_guided_no_sample_rep2                       | True       |         3 |               6 |             175.79 | 229065    |                12 |                170.7  |
+| rtfm      | icpm2027_e1_guided_rep1                                 | True       |         3 |               6 |             183.97 | 230767    |                12 |                460.51 |
+| rtfm      | icpm2027_e1_guided_rep2                                 | True       |         3 |               6 |             184.84 | 230489    |                12 |                254.97 |
+| rtfm      | icpm2027_e1_guided_rep3                                 | True       |         3 |               3 |             224.86 |    224.86 |                 6 |                104.61 |
+| rtfm      | icpm2027_e1_guided_rep4                                 | True       |         3 |               3 |             208.24 |    208.24 |                 6 |                121.01 |
+| rtfm      | icpm2027_e1_guided_rep5                                 | True       |         3 |               3 |             531.48 |    531.48 |                 6 |                 62.45 |
+| rtfm      | icpm2027_e1_open_rep1                                   | True       |         2 |               5 |              13.44 | 230167    |                12 |                184.73 |
+| rtfm      | icpm2027_e1_open_rep2                                   | True       |         2 |               4 |              13.88 | 229847    |                12 |                106.4  |
+| rtfm      | icpm2027_e2_guided_pertA_remove_20_rep1                 | True       |         3 |               3 |             139.91 |    139.91 |                 6 |                 44.83 |
+| rtfm      | icpm2027_e2_guided_pertB_merge_13_20_rep1               | True       |         3 |               6 |             161.89 | 194055    |                12 |                138.4  |
+| sepsis    | icpm2027_base                                           | True       |         4 |               4 |              11.98 |     12.01 |                 0 |                  0    |
+| sepsis    | icpm2027_c12_guided_axisadmission_stability_rep1        | True       |         1 |               1 |               5.59 |      5.59 |                 1 |                  2.8  |
+| sepsis    | icpm2027_c12_guided_axisadmission_stability_rep2        | True       |         1 |               1 |               5.04 |      5.04 |                 1 |                  3.07 |
+| sepsis    | icpm2027_c12_guided_axisadmission_stability_rep3        | True       |         1 |               1 |               4.12 |      4.12 |                 1 |                  2.21 |
+| sepsis    | icpm2027_c12_guided_axisadmission_stability_rep4        | True       |         1 |               1 |               5.09 |      5.09 |                 1 |                  2.82 |
+| sepsis    | icpm2027_c12_guided_axisadmission_stability_rep5        | True       |         1 |               1 |               4.78 |      4.78 |                 1 |                  2.65 |
+| sepsis    | icpm2027_c12_guided_axisdischarge_stability_rep1        | True       |         1 |               1 |               5.87 |      5.87 |                 1 |                  3.9  |
+| sepsis    | icpm2027_c12_guided_axisdischarge_stability_rep2        | True       |         1 |               1 |               5.22 |      5.22 |                 1 |                  3.14 |
+| sepsis    | icpm2027_c12_guided_axisdischarge_stability_rep3        | True       |         1 |               1 |               5.2  |      5.2  |                 1 |                  2.67 |
+| sepsis    | icpm2027_c12_guided_axisdischarge_stability_rep4        | True       |         1 |               1 |               5.14 |      5.14 |                 1 |                  3.21 |
+| sepsis    | icpm2027_c12_guided_axisdischarge_stability_rep5        | True       |         1 |               1 |               4.63 |      4.63 |                 1 |                  2.55 |
+| sepsis    | icpm2027_e1_guided_axisadmission_rep1                   | True       |         2 |               2 |              62.39 |     62.39 |                18 |                217.57 |
+| sepsis    | icpm2027_e1_guided_axisadmission_rep2                   | True       |         2 |               2 |              80.33 |     80.33 |                18 |                317.33 |
+| sepsis    | icpm2027_e1_guided_axisadmission_rep3                   | True       |         2 |               3 |              48.77 |    189.23 |                18 |                324.71 |
+| sepsis    | icpm2027_e1_guided_axisadmission_rep4                   | True       |         2 |               2 |              45.99 |     45.99 |                18 |                146.4  |
+| sepsis    | icpm2027_e1_guided_axisadmission_rep5                   | True       |         2 |               2 |              59.02 |     59.02 |                18 |                183.16 |
+| sepsis    | icpm2027_e1_guided_axisdischarge_rep1                   | True       |         2 |               3 |              35.06 |     53.91 |                18 |                138.14 |
+| sepsis    | icpm2027_e1_guided_axisdischarge_rep2                   | True       |         2 |               2 |              51.7  |     51.7  |                18 |                173.87 |
+| sepsis    | icpm2027_e1_guided_axisdischarge_rep3                   | True       |         2 |               2 |             132.63 |    132.63 |                18 |                523.47 |
+| sepsis    | icpm2027_e1_guided_axisdischarge_rep4                   | True       |         2 |               2 |              84.91 |     84.91 |                18 |                289.85 |
+| sepsis    | icpm2027_e1_guided_axisdischarge_rep5                   | True       |         2 |               2 |             146.91 |    146.91 |                18 |                379.97 |
+| sepsis    | icpm2027_e1_guided_no_sample_axisadmission_rep1         | True       |         2 |               2 |              50.54 |     50.54 |                18 |                168.26 |
+| sepsis    | icpm2027_e1_guided_no_sample_axisadmission_rep2         | True       |         2 |               2 |              48.37 |     48.38 |                18 |                183.7  |
+| sepsis    | icpm2027_e1_guided_no_sample_axisdischarge_rep1         | True       |         2 |               2 |              70.79 |     70.79 |                18 |                298.26 |
+| sepsis    | icpm2027_e1_guided_no_sample_axisdischarge_rep2         | True       |         2 |               2 |             153.2  |    153.2  |                18 |                434.8  |
+| sepsis    | icpm2027_e1_open_rep1                                   | True       |         2 |               4 |             117.54 | 198004    |                36 |                783.15 |
+| sepsis    | icpm2027_e1_open_rep2                                   | True       |         2 |               4 |             220.3  | 198732    |                36 |               1210.56 |
+| sepsis    | icpm2027_e2_guided_axisadmission_pertA_remove_16_rep1   | True       |         2 |               2 |              79.43 |     79.43 |                18 |                319.99 |
+| sepsis    | icpm2027_e2_guided_axisdischarge_pertA_remove_21_rep1   | True       |         2 |               2 |             124.22 |    124.22 |                18 |                413.07 |
+| sepsis    | icpm2027_e2_guided_axisdischarge_pertB_merge_17_18_rep1 | True       |         2 |               2 |              50.19 |     50.19 |                18 |                166.82 |
+| bpic2019  | icpm2027_base                                           | True       |         4 |               4 |             290.42 |    290.65 |                 0 |                  0    |
+| bpic2019  | icpm2027_c12_guided_stability_rep1                      | True       |         1 |               1 |             116.01 |    116.01 |                 1 |                114.64 |
+| bpic2019  | icpm2027_c12_guided_stability_rep2                      | True       |         1 |               1 |             104.87 |    104.87 |                 1 |                103.86 |
+| bpic2019  | icpm2027_c12_guided_stability_rep3                      | True       |         1 |               1 |              38.03 |     38.03 |                 1 |                 37.04 |
+| bpic2019  | icpm2027_c12_guided_stability_rep4                      | True       |         1 |               1 |              34.6  |     34.6  |                 1 |                 33.59 |
+| bpic2019  | icpm2027_c12_guided_stability_rep5                      | True       |         1 |               1 |              25.01 |     25.01 |                 1 |                 24.02 |
+| bpic2019  | icpm2027_e1_guided_no_sample_rep1                       | True       |         2 |               2 |            1572.77 |   1572.78 |               480 |               4987.53 |
+| bpic2019  | icpm2027_e1_guided_no_sample_rep2                       | True       |         2 |               3 |             616.76 |   2594.57 |               481 |               6339.21 |
+| bpic2019  | icpm2027_e1_guided_rep1                                 | True       |         2 |               2 |            1133.14 |   1133.14 |               480 |               4180.76 |
+| bpic2019  | icpm2027_e1_guided_rep2                                 | True       |         2 |               2 |            1531.23 |   1531.23 |               480 |               4652.4  |
+| bpic2019  | icpm2027_e1_open_rep1                                   | True       |         2 |               3 |             798.05 |   2502.72 |               481 |               5191.45 |
+| bpic2019  | icpm2027_e1_open_rep2                                   | True       |         2 |               2 |            2113.81 |   2113.81 |               480 |               7327.68 |
+
+_`total_duration_s` sums the durations of the steps that stand --- the last log entry per step, i.e. the execution that produced the artifacts on disk. `span_s` is first start to last completion. The two agree on a run executed in one session and diverge where a `pipeline.log` accumulated across executions (`n_log_entries` > `n_steps`), the span then including the idle time between sessions and measuring nothing. The per-step detail below keeps every entry, superseded attempts included. A row with `complete = False` reports a partial total over the steps that finished._
 
 Per-step detail:
 

@@ -70,6 +70,11 @@ llm = [
 gui = [
     "streamlit>=1.38",
 ]
+# `tests/` — the regression guards on the arithmetic and structural rules the reported numbers
+# rest on (axis frontier, partition check, coverage, reassignment). No LLM call, no network.
+test = [
+    "pytest>=8.0",
+]
 
 [build-system]
 requires = ["hatchling"]

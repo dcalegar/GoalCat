@@ -98,8 +98,12 @@ Not yet built, in roughly the following priority order:
   plus the `estimated_cost_usd` roll-up in `goalcat.llm.usage_summary`; generated after the last frozen
   run and, unlike Task C9, may draw on non-frozen runs. Its terminal item is one local-LLM (Ollama) run
   for RTFM and Sepsis, Step 6 only, for a measured cheap-model comparison point.
-- **Tests.** There are none, here or anywhere in the repository. The modules have been exercised
-  against real logs and real `.jucm` files, which is not the same thing as a regression suite.
+- **Tests.** `tests/test_icpm2027_regression.py` (run: `python -m pytest tests/ -q`, needs the
+  `test` extra) guards the four rules every reported number rests on --- the axis frontier Step 5a
+  must cover, the blocking partition check, coverage/residual arithmetic, and the target/collateral
+  reassignment split --- each case drawn from a real defect or a frozen artifact. That is the whole
+  of it: the pipeline's LLM steps are not asserted on, and the rest of the repository is still
+  covered only by having been exercised against real logs and real `.jucm` files.
 
 ## The `.jucm`/`.md` split
 

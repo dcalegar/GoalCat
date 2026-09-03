@@ -125,18 +125,60 @@ class RunTiming:
     steps: tuple[StepTiming, ...]
 
     @property
+    def latest_steps(self) -> tuple[StepTiming, ...]:
+        """The last entry per step name, in first-seen order --- the execution that produced the
+        artifacts now on disk.
+
+        A run directory's `pipeline.log` is appended to, not replaced, so a resumed or re-executed
+        condition leaves two entries for the same step: the abandoned attempt and the one that
+        stands. Every total below is taken over this view, because summing raw entries would bill a
+        re-executed step twice (RTFM `e1_guided_rep1` reads 431.7 s of Step 7b that way, against
+        the 261.9 s its surviving execution took), and testing every entry for completeness would
+        mark a run incomplete forever on the strength of an attempt its successor replaced.
+        """
+        latest: dict[str, StepTiming] = {}
+        for step in self.steps:
+            latest[step.step] = step
+        return tuple(latest.values())
+
+    @property
     def is_complete(self) -> bool:
-        """True only if every step seen in the log reached its `complete` marker. A run still in
-        progress, or one that crashed mid-step, reports its last step as incomplete rather than
+        """True only if every step's surviving entry reached its `complete` marker. A run still in
+        progress, or one that crashed mid-step, reports that step as incomplete rather than
         silently omitting it — an incomplete run's totals must be read as partial, not as a smaller
         pipeline."""
-        return bool(self.steps) and all(s.is_complete for s in self.steps)
+        return bool(self.steps) and all(s.is_complete for s in self.latest_steps)
 
     @property
     def total_duration_seconds(self) -> float | None:
-        if not self.steps or not self.is_complete:
+        """Sum of the completed steps' own durations --- deliberately *not* the span from the first
+        step's start to the last step's completion.
+
+        A run directory's `pipeline.log` accumulates across executions: a resumed or re-executed
+        condition appends its steps to the log the earlier execution wrote. A span across that log
+        therefore measures the idle time between sessions, not work. It did: before this was fixed,
+        conditions re-executed on 2026-08-31 reported totals such as 230,767 s (64 h) for a run
+        whose steps take minutes, because their logs still held 2026-08-28 steps.
+
+        For a run whose `complete` flag is False this is a partial total over the steps that did
+        finish, which is why the flag is reported beside it rather than the value being suppressed.
+        """
+        durations = [s.duration_seconds for s in self.latest_steps if s.duration_seconds is not None]
+        return sum(durations) if durations else None
+
+    @property
+    def span_seconds(self) -> float | None:
+        """First start to last completion, idle between executions included. Reported alongside
+        `total_duration_seconds` so a log spanning several sessions is visible rather than silently
+        inflating the total: the two agree on a single-session run and diverge otherwise."""
+        completions = [s.completed_at for s in self.steps if s.completed_at is not None]
+        if not self.steps or not completions:
             return None
-        return (self.steps[-1].completed_at - self.steps[0].started_at).total_seconds()
+        return (max(completions) - self.steps[0].started_at).total_seconds()
+
+    @property
+    def total_llm_calls_latest(self) -> int:
+        return sum(s.llm_call_count for s in self.latest_steps)
 
     @property
     def total_llm_calls(self) -> int:
@@ -158,8 +200,10 @@ class RunTiming:
             "dataset": self.dataset,
             "run_id": self.run_id,
             "complete": self.is_complete,
-            "n_steps": len(self.steps),
+            "n_steps": len(self.latest_steps),
+            "n_log_entries": len(self.steps),
             "total_duration_s": round(self.total_duration_seconds, 2) if self.total_duration_seconds else None,
+            "span_s": round(self.span_seconds, 2) if self.span_seconds else None,
             "total_llm_calls": self.total_llm_calls,
             "total_llm_latency_s": round(self.total_llm_latency_seconds, 2),
         }
@@ -284,6 +328,15 @@ def run_summary_table(runs: list[RunTiming]) -> pd.DataFrame:
 def to_markdown(runs: list[RunTiming]) -> str:
     header = "**Pipeline timing (Task C9)** — feasibility/scalability characterization\n\n"
     parts = [header, "Per-run summary:\n\n", run_summary_table(runs).to_markdown(index=False), "\n\n"]
+    parts += [
+        "_`total_duration_s` sums the durations of the steps that stand --- the last log entry "
+        "per step, i.e. the execution that produced the artifacts on disk. `span_s` is first "
+        "start to last completion. The two agree on a run executed in one session and diverge "
+        "where a `pipeline.log` accumulated across executions (`n_log_entries` > `n_steps`), the "
+        "span then including the idle time between sessions and measuring nothing. The per-step "
+        "detail below keeps every entry, superseded attempts included. A row with "
+        "`complete = False` reports a partial total over the steps that finished._\n\n",
+    ]
     parts += ["Per-step detail:\n\n", step_table(runs).to_markdown(index=False), "\n\n"]
     parts += [f"_{CAVEAT}_\n"]
     return "".join(parts)
