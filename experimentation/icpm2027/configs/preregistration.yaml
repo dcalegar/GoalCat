@@ -122,9 +122,14 @@ decisions:
       that the guided prompt supplies an axis AND a cardinality AND a vocabulary AND extra context
       at once - is instead carried explicitly as a Threat to Validity, and Task C11a's
       guided_no_sample ablation attacks the same attribution question for one LLM call per dataset
-      rather than a full arm. THIS IS THE MOST REVISITABLE DECISION HERE: conditions.py already
-      supports arm "label_list", so flipping this to true costs configuration plus LLM budget, no
-      new code. Do it before any frozen run rather than after, per this file's own discipline.
+      rather than a full arm. THIS IS THE MOST REVISITABLE DECISION HERE, but it is not
+      configuration-only, as an earlier wording of this rationale claimed (corrected 2026-09-03):
+      conditions.py supports arm "label_list" and write_label_list_taxonomy reads
+      configs/label_lists/<dataset>.yaml, but that directory does not exist and the lists were never
+      authored. Authoring them is itself a construct-validity judgment - a domain-plausible,
+      not-goal-derived list of matching cardinality per log - not a config edit, and the paper's
+      Threats section now describes the control as supported by the harness but never instantiated.
+      Do it before any frozen run rather than after, per this file's own discipline.
 
   D6_open_arm_steps_7_9:
     task: D6
@@ -163,9 +168,12 @@ decisions:
       threat - it is the single counterweight to it. It cannot run in the open arm at
       all: open-mode categories carry no anchor_ids, so there is nothing to attach an indicator to,
       which also means it can never enter RQ1's paired contrast and is reported as characterization
-      of the guided arm, not as validation. Scoped to RTFM because only rtfm_goal_model.jucm (v1.2)
-      and rtfm_mini_goal_model.jucm declare indicators; the Sepsis and BPIC 2019 models' indicators
-      are this project's own log-computed percentiles rather than organizational targets. Reporting
+      of the guided arm, not as validation. Scoped to RTFM on construct-validity grounds alone: all four
+      models declare working indicators with valid measure_specs (BPIC 2019 five, RTFM four, Sepsis
+      three), but only RTFM's are organizational targets, whereas the Sepsis and BPIC 2019 models'
+      are this project's own log-computed percentiles, which Step 7b would merely report back to
+      itself. An earlier wording of this clause claimed only the RTFM models declare indicators;
+      that was false and is corrected here (2026-09-03). Reporting
       requirement: indicators with low applicability are reported as NOT-APPLICABLE, never as bad
       values - RTFM's timely_payment category has 7% dispatch-indicator coverage because most of its
       cases paid before dispatch occurred, and scoring that as a bad value would invert the
