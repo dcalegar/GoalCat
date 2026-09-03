@@ -21,6 +21,7 @@ as opposed to `experimentation/examples/`'s illustrative per-log demos with no f
 | `analysis/coverage.py` | Macro/micro coverage, residual (Task D2's caveat) |
 | `analysis/contingency.py` | Contingency matrices + merge/split identification, for any two conditions |
 | `analysis/divergence.py` | AMI/NMI over all four (residual-handling x weighting) conventions, with D1's pre-registered one flagged; never reported as accuracy |
+| `analysis/aggregate_tables.py` | k-replicate aggregation across every frozen run — the paper's setup and divergence tables (residual mean [min-max] over n replicates; AMI over all within- and cross-arm pairs, both weightings), including the `guided_no_sample` arm. Reads run directories only; no LLM call |
 | `analysis/report.py` | Assembles one dataset's evidence into Markdown — scope framing, coverage, declared-alternative coverage, contingency, divergence, and Task E7's instability qualification |
 | `run_experiment.py` | **The driver.** `--experiment stability\|e1\|e2` for one dataset, end to end |
 
@@ -48,7 +49,16 @@ python -m experimentation.icpm2027.run_experiment --dataset rtfm --experiment e1
 
 # Experiment 2 — perturbations (refuses on a dataset C12 showed unstable)
 python -m experimentation.icpm2027.run_experiment --dataset rtfm --experiment e2
+
+# The paper's two aggregate tables, recomputed across every replicate on disk (no LLM call)
+python -m experimentation.icpm2027.analysis.aggregate_tables
 ```
+
+`aggregate_tables` is the k-replicate complement to `run_experiment`: the driver's E1 loop is fixed
+at the protocol's two `unperturbed` replicates and reports the rep1/rep2 pair, whereas the guided arm
+was later extended to five replicates on RTFM and both Sepsis axes. It discovers whatever replicates
+exist on disk, so the `n` it prints is what was executed, and writes
+`data/output/icpm2027_results/aggregate_tables.{json,md,tex}`.
 
 `--dry-run` resolves and logs every condition, with its LLM-call estimate, and launches nothing.
 It still builds the shared base if absent (Steps 1-4 are deterministic and LLM-free), because the

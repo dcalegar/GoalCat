@@ -34,6 +34,14 @@ axis-conditional suffix: `experiment1<suffix>.md`, `experiment2<suffix>.json`,
 `stability<suffix>.json`, `freeze_e1<suffix>.md`/`.json`, `freeze_e2<suffix>.md`/`.json`, where
 `<suffix>` is `_axis<axis>` on Sepsis and empty on RTFM/BPIC 2019.
 
+Three artifacts sit one level up, in `data/output/icpm2027_results/` itself, because they aggregate
+*across* datasets or replicates: `cost.md`, `timing.md`, and
+`aggregate_tables.{json,md,tex}`. The last is the paper's setup and divergence tables, recomputed by
+`analysis/aggregate_tables.py` over every replicate on disk — it is the only artifact reporting the
+guided arm's $n=5$ ranges, the $\binom{5}{2}=10$ guided--guided AMI pairs, and the
+`guided_no_sample` arm, none of which the per-dataset `experiment1<suffix>.md` covers (its driver is
+fixed at the protocol's two `unperturbed` replicates and reports the rep1/rep2 pair).
+
 ## Why Sepsis has an axis and the others don't
 
 Sepsis's root goal is AND-decomposed over two independent Or frontiers — admission (`5` →
@@ -52,8 +60,8 @@ paper-facing explanation, and `data/goals/sepsisGM_description.md` §4 for the g
 | `base` | Steps 1-4, shared by every condition below | — |
 | `c12_guided_stability_rep1`–`5` | Task C12: 5 identical-input Step 5a-only reruns | `stability.json` |
 | `e1_guided_rep1`, `rep2` | Experiment 1, guided arm, the paired replicates | `experiment1.md` |
-| `e1_guided_rep3`–`5` | Extra guided replicates, **not part of E1's pair** — exist solely to give Experiment 2's `CollateralReassignmentNull` five replicates ($\binom{5}{2}=10$ pairs) instead of one | `experiment2.json`'s `CollateralReassignmentNull` |
-| `e1_guided_no_sample_rep1`, `rep2` | Task C11a ablation (Step 5a run with an empty narrative sample) | `experiment1.md` |
+| `e1_guided_rep3`–`5` | Extra guided replicates, **not part of E1's pair** — they give Experiment 2's `CollateralReassignmentNull` five replicates ($\binom{5}{2}=10$ pairs) instead of one, and the paper's tables their $n=5$ ranges | `experiment2.json`'s `CollateralReassignmentNull`, `aggregate_tables.*` |
+| `e1_guided_no_sample_rep1`, `rep2` | Task C11a ablation (Step 5a run with an empty narrative sample) | `aggregate_tables.*` (the per-dataset `experiment1.md` covers the guided/open pair only) |
 | `e1_open_rep1`, `rep2` | Experiment 1, open arm | `experiment1.md` |
 | `e2_guided_pertA_remove_20_rep1` | Experiment 2A: remove *coercive credit collection* (leaf `20`) | `experiment2.json` |
 | `e2_guided_pertB_merge_13_20_rep1` | Experiment 2B: merge *delinquent payment* (`13`) + *coercive collection* (`20`) | `experiment2.json` |
@@ -72,7 +80,7 @@ shared. Directory names carry the `axisadmission`/`axisdischarge` segment.
 | `c12_guided_axis{admission,discharge}_stability_rep1`–`5` | Task C12 per axis | `stability_axisadmission.json`, `stability_axisdischarge.json` |
 | `e1_guided_axis{admission,discharge}_rep1`, `rep2` | Experiment 1, guided arm, paired replicates | `experiment1_axisadmission.md`, `experiment1_axisdischarge.md` |
 | `e1_guided_axis{admission,discharge}_rep3`–`5` | Extra guided replicates for the E2 null (same reason as RTFM's rep3-5) | `experiment2_axis*.json`'s `CollateralReassignmentNull` |
-| `e1_guided_no_sample_axis{admission,discharge}_rep1`, `rep2` | Task C11a ablation, per axis | `experiment1_axis*.md` |
+| `e1_guided_no_sample_axis{admission,discharge}_rep1`, `rep2` | Task C11a ablation, per axis | `aggregate_tables.*` (the per-dataset `experiment1_axis*.md` covers the guided/open pair only) |
 | `e1_open_rep1`, `rep2` | Experiment 1, open arm — **no axis segment**, shared by both axes' contingency/divergence analysis | `experiment1_axis*.md` (both reference it) |
 | `e2_guided_axisadmission_pertA_remove_16_rep1` | Experiment 2A on admission: remove *Admission IC* (`16`). No non-degenerate merge exists on this axis — its Or point has only two children, so `merge_alternatives()` refuses (`run_e2` logs this and reports Perturbation A only) | `experiment2_axisadmission.json` |
 | `e2_guided_axisdischarge_pertA_remove_21_rep1` | Experiment 2A on discharge: remove *Release E* (`21`) | `experiment2_axisdischarge.json` |
@@ -95,7 +103,7 @@ shared one `prompt_assignment_batch.txt` hash, so nothing here needed re-running
 | `base` | Steps 1-4 | — |
 | `c12_guided_stability_rep1`–`5` | Task C12 | `stability.json` |
 | `e1_guided_rep1`, `rep2` | Experiment 1, guided arm | `experiment1.md` |
-| `e1_guided_no_sample_rep1`, `rep2` | Task C11a ablation | `experiment1.md` |
+| `e1_guided_no_sample_rep1`, `rep2` | Task C11a ablation | `aggregate_tables.*` (the per-dataset `experiment1.md` covers the guided/open pair only) |
 | `e1_open_rep1`, `rep2` | Experiment 1, open arm | `experiment1.md` |
 
 **No Experiment 2 on BPIC 2019** — by design, not omission: the perturbation study (§4 of the
