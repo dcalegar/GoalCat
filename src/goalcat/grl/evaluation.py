@@ -22,6 +22,28 @@ standard's [itu2018urn], not jUCMNav's invention — in this project's own terms
 equivalence is the contract; `scripts/verify_kpi_evaluation.py` pins it to a table of cases derived
 from the branch structure above.
 
+**A second, independent reference.** The KPI conversion also has a published closed form: Fan,
+Anda and Amyot state it as Eqs. 8 (target > worst) and 9 (target < worst) of [fan2018arithmetic],
+on URN's positive-only [0, 100] range. That formalisation and this module agree pointwise --
+`scripts/verify_kpi_evaluation.py` checks the two against each other over a grid rather than
+against a table of expectations, so the claim is differential, not anecdotal. The agreement is
+exact over 1844 swept measurements inside the paper's stated domain -- target, threshold and worst
+pairwise distinct -- and exact over a further 1844 outside it, where that domain's precondition
+("the target, threshold, and worst values cannot be equal") is violated by `target == threshold` or
+`threshold == worst`. The second tier is the one this project leans on: the saturating clamps make
+the zero-width segment unreachable on both sides, so a statutory `target == threshold` indicator is
+well defined under either formulation, and the precondition turns out to be stricter than the
+equations require.
+
+`target == worst` is a third case, and not a disagreement between the two references. Eq. 8 is
+stated for target > worst and Eq. 9 for target < worst, so at equality the paper selects no arm and
+defines no result; there is nothing there to conflict with. This module answers anyway, because
+`target < worst` sends the tie to the higher-is-better arm, and it keeps that answer: behavioural
+equivalence with jUCMNav is the contract (a `.jucm` file must read the same in both), an indicator
+whose best and worst values coincide measures nothing, and no such value set exists in
+`data/goals/`. The verification script pins this project's reading and asserts that the paper's
+equations decline the input, rather than staging a comparison the literature does not support.
+
 **Two ranges.** URN defines the satisfaction scale as either [-100, 100] (the default, and what
 every `data/goals/*.jucm` file uses) or [0, 100]. `min_range` selects between them exactly as
 jUCMNav's `StrategyEvaluationRangeHelper` does, including the `evalLevel / 2 + 50` remap the
