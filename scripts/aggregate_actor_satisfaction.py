@@ -38,15 +38,20 @@ Whether the softgoals belong inside the actor is a modelling question -- "preser
 due-process rights" is arguably the offender's concern, not the Traffic Police Back-Office's --
 and this script deliberately does not answer it.
 
-**Scales, and what the `_remapped` columns are not.** Eq. 10 is stated with a clamp to [0, 100];
-this project's models declare URN's [-100, 100] range, and that signed scale is what
-`goal_satisfaction.csv` holds. This script aggregates the persisted signed satisfactions and then
-applies URN's affine remap (`signed / 2 + 50`) to the *aggregate*. It does **not** re-run
-propagation on the [0, 100] range, so a `_remapped` column is a post-hoc rescaling of a signed
-result, not Eq. 10 recomputed in the paper's units. The two coincide only while no clamp binds
-anywhere, which is why `clamp_bound` is reported per row: a bound clamp is exactly the case where
-the order of aggregating and rescaling stops being interchangeable. No clamp binds on any run
-currently in `data/output/`.
+**Scales, and what the `_remapped` columns are.** Eq. 10 is stated with a clamp to [0, 100]; this
+project's models declare URN's [-100, 100] range, and that signed scale is what
+`goal_satisfaction.csv` holds. This script aggregates the persisted signed satisfactions, and a
+`_remapped` column is that signed aggregate under URN's affine rescaling (`signed / 2 + 50`) -- a
+change of units and nothing more. It is emphatically not Eq. 10 recomputed on [0, 100]: propagation
+was never re-run on that range, and nothing here can say whether re-running it would agree, because
+propagation clamps every element as it goes and a per-element clamp has no counterpart in an
+aggregate taken afterwards.
+
+Eq. 10's own clamp is transcribed but inert. `propagate()` has already clamped each element into
+[-100, 100], and a weighted mean of values drawn from that interval cannot leave it, so the Max/Min
+can never bind; for the same reason the rescaling commutes with the mean, and taking it before or
+after the aggregation gives the same number. Both are kept because they are what the equation says,
+not because either does any work here.
 
 **Refusals.** Importance weights are not parsed by `goalcat.grl`, and no model in `data/goals/`
 carries any. Rather than silently applying the equal-weight default to a model that does declare
@@ -115,16 +120,14 @@ def _roots(model) -> list[str]:
             if element_id not in has_parent and element_id not in contributes]
 
 
-def _weighted_mean(values: list[float], bounds: tuple[float, float]) -> tuple[float, bool]:
+def _weighted_mean(values: list[float], bounds: tuple[float, float]) -> float:
     """Eq. 10 under the equal-weight default: n top-level elements each weigh 100/n, so the weights
     sum to exactly 100, `Max(100, sum)` is 100, and the weighted sum reduces to the arithmetic mean.
-    Returns the clamped score and whether the clamp actually bound."""
+    The clamp is Eq. 10's, kept for fidelity though it cannot bind on pre-clamped inputs."""
     if not values:
-        return float("nan"), False
-    raw = sum(values) / len(values)
+        return float("nan")
     low, high = bounds
-    clamped = max(low, min(high, raw))
-    return clamped, clamped != raw
+    return max(low, min(high, sum(values) / len(values)))
 
 
 def _to_paper_scale(signed: float) -> float:
@@ -163,10 +166,11 @@ def aggregate_run(csv_path: Path) -> list[dict]:
         actor_values = [by_id[e] for e in actor_roots if e in by_id]
         all_values = [by_id[e] for e in roots if e in by_id]
 
-        actor_signed, actor_clamped = _weighted_mean(actor_values, SIGNED_BOUNDS)
-        all_signed, all_clamped = _weighted_mean(all_values, SIGNED_BOUNDS)
-        # Remap the aggregate, rather than aggregating remapped values: the arithmetic happens once,
-        # on the scale the inputs are actually on, and the rescaling is visibly downstream of it.
+        actor_signed = _weighted_mean(actor_values, SIGNED_BOUNDS)
+        all_signed = _weighted_mean(all_values, SIGNED_BOUNDS)
+        # Rescale the aggregate rather than aggregating rescaled values. The two are equal -- the
+        # remap is affine and the weights are normalised -- so this is a matter of keeping the
+        # arithmetic on the scale the inputs are actually on, with the change of units downstream.
         actor_remapped = _to_paper_scale(actor_signed)
         all_remapped = _to_paper_scale(all_signed)
 
@@ -191,7 +195,6 @@ def aggregate_run(csv_path: Path) -> list[dict]:
             "n_all_roots": len(all_values),
             "all_roots_signed": round(all_signed, 4),
             "all_roots_remapped": round(all_remapped, 4),
-            "clamp_bound": bool(actor_clamped or all_clamped),
             "roots_excluded_by_containment": "; ".join(excluded),
         })
     return rows
@@ -257,9 +260,6 @@ def main() -> int:
         print(f"  all-roots variant (not the paper's semantics) spans "
               f"[{subset.all_roots_signed.min():.2f}, {subset.all_roots_signed.max():.2f}] signed, "
               f"[{subset.all_roots_remapped.min():.2f}, {subset.all_roots_remapped.max():.2f}] remapped")
-    if table.clamp_bound.any():
-        print(f"\n{int(table.clamp_bound.sum())} scope rows had a clamp bind; on those the two "
-              "scales are not related by the affine remap.")
     return 0
 
 
