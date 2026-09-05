@@ -1,0 +1,847 @@
+variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
+V0001,,"This narrative stops at ER Sepsis Triage and does not result in admission or final disposition, representing an incomplete or abandoned ED visit rather than a completed recovery or hospital stay.",,uncomplicated_recovery,2.0,,0.013384795747697353
+V0002,,"The trace ends at CRP laboratory testing within the emergency department without admission or final disposition, falling outside the standard completed hospital stay patterns.",,early_or_irregular_discharge,1.0,,0.0059904432855546474
+V0003,,The trace terminates at Leucocytes testing in the emergency department without reaching an admission or discharge disposition.,,early_or_irregular_discharge,1.0,,0.013577933423221111
+V0004,,The trace ends after administering IV Antibiotics in the emergency department without any subsequent admission or discharge event.,,early_or_irregular_discharge,1.0,,0.0031856950372457504
+V0005,,The trace ends at LacticAcid testing in the emergency department without proceeding to admission or discharge.,,early_or_irregular_discharge,1.0,,0.011170591227710247
+V0006,,The trace concludes with IV Antibiotics in the emergency department and lacks an inpatient admission or final release disposition.,,early_or_irregular_discharge,2.0,,0.0048727658577263355
+V0007,,The trace ends at IV Antibiotics in the emergency setting without an admission or formal discharge event.,,early_or_irregular_discharge,1.0,,0.000749628699850291
+V0008,uncomplicated_recovery,The case involves a standard emergency evaluation followed by routine admission to normal care (NC) and a straightforward release (Release A) within a typical duration of 3 days.,4.0,non_home_disposition,1.0,0.3452650308609009,0.0050381687469780445
+V0009,,The trace finishes at IV Antibiotics in the emergency department without an inpatient admission or final disposition.,,extended_monitoring_recovery,2.0,,0.004415913950651884
+V0010,,The trace ends with an out-of-order ER Sepsis Triage event and lacks a proper hospital admission or final discharge disposition.,,early_or_irregular_discharge,2.0,,0.0369032584130764
+V0011,,The trace terminates at IV Antibiotics in the emergency department without admission or discharge tracking.,,early_or_irregular_discharge,1.0,,0.0009808631148189306
+V0012,,The trace ends with IV Antibiotics in the emergency department without proceeding to admission or release.,,early_or_irregular_discharge,2.0,,0.0006104464991949499
+V0013,,The trace ends at Leucocytes testing in the emergency department without inpatient admission or discharge.,,early_or_irregular_discharge,2.0,,0.0026417141780257225
+V0014,uncomplicated_recovery,"The case follows an uncomplicated path through emergency assessment, admission to normal care (NC), and routine release (Release A) over 4 days.",5.0,early_or_irregular_discharge,2.0,0.3411200940608978,0.000893208256457001
+V0015,extended_monitoring_recovery,The trace shows an uncomplicated recovery and release (Release A) but incorporates repeated testing (CRP and Leucocytes) and a materially longer observation period of 2 days before final disposition.,7.0,non_home_disposition,1.0,0.04318936541676521,0.001538728945888579
+V0016,extended_monitoring_recovery,"The case recovers without care escalation, but exhibits a prolonged stay of 4 days with repeated laboratory monitoring before discharge.",7.0,uncomplicated_recovery,1.0,0.03075515292584896,0.00010385151108494028
+V0017,,The trace features an atypical sequence ending back at ER Sepsis Triage without an admission or final discharge.,,early_or_irregular_discharge,2.0,,0.008604122325778008
+V0018,extended_monitoring_recovery,"The case successfully recovers and is released via Release A, but involves an extended monitoring duration of 4 days.",7.0,uncomplicated_recovery,1.0,0.36438271403312683,0.00012561735638882965
+V0019,,The trace terminates at IV Antibiotics in the emergency department without an inpatient admission or discharge disposition.,,early_or_irregular_discharge,2.0,,0.00492103910073638
+V0020,,The trace ends at CRP testing in the emergency department without an admission or formal release.,,early_or_irregular_discharge,2.0,,0.005307679995894432
+V0021,non_home_disposition,"The trace ends with a Return ER event following initial release, representing an unplanned return or readmission disposition rather than a routine uncomplicated recovery.",3.0,early_or_irregular_discharge,2.0,0.012389120645821095,0.0006289064767770469
+V0022,uncomplicated_recovery,The case follows a standard course from emergency evaluation to admission to normal care (NC) and routine release (Release A) over 4 days.,5.0,non_home_disposition,1.0,0.3396850824356079,0.0005417912034317851
+V0023,non_home_disposition,"The trace concludes with a Return ER event after initial discharge, categorizing it under non-routine or readmission disposition.",6.0,uncomplicated_recovery,1.0,0.007777217775583267,0.00020539744582492858
+V0024,,The trace stops abruptly at Admission NC without showing the subsequent hospital stay or final discharge disposition.,,early_or_irregular_discharge,1.0,,0.004364368971437216
+V0025,,The trace ends at IV Antibiotics in the emergency department without an inpatient admission or final release.,,early_or_irregular_discharge,2.0,,0.0034590212162584066
+V0026,,"The trace ends in a Return ER outcome after release, which reflects a readmission rather than a simple recovery or standard inpatient escalation, but it does not cleanly fit standard care escalation or non-home disposition categories.",,early_or_irregular_discharge,1.0,,0.04577702283859253
+V0027,early_or_irregular_discharge,"The trace ends immediately upon IV Antibiotics within 4 hours without standard admission or normal release progression, indicating an irregular ED discharge pathway.",4.0,uncomplicated_recovery,3.0,0.008794943802058697,0.00043937613372690976
+V0028,,"The case involves a lengthy stay and a return to ER, but the extended duration combined with a readmission does not cleanly fit the standard categories.",,uncomplicated_recovery,1.0,,0.0003073322877753526
+V0029,early_or_irregular_discharge,The trace is very short (34 minutes) and ends abruptly on lab tests (Leucocytes) without completing standard disposition or admission.,3.0,uncomplicated_recovery,2.0,0.39488351345062256,0.37443554401397705
+V0030,uncomplicated_recovery,"Standard admission course with repeat labs and final Release A, following an uncomplicated inpatient recovery pattern.",4.0,extended_monitoring_recovery,2.0,0.007929055951535702,0.00110627559479326
+V0031,early_or_irregular_discharge,Very short trace ending abruptly on LacticAcid within an hour without admission or formal release.,3.0,uncomplicated_recovery,3.0,0.37927308678627014,0.35882511734962463
+V0032,,"The case has a multi-day admission with repeat labs leading to Release A, followed later by a Return ER, representing a readmission pattern.",,non_home_disposition,1.0,,5.056213922216557e-05
+V0033,,"Involves a prolonged timeline resulting in a Return ER, not fitting straightforward inpatient recovery.",,early_or_irregular_discharge,1.0,,0.003758639097213745
+V0034,early_or_irregular_discharge,Abrupt termination of the trace at IV Liquid after 15 hours without standard admission or discharge processing.,2.0,uncomplicated_recovery,2.0,0.36570438742637634,0.33619096875190735
+V0035,uncomplicated_recovery,Standard admission with ongoing monitoring and typical Release A disposition.,4.0,extended_monitoring_recovery,1.0,0.014123770408332348,0.0005881366087123752
+V0036,early_or_irregular_discharge,Extremely short duration (21 minutes) ending prematurely at CRP in the ED.,4.0,uncomplicated_recovery,2.0,0.4094260036945343,0.3889780342578888
+V0037,extended_monitoring_recovery,Involves an admission followed by a materially longer observation period (3 days) before a Release B outcome compared to quick ED visits.,11.0,early_or_irregular_discharge,1.0,0.7063482403755188,0.0065433369018137455
+V0038,early_or_irregular_discharge,Short 3-hour stay ending abruptly at IV Antibiotics without formal admission or standard release.,3.0,uncomplicated_recovery,2.0,0.010162211954593658,0.0009278920479118824
+V0039,uncomplicated_recovery,Standard inpatient stay with routine monitoring and Release A.,6.0,extended_monitoring_recovery,2.0,0.12414468079805374,0.001734760939143598
+V0040,early_or_irregular_discharge,Short 4-hour stay ending right at Admission NC without a complete recovery or release path recorded.,4.0,uncomplicated_recovery,1.0,0.33876216411590576,0.3371388018131256
+V0041,uncomplicated_recovery,Standard admission course with typical inpatient lab checks and Release A.,2.0,extended_monitoring_recovery,1.0,0.12172544002532959,0.0025896632578223944
+V0042,uncomplicated_recovery,Typical inpatient admission followed by standard Release A.,5.0,extended_monitoring_recovery,1.0,0.009240204468369484,0.002417424926534295
+V0043,early_or_irregular_discharge,Short ED sequence ending at LacticAcid within 38 minutes.,2.0,uncomplicated_recovery,1.0,0.3916742503643036,0.3712262809276581
+V0044,uncomplicated_recovery,Standard inpatient admission and recovery sequence leading to Release A.,3.0,non_home_disposition,1.0,0.012320753186941147,0.005497973412275314
+V0045,,"Inpatient admission followed by release and subsequent Return ER, representing a readmission pattern.",,uncomplicated_recovery,2.0,,0.002805172698572278
+V0046,extended_monitoring_recovery,Features an extended observation and monitoring duration over 6 days prior to Release A.,3.0,non_home_disposition,1.0,0.017827309668064117,0.00018206116510555148
+V0047,uncomplicated_recovery,Standard 2-day inpatient recovery course ending in Release A.,5.0,early_or_irregular_discharge,1.0,0.3604518473148346,0.014112981967628002
+V0048,extended_monitoring_recovery,Shows a materially longer observation period (5 days) with repeat monitoring prior to discharge.,5.0,uncomplicated_recovery,1.0,0.02047489397227764,5.235307980910875e-05
+V0049,,Extended timeline with a final outcome of Return ER.,,non_home_disposition,2.0,,0.00011380133219063282
+V0050,early_or_irregular_discharge,Short ED visit lasting 33 minutes and terminating abruptly at CRP.,2.0,uncomplicated_recovery,2.0,0.39555463194847107,0.37510666251182556
+V0051,uncomplicated_recovery,"Standard hospital stay with admission and release A, no escalation or extended monitoring.",4.0,extended_monitoring_recovery,1.0,0.11183346062898636,0.002111108275130391
+V0052,early_or_irregular_discharge,Ends in Return ER after a delayed trace with a very long duration median of 106d.,7.0,extended_monitoring_recovery,1.0,0.8478190302848816,0.0007076762267388403
+V0053,uncomplicated_recovery,Short standard uncomplicated stay leading to Release A.,6.0,early_or_irregular_discharge,2.0,0.36335504055023193,0.011209800839424133
+V0054,early_or_irregular_discharge,Ends in Return ER following discharge.,7.0,non_home_disposition,1.0,0.8202669620513916,0.0006520826718769968
+V0055,early_or_irregular_discharge,Ends in Return ER following admission and release.,8.0,uncomplicated_recovery,1.0,0.832004725933075,0.00028784008463844657
+V0056,,Trace ends prematurely at IV Antibiotics without admission or final disposition.,,early_or_irregular_discharge,1.0,,0.0014913358027115464
+V0057,uncomplicated_recovery,Standard admission and release trajectory.,3.0,extended_monitoring_recovery,2.0,0.36102375388145447,0.013541102409362793
+V0058,uncomplicated_recovery,Simple uncomplicated recovery to Release A.,5.0,non_home_disposition,1.0,0.35577845573425293,0.015551594085991383
+V0059,uncomplicated_recovery,Standard course with admission and Release A.,3.0,non_home_disposition,1.0,0.016743136569857597,0.0022903818171471357
+V0060,early_or_irregular_discharge,Ends in Return ER after an unusually long duration.,4.0,non_home_disposition,1.0,0.8573368191719055,0.001005847123451531
+V0061,extended_monitoring_recovery,"Recovers without care escalation, but has an extended monitoring/observation period leading to a longer stay.",5.0,uncomplicated_recovery,1.0,0.01185621228069067,5.4223619372351095e-05
+V0062,,Trace terminates at IV Antibiotics without reaching disposition or admission.,,early_or_irregular_discharge,1.0,,0.0027899558190256357
+V0063,extended_monitoring_recovery,Features extensive repeated laboratory testing and observation before final release.,9.0,uncomplicated_recovery,5.0,0.0003595386224333197,0.0016918973997235298
+V0064,uncomplicated_recovery,Standard recovery course to Release A.,5.0,non_home_disposition,3.0,0.16949371993541718,0.0071280766278505325
+V0065,uncomplicated_recovery,Standard recovery to Release A despite minor repeated tests.,4.0,non_home_disposition,2.0,0.11561355739831924,3.697589818330016e-06
+V0066,uncomplicated_recovery,Uncomplicated recovery course.,3.0,early_or_irregular_discharge,2.0,0.36381471157073975,0.010750130750238895
+V0067,uncomplicated_recovery,Standard admission and discharge path.,4.0,non_home_disposition,3.0,0.01010704692453146,9.713216422824189e-05
+V0068,care_escalation_during_stay,Shows escalation with Admission IC followed by Admission NC.,12.0,non_home_disposition,4.0,0.45502233505249023,0.0019673386123031378
+V0069,uncomplicated_recovery,Uncomplicated recovery to Release A.,2.0,extended_monitoring_recovery,3.0,0.011557389050722122,0.0007422468042932451
+V0070,uncomplicated_recovery,Standard course to Release A.,4.0,extended_monitoring_recovery,1.0,0.17369140684604645,0.016979875043034554
+V0071,early_or_irregular_discharge,Ends in Return ER after an extended duration and multiple procedures.,10.0,non_home_disposition,3.0,0.8481401801109314,0.0008149051573127508
+V0072,early_or_irregular_discharge,Results in Return ER after discharge.,9.0,non_home_disposition,2.0,0.7830867767333984,0.00031539765768684447
+V0073,extended_monitoring_recovery,Extended monitoring with multiple repeated lab work before eventual release.,8.0,uncomplicated_recovery,2.0,0.022021718323230743,5.243751729722135e-06
+V0074,early_or_irregular_discharge,Leads to Return ER after a relatively short stay.,6.0,uncomplicated_recovery,1.0,0.43083980679512024,0.0014986841706559062
+V0075,care_escalation_during_stay,Includes escalation to Intensive Care (Admission IC) during the stay.,7.0,uncomplicated_recovery,4.0,0.40660157799720764,0.0025638891384005547
+V0076,uncomplicated_recovery,The trace follows a standard course from ER admission to release B within 2 days with no escalation or unusual length.,6.0,early_or_irregular_discharge,2.0,0.6887357234954834,0.0065433369018137455
+V0077,uncomplicated_recovery,The trace shows a standard 2-day recovery to release B despite repeated lab tests.,5.0,care_escalation_during_stay,3.0,0.5261532664299011,0.17328494787216187
+V0078,non_home_disposition,"The trace ends in Return ER after a long duration, indicating an unplanned return or readmission.",9.0,care_escalation_during_stay,5.0,0.12457143515348434,0.0015510610537603498
+V0079,uncomplicated_recovery,The case follows a standard 4-day recovery path leading to release A.,4.0,extended_monitoring_recovery,3.0,0.17372797429561615,0.01701643317937851
+V0080,non_home_disposition,The trace ends with Return ER following a lengthy duration.,5.0,uncomplicated_recovery,4.0,0.15253551304340363,0.00043312355410307646
+V0081,,"The case does not reach a terminal discharge or release state, ending instead in IV Liquid.",,early_or_irregular_discharge,2.0,,0.000988506362773478
+V0082,care_escalation_during_stay,The trace shows admission to IC followed by transfer to NC.,13.0,extended_monitoring_recovery,2.0,0.2922418713569641,0.0008662789477966726
+V0083,non_home_disposition,The case terminates with Return ER after a prolonged period.,6.0,uncomplicated_recovery,3.0,0.014536493457853794,0.0022808730136603117
+V0084,uncomplicated_recovery,Standard recovery course ending in release C within 6 days.,4.0,extended_monitoring_recovery,4.0,0.33812907338142395,0.025632724165916443
+V0085,non_home_disposition,The trace ends in Return ER after an extended duration.,3.0,early_or_irregular_discharge,1.0,0.14458122849464417,0.008457129821181297
+V0086,uncomplicated_recovery,Standard 4-day recovery resulting in release A.,6.0,non_home_disposition,1.0,0.004530481528490782,0.0018117045983672142
+V0087,uncomplicated_recovery,Standard 6-day stay ending in release A.,3.0,extended_monitoring_recovery,3.0,0.11725082248449326,0.0005481544649228454
+V0088,,The case terminates prematurely at IV Antibiotics without a final disposition.,,early_or_irregular_discharge,1.0,,0.005613516550511122
+V0089,non_home_disposition,The case ends in Return ER after over 2 months.,8.0,uncomplicated_recovery,5.0,0.1755966693162918,0.0010164988925680518
+V0090,uncomplicated_recovery,Standard recovery leading to release A within 5 days.,7.0,extended_monitoring_recovery,4.0,0.002225580159574747,9.145052899839357e-05
+V0091,extended_monitoring_recovery,The case shows extensive prolonged monitoring and repeated lab work over 13 days before release C.,11.0,non_home_disposition,9.0,0.5035820007324219,0.014636528678238392
+V0092,,The trace ends mid-process at LacticAcid without any discharge or release.,,uncomplicated_recovery,2.0,,0.016685370355844498
+V0093,uncomplicated_recovery,Standard 7-day recovery path to release D.,6.0,non_home_disposition,2.0,0.3425333797931671,0.008428587578237057
+V0094,non_home_disposition,The case ends in Return ER after a long duration.,3.0,uncomplicated_recovery,1.0,0.014010665006935596,0.0017550437478348613
+V0095,uncomplicated_recovery,Standard 3-day recovery ending in release A.,4.0,extended_monitoring_recovery,2.0,0.014517082832753658,0.00451643718406558
+V0096,uncomplicated_recovery,Standard 5-day recovery course leading to release A.,4.0,extended_monitoring_recovery,1.0,0.3347029387950897,0.22260314226150513
+V0097,uncomplicated_recovery,Standard 6-day recovery course leading to release A.,5.0,extended_monitoring_recovery,2.0,0.1158239021897316,0.00021403661230579019
+V0098,non_home_disposition,The case concludes with Return ER.,7.0,uncomplicated_recovery,1.0,0.37327060103416443,0.08002021163702011
+V0099,uncomplicated_recovery,Standard 7-day recovery leading to release A.,5.0,extended_monitoring_recovery,1.0,0.1214056983590126,0.00029806685051880777
+V0100,uncomplicated_recovery,Standard 5-day recovery leading to release A.,3.0,extended_monitoring_recovery,2.0,0.0011009349254891276,8.47243718453683e-05
+V0101,non_home_disposition,"The trace ends with Return ER after an unusually long overall duration, indicating a return or non-home disposition rather than a standard complete recovery release.",8.0,uncomplicated_recovery,3.0,0.04495428502559662,0.00776059040799737
+V0102,uncomplicated_recovery,The case follows a standard course to Release A within a typical 5-day duration with standard monitoring.,6.0,extended_monitoring_recovery,3.0,0.11163326352834702,0.001910909079015255
+V0103,uncomplicated_recovery,The case proceeds normally through admission to Release A in a short 3-day duration without escalation or extended monitoring anomalies.,7.0,non_home_disposition,4.0,0.12063497304916382,0.0036801258102059364
+V0104,non_home_disposition,"The trace ends with Return ER after a prolonged duration, reflecting a non-home disposition or return event.",7.0,uncomplicated_recovery,1.0,0.36297640204429626,0.00968294870108366
+V0105,extended_monitoring_recovery,The case recovers to Release B but requires extended observation and repeated lab tests over a 10-day period.,8.0,uncomplicated_recovery,4.0,0.44787606596946716,0.00031226634746417403
+V0106,extended_monitoring_recovery,The trace shows repeated monitoring and lab testing over a 9-day stay before final release.,6.0,uncomplicated_recovery,3.0,0.17335663735866547,0.002993103116750717
+V0107,extended_monitoring_recovery,The case involves extended monitoring over an 8-day stay with multiple repeated labs before Release A.,3.0,uncomplicated_recovery,2.0,0.009214128367602825,0.0006075576529838145
+V0108,non_home_disposition,The trace concludes with a Return ER event after a 19-day duration.,3.0,uncomplicated_recovery,3.0,0.028695078566670418,0.008576462045311928
+V0109,non_home_disposition,The trace ends in a Return ER disposition after a prolonged duration of 107d.,5.0,extended_monitoring_recovery,3.0,0.24314135313034058,0.11115562915802002
+V0110,non_home_disposition,The trace concludes with a Return ER event after an extended 166d duration.,6.0,uncomplicated_recovery,2.0,0.3670130670070648,0.005646312143653631
+V0111,early_or_irregular_discharge,"The trace ends abruptly at Admission NC after only 3 hours, representing an irregular or incomplete course pattern.",4.0,uncomplicated_recovery,1.0,0.34436821937561035,0.33357980847358704
+V0112,non_home_disposition,The trace results in a Return ER event following a 79d duration.,3.0,uncomplicated_recovery,2.0,0.12328774482011795,0.007348418701440096
+V0113,uncomplicated_recovery,The case follows a fast 2-day course leading directly to Release B with minimal interventions.,5.0,early_or_irregular_discharge,2.0,0.699496328830719,0.04457711800932884
+V0114,uncomplicated_recovery,The case follows a standard 4-day recovery course leading to Release A.,6.0,extended_monitoring_recovery,3.0,0.11645693331956863,4.095812619198114e-05
+V0115,non_home_disposition,The trace ends with Return ER after an extended duration of 252 days.,5.0,uncomplicated_recovery,3.0,0.04566916450858116,0.00847547221928835
+V0116,non_home_disposition,The trace concludes with a Return ER disposition after 69 days.,4.0,extended_monitoring_recovery,1.0,0.008369658142328262,0.0038859627675265074
+V0117,non_home_disposition,The trace ends in a Return ER event following Release D.,7.0,uncomplicated_recovery,3.0,0.18840356171131134,0.04265880584716797
+V0118,extended_monitoring_recovery,The stay is extended to 17 days with numerous repeated blood tests before final release.,0.0,uncomplicated_recovery,2.0,0.012426965869963169,0.006135597825050354
+V0119,extended_monitoring_recovery,The case shows a moderately extended 6-day monitoring and recovery stay before Release A.,8.0,uncomplicated_recovery,1.0,0.016952944919466972,0.00015448038175236434
+V0120,non_home_disposition,The trace ends with Return ER after a 64-day duration.,8.0,extended_monitoring_recovery,4.0,0.17261157929897308,0.17077003419399261
+V0121,non_home_disposition,The trace concludes with a Return ER outcome after an 81-day stay.,5.0,extended_monitoring_recovery,3.0,0.012975994497537613,0.0007203731220215559
+V0122,extended_monitoring_recovery,The case involves a 17-day stay with prolonged monitoring and repeated labs before discharge.,6.0,uncomplicated_recovery,1.0,0.012570767663419247,0.00627939822152257
+V0123,non_home_disposition,The trace ends in a Return ER disposition after a 24-day stay.,9.0,extended_monitoring_recovery,3.0,0.13319486379623413,0.012549887411296368
+V0124,non_home_disposition,The trace concludes with a Return ER event after a 10-day stay.,4.0,uncomplicated_recovery,2.0,0.047963108867406845,0.003873346373438835
+V0125,care_escalation_during_stay,"The trace exhibits a transfer/escalation from Admission NC to Admission IC during the stay, followed by continued care and final release before a Return ER.",11.0,non_home_disposition,6.0,0.4937197268009186,0.0021829388570040464
+V0126,non_home_disposition,"The trace returns to the ER after release, which constitutes an unplanned readmission/non-routine final disposition path.",6.0,early_or_irregular_discharge,3.0,0.27287814021110535,0.12713336944580078
+V0127,,"The trace ends in LacticAcid without any final discharge or disposition event, remaining incomplete in terms of taxonomy pathways.",,uncomplicated_recovery,2.0,,0.2243661731481552
+V0128,non_home_disposition,"Involves an admission to IC (care escalation) and finishes with a return to the ER after release, matching non-routine post-discharge disposition.",12.0,care_escalation_during_stay,9.0,0.14396709203720093,0.00015762369730509818
+V0129,care_escalation_during_stay,The narrative clearly demonstrates a care escalation from Admission NC to Admission IC during the stay.,15.0,non_home_disposition,11.0,0.36837074160575867,0.0017403328092768788
+V0130,uncomplicated_recovery,Standard course leading directly to Release A without escalation or extended monitoring anomalies.,4.0,non_home_disposition,2.0,0.004212132189422846,0.00213005393743515
+V0131,non_home_disposition,The trace concludes with a Return ER event after release.,7.0,uncomplicated_recovery,3.0,0.379865437746048,0.08661507815122604
+V0132,,Terminates at IV Antibiotics without reaching a discharge or disposition milestone.,,early_or_irregular_discharge,2.0,,0.012898658402264118
+V0133,,Terminates at IV Antibiotics with no discharge or disposition outcome recorded.,,early_or_irregular_discharge,4.0,,0.3361445665359497
+V0134,care_escalation_during_stay,"Includes a transfer from Admission NC to Admission IC, representing an escalation of care.",10.0,uncomplicated_recovery,8.0,0.39264771342277527,0.004851627163589001
+V0135,uncomplicated_recovery,Follows a normal recovery pattern culminating in Release A.,3.0,extended_monitoring_recovery,3.0,0.010523130185902119,0.003700351109728217
+V0136,non_home_disposition,The narrative features multiple admissions and concludes with a Return ER event.,19.0,extended_monitoring_recovery,11.0,0.14501626789569855,0.00802209135144949
+V0137,,Stops at LacticAcid without showing any discharge or disposition event.,,extended_monitoring_recovery,2.0,,6.455677794292569e-05
+V0138,uncomplicated_recovery,Standard inpatient stay ending in a routine release (Release C).,5.0,extended_monitoring_recovery,2.0,0.3388216197490692,0.024940207600593567
+V0139,care_escalation_during_stay,"The sequence moves into Admission IC following initial NC/ER care steps, indicating an escalation.",14.0,uncomplicated_recovery,11.0,0.16288457810878754,0.0867360308766365
+V0140,non_home_disposition,Concludes with a Return ER following release.,7.0,early_or_irregular_discharge,4.0,0.1527739018201828,0.00026445588446222246
+V0141,care_escalation_during_stay,Demonstrates escalation via transition to Admission IC.,8.0,non_home_disposition,6.0,0.47263965010643005,0.005551664624363184
+V0142,uncomplicated_recovery,Uncomplicated recovery path with standard release.,4.0,non_home_disposition,2.0,0.011745340190827847,0.0005542971775867045
+V0143,non_home_disposition,Ends in a Return ER post-release.,7.0,uncomplicated_recovery,3.0,0.03842911496758461,0.005660650786012411
+V0144,uncomplicated_recovery,Standard stay progression with repeat NC admissions but no IC transfer or unusual disposition.,7.0,non_home_disposition,3.0,0.11581241339445114,0.00020254915580153465
+V0145,care_escalation_during_stay,"Involves an admission to IC, demonstrating care escalation.",102.0,non_home_disposition,57.0,0.43729349970817566,0.03063969500362873
+V0146,,Incomplete trace ending in Leucocytes without discharge.,,early_or_irregular_discharge,2.0,,0.026082729920744896
+V0147,uncomplicated_recovery,Standard recovery course leading to Release B.,5.0,extended_monitoring_recovery,2.0,0.4454101622104645,0.0019673386123031378
+V0148,,Trace stops at IV Antibiotics without final disposition.,,uncomplicated_recovery,2.0,,0.003681851550936699
+V0149,uncomplicated_recovery,Standard recovery path to Release A.,7.0,extended_monitoring_recovery,3.0,0.002115480834618211,1.8648777768248692e-05
+V0150,uncomplicated_recovery,Standard inpatient course ending in Release B without escalation.,7.0,extended_monitoring_recovery,4.0,0.46548089385032654,0.00031226634746417403
+V0151,non_home_disposition,"The trace concludes with a return to the emergency room, matching the non-home disposition pattern of a return/readmission rather than a routine release.",20.0,extended_monitoring_recovery,8.0,0.16786915063858032,0.0024876133538782597
+V0152,uncomplicated_recovery,The case follows a standard course to release (Release A) within a short duration and with no escalation or excessive observation.,7.0,early_or_irregular_discharge,3.0,0.3522227108478546,0.014001607894897461
+V0153,uncomplicated_recovery,The trace shows standard ER procedures followed by admission and routine release (Release A) within 5 days without any complication or escalation.,5.0,early_or_irregular_discharge,3.0,0.33478689193725586,0.008347072638571262
+V0154,care_escalation_during_stay,"The narrative records an admission to normal care (Admission NC) followed by an admission to intensive care (Admission IC), demonstrating an escalation of care during the stay before eventually returning via the ER later.",9.0,extended_monitoring_recovery,3.0,0.39221611618995667,0.00442004157230258
+V0155,non_home_disposition,"The trace ends in a return to the ER after a lengthy stay, which constitutes a non-home disposition / readmission event.",4.0,uncomplicated_recovery,3.0,0.15683265030384064,0.0023411514703184366
+V0156,extended_monitoring_recovery,"The trace recovers without care escalation, but has an extended observation/stay period of 10 days before release.",9.0,non_home_disposition,1.0,0.3373302221298218,0.012913868762552738
+V0157,non_home_disposition,"The case ends with a return to the ER, aligning with the non-home disposition category.",8.0,uncomplicated_recovery,5.0,0.019074203446507454,0.0010444128420203924
+V0158,extended_monitoring_recovery,"The patient recovers without care escalation, but remains hospitalized for 7 days with repeated lab monitoring before release.",5.0,uncomplicated_recovery,2.0,0.12443017959594727,4.453320798347704e-06
+V0159,extended_monitoring_recovery,"The trace shows recovery and release without care escalation, but involves a prolonged 7-day observation period.",6.0,uncomplicated_recovery,2.0,0.12408969551324844,0.0003360325936228037
+V0160,non_home_disposition,"The trace ends in a return to the ER, which is classified under non-home disposition.",4.0,uncomplicated_recovery,2.0,0.14356371760368347,0.0021810324396938086
+V0161,non_home_disposition,"The narrative concludes with a return to the ER, representing a non-home disposition.",5.0,uncomplicated_recovery,3.0,0.16512258350849152,0.0017002156237140298
+V0162,uncomplicated_recovery,The trace shows standard care leading directly to Release B within a standard short timeframe (3 days).,4.0,non_home_disposition,2.0,0.34401795268058777,0.02208690159022808
+V0163,non_home_disposition,"The trace ends in a return to the ER, signifying a non-home disposition.",6.0,uncomplicated_recovery,3.0,0.022891269996762276,0.0022487526293843985
+V0164,care_escalation_during_stay,"The narrative shows an admission to intensive care (Admission IC) after initial steps, indicating an increase in care intensity during the stay.",9.0,extended_monitoring_recovery,6.0,0.45992323756217957,0.0015510610537603498
+V0165,uncomplicated_recovery,"The case follows a direct, standard course to release (Release A) in 5 days without any care escalation or extended monitoring.",4.0,early_or_irregular_discharge,1.0,0.33423030376434326,0.005996540188789368
+V0166,extended_monitoring_recovery,The patient recovers without escalation of care but undergoes a sustained monitoring period over 7 days before release.,7.0,uncomplicated_recovery,3.0,0.1261233240365982,0.00015320438251364976
+V0167,care_escalation_during_stay,"The narrative includes an admission to intensive care (Admission IC), demonstrating an escalation of care during the stay.",8.0,uncomplicated_recovery,5.0,0.12804989516735077,0.0018213874427601695
+V0168,care_escalation_during_stay,"The trace records an admission to intensive care (Admission IC), showing an escalation of care before eventual release and return to the ER.",10.0,non_home_disposition,5.0,0.4810275733470917,0.00015762369730509818
+V0169,extended_monitoring_recovery,"The case recovers without escalation, experiencing a standard 4-day recovery period with repeated monitoring.",5.0,non_home_disposition,1.0,0.1405380666255951,7.471626304322854e-05
+V0170,extended_monitoring_recovery,The trace shows recovery and release to B over a 10-day period with extended lab monitoring.,6.0,uncomplicated_recovery,3.0,0.3358304500579834,0.006268240977078676
+V0171,non_home_disposition,"The trace ends in a return to the ER, which corresponds to the non-home disposition category.",7.0,extended_monitoring_recovery,5.0,0.038909684866666794,0.005180081352591515
+V0172,non_home_disposition,"The narrative concludes with a return to the ER, representing a non-home disposition.",15.0,extended_monitoring_recovery,7.0,0.022209635004401207,0.0020910182502120733
+V0173,extended_monitoring_recovery,The case recovers without care escalation over a 4-day period with extensive lab testing.,9.0,uncomplicated_recovery,3.0,0.03049803525209427,2.4753004254307598e-05
+V0174,care_escalation_during_stay,"The narrative records an admission to intensive care (Admission IC), showing a clear escalation in care intensity during the stay.",38.0,extended_monitoring_recovery,19.0,0.44384709000587463,0.0020638220012187958
+V0175,extended_monitoring_recovery,"The trace shows recovery without escalation of care, but features an extended observation and monitoring duration of 6 days before release.",7.0,uncomplicated_recovery,1.0,0.13076819479465485,3.697589818330016e-06
+V0176,uncomplicated_recovery,The case follows a standard course leading to a routine release (Release A) with no care escalation or extended monitoring.,8.0,extended_monitoring_recovery,4.0,0.005723191890865564,0.00030406209407374263
+V0177,uncomplicated_recovery,Standard progression to release A without transfer to higher care levels or extended unusual stays.,6.0,extended_monitoring_recovery,2.0,0.11232160776853561,0.00017825332179199904
+V0178,extended_monitoring_recovery,The duration of 19 days shows a materially longer observation period before standard release.,13.0,non_home_disposition,6.0,0.12598773837089539,0.004134482238441706
+V0179,non_home_disposition,"The trace ends in Return ER after a prolonged duration, which fits non-home/readmission disposition.",3.0,uncomplicated_recovery,3.0,0.14101415872573853,0.006172461900860071
+V0180,non_home_disposition,The trace terminates with a Return ER event.,8.0,extended_monitoring_recovery,5.0,0.3344288766384125,0.04117850214242935
+V0181,early_or_irregular_discharge,The case ends prematurely with an intermediate activity (Leucocytes) rather than standard release.,10.0,extended_monitoring_recovery,4.0,0.7784703373908997,0.014846313744783401
+V0182,care_escalation_during_stay,"The trace shows an admission to Intensive Care (Admission IC), reflecting a care escalation during the stay.",10.0,uncomplicated_recovery,9.0,0.01689511351287365,0.000523786002304405
+V0183,non_home_disposition,The case ends with a Return ER outcome.,9.0,extended_monitoring_recovery,6.0,0.11265163868665695,0.006368754897266626
+V0184,uncomplicated_recovery,Short duration of 4 days ending in Release A with standard care.,2.0,extended_monitoring_recovery,1.0,0.2302870899438858,0.0257802102714777
+V0185,care_escalation_during_stay,Includes a transfer/admission to Intensive Care (Admission IC) indicating care escalation.,13.0,uncomplicated_recovery,10.0,0.00934516079723835,0.0033636244479566813
+V0186,uncomplicated_recovery,Standard recovery and release without escalation or excessive stay.,5.0,extended_monitoring_recovery,2.0,0.17550086975097656,0.002068497007712722
+V0187,early_or_irregular_discharge,Incomplete trace ending abruptly at CRP without any admission or discharge disposition.,3.0,uncomplicated_recovery,4.0,0.3557243049144745,0.3404557704925537
+V0188,uncomplicated_recovery,Short 3-day course with routine release A.,5.0,extended_monitoring_recovery,3.0,0.2355726808309555,0.11125758290290833
+V0189,uncomplicated_recovery,Standard pathway leading to Release A.,6.0,extended_monitoring_recovery,1.0,0.0009193570003844798,9.685352415544912e-05
+V0190,uncomplicated_recovery,Normal recovery pattern culminating in Release A.,5.0,non_home_disposition,2.0,0.16812491416931152,0.00849688146263361
+V0191,non_home_disposition,Ends in Return ER after a prolonged course.,8.0,extended_monitoring_recovery,5.0,0.010347601026296616,0.0020248061046004295
+V0192,non_home_disposition,Very long duration culminating in a Return ER outcome.,4.0,uncomplicated_recovery,1.0,0.17172420024871826,0.008301847614347935
+V0193,extended_monitoring_recovery,An extended stay of 12 days dominated by repeated monitoring before final release.,8.0,non_home_disposition,5.0,0.001297588343732059,0.00075384764932096
+V0194,uncomplicated_recovery,Standard progression to Release A.,5.0,non_home_disposition,2.0,0.014334163628518581,0.000377743475837633
+V0195,uncomplicated_recovery,Ordinary recovery course ending in Release A.,6.0,extended_monitoring_recovery,4.0,0.004529013764113188,0.0018131722463294864
+V0196,care_escalation_during_stay,Shows an admission to Intensive Care (Admission IC) denoting escalation of care.,24.0,non_home_disposition,15.0,0.389496773481369,0.0017006737180054188
+V0197,early_or_irregular_discharge,Truncated trace ending in Leucocytes without an actual discharge or release event.,0.0,uncomplicated_recovery,2.0,0.6713544726371765,0.2589362859725952
+V0198,uncomplicated_recovery,Standard short stay leading to Release A.,4.0,care_escalation_during_stay,3.0,0.34494149684906006,0.006720403674989939
+V0199,non_home_disposition,Finishes with a Return ER outcome.,6.0,uncomplicated_recovery,3.0,0.01935657672584057,0.0007620399701409042
+V0200,non_home_disposition,Case concludes with a Return ER outcome.,3.0,uncomplicated_recovery,1.0,0.03890357166528702,0.0051861912943422794
+V0201,non_home_disposition,"The trace ends with a return to the emergency room, representing a non-routine disposition and further care event.",21.0,care_escalation_during_stay,11.0,0.12714962661266327,0.0005516940727829933
+V0202,uncomplicated_recovery,The case follows a standard course to release with a short median duration and no escalation or extended stay.,2.0,extended_monitoring_recovery,2.0,0.01728123426437378,0.0017522848211228848
+V0203,non_home_disposition,"The trace ends in a Return ER disposition, fitting the non-home disposition category.",5.0,uncomplicated_recovery,2.0,0.03210986778140068,0.011979895643889904
+V0204,uncomplicated_recovery,Standard recovery process leading directly to release with no complications or extensions.,5.0,extended_monitoring_recovery,2.0,0.003913931082934141,0.00023297588631976396
+V0205,extended_monitoring_recovery,The duration is extended over 27 days with repeated lab monitoring before a final release.,16.0,uncomplicated_recovery,9.0,0.47068142890930176,0.016454355791211128
+V0206,uncomplicated_recovery,Short standard hospital stay culminating in routine release.,5.0,early_or_irregular_discharge,3.0,0.695985734462738,0.013793335296213627
+V0207,uncomplicated_recovery,Standard course with admission and uncomplicated release.,2.0,extended_monitoring_recovery,1.0,0.0048134890384972095,0.0015286966226994991
+V0208,extended_monitoring_recovery,Extended stay with multiple admissions and tests prior to final release.,8.0,non_home_disposition,5.0,0.13665570318698883,0.00017825332179199904
+V0209,uncomplicated_recovery,"Short duration, straightforward path to release.",4.0,early_or_irregular_discharge,1.0,0.3540990352630615,0.013872161507606506
+V0210,non_home_disposition,Ends in a Return ER event following a long follow-up period.,5.0,uncomplicated_recovery,4.0,0.02169080823659897,0.0010482902871444821
+V0211,non_home_disposition,Ends in a Return ER outcome.,4.0,extended_monitoring_recovery,1.0,0.0025926795788109303,0.0033589042723178864
+V0212,non_home_disposition,The trace terminates in a Return ER event.,3.0,uncomplicated_recovery,4.0,0.13928310573101044,0.006461649667471647
+V0213,non_home_disposition,Ends in a Return ER outcome after release.,8.0,uncomplicated_recovery,3.0,0.3748134672641754,0.08156312257051468
+V0214,uncomplicated_recovery,Straightforward care path ending in release.,4.0,non_home_disposition,2.0,0.01143139973282814,0.004608620423823595
+V0215,extended_monitoring_recovery,Prolonged observation with recurring laboratory checks before release.,7.0,early_or_irregular_discharge,4.0,0.0,0.002051436109468341
+V0216,non_home_disposition,Ends with a Return ER outcome.,5.0,uncomplicated_recovery,3.0,0.11245167255401611,0.0034876607824116945
+V0217,early_or_irregular_discharge,The process terminates prematurely at IV Antibiotics without an admission or normal release pathway.,6.0,uncomplicated_recovery,4.0,0.049569983035326004,0.029122019186615944
+V0218,care_escalation_during_stay,The trace shows an admission to an intensive care unit (Admission IC) indicating care escalation.,13.0,non_home_disposition,10.0,0.48568716645240784,0.037226609885692596
+V0219,early_or_irregular_discharge,An irregular short sequence ending abruptly in a lab test without reaching a proper release or admission.,1.0,uncomplicated_recovery,2.0,0.6912091374397278,0.23908162117004395
+V0220,non_home_disposition,Terminates with a Return ER outcome.,4.0,extended_monitoring_recovery,2.0,0.009774141013622284,0.001451345975510776
+V0221,uncomplicated_recovery,Standard recovery course culminating in release.,6.0,extended_monitoring_recovery,5.0,0.2417120784521103,0.12323851138353348
+V0222,extended_monitoring_recovery,Extended hospital stay involving many days of recurring testing before release.,9.0,uncomplicated_recovery,6.0,0.11166223883628845,2.0134490114287473e-05
+V0223,extended_monitoring_recovery,Moderately extended stay with multiple check-ins before final release.,7.0,uncomplicated_recovery,2.0,0.22866272926330566,0.018091263249516487
+V0224,non_home_disposition,Ends in a Return ER event after a very long span.,3.0,extended_monitoring_recovery,2.0,0.056344058364629745,0.01915036514401436
+V0225,uncomplicated_recovery,Quick standard treatment path and release.,6.0,extended_monitoring_recovery,4.0,0.7009368538856506,0.25549080967903137
+V0226,uncomplicated_recovery,The case follows a standard course to routine discharge (Release A) with a typical duration of 4 days and no escalation of care.,5.0,extended_monitoring_recovery,3.0,0.1177336797118187,0.0012357790255919099
+V0227,non_home_disposition,The trace ends in a Return ER disposition rather than a routine home release.,5.0,uncomplicated_recovery,3.0,0.13875733315944672,0.006987418979406357
+V0228,uncomplicated_recovery,The case proceeds directly to a standard release (Release A) in 9 days with no recorded care escalation.,5.0,extended_monitoring_recovery,3.0,0.24111096560955048,0.11523151397705078
+V0229,non_home_disposition,The trace ends in a Return ER disposition instead of routine discharge.,6.0,extended_monitoring_recovery,3.0,0.06779412925243378,0.023704366758465767
+V0230,non_home_disposition,The case ends with a Return ER disposition.,4.0,uncomplicated_recovery,3.0,0.11355104297399521,0.007268161978572607
+V0231,non_home_disposition,The trace concludes with a Return ER disposition.,4.0,early_or_irregular_discharge,1.0,0.14327019453048706,0.008428506553173065
+V0232,early_or_irregular_discharge,"The trace stops abruptly at IV Antibiotics after 1 hour, indicating an irregular or incomplete course.",3.0,uncomplicated_recovery,2.0,0.03430521860718727,0.01385725662112236
+V0233,non_home_disposition,The trace ends with a Return ER disposition.,4.0,extended_monitoring_recovery,3.0,0.011001848615705967,0.0020161776337772608
+V0234,early_or_irregular_discharge,"The trace terminates at Leucocytes after only 42 minutes, representing an irregular early departure from the standard pathway.",1.0,uncomplicated_recovery,2.0,0.3885246217250824,0.3680766522884369
+V0235,uncomplicated_recovery,The patient recovers within 3 days and is discharged normally (Release A) without care escalation.,5.0,extended_monitoring_recovery,3.0,0.18261273205280304,0.025901203975081444
+V0236,uncomplicated_recovery,The case follows a standard 3-day course to a routine release (Release A).,5.0,extended_monitoring_recovery,2.0,0.3430773913860321,0.004856283310800791
+V0237,non_home_disposition,The trace ends in a Return ER disposition.,6.0,uncomplicated_recovery,3.0,0.1575099378824234,0.011765195988118649
+V0238,uncomplicated_recovery,The case completes a normal 8-day course leading to Release A without any care escalation.,8.0,extended_monitoring_recovery,3.0,0.12533040344715118,0.0005490417242981493
+V0239,uncomplicated_recovery,The case results in Release C after 29 days without any transfer to a higher level of care or irregular ending.,14.0,non_home_disposition,6.0,0.4962426722049713,0.002548841992393136
+V0240,uncomplicated_recovery,The patient recovers over 4 days and achieves a standard release (Release A).,5.0,extended_monitoring_recovery,2.0,0.008338677696883678,0.0015158982714638114
+V0241,non_home_disposition,The trace finishes with a Return ER disposition.,8.0,uncomplicated_recovery,4.0,0.11535555124282837,0.009072670713067055
+V0242,non_home_disposition,The case terminates with a Return ER disposition after a prolonged period.,6.0,uncomplicated_recovery,2.0,0.19072727859020233,0.17008475959300995
+V0243,care_escalation_during_stay,The trace shows an admission to standard care (Admission NC) followed by a transfer to intensive care (Admission IC).,21.0,non_home_disposition,15.0,0.4083655774593353,0.0673959031701088
+V0244,uncomplicated_recovery,The case proceeds to a standard release (Release A) in 7 days without care escalation.,9.0,extended_monitoring_recovery,3.0,0.12004808336496353,0.00020665327610913664
+V0245,uncomplicated_recovery,The case follows an uncomplicated 16-day recovery pattern to Release A.,14.0,extended_monitoring_recovery,6.0,0.14600910246372223,0.0007301903679035604
+V0246,care_escalation_during_stay,The trace shows an escalation of care via a transfer to intensive care (Admission IC) during the stay.,0.0,non_home_disposition,5.0,0.11283963173627853,0.0033577352296561003
+V0247,uncomplicated_recovery,The case leads to Release B in 11 days with no escalation of care or irregular outcome.,16.0,extended_monitoring_recovery,8.0,0.5229089856147766,0.008977153338491917
+V0248,care_escalation_during_stay,The trace includes a transfer to intensive care (Admission IC) representing a care escalation during the stay.,7.0,non_home_disposition,7.0,0.47433915734291077,0.006530774757266045
+V0249,uncomplicated_recovery,The patient recovers quickly in 2 days and is routinely released (Release A).,4.0,non_home_disposition,3.0,0.024953924119472504,0.005920404568314552
+V0250,non_home_disposition,The trace concludes with a Return ER disposition.,6.0,uncomplicated_recovery,3.0,0.025013575330376625,0.004371057264506817
+V0251,non_home_disposition,"The narrative ends with Return ER after an extended duration, representing an unplanned return or transfer/readmission pattern.",10.0,care_escalation_during_stay,4.0,0.12597280740737915,0.001728525967337191
+V0252,uncomplicated_recovery,The case follows a standard course ending in routine release with no escalation or excessive duration.,5.0,extended_monitoring_recovery,2.0,0.12041325122117996,0.00015850765339564532
+V0253,uncomplicated_recovery,Short stay ending in routine release without escalation or extended monitoring.,2.0,early_or_irregular_discharge,2.0,0.33770251274108887,0.22280971705913544
+V0254,non_home_disposition,"The trace ends with Release D, representing an alternative disposition from routine release.",21.0,extended_monitoring_recovery,9.0,0.4462986886501312,0.016454355791211128
+V0255,uncomplicated_recovery,Standard recovery course leading to routine release.,5.0,non_home_disposition,3.0,0.11279600858688354,0.00029615717357955873
+V0256,non_home_disposition,The trace ends in Return ER after a prolonged stay.,6.0,early_or_irregular_discharge,3.0,0.12920640408992767,0.002868368523195386
+V0257,care_escalation_during_stay,"The trace shows an admission to Intensive Care (Admission IC) after initial ER care, indicating a care escalation.",8.0,extended_monitoring_recovery,9.0,0.10757430642843246,0.0019075862364843488
+V0258,non_home_disposition,"The trace ends in Release B, an alternative discharge disposition.",7.0,uncomplicated_recovery,5.0,0.5075855851173401,0.0031843918841332197
+V0259,uncomplicated_recovery,Standard recovery and release without complications.,3.0,non_home_disposition,3.0,0.006023010704666376,0.00030552817042917013
+V0260,early_or_irregular_discharge,The trace is very short and terminates at IV Antibiotics without admission or full recovery discharge.,2.0,uncomplicated_recovery,1.0,0.0,0.009234319441020489
+V0261,non_home_disposition,The trace terminates in Return ER.,8.0,uncomplicated_recovery,4.0,0.0003742961271200329,0.002215833403170109
+V0262,non_home_disposition,The trace terminates in Return ER.,6.0,uncomplicated_recovery,3.0,0.03126328065991402,0.011144665069878101
+V0263,non_home_disposition,The trace terminates in Return ER.,5.0,extended_monitoring_recovery,3.0,0.005764141213148832,0.003922604024410248
+V0264,uncomplicated_recovery,Standard course with routine release.,5.0,extended_monitoring_recovery,2.0,0.11513686180114746,0.00047299955622293055
+V0265,non_home_disposition,The trace terminates in Return ER.,4.0,early_or_irregular_discharge,1.0,0.17871010303497314,0.1676412671804428
+V0266,uncomplicated_recovery,Standard course with routine release.,4.0,non_home_disposition,3.0,0.12734587490558624,0.001466432586312294
+V0267,uncomplicated_recovery,Standard course with routine release.,7.0,extended_monitoring_recovery,3.0,0.12786440551280975,0.001984952250495553
+V0268,early_or_irregular_discharge,The trace ends prematurely at Leucocytes without reaching a proper release activity.,5.0,uncomplicated_recovery,2.0,0.6887981295585632,0.07482597976922989
+V0269,non_home_disposition,The trace terminates in Return ER.,6.0,uncomplicated_recovery,1.0,0.024993298575282097,0.004350779112428427
+V0270,non_home_disposition,The trace terminates in Return ER.,7.0,extended_monitoring_recovery,3.0,0.017953254282474518,0.0026892637833952904
+V0271,care_escalation_during_stay,"The trace involves a transfer to Intensive Care (Admission IC), demonstrating care escalation.",8.0,non_home_disposition,7.0,0.4428095817565918,0.002882793778553605
+V0272,extended_monitoring_recovery,The trace shows a materially longer observation and monitoring period before final release.,6.0,uncomplicated_recovery,3.0,0.0012770274188369513,0.0007744086324237287
+V0273,non_home_disposition,"The trace ends in Release D, representing a non-routine disposition.",77.0,care_escalation_during_stay,43.0,0.5059302449226379,0.041752103716135025
+V0274,non_home_disposition,"The trace ends in Release C, an alternative discharge disposition.",8.0,uncomplicated_recovery,1.0,0.7008773684501648,0.33583006262779236
+V0275,care_escalation_during_stay,"The trace shows a transfer to Intensive Care (Admission IC), indicating an escalation in care intensity.",13.0,uncomplicated_recovery,12.0,0.1189369186758995,0.0017745723016560078
+V0276,uncomplicated_recovery,The case follows a standard course to routine release with normal monitoring and no care escalation.,5.0,extended_monitoring_recovery,2.0,0.010277840308845043,0.0034550598356872797
+V0277,non_home_disposition,"The trace ends in a return to the ER after a long gap, which represents a non-routine subsequent disposition or return event following discharge.",13.0,care_escalation_during_stay,8.0,0.15463393926620483,0.0021829388570040464
+V0278,uncomplicated_recovery,Proceeds directly through standard admission and tests to release with no escalations.,9.0,extended_monitoring_recovery,2.0,0.009967816062271595,1.248331227543531e-05
+V0279,non_home_disposition,"The outcome is a return to the ER following release, indicating a non-routine post-discharge disposition event.",7.0,extended_monitoring_recovery,4.0,0.0414956696331501,0.00259409355930984
+V0280,non_home_disposition,"The trace concludes with a return to the ER, denoting a non-routine disposition.",10.0,extended_monitoring_recovery,3.0,0.014670539647340775,0.0024149182718247175
+V0281,uncomplicated_recovery,Standard care path ending in routine release with typical duration.,8.0,extended_monitoring_recovery,6.0,0.018446197733283043,0.0035044762771576643
+V0282,uncomplicated_recovery,Follows standard admission and monitoring steps to a routine release.,7.0,non_home_disposition,3.0,0.010202514939010143,1.6643315348119359e-06
+V0283,non_home_disposition,"The trace ends in Return ER following release C, representing a non-home disposition / readmission pattern.",22.0,extended_monitoring_recovery,10.0,0.12566812336444855,0.01938524842262268
+V0284,non_home_disposition,"Ends in Return ER, representing a non-routine disposition status.",5.0,uncomplicated_recovery,4.0,0.1360616832971573,0.0012199891498312354
+V0285,uncomplicated_recovery,Standard recovery course leading to release A with repeat testing typical for this pathway.,11.0,extended_monitoring_recovery,6.0,0.14383536577224731,0.0002652652619872242
+V0286,uncomplicated_recovery,A short and direct path from initial assessment to release A.,7.0,early_or_irregular_discharge,3.0,0.335409015417099,0.008969211019575596
+V0287,,"The trace terminates prematurely at CRP without reaching a final discharge disposition, fitting none of the completed recovery categories.",,early_or_irregular_discharge,1.0,,0.0006569725810550153
+V0288,non_home_disposition,"Ends with Return ER, fitting the non-home/non-routine disposition pattern.",5.0,extended_monitoring_recovery,2.0,0.04377436637878418,0.00031539765768684447
+V0289,uncomplicated_recovery,Fast and uncomplicated stay ending in release A.,4.0,extended_monitoring_recovery,2.0,0.02434416674077511,0.005310647189617157
+V0290,non_home_disposition,The case ends with a Return ER event after release.,7.0,extended_monitoring_recovery,5.0,0.16376127302646637,0.0003389155026525259
+V0291,uncomplicated_recovery,Standard recovery path to release A with multiple administrative admission updates.,3.0,extended_monitoring_recovery,3.0,0.25548550486564636,0.05097861960530281
+V0292,,Trace terminates early at Leucocytes without reaching any discharge outcome.,,early_or_irregular_discharge,1.0,,0.03846624493598938
+V0293,uncomplicated_recovery,Short standard stay leading directly to routine release.,2.0,extended_monitoring_recovery,3.0,0.17530177533626556,0.16847898066043854
+V0294,uncomplicated_recovery,Follows standard monitoring and ward admission to a routine release.,5.0,extended_monitoring_recovery,3.0,0.11907102912664413,0.001183712505735457
+V0295,,The trace ends abruptly at IV Antibiotics before any discharge or disposition activity occurs.,,early_or_irregular_discharge,2.0,,0.049976129084825516
+V0296,non_home_disposition,The trace concludes with a Return ER event.,5.0,extended_monitoring_recovery,2.0,0.16699711978435516,0.021252373233437538
+V0297,non_home_disposition,Ends with a Return ER event following initial release.,5.0,uncomplicated_recovery,2.0,0.01884428597986698,0.001798231271095574
+V0298,uncomplicated_recovery,Standard sequence of emergency and ward care resulting in routine release.,3.0,extended_monitoring_recovery,3.0,0.006703153718262911,3.452698001638055e-05
+V0299,uncomplicated_recovery,Recovers within the ordinary stay pattern and achieves routine release A.,13.0,extended_monitoring_recovery,4.0,0.02620728500187397,0.0006092095864005387
+V0300,care_escalation_during_stay,"The trace clearly shows a transfer/admission to intensive care (Admission IC) during the stay, representing an escalation of care intensity.",13.0,non_home_disposition,8.0,0.4034622013568878,0.005703275557607412
+V0301,non_home_disposition,"The trace ends with Return ER after an initial release, which constitutes a non-home or unplanned readmission disposition event.",6.0,uncomplicated_recovery,3.0,0.024259673431515694,0.004141056910157204
+V0302,early_or_irregular_discharge,"The case terminates abruptly at ER Sepsis Triage with a very short duration (28m), representing an irregular and incomplete stay pattern.",4.0,uncomplicated_recovery,4.0,0.40095558762550354,0.38050761818885803
+V0303,non_home_disposition,"The narrative records a return to the emergency room (Return ER) following release, indicating a non-home disposition / readmission event.",4.0,uncomplicated_recovery,3.0,0.12798216938972473,0.004092599265277386
+V0304,uncomplicated_recovery,The case follows a standard course of admission and treatment before culminating in a routine release (Release A) without escalation or extension.,8.0,extended_monitoring_recovery,3.0,0.11328960210084915,0.002320260042324662
+V0305,early_or_irregular_discharge,"The trace halts at IV Antibiotics within 25 minutes, showing an irregular premature termination without full admission or standard discharge.",6.0,uncomplicated_recovery,4.0,0.07086283713579178,0.05041487514972687
+V0306,uncomplicated_recovery,The trace shows standard admission to non-critical care followed by a normal release (Release A) over a normal 7-day period.,7.0,early_or_irregular_discharge,3.0,0.17797087132930756,0.0013490665005519986
+V0307,non_home_disposition,"The patient experienced a routine stay followed by a Return ER event, placing it in the non-home disposition category.",4.0,uncomplicated_recovery,2.0,0.008691719733178616,0.003563901409506798
+V0308,non_home_disposition,"The case trace concludes with a Return ER event after release A, categorizing it under non-home disposition.",7.0,uncomplicated_recovery,2.0,0.15126121044158936,0.009890234097838402
+V0309,early_or_irregular_discharge,"The trace ends atypically with an Admission NC after a Release B within 3 hours, representing an irregular care flow.",6.0,uncomplicated_recovery,3.0,0.34798744320869446,0.3367060720920563
+V0310,uncomplicated_recovery,The case shows standard monitoring and inpatient care in normal care followed by a routine release (Release A).,6.0,extended_monitoring_recovery,2.0,0.11183203011751175,0.0021096807904541492
+V0311,care_escalation_during_stay,"The trace documents a transfer and care in the Intensive Care unit (Admission IC) after the ER phase, demonstrating escalation of care.",11.0,non_home_disposition,10.0,0.4646041691303253,0.0005516940727829933
+V0312,uncomplicated_recovery,"The patient recovers through standard inpatient observation and treatment, concluding with a normal release.",9.0,extended_monitoring_recovery,5.0,0.05563913658261299,0.0023564144503325224
+V0313,uncomplicated_recovery,"The case shows standard admission, non-critical care, and a standard alternative routine release (Release C) with no escalations.",6.0,non_home_disposition,4.0,0.4547615051269531,0.02167687751352787
+V0314,uncomplicated_recovery,The trajectory follows a standard inpatient stay and routine release (Release C) without complications.,9.0,extended_monitoring_recovery,5.0,0.47089847922325134,0.0055399625562131405
+V0315,care_escalation_during_stay,"The narrative shows an escalation to intensive care via Admission IC early in the stay, characteristic of care escalation.",18.0,non_home_disposition,13.0,0.10000566393136978,0.0065683177672326565
+V0316,uncomplicated_recovery,The stay proceeds through normal monitoring and inpatient care before concluding with a standard release (Release E).,6.0,extended_monitoring_recovery,3.0,0.48560667037963867,0.010885282419621944
+V0317,care_escalation_during_stay,"The trace includes multiple admissions to intensive care (Admission IC) during the course of the hospital stay, showing clear escalation.",152.0,non_home_disposition,94.0,0.4398590624332428,0.06708485633134842
+V0318,care_escalation_during_stay,The trace contains an escalation step with Admission IC following initial emergency and antibiotic treatment.,20.0,extended_monitoring_recovery,10.0,0.0917457565665245,0.010779652744531631
+V0319,extended_monitoring_recovery,The narrative features a notably prolonged sequence of repeated leucocytes checks over an extended duration before a standard release.,10.0,early_or_irregular_discharge,8.0,4.883500514551997e-05,0.002100270939990878
+V0320,non_home_disposition,"The case concludes with a Return ER event following release, fitting the non-home disposition criteria.",5.0,uncomplicated_recovery,3.0,0.24239486455917358,0.11190211027860641
+V0321,non_home_disposition,"The trace finishes with a Return ER event after release, indicating a non-home disposition.",7.0,extended_monitoring_recovery,4.0,0.17607317864894867,0.0014930098550394177
+V0322,early_or_irregular_discharge,The trace terminates abruptly at IV Antibiotics within an hour without completing admission or discharge steps.,5.0,uncomplicated_recovery,3.0,0.046934887766838074,0.026486925780773163
+V0323,uncomplicated_recovery,"A short, straightforward path through ER triage and a quick non-critical admission followed by a prompt routine release.",6.0,early_or_irregular_discharge,3.0,0.37475788593292236,0.00019302907458040863
+V0324,care_escalation_during_stay,"The trace records an admission to intensive care (Admission IC) after initial ER treatment, showing care escalation.",23.0,non_home_disposition,14.0,0.35528719425201416,0.00875528622418642
+V0325,early_or_irregular_discharge,The trace ends prematurely at IV Antibiotics within 1 hour without an admission or formal discharge sequence.,4.0,uncomplicated_recovery,3.0,0.37394389510154724,0.35349592566490173
+V0326,uncomplicated_recovery,The case follows a standard course to routine release with no care escalation or extended stay.,5.0,extended_monitoring_recovery,2.0,0.0061183772049844265,0.00022380879090633243
+V0327,non_home_disposition,"The final activity is Return ER, representing a non-routine subsequent event or disposition.",6.0,uncomplicated_recovery,3.0,0.13433797657489777,0.011406776495277882
+V0328,non_home_disposition,The trace ends with Return ER after an extended duration.,5.0,early_or_irregular_discharge,2.0,0.04595885053277016,0.008765158243477345
+V0329,extended_monitoring_recovery,The case involves extended monitoring and frequent repeated labs over 15 days before release.,13.0,non_home_disposition,7.0,0.11941424757242203,0.0002652652619872242
+V0330,,"The trace is incomplete, ending in IV Liquid without a final discharge disposition.",,early_or_irregular_discharge,2.0,,0.0027224996592849493
+V0331,extended_monitoring_recovery,The case shows a prolonged recovery with numerous repeated lab tests over 23 days before release.,11.0,uncomplicated_recovery,6.0,0.021046793088316917,0.010436493903398514
+V0332,uncomplicated_recovery,Short standard stay leading to Release B with no escalation.,4.0,extended_monitoring_recovery,3.0,0.7238542437553406,0.2784082293510437
+V0333,uncomplicated_recovery,Standard recovery course resulting in Release B over a moderate 5-day span.,15.0,care_escalation_during_stay,6.0,0.5007824301719666,0.002525369171053171
+V0334,care_escalation_during_stay,The trace shows an escalation to intensive care (Admission IC) followed by eventual release and return.,24.0,non_home_disposition,16.0,0.35413336753845215,0.009909099899232388
+V0335,non_home_disposition,The trace concludes with a Return ER disposition.,4.0,extended_monitoring_recovery,4.0,0.1511535793542862,0.005408839788287878
+V0336,,The trace terminates abruptly at CRP rather than ending in a complete discharge disposition.,,uncomplicated_recovery,1.0,,0.012756907381117344
+V0337,uncomplicated_recovery,Uncomplicated 4-day stay leading to Release A.,6.0,extended_monitoring_recovery,3.0,0.007675966713577509,0.0008531867642886937
+V0338,uncomplicated_recovery,Standard 7-day stay culminating in Release A.,5.0,care_escalation_during_stay,4.0,0.12313404679298401,0.000845684960950166
+V0339,care_escalation_during_stay,The trace includes multiple admissions to intensive care (Admission IC) indicating care escalation.,17.0,non_home_disposition,14.0,0.4165991246700287,0.06766699254512787
+V0340,uncomplicated_recovery,Straightforward 3-day recovery ending in Release A.,6.0,non_home_disposition,3.0,0.009285734966397285,0.0024629554245620966
+V0341,uncomplicated_recovery,Standard 5-day recovery ending in Release A.,6.0,extended_monitoring_recovery,2.0,0.11142746359109879,0.001705107162706554
+V0342,,Incomplete trace ending prematurely in CRP.,,early_or_irregular_discharge,2.0,,0.013402920216321945
+V0343,uncomplicated_recovery,Standard 9-day recovery sequence ending in Release A.,6.0,non_home_disposition,3.0,0.12815122306346893,0.0022717800457030535
+V0344,uncomplicated_recovery,"Extended observation with multiple repeat labs, but ultimately a routine Release B without care escalation.",13.0,non_home_disposition,4.0,0.3674434721469879,0.012289193458855152
+V0345,care_escalation_during_stay,The case exhibits an escalation to intensive care (Admission IC) mid-stay before finishing with Release A.,13.0,uncomplicated_recovery,10.0,0.0,0.0008627488859929144
+V0346,care_escalation_during_stay,The trace shows an escalation to intensive care (Admission IC) followed by a return to ER disposition.,11.0,extended_monitoring_recovery,9.0,0.41335514187812805,0.0025624819099903107
+V0347,non_home_disposition,The trace concludes with a Return ER disposition after a very long duration.,11.0,extended_monitoring_recovery,5.0,0.036336932331323624,0.0008567627519369125
+V0348,non_home_disposition,The trace ends with a Return ER disposition.,8.0,uncomplicated_recovery,4.0,0.18200792372226715,0.03626318275928497
+V0349,,Incomplete trace ending at ER Sepsis Triage.,,early_or_irregular_discharge,3.0,,0.33434319496154785
+V0350,non_home_disposition,The trace terminates in a Return ER disposition.,7.0,uncomplicated_recovery,1.0,0.36004066467285156,0.012618673034012318
+V0351,uncomplicated_recovery,The trace follows a standard course from ER admission through normal care to a standard release with no escalation or excessive length of stay.,6.0,early_or_irregular_discharge,2.0,0.34035250544548035,0.00012561735638882965
+V0352,non_home_disposition,"The narrative ends with a Return ER disposition, indicating a non-home or unplanned follow-up disposition pattern.",6.0,uncomplicated_recovery,3.0,0.12593062222003937,0.0196477472782135
+V0353,non_home_disposition,The narrative concludes with a Return ER event representing a non-home or readmission disposition.,4.0,early_or_irregular_discharge,2.0,0.03666405752301216,0.0005296347080729902
+V0354,care_escalation_during_stay,The case exhibits a transfer from normal care (Admission NC) to intensive care (Admission IC) during the stay.,14.0,extended_monitoring_recovery,11.0,0.029337838292121887,0.0007188001764006913
+V0355,care_escalation_during_stay,The sequence shows an admission to normal care followed by a subsequent escalation to intensive care (Admission IC).,5.0,uncomplicated_recovery,5.0,0.03146350011229515,0.0009999602334573865
+V0356,uncomplicated_recovery,"Despite a moderately extended stay duration, the trace follows normal care (Admission NC) without ICU transfer or escalation before regular release.",14.0,extended_monitoring_recovery,4.0,0.14609797298908234,0.004760923329740763
+V0357,non_home_disposition,"The process terminates with a Return ER event, constituting a non-routine post-discharge disposition.",5.0,extended_monitoring_recovery,2.0,0.11535817384719849,0.0005811529117636383
+V0358,non_home_disposition,"The trace ends with Return ER after release, matching the non-home disposition pattern.",5.0,uncomplicated_recovery,2.0,0.373150110244751,0.07989973574876785
+V0359,non_home_disposition,The final outcome is a Return ER event rather than a routine uncomplicated home discharge.,4.0,extended_monitoring_recovery,3.0,0.02135019563138485,0.0007076762267388403
+V0360,uncomplicated_recovery,The trace follows a standard care path to release without escalation or abnormal disposition.,4.0,early_or_irregular_discharge,3.0,0.33846166729927063,0.012021880596876144
+V0361,uncomplicated_recovery,"The stay is short and straightforward, proceeding from ER to normal care and standard release.",4.0,extended_monitoring_recovery,2.0,0.12827731668949127,0.003962207119911909
+V0362,uncomplicated_recovery,This case represents a standard recovery course leading to a normal release.,0.0,extended_monitoring_recovery,1.0,0.0008899430395103991,0.0019061536295339465
+V0363,uncomplicated_recovery,The patient recovers normally through standard care and is released without complications or escalation.,4.0,extended_monitoring_recovery,2.0,0.006793576758354902,2.9203385565779172e-05
+V0364,non_home_disposition,"The narrative concludes with a Return ER event, fitting the non-home/readmission disposition category.",5.0,early_or_irregular_discharge,3.0,0.02405668795108795,0.0034141691867262125
+V0365,early_or_irregular_discharge,The trace terminates prematurely at a diagnostic lab activity (Leucocytes) rather than a proper discharge or release outcome.,12.0,care_escalation_during_stay,6.0,0.7091967463493347,0.06894596666097641
+V0366,non_home_disposition,The narrative ends with a Return ER disposition.,7.0,uncomplicated_recovery,3.0,0.033018771559000015,0.011070993728935719
+V0367,care_escalation_during_stay,"The trace records an admission to intensive care (Admission IC) from the ER, representing a higher level of care.",16.0,non_home_disposition,12.0,0.44600000977516174,8.911366603570059e-05
+V0368,early_or_irregular_discharge,"The trace abruptly ends at Admission NC, representing an incomplete or irregular stay path.",2.0,uncomplicated_recovery,2.0,0.35855868458747864,0.33811071515083313
+V0369,non_home_disposition,The narrative ends in a Return ER outcome.,9.0,extended_monitoring_recovery,6.0,0.1451573669910431,0.0037863878533244133
+V0370,non_home_disposition,The process terminates with a Return ER event.,5.0,uncomplicated_recovery,5.0,0.1292852908372879,0.0015839594416320324
+V0371,uncomplicated_recovery,The patient is admitted to normal care and standardly released under alternative release labeling (Release B).,6.0,early_or_irregular_discharge,2.0,0.69908207654953,0.01688963733613491
+V0372,uncomplicated_recovery,The case follows an uncomplicated recovery path to release.,16.0,non_home_disposition,6.0,0.1980392336845398,0.000377224525436759
+V0373,uncomplicated_recovery,The process flows normally from ER through normal admission to release.,5.0,extended_monitoring_recovery,2.0,0.01307212095707655,0.0007724848110228777
+V0374,early_or_irregular_discharge,The trace stops abruptly at a laboratory test (Leucocytes) without reaching a formal discharge event.,5.0,uncomplicated_recovery,2.0,0.6941361427307129,0.06948789209127426
+V0375,care_escalation_during_stay,The narrative records an explicit escalation to intensive care (Admission IC) following initial normal care admission.,10.0,extended_monitoring_recovery,7.0,0.006358760874718428,0.000377224525436759
+V0376,extended_monitoring_recovery,The case recovers without care escalation but has a notably extended duration of 19 days before being released.,9.0,uncomplicated_recovery,3.0,0.4599118232727051,0.011736386455595493
+V0377,uncomplicated_recovery,Standard course of recovery over 5 days leading to routine release without escalation.,5.0,extended_monitoring_recovery,3.0,0.0009765513241291046,3.965921132476069e-05
+V0378,uncomplicated_recovery,Short uncomplicated emergency visit ending in IV antibiotics without further admission.,5.0,early_or_irregular_discharge,1.0,0.7677094340324402,0.00043937613372690976
+V0379,uncomplicated_recovery,Brief uncomplicated stay concluding promptly.,6.0,early_or_irregular_discharge,1.0,0.7789230346679688,0.0012578346068039536
+V0380,uncomplicated_recovery,Standard 4-day recovery and release.,6.0,early_or_irregular_discharge,4.0,0.33881208300590515,0.0014147924957796931
+V0381,uncomplicated_recovery,Typical 3-day recovery course leading to release.,5.0,extended_monitoring_recovery,1.0,0.1214611604809761,0.002853935584425926
+V0382,non_home_disposition,The trace concludes with a return to the ER rather than a standard home discharge disposition.,6.0,uncomplicated_recovery,3.0,0.15260009467601776,0.006855341140180826
+V0383,uncomplicated_recovery,Standard 3-day course ending in routine release.,5.0,extended_monitoring_recovery,3.0,0.3474462926387787,0.007219423074275255
+V0384,extended_monitoring_recovery,Extended 12-day hospital stay with intensive monitoring but no escalation to intensive care.,8.0,uncomplicated_recovery,6.0,0.4476298391819,0.013247284106910229
+V0385,non_home_disposition,Disposition ends with a return to the emergency room.,9.0,extended_monitoring_recovery,7.0,0.15960852801799774,0.018237542361021042
+V0386,non_home_disposition,Ends with a return to the ER following a very long duration.,4.0,extended_monitoring_recovery,3.0,0.01683046668767929,0.0038120506796985865
+V0387,extended_monitoring_recovery,Materially longer 16-day monitoring recovery period without care escalation.,2.0,uncomplicated_recovery,2.0,0.12094869464635849,0.000904570275451988
+V0388,uncomplicated_recovery,Standard 4-day recovery pattern.,8.0,early_or_irregular_discharge,4.0,0.007816414348781109,0.0009936344576999545
+V0389,uncomplicated_recovery,Short 2-day uncomplicated recovery course.,5.0,extended_monitoring_recovery,2.0,0.35363611578941345,0.015414985828101635
+V0390,uncomplicated_recovery,Typical 3-day recovery leading to release.,8.0,extended_monitoring_recovery,4.0,0.45824337005615234,0.012797337956726551
+V0391,care_escalation_during_stay,The trace explicitly shows a transfer/admission to intensive care (Admission IC) representing an escalation of care.,5.0,uncomplicated_recovery,2.0,0.12576155364513397,0.00046695745550096035
+V0392,uncomplicated_recovery,Standard 3-day hospital stay and release.,4.0,extended_monitoring_recovery,2.0,0.23852938413619995,0.11421427875757217
+V0393,extended_monitoring_recovery,Extended 15-day monitoring period with frequent labs but no care escalation.,16.0,uncomplicated_recovery,9.0,0.4525047242641449,0.0016007829690352082
+V0394,uncomplicated_recovery,Standard uncomplicated 3-day recovery.,5.0,non_home_disposition,3.0,0.014063115231692791,0.004970404785126448
+V0395,extended_monitoring_recovery,Slightly extended 7-day observation and recovery period without escalation.,5.0,uncomplicated_recovery,1.0,0.014175549149513245,1.248331227543531e-05
+V0396,extended_monitoring_recovery,Prolonged 6-day monitoring course without escalation.,7.0,uncomplicated_recovery,1.0,0.018736718222498894,0.00030406209407374263
+V0397,uncomplicated_recovery,Standard 4-day recovery trace.,7.0,extended_monitoring_recovery,5.0,0.11994161456823349,0.003443717723712325
+V0398,non_home_disposition,Ends in a return to the ER after a 23-day stay.,16.0,extended_monitoring_recovery,6.0,0.1349087506532669,0.010835991241037846
+V0399,uncomplicated_recovery,Very short uncomplicated visit ending in release.,6.0,extended_monitoring_recovery,3.0,0.7697564959526062,0.08756411075592041
+V0400,uncomplicated_recovery,Standard 4-day recovery and release.,3.0,extended_monitoring_recovery,2.0,0.17171669006347656,0.015005157329142094
+V0401,uncomplicated_recovery,The case follows a standard admission and periodic monitoring course ending in a routine release (Release B) without care escalation.,11.0,extended_monitoring_recovery,4.0,0.33617541193962097,0.02450079657137394
+V0402,extended_monitoring_recovery,The trace exhibits a notably extended observation and recovery duration before release relative to standard uncomplicated stays.,10.0,early_or_irregular_discharge,3.0,0.41063639521598816,0.0007239529513753951
+V0403,extended_monitoring_recovery,The stay duration is extended over multiple days with repeated lab monitoring before being discharged.,6.0,uncomplicated_recovery,3.0,0.5044012069702148,0.023435115814208984
+V0404,extended_monitoring_recovery,The case involves a prolonged stay spanning many days with multiple rounds of lab work before final discharge.,5.0,non_home_disposition,2.0,0.530917227268219,0.00026445588446222246
+V0405,uncomplicated_recovery,"The patient experiences a short, straightforward hospital stay and routine release without escalation.",5.0,extended_monitoring_recovery,4.0,0.024085266515612602,0.005051745567470789
+V0406,uncomplicated_recovery,A brief stay with standard admission and a quick release (Release A) representing an uncomplicated course.,3.0,extended_monitoring_recovery,2.0,0.17413626611232758,0.017424721270799637
+V0407,care_escalation_during_stay,"The trace shows an admission to an intensive care unit (Admission IC), which indicates an escalation of care intensity.",11.0,uncomplicated_recovery,3.0,0.5701256394386292,0.02208690159022808
+V0408,extended_monitoring_recovery,The case spans several weeks with ongoing monitoring before standard release.,6.0,non_home_disposition,2.0,0.3577602803707123,0.00030690510175190866
+V0409,extended_monitoring_recovery,The timeline shows a prolonged hospital course with extended monitoring prior to discharge.,8.0,uncomplicated_recovery,1.0,0.5127205848693848,0.0012199891498312354
+V0410,uncomplicated_recovery,The stay follows a standard diagnostic and inpatient monitoring pattern leading to release.,6.0,extended_monitoring_recovery,1.0,0.3392278850078583,0.005123061593621969
+V0411,extended_monitoring_recovery,The case requires extended observation and multiple repeated monitoring sequences over several days.,9.0,non_home_disposition,5.0,0.4489326477050781,0.06894596666097641
+V0412,extended_monitoring_recovery,The trace features a lengthy hospital stay with frequent repeated lab tests before the final release.,8.0,non_home_disposition,4.0,0.37192729115486145,0.00030588163645006716
+V0413,uncomplicated_recovery,"Despite the long total duration to a later return, the initial admission phase is short and uncomplicated.",7.0,non_home_disposition,1.0,0.7746941447257996,0.0002737457980401814
+V0414,extended_monitoring_recovery,The duration of the stay is extended with repeated testing over nearly a month before discharge.,7.0,non_home_disposition,2.0,0.36955609917640686,0.0005455769714899361
+V0415,early_or_irregular_discharge,"The trace ends abruptly at admission (Admission NC) after only 3 hours, representing an irregular or early truncation of the standard inpatient course.",5.0,uncomplicated_recovery,1.0,0.3427666425704956,0.33353233337402344
+V0416,uncomplicated_recovery,"A quick, uncomplicated stay leading directly to a routine release.",5.0,non_home_disposition,1.0,0.3642810881137848,0.010283737443387508
+V0417,early_or_irregular_discharge,"The trace loops back and terminates at ER Triage within a very short timeframe, representing an irregular disposition.",5.0,uncomplicated_recovery,3.0,0.7183837890625,0.6979358792304993
+V0418,extended_monitoring_recovery,The patient remains admitted for a prolonged period with multiple monitoring cycles before discharge.,3.0,non_home_disposition,2.0,0.37972041964530945,2.477323323546443e-05
+V0419,uncomplicated_recovery,The case follows a standard inpatient observation and discharge pathway.,3.0,non_home_disposition,2.0,0.006142985075712204,0.00018555410497356206
+V0420,uncomplicated_recovery,A standard recovery path with normal inpatient duration and routine release.,5.0,extended_monitoring_recovery,2.0,0.34111177921295166,0.0028906601946800947
+V0421,extended_monitoring_recovery,The timeline is marked by frequent repeated lab work and an extended duration prior to final release.,7.0,uncomplicated_recovery,4.0,0.4602081775665283,0.0074263704009354115
+V0422,care_escalation_during_stay,"The trace documents a transfer or admission to the intensive care unit (Admission IC), demonstrating an escalation of care.",6.0,non_home_disposition,5.0,0.4890052378177643,0.00043312355410307646
+V0423,extended_monitoring_recovery,The case involves a prolonged hospital stay with extended monitoring spanning nearly a month.,8.0,uncomplicated_recovery,4.0,0.4695380628108978,0.002548841992393136
+V0424,uncomplicated_recovery,"The trace shows standard emergency evaluation, admission, and routine release with minor ordering shifts.",4.0,non_home_disposition,2.0,0.6937889456748962,0.007256778422743082
+V0425,uncomplicated_recovery,A typical inpatient course with standard monitoring and timely routine release.,3.0,non_home_disposition,1.0,0.0036286020185798407,5.235307980910875e-05
+V0426,uncomplicated_recovery,The case follows a standard course to release with no care escalation or extended stay beyond the normal duration.,5.0,extended_monitoring_recovery,3.0,0.4581628739833832,0.018275557085871696
+V0427,non_home_disposition,"The trace ends in a Return ER event, which indicates a return to the facility rather than a routine discharge home.",8.0,uncomplicated_recovery,4.0,0.13288967311382294,0.0008149051573127508
+V0428,uncomplicated_recovery,The case follows a standard course to release with standard monitoring and no escalation of care.,11.0,extended_monitoring_recovery,7.0,0.3471280038356781,0.01663379743695259
+V0429,early_or_irregular_discharge,"The duration is exceptionally short (2 hours) ending directly after IV Antibiotics, suggesting an early or irregular discharge relative to standard inpatient treatment paths.",5.0,uncomplicated_recovery,2.0,0.02170579880475998,0.0012578346068039536
+V0430,uncomplicated_recovery,The case follows a standard path to Release A with no escalations or abnormal length.,8.0,extended_monitoring_recovery,4.0,0.12231665104627609,0.0019075862364843488
+V0431,uncomplicated_recovery,The case proceeds normally through standard admission and lab checks to Release A.,2.0,extended_monitoring_recovery,1.0,0.004114076495170593,0.002228109398856759
+V0432,care_escalation_during_stay,"The trace shows an admission to IC (Admission IC), which represents an escalation of care intensity during the stay.",11.0,uncomplicated_recovery,6.0,0.49842825531959534,0.0499676950275898
+V0433,uncomplicated_recovery,The trace represents a standard uncomplicated recovery course leading to Release C.,5.0,non_home_disposition,3.0,0.5286787152290344,0.16841638088226318
+V0434,uncomplicated_recovery,Standard progression with routine lab work and observation leading to Release A.,6.0,non_home_disposition,3.0,0.12786810100078583,0.001988658681511879
+V0435,care_escalation_during_stay,"The trace includes an Admission IC event after initial care, indicating a transfer to a higher level of care.",31.0,non_home_disposition,21.0,0.34980282187461853,0.006444255355745554
+V0436,uncomplicated_recovery,The case follows a normal inpatient course with regular monitoring leading to Release B.,8.0,care_escalation_during_stay,5.0,0.47505983710289,0.0016007829690352082
+V0437,care_escalation_during_stay,"The sequence includes an Admission IC event, denoting an escalation of care during the stay.",27.0,extended_monitoring_recovery,16.0,0.41775408387184143,0.0037863878533244133
+V0438,uncomplicated_recovery,The narrative shows a typical sequence of observations and lab checks followed by Release A.,14.0,non_home_disposition,5.0,0.02880186401307583,0.0008247224031947553
+V0439,extended_monitoring_recovery,"The case recovers without escalation, but has a materially longer duration (36 days) with extensive repetitive lab monitoring.",26.0,non_home_disposition,14.0,0.03383970260620117,0.0023564144503325224
+V0440,non_home_disposition,The patient's journey concludes with a Return ER event after release.,10.0,uncomplicated_recovery,5.0,0.16730481386184692,0.004328248091042042
+V0441,non_home_disposition,The trace ends with a Return ER event following release.,5.0,uncomplicated_recovery,1.0,0.058825161308050156,0.02163146622478962
+V0442,non_home_disposition,The trace concludes with a Return ER event.,6.0,extended_monitoring_recovery,3.0,0.12800130248069763,0.004073470365256071
+V0443,non_home_disposition,The trace ends with a Return ER event.,5.0,early_or_irregular_discharge,2.0,0.00347756571136415,0.0024740181397646666
+V0444,uncomplicated_recovery,The case follows a typical inpatient path to Release C with standard monitoring.,11.0,extended_monitoring_recovery,3.0,0.34965071082115173,0.014111104421317577
+V0445,uncomplicated_recovery,Standard recovery course without care escalation or unusual length before Release A.,5.0,extended_monitoring_recovery,2.0,0.11117160320281982,0.0014492528280243278
+V0446,uncomplicated_recovery,Normal sequence of admission and testing leading to Release A.,6.0,non_home_disposition,3.0,0.11343743652105331,0.0021724370308220387
+V0447,non_home_disposition,The trace ends in a Return ER event.,10.0,extended_monitoring_recovery,5.0,0.028330745175480843,0.0018295705085620284
+V0448,care_escalation_during_stay,"The trace includes an Admission IC event, indicating a transfer to intensive care during the hospital stay.",10.0,non_home_disposition,6.0,0.4712057113647461,0.0041177161037921906
+V0449,non_home_disposition,The trace concludes with a Return ER event.,6.0,early_or_irregular_discharge,4.0,0.17007815837860107,0.013261268846690655
+V0450,uncomplicated_recovery,The case follows a standard duration and recovery path to Release A.,4.0,extended_monitoring_recovery,1.0,0.004867727868258953,0.0005514020449481905
+V0451,uncomplicated_recovery,The case follows a standard course to routine discharge without care escalation or extended monitoring.,3.0,early_or_irregular_discharge,1.0,0.3405784070491791,0.012132844887673855
+V0452,extended_monitoring_recovery,The case involves a materially longer duration (18 days) with repeated monitoring but no care escalation.,23.0,uncomplicated_recovery,12.0,0.18072767555713654,0.0008627488859929144
+V0453,non_home_disposition,The narrative ends in a return to the ER rather than a routine home disposition.,11.0,extended_monitoring_recovery,4.0,0.13442663848400116,0.011318120174109936
+V0454,non_home_disposition,The narrative concludes with a return to the ER.,6.0,uncomplicated_recovery,1.0,0.13046172261238098,0.001613050582818687
+V0455,uncomplicated_recovery,The case shows standard recovery and release without complications or escalation.,5.0,non_home_disposition,1.0,0.1373797506093979,0.000579172105062753
+V0456,uncomplicated_recovery,"A short, uncomplicated stay leading directly to release.",4.0,extended_monitoring_recovery,2.0,0.11932890862226486,0.0028310175985097885
+V0457,care_escalation_during_stay,"The trace explicitly shows a transfer from Admission NC to Admission IC, representing an increase in care intensity.",15.0,extended_monitoring_recovery,12.0,0.0047465297393500805,0.00035307396319694817
+V0458,non_home_disposition,The narrative outcome is a return to the ER.,5.0,early_or_irregular_discharge,3.0,0.1803271770477295,0.16807156801223755
+V0459,uncomplicated_recovery,Standard course of recovery with routine release.,9.0,extended_monitoring_recovery,3.0,0.12316349148750305,0.0008751312852837145
+V0460,non_home_disposition,The narrative trace terminates in a return to the ER.,4.0,uncomplicated_recovery,2.0,0.15566043555736542,0.009915679693222046
+V0461,uncomplicated_recovery,Standard short duration stay leading to release.,6.0,non_home_disposition,3.0,0.1142301931977272,0.0017303420463576913
+V0462,,The outcome is an intermediate diagnostic activity (CRP) rather than a completed discharge or disposition.,,extended_monitoring_recovery,1.0,,0.0012781230034306645
+V0463,non_home_disposition,The trace concludes with a return to the ER.,7.0,early_or_irregular_discharge,2.0,0.3520452678203583,0.02061409316956997
+V0464,non_home_disposition,The trace ends with a return to the ER.,5.0,uncomplicated_recovery,3.0,0.18978214263916016,0.0017006737180054188
+V0465,uncomplicated_recovery,"Short, uncomplicated stay resulting in release.",5.0,extended_monitoring_recovery,4.0,0.010710672475397587,0.003887892933562398
+V0466,extended_monitoring_recovery,A prolonged stay of 16 days with repeated monitoring periods but no escalation.,6.0,uncomplicated_recovery,1.0,0.1211230680346489,0.0007301903679035604
+V0467,non_home_disposition,The narrative results in a return to the ER.,7.0,extended_monitoring_recovery,3.0,0.1459195613861084,0.00017481461691204458
+V0468,non_home_disposition,The trace ends in a return to the ER.,7.0,extended_monitoring_recovery,4.0,0.047552648931741714,0.0034628857392817736
+V0469,non_home_disposition,The narrative terminates with a return to the ER.,6.0,uncomplicated_recovery,4.0,0.13852091133594513,0.007223829627037048
+V0470,early_or_irregular_discharge,"The case results in Release D, which departs from the standard release pattern.",7.0,uncomplicated_recovery,1.0,0.7592465877532959,0.005123061593621969
+V0471,uncomplicated_recovery,Standard and straightforward course to release.,4.0,non_home_disposition,2.0,0.00908207893371582,0.0022592993918806314
+V0472,uncomplicated_recovery,Typical recovery process ending in release.,6.0,non_home_disposition,3.0,0.004927010741084814,0.00141517526935786
+V0473,non_home_disposition,The narrative concludes with a return to the ER.,5.0,uncomplicated_recovery,3.0,0.05095424875617027,0.0068644811399281025
+V0474,non_home_disposition,The trace ends with a return to the ER.,4.0,uncomplicated_recovery,2.0,0.0358038954436779,0.0013897987082600594
+V0475,uncomplicated_recovery,Standard course of recovery ending in release.,4.0,extended_monitoring_recovery,3.0,0.007037817034870386,0.00016508693806827068
+V0476,non_home_disposition,"The trace ends with a Return ER, indicating a non-routine subsequent disposition/revisit pattern captured under non-home disposition.",4.0,early_or_irregular_discharge,3.0,0.18571001291275024,0.16826583445072174
+V0477,uncomplicated_recovery,The case follows a standard course to routine release (Release A) with a typical duration of 7 days and no care escalation.,7.0,extended_monitoring_recovery,5.0,0.12040794640779495,0.00015320438251364976
+V0478,uncomplicated_recovery,The case follows an uncomplicated path to routine release (Release A) within a standard 4-day stay.,10.0,non_home_disposition,4.0,0.11311913281679153,0.0006192824221216142
+V0479,non_home_disposition,"The trace concludes with a Return ER after discharge, fitting the non-home disposition category.",3.0,early_or_irregular_discharge,2.0,0.048339828848838806,0.004250064957886934
+V0480,uncomplicated_recovery,The case follows a standard recovery course to Release A within a typical 7-day duration.,5.0,extended_monitoring_recovery,4.0,0.011141031049191952,0.0008736297022551298
+V0481,extended_monitoring_recovery,The trace shows an extended observation period and duration of 11 days before release without care escalation.,6.0,uncomplicated_recovery,2.0,0.11195328831672668,8.926032023737207e-05
+V0482,non_home_disposition,"The case results in a Return ER following discharge, representing a non-home disposition event.",9.0,uncomplicated_recovery,4.0,0.1515883356332779,0.005843583028763533
+V0483,extended_monitoring_recovery,The case shows a materially longer observation/stay duration (36 days) before discharge without an escalation of care.,26.0,non_home_disposition,13.0,0.47843948006629944,0.02753552980720997
+V0484,non_home_disposition,The trace ends with a Return ER following a prolonged 62-day stay.,8.0,early_or_irregular_discharge,5.0,0.1720970869064331,0.0017211405793204904
+V0485,care_escalation_during_stay,The narrative explicitly includes a transfer to a higher level of care (Admission IC) during the stay.,20.0,extended_monitoring_recovery,14.0,0.008977933786809444,0.0029963974375277758
+V0486,extended_monitoring_recovery,The trace shows an extended recovery period with an 18-day stay leading to Release D without care escalation.,9.0,uncomplicated_recovery,5.0,0.45840001106262207,0.01688617654144764
+V0487,uncomplicated_recovery,The trace exhibits a standard recovery path and duration (11 days) to Release A with no escalation.,7.0,extended_monitoring_recovery,4.0,0.18993759155273438,0.0023901795502752066
+V0488,early_or_irregular_discharge,"The trace terminates abruptly at IV Liquid in the ER within 2 hours, representing an irregular or incomplete admission/stay path.",3.0,uncomplicated_recovery,3.0,0.3593558967113495,0.338907927274704
+V0489,uncomplicated_recovery,The case follows a straightforward course to routine release (Release A) in 5 days.,7.0,early_or_irregular_discharge,3.0,0.33677056431770325,0.010330765508115292
+V0490,uncomplicated_recovery,The trace shows a standard course to Release A within an ordinary 5-day duration.,7.0,extended_monitoring_recovery,3.0,0.16721653938293457,0.0017042838735505939
+V0491,uncomplicated_recovery,The case follows an uncomplicated 4-day recovery course leading to Release A.,2.0,extended_monitoring_recovery,1.0,0.009011242538690567,0.002188462531194091
+V0492,early_or_irregular_discharge,The trace ends prematurely at IV Liquid within 1 day without proceeding to admission or standard discharge.,5.0,uncomplicated_recovery,3.0,0.7135587334632874,0.33516204357147217
+V0493,extended_monitoring_recovery,The trace shows an extended monitoring period resulting in a 10-day stay leading to Release B.,8.0,uncomplicated_recovery,2.0,0.3356682360172272,0.006430448964238167
+V0494,uncomplicated_recovery,The case follows an uncomplicated recovery course to Release A within 6 days.,9.0,non_home_disposition,3.0,0.007567247841507196,0.00020986347226426005
+V0495,early_or_irregular_discharge,The trace ends prematurely after 4 hours at IV Antibiotics without an inpatient admission or regular discharge.,5.0,uncomplicated_recovery,3.0,0.00874275527894497,0.0004915641620755196
+V0496,uncomplicated_recovery,The trace shows a standard 5-day recovery course leading to Release A.,7.0,non_home_disposition,4.0,0.11497685313224792,0.0020184314344078302
+V0497,non_home_disposition,"The trace concludes with a Return ER, indicating a non-home disposition outcome.",7.0,uncomplicated_recovery,2.0,0.39483800530433655,0.0014986841706559062
+V0498,extended_monitoring_recovery,The case features a materially longer observation and stay duration (21 days) before final release without care escalation.,9.0,uncomplicated_recovery,5.0,0.35169318318367004,0.026362581178545952
+V0499,uncomplicated_recovery,The case follows a standard course to Release A within a typical 4-day duration.,7.0,extended_monitoring_recovery,3.0,0.1177346408367157,0.0012367432937026024
+V0500,uncomplicated_recovery,"The trace shows a brief, uncomplicated 3-day recovery course leading to Release A.",6.0,care_escalation_during_stay,4.0,0.17647142708301544,0.019759902730584145
+V0501,,"The trace stops at IV Liquid without reaching a final discharge or release outcome, making it incomplete regarding disposition.",,uncomplicated_recovery,2.0,,0.0017544151050969958
+V0502,,The trace terminates at Admission NC without a complete hospital stay or disposition outcome.,,early_or_irregular_discharge,1.0,,0.0028816284611821175
+V0503,uncomplicated_recovery,The case follows a standard admission and uncomplicated course leading to a routine release (Release B) in about 1 day.,5.0,early_or_irregular_discharge,1.0,0.7106650471687317,0.02847270667552948
+V0504,non_home_disposition,The trace ends in a Return ER disposition after a prolonged stay.,3.0,uncomplicated_recovery,2.0,0.019811712205410004,0.00030690510175190866
+V0505,non_home_disposition,The trace ends with a Return ER disposition.,2.0,extended_monitoring_recovery,1.0,0.011915832757949829,0.00033978806459344923
+V0506,extended_monitoring_recovery,"The patient recovers without escalation, but the stay spans 4 days with repeated lab monitoring before release.",5.0,uncomplicated_recovery,1.0,0.03082447499036789,3.452698001638055e-05
+V0507,,The trace ends abruptly at IV Antibiotics without an admission or final disposition.,,early_or_irregular_discharge,2.0,,9.540599421598017e-05
+V0508,non_home_disposition,The trace concludes with a Return ER disposition following an extended stay of 86 days.,10.0,uncomplicated_recovery,5.0,0.014682210050523281,0.0024265889078378677
+V0509,extended_monitoring_recovery,The case recovers over 5 days with extended monitoring but no care escalation.,5.0,early_or_irregular_discharge,1.0,0.02313963882625103,3.965921132476069e-05
+V0510,,The trace ends at IV Antibiotics with no admission or discharge recorded.,,early_or_irregular_discharge,1.0,,0.002677004085853696
+V0511,extended_monitoring_recovery,"The case involves a prolonged 19-day stay with extensive monitoring and repeat admissions, concluding in release without care escalation.",10.0,uncomplicated_recovery,7.0,0.18209916353225708,0.0022342444863170385
+V0512,extended_monitoring_recovery,The case exhibits extended monitoring over 4 days before final release.,7.0,uncomplicated_recovery,3.0,0.14065374433994293,4.095812619198114e-05
+V0513,extended_monitoring_recovery,The case recovers over 3 days with multiple monitoring checks before release.,7.0,uncomplicated_recovery,1.0,0.1484709531068802,0.000416420865803957
+V0514,extended_monitoring_recovery,The stay is extended to 15 days with repeated laboratory testing and monitoring prior to release.,6.0,non_home_disposition,4.0,0.1190284863114357,4.843600436288398e-06
+V0515,non_home_disposition,The trace concludes with a Return ER disposition after an extensive stay.,9.0,uncomplicated_recovery,4.0,0.12787604331970215,0.004198729060590267
+V0516,,The trace ends prematurely at Leucocytes without reaching a discharge or completion state.,,early_or_irregular_discharge,6.0,,0.03983199968934059
+V0517,,The trace stops at ER Triage without any admission or disposition.,,early_or_irregular_discharge,1.0,,0.004662918392568827
+V0518,uncomplicated_recovery,The case follows a brief 2-day recovery course leading directly to Release A.,5.0,early_or_irregular_discharge,2.0,0.0225556418299675,0.003522123210132122
+V0519,non_home_disposition,The trace ends in a Return ER disposition after a 10-day duration.,5.0,uncomplicated_recovery,2.0,0.15780718624591827,0.012062436901032925
+V0520,non_home_disposition,The trace concludes with a Return ER disposition.,5.0,early_or_irregular_discharge,1.0,0.2761155068874359,0.13037075102329254
+V0521,extended_monitoring_recovery,The case has a 6-day duration with multiple monitoring steps and repeat admissions before release.,10.0,uncomplicated_recovery,4.0,0.12857908010482788,0.00010127588757313788
+V0522,extended_monitoring_recovery,The case involves a 16-day extended monitoring and recovery period ending in Release B.,16.0,non_home_disposition,9.0,0.510611355304718,0.0028811332304030657
+V0523,extended_monitoring_recovery,The case spans 8 days with considerable monitoring and repeat clinical steps prior to release.,5.0,uncomplicated_recovery,4.0,0.17720496654510498,0.0056012780405581
+V0524,extended_monitoring_recovery,The case shows an extended recovery period over 7 days with repeated monitoring before release.,3.0,uncomplicated_recovery,2.0,0.013951669447124004,1.6643315348119359e-06
+V0525,extended_monitoring_recovery,The stay lasts 7 days with multiple monitoring checks before final release.,7.0,uncomplicated_recovery,1.0,0.18086738884449005,0.0013490665005519986
+V0526,non_home_disposition,"The trace ends with Return ER after an extended duration, representing a non-routine/non-home disposition or return event.",5.0,uncomplicated_recovery,3.0,0.15879297256469727,0.004301460459828377
+V0527,uncomplicated_recovery,The case follows a standard course leading to Release A without care escalation or extended monitoring.,9.0,extended_monitoring_recovery,4.0,0.17396414279937744,0.0007188001764006913
+V0528,non_home_disposition,The trace ends with Return ER following multiple rounds of testing and readmission.,10.0,care_escalation_during_stay,6.0,0.17983710765838623,0.005256932694464922
+V0529,non_home_disposition,The trace concludes with Return ER.,4.0,early_or_irregular_discharge,3.0,0.03888537362217903,0.0016916814493015409
+V0530,non_home_disposition,The trace concludes with Return ER.,8.0,early_or_irregular_discharge,5.0,0.11468753963708878,0.001251789159141481
+V0531,care_escalation_during_stay,"The trace shows an escalation to intensive care (Admission IC) during the stay, followed by eventual release and a return to ER.",9.0,non_home_disposition,5.0,0.48339176177978516,0.08375833183526993
+V0532,uncomplicated_recovery,The case follows a routine course to Release A.,7.0,extended_monitoring_recovery,2.0,0.009744476526975632,0.00023582276480738074
+V0533,uncomplicated_recovery,Standard care path leading to Release A.,3.0,early_or_irregular_discharge,2.0,0.02120237983763218,0.0016244575381278992
+V0534,uncomplicated_recovery,Short standard recovery leading to Release A.,5.0,extended_monitoring_recovery,3.0,0.1137971580028534,0.0012973081320524216
+V0535,non_home_disposition,The case culminates in Return ER.,6.0,extended_monitoring_recovery,3.0,0.01918012462556362,0.0014623937895521522
+V0536,uncomplicated_recovery,Standard recovery path to Release A.,5.0,extended_monitoring_recovery,3.0,0.1128060594201088,0.0003062072501052171
+V0537,uncomplicated_recovery,Standard recovery path to Release A.,6.0,non_home_disposition,4.0,0.006366938818246126,2.4753004254307598e-05
+V0538,extended_monitoring_recovery,The trace shows a materially longer observation and repeated testing period before final release.,11.0,uncomplicated_recovery,7.0,0.12487424165010452,0.0030209843534976244
+V0539,non_home_disposition,The trace ends with a Return ER event.,5.0,extended_monitoring_recovery,2.0,0.13837502896785736,0.007369715720415115
+V0540,uncomplicated_recovery,Short stay leading to standard Release B.,8.0,non_home_disposition,4.0,0.4553097188472748,0.009863734245300293
+V0541,uncomplicated_recovery,Very straightforward and short stay leading to Release A.,5.0,extended_monitoring_recovery,2.0,0.34348639845848083,0.003259520046412945
+V0542,care_escalation_during_stay,"The trace includes an Admission IC, demonstrating a care escalation to intensive care.",8.0,uncomplicated_recovery,5.0,0.11991427093744278,0.0007972149760462344
+V0543,non_home_disposition,The trace features care escalation via Admission IC and concludes with a Return ER.,20.0,care_escalation_during_stay,14.0,0.1368706375360489,0.004500335548073053
+V0544,uncomplicated_recovery,Standard recovery course to Release A.,6.0,extended_monitoring_recovery,2.0,0.004421591758728027,0.0019205943681299686
+V0545,extended_monitoring_recovery,The recovery period involves extended monitoring and repeated lab draws over several days prior to release.,6.0,non_home_disposition,1.0,0.013888447545468807,6.488679355243221e-05
+V0546,non_home_disposition,The case ends in Return ER.,4.0,uncomplicated_recovery,3.0,0.017479175701737404,0.0026394398882985115
+V0547,extended_monitoring_recovery,The trace exhibits an exceptionally long and heavily repeated monitoring sequence prior to final release.,15.0,uncomplicated_recovery,10.0,0.4465087950229645,0.0043951538391411304
+V0548,extended_monitoring_recovery,Includes extended observation and multiple repeated interventions before release.,8.0,non_home_disposition,5.0,0.18099312484264374,0.0018131313845515251
+V0549,early_or_irregular_discharge,"The trace terminates abruptly at IV Liquid without reaching a standard discharge or release activity, representing an irregular or incomplete course.",3.0,uncomplicated_recovery,3.0,0.38073495030403137,0.3337417542934418
+V0550,early_or_irregular_discharge,"An unusually brief stay (5 hours) ending in Release B, indicative of an early or irregular discharge.",7.0,uncomplicated_recovery,3.0,0.6679090857505798,0.057794537395238876
+V0551,care_escalation_during_stay,The trace shows an escalation of care from Admission NC to Admission IC before eventually being released.,67.0,extended_monitoring_recovery,41.0,0.015345080755650997,0.013110836036503315
+V0552,uncomplicated_recovery,The case follows a standard recovery course to Release B without care escalation or extended observation outliers.,15.0,extended_monitoring_recovery,6.0,0.34872379899024963,0.006268240977078676
+V0553,care_escalation_during_stay,The case starts with normal care and later includes an escalation to Admission IC.,15.0,uncomplicated_recovery,8.0,0.3474853038787842,0.08387475460767746
+V0554,uncomplicated_recovery,Standard recovery course leading to a routine release.,4.0,extended_monitoring_recovery,2.0,0.12003320455551147,0.00022154040925670415
+V0555,uncomplicated_recovery,Uncomplicated stay ending in Release B.,5.0,non_home_disposition,4.0,0.5028363466262817,0.18548905849456787
+V0556,non_home_disposition,"The trace ends in a return to the emergency room, representing a non-routine final disposition.",5.0,uncomplicated_recovery,4.0,0.1452712118625641,0.0004735417023766786
+V0557,uncomplicated_recovery,Standard recovery and discharge without escalation.,5.0,extended_monitoring_recovery,3.0,0.13469567894935608,2.0134490114287473e-05
+V0558,non_home_disposition,The trace terminates with a Return ER event.,5.0,uncomplicated_recovery,3.0,0.0035534400958567858,0.0017119027907028794
+V0559,non_home_disposition,The trace terminates with a Return ER event.,6.0,uncomplicated_recovery,4.0,0.11565957218408585,0.009376696310937405
+V0560,non_home_disposition,The trace terminates with a Return ER event.,7.0,extended_monitoring_recovery,3.0,0.015988195315003395,0.002970167202875018
+V0561,uncomplicated_recovery,Uncomplicated recovery leading to Release A.,8.0,non_home_disposition,4.0,0.012245412915945053,5.4223619372351095e-05
+V0562,uncomplicated_recovery,Uncomplicated recovery leading to Release A.,6.0,non_home_disposition,4.0,0.014026809483766556,0.0006850975914858282
+V0563,care_escalation_during_stay,Shows escalation to Admission IC during the stay.,10.0,extended_monitoring_recovery,7.0,0.035099953413009644,0.0015447637997567654
+V0564,non_home_disposition,The trace terminates with a Return ER event.,6.0,uncomplicated_recovery,3.0,0.11906829476356506,0.012785417027771473
+V0565,early_or_irregular_discharge,"The trace ends abruptly at Admission NC with a very short duration, indicating an incomplete or irregular trajectory.",6.0,uncomplicated_recovery,3.0,0.33585599064826965,0.3450902998447418
+V0566,uncomplicated_recovery,Standard course leading to Release A.,8.0,non_home_disposition,4.0,0.1279674917459488,0.002088045934215188
+V0567,non_home_disposition,The trace terminates with a Return ER event.,4.0,uncomplicated_recovery,2.0,0.03500717878341675,0.0015257193008437753
+V0568,uncomplicated_recovery,Standard recovery course to Release A.,10.0,extended_monitoring_recovery,7.0,0.1876494437456131,0.00010202472185483202
+V0569,uncomplicated_recovery,Standard recovery course to Release A.,4.0,extended_monitoring_recovery,1.0,0.11421383172273636,0.001396035891957581
+V0570,uncomplicated_recovery,Standard recovery course to Release A.,15.0,non_home_disposition,4.0,0.1393546760082245,0.0013957590563222766
+V0571,care_escalation_during_stay,Includes an escalation to Admission IC.,20.0,uncomplicated_recovery,14.0,0.3388013541698456,0.0028811332304030657
+V0572,care_escalation_during_stay,Includes an escalation to Admission IC.,14.0,non_home_disposition,9.0,0.08817658573389053,0.007210491690784693
+V0573,non_home_disposition,The trace terminates with a Return ER event.,7.0,uncomplicated_recovery,4.0,0.14318007230758667,0.0025646749418228865
+V0574,care_escalation_during_stay,Includes an escalation to Admission IC.,11.0,uncomplicated_recovery,9.0,0.03867353871464729,0.0018692994490265846
+V0575,early_or_irregular_discharge,The trace terminates abruptly at Leucocytes without reaching a discharge or release outcome.,4.0,uncomplicated_recovery,2.0,0.6942143440246582,0.06940972059965134
+V0576,uncomplicated_recovery,"The case follows a standard admission, monitoring, and treatment course ending in Release A without any notable escalation or unusual delays.",8.0,extended_monitoring_recovery,5.0,0.12528888881206512,0.0009737925720401108
+V0577,non_home_disposition,"The trace ends in a Return ER outcome after a lengthy 61-day duration, representing a non-routine subsequent disposition/readmission pattern.",11.0,uncomplicated_recovery,9.0,0.11565148830413818,0.00028784008463844657
+V0578,non_home_disposition,The trace ends in a Return ER disposition after 21 days.,0.0,early_or_irregular_discharge,2.0,0.02573569305241108,0.005617077928036451
+V0579,care_escalation_during_stay,"The trace includes a transfer from Admission NC to Admission IC, indicating an escalation of care during the stay.",41.0,extended_monitoring_recovery,26.0,0.37259411811828613,0.0010164988925680518
+V0580,early_or_irregular_discharge,The trace ends abruptly with a diagnostic activity (CRP) rather than a standard final disposition or release.,4.0,extended_monitoring_recovery,2.0,0.6836293339729309,0.36109861731529236
+V0581,non_home_disposition,The trace concludes with a Return ER outcome following discharge.,6.0,uncomplicated_recovery,4.0,0.1372026950120926,0.00854205060750246
+V0582,uncomplicated_recovery,The case follows a typical recovery path with standard monitoring and concludes with Release A in 6 days.,3.0,extended_monitoring_recovery,2.0,0.17222285270690918,0.16680371761322021
+V0583,uncomplicated_recovery,The case follows an uncomplicated recovery course ending in Release A.,4.0,extended_monitoring_recovery,3.0,0.11790025234222412,0.00010127588757313788
+V0584,early_or_irregular_discharge,The trace ends with IV Liquid instead of a formal discharge or release disposition.,6.0,uncomplicated_recovery,3.0,0.3807031214237213,0.33377358317375183
+V0585,early_or_irregular_discharge,The trace terminates in a LacticAcid test rather than a release or discharge event.,4.0,uncomplicated_recovery,2.0,0.355328232049942,0.3348802626132965
+V0586,uncomplicated_recovery,The patient recovers with standard monitoring and is discharged with Release B.,4.0,extended_monitoring_recovery,3.0,0.34054112434387207,0.014450944028794765
+V0587,early_or_irregular_discharge,The trace ends prematurely at a CRP measurement without a final disposition.,2.0,uncomplicated_recovery,2.0,0.6699479222297668,0.4022698402404785
+V0588,non_home_disposition,The trace ends with a Return ER event after a prolonged stay.,13.0,uncomplicated_recovery,5.0,0.11675861477851868,0.004931775387376547
+V0589,uncomplicated_recovery,The patient follows a normal recovery path and receives Release B.,8.0,non_home_disposition,6.0,0.45853838324546814,0.002882793778553605
+V0590,non_home_disposition,The trace concludes with a Return ER outcome after an extended duration.,5.0,early_or_irregular_discharge,4.0,0.1390097737312317,0.0041680773720145226
+V0591,non_home_disposition,The trace ends with a Return ER outcome following release.,5.0,early_or_irregular_discharge,2.0,0.382169246673584,0.007256778422743082
+V0592,early_or_irregular_discharge,The trace terminates at IV Antibiotics without completing a full admission or release course.,3.0,uncomplicated_recovery,2.0,0.04466934874653816,0.024221383035182953
+V0593,uncomplicated_recovery,The case displays a straightforward recovery and concludes with Release A.,7.0,non_home_disposition,3.0,0.016634829342365265,0.0016931082354858518
+V0594,uncomplicated_recovery,The case follows an ordinary course of care leading to Release B.,8.0,care_escalation_during_stay,5.0,0.5180169939994812,0.002648193622007966
+V0595,non_home_disposition,The case has an extremely long duration ending in a Return ER outcome.,5.0,early_or_irregular_discharge,3.0,0.21115154027938843,0.0016271689673885703
+V0596,uncomplicated_recovery,The trace shows a standard recovery trajectory leading to Release A.,7.0,non_home_disposition,4.0,0.0021288858260959387,5.243751729722135e-06
+V0597,care_escalation_during_stay,"The trace records an explicit transfer to Admission IC, indicating care escalation during the stay.",9.0,extended_monitoring_recovery,7.0,0.016473351046442986,0.00010202472185483202
+V0598,extended_monitoring_recovery,"The case recovers without care escalation, but features a heavily extended series of monitoring checks over 29 days before Release E.",13.0,non_home_disposition,9.0,0.4723360538482666,0.010885282419621944
+V0599,uncomplicated_recovery,The case follows a standard short-term recovery pattern to Release A.,6.0,non_home_disposition,2.0,0.014332279562950134,0.004701240453869104
+V0600,care_escalation_during_stay,"The trace includes a move to Admission IC, demonstrating an escalation of care intensity during the stay.",19.0,uncomplicated_recovery,15.0,0.0070882439613342285,0.0011067080777138472
+V0601,uncomplicated_recovery,The case follows a standard course of admission and routine monitoring leading to discharge (Release C) after 7 days without care escalation.,5.0,extended_monitoring_recovery,2.0,0.3436432182788849,0.020118551328778267
+V0602,extended_monitoring_recovery,"The trace shows a stay with initial intensive care admission followed by multiple rounds of normal care and testing, resulting in a materially longer duration (10 days) before discharge.",8.0,uncomplicated_recovery,5.0,0.5031368136405945,0.041752103716135025
+V0603,extended_monitoring_recovery,Extended hospital stay spanning 22 days of observations and lab testing without an explicit escalation event before final release.,8.0,uncomplicated_recovery,2.0,0.3532376289367676,0.11400905251502991
+V0604,extended_monitoring_recovery,"Recovery without escalation, but with repeated testing and an extended duration of 12 days prior to release.",3.0,non_home_disposition,2.0,0.0014422264648601413,0.0006092095864005387
+V0605,non_home_disposition,"The trace features a return to the emergency room after a very long span (422d), indicating an irregular follow-up or readmission event captured as a non-home disposition outcome.",9.0,care_escalation_during_stay,6.0,0.17169003188610077,0.014873138628900051
+V0606,uncomplicated_recovery,Standard course with admission to non-critical care and quick release within 4 days.,5.0,non_home_disposition,3.0,0.0043815732933580875,0.001960612600669265
+V0607,uncomplicated_recovery,Standard sequence with typical duration (4 days) and routine release.,7.0,non_home_disposition,4.0,0.11506392806768417,0.0013182885013520718
+V0608,uncomplicated_recovery,Routine stay length of 6 days with no care escalation prior to release.,6.0,extended_monitoring_recovery,2.0,0.11894441395998001,0.0011454381747171283
+V0609,uncomplicated_recovery,Standard diagnostic and monitoring pattern leading to release within 6 days.,8.0,extended_monitoring_recovery,3.0,0.007433183956891298,7.579994417028502e-05
+V0610,uncomplicated_recovery,Short uncomplicated course resulting in release after 5 days.,5.0,extended_monitoring_recovery,2.0,0.11299800872802734,0.0026118624955415726
+V0611,extended_monitoring_recovery,Prolonged monitoring period spanning 15 days of repeated laboratory testing before final discharge.,8.0,uncomplicated_recovery,6.0,0.17476533353328705,0.00035307396319694817
+V0612,uncomplicated_recovery,Standard care process and duration (4 days) leading to release.,5.0,extended_monitoring_recovery,1.0,0.1167798712849617,0.0002819833462126553
+V0613,uncomplicated_recovery,Short and uncomplicated stay of 3 days ending in routine release.,4.0,extended_monitoring_recovery,2.0,0.18102677166461945,0.02431524358689785
+V0614,non_home_disposition,"The case ends with a return to the ER after a long interval (161 days), representing a non-routine outcome.",6.0,early_or_irregular_discharge,2.0,0.36612817645072937,0.0065311710350215435
+V0615,non_home_disposition,"The trace concludes with a return to the ER following release, indicating a non-home or adverse disposition pattern.",4.0,uncomplicated_recovery,2.0,0.026751553639769554,0.0034087628591805696
+V0616,uncomplicated_recovery,Typical 5-day recovery without critical care escalation.,2.0,non_home_disposition,2.0,0.16844433546066284,0.008177468553185463
+V0617,uncomplicated_recovery,Short stay of 3 days ending in routine discharge.,5.0,extended_monitoring_recovery,3.0,0.12473151832818985,0.000416420865803957
+V0618,extended_monitoring_recovery,Extended monitoring period lasting 15 days with repetitive tests before release.,8.0,uncomplicated_recovery,5.0,0.45228251814842224,0.004107105545699596
+V0619,uncomplicated_recovery,Standard 4-day stay with no escalations.,4.0,extended_monitoring_recovery,1.0,0.17174993455410004,0.015038383193314075
+V0620,uncomplicated_recovery,Typical 5-day recovery course leading to release.,5.0,extended_monitoring_recovery,3.0,0.11113516241312027,0.00038276027771644294
+V0621,early_or_irregular_discharge,"Extremely short stay of 8 hours with an intensive care admission (Admission IC), suggesting an early or rapid irregular discharge course.",6.0,uncomplicated_recovery,3.0,0.6810682415962219,0.04457711800932884
+V0622,extended_monitoring_recovery,Extensive lab testing and long monitoring phase totaling 9 days before final release.,18.0,care_escalation_during_stay,10.0,0.11849910765886307,0.0015616616001352668
+V0623,uncomplicated_recovery,Routine 3-day hospital stay ending in normal release.,4.0,extended_monitoring_recovery,1.0,0.012010928243398666,0.005188148934394121
+V0624,uncomplicated_recovery,Standard recovery process over 5 days.,4.0,extended_monitoring_recovery,2.0,0.1704655885696411,0.0015447637997567654
+V0625,non_home_disposition,"Case terminates with a return to the emergency department after nearly a year, indicating a non-routine final disposition.",5.0,uncomplicated_recovery,2.0,0.0580885149538517,0.020894819870591164
+V0626,uncomplicated_recovery,The case follows a standard course to routine discharge without escalation or extended monitoring.,5.0,extended_monitoring_recovery,3.0,0.2225981503725052,0.018091263249516487
+V0627,care_escalation_during_stay,The trace shows a transfer from normal care (Admission NC) to intensive care (Admission IC) during the stay.,13.0,non_home_disposition,10.0,0.36838993430137634,0.0017211405793204904
+V0628,uncomplicated_recovery,The trace follows a standard pathway leading to a routine release.,4.0,extended_monitoring_recovery,2.0,0.18271778523921967,0.026006242260336876
+V0629,uncomplicated_recovery,"The trace follows a short, uncomplicated pathway to release E without any care escalation.",11.0,non_home_disposition,5.0,0.4694744050502777,0.15986932814121246
+V0630,care_escalation_during_stay,"The trace indicates admission to IC first, followed by a move to NC, representing a change in care level.",8.0,uncomplicated_recovery,6.0,0.12137910723686218,0.0002958752156700939
+V0631,uncomplicated_recovery,The case follows a standard recovery course to release before returning to ER much later.,6.0,non_home_disposition,2.0,0.394462913274765,0.00020539744582492858
+V0632,uncomplicated_recovery,The patient has a straightforward recovery and release prior to a subsequent return to ER.,6.0,non_home_disposition,1.0,0.43551620841026306,0.0007239529513753951
+V0633,extended_monitoring_recovery,The trace shows an extended observation period with multiple repetitive lab checks before discharge.,6.0,non_home_disposition,4.0,0.3901344835758209,0.00033978806459344923
+V0634,uncomplicated_recovery,The case follows an uncomplicated recovery course to release.,3.0,non_home_disposition,3.0,0.006440889555960894,9.870401117950678e-05
+V0635,uncomplicated_recovery,The trace proceeds normally to a release without care escalation.,7.0,non_home_disposition,3.0,0.5654571056365967,0.0003389155026525259
+V0636,,The trace ends abruptly with a lab activity (LacticAcid) rather than a final disposition or release.,,uncomplicated_recovery,2.0,,0.012724465690553188
+V0637,uncomplicated_recovery,The case follows an uncomplicated pathway directly to release.,6.0,extended_monitoring_recovery,2.0,0.11783360689878464,0.0013357116840779781
+V0638,uncomplicated_recovery,The trace follows a standard course of admission and release without care escalation.,6.0,non_home_disposition,2.0,0.6148134469985962,0.0016271689673885703
+V0639,care_escalation_during_stay,The trace includes a transfer to intensive care (Admission IC) during the stay.,9.0,non_home_disposition,5.0,0.3454274833202362,0.0020689237862825394
+V0640,extended_monitoring_recovery,The trace exhibits an extended monitoring sequence with prolonged lab check repetitions prior to discharge.,6.0,non_home_disposition,3.0,0.364860862493515,6.181454068610037e-07
+V0641,uncomplicated_recovery,The case shows a standard recovery course without escalation or extended monitoring.,6.0,non_home_disposition,1.0,0.4392284154891968,0.0005296347080729902
+V0642,care_escalation_during_stay,The trace shows an escalation to intensive care (Admission IC) during the hospital stay.,9.0,non_home_disposition,4.0,0.1244691014289856,0.0017594067612662911
+V0643,care_escalation_during_stay,The trace indicates a transfer to intensive care (Admission IC) after initial normal care.,19.0,non_home_disposition,10.0,0.3391689956188202,0.003259122371673584
+V0644,,The trace ends abruptly with a lab activity (CRP) rather than a standard discharge or disposition.,,uncomplicated_recovery,1.0,,0.002139716176316142
+V0645,,The trace terminates on a lab activity (LacticAcid) rather than a complete discharge disposition.,,early_or_irregular_discharge,2.0,,0.2324836105108261
+V0646,,"The trace ends in a sequence of lab activities after an apparent return to ER, leaving no clear final disposition.",,non_home_disposition,7.0,,0.10897424817085266
+V0647,uncomplicated_recovery,The trace follows a standard admission and recovery course to release.,3.0,non_home_disposition,1.0,0.2239062637090683,0.11392581462860107
+V0648,extended_monitoring_recovery,The trace shows an extended observation period with repeated lab monitoring over several days.,7.0,uncomplicated_recovery,3.0,0.001101858215406537,0.0018516097916290164
+V0649,uncomplicated_recovery,The case follows an uncomplicated recovery course to release.,9.0,early_or_irregular_discharge,4.0,0.4785121977329254,9.928982035489753e-05
+V0650,uncomplicated_recovery,The trace proceeds directly through normal admission to release without any care escalation.,5.0,non_home_disposition,1.0,0.7754510045051575,0.04117850214242935
+V0651,non_home_disposition,"The narrative ends with Return ER after an extended period, indicating a re-admission or return to the emergency room rather than a routine first-time home release.",6.0,uncomplicated_recovery,2.0,0.22306287288665771,0.18586917221546173
+V0652,non_home_disposition,"The trace concludes with Return ER following discharge, indicating a return encounter.",4.0,early_or_irregular_discharge,1.0,0.2302040010690689,0.12392113357782364
+V0653,uncomplicated_recovery,The patient recovers and is discharged with Release A after a standard course without care escalation or unusual duration.,6.0,non_home_disposition,4.0,0.11149036884307861,0.0010094881290569901
+V0654,early_or_irregular_discharge,"The trace ends abruptly with Leucocytes rather than a formal release or final disposition, representing an irregular or incomplete final sequence.",7.0,uncomplicated_recovery,4.0,0.6906547546386719,0.08748802542686462
+V0655,care_escalation_during_stay,The trace shows an admission to intensive care (Admission IC) followed by normal care (Admission NC) and eventual release.,11.0,uncomplicated_recovery,4.0,0.04825679957866669,0.002068497007712722
+V0656,non_home_disposition,"The final outcome is Release D, which represents a non-routine release disposition.",14.0,uncomplicated_recovery,5.0,0.4919205605983734,0.0005068473401479423
+V0657,uncomplicated_recovery,Standard recovery course resulting in Release A without special escalation or prolonged stays.,5.0,extended_monitoring_recovery,3.0,0.17355722188949585,0.0009999602334573865
+V0658,non_home_disposition,The case involves a return to the emergency room (Return ER) after release.,5.0,early_or_irregular_discharge,1.0,0.19018429517745972,0.16954177618026733
+V0659,uncomplicated_recovery,Typical short stay ending in Release A with no complications or escalation.,5.0,extended_monitoring_recovery,2.0,0.34928691387176514,0.00906005222350359
+V0660,extended_monitoring_recovery,The case features numerous repeated monitoring and lab actions stretching the duration to 12 days before a standard Release A.,15.0,uncomplicated_recovery,9.0,0.11380306631326675,0.000579172105062753
+V0661,care_escalation_during_stay,"The trace begins with Admission IC (intensive care), demonstrating an initial high-intensity care escalation before regular ward admission.",16.0,extended_monitoring_recovery,10.0,0.09364840388298035,0.00276266410946846
+V0662,care_escalation_during_stay,The case includes an admission to intensive care (Admission IC) along with a long monitoring period before a return ER outcome.,10.0,non_home_disposition,5.0,0.4585932493209839,0.002881042892113328
+V0663,early_or_irregular_discharge,The trace terminates abruptly at Admission NC without an actual final release or completion event.,4.0,uncomplicated_recovery,1.0,0.3369334936141968,0.3389674723148346
+V0664,early_or_irregular_discharge,"The sequence ends prematurely with IV Liquid in the middle of standard workflow, representing an incomplete or irregular trace.",6.0,uncomplicated_recovery,4.0,0.3826065957546234,0.3621586263179779
+V0665,extended_monitoring_recovery,The stay is moderately extended with repetitive lab work and observation before Release A.,7.0,uncomplicated_recovery,1.0,0.00944394152611494,0.000377743475837633
+V0666,uncomplicated_recovery,Standard progression of care leading to Release A within a short timeframe.,5.0,early_or_irregular_discharge,4.0,0.13222770392894745,0.007912596687674522
+V0667,non_home_disposition,The trace culminates in a Return ER event following initial release.,5.0,uncomplicated_recovery,2.0,0.029154470190405846,0.001005847123451531
+V0668,uncomplicated_recovery,Straightforward recovery resulting in Release A.,5.0,non_home_disposition,3.0,0.36541035771369934,0.009154475294053555
+V0669,extended_monitoring_recovery,The sequence involves extended monitoring and repeat labs over several days prior to Release A.,5.0,uncomplicated_recovery,3.0,0.030978627502918243,2.9203385565779172e-05
+V0670,non_home_disposition,The trace continues past initial release into a Return ER event and further tracking.,6.0,extended_monitoring_recovery,4.0,0.39688578248023987,0.014846313744783401
+V0671,non_home_disposition,The case ends with a Return ER outcome.,7.0,extended_monitoring_recovery,3.0,0.0008309492259286344,0.001010588021017611
+V0672,care_escalation_during_stay,The patient experiences an escalation to intensive care (Admission IC) during the course of the stay before a non-standard Release B.,17.0,uncomplicated_recovery,12.0,0.4452761709690094,0.0031843918841332197
+V0673,extended_monitoring_recovery,A prolonged series of monitoring events and repeat labs extend the recovery duration before Release A.,6.0,uncomplicated_recovery,5.0,0.12049861997365952,0.0005490417242981493
+V0674,extended_monitoring_recovery,Extensive repetition of labs and a notably lengthy timeline (39 days) without care escalation lead up to Release A.,36.0,care_escalation_during_stay,18.0,0.14755000174045563,0.0065683177672326565
+V0675,non_home_disposition,"The trace ends in a Return ER outcome following Release D, representing a non-home disposition trajectory.",10.0,extended_monitoring_recovery,6.0,0.14803533256053925,0.005003033671528101
+V0676,,The narrative stops at IV Antibiotics and does not reach a final disposition like discharge or transfer.,,early_or_irregular_discharge,2.0,,0.003793262178078294
+V0677,non_home_disposition,The trace ends with Return ER after an admission and release.,6.0,uncomplicated_recovery,1.0,0.3347696363925934,0.040142808109521866
+V0678,uncomplicated_recovery,Standard course with admission to NC and release without escalation or extended delays.,5.0,extended_monitoring_recovery,3.0,0.11604662984609604,0.00033558777067810297
+V0679,,The trace terminates at IV Antibiotics without a disposition.,,uncomplicated_recovery,1.0,,0.0033812830224633217
+V0680,care_escalation_during_stay,"The case shows a transfer or admission to IC (Admission IC) during the stay, representing an escalation of care.",12.0,non_home_disposition,6.0,0.42990052700042725,0.007646116893738508
+V0681,non_home_disposition,The trace ends in Return ER.,3.0,early_or_irregular_discharge,4.0,0.1820010542869568,0.16974543035030365
+V0682,care_escalation_during_stay,The case starts in NC and escalates with an Admission IC during the stay.,15.0,uncomplicated_recovery,6.0,0.37399521470069885,0.002525369171053171
+V0683,uncomplicated_recovery,Standard admission to NC with subsequent release and no escalation.,9.0,extended_monitoring_recovery,2.0,0.1431794911623001,4.843600436288398e-06
+V0684,uncomplicated_recovery,Follows a normal path of admission to NC and release A.,2.0,early_or_irregular_discharge,2.0,0.12195233255624771,4.453320798347704e-06
+V0685,,Ends at IV Antibiotics without final disposition.,,early_or_irregular_discharge,2.0,,0.0007684677839279175
+V0686,non_home_disposition,The case ends with Return ER.,6.0,uncomplicated_recovery,1.0,0.37293311953544617,0.0002737457980401814
+V0687,non_home_disposition,The trace ends with Return ER.,3.0,extended_monitoring_recovery,2.0,0.12993274629116058,0.015811998397111893
+V0688,non_home_disposition,The trace ends in Return ER.,5.0,early_or_irregular_discharge,2.0,0.006257465109229088,0.00030588163645006716
+V0689,,Trace stops at IV Antibiotics without disposition.,,early_or_irregular_discharge,1.0,,0.0018707948038354516
+V0690,care_escalation_during_stay,"Includes Admission IC, indicating a care escalation during the stay.",9.0,non_home_disposition,5.0,0.1148032546043396,0.0020184314344078302
+V0691,uncomplicated_recovery,Simple admission to NC and routine release B.,6.0,extended_monitoring_recovery,2.0,0.7289617657661438,0.04676935449242592
+V0692,uncomplicated_recovery,Routine course with NC admission and release B.,7.0,early_or_irregular_discharge,3.0,0.7080982327461243,0.02590586431324482
+V0693,non_home_disposition,The case concludes with Return ER.,5.0,extended_monitoring_recovery,4.0,0.1188415065407753,0.11563631892204285
+V0694,,Incomplete trace ending at ER Sepsis Triage.,,early_or_irregular_discharge,2.0,,0.04458809271454811
+V0695,uncomplicated_recovery,Standard recovery course leading to release A.,5.0,non_home_disposition,2.0,0.13495847582817078,0.00024266155378427356
+V0696,care_escalation_during_stay,"Includes an Admission IC step which represents a care escalation during the stay, and ends with Return ER.",8.0,non_home_disposition,5.0,0.40491819381713867,0.004247315693646669
+V0697,uncomplicated_recovery,Standard recovery course with admission to NC and release A.,4.0,non_home_disposition,1.0,0.01574375107884407,0.003289768472313881
+V0698,uncomplicated_recovery,Standard path leading to release A without complications or escalations.,5.0,extended_monitoring_recovery,3.0,0.1261390894651413,0.001823987695388496
+V0699,uncomplicated_recovery,Uncomplicated stay pattern leading to release A.,5.0,non_home_disposition,3.0,0.008751600049436092,0.0019288196926936507
+V0700,uncomplicated_recovery,Routine stay ending in release B.,4.0,extended_monitoring_recovery,2.0,0.6851909160614014,0.2397448867559433
+V0701,uncomplicated_recovery,The case follows a standard course leading to a routine release without any care escalation or extended monitoring anomalies.,10.0,extended_monitoring_recovery,5.0,0.47233128547668457,0.004107105545699596
+V0702,uncomplicated_recovery,The trace shows an uncomplicated course ending in Release A.,3.0,non_home_disposition,2.0,0.1215314194560051,0.00017234835831914097
+V0703,,"The trace terminates abruptly at IV Liquid before any admission or discharge disposition, leaving the disposition unclear.",,early_or_irregular_discharge,2.0,,0.00016920965572353452
+V0704,uncomplicated_recovery,The trace represents a standard uncomplicated recovery course ending in Release A.,7.0,extended_monitoring_recovery,4.0,0.13538748025894165,0.0022163281682878733
+V0705,non_home_disposition,The trace ends in a Return ER disposition after a previous release.,2.0,extended_monitoring_recovery,3.0,0.13803571462631226,0.007709037512540817
+V0706,early_or_irregular_discharge,The duration of 1 day with a very rapid discharge from Admission NC indicates an early or irregular discharge.,3.0,uncomplicated_recovery,1.0,0.38391026854515076,0.00019302907458040863
+V0707,,The trace stops at Admission NC with no final discharge recorded.,,uncomplicated_recovery,1.0,,0.0003059449081774801
+V0708,,The trace terminates at IV Antibiotics without an admission or discharge event.,,early_or_irregular_discharge,2.0,,0.0023255597334355116
+V0709,uncomplicated_recovery,The trace reflects a standard recovery resulting in Release B.,4.0,non_home_disposition,3.0,0.3357287347316742,0.024054141715168953
+V0710,care_escalation_during_stay,The trace shows a clear transfer/admission to Intensive Care (Admission IC) during the prolonged stay.,167.0,non_home_disposition,111.0,0.38756898045539856,0.049215395003557205
+V0711,uncomplicated_recovery,The case follows a standard recovery path to Release A.,5.0,extended_monitoring_recovery,2.0,0.11681130528450012,0.0009876694530248642
+V0712,non_home_disposition,The trace includes an escalation to Admission IC and ends with a Return ER disposition.,12.0,care_escalation_during_stay,7.0,0.18891918659210205,0.0029993641655892134
+V0713,,The trace ends at IV Antibiotics without completing a hospital stay or discharge.,,uncomplicated_recovery,1.0,,0.006030102726072073
+V0714,uncomplicated_recovery,The case follows an uncomplicated path to Release A.,4.0,extended_monitoring_recovery,2.0,0.001199596095830202,0.0022158066276460886
+V0715,care_escalation_during_stay,The trace records an escalation to Admission IC during the stay prior to Release B.,11.0,non_home_disposition,4.0,0.5019755363464355,0.053514983505010605
+V0716,uncomplicated_recovery,The case follows a standard recovery course to Release A.,7.0,extended_monitoring_recovery,2.0,0.13601987063884735,8.926032023737207e-05
+V0717,uncomplicated_recovery,The case follows an uncomplicated pathway to Release A.,6.0,early_or_irregular_discharge,3.0,0.11889495700597763,0.0010959774954244494
+V0718,non_home_disposition,The trace includes care escalation (Admission IC) and ends with a Return ER disposition.,23.0,care_escalation_during_stay,13.0,0.1879800409078598,0.003502768697217107
+V0719,non_home_disposition,The trace terminates with a Return ER disposition.,6.0,uncomplicated_recovery,2.0,0.0038135843351483345,0.0021379992831498384
+V0720,non_home_disposition,The trace ends with a Return ER disposition after initial release.,4.0,early_or_irregular_discharge,1.0,0.13653625547885895,0.009208498522639275
+V0721,non_home_disposition,The trace ends with a Return ER disposition.,15.0,uncomplicated_recovery,5.0,0.00048623650218360126,0.0013553007738664746
+V0722,uncomplicated_recovery,"The case shows a brief, uncomplicated stay leading to Release A.",3.0,extended_monitoring_recovery,2.0,0.017494790256023407,0.001538728945888579
+V0723,uncomplicated_recovery,The case shows an uncomplicated recovery pattern leading to Release A.,7.0,care_escalation_during_stay,4.0,0.11425755172967911,0.001352313905954361
+V0724,non_home_disposition,The trace concludes with a Return ER disposition.,5.0,uncomplicated_recovery,2.0,0.051839496940374374,0.007749730255454779
+V0725,early_or_irregular_discharge,The case results in Release D with a very short 5-day duration suggesting an irregular or early discharge pattern.,3.0,uncomplicated_recovery,2.0,0.7584015727043152,0.17263473570346832
+V0726,uncomplicated_recovery,"The case follows a standard hospital course with admission and recovery leading to a routine release, with no care escalation or irregular outcome.",20.0,care_escalation_during_stay,9.0,0.13459323346614838,0.0030105833429843187
+V0727,non_home_disposition,The trace ends in a Return ER outcome which represents a non-home disposition or return event outside normal routine release.,4.0,uncomplicated_recovery,2.0,0.043463993817567825,0.006270302925258875
+V0728,uncomplicated_recovery,The trace represents a standard uncomplicated stay leading to Release A.,5.0,extended_monitoring_recovery,4.0,0.11122738569974899,0.0002905365254264325
+V0729,uncomplicated_recovery,Standard recovery course involving admission and release A without complications.,7.0,care_escalation_during_stay,4.0,0.11124369502067566,0.00027422700077295303
+V0730,uncomplicated_recovery,Uncomplicated stay pattern culminating in release A.,6.0,extended_monitoring_recovery,3.0,0.006052894983440638,0.00028929096879437566
+V0731,uncomplicated_recovery,"Short, uncomplicated stay resulting in routine release.",4.0,early_or_irregular_discharge,2.0,0.17968101799488068,0.17268581688404083
+V0732,uncomplicated_recovery,Standard care path leading to release without extended monitoring or escalations.,6.0,non_home_disposition,2.0,0.35127368569374084,0.024833910167217255
+V0733,uncomplicated_recovery,Typical recovery leading to release A.,6.0,non_home_disposition,2.0,0.11624027043581009,0.00014194661343935877
+V0734,non_home_disposition,Ends in Return ER following initial release.,3.0,early_or_irregular_discharge,1.0,0.2068922519683838,0.1696985512971878
+V0735,uncomplicated_recovery,Uncomplicated recovery and discharge.,5.0,extended_monitoring_recovery,2.0,0.3390873670578003,0.0008662789477966726
+V0736,uncomplicated_recovery,Standard treatment and release.,5.0,extended_monitoring_recovery,1.0,0.006146477535367012,0.00018206116510555148
+V0737,uncomplicated_recovery,Ordinary hospital course with normal release.,5.0,extended_monitoring_recovery,2.0,0.004628081806004047,0.0017141042044386268
+V0738,uncomplicated_recovery,"Short, uncomplicated stay ending in release A.",4.0,non_home_disposition,2.0,0.028594478964805603,0.009560959413647652
+V0739,care_escalation_during_stay,Shows admission to intensive care (IC) indicating an increase in care intensity during the stay.,9.0,uncomplicated_recovery,5.0,0.12109425663948059,1.1024879313481506e-05
+V0740,uncomplicated_recovery,Standard care and release pattern.,8.0,non_home_disposition,3.0,0.0,0.0010162105318158865
+V0741,uncomplicated_recovery,Routine admission and uncomplicated discharge.,3.0,non_home_disposition,3.0,0.006951946299523115,0.00012916611740365624
+V0742,early_or_irregular_discharge,"The trace terminates in a lab test outcome rather than a standard discharge disposition, indicating an irregular path.",7.0,non_home_disposition,3.0,0.6835128664970398,0.3603408634662628
+V0743,uncomplicated_recovery,Uncomplicated case ending in release A.,8.0,non_home_disposition,2.0,0.006603101268410683,0.00027456198586151004
+V0744,non_home_disposition,Trace concludes with a Return ER event.,14.0,care_escalation_during_stay,7.0,0.11159574240446091,0.0015293057076632977
+V0745,non_home_disposition,Ends in Return ER indicating non-home disposition trajectory.,8.0,uncomplicated_recovery,5.0,0.25811538100242615,0.11237063258886337
+V0746,non_home_disposition,Culminates in Return ER after prolonged monitoring.,24.0,care_escalation_during_stay,11.0,0.13018512725830078,0.002483796328306198
+V0747,non_home_disposition,"Results in Release C, differing from routine uncomplicated release.",7.0,uncomplicated_recovery,4.0,0.5263270139694214,0.014636528678238392
+V0748,non_home_disposition,Concludes with Return ER.,7.0,uncomplicated_recovery,3.0,0.11127687245607376,0.004662460647523403
+V0749,uncomplicated_recovery,Standard progression to release A.,3.0,extended_monitoring_recovery,2.0,0.006262166425585747,8.001967216841877e-05
+V0750,early_or_irregular_discharge,Incomplete or irregular trace ending abruptly with an IV Antibiotics activity instead of a discharge event.,4.0,uncomplicated_recovery,3.0,0.3443949520587921,0.35362932085990906
+V0751,uncomplicated_recovery,The trace follows a standard course to routine discharge (Release A) with a typical duration of 4 days and no escalation of care or extended monitoring.,2.0,non_home_disposition,2.0,0.003166806185618043,0.0031753797084093094
+V0752,non_home_disposition,"The trace ends with Return ER after an extended duration, representing a non-routine disposition.",18.0,extended_monitoring_recovery,9.0,0.1132141575217247,8.911366603570059e-05
+V0753,non_home_disposition,The trace ends with a Return ER event following discharge.,5.0,extended_monitoring_recovery,3.0,0.0,0.0018415371887385845
+V0754,non_home_disposition,The trace ends with a Return ER event after release.,5.0,uncomplicated_recovery,1.0,0.03600635007023811,0.008083413355052471
+V0755,uncomplicated_recovery,The trace follows a short course to release with normal monitoring and no care escalation.,6.0,extended_monitoring_recovery,2.0,0.11766450852155685,0.001166608533822
+V0756,care_escalation_during_stay,"The trace shows a transfer to a higher level of care (Admission IC) during the stay, followed by eventual release and subsequent return.",26.0,non_home_disposition,16.0,0.39435136318206787,0.006555283907800913
+V0757,non_home_disposition,The trace ends with a Return ER event.,5.0,uncomplicated_recovery,4.0,0.1432373970746994,0.0025073629803955555
+V0758,uncomplicated_recovery,"Short, uncomplicated stay ending in routine release.",4.0,extended_monitoring_recovery,1.0,0.13950125873088837,0.015186146833002567
+V0759,early_or_irregular_discharge,The trace terminates abruptly at IV Antibiotics without reaching a formal release or standard completion point.,7.0,uncomplicated_recovery,3.0,0.05805814638733864,0.03761018440127373
+V0760,uncomplicated_recovery,Standard recovery course leading to routine release.,7.0,non_home_disposition,3.0,0.12898437678813934,0.003104936331510544
+V0761,uncomplicated_recovery,Standard recovery course leading to routine release.,7.0,non_home_disposition,2.0,0.008064153604209423,0.0012413732474669814
+V0762,care_escalation_during_stay,The case involves an admission to intensive care (Admission IC) representing a care escalation during the stay.,17.0,uncomplicated_recovery,12.0,0.0953621193766594,0.011211865581572056
+V0763,care_escalation_during_stay,The trace includes an escalation to intensive care (Admission IC) during the hospital stay.,37.0,extended_monitoring_recovery,18.0,0.3499750792980194,0.0066165137104690075
+V0764,early_or_irregular_discharge,The trace terminates at ER Sepsis Triage without completing a hospital stay or standard discharge.,4.0,uncomplicated_recovery,3.0,0.3590066730976105,0.33717337250709534
+V0765,extended_monitoring_recovery,"The patient recovers without care escalation, but experiences a materially longer observation and stay period before release.",7.0,non_home_disposition,4.0,0.532370388507843,0.0017176088877022266
+V0766,uncomplicated_recovery,"Short, uncomplicated recovery leading to release.",3.0,early_or_irregular_discharge,2.0,0.17590369284152985,0.01919216848909855
+V0767,non_home_disposition,The trace concludes with a Return ER event.,7.0,uncomplicated_recovery,2.0,0.33484113216400146,0.03781820461153984
+V0768,uncomplicated_recovery,Standard course leading directly to release.,7.0,early_or_irregular_discharge,3.0,0.3338693678379059,0.007429579738527536
+V0769,extended_monitoring_recovery,"The stay shows extended monitoring and lab repetitions over 11 days before release, without care escalation.",6.0,uncomplicated_recovery,2.0,0.0013290104689076543,0.0016244575381278992
+V0770,non_home_disposition,The trace ends in a Return ER event after release.,7.0,extended_monitoring_recovery,4.0,0.187988743185997,0.0020689237862825394
+V0771,extended_monitoring_recovery,The case has a prolonged monitoring period before final release without care escalation.,7.0,uncomplicated_recovery,1.0,0.12467429041862488,0.00017234835831914097
+V0772,early_or_irregular_discharge,The trace ends prematurely at a CRP measurement without a final discharge or release event.,5.0,uncomplicated_recovery,2.0,0.6920139193534851,0.35271406173706055
+V0773,uncomplicated_recovery,Standard uncomplicated stay ending in release.,2.0,early_or_irregular_discharge,1.0,0.1701343059539795,0.013422776944935322
+V0774,early_or_irregular_discharge,"The trace cuts off at ER Sepsis Triage, representing an incomplete or irregular path.",5.0,uncomplicated_recovery,3.0,0.34249547123908997,0.3517298400402069
+V0775,early_or_irregular_discharge,The trace ends abruptly at a CRP measurement without reaching a discharge disposition.,2.0,uncomplicated_recovery,2.0,0.6881296634674072,0.35659828782081604
+V0776,uncomplicated_recovery,The trace follows a standard course with admission to NC and ends in a routine release with no escalation or excessive duration.,6.0,extended_monitoring_recovery,2.0,0.11630719900131226,7.502407243009657e-05
+V0777,early_or_irregular_discharge,"The trace ends prematurely at Leucocytes without admission or final release/disposition, suggesting an incomplete or irregular course.",3.0,uncomplicated_recovery,3.0,0.38765454292297363,0.3672065734863281
+V0778,early_or_irregular_discharge,The trace terminates at Leucocytes within 9 hours without an inpatient admission or formal release.,5.0,uncomplicated_recovery,4.0,0.6861416697502136,0.24414904415607452
+V0779,non_home_disposition,"The trace ends in a Return ER visit after discharge, matching a non-routine subsequent disposition pattern.",4.0,early_or_irregular_discharge,3.0,0.04560280963778496,0.001513043069280684
+V0780,extended_monitoring_recovery,"The case recovers without care escalation, but has an extended length of stay of 17 days with repeated monitoring.",12.0,uncomplicated_recovery,7.0,0.012419484555721283,0.0061281160451471806
+V0781,extended_monitoring_recovery,The trace shows an extended observation period lasting 14 days before ending in Release C.,7.0,non_home_disposition,5.0,0.3396059572696686,0.014111104421317577
+V0782,extended_monitoring_recovery,The case has a duration of 13 days of monitoring before release without any care escalation.,3.0,non_home_disposition,3.0,0.003821292659267783,0.0008247224031947553
+V0783,extended_monitoring_recovery,"The case duration is 11 days, showing extended monitoring before the final release.",9.0,uncomplicated_recovery,3.0,0.0013093202142044902,0.0016441476764157414
+V0784,extended_monitoring_recovery,The case has an extended stay of 18 days with frequent monitoring before release.,8.0,uncomplicated_recovery,4.0,0.013745173811912537,0.007453804835677147
+V0785,non_home_disposition,The case results in a Return ER visit after release.,6.0,uncomplicated_recovery,4.0,0.1888931542634964,0.002973326714709401
+V0786,uncomplicated_recovery,Standard 9-day stay leading to a routine release with no escalation.,8.0,extended_monitoring_recovery,5.0,0.12944060564041138,0.0015616616001352668
+V0787,non_home_disposition,The trace ends in a Return ER encounter following release.,6.0,early_or_irregular_discharge,3.0,0.12679773569107056,0.018947020173072815
+V0788,uncomplicated_recovery,Short 4-day stay ending in release with no complications or escalation.,4.0,extended_monitoring_recovery,2.0,0.004204391501843929,0.0021377946250140667
+V0789,uncomplicated_recovery,Standard 5-day stay leading to routine release.,2.0,extended_monitoring_recovery,3.0,0.11282461881637573,0.00032476469641551375
+V0790,extended_monitoring_recovery,The trace shows an extended 10-day monitoring period before release.,8.0,uncomplicated_recovery,4.0,0.4478818476200104,0.0005068473401479423
+V0791,early_or_irregular_discharge,"The trace stops abruptly at IV Antibiotics after 1 hour, reflecting an incomplete or irregular trajectory.",4.0,extended_monitoring_recovery,3.0,0.0428110808134079,0.02236311323940754
+V0792,uncomplicated_recovery,A standard 6-day stay ending in a routine release (Release B).,5.0,non_home_disposition,4.0,0.33874955773353577,0.0162424948066473
+V0793,care_escalation_during_stay,"The trace shows an explicit admission to intensive care (Admission IC) after initial care, signaling care escalation.",9.0,uncomplicated_recovery,3.0,0.09285492449998856,0.0035561390686780214
+V0794,non_home_disposition,The trace ends with a Return ER visit after an extended stay.,10.0,extended_monitoring_recovery,5.0,0.009070822037756443,0.0007480275817215443
+V0795,care_escalation_during_stay,"The trace exhibits a transfer to intensive care (Admission IC) during the inpatient stay, indicating care escalation.",35.0,extended_monitoring_recovery,21.0,0.0025506510864943266,0.0025489528197795153
+V0796,uncomplicated_recovery,"A typical, straightforward 4-day stay ending in release.",6.0,early_or_irregular_discharge,3.0,0.3357691466808319,0.004457733128219843
+V0797,non_home_disposition,The trace ends with a Return ER visit following a very long stay.,6.0,extended_monitoring_recovery,3.0,0.1471337080001831,0.0059046451933681965
+V0798,non_home_disposition,The trace concludes with a Return ER event after release.,4.0,uncomplicated_recovery,2.0,0.010193989612162113,0.0020616312976926565
+V0799,uncomplicated_recovery,"A brief, uncomplicated 23-hour stay ending in routine release.",5.0,extended_monitoring_recovery,2.0,0.04708048701286316,0.028046967461705208
+V0800,uncomplicated_recovery,A standard 4-day recovery course leading to release.,4.0,extended_monitoring_recovery,3.0,0.11665216833353043,0.00046695745550096035
+V0801,uncomplicated_recovery,The case follows a standard course to routine discharge (Release A) with no recorded care escalation.,8.0,extended_monitoring_recovery,4.0,0.1288778930902481,0.0029984479770064354
+V0802,uncomplicated_recovery,The case follows a standard course leading to Release D with no escalation of care.,4.0,extended_monitoring_recovery,2.0,0.4581660330295563,0.006996825337409973
+V0803,care_escalation_during_stay,The trace shows an escalation in care intensity via transfer from admission NC to admission IC during the stay.,8.0,non_home_disposition,6.0,0.3913525640964508,0.002648193622007966
+V0804,non_home_disposition,The trace ends in a return to the emergency room (Return ER) rather than a standard discharge.,4.0,early_or_irregular_discharge,2.0,0.034228574484586716,0.0007471114513464272
+V0805,care_escalation_during_stay,The trace shows an escalation of care by moving to Admission IC after initial stabilization.,27.0,extended_monitoring_recovery,18.0,0.0857270136475563,0.004760923329740763
+V0806,non_home_disposition,The trace ends in a Return ER disposition rather than routine home release.,7.0,uncomplicated_recovery,5.0,0.12706267833709717,0.000638655386865139
+V0807,uncomplicated_recovery,"The case follows a short, standard course to Release A without escalation.",4.0,early_or_irregular_discharge,3.0,0.1804242581129074,0.1719426065683365
+V0808,non_home_disposition,The trace ends in a Return ER event instead of a routine home disposition.,7.0,extended_monitoring_recovery,2.0,0.0018167640082538128,2.477323323546443e-05
+V0809,uncomplicated_recovery,"Despite repeated monitoring and nursing care admissions, the patient recovers and has a routine release.",11.0,non_home_disposition,5.0,0.13665279746055603,0.0005436617066152394
+V0810,uncomplicated_recovery,The case displays a routine recovery path to Release A.,5.0,extended_monitoring_recovery,3.0,0.1153058186173439,0.00030404143035411835
+V0811,care_escalation_during_stay,The trace includes an escalation to Admission IC before moving to general care and eventual release.,7.0,uncomplicated_recovery,4.0,0.11315099149942398,0.00366909964941442
+V0812,non_home_disposition,The trace concludes with a Return ER event instead of a final routine release.,6.0,extended_monitoring_recovery,1.0,0.3594379425048828,0.06618756800889969
+V0813,extended_monitoring_recovery,The case involves extended monitoring and repeat lab tests over a longer observation period before standard release.,12.0,uncomplicated_recovery,7.0,0.009390057064592838,0.0030986883211880922
+V0814,uncomplicated_recovery,The patient recovers steadily and achieves a standard release.,4.0,extended_monitoring_recovery,1.0,0.002392865251749754,0.0002587355556897819
+V0815,non_home_disposition,The trace ends with a Return ER event indicating a non-routine final disposition from this episode's perspective.,12.0,extended_monitoring_recovery,6.0,0.14564545452594757,9.928982035489753e-05
+V0816,early_or_irregular_discharge,"The trace is incomplete or terminates abruptly at IV Antibiotics after only two hours, representing an irregular course.",5.0,extended_monitoring_recovery,4.0,0.03290049359202385,0.012452528811991215
+V0817,non_home_disposition,The trace ends in a Return ER event.,11.0,uncomplicated_recovery,6.0,0.017662288621068,0.0024563290644437075
+V0818,uncomplicated_recovery,The patient experiences an ordinary recovery pattern concluding with Release A.,15.0,non_home_disposition,5.0,0.0304472167044878,0.0024700758513063192
+V0819,uncomplicated_recovery,The case follows a standard recovery and release path.,6.0,non_home_disposition,4.0,0.12468168139457703,0.0011977615067735314
+V0820,early_or_irregular_discharge,The trace abruptly ends at LacticAcid within an hour without any admission or standard completion steps.,3.0,uncomplicated_recovery,2.0,0.3805074393749237,0.3600594699382782
+V0821,non_home_disposition,The trace terminates with a Return ER outcome.,5.0,early_or_irregular_discharge,4.0,0.11211996525526047,0.005837082397192717
+V0822,care_escalation_during_stay,The trace shows an escalation of care by transferring to Admission IC during the stay.,43.0,extended_monitoring_recovery,24.0,0.39322295784950256,0.0054268669337034225
+V0823,non_home_disposition,The trace finishes with a Return ER event.,7.0,uncomplicated_recovery,1.0,0.37969014048576355,0.007030779961496592
+V0824,uncomplicated_recovery,The case follows an uncomplicated recovery course to Release A.,2.0,early_or_irregular_discharge,1.0,0.019060393795371056,0.003766445443034172
+V0825,non_home_disposition,The trace concludes with a Return ER event.,5.0,extended_monitoring_recovery,2.0,0.19252844154834747,0.17096519470214844
+V0826,,"The narrative ends in 'Admission NC', which is an incomplete stay or intermediate state rather than a final discharge or typical recovery outcome.",,early_or_irregular_discharge,2.0,,0.015854977071285248
+V0827,non_home_disposition,"The trace ends in 'Return ER', indicating a non-routine subsequent disposition/re-presentation.",5.0,extended_monitoring_recovery,4.0,0.013017408549785614,6.181454068610037e-07
+V0828,non_home_disposition,"The trace ends in 'Return ER', representing a non-home dispositional pathway.",9.0,uncomplicated_recovery,3.0,0.401132732629776,0.10788235813379288
+V0829,uncomplicated_recovery,The case follows a standard course to routine discharge ('Release A') with no care escalation or extended monitoring anomalies.,5.0,extended_monitoring_recovery,4.0,0.12941426038742065,0.0035348099190741777
+V0830,uncomplicated_recovery,The case follows a standard course to routine discharge ('Release A') with no recorded escalation or irregularities.,9.0,extended_monitoring_recovery,5.0,0.12805990874767303,0.0021804661955684423
+V0831,uncomplicated_recovery,The case follows a standard course leading to a routine release ('Release D') without care escalation.,11.0,non_home_disposition,4.0,0.34948647022247314,0.015381681732833385
+V0832,,"The trace ends abruptly at 'IV Antibiotics', which does not constitute a completed recovery or discharge event.",,early_or_irregular_discharge,2.0,,0.0006202496006153524
+V0833,uncomplicated_recovery,The trace proceeds normally through admission to standard release ('Release A') without complications or escalation.,12.0,non_home_disposition,5.0,0.13535895943641663,0.0006431419751606882
+V0834,non_home_disposition,The case terminates with a return to the emergency room ('Return ER') rather than a routine stable discharge home.,16.0,care_escalation_during_stay,9.0,0.1292162984609604,0.001514973002485931
+V0835,uncomplicated_recovery,The case follows a standard and uncomplicated course to routine discharge ('Release A').,3.0,extended_monitoring_recovery,2.0,0.007034436333924532,0.00021165648649912328
+V0836,uncomplicated_recovery,The patient recovers along a standard path leading to routine release ('Release A') without escalation of care.,10.0,extended_monitoring_recovery,5.0,0.13118600845336914,0.0035298096481710672
+V0837,care_escalation_during_stay,"The trace records 'Admission IC' after initial care, indicating an escalation in the level of care.",7.0,uncomplicated_recovery,3.0,0.19666337966918945,7.579994417028502e-05
+V0838,uncomplicated_recovery,"The case shows a short, standard progression to routine release ('Release A') with no escalation.",4.0,early_or_irregular_discharge,1.0,0.354327529668808,0.014100671745836735
+V0839,uncomplicated_recovery,The case follows a routine course to release ('Release A') without complications or care escalation.,6.0,extended_monitoring_recovery,4.0,0.004671229049563408,0.0016709569608792663
+V0840,care_escalation_during_stay,"The trace explicitly features intensive care admissions ('Admission IC') during the stay, representing an escalation of care.",49.0,extended_monitoring_recovery,22.0,0.4941079318523407,0.12078744173049927
+V0841,uncomplicated_recovery,"The trace demonstrates a normal, short-duration stay culminating in standard release ('Release A').",3.0,non_home_disposition,2.0,0.04674508795142174,0.027711568400263786
+V0842,non_home_disposition,"The case results in a re-presentation to the emergency room ('Return ER'), qualifying as a non-home disposition outcome.",6.0,uncomplicated_recovery,3.0,0.03198832646012306,0.011869710870087147
+V0843,,"The trace terminates at 'IV Liquid', which represents an incomplete or ongoing treatment sequence rather than a final disposition.",,uncomplicated_recovery,1.0,,0.0006197022157721221
+V0844,care_escalation_during_stay,"The trace includes multiple intensive care unit admissions ('Admission IC'), denoting an escalation in care intensity.",10.0,non_home_disposition,10.0,0.1612502485513687,0.08510170131921768
+V0845,care_escalation_during_stay,"The trace records an intensive care admission ('Admission IC'), indicating a step-up or escalation in the level of care.",11.0,uncomplicated_recovery,9.0,0.09419474005699158,0.0022163281682878733
+V0846,uncomplicated_recovery,The case exhibits a standard recovery path to routine discharge ('Release A') without care escalation.,5.0,extended_monitoring_recovery,2.0,0.11150690168142319,1.1024879313481506e-05

@@ -1,0 +1,49 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission NC",
+      "description": "Admission to normal care ward realizing patient inpatient ward admission, advancing general recovery while measuring against post-discharge readmission indicators.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Admission NC (id=15) observed across standard inpatient pathways such as V0008.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0625",
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0068"
+      ]
+    },
+    {
+      "category_id": "admission_ic",
+      "name": "Admission IC",
+      "description": "Admission to intensive care unit realizing inpatient ward admission, carrying some negative contribution to minimizing time-to-treatment due to acute stabilization overhead.",
+      "anchor_ids": [
+        "16"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Admission IC (id=16) as evidenced by severe path variants like V0605 and V0317.",
+      "evidence_variant_ids": [
+        "V0605",
+        "V0551",
+        "V0317",
+        "V0068",
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "admission_high_dependency_unit",
+      "name": "Admission to High-Dependency Unit",
+      "description": "Admission to a high-dependency unit realizing patient inpatient ward admission for monitored intermediate care.",
+      "anchor_ids": [
+        "112"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Admission to High-Dependency Unit (id=112) representing step-down or intermediate critical care placement.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

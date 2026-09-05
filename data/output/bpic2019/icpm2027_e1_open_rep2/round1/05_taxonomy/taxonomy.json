@@ -1,68 +1,64 @@
 {
   "categories": [
     {
-      "category_id": "standard_procurement",
-      "name": "Standard Procurement and Invoice Clearing",
-      "description": "Typical end-to-end purchase-to-pay variants involving order creation, receipt recording, invoice receipt, and successful invoice clearing with normal durations and low complexity.",
+      "category_id": "straightforward_procurement",
+      "name": "Straightforward Procurement & Invoice Clearing",
+      "description": "Standard, high-frequency procurement sequences with minimal activity steps and clean resolution paths ending in invoice clearing (e.g., V0001, V0002, V0005).",
       "anchor_ids": [],
-      "rationale": "Represents the most frequent business paths (e.g. V0001, V0002, V0005) characterized by standard trace lengths and predictable cycle times.",
+      "rationale": "These variants represent the backbone of the process volume, showing standard execution times and no anomalous rework or length profiles.",
       "evidence_variant_ids": [
         "V0001",
         "V0002",
-        "V0005",
-        "V0006"
+        "V0005"
       ]
     },
     {
-      "category_id": "short_or_aborted",
-      "name": "Short-Cycle or Early Deletion Variants",
-      "description": "Variants with very short trace lengths that terminate early, either successfully stopping at goods receipt without invoice processing or resulting in item deletion.",
+      "category_id": "short_or_cancelled_orders",
+      "name": "Short-Cycle or Early Deletion Orders",
+      "description": "Short tracing lengths characterized by immediate completion or quick cancellation/deletion right after purchase order creation without full lifecycle progression (e.g., V0009, V0014, V0024).",
       "anchor_ids": [],
-      "rationale": "Captures low-length paths such as simple purchase order creation (V0014), immediate deletion (V0009), or basic receipt without full invoice cycles (V0003).",
+      "rationale": "Grounded in samples that terminate early or exhibit low trace lengths representing quick aborts or simple order generation.",
       "evidence_variant_ids": [
-        "V0003",
         "V0009",
         "V0014",
         "V0024"
       ]
     },
     {
-      "category_id": "service_entry_variants",
-      "name": "Service Entry and Rapid Execution",
-      "description": "Process variants that involve recording service entry sheets and goods receipts rapidly, often executed instantly via batch processing or short sequences.",
+      "category_id": "service_entry_and_receipt_rework",
+      "name": "Service Entry Sheet & Goods Receipt Rework",
+      "description": "Low duration variants characterized by repeated Service Entry Sheets and Goods Receipt recordings executed instantaneously by batch resources (e.g., V0162, V0244, V0271).",
       "anchor_ids": [],
-      "rationale": "Grouped based on the presence of service entry sheets and zero or low median durations driven by batch automation (e.g. V0064, V0162, V0244).",
+      "rationale": "Exhibits distinctive duplicate patterns of service and receipt actions completed with zero median duration.",
       "evidence_variant_ids": [
-        "V0064",
         "V0162",
         "V0244",
         "V0271"
       ]
     },
     {
-      "category_id": "complex_srm_transfer",
-      "name": "SRM Integration and Transfer Failures",
-      "description": "Procurement variants initiated through SRM systems that encounter complex transfer issues, multiple status transitions, and potential execution system failures.",
+      "category_id": "srm_integration_failures",
+      "name": "SRM Integration & Transfer Failures",
+      "description": "Complex lifecycle variants involving SRM sub-states, transfer attempts, transmission changes, and final system errors or failures (e.g., V2944, V2952, V2950).",
       "anchor_ids": [],
-      "rationale": "Distinctly marked by SRM-specific lifecycle events, state changes, and rare transfer failure outcomes (e.g. V2944, V2952, V2950).",
+      "rationale": "Unified by their inclusion of specialized SRM lifecycle states and failure outcomes.",
       "evidence_variant_ids": [
         "V2944",
-        "V2950",
         "V2952",
-        "V2989"
+        "V2950"
       ]
     },
     {
-      "category_id": "extreme_rework_loops",
-      "name": "Extreme Rework and High-Duration Loops",
-      "description": "Outlier variants characterized by massive trace lengths, extensive repetition of invoice receipts, goods receipts, payment blocks, and invoice cancellations spanning multiple years.",
+      "category_id": "extreme_length_churn",
+      "name": "Extreme Length Process Churn",
+      "description": "Extremely long, highly repetitive process executions containing hundreds of cyclical invoice creations, cancellations, and goods receipts spanning multiple years or extreme trace lengths (e.g., V3680, V3305, V3102, V3074, V6776).",
       "anchor_ids": [],
-      "rationale": "Clearly separated by extreme trace lengths (hundreds of steps), very high durations (thousands of days), and pervasive rework loops (e.g. V3680, V3305, V3102, V6776).",
+      "rationale": "These represent outlier extreme cases with massive trace lengths and extensive internal rework loops.",
       "evidence_variant_ids": [
-        "V1038",
+        "V3680",
         "V3305",
         "V3102",
-        "V3680",
+        "V3074",
         "V6776"
       ]
     }

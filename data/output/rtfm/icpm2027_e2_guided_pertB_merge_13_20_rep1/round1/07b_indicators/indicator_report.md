@@ -12,10 +12,10 @@ Satisfaction is on GRL's [-100, +100] scale, converted from the measured value b
 | Scope | Measured | Satisfaction | Cases | Measured | Not applicable | No start | No end | Coverage |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | whole log | 87.5 | +4 | 150370 | 103987 | 0 | 0 | 46383 | 69% |
-| timely_payment | 87.6 | +4 | 66574 | 20191 | 0 | 0 | 46383 | 30% |
-| administrative_appeal | 89.3 | +1 | 3904 | 3904 | 0 | 0 | 0 | 100% |
-| judicial_appeal | 95.5 | -2 | 531 | 531 | 0 | 0 | 0 | 100% |
-| merged_closure | 90.5 | +0 | 18 | 18 | 0 | 0 | 0 | 100% |
+| timely_payment | 87.6 | +3 | 66364 | 19981 | 0 | 0 | 46383 | 30% |
+| administrative_appeal_prefecture | 89.9 | +0 | 3733 | 3733 | 0 | 0 | 0 | 100% |
+| merged_closure | 71.4 | +30 | 583 | 583 | 0 | 0 | 0 | 100% |
+| judicial_appeal_judge | 100.7 | -3 | 414 | 414 | 0 | 0 | 0 | 100% |
 
 ## Time to appeal filing, Prefecture (days) (id 113)
 
@@ -26,10 +26,10 @@ Satisfaction is on GRL's [-100, +100] scale, converted from the measured value b
 | Scope | Measured | Satisfaction | Cases | Measured | Not applicable | No start | No end | Coverage |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | whole log | 48.6 | +100 | 150370 | 4036 | 146182 | 145 | 7 | 96% |
-| timely_payment | 47.1 | +100 | 66574 | 92 | 66473 | 3 | 6 | 91% |
-| administrative_appeal | 49.1 | +100 | 3904 | 3770 | 2 | 132 | 0 | 97% |
-| judicial_appeal | 38.1 | +100 | 531 | 162 | 362 | 6 | 1 | 96% |
-| merged_closure | 16.0 | +100 | 18 | 3 | 15 | 0 | 0 | 100% |
+| timely_payment | 42.6 | +100 | 66364 | 71 | 66292 | 1 | 0 | 99% |
+| administrative_appeal_prefecture | 49.5 | +100 | 3733 | 3586 | 6 | 138 | 3 | 96% |
+| merged_closure | 87.4 | -45 | 583 | 10 | 570 | 0 | 3 | 77% |
+| judicial_appeal_judge | 37.2 | +100 | 414 | 151 | 256 | 6 | 1 | 96% |
 
 ## Time to appeal filing, Judge (days) (id 175)
 
@@ -40,10 +40,10 @@ Satisfaction is on GRL's [-100, +100] scale, converted from the measured value b
 | Scope | Measured | Satisfaction | Cases | Measured | Not applicable | No start | No end | Coverage |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | whole log | 95.9 | -100 | 150370 | 538 | 149815 | 17 | 0 | 97% |
-| timely_payment | 109.6 | -100 | 66574 | 12 | 66562 | 0 | 0 | 100% |
-| administrative_appeal | 111.1 | -100 | 3904 | 10 | 3894 | 0 | 0 | 100% |
-| judicial_appeal | 95.4 | -100 | 531 | 514 | 0 | 17 | 0 | 97% |
-| merged_closure | 26.0 | +100 | 18 | 1 | 17 | 0 | 0 | 100% |
+| timely_payment | 64.2 | -100 | 66364 | 12 | 66352 | 0 | 0 | 100% |
+| administrative_appeal_prefecture | 162.2 | -100 | 3733 | 21 | 3712 | 0 | 0 | 100% |
+| merged_closure | — | — | 583 | 0 | 583 | 0 | 0 | 0% |
+| judicial_appeal_judge | 110.5 | -100 | 414 | 397 | 0 | 17 | 0 | 96% |
 
 ## Average time to case closure (days) (id 114)
 
@@ -53,10 +53,10 @@ Satisfaction is on GRL's [-100, +100] scale, converted from the measured value b
 | Scope | Measured | Satisfaction | Cases | Measured | Not applicable | No start | No end | Coverage |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | whole log | 378.7 | -100 | 150370 | 126840 | 0 | 0 | 23530 | 84% |
-| timely_payment | 103.9 | +100 | 66574 | 66574 | 0 | 0 | 0 | 100% |
-| administrative_appeal | 486.2 | -100 | 3904 | 812 | 0 | 0 | 3092 | 21% |
-| judicial_appeal | 716.4 | -100 | 531 | 482 | 0 | 0 | 49 | 91% |
-| merged_closure | 682.6 | -100 | 18 | 18 | 0 | 0 | 0 | 100% |
+| timely_payment | 103.5 | +100 | 66364 | 66364 | 0 | 0 | 0 | 100% |
+| administrative_appeal_prefecture | 381.7 | -100 | 3733 | 638 | 0 | 0 | 3095 | 17% |
+| merged_closure | 118.5 | +100 | 583 | 583 | 0 | 0 | 0 | 100% |
+| judicial_appeal_judge | 607.1 | -100 | 414 | 364 | 0 | 0 | 50 | 88% |
 
 ## Propagated softgoal satisfaction
 
@@ -64,9 +64,9 @@ Propagated from the measured indicators through the same decomposition and contr
 
 Only softgoals carry a value: indicators are the sole seeds, and they reach the model through contribution links, so every goal and task in the decomposition tree evaluates to the default 0. Seeding a category's `anchor_ids` with full satisfaction would light the tree up, but it would also assert that a category existing *is* its goal being met — the confound this measure is supposed to expose, not commit.
 
-| Softgoal | whole log | administrative_appeal | judicial_appeal | merged_closure | timely_payment |
+| Softgoal | whole log | administrative_appeal_prefecture | judicial_appeal_judge | merged_closure | timely_payment |
 |---|---|---|---|---|---|
-| Maximize timely fine revenue | -48 | -50 | -51 | -50 | +52 |
-| Minimize administrative & enforcement cost | -50 | -50 | -50 | -50 | +50 |
-| Preserve offender's due-process rights | +0 | +0 | +0 | +100 | +0 |
+| Maximize timely fine revenue | -48 | -50 | -52 | +65 | +52 |
+| Minimize administrative & enforcement cost | -50 | -50 | -50 | +50 | +50 |
+| Preserve offender's due-process rights | +0 | +0 | +0 | -22 | +0 |
 

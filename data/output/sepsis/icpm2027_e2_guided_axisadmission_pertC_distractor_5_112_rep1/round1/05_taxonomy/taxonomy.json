@@ -1,0 +1,63 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission NC",
+      "description": "Admission to normal care ward realizing alternative id=15. Supports standard post-discharge recovery pathways measured against discharge and readmission indicators, though associated with standard ward stays.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=15 (Admission NC) as evidenced in variants such as V0008, V0625, V0605, V0551, V0449, V0192, V0441, V0317, V0273, V0068, V0072, V0071, V0070, V0069, V0067, V0066, V0065, V0064, V0063, and V0710.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0625",
+        "V0605",
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0273",
+        "V0068",
+        "V0072",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063",
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "admission_ic",
+      "name": "Admission IC",
+      "description": "Admission to intensive care unit realizing alternative id=16. Incurs a negative contribution (-25) to minimizing time-to-treatment due to intensive care coordination overhead, evaluated via length of stay and post-discharge return indicators.",
+      "anchor_ids": [
+        "16"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=16 (Admission IC) based on sample realizations in complex and critical paths such as variants V0605, V0551, V0317, V0273, V0068, V0145, and V0710.",
+      "evidence_variant_ids": [
+        "V0605",
+        "V0551",
+        "V0317",
+        "V0273",
+        "V0068",
+        "V0145",
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "admission_high_dependency_unit",
+      "name": "Admission to High-Dependency Unit",
+      "description": "Admission to a high-dependency unit realizing alternative id=112 for patients requiring intermediate acuity care between normal care and intensive care.",
+      "anchor_ids": [
+        "112"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=112 (Admission to High-Dependency Unit). Although no variants in this specific sample trace directly to this leaf due to extreme rarity, folding it into another category is prohibited without co-occurrence evidence.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

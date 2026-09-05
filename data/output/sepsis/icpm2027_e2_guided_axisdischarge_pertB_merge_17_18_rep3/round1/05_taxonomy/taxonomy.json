@@ -1,0 +1,65 @@
+{
+  "categories": [
+    {
+      "category_id": "merged_discharge",
+      "name": "Merged Discharge",
+      "description": "Represents the discharge pathway mapped to alternative 17, advancing the goal of reaching a captured discharge while helping avoid post-discharge deterioration as measured by post-discharge ER return indicators.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Default 1:1 mapping for alternative 17 (Merged 17+18), supported by variants such as V0551 and V0625 ending in Release A or Return ER which trace to this element.",
+      "evidence_variant_ids": [
+        "V0551",
+        "V0625",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0273",
+        "V0072",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Represents the discharge pathway mapped to alternative 19, leading to a captured discharge outcome evaluated against post-discharge performance indicators.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Default 1:1 mapping for alternative 19 (Release C), supported directly by variant V0710 ending in Release C.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Represents the discharge pathway mapped to alternative 20, leading to a captured discharge outcome evaluated against post-discharge performance indicators.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Default 1:1 mapping for alternative 20 (Release D), supported directly by variant V0273 ending in Release D.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release E",
+      "description": "Represents the discharge pathway mapped to alternative 21, leading to a captured discharge outcome evaluated against post-discharge performance indicators.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Default 1:1 mapping for alternative 21 (Release E), preserving the full set of declared alternatives under the OR decomposition of goal 6.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

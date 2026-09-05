@@ -2,7 +2,7 @@
 
 Experiment `e1` · dataset `sepsis` · arm `guided` · replicate 4
 
-Protocol version `1.0.0` · steps [5, 6] · 2026-08-31T18:33:52.230218+00:00 → 2026-08-31T18:35:19.688240+00:00
+Protocol version `1.1.0` · steps [5, 6] · 2026-09-04T15:13:56.117419+00:00 → 2026-09-04T15:14:36.036747+00:00
 
 ## Inputs
 
@@ -10,7 +10,7 @@ Protocol version `1.0.0` · steps [5, 6] · 2026-08-31T18:33:52.230218+00:00 →
 |---|---|---|
 | Event log | `data/logs/sepsis.xes.gz` | `709c523403064159` |
 | Goal model | `data/goals/sepsis_goal_model.jucm` | `749aa9e234ca70c7` |
-| Condition config | `data/output/sepsis/icpm2027_e1_guided_axisdischarge_rep4/condition_config.yaml` | `4d6b67df7e0034d2` |
+| Condition config | `data/output/sepsis/icpm2027_e1_guided_axisdischarge_rep4/condition_config.yaml` | `75c6797ff3f2fc96` |
 
 **Prompt templates:** `prompt_assignment_batch.txt`=`4fe1d4fb8ac2`, `prompt_description.txt`=`7683ed3205c4`, `prompt_taxonomy_intent_guided.txt`=`c3fe7d89554d`, `prompt_taxonomy_intent_guided_revision.txt`=`604be767fe9c`, `prompt_taxonomy_open.txt`=`d32f3f34b809`, `prompt_taxonomy_open_revision.txt`=`cf4eefe924c8`
 
@@ -59,7 +59,7 @@ Seed: null — no seed is exposed by PipelineConfig.llm or by the Gemini path th
         "temperature": 0.0
       }
     ],
-    "call_count": 17
+    "call_count": 34
   },
   "description": null
 }
@@ -69,11 +69,11 @@ Seed: null — no seed is exposed by PipelineConfig.llm or by the Gemini path th
 
 | Artifact | Path | SHA-256 (first 16) |
 |---|---|---|
-| taxonomy | `data/output/sepsis/icpm2027_e1_guided_axisdischarge_rep4/round1/05_taxonomy/taxonomy.json` | `f2db0624cccbcf8b` |
-| assignments | `data/output/sepsis/icpm2027_e1_guided_axisdischarge_rep4/round1/06_assignment/assignments.csv` | `d6f626df7f77c379` |
+| taxonomy | `data/output/sepsis/icpm2027_e1_guided_axisdischarge_rep4/round1/05_taxonomy/taxonomy.json` | `b78158f671b608d3` |
+| assignments | `data/output/sepsis/icpm2027_e1_guided_axisdischarge_rep4/round1/06_assignment/assignments.csv` | `076a63ac6d9bd451` |
 | discovery_metrics | *(not produced)* | — |
 | descriptions | *(not produced)* | — |
 
 ## Environment
 
-`Mac-Daniel.local` · macOS-26.6.2-arm64-arm-64bit-Mach-O · Python 3.14.6 · git `b016cb958f1e` **(working tree dirty)**
+`Mac-Daniel.local` · macOS-26.6.2-arm64-arm-64bit-Mach-O · Python 3.14.6 · git `7d93545a98f0` **(working tree dirty)**

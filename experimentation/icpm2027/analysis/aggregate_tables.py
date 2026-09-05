@@ -52,8 +52,11 @@ LOG_LABELS = {"rtfm": "RTFM", "sepsis": "Sepsis", "bpic2019": "BPIC 2019"}
 AXIS_LABELS = {"resolution": "resolution", "admission": "admission", "discharge": "discharge",
                "matching_regime": "matching regime"}
 
-#: The arms the tables cover, in reporting order. `guided_no_sample` is the Task C11a ablation.
-ARMS: tuple[str, ...] = ("guided", "open", "guided_no_sample")
+#: The arms the tables cover, in reporting order. `guided_no_sample` is the Task C11a ablation;
+#: `label_list` is Task C5's control and `label_list_strict` its stricter-criterion companion
+#: (rtfm and sepsis only — bpic2019 was never scoped to either, preregistration.yaml C5's
+#: 2026-09-04 amendment).
+ARMS: tuple[str, ...] = ("guided", "open", "guided_no_sample", "label_list", "label_list_strict")
 
 #: Task D1's pre-registered convention. Both weightings are reported (the paper prints both
 #: blocks); the residual is its own cluster in each.
@@ -105,9 +108,14 @@ class AxisRuns:
 def _load_run(condition: ConditionSpec) -> Run | None:
     """The run if it is on disk and complete enough to measure, else None.
 
-    Deliberately independent of `conditions.already_complete()`: that predicate exists to decide
-    whether a *driver* should re-bill a condition, and it reads the full variant population to do
-    it. Here the question is only whether frozen artifacts exist to aggregate.
+    Row-count-checks against `variants.csv`, the same bar `conditions.already_complete()` applies
+    (kept independent of that function, which exists to decide whether a *driver* should re-bill a
+    condition, not whether an aggregator should trust one). This is not a hypothetical: a provider
+    outage that outlasts Step 6's own retries drops the unresolved variant(s) from
+    `assignments.csv` entirely — neither categorized nor residual — while leaving every path this
+    function checks in place (Sepsis's `icpm2027_e1_open_rep1`, 2026-08-29; the same failure mode
+    hit `icpm2027_e1_label_list_rep1` on bpic2019, 2026-09-04, before its retry completed it). A
+    short `assignments.csv` must never be silently aggregated into a reported table.
     """
     round_dir = condition.run_dir / "round1"
     assignments_path = round_dir / "06_assignment" / "assignments.csv"
@@ -118,6 +126,8 @@ def _load_run(condition: ConditionSpec) -> Run | None:
 
     assignments = pd.read_csv(assignments_path, usecols=["variant_id", "category_id"], dtype=str)
     variants = pd.read_csv(variants_path, usecols=["variant_id", "frequency"])
+    if len(assignments) < len(variants):
+        return None
     taxonomy = json.loads(taxonomy_path.read_text())
     return Run(
         condition=condition,
@@ -234,6 +244,8 @@ def aggregate(cells: list[AxisRuns]) -> dict[str, object]:
         guided = cell.by_arm.get("guided", [])
         open_arm = cell.by_arm.get("open", [])
         no_sample = cell.by_arm.get("guided_no_sample", [])
+        label_list = cell.by_arm.get("label_list", [])
+        label_list_strict = cell.by_arm.get("label_list_strict", [])
 
         divergence: dict[str, dict[str, object]] = {}
         for weighting in WEIGHTINGS:
@@ -248,6 +260,35 @@ def aggregate(cells: list[AxisRuns]) -> dict[str, object]:
                 entry["guided_vs_no_sample"] = pair_spread(guided, no_sample, weighting, within=False)
             if len(no_sample) >= 2:
                 entry["no_sample_no_sample"] = pair_spread(no_sample, no_sample, weighting, within=True)
+            if guided and label_list:
+                entry["guided_vs_label_list"] = pair_spread(guided, label_list, weighting, within=False)
+            if len(label_list) >= 2:
+                entry["label_list_label_list"] = pair_spread(label_list, label_list, weighting, within=True)
+            if label_list and open_arm:
+                # The control's own design point (conditions.py: "Step 6 then runs identically to
+                # the open arm"): label-list and open share taxonomy_mode="open" (protocol.py), so
+                # this pair isolates "any externally supplied, fixed-cardinality list" from "the
+                # goal-derived list's specific content" — the comparison Task C5 exists to make.
+                entry["label_list_vs_open"] = pair_spread(label_list, open_arm, weighting, within=False)
+            if guided and label_list_strict:
+                # The Threats section's fourth co-varying factor, isolated: label_list_strict reads
+                # the identical supplied categories as label_list but under taxonomy_mode=
+                # "intent_guided" (protocol.py), so this pair holds content and cardinality fixed
+                # and varies only the assignment prompt's mode_clause (guided's "must satisfy" vs.
+                # open's "must match").
+                entry["guided_vs_label_list_strict"] = pair_spread(
+                    guided, label_list_strict, weighting, within=False
+                )
+            if len(label_list_strict) >= 2:
+                entry["label_list_strict_label_list_strict"] = pair_spread(
+                    label_list_strict, label_list_strict, weighting, within=True
+                )
+            if label_list and label_list_strict:
+                # The cleanest single-factor read: identical categories, identical narratives, the
+                # assignment criterion wording the only thing that differs.
+                entry["label_list_vs_label_list_strict"] = pair_spread(
+                    label_list, label_list_strict, weighting, within=False
+                )
             divergence[weighting] = entry
 
         axes.append({
@@ -330,6 +371,12 @@ def render_markdown(data: dict) -> str:
         ("guided_vs_open", "guided vs. open"),
         ("guided_vs_no_sample", "guided vs. no-sample"),
         ("no_sample_no_sample", "no-sample--no-sample"),
+        ("guided_vs_label_list", "guided vs. label-list"),
+        ("label_list_label_list", "label-list--label-list"),
+        ("label_list_vs_open", "label-list vs. open"),
+        ("guided_vs_label_list_strict", "guided vs. label-list-strict"),
+        ("label_list_strict_label_list_strict", "label-list-strict--label-list-strict"),
+        ("label_list_vs_label_list_strict", "label-list vs. label-list-strict"),
     ]
     lines += ["", "## Divergence — AMI, residual as its own block", ""]
     for weighting in WEIGHTINGS:
@@ -394,6 +441,46 @@ def render_latex(data: dict) -> str:
     return "\n".join(out)
 
 
+def render_latex_label_list(data: dict) -> str:
+    """Task C5's control and its label_list_strict companion: guided vs. label-list(-strict) AMI
+    against each arm's own noise floor, plus label_list vs. label_list_strict (the criterion-only
+    contrast, categories held fixed), both weightings.
+    """
+    out = [
+        "% Regenerated by experimentation/icpm2027/analysis/aggregate_tables.py — do not hand-edit.",
+        "% Table: Task C5 label-list control (and its label_list_strict companion) — AMI against "
+        "each arm's own replicate-pair noise floor.",
+        "\\begin{tabular}{llccccccc}",
+        "\\toprule",
+        "Log & Axis & Guided--guided & LL--LL & Guided vs.\\ LL & LL vs.\\ open & LLS--LLS & "
+        "Guided vs.\\ LLS & LL vs.\\ LLS \\\\",
+        "\\midrule",
+    ]
+    axes_with_control = [axis for axis in data["axes"] if "label_list" in axis["coverage"]]
+    for index, weighting in enumerate(WEIGHTINGS):
+        if index:
+            out.append("\\addlinespace")
+        out.append(f"\\multicolumn{{9}}{{l}}{{\\emph{{{weighting.capitalize()}-weighted}}}} \\\\")
+        for axis in axes_with_control:
+            entry = axis["divergence"][weighting]
+            cells = [
+                _fmt(entry[key], 2) if key in entry else "---"
+                for key in (
+                    "guided_guided",
+                    "label_list_label_list",
+                    "guided_vs_label_list",
+                    "label_list_vs_open",
+                    "label_list_strict_label_list_strict",
+                    "guided_vs_label_list_strict",
+                    "label_list_vs_label_list_strict",
+                )
+            ]
+            out.append(f"{axis['log']} & {axis['axis_label']} & " + " & ".join(cells) + " \\\\")
+    out += ["\\bottomrule", "\\end{tabular}", "",
+            "% LL = label-list (open criterion); LLS = label-list-strict (guided criterion)."]
+    return "\n".join(out)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--out", type=Path, default=RESULTS_DIR,
@@ -413,6 +500,7 @@ def main(argv: list[str] | None = None) -> int:
     (args.out / "aggregate_tables.json").write_text(json.dumps(data, indent=2) + "\n")
     (args.out / "aggregate_tables.md").write_text(render_markdown(data))
     (args.out / "aggregate_tables.tex").write_text(render_latex(data))
+    (args.out / "aggregate_tables_label_list.tex").write_text(render_latex_label_list(data))
     print(render_markdown(data))
     print(f"Wrote aggregate_tables.{{json,md,tex}} to {args.out}", file=sys.stderr)
     return 0

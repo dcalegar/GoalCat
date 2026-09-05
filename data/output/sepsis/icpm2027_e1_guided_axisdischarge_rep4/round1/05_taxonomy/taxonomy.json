@@ -3,24 +3,36 @@
     {
       "category_id": "release_a",
       "name": "Release A",
-      "description": "Represents the standard discharge pathway for patients treated within guideline windows. Advances the softgoal Avoid post-discharge deterioration and is measured against the Post-discharge ER return indicator.",
+      "description": "Represents the discharge of an admitted patient under pathway A, contributing positively to avoiding post-discharge deterioration and measured against post-discharge ER returns.",
       "anchor_ids": [
         "17"
       ],
-      "rationale": "Mapped 1:1 to the declared alternative Release A (id=17) as observed in multiple variants (e.g. V0008, V0070).",
+      "rationale": "Mapped 1:1 to declared alternative Release A (id=17) as observed in the sample variants such as V0008, supporting avoidance of post-discharge deterioration.",
       "evidence_variant_ids": [
         "V0008",
-        "V0070"
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0072",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063"
       ]
     },
     {
       "category_id": "release_b",
       "name": "Release B",
-      "description": "Represents an alternative discharge pathway following extended monitoring. Advances the softgoal Avoid post-discharge deterioration and is measured against the Post-discharge ER return indicator.",
+      "description": "Represents the discharge of an admitted patient under pathway B, helping to avoid post-discharge deterioration and evaluated against post-discharge ER return indicators.",
       "anchor_ids": [
         "18"
       ],
-      "rationale": "Mapped 1:1 to the declared alternative Release B (id=18) as observed in variant V0068 and V0145.",
+      "rationale": "Mapped 1:1 to declared alternative Release B (id=18) as seen in sample variants like V0068 and V0145, helping avoid post-discharge deterioration.",
       "evidence_variant_ids": [
         "V0068",
         "V0145"
@@ -29,11 +41,11 @@
     {
       "category_id": "release_c",
       "name": "Release C",
-      "description": "Represents a specific discharge pathway for long-stay complex cases. Advances the softgoal Avoid post-discharge deterioration and is measured against the Post-discharge ER return indicator.",
+      "description": "Represents the discharge of an admitted patient under pathway C, contributing to the overall patient disposition goal and measured against post-discharge ER returns.",
       "anchor_ids": [
         "19"
       ],
-      "rationale": "Mapped 1:1 to the declared alternative Release C (id=19) as observed in variant V0710.",
+      "rationale": "Mapped 1:1 to declared alternative Release C (id=19) as evidenced by sample variant V0710.",
       "evidence_variant_ids": [
         "V0710"
       ]
@@ -41,11 +53,11 @@
     {
       "category_id": "release_d",
       "name": "Release D",
-      "description": "Represents a specific discharge pathway for extended rework cases. Advances the softgoal Avoid post-discharge deterioration and is measured against the Post-discharge ER return indicator.",
+      "description": "Represents the discharge of an admitted patient under pathway D, reaching a captured discharge and monitored via post-discharge ER return indicators.",
       "anchor_ids": [
         "20"
       ],
-      "rationale": "Mapped 1:1 to the declared alternative Release D (id=20) as observed in variant V0273.",
+      "rationale": "Mapped 1:1 to declared alternative Release D (id=20) as observed in sample variant V0273.",
       "evidence_variant_ids": [
         "V0273"
       ]
@@ -53,11 +65,11 @@
     {
       "category_id": "release_e",
       "name": "Release E",
-      "description": "Represents the alternative discharge pathway E for completed cases. Advances the softgoal Avoid post-discharge deterioration and is measured against the Post-discharge ER return indicator.",
+      "description": "Represents the discharge of an admitted patient under pathway E, concluding the patient journey towards a documented disposition.",
       "anchor_ids": [
         "21"
       ],
-      "rationale": "Mapped 1:1 to the declared alternative Release E (id=21) per the goal model decomposition axis.",
+      "rationale": "Mapped 1:1 to declared alternative Release E (id=21) based on the goal model decomposition for captured discharges.",
       "evidence_variant_ids": []
     }
   ]

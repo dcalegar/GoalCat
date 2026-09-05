@@ -1,0 +1,72 @@
+You are deciding, for each of several process-variant narratives, which single taxonomy category (if any) it realizes.
+
+The taxonomy was derived by subdividing a declared goal-model axis — every category is traceable to specific goal-model elements, so 'realize' means the narrative satisfies that declared alternative.
+
+=== TAXONOMY CATEGORIES ===
+- category_id=timely_payment | name=Resolve via timely payment
+  description: Resolution of the fine case through prompt payment by the offender, advancing the softgoal to maximize timely fine revenue and helping minimize administrative and enforcement costs, evaluated against indicators such as time to fine dispatch and average time to case closure.
+- category_id=merged_closure | name=Merged 13+20
+  description: Resolution of the fine case through alternative closure mechanisms, helping maximize timely fine revenue while hurting the minimization of administrative and enforcement costs.
+- category_id=administrative_appeal | name=Resolve via administrative appeal to the Prefecture
+  description: Resolution of the fine case through an administrative appeal submitted to the Prefecture, preserving the offender's due-process rights while incurring some negative effects on administrative costs and timely revenue, judged against the time to appeal filing indicator.
+- category_id=judicial_appeal | name=Resolve via judicial appeal to the Judge
+  description: Resolution of the fine case through a judicial appeal to the Judge, making a strong positive contribution to preserving the offender's due-process rights while hurting administrative costs and timely revenue, measured against the judicial appeal timing indicator.
+
+=== NARRATIVES TO CLASSIFY (25) ===
+How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
+- frequency is how many cases share that sequence, with that count as a share of all cases in the log in parentheses; duration_median is the median case duration for that variant, written compactly on the same scale as the waits inside the narrative ("134d", "3h", "45m"); outcome is the variant's final activity.
+- The activity sequence shown after "narrative:" is that of a single representative case (the one whose duration is closest to the variant's median), so a "(+34d)" after an activity is that case's waiting time since the preceding activity, not a variant-wide average. Activities are listed in the order they occurred. A "(handled by resource R)" clause, where present, names the resource that performed that activity in the representative case. A trailing "Rework observed: ..." sentence, where present, is a variant-level count over the variant's own cases, not part of the representative case's sequence.
+- Activity labels come from the event log and need not match a category's wording verbatim: a logged activity realizes a category by meaning, not by string equality.
+
+- variant_id=V0176 | frequency=1 (0.0%) | duration_median=2006d | outcome=Send Appeal to Prefecture
+  narrative: Create Fine Send Fine (+141d) Insert Fine Notification (+12d) Add penalty (+60d) Insert Date Appeal to Prefecture (+38d) Appeal to Judge (+216d) Send Appeal to Prefecture (+1539d)
+- variant_id=V0177 | frequency=1 (0.0%) | duration_median=2003d | outcome=Send Appeal to Prefecture
+  narrative: Create Fine Send Fine (+138d) Insert Fine Notification (+12d) Add penalty (+60d) Insert Date Appeal to Prefecture (+38d) Receive Result Appeal from Prefecture (+209d) Notify Result Appeal to Offender (+8d) Appeal to Judge (+9d) Send for Credit Collection (+1093d) Send Appeal to Prefecture (+436d)
+- variant_id=V0178 | frequency=1 (0.0%) | duration_median=258d | outcome=Notify Result Appeal to Offender
+  narrative: Create Fine Send Fine (+48d) Send Appeal to Prefecture (+62d) Insert Fine Notification (+32d) Insert Date Appeal to Prefecture (+16d) Add penalty (+44d) Receive Result Appeal from Prefecture (+46d) Notify Result Appeal to Offender (+10d)
+- variant_id=V0179 | frequency=1 (0.0%) | duration_median=356d | outcome=Notify Result Appeal to Offender
+  narrative: Create Fine Send Fine (+142d) Insert Fine Notification (+14d) Add penalty (+60d) Insert Date Appeal to Prefecture (+1d) Receive Result Appeal from Prefecture (+112d) Notify Result Appeal to Offender (+27d)
+- variant_id=V0180 | frequency=1 (0.0%) | duration_median=429d | outcome=Payment
+  narrative: Create Fine Send Fine (+106d) Insert Date Appeal to Prefecture (+41d) Insert Fine Notification (+42d) Send Appeal to Prefecture (+9d) Add penalty (+51d) Receive Result Appeal from Prefecture (+87d) Notify Result Appeal to Offender (+6d) Payment (+57d) Payment (+30d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0181 | frequency=1 (0.0%) | duration_median=368d | outcome=Payment
+  narrative: Create Fine Send Fine (+137d) Insert Fine Notification (+17d) Insert Date Appeal to Prefecture (+13d) Add penalty (+47d) Send Appeal to Prefecture (+1d) Payment (+5d) Payment (+148d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0182 | frequency=1 (0.0%) | duration_median=801d | outcome=Send for Credit Collection
+  narrative: Create Fine Insert Date Appeal to Prefecture (+66d) Send Fine (+11d) Insert Fine Notification (+13d) Send Appeal to Prefecture (+42d) Add penalty (+18d) Receive Result Appeal from Prefecture (+35d) Notify Result Appeal to Offender (+52d) Send for Credit Collection (+564d)
+- variant_id=V0183 | frequency=1 (0.0%) | duration_median=961d | outcome=Payment
+  narrative: Create Fine Send Fine (+67d) Insert Fine Notification (+5d) Add penalty (+60d) Appeal to Judge Payment (+714d) Payment (+52d) Payment (+28d) Payment (+35d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0184 | frequency=1 (0.0%) | duration_median=841d | outcome=Payment
+  narrative: Create Fine Send Fine (+62d) Insert Fine Notification (+5d) Add penalty (+60d) Appeal to Judge Payment (+700d) Payment (+14d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0185 | frequency=1 (0.0%) | duration_median=330d | outcome=Appeal to Judge
+  narrative: Create Fine Send Fine (+108d) Insert Fine Notification (+6d) Insert Date Appeal to Prefecture (+6d) Send Appeal to Prefecture (+49d) Add penalty (+5d) Receive Result Appeal from Prefecture (+43d) Notify Result Appeal to Offender (+2d) Payment (+28d) Appeal to Judge (+83d)
+- variant_id=V0186 | frequency=1 (0.0%) | duration_median=582d | outcome=Payment
+  narrative: Create Fine Send Fine (+110d) Insert Fine Notification (+13d) Insert Date Appeal to Prefecture (+28d) Add penalty (+32d) Send Appeal to Prefecture (+2d) Payment (+369d) Payment (+1d) Payment (+27d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0187 | frequency=1 (0.0%) | duration_median=351d | outcome=Payment
+  narrative: Create Fine Send Fine (+55d) Insert Fine Notification (+10d) Add penalty (+60d) Appeal to Judge (+24d) Payment (+87d) Payment (+25d) Payment (+28d) Payment (+34d) Payment (+28d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0188 | frequency=1 (0.0%) | duration_median=322d | outcome=Payment
+  narrative: Create Fine Send Fine (+47d) Insert Fine Notification (+9d) Payment (+52d) Add penalty (+8d) Payment (+24d) Payment (+29d) Payment (+34d) Payment (+29d) Payment (+28d) Payment (+30d) Payment (+32d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0189 | frequency=1 (0.0%) | duration_median=139d | outcome=Payment
+  narrative: Create Fine Insert Date Appeal to Prefecture (+24d) Send Fine (+1d) Insert Fine Notification (+17d) Send Appeal to Prefecture (+33d) Add penalty (+27d) Payment (+37d)
+- variant_id=V0190 | frequency=1 (0.0%) | duration_median=240d | outcome=Payment
+  narrative: Create Fine Insert Date Appeal to Prefecture (+29d) Send Fine (+1d) Insert Fine Notification (+17d) Send Appeal to Prefecture (+40d) Add penalty (+20d) Payment (+64d) Payment (+69d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0191 | frequency=1 (0.0%) | duration_median=239d | outcome=Receive Result Appeal from Prefecture
+  narrative: Create Fine Send Fine (+65d) Insert Fine Notification (+10d) Insert Date Appeal to Prefecture (+53d) Add penalty (+7d) Send Appeal to Prefecture (+48d) Notify Result Appeal to Offender (+47d) Receive Result Appeal from Prefecture (+9d)
+- variant_id=V0192 | frequency=1 (0.0%) | duration_median=295d | outcome=Receive Result Appeal from Prefecture
+  narrative: Create Fine Send Fine (+74d) Insert Date Appeal to Prefecture (+154d) Send Appeal to Prefecture (+53d) Receive Result Appeal from Prefecture (+14d)
+- variant_id=V0193 | frequency=1 (0.0%) | duration_median=58d | outcome=Send Fine
+  narrative: Create Fine Payment Payment (+57d) Send Fine (+1d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0194 | frequency=1 (0.0%) | duration_median=139d | outcome=Send Appeal to Prefecture
+  narrative: Create Fine Send Fine (+54d) Payment (+54d) Insert Date Appeal to Prefecture (+4d) Send Appeal to Prefecture (+27d)
+- variant_id=V0195 | frequency=1 (0.0%) | duration_median=522d | outcome=Payment
+  narrative: Create Fine Send Fine (+96d) Insert Fine Notification (+20d) Insert Date Appeal to Prefecture (+1d) Send Appeal to Prefecture (+1d) Receive Result Appeal from Prefecture (+34d) Add penalty (+24d) Payment (+317d) Payment (+29d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0196 | frequency=1 (0.0%) | duration_median=92d | outcome=Payment
+  narrative: Create Fine Insert Date Appeal to Prefecture (+5d) Send Appeal to Prefecture (+30d) Send Fine (+20d) Payment (+37d)
+- variant_id=V0197 | frequency=1 (0.0%) | duration_median=244d | outcome=Payment
+  narrative: Create Fine Send Fine (+76d) Insert Fine Notification (+24d) Insert Date Appeal to Prefecture (+3d) Receive Result Appeal from Prefecture (+22d) Send Appeal to Prefecture (+6d) Add penalty (+29d) Payment (+84d)
+- variant_id=V0198 | frequency=1 (0.0%) | duration_median=671d | outcome=Payment
+  narrative: Create Fine Send Fine (+28d) Insert Fine Notification (+46d) Insert Date Appeal to Prefecture (+1d) Send Appeal to Prefecture (+1d) Receive Result Appeal from Prefecture (+29d) Add penalty (+29d) Notify Result Appeal to Offender (+82d) Appeal to Judge (+1d) Payment (+347d) Payment (+107d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0199 | frequency=1 (0.0%) | duration_median=511d | outcome=Payment
+  narrative: Create Fine Send Fine (+61d) Insert Date Appeal to Prefecture (+7d) Insert Fine Notification Appeal to Judge (+1d) Send Appeal to Prefecture Add penalty (+59d) Payment (+383d)
+- variant_id=V0200 | frequency=1 (0.0%) | duration_median=278d | outcome=Appeal to Judge
+  narrative: Create Fine Send Fine (+46d) Insert Fine Notification (+7d) Insert Date Appeal to Prefecture (+19d) Add penalty (+41d) Send Appeal to Prefecture (+12d) Receive Result Appeal from Prefecture (+83d) Appeal to Judge (+70d)
+
+For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids. When a category does match, category_id must be copied verbatim, character-for-character, from one of the category_id values listed above under === TAXONOMY CATEGORIES === — never a paraphrase, abbreviation, or reworded variant of a category's name or description, even if it reads more naturally. A category_id that does not appear above exactly as written cannot be matched back to that category afterward, silently corrupting the result.

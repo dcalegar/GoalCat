@@ -37,6 +37,7 @@ from goalcat.llm.taxonomy import Category, Taxonomy
 from .inputs import SharedBase, materialize_condition_inputs, withhold_narrative_sample
 from .manifest import build_manifest, now_iso, write_manifest
 from .protocol import (
+    LABEL_LIST_ARMS,
     ConditionSpec,
     PreRegistration,
     Protocol,
@@ -69,7 +70,7 @@ def estimated_llm_calls(condition: ConditionSpec, base: SharedBase, batch_size: 
     forbids tuning it against categorization outcomes, so the number that justifies it has to be
     available *before* the run, which is what this produces.
     """
-    step5 = 0 if condition.arm == "label_list" else 1
+    step5 = 0 if condition.arm in LABEL_LIST_ARMS else 1
     step6 = math.ceil(base.variant_count / batch_size) if batch_size > 0 else 0
     step8 = 1 if 8 in condition.steps else 0
     return {"step5": step5, "step6": step6, "step8": step8, "total": step5 + step6 + step8}
@@ -245,7 +246,7 @@ def execute_condition(
     config_path = write_condition_config(condition, protocol, prereg)
 
     steps = condition.steps
-    if condition.arm == "label_list":
+    if condition.arm in LABEL_LIST_ARMS:
         write_label_list_taxonomy(condition, run_dir, logger)
         steps = tuple(s for s in steps if s != 5)
 

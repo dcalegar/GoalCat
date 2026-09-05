@@ -1,0 +1,55 @@
+{
+  "categories": [
+    {
+      "category_id": "release_a",
+      "name": "Release A",
+      "description": "Discharge via Release A pathway, advancing the softgoal to avoid post-discharge deterioration and measured against post-discharge ER return.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Maps 1:1 to declared alternative Release A (id=17) under goal-model element 6, observed in variants such as V0008 and V0070.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0070",
+        "V0065"
+      ]
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release B",
+      "description": "Discharge via Release B pathway, contributing to the softgoal of avoiding post-discharge deterioration and evaluated using post-discharge ER return.",
+      "anchor_ids": [
+        "18"
+      ],
+      "rationale": "Maps 1:1 to declared alternative Release B (id=18) under goal-model element 6, evidenced in variants like V0068 and V0145.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Discharge via Release C pathway, aligned with avoiding post-discharge deterioration and tracked by post-discharge ER return indicators.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to declared alternative Release C (id=19) under goal-model element 6, as seen in variant V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Discharge via Release D pathway, supporting the softgoal to avoid post-discharge deterioration against the post-discharge ER return indicator.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Maps 1:1 to declared alternative Release D (id=20) under goal-model element 6, realized in variant V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    }
+  ]
+}

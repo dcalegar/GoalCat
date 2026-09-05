@@ -1,0 +1,54 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission Normal Care",
+      "description": "Represents standard ward admission for patients requiring ongoing inpatient observation or treatment without intensive care resources. Contributes toward managing overall ward capacity and acts as the baseline path for admitted sepsis pathways.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to the declared goal-model alternative Admission NC (id=15). Evident across numerous sampled variants such as V0008, V0625, and V0070 where patients transition from emergency evaluation to standard inpatient care.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0625",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063",
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "admission_ic",
+      "name": "Admission Intensive Care",
+      "description": "Represents admission to the Intensive Care unit for critical stabilization. Carries a negative contribution link (-25) to minimizing time-to-treatment due to specialized coordination overhead, but handles severe acute presentations.",
+      "anchor_ids": [
+        "16"
+      ],
+      "rationale": "Mapped 1:1 to the declared goal-model alternative Admission IC (id=16). Supported by narrative samples such as V0605, V0317, and V0068 which explicitly realize intensive care admissions.",
+      "evidence_variant_ids": [
+        "V0605",
+        "V0317",
+        "V0068",
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "admission_high_dependency_unit",
+      "name": "Admission to High-Dependency Unit",
+      "description": "Represents admission to a high-dependency step-down unit for patients requiring closer monitoring than normal care provides, but not full intensive care.",
+      "anchor_ids": [
+        "112"
+      ],
+      "rationale": "Mapped 1:1 to the declared goal-model alternative Admission to High-Dependency Unit (id=112). Default representation for this declared OR branch.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

@@ -1,15 +1,14 @@
 {
   "categories": [
     {
-      "category_id": "standard_procure_to_pay",
-      "name": "Standard Procure-to-Pay",
-      "description": "Standard, high-frequency procurement paths where purchase orders are created, goods and invoice receipts are recorded, and invoices are cleared without significant delays or complications.",
+      "category_id": "standard_procurement_flow",
+      "name": "Standard Procurement Flow",
+      "description": "Standard purchasing and invoicing paths with predictable sequences, moderate lead times, and clean execution.",
       "anchor_ids": [],
-      "rationale": "These variants represent the backbone of normal operations (high frequency, moderate duration, clean linear progression ending in Clear Invoice).",
+      "rationale": "Represents the most frequent baseline purchasing processes (e.g. V0001, V0002) which lack extreme durations or rework anomalies.",
       "evidence_variant_ids": [
         "V0001",
         "V0002",
-        "V0004",
         "V0005",
         "V0006",
         "V0007",
@@ -18,11 +17,11 @@
       ]
     },
     {
-      "category_id": "quick_cancellation_or_completion",
-      "name": "Quick Cancellation or Early Termination",
-      "description": "Short-lived variants featuring very low trace lengths and rapid execution times, typically resulting in purchase order deletion, basic creation, or initial goods receipt without full invoice processing.",
+      "category_id": "short_low_touch_flow",
+      "name": "Short/Low-Touch Flow",
+      "description": "Short trace lengths consisting of early-stage procurement actions, rapid deletions, or immediate creation/goods receipt actions without full invoicing loops.",
       "anchor_ids": [],
-      "rationale": "Distinctly short trace lengths and minimal durations characterize these early-stage or aborted procurements.",
+      "rationale": "Captures low-length traces like simple order creations, deletions, or quick receipts (e.g. V0003, V0009, V0014, V0024) with minimal operational footprint.",
       "evidence_variant_ids": [
         "V0003",
         "V0009",
@@ -32,11 +31,11 @@
       ]
     },
     {
-      "category_id": "service_entry_execution",
-      "name": "Service Entry Sheet Processing",
-      "description": "Procurement paths focusing specifically on the recording of service entry sheets and goods receipts with minimal overhead or intermediate steps.",
+      "category_id": "service_entry_and_rework",
+      "name": "Service Entry & Minor Rework",
+      "description": "Flows centered around service entry sheets with minor repetitions or immediate low-duration completions.",
       "anchor_ids": [],
-      "rationale": "These variants group around service-oriented activities (Record Service Entry Sheet) with very low durations.",
+      "rationale": "Reflects execution patterns featuring service entry and goods receipt loops or small repetitions without exploding into massive delays (e.g. V0064, V0162, V0244, V0271).",
       "evidence_variant_ids": [
         "V0064",
         "V0162",
@@ -45,25 +44,30 @@
       ]
     },
     {
-      "category_id": "srm_integration_failure",
-      "name": "SRM System Transfer Failure",
-      "description": "Complex procurement variants originating in the SRM subsystem that suffer from transfer failures or communication issues with execution systems.",
+      "category_id": "srm_integration_anomaly",
+      "name": "SRM Integration Anomaly",
+      "description": "Flows involving SRM sub-system milestones, transfers, transmission changes, or system transfer failures.",
       "anchor_ids": [],
-      "rationale": "Characterized by the presence of SRM lifecycle states and culminating explicitly in 'SRM: Transfer Failed (E.Sys.)'.",
+      "rationale": "Isolates complex variants tied to SRM tracking states and transfer errors (e.g. V2944, V2952, V2950, V2949, V2947, V2946, V2948) which exhibit specialized messaging.",
       "evidence_variant_ids": [
         "V2944",
         "V2952",
+        "V2945",
+        "V2951",
         "V2950",
         "V2949",
-        "V2947"
+        "V2948",
+        "V2947",
+        "V2946",
+        "V2989"
       ]
     },
     {
-      "category_id": "extreme_rework_and_delay",
-      "name": "Extreme Rework and Administrative Delay",
-      "description": "Extremely long-running variants characterized by massive trace lengths, repetitive loops of invoice creation, cancellations, payment block removals, and multi-year durations.",
+      "category_id": "extreme_duration_and_churn",
+      "name": "Extreme Duration and Churn",
+      "description": "Massive trace lengths, extensive document cancellations, repetitive invoice postings, and multi-year durations.",
       "anchor_ids": [],
-      "rationale": "These represent extreme outliers in terms of trace length (hundreds of activities), duration (years), and extensive rework observed across multiple steps.",
+      "rationale": "Captures extreme outliers characterized by hundreds of activities, pervasive churn, invoice cancellations, and massive wait times spanning thousands of days (e.g. V1038, V3680, V3305, V3102, V3074, V6776, V5418).",
       "evidence_variant_ids": [
         "V1038",
         "V5418",
@@ -71,8 +75,6 @@
         "V3305",
         "V3102",
         "V3074",
-        "V2989",
-        "V2951",
         "V6776"
       ]
     }

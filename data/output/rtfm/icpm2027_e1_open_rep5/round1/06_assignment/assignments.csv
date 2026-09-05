@@ -1,0 +1,232 @@
+variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
+V0001,standard_fine_lifecycle,"Follows the typical administrative process including fine creation, notification, addition of penalties, and escalation to credit collection.",1.0,prefecture_appeal,1.0,0.0029392738360911608,0.0017314013093709946
+V0002,direct_payment,Fine is paid promptly and directly after creation without extensive administrative escalation or collection procedures.,1.0,payment_rework_heavy,2.0,0.15741999447345734,0.15407751500606537
+V0003,,"The trace stops abruptly at sending the fine without any payment, penalty, or further resolution.",,direct_payment,1.0,,0.33492860198020935
+V0004,standard_fine_lifecycle,"Represents the standard fine lifecycle with creation, notification, penalties, and ultimate resolution via payment.",0.0,payment_rework_heavy,1.0,0.3521413803100586,6.770990876248106e-05
+V0005,payment_rework_heavy,Characterized by repeated payment activities occurring over the course of the trace.,2.0,standard_fine_lifecycle,1.0,0.03468187525868416,0.0035808782558888197
+V0006,payment_rework_heavy,"Involves repeated payment actions, fitting the payment rework heavy category.",3.0,standard_fine_lifecycle,1.0,0.04524729773402214,0.013336916454136372
+V0007,direct_payment,Involves prompt payment shortly after fine creation and sending without penalties or complex escalation.,0.0,payment_rework_heavy,1.0,0.0,0.00334247131831944
+V0008,prefecture_appeal,Involves formal appeals to the prefecture including adding appeal dates and sending the appeal.,2.0,standard_fine_lifecycle,1.0,0.36256423592567444,0.0007805326604284346
+V0009,standard_fine_lifecycle,"Includes standard steps of fine notification, penalty addition, intermediate payment, and eventual credit collection.",1.0,payment_rework_heavy,1.0,0.0015991298714652658,0.00039125734474509954
+V0010,standard_fine_lifecycle,"Follows standard administrative fine handling with notification, penalty, and final credit collection.",2.0,payment_rework_heavy,1.0,0.0023278126027435064,0.0035356851294636726
+V0011,prefecture_appeal,Involves standard notification and penalties followed by formal appeal actions to the prefecture.,3.0,standard_fine_lifecycle,1.0,0.3566150367259979,0.0013859807513654232
+V0012,,"An atypical sequence of paying before the fine is officially sent, not fitting any standard category cleanly.",,direct_payment,1.0,,0.3342154026031494
+V0013,prefecture_appeal,"Involves prefecture appeal submission, processing results, notifying outcomes, and final payment.",2.0,payment_rework_heavy,1.0,0.004234648775309324,0.0031689032912254333
+V0014,prefecture_appeal,"Contains judicial appeal activities (appeal to judge), fitting the legal escalation and appeal category.",3.0,standard_fine_lifecycle,1.0,0.03202984109520912,0.008281029760837555
+V0015,prefecture_appeal,Focuses on formal appeal procedures directed to the prefecture.,4.0,direct_payment,1.0,0.383494108915329,0.020149311050772667
+V0016,prefecture_appeal,"Involves complete workflow of prefecture appeal, result reception, and notification leading to payment.",2.0,payment_rework_heavy,1.0,0.011952385306358337,0.0005738325999118388
+V0017,prefecture_appeal,Involves appeal to judge alongside standard fine lifecycle escalation to credit collection.,3.0,standard_fine_lifecycle,1.0,0.3918795585632324,0.00012474872346501797
+V0018,payment_rework_heavy,Features standard fine lifecycle steps accompanied by repeated payment activities.,4.0,standard_fine_lifecycle,1.0,0.044999588280916214,0.013584622181952
+V0019,prefecture_appeal,Involves full prefecture appeal lifecycle from appeal insertion to result notification before credit collection.,2.0,payment_rework_heavy,2.0,0.38235190510749817,0.0002084532316075638
+V0020,prefecture_appeal,Involves prefecture appeal processing and outcome notification prior to credit collection.,2.0,standard_fine_lifecycle,1.0,0.37097492814064026,0.0028892019763588905
+V0021,payment_rework_heavy,Characterized by multiple repeated payment actions occurring over a long duration.,1.0,standard_fine_lifecycle,2.0,0.0035240754950791597,0.004103207960724831
+V0022,prefecture_appeal,"Involves administrative escalation, prefecture appeal processing, result notification, and final payment.",3.0,payment_rework_heavy,1.0,0.0046158842742443085,0.0013636029325425625
+V0023,payment_rework_heavy,Involves early payment followed by sending fine and repeated payment activities.,5.0,direct_payment,1.0,0.09448123723268509,0.014894504100084305
+V0024,payment_rework_heavy,Features standard fine processing steps combined with repeated payment rework.,4.0,standard_fine_lifecycle,1.0,0.04918401315808296,0.0094001991674304
+V0025,prefecture_appeal,Includes administrative penalty addition followed by comprehensive prefecture appeal steps and credit collection.,3.0,payment_rework_heavy,2.0,0.38055896759033203,0.0020014101173728704
+V0026,standard_fine_lifecycle,"Follows a typical administrative process with fine creation, notification, addition of penalties, and ultimate escalation to credit collection.",2.0,payment_rework_heavy,1.0,0.0060782781802117825,0.0028892019763588905
+V0027,prefecture_appeal,"Involves formal appeals to the prefecture, processing of results, notification, and subsequent legal escalation to a judge.",2.0,payment_rework_heavy,2.0,0.3388906717300415,0.02513403259217739
+V0028,payment_rework_heavy,Characterized by repeated payment activities occurring over extended durations.,4.0,direct_payment,1.0,0.07456769794225693,0.0050190407782793045
+V0029,standard_fine_lifecycle,"Shows standard fine processing steps with notifications and penalties, leading directly to a judicial appeal.",1.0,prefecture_appeal,1.0,0.39269885420799255,0.0012033804086968303
+V0030,prefecture_appeal,"Features formal prefecture appeal submission, result reception, and notification of outcomes.",1.0,standard_fine_lifecycle,2.0,0.35377204418182373,0.33479031920433044
+V0031,standard_fine_lifecycle,"Standard administrative process including fine creation, notification, penalties, and subsequent appeal ending in payment.",1.0,payment_rework_heavy,1.0,0.34497007727622986,0.0014571441570296884
+V0032,prefecture_appeal,Involves processing of formal appeals to the prefecture and receiving results.,2.0,standard_fine_lifecycle,1.0,0.3692682683467865,0.33857688307762146
+V0033,prefecture_appeal,"Involves full prefecture appeal steps, notification of results, and subsequent judge appeal before final payment.",3.0,payment_rework_heavy,1.0,0.026479745283722878,0.004574260208755732
+V0034,prefecture_appeal,Focuses on prefecture appeal processing and final notification of the outcome.,2.0,payment_rework_heavy,2.0,0.348906010389328,0.3352867066860199
+V0035,prefecture_appeal,"Complex variant involving prefecture appeal, result notifications, and further escalation to a judge.",2.0,payment_rework_heavy,2.0,0.34370753169059753,0.0203171968460083
+V0036,payment_rework_heavy,Characterized by repeated payment activities occurring multiple times within the process trace.,2.0,standard_fine_lifecycle,2.0,0.04535665735602379,0.013227558694779873
+V0037,payment_rework_heavy,Exhibits repeated payment activities over an extended duration trace.,3.0,prefecture_appeal,1.0,0.027387062087655067,0.0008981942664831877
+V0038,prefecture_appeal,Consists of standard fine procedures followed by formal prefecture appeal steps.,2.0,standard_fine_lifecycle,1.0,0.3527968227863312,0.33527079224586487
+V0039,standard_fine_lifecycle,Involves standard notification and penalty steps leading to resolution via payment.,2.0,prefecture_appeal,1.0,0.35509395599365234,5.510637038241839e-06
+V0040,standard_fine_lifecycle,"Typical administrative process with notification and penalties, escalating eventually to credit collection.",2.0,prefecture_appeal,1.0,0.029747353866696358,0.00012474872346501797
+V0041,prefecture_appeal,Includes formal prefecture appeal and result notification followed by payment.,3.0,standard_fine_lifecycle,1.0,0.014273692853748798,0.0017474755877628922
+V0042,prefecture_appeal,Involves submission and results from prefecture appeals prior to payment.,2.0,standard_fine_lifecycle,1.0,0.004071613773703575,0.0030058680567890406
+V0043,standard_fine_lifecycle,Standard process involving penalties and credit collection escalation despite early payment activity.,2.0,payment_rework_heavy,1.0,0.0,0.0012078725267201662
+V0044,payment_rework_heavy,Characterized by repeated payment actions throughout the trace.,2.0,prefecture_appeal,1.0,0.03391076624393463,0.002809768309816718
+V0045,payment_rework_heavy,Marked by multiple repeated payment activities occurring over a long duration.,0.0,prefecture_appeal,2.0,0.011107445694506168,0.0034801631700247526
+V0046,prefecture_appeal,Focuses on the lifecycle of a prefecture appeal and final notification of the result.,1.0,standard_fine_lifecycle,2.0,0.3592645823955536,0.33736884593963623
+V0047,prefecture_appeal,Contains formal prefecture appeal processing and notification steps leading to a judge appeal.,3.0,payment_rework_heavy,2.0,0.3397344648838043,0.024290235713124275
+V0048,direct_payment,Fine is paid promptly and directly after creation without extensive administrative escalation.,1.0,payment_rework_heavy,1.0,0.3422447741031647,0.0037710245233029127
+V0049,prefecture_appeal,Involves prefecture appeal processing and outcome notification before final payment.,3.0,standard_fine_lifecycle,1.0,0.00022560743673238903,0.00030102423625066876
+V0050,prefecture_appeal,Traces a full prefecture appeal process with penalties and result reception before payment.,2.0,standard_fine_lifecycle,1.0,0.014761223457753658,0.0022350053768604994
+V0051,prefecture_appeal,"The trace involves multiple appeal steps to the prefecture and judge, culminating in credit collection.",3.0,standard_fine_lifecycle,1.0,0.3821401298046112,0.00042022744310088456
+V0052,prefecture_appeal,Involves appeal dates and sending an appeal to the prefecture.,4.0,standard_fine_lifecycle,1.0,0.38997888565063477,0.07417158782482147
+V0053,prefecture_appeal,Involves steps to appeal to the prefecture along with notifications.,3.0,payment_rework_heavy,2.0,0.3683594763278961,0.005014692433178425
+V0054,standard_fine_lifecycle,"Follows standard administrative progression from creation, notification, penalty addition, to final payment.",1.0,payment_rework_heavy,1.0,0.3630732297897339,0.0010657456004992127
+V0055,prefecture_appeal,Characterized by prefecture appeal documentation and processing.,4.0,standard_fine_lifecycle,2.0,0.42106881737709045,0.10526154190301895
+V0056,prefecture_appeal,Contains appeal processing steps to the prefecture and judge.,3.0,payment_rework_heavy,1.0,0.027119280770421028,0.005213795695453882
+V0057,prefecture_appeal,Involves prefecture appeal processing before ending in credit collection.,2.0,standard_fine_lifecycle,2.0,0.42378365993499756,0.10797634720802307
+V0058,prefecture_appeal,Focuses on prefecture appeal activities and receiving results.,3.0,standard_fine_lifecycle,2.0,0.33948346972465515,0.33566614985466003
+V0059,prefecture_appeal,"Involves prefecture appeal workflow, notification, and subsequent collection escalation.",4.0,standard_fine_lifecycle,2.0,0.40656188130378723,0.09075459092855453
+V0060,payment_rework_heavy,Features repeated payment activities over the process duration.,4.0,standard_fine_lifecycle,1.0,0.039378080517053604,0.00827708188444376
+V0061,payment_rework_heavy,Characterized by repeated payments following penalties and appeals.,3.0,standard_fine_lifecycle,1.0,0.01835538260638714,0.0024513588286936283
+V0062,standard_fine_lifecycle,"Represents a standard fine lifecycle including notification, penalty, appeal step, and payment.",2.0,prefecture_appeal,1.0,0.3704904019832611,0.000877381069585681
+V0063,prefecture_appeal,Contains judicial appeal activities.,5.0,direct_payment,1.0,0.3804854452610016,0.01646074280142784
+V0064,standard_fine_lifecycle,"Follows standard fine notification, penalty addition, and appeal result notification leading to payment.",2.0,prefecture_appeal,1.0,0.3587912619113922,0.000713976623956114
+V0065,prefecture_appeal,Involves prefecture appeal handling and notification of outcomes.,3.0,standard_fine_lifecycle,2.0,0.01138860359787941,0.0011376136681064963
+V0066,prefecture_appeal,Contains administrative steps involving prefecture appeals and results.,1.0,standard_fine_lifecycle,1.0,0.3974356949329376,0.08162838965654373
+V0067,payment_rework_heavy,Characterized by repeated payment activities before credit collection.,3.0,standard_fine_lifecycle,1.0,0.34501442313194275,0.004667853005230427
+V0068,prefecture_appeal,Includes prefecture appeal and judicial escalation steps.,3.0,payment_rework_heavy,2.0,0.38890793919563293,0.0013617448275908828
+V0069,prefecture_appeal,Involves filing and receiving results from prefecture and judge appeals.,3.0,standard_fine_lifecycle,2.0,0.3502333164215088,0.013791389763355255
+V0070,prefecture_appeal,Tracks the complete lifecycle of a prefecture appeal ending in notification.,2.0,standard_fine_lifecycle,2.0,0.36389586329460144,0.3334622085094452
+V0071,payment_rework_heavy,Features repeated payment activities prior to credit collection.,2.0,standard_fine_lifecycle,1.0,0.34402844309806824,0.0036818550433963537
+V0072,payment_rework_heavy,Exhibits heavy payment rework with multiple repeated payment events.,3.0,standard_fine_lifecycle,4.0,0.010362877510488033,0.0027355942875146866
+V0073,payment_rework_heavy,Involves multiple payment activities following prefecture appeal steps.,4.0,prefecture_appeal,1.0,0.007851464673876762,0.004155928734689951
+V0074,standard_fine_lifecycle,"Involves notification, penalties, payment, and escalation to credit collection.",2.0,prefecture_appeal,1.0,0.025160962715744972,0.0017395009053871036
+V0075,prefecture_appeal,"Involves prefecture appeal submission, result notification, and payment.",1.0,standard_fine_lifecycle,1.0,0.0025022265035659075,0.000713976623956114
+V0076,prefecture_appeal,"Involves formal steps for appeal to the prefecture, receiving the result, and notifying the offender before credit collection.",3.0,standard_fine_lifecycle,2.0,0.3632153272628784,0.00039125734474509954
+V0077,,"Involves prefecture appeal actions combined with a late fine send, not fitting neatly into standard lifecycles or direct payment.",,standard_fine_lifecycle,1.0,,0.3344241678714752
+V0078,payment_rework_heavy,Characterized by multiple repeated payment activities over time after penalties and notifications.,1.0,prefecture_appeal,3.0,0.014817354269325733,0.0010866702068597078
+V0079,payment_rework_heavy,"Contains recurring payment loops spanning multiple instances, indicating payment rework heavy.",2.0,prefecture_appeal,4.0,0.015089042484760284,0.0008149819914251566
+V0080,payment_rework_heavy,Shows repeated payment actions interleaved with standard notifications and penalties.,4.0,standard_fine_lifecycle,2.0,0.05858421325683594,0.0
+V0081,standard_fine_lifecycle,"Follows a typical fine creation, notification, appeal, penalty addition, and eventual payment.",3.0,prefecture_appeal,1.0,0.3620828688144684,7.54167849663645e-05
+V0082,prefecture_appeal,Contains comprehensive prefecture appeal and judge escalation steps leading to credit collection.,3.0,standard_fine_lifecycle,1.0,0.3971206247806549,0.005365826655179262
+V0083,standard_fine_lifecycle,"Involves standard fine processing, penalties, and a later prefecture appeal.",3.0,prefecture_appeal,1.0,0.3795334994792938,0.0057556480169296265
+V0084,prefecture_appeal,"Features formal prefecture appeal, judge escalation, and credit collection escalation.",4.0,payment_rework_heavy,2.0,0.4043053388595581,0.012550524435937405
+V0085,standard_fine_lifecycle,"Standard progression of fine creation, notifications, penalties, and final payment.",1.0,payment_rework_heavy,1.0,0.3457799255847931,0.00044637953396886587
+V0086,standard_fine_lifecycle,"Standard fine process including notification, appeal date setting, payment, and appeal submission.",2.0,prefecture_appeal,1.0,0.3839031755924225,0.0013859807513654232
+V0087,payment_rework_heavy,Characterized by multiple sequential payments indicating heavy payment rework.,2.0,prefecture_appeal,2.0,0.05488306283950806,0.00370114971883595
+V0088,payment_rework_heavy,Includes repeated payments and credit collection escalation.,3.0,standard_fine_lifecycle,1.0,0.34460482001304626,0.004258255939930677
+V0089,prefecture_appeal,Involves prefecture appeal processing steps and result notifications.,4.0,standard_fine_lifecycle,2.0,0.007605525199323893,0.000877381069585681
+V0090,direct_payment,Involves prompt payment shortly after fine creation and prefecture appeal steps without complex escalation.,2.0,prefecture_appeal,1.0,0.021451078355312347,0.0029763460624963045
+V0091,prefecture_appeal,Includes prefecture appeal and judge escalation steps before concluding with payment.,4.0,payment_rework_heavy,1.0,0.05607308819890022,0.014442135579884052
+V0092,prefecture_appeal,Features a full sequence of prefecture appeal handling and notifications before credit collection.,3.0,standard_fine_lifecycle,2.0,0.3832102119922638,0.0006498422590084374
+V0093,,Unusual flow starting with an immediate appeal to judge before sending the fine.,,prefecture_appeal,1.0,,0.33374011516571045
+V0094,prefecture_appeal,"Includes a complete cycle of fine notification, penalties, prefecture appeal, and result.",3.0,standard_fine_lifecycle,2.0,0.0,7.54167849663645e-05
+V0095,payment_rework_heavy,Combines a prefecture appeal with repeated payment actions at the end of the trace.,4.0,prefecture_appeal,1.0,0.017220651730895042,0.0013166265562176704
+V0096,prefecture_appeal,"Involves fine creation, appeal to prefecture, and escalation to judge.",4.0,direct_payment,1.0,0.4041728079319,0.04014812037348747
+V0097,prefecture_appeal,Involves judge appeal and prefecture appeal processing steps.,4.0,direct_payment,2.0,0.3956899344921112,0.032345134764909744
+V0098,prefecture_appeal,Detailed prefecture appeal and judge review process ending with result notification.,2.0,standard_fine_lifecycle,3.0,0.3354867398738861,0.3344210088253021
+V0099,prefecture_appeal,"Features judge appeal, prefecture appeal, penalty application, and result notification.",2.0,standard_fine_lifecycle,2.0,0.3452896773815155,0.3339032232761383
+V0100,payment_rework_heavy,"Combines a prefecture appeal and penalty with heavy, repeated payment iterations at the end.",6.0,prefecture_appeal,3.0,0.005569861736148596,0.002057422185316682
+V0101,prefecture_appeal,"The process involves an appeal to the prefecture with results notification followed by late payments, aligning with the prefecture appeal process.",4.0,payment_rework_heavy,1.0,0.392254114151001,0.0020700593013316393
+V0102,prefecture_appeal,Includes prefecture appeal activities and leads to a final appeal to the judge.,1.0,standard_fine_lifecycle,2.0,0.3344760239124298,0.029548674821853638
+V0103,prefecture_appeal,Involves administrative escalation with appeal to judge and sending an appeal to the prefecture.,3.0,standard_fine_lifecycle,2.0,0.4417496621608734,0.12594234943389893
+V0104,prefecture_appeal,"Focuses on fine creation, notification, penalties, and receiving/notifying prefecture appeal results.",1.0,standard_fine_lifecycle,1.0,0.3408387005329132,0.3339252173900604
+V0105,prefecture_appeal,Features fine lifecycle steps followed by prefecture appeal handling and an appeal to the judge.,2.0,standard_fine_lifecycle,1.0,0.33371150493621826,0.03031320869922638
+V0106,standard_fine_lifecycle,"Follows standard administrative steps with penalties and prefecture appeal outcomes, eventually escalating to credit collection.",3.0,prefecture_appeal,1.0,0.014179147779941559,0.000797182263340801
+V0107,prefecture_appeal,Involves standard fine processing with prefecture appeal steps and concludes with an appeal to the judge.,3.0,standard_fine_lifecycle,2.0,0.3383620083332062,0.035720039159059525
+V0108,standard_fine_lifecycle,Involves multiple steps including appeal and payment before ultimate escalation to credit collection.,5.0,prefecture_appeal,1.0,0.02055289037525654,0.0002084532316075638
+V0109,prefecture_appeal,"Includes fine creation, notification, penalties, prefecture appeal, and final payment.",4.0,payment_rework_heavy,1.0,0.009933803230524063,6.770990876248106e-05
+V0110,prefecture_appeal,Features prefecture appeal handling and notification followed by final payment.,4.0,standard_fine_lifecycle,2.0,0.006919030100107193,5.510637038241839e-06
+V0111,standard_fine_lifecycle,Contains appeal and penalty handling leading to escalation via send for credit collection.,5.0,prefecture_appeal,2.0,0.005964191630482674,0.0030032878275960684
+V0112,payment_rework_heavy,Contains repeated payment activities over an extended sequence representing payment rework.,4.0,prefecture_appeal,1.0,0.01721772737801075,0.0013137030182406306
+V0113,prefecture_appeal,Involves prefecture appeal processing alongside penalties and ends with a payment.,3.0,payment_rework_heavy,1.0,0.011579771526157856,0.0009464449831284583
+V0114,payment_rework_heavy,Exhibits repeated payment activities characteristic of payment rework heavy variants.,4.0,prefecture_appeal,1.0,0.037496451288461685,0.006395453121513128
+V0115,prefecture_appeal,"Represents a standard process involving fine notifications, prefecture appeals, and outcome notifications.",1.0,standard_fine_lifecycle,3.0,0.3493121564388275,0.3348805606365204
+V0116,prefecture_appeal,Includes penalty addition and prefecture appeal steps before concluding with payment.,3.0,standard_fine_lifecycle,1.0,0.035298239439725876,0.005012627691030502
+V0117,payment_rework_heavy,Involves a long trace with multiple appeal steps and ends with repeated payment activities.,5.0,prefecture_appeal,1.0,0.014101731590926647,0.006474447902292013
+V0118,prefecture_appeal,Features appeal steps to both judge and prefecture alongside standard notification and penalties.,3.0,standard_fine_lifecycle,2.0,0.37076321244239807,0.007418457418680191
+V0119,prefecture_appeal,Involves multiple rounds of appeals including prefecture appeal and appeal to judge over a long duration.,2.0,standard_fine_lifecycle,2.0,0.3860117495059967,0.07020444422960281
+V0120,prefecture_appeal,Shows a sequence containing prefecture appeals and ending with an appeal to the judge.,3.0,standard_fine_lifecycle,3.0,0.3628213405609131,0.0012033804086968303
+V0121,prefecture_appeal,"Involves multiple appeals, penalties, prefecture processing, and ultimate payment.",3.0,standard_fine_lifecycle,2.0,0.051806967705488205,0.010176015086472034
+V0122,payment_rework_heavy,Characterized by repeated payment activities occurring after penalties and appeal steps.,1.0,standard_fine_lifecycle,2.0,0.021785013377666473,0.006500244140625
+V0123,payment_rework_heavy,Features repeated payment activities followed by credit collection escalation.,1.0,standard_fine_lifecycle,2.0,0.34949061274528503,0.0022983893286436796
+V0124,prefecture_appeal,"Includes early payment mixed with standard fine notification, penalty addition, and prefecture appeal steps.",4.0,payment_rework_heavy,2.0,0.3582993745803833,0.0030703602824360132
+V0125,,The trace is short and unusual with early dates of appeal and send fine sequence that does not cleanly fit standard administrative categories.,,direct_payment,2.0,,0.0015008746413514018
+V0126,prefecture_appeal,The narrative includes formal prefecture appeal activities alongside fine lifecycle steps and penalty additions.,4.0,standard_fine_lifecycle,1.0,0.37091636657714844,0.0
+V0127,prefecture_appeal,"Involves prefecture appeal handling, result notification, and penalty addition culminating in payment.",4.0,standard_fine_lifecycle,1.0,0.343433141708374,0.002809768309816718
+V0128,prefecture_appeal,Clear sequence of prefecture appeal and result receipt with standard penalty and payment resolution.,3.0,standard_fine_lifecycle,1.0,0.01233556866645813,0.0001906483666971326
+V0129,prefecture_appeal,Features multiple prefecture appeal steps and escalates ultimately to credit collection.,4.0,standard_fine_lifecycle,2.0,0.3923015296459198,0.0005467074806801975
+V0130,prefecture_appeal,Includes prefecture appeal activities combined with administrative penalties and payment.,2.0,payment_rework_heavy,1.0,0.3384304940700531,0.0008149819914251566
+V0131,prefecture_appeal,"Contains appeal steps directed to the prefecture, penalty addition, and payment resolution.",4.0,standard_fine_lifecycle,1.0,0.005774358753114939,0.00020512867195066065
+V0132,prefecture_appeal,Involves appeal processing with the prefecture along with penalty application and payments.,3.0,payment_rework_heavy,2.0,0.3361184597015381,0.001130731892772019
+V0133,standard_fine_lifecycle,"Follows standard administrative fine lifecycle with notifications, penalties, and credit collection escalation without complex appeal routing.",3.0,payment_rework_heavy,2.0,0.02332942746579647,0.002126693492755294
+V0134,prefecture_appeal,Involves both prefecture appeal and judge appeal stages before credit collection.,4.0,standard_fine_lifecycle,1.0,0.4053781032562256,0.013623286038637161
+V0135,prefecture_appeal,"Contains prefecture appeal workflow steps, penalties, and subsequent credit collection.",4.0,standard_fine_lifecycle,2.0,0.3788015842437744,0.002614951692521572
+V0136,prefecture_appeal,Features prefecture appeal handling and result notification prior to penalty and payment.,3.0,standard_fine_lifecycle,2.0,0.01968170516192913,0.007155487313866615
+V0137,prefecture_appeal,Standard prefecture appeal flow ending in result notification.,0.0,standard_fine_lifecycle,2.0,0.34342554211616516,0.33494266867637634
+V0138,prefecture_appeal,Includes prefecture appeal interactions and escalates to credit collection.,2.0,standard_fine_lifecycle,2.0,0.3893541395664215,0.0018079803558066487
+V0139,prefecture_appeal,Involves complex legal and prefecture appeals alongside administrative penalties and payment.,3.0,payment_rework_heavy,2.0,0.016673903912305832,0.00044637953396886587
+V0140,prefecture_appeal,Combines judge appeal and prefecture appeal steps with fine penalties.,4.0,payment_rework_heavy,1.0,0.01797746866941452,0.0017499447567388415
+V0141,payment_rework_heavy,Characterized by an extensive series of repeated payment activities over multiple steps.,8.0,standard_fine_lifecycle,3.0,0.0004111852904316038,0.008038468658924103
+V0142,prefecture_appeal,Contains prefecture appeal steps combined with penalty application and payment.,5.0,standard_fine_lifecycle,1.0,0.3388836681842804,0.0009881298756226897
+V0143,payment_rework_heavy,Features a long sequence of repeated payment activities after the initial fine setup and appeal.,7.0,standard_fine_lifecycle,2.0,0.027805624529719353,0.0004796349676325917
+V0144,prefecture_appeal,Centred heavily around judge and prefecture appeal initiation steps.,3.0,standard_fine_lifecycle,1.0,0.4259122312068939,0.06256742775440216
+V0145,prefecture_appeal,Involves early payment followed by prefecture appeal submission steps.,4.0,standard_fine_lifecycle,2.0,0.4115668833255768,0.0482221283018589
+V0146,prefecture_appeal,Includes prefecture appeal and judge involvement along with repeated payment actions.,5.0,payment_rework_heavy,2.0,0.36196181178092957,0.0018715179758146405
+V0147,payment_rework_heavy,Dominated by numerous repeated payment transactions following fine creation and penalty.,9.0,standard_fine_lifecycle,3.0,0.02916359156370163,0.0008783331722952425
+V0148,payment_rework_heavy,Features an extended series of repeated payment activities after judge appeal and penalties.,7.0,standard_fine_lifecycle,2.0,0.01086041983217001,0.003233135910704732
+V0149,payment_rework_heavy,Characterized by a long delay before prefecture appeal and a subsequent series of repeated payments.,1.0,prefecture_appeal,2.0,0.0031400825828313828,0.008867311291396618
+V0150,payment_rework_heavy,Shows a sustained sequence of numerous repeated payment events following fine notification and penalty.,4.0,standard_fine_lifecycle,3.0,0.02343599498271942,0.004849264398217201
+V0151,payment_rework_heavy,The narrative features repeated payment activities occurring over an extended duration.,8.0,standard_fine_lifecycle,2.0,0.016269175335764885,0.008641892112791538
+V0152,prefecture_appeal,The process involves an appeal to the prefecture and processing of results.,3.0,standard_fine_lifecycle,1.0,0.35832664370536804,0.33468636870384216
+V0153,payment_rework_heavy,The narrative shows extensive payment rework over a long trace.,12.0,standard_fine_lifecycle,6.0,0.011516612023115158,0.0038893288001418114
+V0154,prefecture_appeal,The trace includes an appeal to the judge before payment.,6.0,direct_payment,1.0,0.007570730987936258,0.0006572117563337088
+V0155,payment_rework_heavy,Characterized by multiple repeated payment steps following fine notification.,3.0,prefecture_appeal,5.0,0.043374016880989075,0.01227301824837923
+V0156,prefecture_appeal,Involves formal appeals directed to the prefecture.,4.0,direct_payment,2.0,0.36579275131225586,0.002447952516376972
+V0157,payment_rework_heavy,Shows repeated payment events after penalty additions.,1.0,prefecture_appeal,3.0,0.08335775882005692,0.0037710245233029127
+V0158,prefecture_appeal,Contains multiple appeal steps to both the prefecture and judge over a very long duration.,4.0,standard_fine_lifecycle,2.0,0.425500750541687,0.10969346016645432
+V0159,prefecture_appeal,Includes prefecture appeal and receipt of results prior to final payment.,1.0,standard_fine_lifecycle,1.0,0.0,7.54167849663645e-05
+V0160,standard_fine_lifecycle,"Follows a standard fine lifecycle including notification, penalties, and escalation to credit collection.",2.0,payment_rework_heavy,1.0,0.35854649543762207,0.007407695520669222
+V0161,prefecture_appeal,Involves formal appeal processing with the prefecture and notification of outcomes leading to credit collection.,4.0,standard_fine_lifecycle,2.0,0.3793754577636719,0.0031848971266299486
+V0162,prefecture_appeal,Features judicial and prefecture appeals during the administration of the fine.,3.0,standard_fine_lifecycle,1.0,0.01234349887818098,0.00018271838780492544
+V0163,prefecture_appeal,Involves prefecture appeal processing and final escalation to credit collection.,2.0,standard_fine_lifecycle,2.0,0.40878045558929443,0.017025617882609367
+V0164,prefecture_appeal,Includes sending an appeal to the prefecture and receiving results.,3.0,standard_fine_lifecycle,1.0,0.025441361591219902,0.012915144674479961
+V0165,prefecture_appeal,Complex process featuring multiple appeals to the prefecture and judge.,3.0,payment_rework_heavy,3.0,0.4191395044326782,0.027384677901864052
+V0166,prefecture_appeal,"Involves prefecture appeal, notification of results, and judge appeal before concluding.",5.0,payment_rework_heavy,1.0,0.3826197683811188,0.0004796349676325917
+V0167,prefecture_appeal,Characterized by administrative appeals to the prefecture and subsequent notification of results.,2.0,payment_rework_heavy,2.0,0.3502289950847626,0.3339637219905853
+V0168,standard_fine_lifecycle,Typical administrative process leading up to sending an appeal after penalties and notifications.,3.0,prefecture_appeal,1.0,0.3920189142227173,0.0007805326604284346
+V0169,payment_rework_heavy,Exhibits repeated payment activities before ending in credit collection.,1.0,standard_fine_lifecycle,3.0,0.35881173610687256,0.007022737059742212
+V0170,payment_rework_heavy,Involves multiple payment steps alongside fine lifecycle escalation.,3.0,standard_fine_lifecycle,1.0,0.38340258598327637,0.011315968818962574
+V0171,prefecture_appeal,Features prefecture appeal processing and notification of outcomes.,3.0,payment_rework_heavy,2.0,0.34206685423851013,0.001882934127934277
+V0172,prefecture_appeal,Involves both prefecture and judicial appeals before final payment.,3.0,standard_fine_lifecycle,2.0,0.02602473832666874,0.004119252320379019
+V0173,standard_fine_lifecycle,Follows the standard administrative fine lifecycle ending in credit collection.,3.0,payment_rework_heavy,1.0,0.36441364884376526,0.011315968818962574
+V0174,payment_rework_heavy,Characterized by multiple repeated payment activities early and later in the trace.,5.0,standard_fine_lifecycle,2.0,0.0023739244788885117,0.005253359209746122
+V0175,prefecture_appeal,Focuses on the lifecycle of a prefecture and judicial appeal ending with result notification.,2.0,standard_fine_lifecycle,3.0,0.34819427132606506,0.33566805720329285
+V0176,prefecture_appeal,The variant features formal appeals to the prefecture and judge with processing steps.,4.0,standard_fine_lifecycle,2.0,0.4255535304546356,0.10974622517824173
+V0177,prefecture_appeal,"Involves prefecture appeals, results, notification, judge appeal, and credit collection escalation.",5.0,standard_fine_lifecycle,3.0,0.4254743158817291,0.10966704040765762
+V0178,prefecture_appeal,Contains appeal processing steps to the prefecture and results notification.,1.0,standard_fine_lifecycle,3.0,0.3496188819408417,0.3345738351345062
+V0179,prefecture_appeal,Involves prefecture appeal processing and notification of results to the offender.,2.0,standard_fine_lifecycle,2.0,0.33408164978027344,0.3341570794582367
+V0180,payment_rework_heavy,Includes repeated payment activities indicating payment rework.,4.0,prefecture_appeal,1.0,0.010384722612798214,0.001622671727091074
+V0181,payment_rework_heavy,Characterized by repeated payment steps over the process duration.,3.0,prefecture_appeal,1.0,0.018498951569199562,0.002594927093014121
+V0182,prefecture_appeal,Involves prefecture appeals and final escalation to credit collection.,3.0,standard_fine_lifecycle,2.0,0.37698379158973694,0.000797182263340801
+V0183,payment_rework_heavy,Contains multiple payment actions constituting payment rework.,1.0,standard_fine_lifecycle,3.0,0.03228627145290375,0.004001013934612274
+V0184,payment_rework_heavy,Features repeated payment activities following judge appeal.,2.0,standard_fine_lifecycle,1.0,0.0252273827791214,0.0030578766018152237
+V0185,prefecture_appeal,Includes prefecture appeal processing followed by a judge appeal.,3.0,payment_rework_heavy,1.0,0.33660390973091125,0.027420802041888237
+V0186,payment_rework_heavy,Characterized by multiple sequential payment entries.,2.0,prefecture_appeal,2.0,0.005755765363574028,0.0018715179758146405
+V0187,payment_rework_heavy,Extensive repetition of payment activities.,2.0,standard_fine_lifecycle,4.0,0.02100117690861225,0.002785109682008624
+V0188,payment_rework_heavy,Features numerous repeated payment actions throughout the trace.,4.0,standard_fine_lifecycle,4.0,0.02556341141462326,0.0009881298756226897
+V0189,standard_fine_lifecycle,"Typical administrative process with notification, penalties, and payment.",2.0,prefecture_appeal,1.0,0.41102978587150574,0.0029763460624963045
+V0190,payment_rework_heavy,Involves repeated payment actions after standard progression.,4.0,prefecture_appeal,1.0,0.04112200811505318,0.010021008551120758
+V0191,prefecture_appeal,Follows the prefecture appeal and notification cycle.,2.0,standard_fine_lifecycle,2.0,0.3536566495895386,0.3349057137966156
+V0192,prefecture_appeal,Consists of prefecture appeal activities and results.,3.0,direct_payment,1.0,0.3425287902355194,0.3340458869934082
+V0193,payment_rework_heavy,Contains repeated payments early in the trace.,5.0,direct_payment,1.0,0.44961944222450256,0.3700326979160309
+V0194,prefecture_appeal,Involves early payment followed by prefecture appeal steps.,4.0,direct_payment,2.0,0.38232389092445374,0.018979119136929512
+V0195,payment_rework_heavy,Features repeated payment actions along with prefecture steps.,4.0,prefecture_appeal,1.0,0.0,0.007627283688634634
+V0196,standard_fine_lifecycle,"Standard progression of fine creation, appeal insertion, and payment.",3.0,direct_payment,2.0,0.43284693360328674,0.00334247131831944
+V0197,prefecture_appeal,Involves multiple prefecture appeal and notification steps.,4.0,standard_fine_lifecycle,1.0,0.019237162545323372,0.006710944231599569
+V0198,payment_rework_heavy,Features a complex appeal path followed by repeated payment actions.,5.0,prefecture_appeal,1.0,0.013280271552503109,0.005652987863868475
+V0199,prefecture_appeal,Involves appeals to the prefecture and judge alongside penalties.,5.0,standard_fine_lifecycle,2.0,0.01987450197339058,0.0020309840328991413
+V0200,prefecture_appeal,Characterized by prefecture appeal processing and escalation to judge appeal.,2.0,standard_fine_lifecycle,2.0,0.3456689119338989,0.018355803564190865
+V0201,prefecture_appeal,"The narrative includes formal appeal steps to the prefecture and judge, along with processing results and notification of outcomes.",3.0,payment_rework_heavy,2.0,0.041768014430999756,0.0001370593236060813
+V0202,prefecture_appeal,"The case involves formal appeal activities directed to the prefecture and judge, culminating in notifying the result.",3.0,payment_rework_heavy,3.0,0.33437803387641907,0.3344534635543823
+V0203,standard_fine_lifecycle,"Includes standard notification, penalties, and appeals, resolved ultimately via payment without heavy rework.",3.0,prefecture_appeal,1.0,0.34629014134407043,0.0001370593236060813
+V0204,payment_rework_heavy,"Shows repeated payment events over the trace, characterizing payment rework.",2.0,standard_fine_lifecycle,1.0,0.0011031822068616748,0.006524101365357637
+V0205,standard_fine_lifecycle,"Follows standard administrative steps with notifications, penalties, and an escalation to judge.",2.0,payment_rework_heavy,1.0,0.35107874870300293,0.04139088839292526
+V0206,prefecture_appeal,Characterized by formal appeal processing involving the prefecture and judge.,3.0,standard_fine_lifecycle,2.0,0.352570503950119,0.3350444734096527
+V0207,standard_fine_lifecycle,"Involves typical fine creation, notifications, penalties, and final resolution via payment.",2.0,prefecture_appeal,1.0,0.3401019871234894,0.0020309840328991413
+V0208,standard_fine_lifecycle,"Standard administrative lifecycle including fine creation, notifications, penalties, and payment.",2.0,prefecture_appeal,1.0,0.3560279905796051,0.00020512867195066065
+V0209,payment_rework_heavy,Characterized by multiple repeated payment actions occurring across the trace.,2.0,prefecture_appeal,2.0,0.05165788531303406,0.013738270848989487
+V0210,prefecture_appeal,"Involves prefecture appeals, judge escalation, and outcome notifications.",4.0,payment_rework_heavy,2.0,0.0649011880159378,0.02327023446559906
+V0211,payment_rework_heavy,Exhibits extensive repeated payment activities after the appeal process.,6.0,prefecture_appeal,5.0,0.007743815425783396,0.004263578448444605
+V0212,prefecture_appeal,Centers around prefecture appeal actions and subsequent judge escalation.,2.0,standard_fine_lifecycle,2.0,0.34006866812705994,0.023956047371029854
+V0213,standard_fine_lifecycle,"Involves standard fine processing, penalties, appeals, payment attempts, and escalation to credit collection.",6.0,payment_rework_heavy,1.0,0.3339930474758148,0.0036818550433963537
+V0214,standard_fine_lifecycle,"Follows a standard administrative lifecycle with penalties, appeals, and ultimate escalation to credit collection.",6.0,prefecture_appeal,1.0,0.025538720190525055,0.0013617448275908828
+V0215,prefecture_appeal,Dominated by appeal procedures involving the prefecture and judge.,2.0,standard_fine_lifecycle,2.0,0.4209251403808594,0.10511782020330429
+V0216,prefecture_appeal,Involves complex appeal steps directed to both prefecture and judge before payment.,4.0,payment_rework_heavy,1.0,0.02556190825998783,0.003656423417851329
+V0217,payment_rework_heavy,Features numerous repeated payment activities over an extended duration.,6.0,standard_fine_lifecycle,1.0,0.02198185957968235,0.006303397938609123
+V0218,standard_fine_lifecycle,"Involves fine creation, notifications, penalties, repeated payments, and final credit collection escalation.",10.0,payment_rework_heavy,1.0,0.34411606192588806,0.0022983893286436796
+V0219,prefecture_appeal,Contains formal prefecture appeal steps and notifications of results.,2.0,standard_fine_lifecycle,3.0,0.3879737854003906,0.3389514982700348
+V0220,payment_rework_heavy,Includes multiple payment occurrences within the process flow.,4.0,standard_fine_lifecycle,1.0,0.062220584601163864,0.003636368550360203
+V0221,standard_fine_lifecycle,"Standard fine creation, notification, penalties, and appeal handling resolved by payment.",3.0,prefecture_appeal,1.0,0.37453368306159973,0.00018271838780492544
+V0222,payment_rework_heavy,Characterized by repeated payment activities following administrative escalation.,3.0,prefecture_appeal,5.0,0.05364322289824486,0.015723606571555138
+V0223,prefecture_appeal,Involves prefecture appeal handling and result processing.,4.0,standard_fine_lifecycle,1.0,0.0047538368962705135,0.0012256501941010356
+V0224,payment_rework_heavy,Exhibits heavy payment rework with many consecutive payment entries.,9.0,standard_fine_lifecycle,4.0,0.016492245718836784,0.008864962495863438
+V0225,payment_rework_heavy,Involves multiple repeated payment activities occurring after appeals and penalties.,4.0,prefecture_appeal,4.0,0.03584955632686615,0.0020700593013316393
+V0226,prefecture_appeal,"This variant involves formal appeals to the prefecture, processing of results, notification of outcomes, and multiple payments over a long duration.",3.0,payment_rework_heavy,2.0,0.3423271179199219,0.001622671727091074
+V0227,prefecture_appeal,The process includes sending an appeal to the prefecture and incorporating appeal dates alongside penalties and fine lifecycle steps.,3.0,standard_fine_lifecycle,1.0,0.0210008192807436,0.008474603295326233
+V0228,payment_rework_heavy,"Although it includes appeal steps, it is predominantly characterized by multiple repeated payment activities occurring over extended durations.",2.0,prefecture_appeal,1.0,0.02491701953113079,0.001130731892772019
+V0229,standard_fine_lifecycle,"This narrative follows a standard fine lifecycle including notification, penalties, prefecture appeal handling, and ultimate escalation to credit collection.",5.0,prefecture_appeal,1.0,0.012888152152299881,0.0020881779491901398
+V0230,payment_rework_heavy,This is a highly complex variant featuring prefecture and judge appeals followed by extreme payment rework with numerous repeated payment activities.,7.0,prefecture_appeal,3.0,0.022384434938430786,0.0059008244425058365
+V0231,prefecture_appeal,"Involves formal appeals to the prefecture and judge, processing steps, and standard penalty and payment milestones.",5.0,standard_fine_lifecycle,1.0,0.020332539454102516,0.007806322071701288

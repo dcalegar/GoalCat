@@ -1,6 +1,6 @@
 {
   "schema": "icpm2027/manifest/1",
-  "protocol_version": "1.0.0",
+  "protocol_version": "1.1.0",
   "experiment": "e1",
   "condition_id": "e1_guided_rep3",
   "dataset": "rtfm",
@@ -13,8 +13,8 @@
     5,
     6
   ],
-  "started_at": "2026-08-31T18:03:16.398059+00:00",
-  "finished_at": "2026-08-31T18:07:03.334918+00:00",
+  "started_at": "2026-09-04T14:55:27.891239+00:00",
+  "finished_at": "2026-09-04T14:57:15.911273+00:00",
   "preregistered": true,
   "pending_decisions": [],
   "decisions": {
@@ -22,20 +22,18 @@
       "task": "C10",
       "status": "decided",
       "value": {
-        "default": 50,
-        "exceptions": {
-          "bpic2019": 25
-        }
+        "default": 25,
+        "exceptions": {}
       },
       "decided_on": "2026-08-19",
-      "rationale": "50 everywhere (raised from 20), on call-count/wall-clock grounds only, per Task C10's required basis \u2014 not against observed categorization quality. Google AI Studio billing was enabled on the project behind GEMINI_API_KEY and verified at aistudio.google.com/rate-limit: 4,000 RPM / 4M TPM for gemini-3.5-flash-lite (150K RPD), several orders of magnitude above this protocol's actual volume. At batch_size=50 with protocol.yaml's concurrency=5, a 231-variant run costs ~5 Step-6 calls instead of 231/12 (batch=20); BPIC 2019 at the C7 top_n=1000 scope costs ~20 calls instead of 50. No BPIC 2019 exception needed: one value holds the freeze table's \"identical across datasets by default\" with nothing to justify. Not yet empirically re-validated against a frozen run at this batch size \u2014 the example case studies under experimentation/examples/ (not the frozen protocol) are the first runs to exercise batch_size=50, and should be watched for any assignment-quality regression before the first real frozen run under this protocol_version. . AMENDMENT 2026-08-29 \u2014 bpic2019 exception added, batch_size 50 -> 25, on wall-clock/ reliability grounds only (Task C10's permitted basis), never against categorization quality. Two full-scope BPIC 2019 Step-6 runs at batch_size=50 (the example study 20260829_080358 and the first frozen e1_guided_rep1 attempt) both degraded on gemini-3.5-flash-lite: per-call latency on a 50-narrative BPIC batch (mean narrative ~1,285 chars, ~17k input tokens/call) routinely exceeded the protocol's 120 s timeout, so ~5% of batches (602/11,973 in the example study; ~6 of the first 40 in the frozen attempt) exhausted all 3 retries and the condition aborted with IncompleteAssignmentError. rtfm (231 variants, ~711-char narratives) and sepsis (846 variants) show no such degradation at 50 and keep the default. At batch_size=25 each BPIC call carries ~half the tokens and lands within the 120 s ceiling; cost rises from ~$18 to ~$32 across the four E1 conditions and call count from ~964 to ~1,920, both far below the verified rate limits. This amends an as-yet-unexecuted portion of the decision (no frozen BPIC 2019 run had completed), so rtfm/sepsis results already produced under protocol_version 1.0.0 are unaffected and no version bump is required."
+      "rationale": "50 everywhere (raised from 20), on call-count/wall-clock grounds only, per Task C10's required basis \u2014 not against observed categorization quality. Google AI Studio billing was enabled on the project behind GEMINI_API_KEY and verified at aistudio.google.com/rate-limit: 4,000 RPM / 4M TPM for gemini-3.5-flash-lite (150K RPD), several orders of magnitude above this protocol's actual volume. At batch_size=50 with protocol.yaml's concurrency=5, a 231-variant run costs ~5 Step-6 calls instead of 231/12 (batch=20); BPIC 2019 at the C7 top_n=1000 scope costs ~20 calls instead of 50. No BPIC 2019 exception needed: one value holds the freeze table's \"identical across datasets by default\" with nothing to justify. Not yet empirically re-validated against a frozen run at this batch size \u2014 the example case studies under experimentation/examples/ (not the frozen protocol) are the first runs to exercise batch_size=50, and should be watched for any assignment-quality regression before the first real frozen run under this protocol_version. . AMENDMENT 2026-08-29 \u2014 bpic2019 exception added, batch_size 50 -> 25, on wall-clock/ reliability grounds only (Task C10's permitted basis), never against categorization quality. Two full-scope BPIC 2019 Step-6 runs at batch_size=50 (the example study 20260829_080358 and the first frozen e1_guided_rep1 attempt) both degraded on gemini-3.5-flash-lite: per-call latency on a 50-narrative BPIC batch (mean narrative ~1,285 chars, ~17k input tokens/call) routinely exceeded the protocol's 120 s timeout, so ~5% of batches (602/11,973 in the example study; ~6 of the first 40 in the frozen attempt) exhausted all 3 retries and the condition aborted with IncompleteAssignmentError. rtfm (231 variants, ~711-char narratives) and sepsis (846 variants) show no such degradation at 50 and keep the default. At batch_size=25 each BPIC call carries ~half the tokens and lands within the 120 s ceiling; cost rises from ~$18 to ~$32 across the four E1 conditions and call count from ~964 to ~1,920, both far below the verified rate limits. This amends an as-yet-unexecuted portion of the decision (no frozen BPIC 2019 run had completed), so rtfm/sepsis results already produced under protocol_version 1.0.0 are unaffected and no version bump is required. . AMENDMENT 2026-09-04 \u2014 the bpic2019 exception is retired; batch_size 50 -> 25 becomes the one value for all three datasets, under protocol_version 1.1.0. Rationale is uniformity, not a new feasibility finding: with the exception in place, rtfm and sepsis's guided/open contrasts ran under a different assignment mechanism than bpic2019's, which is a threat this project can remove rather than merely disclose (the 2026-08-29 amendment's own reliability finding already shows 50 is not a value every log tolerates, so 25 is the correct default, not a compromise). rtfm's and sepsis's full E1/E2/C12 run sets are re-executed under 1.1.0 at batch_size=25; C12 (Step 5a only, no Step 6) is unaffected by this parameter and is not re-run. Estimated added cost ~$6-7 on top of the ~$3.5 already spent on these two logs at batch 50 (analysis/cost.py), scaled from the 2026-08-29 amendment's own measured BPIC 2019 before/after ratio (calls ~964->~1,920, cost ~$18->~$32); reported exactly in the regenerated cost.md rather than re-estimated in the paper. This closes Internal validity's \"fixed on wall-clock grounds rather than varied\" clause (paperICPM27.tex, \u00a7Threats). It is scoped to batch_size alone: bpic2019's separate axis-declaration prompt gap (\u00a7Discussion) is untouched by this amendment."
     },
     "C5_label_list_control": {
       "task": "C5",
       "status": "decided",
       "value": false,
       "decided_on": "2026-08-25",
-      "rationale": "Not adopted for the minimum design. It remains the highest-value optional item and also its largest budget increase (a third full arm on every dataset). The confound it addresses - that the guided prompt supplies an axis AND a cardinality AND a vocabulary AND extra context at once - is instead carried explicitly as a Threat to Validity, and Task C11a's guided_no_sample ablation attacks the same attribution question for one LLM call per dataset rather than a full arm. THIS IS THE MOST REVISITABLE DECISION HERE: conditions.py already supports arm \"label_list\", so flipping this to true costs configuration plus LLM budget, no new code. Do it before any frozen run rather than after, per this file's own discipline."
+      "rationale": "Not adopted for the minimum design. It remains the highest-value optional item and also its largest budget increase (a third full arm on every dataset). The confound it addresses - that the guided prompt supplies an axis AND a cardinality AND a vocabulary AND extra context at once - is instead carried explicitly as a Threat to Validity, and Task C11a's guided_no_sample ablation attacks the same attribution question for one LLM call per dataset rather than a full arm. THIS IS THE MOST REVISITABLE DECISION HERE, but it is not configuration-only, as an earlier wording of this rationale claimed (corrected 2026-09-03): conditions.py supports arm \"label_list\" and write_label_list_taxonomy reads configs/label_lists/<dataset>.yaml, but that directory does not exist and the lists were never authored. Authoring them is itself a construct-validity judgment - a domain-plausible, not-goal-derived list of matching cardinality per log - not a config edit, and the paper's Threats section now describes the control as supported by the harness but never instantiated. Do it before any frozen run rather than after, per this file's own discipline."
     },
     "D6_open_arm_steps_7_9": {
       "task": "D6",
@@ -54,7 +52,7 @@
         ]
       },
       "decided_on": "2026-08-25",
-      "rationale": "RTFM guided arm only. Step 7b measures indicator satisfaction from the log against the goal model's declared KPIs, so it is the one result in the paper not exposed to the LLM-dependence threat - it is the single counterweight to it. It cannot run in the open arm at all: open-mode categories carry no anchor_ids, so there is nothing to attach an indicator to, which also means it can never enter RQ1's paired contrast and is reported as characterization of the guided arm, not as validation. Scoped to RTFM because only rtfm_goal_model.jucm (v1.2) and rtfm_mini_goal_model.jucm declare indicators; the Sepsis and BPIC 2019 models' indicators are this project's own log-computed percentiles rather than organizational targets. Reporting requirement: indicators with low applicability are reported as NOT-APPLICABLE, never as bad values - RTFM's timely_payment category has 7% dispatch-indicator coverage because most of its cases paid before dispatch occurred, and scoring that as a bad value would invert the measurement."
+      "rationale": "RTFM guided arm only. Step 7b measures indicator satisfaction from the log against the goal model's declared KPIs, so it is the one result in the paper not exposed to the LLM-dependence threat - it is the single counterweight to it. It cannot run in the open arm at all: open-mode categories carry no anchor_ids, so there is nothing to attach an indicator to, which also means it can never enter RQ1's paired contrast and is reported as characterization of the guided arm, not as validation. Scoped to RTFM on construct-validity grounds alone: all four models declare working indicators with valid measure_specs (BPIC 2019 five, RTFM four, Sepsis three), but only RTFM's are organizational targets, whereas the Sepsis and BPIC 2019 models' are this project's own log-computed percentiles, which Step 7b would merely report back to itself. An earlier wording of this clause claimed only the RTFM models declare indicators; that was false and is corrected here (2026-09-03). Reporting requirement: indicators with low applicability are reported as NOT-APPLICABLE, never as bad values - RTFM's timely_payment category has 7% dispatch-indicator coverage because most of its cases paid before dispatch occurred, and scoring that as a bad value would invert the measurement."
     },
     "E2_degenerate_or_after_perturbation": {
       "task": "E2",
@@ -105,7 +103,7 @@
     "goal_model_absent_by_design": false,
     "condition_config": {
       "path": "data/output/rtfm/icpm2027_e1_guided_rep3/condition_config.yaml",
-      "sha256": "8b455175d27096016475e69e8c42b8816c5f0083661d5c480de7765257c7a41c",
+      "sha256": "d423a39a872a3c8418c505f530bec3ffab6fd2563ee5b165c857c39bf7a8678f",
       "bytes": 1207
     },
     "prompt_templates": {
@@ -137,11 +135,16 @@
       "bytes": 22127
     },
     "assignment_prompts": {
-      "V0001_V0050.txt": "35e263cdf1ca9447e4a09e0652674f381da3599a133ca256b6028a327b2774c7",
-      "V0051_V0100.txt": "c343fcfc396655038090441930ac98f98691037eb3a5c1d6cfbed982abb79580",
-      "V0101_V0150.txt": "76a0f710febcd2fdfe1b212fadedf3b2afb6a065c0f0a3b7f1b7b73d5b112970",
-      "V0151_V0200.txt": "154464ee87b19cc9dac073dd29d0159b1776347e2ebd4dcd20303d469338c92d",
-      "V0201_V0231.txt": "cae2190d6229d29d35fc72ab4340b3a2c32cbf04b643b2d473d8ecaa797ac8df"
+      "V0001_V0025.txt": "5b6c41f82b99c26429b76ef7ce909bcbba352d39cfd1e4c2fa7f99158b3b6b5e",
+      "V0026_V0050.txt": "5df5d43e0c0d3185148f83dfa2b99df1e737e3d7bf1a0e523757f798b746ad94",
+      "V0051_V0075.txt": "0e5f09e7b811b89aa5bf0e2c7b667d936d7f806bc55afef64d10d065d9aa2ad4",
+      "V0076_V0100.txt": "6ddd4c83c4bac1c970cef49511b0452af957074aaac2d8d1729e4865a63f3121",
+      "V0101_V0125.txt": "e5ec139d6e209a87b45d7a860d78bef91e65f6f45a6824e784ee29f06de9fe7d",
+      "V0126_V0150.txt": "f47ab2224d2bb1ff76b023bcf38aefc5ea26dea1d26f60fa3428f14c5952738b",
+      "V0151_V0175.txt": "ba6aff27df4fb214a7e6996843b6d1111b062b247885fcd0219a19ad2ff5ed09",
+      "V0176_V0200.txt": "46ce302f8d723dd8da53b25d1da0de6d31ca2707ae349b6b2036b3b05f233a47",
+      "V0201_V0225.txt": "7c1dbcd2d16524c52c08a9c02730e978c54e16eb48e78bba70d99eb7c14f197f",
+      "V0226_V0231.txt": "d1748d8027d57bdd762a7a193808027bee02fb7fa621cc3a729d78fbb4ac47ff"
     }
   },
   "llm": {
@@ -169,20 +172,20 @@
           "temperature": 0.0
         }
       ],
-      "call_count": 5
+      "call_count": 10
     },
     "description": null
   },
   "outputs": {
     "taxonomy": {
       "path": "data/output/rtfm/icpm2027_e1_guided_rep3/round1/05_taxonomy/taxonomy.json",
-      "sha256": "44fa6b58a1fa899c4fd6c62eacc43865ca17b856c6936f47b8adc41116cd5a64",
-      "bytes": 3113
+      "sha256": "1d3180276f2a63f38438a6939ec48a076cef8e0b41b183e020da18d2bb04ed82",
+      "bytes": 3448
     },
     "assignments": {
       "path": "data/output/rtfm/icpm2027_e1_guided_rep3/round1/06_assignment/assignments.csv",
-      "sha256": "33c5f5b657c5fa6aa07e1e65e218922f98b6fab875f9301be4fe19a461903747",
-      "bytes": 39406
+      "sha256": "7c3d142a7c6487715c473851f897144632ff96c08f19f5e5da541ed71779aa46",
+      "bytes": 46582
     },
     "discovery_metrics": null,
     "descriptions": null
@@ -193,16 +196,16 @@
     "host": "Mac-Daniel.local",
     "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
     "python": "3.14.6",
-    "git_commit": "b016cb958f1e0e53bd2da470637d081faa6b284e",
+    "git_commit": "7d93545a98f0ed32c9b32b5df1b951651a9869a2",
     "git_dirty": true
   },
   "estimated_llm_calls": {
     "step5": 1,
-    "step6": 5,
+    "step6": 10,
     "step8": 0,
-    "total": 6
+    "total": 11
   },
-  "assignment_batch_size": 50,
+  "assignment_batch_size": 25,
   "narrative_sample": {
     "withheld": false
   },

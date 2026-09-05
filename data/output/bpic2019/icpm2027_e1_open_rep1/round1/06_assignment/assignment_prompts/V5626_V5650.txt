@@ -3,16 +3,16 @@ You are deciding, for each of several process-variant narratives, which single t
 The taxonomy was derived directly from a narrative sample, with no external declaration to anchor to — 'realize' means the narrative matches the recurring pattern the category describes.
 
 === TAXONOMY CATEGORIES ===
-- category_id=standard_procure_to_pay | name=Standard Procure-to-Pay
-  description: Standard, high-frequency procurement paths where purchase orders are created, goods and invoice receipts are recorded, and invoices are cleared without significant delays or complications.
-- category_id=quick_cancellation_or_completion | name=Quick Cancellation or Early Termination
-  description: Short-lived variants featuring very low trace lengths and rapid execution times, typically resulting in purchase order deletion, basic creation, or initial goods receipt without full invoice processing.
-- category_id=service_entry_execution | name=Service Entry Sheet Processing
-  description: Procurement paths focusing specifically on the recording of service entry sheets and goods receipts with minimal overhead or intermediate steps.
-- category_id=srm_integration_failure | name=SRM System Transfer Failure
-  description: Complex procurement variants originating in the SRM subsystem that suffer from transfer failures or communication issues with execution systems.
-- category_id=extreme_rework_and_delay | name=Extreme Rework and Administrative Delay
-  description: Extremely long-running variants characterized by massive trace lengths, repetitive loops of invoice creation, cancellations, payment block removals, and multi-year durations.
+- category_id=standard_procurement_flow | name=Standard Procurement Flow
+  description: Standard purchasing and invoicing paths with predictable sequences, moderate lead times, and clean execution.
+- category_id=short_low_touch_flow | name=Short/Low-Touch Flow
+  description: Short trace lengths consisting of early-stage procurement actions, rapid deletions, or immediate creation/goods receipt actions without full invoicing loops.
+- category_id=service_entry_and_rework | name=Service Entry & Minor Rework
+  description: Flows centered around service entry sheets with minor repetitions or immediate low-duration completions.
+- category_id=srm_integration_anomaly | name=SRM Integration Anomaly
+  description: Flows involving SRM sub-system milestones, transfers, transmission changes, or system transfer failures.
+- category_id=extreme_duration_and_churn | name=Extreme Duration and Churn
+  description: Massive trace lengths, extensive document cancellations, repetitive invoice postings, and multi-year durations.
 
 === NARRATIVES TO CLASSIFY (25) ===
 How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.

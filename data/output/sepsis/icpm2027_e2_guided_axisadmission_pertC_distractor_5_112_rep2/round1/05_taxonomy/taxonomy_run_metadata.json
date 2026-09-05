@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "d489bde525988d72",
+  "latency_seconds": 3.405450833000941,
+  "input_tokens": 8870,
+  "output_tokens": 638,
+  "prompt_chars": 27780,
+  "response_chars": 2202,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Admission Normal Care\",\n      \"description\": \"Represents standard ward admission for patients requiring ongoing inpatient observation or treatment without intensive care resources. Contributes toward managing overall ward capacity and acts as the baseline path for admitted sepsis pathways.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared goal-model alternative Admission NC (id=15). Evident across numerous sampled variants such as V0008, V0625, and V0070 where patients transition from emergency evaluation to standard inpatient care.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0625\",\n        \"V0449\",\n        \"V0192\",\n        \"V0441\",\n        \"V0071\",\n        \"V0070\",\n        \"V0069\",\n        \"V0067\",\n        \"V0066\",\n        \"V0065\",\n        \"V0064\",\n        \"V0063\",\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Admission Intensive Care\",\n      \"description\": \"Represents admission to the Intensive Care unit for critical stabilization. Carries a negative contribution link (-25) to minimizing time-to-treatment due to specialized coordination overhead, but handles severe acute presentations.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared goal-model alternative Admission IC (id=16). Supported by narrative samples such as V0605, V0317, and V0068 which explicitly realize intensive care admissions.\",\n      \"evidence_variant_ids\": [\n        \"V0605\",\n        \"V0317\",\n        \"V0068\",\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_high_dependency_unit\",\n      \"name\": \"Admission to High-Dependency Unit\",\n      \"description\": \"Represents admission to a high-dependency step-down unit for patients requiring closer monitoring than normal care provides, but not full intensive care.\",\n      \"anchor_ids\": [\n        \"112\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared goal-model alternative Admission to High-Dependency Unit (id=112). Default representation for this declared OR branch.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.004256
+}

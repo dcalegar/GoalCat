@@ -1,0 +1,18 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission to Inpatient Ward (Admission NC)",
+      "description": "Represents the standard process alternative where a patient is admitted to a non-critical inpatient ward, as realized by the Admission NC task. This step supports the broader goal of inpatient care management and is evaluated against post-discharge outcomes.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to the single declared alternative under the OR-decomposed Patient is admitted to an inpatient ward goal (id=5), specifically task id=15 (Admission NC). The narrative sample frequently shows this alternative realized in variants such as V0008, V0065, and V0710 without evidence for further meaningful subdivisions on this specific axis.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0065",
+        "V0710"
+      ]
+    }
+  ]
+}

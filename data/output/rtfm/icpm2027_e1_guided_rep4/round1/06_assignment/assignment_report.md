@@ -6,73 +6,73 @@ Run: `icpm2027_e1_guided_rep4` | Log: `rtfm` | Taxonomy mode: `intent_guided` | 
 
 ## Resolve via timely payment (`timely_payment`)
 
-Represents resolution of the fine case through early or timely payment without requiring enforcement actions. It directly advances the softgoal 'Maximize timely fine revenue' and helps 'Minimize administrative & enforcement cost', evaluated against indicator 'Time to fine dispatch (days)'.
+Resolution of the fine case through early payment before penalties or enforcement actions, advancing the softgoal to maximize timely fine revenue and helping minimize administrative and enforcement cost, judged against the indicator for time to fine dispatch.
 
-**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=12. Supported by frequent variants like V0002 where payment occurs shortly after fine creation.
+**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=12, supported by frequent variants such as V0002 where payment occurs promptly after fine creation.
 
 **Goal-model linkage:** 12 (Task): Resolve via timely payment
 
-**Coverage:** macro 8/231 variants (3.5%) · micro 49588/150370 cases (33.0%)
+**Coverage:** macro 7/231 variants (3.0%) · micro 49629/150370 cases (33.0%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 3.71, nearest other category `administrative_appeal` at mean distance 5.01
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 2.38, nearest other category `delinquent_payment` at mean distance 5.33
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.263, nearest other category `delinquent_payment` at mean distance 0.232
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.254, nearest other category `delinquent_payment` at mean distance 0.254
 
 ## Resolve via delinquent payment (`delinquent_payment`)
 
-Represents resolution of the fine case through payment occurring after penalties or enforcement steps have been initiated. It helps 'Maximize timely fine revenue' and is judged against the indicator 'Average time to case closure (days)'.
+Resolution of the fine case through delayed payment occurring after notifications and penalties have been applied, contributing to maximizing timely fine revenue, judged against average time to case closure.
 
-**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=13. Supported by variants where payment is observed subsequent to penalty additions or notifications, such as V0004, V0005, and V0006.
+**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=13, supported by variants such as V0004, V0005, and V0006 where payments happen subsequent to notification and penalty addition steps.
 
 **Goal-model linkage:** 13 (Task): Resolve via delinquent payment
 
-**Coverage:** macro 52/231 variants (22.5%) · micro 17037/150370 cases (11.3%)
+**Coverage:** macro 75/231 variants (32.5%) · micro 17004/150370 cases (11.3%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 4.59, nearest other category `administrative_appeal` at mean distance 4.78
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 4.51, nearest other category `administrative_appeal` at mean distance 4.90
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.183, nearest other category `timely_payment` at mean distance 0.232
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.205, nearest other category `timely_payment` at mean distance 0.254
 
 ## Resolve via administrative appeal to the Prefecture (`administrative_appeal`)
 
-Represents cases where the offender pursues an administrative appeal to the Prefecture. It helps preserve due process rights while negatively impacting collection costs and timeliness, measured via 'Time to appeal filing, Prefecture (days)'.
+Resolution of the fine case via an administrative appeal submitted to the Prefecture, preserving the offender's due-process rights while impacting administrative costs and fine revenue, judged against the time to appeal filing indicator for the Prefecture.
 
-**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=14. Supported by variants involving insertion of appeal dates and sending appeals to the Prefecture, such as V0008 and V0057.
+**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=14, supported by variants such as V0008, V0057, and V0135 involving the inclusion of date appeals and sending appeals to the Prefecture.
 
 **Goal-model linkage:** 14 (Task): Resolve via administrative appeal to the Prefecture
 
-**Coverage:** macro 70/231 variants (30.3%) · micro 3659/150370 cases (2.4%)
+**Coverage:** macro 53/231 variants (22.9%) · micro 3595/150370 cases (2.4%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 3.82, nearest other category `coercive_credit_collection` at mean distance 4.66
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 4.21, nearest other category `coercive_credit_collection` at mean distance 4.84
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.359, nearest other category `judicial_appeal` at mean distance 0.404
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.353, nearest other category `judicial_appeal` at mean distance 0.397
 
 ## Resolve via judicial appeal to the Judge (`judicial_appeal`)
 
-Represents cases where the offender contests the fine via a judicial appeal to the Judge. It strongly advances offender due process rights while hurting administrative cost and revenue metrics, judged by 'Time to appeal filing, Judge (days)'.
+Resolution of the fine case via a judicial appeal submitted to a Judge, heavily advancing the offender's due-process rights while hurting administrative and enforcement costs, judged against the time to appeal filing indicator for the Judge.
 
-**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=19. Supported by variants containing judicial appeal activities, such as V0103, V0176, and V0140.
+**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=19, backed by variants such as V0103 and V0176 where appeals to the Judge are explicitly recorded.
 
 **Goal-model linkage:** 19 (Task): Resolve via judicial appeal to the Judge
 
-**Coverage:** macro 52/231 variants (22.5%) · micro 318/150370 cases (0.2%)
+**Coverage:** macro 36/231 variants (15.6%) · micro 463/150370 cases (0.3%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 5.93, nearest other category `administrative_appeal` at mean distance 5.33
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 5.99, nearest other category `administrative_appeal` at mean distance 5.36
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.392, nearest other category `delinquent_payment` at mean distance 0.371
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.352, nearest other category `administrative_appeal` at mean distance 0.397
 
 ## Resolve via coercive credit collection (`coercive_credit_collection`)
 
-Represents resolution through coercive credit collection procedures for unresolved or defaulted fines. It helps revenue generation but hurts enforcement cost and due process, measured by 'Average time to case closure (days)'.
+Resolution of the fine case through coercive credit collection measures after all other options fail, helping maximize revenue but hurting administrative costs, judged against the average time to case closure indicator.
 
-**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=20. Supported by variants ending with credit collection dispatch, such as V0001 and V0134.
+**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared alternative id=20, supported by frequent variants like V0001 where cases culminate in credit collection routing.
 
 **Goal-model linkage:** 20 (Task): Resolve via coercive credit collection
 
-**Coverage:** macro 44/231 variants (19.0%) · micro 59013/150370 cases (39.2%)
+**Coverage:** macro 43/231 variants (18.6%) · micro 58905/150370 cases (39.2%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 4.10, nearest other category `administrative_appeal` at mean distance 4.66
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 4.11, nearest other category `administrative_appeal` at mean distance 4.84
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.182, nearest other category `administrative_appeal` at mean distance 0.497
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.186, nearest other category `judicial_appeal` at mean distance 0.483
 
 ## Divergence between structural and profile distance
 
@@ -86,7 +86,7 @@ Flagged for review, not resolved automatically — the two metrics measure diffe
 - `V0069` / `V0153` (category `judicial_appeal`): structural=17, profile=0.716
 - `V0120` / `V0153` (category `judicial_appeal`): structural=17, profile=0.729
 - `V0153` / `V0154` (category `judicial_appeal`): structural=17, profile=0.358
-- `V0153` / `V0167` (category `judicial_appeal`): structural=17, profile=0.716
+- `V0153` / `V0212` (category `judicial_appeal`): structural=17, profile=0.706
 - `V0027` / `V0153` (category `judicial_appeal`): structural=16, profile=0.705
 - `V0029` / `V0153` (category `judicial_appeal`): structural=16, profile=0.730
 - `V0047` / `V0153` (category `judicial_appeal`): structural=16, profile=0.706
@@ -94,22 +94,34 @@ Flagged for review, not resolved automatically — the two metrics measure diffe
 **Different category, structurally near-identical** (the TP/TA-style case — categories distinguished on business intent the activity sequence alone would not show):
 
 - `V0001` (`coercive_credit_collection`) / `V0004` (`delinquent_payment`): structural=1, profile=0.355
+- `V0001` (`coercive_credit_collection`) / `V0017` (`judicial_appeal`): structural=1, profile=0.027
 - `V0001` (`coercive_credit_collection`) / `V0029` (`judicial_appeal`): structural=1, profile=0.396
 - `V0004` (`delinquent_payment`) / `V0009` (`coercive_credit_collection`): structural=1, profile=0.354
 - `V0004` (`delinquent_payment`) / `V0014` (`judicial_appeal`): structural=1, profile=0.022
 - `V0004` (`delinquent_payment`) / `V0029` (`judicial_appeal`): structural=1, profile=0.374
-- `V0004` (`delinquent_payment`) / `V0116` (`administrative_appeal`): structural=1, profile=0.025
+- `V0004` (`delinquent_payment`) / `V0031` (`judicial_appeal`): structural=1, profile=0.030
 - `V0005` (`delinquent_payment`) / `V0009` (`coercive_credit_collection`): structural=1, profile=0.711
-- `V0005` (`delinquent_payment`) / `V0071` (`coercive_credit_collection`): structural=1, profile=0.379
-- `V0005` (`delinquent_payment`) / `V0116` (`administrative_appeal`): structural=1, profile=0.382
-- `V0005` (`delinquent_payment`) / `V0184` (`judicial_appeal`): structural=1, profile=0.060
+- `V0005` (`delinquent_payment`) / `V0031` (`judicial_appeal`): structural=1, profile=0.387
+- `V0005` (`delinquent_payment`) / `V0037` (`judicial_appeal`): structural=1, profile=0.062
 
 ## Residual
 
-5/231 variants (2.2%), 20755/150370 cases (13.8%) unassigned.
+17/231 variants (7.4%), 20774/150370 cases (13.8%) unassigned.
 
-- `V0003`: The case simply sends the fine and remains unresolved without payment, appeal, or credit collection within this trace.
-- `V0012`: The sequence shows payment occurring before sending the fine, which is an anomalous order that does not fit standard taxonomy definitions.
-- `V0077`: The sequence is incomplete or disordered (ending with Send Fine after appeals), fitting none of the resolution categories.
-- `V0093`: The sequence is abnormal (starting with a judicial appeal before sending the fine), fitting none of the categories.
-- `V0193`: Case terminates prematurely at Send Fine without resolution or payment.
+- `V0003`: The case ends after Send Fine without payment or further enforcement, so it does not fit any resolution category.
+- `V0012`: Ends with Send Fine after an early payment step, which does not fit standard closure categories.
+- `V0077`: The case concludes with Send Fine after an appeal process, but does not reach a final resolution like payment or credit collection.
+- `V0093`: The case ends with Send Fine following an appeal to the judge, with no final resolution like payment or collection.
+- `V0103`: The narrative ends inconclusively with Send Appeal to Prefecture without reaching a final resolution or payment.
+- `V0104`: The variant ends at Notify Result Appeal to Offender without resolving through payment, credit collection, or an active appeal.
+- `V0115`: The variant ends with Notify Result Appeal to Offender without final resolution or closure.
+- `V0118`: The process ends at Send Appeal to Prefecture without a terminal resolution.
+- `V0119`: The narrative ends with Send Appeal to Prefecture.
+- `V0124`: The variant ends at Send Appeal to Prefecture with an irregular early payment event.
+- `V0125`: The sequence terminates at Send Appeal to Prefecture without completion.
+- `V0137`: The process concludes with notifying the result of an appeal to the offender without resolving via payment, appeal outcome, or collection.
+- `V0144`: The process stops at sending an appeal to the Prefecture without completing a resolution path.
+- `V0145`: The process stops after sending an appeal to the Prefecture without reaching a final resolution category.
+- `V0193`: The narrative has an irregular flow where payment occurs before the fine is officially sent, fitting no standard category.
+- `V0194`: Payment occurs early in the sequence before administrative appeal steps are processed, making it a residual case.
+- `V0196`: The sequence involves out-of-order steps like appealing before sending the fine, falling into the residual.

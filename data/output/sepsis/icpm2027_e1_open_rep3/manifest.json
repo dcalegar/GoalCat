@@ -1,0 +1,240 @@
+{
+  "schema": "icpm2027/manifest/1",
+  "protocol_version": "1.1.0",
+  "experiment": "e1",
+  "condition_id": "e1_open_rep3",
+  "dataset": "sepsis",
+  "arm": "open",
+  "replicate": 3,
+  "tag": null,
+  "axis": null,
+  "axis_root": null,
+  "steps_executed": [
+    5,
+    6
+  ],
+  "started_at": "2026-09-04T19:24:31.174947+00:00",
+  "finished_at": "2026-09-04T19:25:10.721311+00:00",
+  "preregistered": true,
+  "pending_decisions": [],
+  "decisions": {
+    "C10_assignment_batch_size": {
+      "task": "C10",
+      "status": "decided",
+      "value": {
+        "default": 25,
+        "exceptions": {}
+      },
+      "decided_on": "2026-08-19",
+      "rationale": "50 everywhere (raised from 20), on call-count/wall-clock grounds only, per Task C10's required basis \u2014 not against observed categorization quality. Google AI Studio billing was enabled on the project behind GEMINI_API_KEY and verified at aistudio.google.com/rate-limit: 4,000 RPM / 4M TPM for gemini-3.5-flash-lite (150K RPD), several orders of magnitude above this protocol's actual volume. At batch_size=50 with protocol.yaml's concurrency=5, a 231-variant run costs ~5 Step-6 calls instead of 231/12 (batch=20); BPIC 2019 at the C7 top_n=1000 scope costs ~20 calls instead of 50. No BPIC 2019 exception needed: one value holds the freeze table's \"identical across datasets by default\" with nothing to justify. Not yet empirically re-validated against a frozen run at this batch size \u2014 the example case studies under experimentation/examples/ (not the frozen protocol) are the first runs to exercise batch_size=50, and should be watched for any assignment-quality regression before the first real frozen run under this protocol_version. . AMENDMENT 2026-08-29 \u2014 bpic2019 exception added, batch_size 50 -> 25, on wall-clock/ reliability grounds only (Task C10's permitted basis), never against categorization quality. Two full-scope BPIC 2019 Step-6 runs at batch_size=50 (the example study 20260829_080358 and the first frozen e1_guided_rep1 attempt) both degraded on gemini-3.5-flash-lite: per-call latency on a 50-narrative BPIC batch (mean narrative ~1,285 chars, ~17k input tokens/call) routinely exceeded the protocol's 120 s timeout, so ~5% of batches (602/11,973 in the example study; ~6 of the first 40 in the frozen attempt) exhausted all 3 retries and the condition aborted with IncompleteAssignmentError. rtfm (231 variants, ~711-char narratives) and sepsis (846 variants) show no such degradation at 50 and keep the default. At batch_size=25 each BPIC call carries ~half the tokens and lands within the 120 s ceiling; cost rises from ~$18 to ~$32 across the four E1 conditions and call count from ~964 to ~1,920, both far below the verified rate limits. This amends an as-yet-unexecuted portion of the decision (no frozen BPIC 2019 run had completed), so rtfm/sepsis results already produced under protocol_version 1.0.0 are unaffected and no version bump is required. . AMENDMENT 2026-09-04 \u2014 the bpic2019 exception is retired; batch_size 50 -> 25 becomes the one value for all three datasets, under protocol_version 1.1.0. Rationale is uniformity, not a new feasibility finding: with the exception in place, rtfm and sepsis's guided/open contrasts ran under a different assignment mechanism than bpic2019's, which is a threat this project can remove rather than merely disclose (the 2026-08-29 amendment's own reliability finding already shows 50 is not a value every log tolerates, so 25 is the correct default, not a compromise). rtfm's and sepsis's full E1/E2/C12 run sets are re-executed under 1.1.0 at batch_size=25; C12 (Step 5a only, no Step 6) is unaffected by this parameter and is not re-run. Estimated added cost ~$6-7 on top of the ~$3.5 already spent on these two logs at batch 50 (analysis/cost.py), scaled from the 2026-08-29 amendment's own measured BPIC 2019 before/after ratio (calls ~964->~1,920, cost ~$18->~$32); reported exactly in the regenerated cost.md rather than re-estimated in the paper. This closes Internal validity's \"fixed on wall-clock grounds rather than varied\" clause (paperICPM27.tex, \u00a7Threats). It is scoped to batch_size alone: bpic2019's separate axis-declaration prompt gap (\u00a7Discussion) is untouched by this amendment."
+    },
+    "C6_sepsis_perturbations": {
+      "task": "C6",
+      "status": "decided",
+      "value": true,
+      "decided_on": "2026-08-29",
+      "rationale": "Adopted, superseding the 2026-08-25 decision. The validity ground for refusal no longer holds: re-run under this session's fixes (Task C12's is_stable now matches by anchor_ids per \u00a74, not by cosmetic category-label text \u2014 see conditions.py/report.py/prompt_taxonomy_ intent_guided.txt fixes, 2026-08-29) shows Sepsis's Step 5a induction IS stable \u2014 5 identical-input reruns produced the identical anchor set {15,16,17,18,19,20,21} every time. The earlier \"three distinct anchor sets\" finding is now attributed at least in part to the anchor-inclusion prompt defect fixed the same day, not to genuine induction instability. The budget ground was never binding on its own and is smaller than originally scoped: E2's baseline condition reuses the existing e1_guided_rep1 run at zero additional cost (identical run_id under experiment=\"e1\"), so only the two perturbation conditions (A, B) are net new \u2014 roughly 36 LLM calls total (~18 each, matching one guided e1 condition's Step 5+6 cost), well under $1 at this session's measured RTFM per-call cost. Revisit only if a future C12 rerun on Sepsis (e.g. after any further goal-model or prompt change) shows instability again."
+    },
+    "C5_label_list_control": {
+      "task": "C5",
+      "status": "decided",
+      "value": true,
+      "decided_on": "2026-08-25",
+      "rationale": "Not adopted for the minimum design. It remains the highest-value optional item and also its largest budget increase (a third full arm on every dataset). The confound it addresses - that the guided prompt supplies an axis AND a cardinality AND a vocabulary AND extra context at once - is instead carried explicitly as a Threat to Validity, and Task C11a's guided_no_sample ablation attacks the same attribution question for one LLM call per dataset rather than a full arm. THIS IS THE MOST REVISITABLE DECISION HERE, but it is not configuration-only, as an earlier wording of this rationale claimed (corrected 2026-09-03): conditions.py supports arm \"label_list\" and write_label_list_taxonomy reads configs/label_lists/<dataset>.yaml, but that directory does not exist and the lists were never authored. Authoring them is itself a construct-validity judgment - a domain-plausible, not-goal-derived list of matching cardinality per log - not a config edit, and the paper's Threats section now describes the control as supported by the harness but never instantiated. Do it before any frozen run rather than after, per this file's own discipline. . AMENDMENT 2026-09-04 \u2014 adopted for rtfm and sepsis, on cost grounds only (Task C5's original refusal was a scope/budget call, not a validity objection). configs/label_lists/rtfm.yaml and configs/label_lists/sepsis.yaml were authored the same day, per conditions.py's requirement, by Claude Sonnet 5 at the request of the paper's author, and reviewed and approved by the author before this amendment was written \u2014 each file's own header records its authoring method and independence from data/goals/*.jucm. bpic2019 is excluded from this amendment's scope: its Step-6 assignment cost (~479 calls/condition at batch_size=25) makes a third full arm there disproportionate to the finding's marginal value, the same cost-driven scoping already applied to Experiment 2 (paperICPM27.tex, \u00a7Setup). sepsis's label list runs once per dataset (protocol.py's effective_axis is None for this arm, as for open), and was authored at cardinality 5 to match the discharge axis; against the admission axis (|T^G|=2) the comparison is necessarily unmatched-cardinality, and that limitation must be stated wherever admission-axis label_list numbers are reported. Two replicates per dataset, mirroring the frozen open-arm replicate count, at an estimated cost under $0.50 total (analysis/cost.py's per-call averages: ~5 Step-6 calls for rtfm, ~17 for sepsis, no Step-5 call for either since the taxonomy is supplied, not induced). . AMENDMENT 2026-09-04 (same day, second amendment) \u2014 added arm \"label_list_strict\": the same supplied taxonomy as \"label_list\" but run under taxonomy_mode=\"intent_guided\" for Step 6 instead of \"open\" (protocol.py's _TAXONOMY_MODE_BY_ARM), so it isolates the fourth co-varying factor this task's rationale names \u2014 the assignment prompt's stricter \"must satisfy\" criterion \u2014 from the goal-derived content of the guided taxonomy, which \"label_list\" alone leaves conflated with the criterion. Not in _GOAL_MODEL_ARMS, so it still reads no goal model. Run on rtfm and sepsis at two replicates each, ~$0.4 total (assignment-only, same per-call basis as the first amendment). . AMENDMENT 2026-09-04 (third amendment, same day) \u2014 bpic2019 brought into scope for both \"label_list\" and \"label_list_strict\", superseding the first amendment's exclusion. That exclusion was cost-driven, not a validity objection (as stated above), and the paper's own Threats section (Construct validity) now reports the label-list finding as extending to two of three logs only; closing that gap is worth the spend. configs/label_lists/bpic2019.yaml was authored the same day, by Claude Sonnet 5 at the request of the paper's author, reviewed and approved by the author before this amendment was written, at cardinality 4 to match bpic2019's guided taxonomy (|T^G|=4, Table setup) \u2014 a matched-cardinality comparison, unlike sepsis's admission-axis row. Two replicates per arm (four conditions total), at an estimated ~$12-13 (analysis/cost.py: bpic2019's ~479 Step-6 calls/condition at batch_size=25, ~$3.13/ condition on this endpoint's measured per-call cost), bringing the whole study's total to roughly $35-36. No Step-5 call for either arm, as above."
+    },
+    "D6_open_arm_steps_7_9": {
+      "task": "D6",
+      "status": "decided",
+      "value": "run_neither",
+      "decided_on": "2026-08-25",
+      "rationale": "Neither arm runs Steps 7-8 in a frozen condition. They are descriptive only (\u00a79) and confounded by partition granularity - finer, purer subsets fit more easily almost mechanically - so a cross-condition fitness/precision comparison is not informative about which taxonomy is better. Skipping both keeps the arms symmetric at zero extra LLM cost and loses nothing RQ1 depends on; Step 7 is regenerable later from a frozen run's assignments.csv + taxonomy.json without re-billing Step 6. Step 8 additionally is NOT comparable across arms (Task E6: its goal-alignment judgment reads goal-model text under guided mode and the category's own Step 5 rationale under open mode). Step 7b is governed separately by C13 and is guided-arm-only by construction, since open categories carry no anchor_ids."
+    },
+    "C13_step7b_indicators": {
+      "task": "C13",
+      "status": "decided",
+      "value": {
+        "policy": "run_guided_only",
+        "datasets": [
+          "rtfm"
+        ]
+      },
+      "decided_on": "2026-08-25",
+      "rationale": "RTFM guided arm only. Step 7b measures indicator satisfaction from the log against the goal model's declared KPIs, so it is the one result in the paper not exposed to the LLM-dependence threat - it is the single counterweight to it. It cannot run in the open arm at all: open-mode categories carry no anchor_ids, so there is nothing to attach an indicator to, which also means it can never enter RQ1's paired contrast and is reported as characterization of the guided arm, not as validation. Scoped to RTFM on construct-validity grounds alone: all four models declare working indicators with valid measure_specs (BPIC 2019 five, RTFM four, Sepsis three), but only RTFM's are organizational targets, whereas the Sepsis and BPIC 2019 models' are this project's own log-computed percentiles, which Step 7b would merely report back to itself. An earlier wording of this clause claimed only the RTFM models declare indicators; that was false and is corrected here (2026-09-03). Reporting requirement: indicators with low applicability are reported as NOT-APPLICABLE, never as bad values - RTFM's timely_payment category has 7% dispatch-indicator coverage because most of its cases paid before dispatch occurred, and scoring that as a bad value would invert the measurement."
+    },
+    "E2_degenerate_or_after_perturbation": {
+      "task": "E2",
+      "status": "decided",
+      "value": "keep",
+      "decided_on": "2026-08-25",
+      "rationale": "Keep the degenerate one-child decomposition. Verified concretely: removing element 19 (judicial appeal) from rtfm_goal_model.jucm leaves OR-point 7 with the single child 14. Two defensible options existed; keeping is chosen because collapsing changes the goal tree's DEPTH as well as its breadth, and Task C12 establishes that Step 5a's output is sensitive to which level of the tree it anchors at - so a collapse would confound the perturbation's effect with an anchoring-level change. Keeping perturbs exactly one thing: the alternative set at one OR-point. Pre-registered here because it is a free parameter that would otherwise be settled silently by whichever behaviour perturb.py happened to implement."
+    },
+    "D1_divergence_convention": {
+      "task": "D1",
+      "status": "decided",
+      "value": {
+        "residual_handling": "own_cluster",
+        "weighting": "variant"
+      },
+      "decided_on": "2026-08-19",
+      "rationale": "Fixed before any number is computed, per \u00a77. The residual is its own block (it is a substantive outcome of the guided arm, not missing data), and the primary weighting is variant-level to match |T| and the contingency matrix's primary unit. analysis/divergence.py computes all four combinations and marks this one as primary, so the choice is auditable rather than implicit \u2014 but it is never reported as accuracy (\u00a71)."
+    },
+    "D7_single_llm": {
+      "task": "D7",
+      "status": "decided",
+      "value": false,
+      "decided_on": "2026-08-19",
+      "rationale": "Decided \u2014 not adopted. One provider/model (Gemini) throughout; cross-model robustness is future work and a recorded Threat to Validity, not an experimental condition."
+    }
+  },
+  "variant_scope": {
+    "policy": "all",
+    "source": "configs/sepsis.yaml",
+    "applied_policy": "all",
+    "variants_total": 846,
+    "variants_kept": 846,
+    "cases_total": 1050,
+    "cases_kept": 1050,
+    "case_coverage_of_full_log": 1.0
+  },
+  "inputs": {
+    "event_log": {
+      "path": "data/logs/sepsis.xes.gz",
+      "sha256": "709c52340306415952811b9b9c5dc6bcc8f8d47d583eba39df9a538459dc543a",
+      "bytes": 202508
+    },
+    "goal_model": null,
+    "goal_model_absent_by_design": true,
+    "condition_config": {
+      "path": "data/output/sepsis/icpm2027_e1_open_rep3/condition_config.yaml",
+      "sha256": "17aadc3023b24a830eb07eac7641f8969d2480f18859dc6238689ee6cf1f3979",
+      "bytes": 1183
+    },
+    "prompt_templates": {
+      "prompt_assignment_batch.txt": "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d",
+      "prompt_description.txt": "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588",
+      "prompt_taxonomy_intent_guided.txt": "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3",
+      "prompt_taxonomy_intent_guided_revision.txt": "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444",
+      "prompt_taxonomy_open.txt": "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c",
+      "prompt_taxonomy_open_revision.txt": "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+    },
+    "shared_base": {
+      "run_id": "icpm2027_base",
+      "run_dir": "/Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_base",
+      "variant_count": 846,
+      "case_count": 1050,
+      "artifacts": {
+        "01_variants/variants.csv": "c24e38b68ca586fea68066929d0eb94ef4626dcc4fec511a04dc84a44c7462af",
+        "02_profiling/profiles.csv": "d6d892a366e1566759173979fd27ddf6dc474b065c07ce7fef8fbf2c36c5382c",
+        "02_profiling/profiles.json": "f77eee194fb01b7bb04d067d9cde9b01597db90179b3e5215270919805cac3eb",
+        "03_textualization/narratives.csv": "9d56dd7efb09156846cb58681311f18e96667b9d4cd9d21459308a13d4ca2b2b",
+        "04_sampling/narrative_sample.csv": "04449085030b572397081b439745b73c13d7ac5e980959cf7b3e56bb877d169a"
+      }
+    }
+  },
+  "prompts_sent": {
+    "taxonomy_prompt": {
+      "path": "data/output/sepsis/icpm2027_e1_open_rep3/round1/05_taxonomy/taxonomy_prompt.txt",
+      "sha256": "42769f778d3b67e501671dd6355d0351bc61313eb2b7c45454e07a3290c56359",
+      "bytes": 21682
+    },
+    "assignment_prompts": {
+      "V0001_V0025.txt": "a6bbc6dd9b054e043b1dccb5e761f993eae8219bbde1f86db058fbddf651a148",
+      "V0026_V0050.txt": "683e928fd315fd102cdfe86228e3e14e09856409d36a325e4c4dade5a2c972a6",
+      "V0051_V0075.txt": "e274903538b20511343f0040742cc08fc96eb64abf1bf0d92b67c4cce8733836",
+      "V0076_V0100.txt": "c44f6fc7f5929cba3bf2d4d05ad709e82e4e7f52ebbf2f75e0b6456b470a0730",
+      "V0101_V0125.txt": "e640434b603f3b96c7427126ab16d9fea81959066cc7bea08f4843fb8c70158d",
+      "V0126_V0150.txt": "61233fe3a77b6d995799c5a046c83819fe749c1ade85edc6db78213f35a78f2a",
+      "V0151_V0175.txt": "c14f289d1be13674f483f99a548e569a8740463e0719bedeeee8a5eecad0ae29",
+      "V0176_V0200.txt": "68edc2ca7930a9de48d6da7e19faf49705adb3b9d8569f92af5f42ca36f53774",
+      "V0201_V0225.txt": "6c1808e998a096a1b2b7835c508dc7cdbff213fa77c3f4dbeb8d5e8038ec8c30",
+      "V0226_V0250.txt": "6a2240bf395edc2e68cdd3a79add9d4e9dcf8e91fc8e30c75b371cdebdc0705b",
+      "V0251_V0275.txt": "1b9784ec07dc2b5f4c4eeace6c12e6d88552329a7f929ad5b21895204c0a6b67",
+      "V0276_V0300.txt": "a7325604d6a93a7d96bfdd26599ac04140d49a44fd2117e90bba50a299d28fbe",
+      "V0301_V0325.txt": "98a2148d36ff132b08512c29814eb1441b63e3e564f98ac9226a24ae57b0a85f",
+      "V0326_V0350.txt": "bb60c2c6837a1feb8026156f5edede32894aad385f1716217aeab8d6345d47b1",
+      "V0351_V0375.txt": "6ae5f20c1b60a52f75a0f46a5dba3fa152a7bf7805d5df47f914d82a68366a4d",
+      "V0376_V0400.txt": "8f6b95d9494d4f38ede3563617fc7770aaf416851a393eab226e66b2f47945e0",
+      "V0401_V0425.txt": "c84602a4d82246038d45a506c38b652b684d44caf70ef90c735c4a2e1cdc38b2",
+      "V0426_V0450.txt": "5bc5aafbaea1e0938d126b9a5124596aa34fd8582ac2ff50acf4c3a9582f5d65",
+      "V0451_V0475.txt": "e1b614f638710f4cd85555185fb088da26ec78502d85444719555b4f902293a7",
+      "V0476_V0500.txt": "4bb1a6c2667d2b0defc8ea8907cd9c6d4b21c0baf5746d862463b42935b8207c",
+      "V0501_V0525.txt": "828c4e355aa3b37017df0d8fe5e486f73137158b3afd20df22d8d1e9ce542ddd",
+      "V0526_V0550.txt": "0b1061da629bfb894e874bb285375e3706db58fbbd5fe62d57e81ea59eca7f50",
+      "V0551_V0575.txt": "245f22fcec473401eb2a35204e5330520fd47b5764329b83078c09a4458e983b",
+      "V0576_V0600.txt": "b5d7bc0400b8675e0d298609122ddcc81517e140106fb7b40fc901278694c22d",
+      "V0601_V0625.txt": "ae8b35421d95f5992be7e4c5a0f0487b27e6f7bb376001a47fb4fef78d277cd4",
+      "V0626_V0650.txt": "242d901529c54aa95a41758a09b303ac5225539969cb71c2e324ef94118c42ca",
+      "V0651_V0675.txt": "59bee7fe98c9698b2ac479c351dfd879c0085a705c8030d94ab52a2da8ccf0ea",
+      "V0676_V0700.txt": "8011d4cb5ead4da9174db494a32f441c4ee49c9385eda4d84c69f2b539e6f949",
+      "V0701_V0725.txt": "99a1dfd7eb3fed712daf610ee56fd4939f894fe7dbad33cebfa7895091bd22fa",
+      "V0726_V0750.txt": "e38bff0d01a21a2a75e0ffcf97f3462aea974372b0d37977f127415737c3a56e",
+      "V0751_V0775.txt": "3e552495ad8d004f62fc94a66b2f8b20bc421226de556a73594bd7b235c60918",
+      "V0776_V0800.txt": "4c2d78cf73d8c96df6dbd5239b61806ef0c17004de931a5dba0c0353519218bc",
+      "V0801_V0825.txt": "ab38fd51afff3c01c3dbfe03f6c3576c0c7072a4cdbf55b8fba8fa4e9a59800b",
+      "V0826_V0846.txt": "65cacd088a3a1fe30779f0a141eb6cc857cd62c8d65b00d76903043b8fa937c7"
+    }
+  },
+  "llm": {
+    "seed": null,
+    "seed_note": "null \u2014 no seed is exposed by PipelineConfig.llm or by the Gemini path through litellm; temperature=0 is the only sampling constraint applied. See Task C2's replicate runs for the empirical noise floor.",
+    "taxonomy": {
+      "distinct_call_configurations": [
+        {
+          "model": "gemini/gemini-3.5-flash-lite",
+          "resolved_model": null,
+          "provider": "gemini",
+          "backend": "remote",
+          "temperature": 0.0
+        }
+      ],
+      "call_count": 1
+    },
+    "assignment": {
+      "distinct_call_configurations": [
+        {
+          "model": "gemini/gemini-3.5-flash-lite",
+          "resolved_model": null,
+          "provider": "gemini",
+          "backend": "remote",
+          "temperature": 0.0
+        }
+      ],
+      "call_count": 34
+    },
+    "description": null
+  },
+  "outputs": {
+    "taxonomy": {
+      "path": "data/output/sepsis/icpm2027_e1_open_rep3/round1/05_taxonomy/taxonomy.json",
+      "sha256": "365959397e836b1876c3b3e62e434c3ccebaa96db6a0bb420bea1623b506d238",
+      "bytes": 2418
+    },
+    "assignments": {
+      "path": "data/output/sepsis/icpm2027_e1_open_rep3/round1/06_assignment/assignments.csv",
+      "sha256": "6845fae4dcba6f8fc879dd8ca00811c4e06e80d84197816b530e334f3c0a5034",
+      "bytes": 159852
+    },
+    "discovery_metrics": null,
+    "descriptions": null
+  },
+  "run_dir": "data/output/sepsis/icpm2027_e1_open_rep3",
+  "round_dir": "data/output/sepsis/icpm2027_e1_open_rep3/round1",
+  "environment": {
+    "host": "Mac-Daniel.local",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.6",
+    "git_commit": "7d93545a98f0ed32c9b32b5df1b951651a9869a2",
+    "git_dirty": true
+  },
+  "estimated_llm_calls": {
+    "step5": 1,
+    "step6": 34,
+    "step8": 0,
+    "total": 35
+  },
+  "assignment_batch_size": 25,
+  "narrative_sample": {
+    "withheld": false
+  },
+  "step7b_indicators": false
+}

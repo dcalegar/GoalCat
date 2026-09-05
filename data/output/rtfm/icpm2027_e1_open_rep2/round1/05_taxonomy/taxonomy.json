@@ -3,22 +3,21 @@
     {
       "category_id": "direct_payment",
       "name": "Direct Payment",
-      "description": "Fines that are paid quickly after creation or fine notification with minimal steps and no escalation or penalties.",
+      "description": "Cases where the fine is created and promptly paid with very short trace lengths and durations, often without involving extensive notification or penalty steps.",
       "anchor_ids": [],
-      "rationale": "High frequency variants representing straightforward, low-duration payment paths.",
+      "rationale": "High frequency among low-duration and low-length variants (e.g., V0002, V0007), representing straightforward fine settlements.",
       "evidence_variant_ids": [
         "V0002",
-        "V0003",
         "V0007",
         "V0012"
       ]
     },
     {
       "category_id": "standard_collection",
-      "name": "Standard Collection",
-      "description": "Fines that undergo standard notification, penalty addition, and eventually progress to credit collection due to non-payment.",
+      "name": "Standard Collection / Credit Referral",
+      "description": "Cases that progress through standard notifications and penalties over a moderate to long duration, ultimately culminating in credit collection.",
       "anchor_ids": [],
-      "rationale": "Represents the most common long-duration resolution path ending in credit collection.",
+      "rationale": "Dominates the high-frequency long-duration tail of the log where fines remain unpaid and are escalated (e.g., V0001, V0009).",
       "evidence_variant_ids": [
         "V0001",
         "V0009",
@@ -28,39 +27,36 @@
     {
       "category_id": "delayed_payment",
       "name": "Delayed Payment with Penalties",
-      "description": "Fines where penalties are added and notifications sent, but the offender eventually makes a payment after a moderate delay, sometimes involving multiple payment installments.",
+      "description": "Cases where payment occurs after significant delays, intermediate notifications, penalties, and frequently exhibits repeated payment transactions.",
       "anchor_ids": [],
-      "rationale": "Captures recurring patterns of late payments accompanied by penalty increments and repeated payment actions.",
+      "rationale": "Represents the cluster of variants featuring standard notifications, added penalties, and multiple recurring payment steps (e.g., V0004, V0005, V0006).",
       "evidence_variant_ids": [
         "V0004",
         "V0005",
-        "V0006",
-        "V0048"
+        "V0006"
       ]
     },
     {
-      "category_id": "appeal_process",
-      "name": "Prefecture Appeal Path",
-      "description": "Processes that involve submitting an appeal to the prefecture, receiving results, and handling notifications or subsequent legal/collection steps.",
+      "category_id": "appeals_and_legal",
+      "name": "Appeals and Legal Proceedings",
+      "description": "Complex cases involving formal appeals to the prefecture or judge, resulting in extended durations, prefecture results, and alternative resolution paths.",
       "anchor_ids": [],
-      "rationale": "Groups variants characterized by formal appeals to the prefecture and associated administrative handling.",
+      "rationale": "Captures variants explicitly containing appeal-related activities such as Send Appeal to Prefecture and Appeal to Judge (e.g., V0008, V0057, V0103).",
       "evidence_variant_ids": [
         "V0008",
         "V0057",
-        "V0103",
-        "V0137",
-        "V0144"
+        "V0103"
       ]
     },
     {
-      "category_id": "chronic_rework_payment",
-      "name": "Chronic Installment Rework",
-      "description": "Extremely long traces characterized by a high frequency of repeated payment steps spanning multiple months or years.",
+      "category_id": "payment_rework_loops",
+      "name": "Payment Rework Loops",
+      "description": "Outlier variants characterized by an exceptionally high trace length driven by repetitive, sequential payment installments or iterative transactional rework.",
       "anchor_ids": [],
-      "rationale": "Identifies extreme outliers with unusually high trace lengths driven by repetitive payment installments.",
+      "rationale": "Identified by extreme length and repetition of payment events over prolonged periods (e.g., V0153, V0151, V0147, V0224).",
       "evidence_variant_ids": [
-        "V0151",
         "V0153",
+        "V0151",
         "V0147",
         "V0224"
       ]

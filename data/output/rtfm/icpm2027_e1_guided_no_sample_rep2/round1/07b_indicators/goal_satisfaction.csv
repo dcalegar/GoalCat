@@ -46,10 +46,10 @@ coercive_credit_collection,category,Resolve via coercive credit collection,19,Ta
 coercive_credit_collection,category,Resolve via coercive credit collection,20,Task,Resolve via coercive credit collection,0,False
 coercive_credit_collection,category,Resolve via coercive credit collection,21,Softgoal,Minimize administrative & enforcement cost,-50,False
 coercive_credit_collection,category,Resolve via coercive credit collection,22,Softgoal,Maximize timely fine revenue,-46,False
-coercive_credit_collection,category,Resolve via coercive credit collection,23,Softgoal,Preserve offender's due-process rights,26,False
+coercive_credit_collection,category,Resolve via coercive credit collection,23,Softgoal,Preserve offender's due-process rights,0,False
 coercive_credit_collection,category,Resolve via coercive credit collection,112,Indicator,Time to fine dispatch (days),9,True
 coercive_credit_collection,category,Resolve via coercive credit collection,113,Indicator,"Time to appeal filing, Prefecture (days)",100,True
-coercive_credit_collection,category,Resolve via coercive credit collection,175,Indicator,"Time to appeal filing, Judge (days)",-48,True
+coercive_credit_collection,category,Resolve via coercive credit collection,175,Indicator,"Time to appeal filing, Judge (days)",-100,True
 coercive_credit_collection,category,Resolve via coercive credit collection,114,Indicator,Average time to case closure (days),-100,True
 timely_payment,category,Resolve via timely payment,2,Goal,"Every issued fine reaches a lawful, documented closure",0,False
 timely_payment,category,Resolve via timely payment,3,Goal,Fine is issued and formally communicated,0,False
@@ -72,9 +72,9 @@ timely_payment,category,Resolve via timely payment,19,Task,Resolve via judicial 
 timely_payment,category,Resolve via timely payment,20,Task,Resolve via coercive credit collection,0,False
 timely_payment,category,Resolve via timely payment,21,Softgoal,Minimize administrative & enforcement cost,50,False
 timely_payment,category,Resolve via timely payment,22,Softgoal,Maximize timely fine revenue,69,False
-timely_payment,category,Resolve via timely payment,23,Softgoal,Preserve offender's due-process rights,0,False
+timely_payment,category,Resolve via timely payment,23,Softgoal,Preserve offender's due-process rights,50,False
 timely_payment,category,Resolve via timely payment,112,Indicator,Time to fine dispatch (days),38,True
-timely_payment,category,Resolve via timely payment,113,Indicator,"Time to appeal filing, Prefecture (days)",0,False
+timely_payment,category,Resolve via timely payment,113,Indicator,"Time to appeal filing, Prefecture (days)",100,True
 timely_payment,category,Resolve via timely payment,175,Indicator,"Time to appeal filing, Judge (days)",0,False
 timely_payment,category,Resolve via timely payment,114,Indicator,Average time to case closure (days),100,True
 delinquent_payment,category,Resolve via delinquent payment,2,Goal,"Every issued fine reaches a lawful, documented closure",0,False
@@ -98,11 +98,11 @@ delinquent_payment,category,Resolve via delinquent payment,19,Task,Resolve via j
 delinquent_payment,category,Resolve via delinquent payment,20,Task,Resolve via coercive credit collection,0,False
 delinquent_payment,category,Resolve via delinquent payment,21,Softgoal,Minimize administrative & enforcement cost,-48,False
 delinquent_payment,category,Resolve via delinquent payment,22,Softgoal,Maximize timely fine revenue,-48,False
-delinquent_payment,category,Resolve via delinquent payment,23,Softgoal,Preserve offender's due-process rights,0,False
+delinquent_payment,category,Resolve via delinquent payment,23,Softgoal,Preserve offender's due-process rights,44,False
 delinquent_payment,category,Resolve via delinquent payment,112,Indicator,Time to fine dispatch (days),0,True
 delinquent_payment,category,Resolve via delinquent payment,113,Indicator,"Time to appeal filing, Prefecture (days)",100,True
-delinquent_payment,category,Resolve via delinquent payment,175,Indicator,"Time to appeal filing, Judge (days)",-100,True
-delinquent_payment,category,Resolve via delinquent payment,114,Indicator,Average time to case closure (days),-96,True
+delinquent_payment,category,Resolve via delinquent payment,175,Indicator,"Time to appeal filing, Judge (days)",-12,True
+delinquent_payment,category,Resolve via delinquent payment,114,Indicator,Average time to case closure (days),-95,True
 administrative_appeal,category,Resolve via administrative appeal to the Prefecture,2,Goal,"Every issued fine reaches a lawful, documented closure",0,False
 administrative_appeal,category,Resolve via administrative appeal to the Prefecture,3,Goal,Fine is issued and formally communicated,0,False
 administrative_appeal,category,Resolve via administrative appeal to the Prefecture,4,Goal,Fine case is resolved,0,False
@@ -122,13 +122,13 @@ administrative_appeal,category,Resolve via administrative appeal to the Prefectu
 administrative_appeal,category,Resolve via administrative appeal to the Prefecture,18,Task,Notify Result Appeal to Offender,0,False
 administrative_appeal,category,Resolve via administrative appeal to the Prefecture,19,Task,Resolve via judicial appeal to the Judge,0,False
 administrative_appeal,category,Resolve via administrative appeal to the Prefecture,20,Task,Resolve via coercive credit collection,0,False
-administrative_appeal,category,Resolve via administrative appeal to the Prefecture,21,Softgoal,Minimize administrative & enforcement cost,-40,False
-administrative_appeal,category,Resolve via administrative appeal to the Prefecture,22,Softgoal,Maximize timely fine revenue,-40,False
+administrative_appeal,category,Resolve via administrative appeal to the Prefecture,21,Softgoal,Minimize administrative & enforcement cost,-39,False
+administrative_appeal,category,Resolve via administrative appeal to the Prefecture,22,Softgoal,Maximize timely fine revenue,-39,False
 administrative_appeal,category,Resolve via administrative appeal to the Prefecture,23,Softgoal,Preserve offender's due-process rights,0,False
 administrative_appeal,category,Resolve via administrative appeal to the Prefecture,112,Indicator,Time to fine dispatch (days),0,True
 administrative_appeal,category,Resolve via administrative appeal to the Prefecture,113,Indicator,"Time to appeal filing, Prefecture (days)",100,True
 administrative_appeal,category,Resolve via administrative appeal to the Prefecture,175,Indicator,"Time to appeal filing, Judge (days)",-100,True
-administrative_appeal,category,Resolve via administrative appeal to the Prefecture,114,Indicator,Average time to case closure (days),-80,True
+administrative_appeal,category,Resolve via administrative appeal to the Prefecture,114,Indicator,Average time to case closure (days),-78,True
 judicial_appeal,category,Resolve via judicial appeal to the Judge,2,Goal,"Every issued fine reaches a lawful, documented closure",0,False
 judicial_appeal,category,Resolve via judicial appeal to the Judge,3,Goal,Fine is issued and formally communicated,0,False
 judicial_appeal,category,Resolve via judicial appeal to the Judge,4,Goal,Fine case is resolved,0,False
@@ -149,9 +149,9 @@ judicial_appeal,category,Resolve via judicial appeal to the Judge,18,Task,Notify
 judicial_appeal,category,Resolve via judicial appeal to the Judge,19,Task,Resolve via judicial appeal to the Judge,0,False
 judicial_appeal,category,Resolve via judicial appeal to the Judge,20,Task,Resolve via coercive credit collection,0,False
 judicial_appeal,category,Resolve via judicial appeal to the Judge,21,Softgoal,Minimize administrative & enforcement cost,-50,False
-judicial_appeal,category,Resolve via judicial appeal to the Judge,22,Softgoal,Maximize timely fine revenue,-52,False
+judicial_appeal,category,Resolve via judicial appeal to the Judge,22,Softgoal,Maximize timely fine revenue,-50,False
 judicial_appeal,category,Resolve via judicial appeal to the Judge,23,Softgoal,Preserve offender's due-process rights,0,False
-judicial_appeal,category,Resolve via judicial appeal to the Judge,112,Indicator,Time to fine dispatch (days),-3,True
+judicial_appeal,category,Resolve via judicial appeal to the Judge,112,Indicator,Time to fine dispatch (days),-1,True
 judicial_appeal,category,Resolve via judicial appeal to the Judge,113,Indicator,"Time to appeal filing, Prefecture (days)",100,True
 judicial_appeal,category,Resolve via judicial appeal to the Judge,175,Indicator,"Time to appeal filing, Judge (days)",-100,True
 judicial_appeal,category,Resolve via judicial appeal to the Judge,114,Indicator,Average time to case closure (days),-100,True

@@ -6,31 +6,31 @@ Run: `icpm2027_e1_guided_axisadmission_rep5` | Log: `sepsis` | Taxonomy mode: `i
 
 ## Non-Critical Admission (`admission_nc`)
 
-Patient is admitted to a non-critical inpatient ward, contributing to standard care flows and tracking against discharge outcomes.
+Admission of the patient to a non-critical inpatient ward (Admission NC), realizing the goal of admitting a patient to an inpatient ward. This contributes toward standard post-discharge recovery outcomes.
 
-**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to declared alternative Admission NC (id=15) from the OR decomposition of Goal 5. Observed in multiple variants such as V0008, where it supports patient disposition.
+**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared XOR alternative Admission NC (id=15) based on the goal model decomposition. Sample variants such as V0008, V0070, and V0066 realize this alternative directly.
 
 **Goal-model linkage:** 15 (Task): Admission NC
 
-**Coverage:** macro 663/846 variants (78.4%) · micro 715/1050 cases (68.1%)
+**Coverage:** macro 667/846 variants (78.8%) · micro 719/1050 cases (68.5%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 10.32, nearest other category `admission_ic` at mean distance 20.47
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 10.48, nearest other category `admission_ic` at mean distance 20.32
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.408, nearest other category `admission_ic` at mean distance 0.427
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.407, nearest other category `admission_ic` at mean distance 0.429
 
 ## Intensive Care Admission (`admission_ic`)
 
-Patient is admitted to an intensive care inpatient ward, introducing a negative contribution to minimizing time-to-treatment due to specialized routing.
+Admission of the patient to an intensive care unit (Admission IC), realizing the goal of inpatient admission while incurring a negative contribution (-25) to minimizing time-to-treatment due to specialized handling requirements.
 
-**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to declared alternative Admission IC (id=16) from the OR decomposition of Goal 5. Associated with softgoal trade-offs (SomeNegative contribution to time-to-treatment) and observed in complex variants such as V0605 and V0317.
+**Taxonomy-derivation rationale (Step 5):** Mapped 1:1 to the declared XOR alternative Admission IC (id=16) as defined in the goal model. Sample variants such as V0605, V0317, and V0068 reflect patient cases routed through intensive care.
 
 **Goal-model linkage:** 16 (Task): Admission IC
 
-**Coverage:** macro 95/846 variants (11.2%) · micro 95/1050 cases (9.0%)
+**Coverage:** macro 91/846 variants (10.8%) · micro 91/1050 cases (8.7%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 23.22, nearest other category `admission_nc` at mean distance 20.47
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 23.47, nearest other category `admission_nc` at mean distance 20.32
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.329, nearest other category `admission_nc` at mean distance 0.427
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.338, nearest other category `admission_nc` at mean distance 0.429
 
 ## Divergence between structural and profile distance
 
@@ -66,91 +66,91 @@ Flagged for review, not resolved automatically — the two metrics measure diffe
 
 88/846 variants (10.4%), 240/1050 cases (22.9%) unassigned.
 
-- `V0001`: The narrative stops at ER Sepsis Triage and does not contain any admission activity.
-- `V0002`: The sequence ends at CRP without any inpatient admission.
-- `V0003`: The sequence ends at Leucocytes without an inpatient ward admission.
-- `V0004`: The variant concludes with IV Antibiotics in the ER phase, lacking admission.
-- `V0005`: The narrative finishes at LacticAcid without any admission step.
-- `V0006`: The variant consists of ER diagnostics and treatment without an admission step.
-- `V0007`: Contains ER diagnostics and IV Antibiotics but no ward admission.
-- `V0009`: Process completes with IV Antibiotics and does not feature an admission event.
-- `V0010`: Sequence of ER steps without any inpatient admission.
-- `V0011`: ER diagnostics and treatment only; no admission recorded.
-- `V0012`: Concludes with IV Antibiotics in the ER without admission.
-- `V0013`: Stops at Leucocytes evaluation in the ER.
-- `V0017`: ER triage and diagnostic labs only, with no ward admission.
-- `V0019`: ER phase treatments and diagnostics only, no admission step.
-- `V0020`: Stops at CRP diagnostic without any admission.
-- `V0025`: ER workflow without inpatient admission.
-- `V0027`: ER diagnostic and treatment process without admission.
-- `V0029`: ER-based diagnostic sequence without admission.
-- `V0031`: ER treatment sequence without any admission event.
-- `V0034`: ER treatment and liquid administration without admission.
-- `V0036`: ER diagnostic sequence without inpatient admission.
-- `V0038`: ER treatment workflow without admission.
-- `V0043`: ER diagnostics only, no ward admission.
-- `V0050`: ER diagnostic workflow without inpatient admission.
-- `V0056`: The variant ends at IV Antibiotics without any admission activity, so it fits neither admission category.
-- `V0062`: The variant ends at IV Antibiotics without any admission activity, so it fits neither admission category.
-- `V0081`: The variant ends at IV Liquid without any admission activity, so it fits neither admission category.
-- `V0088`: The variant ends at IV Antibiotics without any admission activity, so it fits neither admission category.
-- `V0092`: The variant ends at LacticAcid without any admission activity, so it fits neither admission category.
-- `V0127`: The process variant stops at LacticAcid without admission and does not fit any admission category.
-- `V0132`: The process variant stops at IV Antibiotics and does not fit any admission category.
-- `V0133`: The process variant stops at IV Antibiotics and does not fit any admission category.
-- `V0137`: The process variant ends at LacticAcid without any inpatient admission.
-- `V0146`: The process variant stops at Leucocytes without admission and does not fit any admission category.
-- `V0148`: The process variant stops at IV Antibiotics without admission and does not fit any admission category.
-- `V0187`: The narrative does not contain any admission activity, so it does not fit either taxonomy category.
-- `V0197`: The narrative does not contain any admission activity, so it does not fit either taxonomy category.
-- `V0217`: The narrative ends at IV Antibiotics without any admission activity, hence it does not realize either admission category.
-- `V0219`: The narrative terminates at Leucocytes without an admission event.
-- `V0232`: The narrative stops at IV Antibiotics with no admission step.
-- `V0234`: The narrative ends at Leucocytes without an admission step.
-- `V0260`: The process terminates at IV Antibiotics without involving any ward admission step, thus fitting neither category.
-- `V0287`: The process terminates at CRP without involving any ward admission step, thus fitting neither category.
-- `V0292`: The process terminates at Leucocytes without involving any ward admission step, thus fitting neither category.
-- `V0302`: The narrative stops at ER Sepsis Triage and does not contain any admission activity.
-- `V0305`: The narrative ends at IV Antibiotics and lacks any admission step.
-- `V0322`: The narrative ends at IV Antibiotics without any admission step.
-- `V0325`: The narrative ends at IV Antibiotics without an admission step.
-- `V0330`: The narrative ends at IV Liquid without an admission step.
-- `V0342`: The narrative ends at CRP without any admission step.
-- `V0349`: The narrative ends at ER Sepsis Triage and does not contain any admission step.
-- `V0378`: The narrative does not contain any admission activity, so neither category fits.
-- `V0379`: The narrative does not contain any admission activity, so neither category fits.
-- `V0417`: The narrative does not contain any admission activity, ending at ER Triage; thus, no category fits.
-- `V0429`: The narrative ends at IV Antibiotics without any admission activity; thus, no category fits.
-- `V0488`: The narrative does not include any inpatient ward admission event.
-- `V0492`: The narrative does not include any inpatient ward admission event.
-- `V0495`: The narrative does not include any inpatient ward admission event.
-- `V0507`: The narrative does not contain any admission activity, hence it does not realize either category.
-- `V0510`: The narrative does not contain any admission activity, hence it does not realize either category.
-- `V0516`: The narrative does not contain any admission activity, hence it does not realize either category.
-- `V0517`: The narrative does not contain any admission activity, hence it does not realize either category.
-- `V0549`: The narrative does not contain any admission activity, hence it does not realize either category.
-- `V0575`: The variant terminates in an early diagnostic phase and does not reach any ward admission category.
-- `V0580`: Terminates at CRP testing without reaching any inpatient admission category.
-- `V0584`: Terminates during IV liquid treatment without reaching an inpatient admission.
-- `V0585`: Terminates at LacticAcid test without reaching an inpatient admission.
-- `V0587`: Terminates at diagnostic testing without reaching any inpatient admission category.
-- `V0592`: Terminates during initial treatment and diagnostic steps without reaching an admission.
-- `V0645`: The narrative does not contain any admission activity, making it part of the residual.
-- `V0664`: The narrative does not contain any admission activity, hence it belongs to the residual.
-- `V0676`: The narrative does not contain any admission activity, hence it belongs to the residual.
-- `V0679`: The narrative does not contain any admission activity, hence it belongs to the residual.
-- `V0685`: The narrative does not contain any admission activity, hence it belongs to the residual.
-- `V0689`: The narrative does not contain any admission activity, hence it belongs to the residual.
-- `V0694`: The narrative does not contain any admission activity, hence it belongs to the residual.
-- `V0713`: The process terminates at IV Antibiotics without any ward admission activity.
-- `V0750`: The narrative terminates at IV Antibiotics without any ward admission activity.
-- `V0759`: The narrative ends at IV Antibiotics without any admission activity, so it does not fit either admission category.
-- `V0764`: The narrative ends at ER Sepsis Triage without any admission activity, so it does not fit either admission category.
-- `V0774`: The narrative ends at ER Sepsis Triage without any admission activity, so it does not fit either admission category.
-- `V0775`: The narrative ends at CRP without any admission activity, so it does not fit either admission category.
-- `V0777`: The narrative ends at Leucocytes without any admission activity, so it does not fit either admission category.
-- `V0778`: The narrative ends at Leucocytes without any admission activity, so it does not fit either admission category.
-- `V0791`: The narrative ends at IV Antibiotics without any admission activity, so it does not fit either admission category.
-- `V0816`: The narrative ends at IV Antibiotics without inpatient admission, making neither category fit.
-- `V0820`: The narrative terminates at LacticAcid without any inpatient admission.
-- `V0832`: The narrative ends at IV Antibiotics without any inpatient admission.
+- `V0001`: The narrative stops at ER Sepsis Triage and does not involve any patient admission.
+- `V0002`: The narrative ends with diagnostic tests (CRP) and does not involve admission.
+- `V0003`: The narrative ends with diagnostic tests (Leucocytes) without admission.
+- `V0004`: The narrative concludes with IV Antibiotics administration and does not include ward or ICU admission.
+- `V0005`: The narrative ends with LacticAcid testing and does not include admission.
+- `V0006`: The narrative ends with IV Antibiotics and does not include an inpatient admission.
+- `V0007`: The narrative ends with IV Antibiotics and does not involve admission.
+- `V0009`: The narrative concludes with IV Antibiotics without admission.
+- `V0010`: The narrative ends with ER Sepsis Triage and contains no admission activity.
+- `V0011`: The narrative terminates at IV Antibiotics without admission.
+- `V0012`: The narrative terminates at IV Antibiotics without admission.
+- `V0013`: The narrative ends with Leucocytes testing and does not involve admission.
+- `V0017`: The narrative ends with ER Sepsis Triage and does not contain admission activities.
+- `V0019`: The narrative ends with IV Antibiotics and does not involve any patient admission.
+- `V0020`: The narrative ends with CRP testing and does not include admission.
+- `V0025`: The narrative terminates at IV Antibiotics without any admission activity.
+- `V0027`: The narrative does not contain any admission activity, ending at IV Antibiotics.
+- `V0029`: The narrative lacks any inpatient admission activity, ending at Leucocytes.
+- `V0031`: The narrative does not contain any admission activity.
+- `V0034`: The narrative lacks an admission activity, ending at IV Liquid.
+- `V0036`: The narrative does not contain any admission activity, ending at CRP.
+- `V0038`: The narrative lacks an admission activity, ending at IV Antibiotics.
+- `V0043`: The narrative does not contain an admission activity.
+- `V0050`: The narrative does not contain any admission activity, ending at CRP.
+- `V0056`: The narrative ends at 'IV Antibiotics' and does not contain any inpatient admission activity, so it does not fit any admission category.
+- `V0062`: The narrative ends at 'IV Antibiotics' without any inpatient admission, leaving it outside the available categories.
+- `V0081`: The narrative does not include any inpatient admission activity, ending at 'IV Liquid'.
+- `V0088`: The narrative does not include any inpatient admission activity, ending at 'IV Antibiotics'.
+- `V0092`: The narrative does not include any inpatient admission activity, ending at 'LacticAcid'.
+- `V0127`: The narrative ends with LacticAcid and does not contain any inpatient admission activities.
+- `V0132`: The narrative ends at 'IV Antibiotics' and does not involve any ward or ICU admission.
+- `V0133`: The narrative terminates at 'IV Antibiotics' without proceeding to inpatient admission.
+- `V0137`: The narrative terminates at diagnostic/treatment steps without any inpatient admission.
+- `V0146`: The narrative ends at 'Leucocytes' without any inpatient admission steps.
+- `V0148`: The narrative ends at 'IV Antibiotics' without proceeding to inpatient admission.
+- `V0187`: The narrative terminates at CRP and does not include any inpatient admission activities.
+- `V0197`: The narrative terminates at Leucocytes and does not contain any inpatient admission activities.
+- `V0217`: The narrative does not contain any inpatient ward or intensive care admission activity, ending at IV Antibiotics.
+- `V0219`: The narrative does not contain any admission activity, ending prematurely at Leucocytes.
+- `V0232`: The narrative ends at 'IV Antibiotics' without any inpatient admission activity, so neither admission category is realized.
+- `V0234`: The narrative ends at 'Leucocytes' without any inpatient admission activity, so neither admission category is realized.
+- `V0260`: The narrative ends at IV Antibiotics without any inpatient admission activity.
+- `V0287`: The narrative terminates at CRP and does not include any inpatient admission activity.
+- `V0292`: The narrative terminates at Leucocytes and does not include any inpatient admission activity.
+- `V0302`: The case stops at ER Sepsis Triage and does not reach any inpatient admission stage.
+- `V0305`: The patient's journey ends at IV Antibiotics without inpatient admission.
+- `V0322`: The process terminates at IV Antibiotics without any admission activity.
+- `V0325`: The patient sequence stops at IV Antibiotics without reaching any ward admission stage.
+- `V0330`: The narrative ends at 'IV Liquid' and does not contain any inpatient admission activities.
+- `V0342`: The narrative terminates at 'CRP' without any inpatient admission steps.
+- `V0349`: The narrative ends at 'ER Sepsis Triage' and contains no admission activities.
+- `V0378`: The narrative ends at 'IV Antibiotics' and does not contain any inpatient admission activity.
+- `V0379`: The narrative ends at 'IV Antibiotics' and does not contain any inpatient admission activity.
+- `V0417`: The narrative lacks any inpatient admission activity, ending prematurely at ER Triage.
+- `V0429`: The narrative ends at IV Antibiotics without any inpatient admission activity, so it does not fit any admission category.
+- `V0488`: The narrative stops at 'IV Liquid' and does not contain any inpatient admission activity.
+- `V0492`: The narrative stops at 'IV Liquid' and does not contain any inpatient admission activity.
+- `V0495`: The narrative stops at 'IV Antibiotics' and does not contain any inpatient admission activity.
+- `V0507`: The narrative terminates at IV Antibiotics without reaching any inpatient ward admission activity.
+- `V0510`: The narrative terminates at IV Antibiotics without reaching any inpatient ward admission activity.
+- `V0516`: The narrative terminates at Leucocytes without reaching any inpatient ward admission activity.
+- `V0517`: The narrative terminates at ER Triage without reaching any inpatient ward admission activity.
+- `V0549`: The narrative does not contain any admission activities, ending instead at IV Liquid.
+- `V0575`: The narrative ends at Leucocytes without including any inpatient admission activity, hence it does not realize either admission category.
+- `V0580`: The narrative ends at CRP without any inpatient admission activity.
+- `V0584`: The narrative ends at IV Liquid without any inpatient admission activity.
+- `V0585`: The narrative ends at LacticAcid without any inpatient admission activity.
+- `V0587`: The narrative ends at CRP without any inpatient admission activity.
+- `V0592`: The narrative ends at IV Antibiotics without any inpatient admission activity.
+- `V0645`: The narrative does not contain any inpatient admission activities (Admission NC or Admission IC).
+- `V0664`: The narrative does not contain any inpatient admission activities ('Admission NC' or 'Admission IC'), ending instead at IV Liquid.
+- `V0676`: The narrative ends with IV Antibiotics and does not include any inpatient ward or intensive care admission.
+- `V0679`: The narrative terminates at IV Antibiotics without involving any admission activity.
+- `V0685`: The narrative ends at IV Antibiotics and lacks any inpatient or intensive care admission.
+- `V0689`: The narrative concludes with IV Antibiotics and contains no admission event.
+- `V0694`: The process stops at ER Sepsis Triage without reaching any ward admission.
+- `V0713`: The narrative ends at IV Antibiotics without any inpatient ward or ICU admission activity, so neither category is realized.
+- `V0750`: The narrative does not contain any inpatient admission activity, hence it falls into the residual.
+- `V0759`: The narrative does not contain any admission activity, ending at IV Antibiotics.
+- `V0764`: The narrative terminates at ER Sepsis Triage without any admission activity.
+- `V0774`: The narrative terminates at ER Sepsis Triage without any admission activity.
+- `V0775`: The narrative terminates at CRP without any admission activity.
+- `V0777`: The narrative does not contain any inpatient admission activities (ends at Leucocytes).
+- `V0778`: The narrative does not contain any inpatient admission activities.
+- `V0791`: The narrative does not contain any inpatient admission activities.
+- `V0816`: The narrative terminates at IV Antibiotics without involving any inpatient admission activities.
+- `V0820`: The narrative terminates at LacticAcid without involving any inpatient admission activities.
+- `V0832`: The narrative does not contain any admission activity, ending instead at IV Antibiotics.

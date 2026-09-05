@@ -3,7 +3,7 @@
 # configs/<dataset>.yaml, or configs/preregistration.yaml and re-generate instead; editing this
 # file makes the run's manifest a record of settings that were not the ones used.
 #
-# Condition: e1_guided_axisadmission_rep2 | dataset: sepsis | protocol version: 1.0.0
+# Condition: e1_guided_axisadmission_rep2 | dataset: sepsis | protocol version: 1.1.0
 
 log_filename: sepsis.xes.gz
 goal_model_filename: sepsis_goal_model.jucm
@@ -33,4 +33,4 @@ llm:
   max_retries: 3
   concurrency: 5
   requests_per_minute: null
-  assignment_batch_size: 50
+  assignment_batch_size: 25

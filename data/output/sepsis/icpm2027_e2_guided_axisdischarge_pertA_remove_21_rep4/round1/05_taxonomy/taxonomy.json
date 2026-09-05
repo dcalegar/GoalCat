@@ -1,0 +1,67 @@
+{
+  "categories": [
+    {
+      "category_id": "release_a",
+      "name": "Release A",
+      "description": "Patient discharge via Release A path, helping avoid post-discharge deterioration as measured by post-discharge ER return indicator.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Maps 1:1 to declared alternative Release A (id=17) from the goal model, observed as a standard discharge outcome in variants such as V0008.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0072",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063"
+      ]
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release B",
+      "description": "Patient discharge via Release B path, helping avoid post-discharge deterioration as measured by post-discharge ER return indicator.",
+      "anchor_ids": [
+        "18"
+      ],
+      "rationale": "Maps 1:1 to declared alternative Release B (id=18) from the goal model, observed as a distinct discharge outcome in variants such as V0068 and V0145.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Patient discharge via Release C path, associated with captured discharge outcomes.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to declared alternative Release C (id=19) from the goal model, observed as the final outcome in variant V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Patient discharge via Release D path, associated with captured discharge outcomes.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Maps 1:1 to declared alternative Release D (id=20) from the goal model, observed as the final outcome in variant V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    }
+  ]
+}

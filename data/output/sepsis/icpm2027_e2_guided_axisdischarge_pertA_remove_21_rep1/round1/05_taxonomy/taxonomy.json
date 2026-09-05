@@ -3,25 +3,25 @@
     {
       "category_id": "release_a",
       "name": "Release A",
-      "description": "Patient discharge pathway A, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return indicators.",
+      "description": "Discharge representing standard patient release, advancing Avoid post-discharge deterioration and judged against Post-discharge ER return.",
       "anchor_ids": [
         "17"
       ],
-      "rationale": "Default 1:1 mapping to declared alternative Release A (id=17), supported by variants like V0008, V0066, V0070.",
+      "rationale": "Default 1:1 mapping to declared alternative Release A (id=17), observed in variants such as V0008, V0070, and V0071.",
       "evidence_variant_ids": [
         "V0008",
-        "V0066",
-        "V0070"
+        "V0070",
+        "V0071"
       ]
     },
     {
       "category_id": "release_b",
       "name": "Release B",
-      "description": "Patient discharge pathway B, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return indicators.",
+      "description": "Discharge variant representing alternative release processing, advancing Avoid post-discharge deterioration and judged against Post-discharge ER return.",
       "anchor_ids": [
         "18"
       ],
-      "rationale": "Default 1:1 mapping to declared alternative Release B (id=18), supported by variants like V0068 and V0145.",
+      "rationale": "Default 1:1 mapping to declared alternative Release B (id=18), observed in variants such as V0068 and V0145.",
       "evidence_variant_ids": [
         "V0068",
         "V0145"
@@ -30,11 +30,11 @@
     {
       "category_id": "release_c",
       "name": "Release C",
-      "description": "Patient discharge pathway C, supporting discharge tracking and evaluated against standard post-discharge recovery metrics.",
+      "description": "Discharge variant representing complex or extended patient release, advancing Avoid post-discharge deterioration and judged against Post-discharge ER return.",
       "anchor_ids": [
         "19"
       ],
-      "rationale": "Default 1:1 mapping to declared alternative Release C (id=19), supported by variant V0710.",
+      "rationale": "Default 1:1 mapping to declared alternative Release C (id=19), observed in long-running variant V0710.",
       "evidence_variant_ids": [
         "V0710"
       ]
@@ -42,11 +42,11 @@
     {
       "category_id": "release_d",
       "name": "Release D",
-      "description": "Patient discharge pathway D, representing specialized or extended inpatient release outcomes.",
+      "description": "Discharge variant representing alternate disposition processing, advancing Avoid post-discharge deterioration and judged against Post-discharge ER return.",
       "anchor_ids": [
         "20"
       ],
-      "rationale": "Default 1:1 mapping to declared alternative Release D (id=20), supported by variant V0273.",
+      "rationale": "Default 1:1 mapping to declared alternative Release D (id=20), observed in variant V0273.",
       "evidence_variant_ids": [
         "V0273"
       ]

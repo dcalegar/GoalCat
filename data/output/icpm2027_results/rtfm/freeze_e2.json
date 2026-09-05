@@ -6,7 +6,20 @@
     "values": {
       "baseline": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
       "e2_guided_pertA_remove_20_rep1": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
-      "e2_guided_pertB_merge_13_20_rep1": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8"
+      "e2_guided_pertA_remove_20_rep2": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "e2_guided_pertA_remove_20_rep3": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "e2_guided_pertA_remove_20_rep4": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "e2_guided_pertA_remove_20_rep5": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "e2_guided_pertB_merge_13_20_rep1": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "e2_guided_pertB_merge_13_20_rep2": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "e2_guided_pertB_merge_13_20_rep3": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "e2_guided_pertB_merge_13_20_rep4": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "e2_guided_pertB_merge_13_20_rep5": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "e2_guided_pertC_distractor_6_187_rep1": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "e2_guided_pertC_distractor_6_187_rep2": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "e2_guided_pertC_distractor_6_187_rep3": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "e2_guided_pertC_distractor_6_187_rep4": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8",
+      "e2_guided_pertC_distractor_6_187_rep5": "dc9e0e65c964c8ce2a720687ecf17d8204a5cced5db2267c717ed39ada665da8"
     },
     "note": ""
   },
@@ -17,7 +30,20 @@
     "values": {
       "baseline": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
       "e2_guided_pertA_remove_20_rep1": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
-      "e2_guided_pertB_merge_13_20_rep1": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc"
+      "e2_guided_pertA_remove_20_rep2": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+      "e2_guided_pertA_remove_20_rep3": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+      "e2_guided_pertA_remove_20_rep4": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+      "e2_guided_pertA_remove_20_rep5": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+      "e2_guided_pertB_merge_13_20_rep1": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+      "e2_guided_pertB_merge_13_20_rep2": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+      "e2_guided_pertB_merge_13_20_rep3": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+      "e2_guided_pertB_merge_13_20_rep4": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+      "e2_guided_pertB_merge_13_20_rep5": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+      "e2_guided_pertC_distractor_6_187_rep1": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+      "e2_guided_pertC_distractor_6_187_rep2": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+      "e2_guided_pertC_distractor_6_187_rep3": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+      "e2_guided_pertC_distractor_6_187_rep4": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc",
+      "e2_guided_pertC_distractor_6_187_rep5": "a1d36af90468dd294c0ccafe0b79501804e46c9338a520068db1e47ad68f0ddc"
     },
     "note": "Hash of the shared base's variants.csv, inherited by copy (inputs.py)."
   },
@@ -34,7 +60,59 @@
         "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
         "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
       ],
+      "e2_guided_pertA_remove_20_rep2": [
+        "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
+      ],
+      "e2_guided_pertA_remove_20_rep3": [
+        "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
+      ],
+      "e2_guided_pertA_remove_20_rep4": [
+        "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
+      ],
+      "e2_guided_pertA_remove_20_rep5": [
+        "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
+      ],
       "e2_guided_pertB_merge_13_20_rep1": [
+        "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
+      ],
+      "e2_guided_pertB_merge_13_20_rep2": [
+        "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
+      ],
+      "e2_guided_pertB_merge_13_20_rep3": [
+        "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
+      ],
+      "e2_guided_pertB_merge_13_20_rep4": [
+        "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
+      ],
+      "e2_guided_pertB_merge_13_20_rep5": [
+        "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
+      ],
+      "e2_guided_pertC_distractor_6_187_rep1": [
+        "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
+      ],
+      "e2_guided_pertC_distractor_6_187_rep2": [
+        "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
+      ],
+      "e2_guided_pertC_distractor_6_187_rep3": [
+        "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
+      ],
+      "e2_guided_pertC_distractor_6_187_rep4": [
+        "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
+        "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
+      ],
+      "e2_guided_pertC_distractor_6_187_rep5": [
         "cdcc6d2f6946d48ebf0008060387613cdd9bf515bc478376361bf58aa54b75e7",
         "8266af382b3999c3f9e1e74fe076ff8300a2f475d53233ba24e48f20e8c63b78"
       ]
@@ -48,7 +126,20 @@
     "values": {
       "baseline": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
       "e2_guided_pertA_remove_20_rep1": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
-      "e2_guided_pertB_merge_13_20_rep1": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc"
+      "e2_guided_pertA_remove_20_rep2": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+      "e2_guided_pertA_remove_20_rep3": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+      "e2_guided_pertA_remove_20_rep4": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+      "e2_guided_pertA_remove_20_rep5": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+      "e2_guided_pertB_merge_13_20_rep1": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+      "e2_guided_pertB_merge_13_20_rep2": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+      "e2_guided_pertB_merge_13_20_rep3": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+      "e2_guided_pertB_merge_13_20_rep4": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+      "e2_guided_pertB_merge_13_20_rep5": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+      "e2_guided_pertC_distractor_6_187_rep1": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+      "e2_guided_pertC_distractor_6_187_rep2": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+      "e2_guided_pertC_distractor_6_187_rep3": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+      "e2_guided_pertC_distractor_6_187_rep4": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc",
+      "e2_guided_pertC_distractor_6_187_rep5": "57ceea507f36b3690abb6e81c2059d261c76bfedf6bc690e8bcdbff68c8e75dc"
     },
     "note": ""
   },
@@ -59,94 +150,630 @@
     "values": {
       "baseline": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
       "e2_guided_pertA_remove_20_rep1": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
-      "e2_guided_pertB_merge_13_20_rep1": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b"
+      "e2_guided_pertA_remove_20_rep2": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
+      "e2_guided_pertA_remove_20_rep3": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
+      "e2_guided_pertA_remove_20_rep4": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
+      "e2_guided_pertA_remove_20_rep5": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
+      "e2_guided_pertB_merge_13_20_rep1": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
+      "e2_guided_pertB_merge_13_20_rep2": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
+      "e2_guided_pertB_merge_13_20_rep3": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
+      "e2_guided_pertB_merge_13_20_rep4": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
+      "e2_guided_pertB_merge_13_20_rep5": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
+      "e2_guided_pertC_distractor_6_187_rep1": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
+      "e2_guided_pertC_distractor_6_187_rep2": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
+      "e2_guided_pertC_distractor_6_187_rep3": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
+      "e2_guided_pertC_distractor_6_187_rep4": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b",
+      "e2_guided_pertC_distractor_6_187_rep5": "3f5a257c7709dcc3fb21d8a063d67a1fd987d4b66f226979fc7b6dc570d4427b"
     },
     "note": "The row the design turns on: both arms consume one Step 4 output, copied, not recomputed."
   },
   {
     "element": "LLM / provider / model",
-    "requirement": "same",
-    "passed": true,
-    "values": {
-      "baseline": [
-        {
-          "role": "assignment",
-          "model": "gemini/gemini-3.5-flash-lite",
-          "resolved_model": null,
-          "provider": "gemini",
-          "temperature": 0.0
-        },
-        {
-          "role": "taxonomy",
-          "model": "gemini/gemini-3.5-flash-lite",
-          "resolved_model": null,
-          "provider": "gemini",
-          "temperature": 0.0
-        }
-      ],
-      "e2_guided_pertA_remove_20_rep1": [
-        {
-          "role": "assignment",
-          "model": "gemini/gemini-3.5-flash-lite",
-          "resolved_model": null,
-          "provider": "gemini",
-          "temperature": 0.0
-        },
-        {
-          "role": "taxonomy",
-          "model": "gemini/gemini-3.5-flash-lite",
-          "resolved_model": null,
-          "provider": "gemini",
-          "temperature": 0.0
-        }
-      ],
-      "e2_guided_pertB_merge_13_20_rep1": [
-        {
-          "role": "assignment",
-          "model": "gemini/gemini-3.5-flash-lite",
-          "resolved_model": null,
-          "provider": "gemini",
-          "temperature": 0.0
-        },
-        {
-          "role": "taxonomy",
-          "model": "gemini/gemini-3.5-flash-lite",
-          "resolved_model": null,
-          "provider": "gemini",
-          "temperature": 0.0
-        }
-      ]
-    },
-    "note": "Read from the provider's own per-call echo."
-  },
-  {
-    "element": "LLM parameters (temperature, seed)",
-    "requirement": "same",
+    "requirement": "same per role, among conditions that make that role's call",
     "passed": true,
     "values": {
       "baseline": {
-        "temperature": [
-          0.0,
-          0.0
-        ],
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertA_remove_20_rep1": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertA_remove_20_rep2": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertA_remove_20_rep3": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertA_remove_20_rep4": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertA_remove_20_rep5": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertB_merge_13_20_rep1": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertB_merge_13_20_rep2": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertB_merge_13_20_rep3": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertB_merge_13_20_rep4": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertB_merge_13_20_rep5": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertC_distractor_6_187_rep1": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertC_distractor_6_187_rep2": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertC_distractor_6_187_rep3": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertC_distractor_6_187_rep4": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      },
+      "e2_guided_pertC_distractor_6_187_rep5": {
+        "by_role": {
+          "assignment": [
+            {
+              "role": "assignment",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "role": "taxonomy",
+              "model": "gemini/gemini-3.5-flash-lite",
+              "resolved_model": null,
+              "provider": "gemini",
+              "temperature": 0.0
+            }
+          ]
+        }
+      }
+    },
+    "note": "Read from the provider's own per-call echo. The label-list arm (Task C5) makes no Step 5 (taxonomy) call by design, so that role is compared only among the conditions that do call it \u2014 the same treatment as the Categorization-axis row above."
+  },
+  {
+    "element": "LLM parameters (temperature, seed)",
+    "requirement": "same per role, among conditions that make that role's call",
+    "passed": true,
+    "values": {
+      "baseline": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
         "seed": null
       },
       "e2_guided_pertA_remove_20_rep1": {
-        "temperature": [
-          0.0,
-          0.0
-        ],
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
+        "seed": null
+      },
+      "e2_guided_pertA_remove_20_rep2": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
+        "seed": null
+      },
+      "e2_guided_pertA_remove_20_rep3": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
+        "seed": null
+      },
+      "e2_guided_pertA_remove_20_rep4": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
+        "seed": null
+      },
+      "e2_guided_pertA_remove_20_rep5": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
         "seed": null
       },
       "e2_guided_pertB_merge_13_20_rep1": {
-        "temperature": [
-          0.0,
-          0.0
-        ],
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
+        "seed": null
+      },
+      "e2_guided_pertB_merge_13_20_rep2": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
+        "seed": null
+      },
+      "e2_guided_pertB_merge_13_20_rep3": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
+        "seed": null
+      },
+      "e2_guided_pertB_merge_13_20_rep4": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
+        "seed": null
+      },
+      "e2_guided_pertB_merge_13_20_rep5": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
+        "seed": null
+      },
+      "e2_guided_pertC_distractor_6_187_rep1": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
+        "seed": null
+      },
+      "e2_guided_pertC_distractor_6_187_rep2": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
+        "seed": null
+      },
+      "e2_guided_pertC_distractor_6_187_rep3": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
+        "seed": null
+      },
+      "e2_guided_pertC_distractor_6_187_rep4": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
+        "seed": null
+      },
+      "e2_guided_pertC_distractor_6_187_rep5": {
+        "by_role": {
+          "assignment": [
+            {
+              "temperature": 0.0
+            }
+          ],
+          "taxonomy": [
+            {
+              "temperature": 0.0
+            }
+          ]
+        },
         "seed": null
       }
     },
-    "note": "Seed is null throughout \u2014 no seed is exposed by this provider path (see manifest.py)."
+    "note": "Seed is null throughout \u2014 no seed is exposed by this provider path (see manifest.py). Temperature is compared per role for the same reason as the row above."
   },
   {
     "element": "Assignment mechanism",
@@ -205,7 +832,345 @@
           "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
         ]
       ],
+      "e2_guided_pertA_remove_20_rep2": [
+        [
+          "prompt_assignment_batch.txt",
+          "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
+        ],
+        [
+          "prompt_description.txt",
+          "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588"
+        ],
+        [
+          "prompt_taxonomy_intent_guided.txt",
+          "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3"
+        ],
+        [
+          "prompt_taxonomy_intent_guided_revision.txt",
+          "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444"
+        ],
+        [
+          "prompt_taxonomy_open.txt",
+          "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c"
+        ],
+        [
+          "prompt_taxonomy_open_revision.txt",
+          "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+        ]
+      ],
+      "e2_guided_pertA_remove_20_rep3": [
+        [
+          "prompt_assignment_batch.txt",
+          "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
+        ],
+        [
+          "prompt_description.txt",
+          "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588"
+        ],
+        [
+          "prompt_taxonomy_intent_guided.txt",
+          "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3"
+        ],
+        [
+          "prompt_taxonomy_intent_guided_revision.txt",
+          "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444"
+        ],
+        [
+          "prompt_taxonomy_open.txt",
+          "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c"
+        ],
+        [
+          "prompt_taxonomy_open_revision.txt",
+          "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+        ]
+      ],
+      "e2_guided_pertA_remove_20_rep4": [
+        [
+          "prompt_assignment_batch.txt",
+          "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
+        ],
+        [
+          "prompt_description.txt",
+          "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588"
+        ],
+        [
+          "prompt_taxonomy_intent_guided.txt",
+          "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3"
+        ],
+        [
+          "prompt_taxonomy_intent_guided_revision.txt",
+          "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444"
+        ],
+        [
+          "prompt_taxonomy_open.txt",
+          "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c"
+        ],
+        [
+          "prompt_taxonomy_open_revision.txt",
+          "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+        ]
+      ],
+      "e2_guided_pertA_remove_20_rep5": [
+        [
+          "prompt_assignment_batch.txt",
+          "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
+        ],
+        [
+          "prompt_description.txt",
+          "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588"
+        ],
+        [
+          "prompt_taxonomy_intent_guided.txt",
+          "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3"
+        ],
+        [
+          "prompt_taxonomy_intent_guided_revision.txt",
+          "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444"
+        ],
+        [
+          "prompt_taxonomy_open.txt",
+          "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c"
+        ],
+        [
+          "prompt_taxonomy_open_revision.txt",
+          "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+        ]
+      ],
       "e2_guided_pertB_merge_13_20_rep1": [
+        [
+          "prompt_assignment_batch.txt",
+          "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
+        ],
+        [
+          "prompt_description.txt",
+          "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588"
+        ],
+        [
+          "prompt_taxonomy_intent_guided.txt",
+          "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3"
+        ],
+        [
+          "prompt_taxonomy_intent_guided_revision.txt",
+          "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444"
+        ],
+        [
+          "prompt_taxonomy_open.txt",
+          "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c"
+        ],
+        [
+          "prompt_taxonomy_open_revision.txt",
+          "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+        ]
+      ],
+      "e2_guided_pertB_merge_13_20_rep2": [
+        [
+          "prompt_assignment_batch.txt",
+          "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
+        ],
+        [
+          "prompt_description.txt",
+          "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588"
+        ],
+        [
+          "prompt_taxonomy_intent_guided.txt",
+          "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3"
+        ],
+        [
+          "prompt_taxonomy_intent_guided_revision.txt",
+          "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444"
+        ],
+        [
+          "prompt_taxonomy_open.txt",
+          "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c"
+        ],
+        [
+          "prompt_taxonomy_open_revision.txt",
+          "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+        ]
+      ],
+      "e2_guided_pertB_merge_13_20_rep3": [
+        [
+          "prompt_assignment_batch.txt",
+          "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
+        ],
+        [
+          "prompt_description.txt",
+          "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588"
+        ],
+        [
+          "prompt_taxonomy_intent_guided.txt",
+          "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3"
+        ],
+        [
+          "prompt_taxonomy_intent_guided_revision.txt",
+          "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444"
+        ],
+        [
+          "prompt_taxonomy_open.txt",
+          "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c"
+        ],
+        [
+          "prompt_taxonomy_open_revision.txt",
+          "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+        ]
+      ],
+      "e2_guided_pertB_merge_13_20_rep4": [
+        [
+          "prompt_assignment_batch.txt",
+          "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
+        ],
+        [
+          "prompt_description.txt",
+          "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588"
+        ],
+        [
+          "prompt_taxonomy_intent_guided.txt",
+          "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3"
+        ],
+        [
+          "prompt_taxonomy_intent_guided_revision.txt",
+          "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444"
+        ],
+        [
+          "prompt_taxonomy_open.txt",
+          "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c"
+        ],
+        [
+          "prompt_taxonomy_open_revision.txt",
+          "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+        ]
+      ],
+      "e2_guided_pertB_merge_13_20_rep5": [
+        [
+          "prompt_assignment_batch.txt",
+          "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
+        ],
+        [
+          "prompt_description.txt",
+          "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588"
+        ],
+        [
+          "prompt_taxonomy_intent_guided.txt",
+          "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3"
+        ],
+        [
+          "prompt_taxonomy_intent_guided_revision.txt",
+          "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444"
+        ],
+        [
+          "prompt_taxonomy_open.txt",
+          "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c"
+        ],
+        [
+          "prompt_taxonomy_open_revision.txt",
+          "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+        ]
+      ],
+      "e2_guided_pertC_distractor_6_187_rep1": [
+        [
+          "prompt_assignment_batch.txt",
+          "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
+        ],
+        [
+          "prompt_description.txt",
+          "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588"
+        ],
+        [
+          "prompt_taxonomy_intent_guided.txt",
+          "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3"
+        ],
+        [
+          "prompt_taxonomy_intent_guided_revision.txt",
+          "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444"
+        ],
+        [
+          "prompt_taxonomy_open.txt",
+          "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c"
+        ],
+        [
+          "prompt_taxonomy_open_revision.txt",
+          "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+        ]
+      ],
+      "e2_guided_pertC_distractor_6_187_rep2": [
+        [
+          "prompt_assignment_batch.txt",
+          "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
+        ],
+        [
+          "prompt_description.txt",
+          "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588"
+        ],
+        [
+          "prompt_taxonomy_intent_guided.txt",
+          "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3"
+        ],
+        [
+          "prompt_taxonomy_intent_guided_revision.txt",
+          "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444"
+        ],
+        [
+          "prompt_taxonomy_open.txt",
+          "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c"
+        ],
+        [
+          "prompt_taxonomy_open_revision.txt",
+          "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+        ]
+      ],
+      "e2_guided_pertC_distractor_6_187_rep3": [
+        [
+          "prompt_assignment_batch.txt",
+          "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
+        ],
+        [
+          "prompt_description.txt",
+          "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588"
+        ],
+        [
+          "prompt_taxonomy_intent_guided.txt",
+          "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3"
+        ],
+        [
+          "prompt_taxonomy_intent_guided_revision.txt",
+          "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444"
+        ],
+        [
+          "prompt_taxonomy_open.txt",
+          "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c"
+        ],
+        [
+          "prompt_taxonomy_open_revision.txt",
+          "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+        ]
+      ],
+      "e2_guided_pertC_distractor_6_187_rep4": [
+        [
+          "prompt_assignment_batch.txt",
+          "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
+        ],
+        [
+          "prompt_description.txt",
+          "7683ed3205c4d156a7ce67966e12562cc729f2655d39bbeaef8b66167a4f9588"
+        ],
+        [
+          "prompt_taxonomy_intent_guided.txt",
+          "c3fe7d89554df52d5c08eb4d47c61a66895ff533ab7c4afb2dec69291bf65ac3"
+        ],
+        [
+          "prompt_taxonomy_intent_guided_revision.txt",
+          "604be767fe9c5f8f790a09644deb5ef7929d0831369245cda5dc184f3b896444"
+        ],
+        [
+          "prompt_taxonomy_open.txt",
+          "d32f3f34b8095ea9f88c2dd15e0a26a486a42295eed8c5002caafedd0292134c"
+        ],
+        [
+          "prompt_taxonomy_open_revision.txt",
+          "cf4eefe924c81ce739a7260a8ba605c19530652fd1ad4b52e963f518674931ce"
+        ]
+      ],
+      "e2_guided_pertC_distractor_6_187_rep5": [
         [
           "prompt_assignment_batch.txt",
           "4fe1d4fb8ac2bc1152959faf72df606da66c2a4b9bdedbf6e0ced6fc575ff40d"
@@ -239,9 +1204,22 @@
     "requirement": "same",
     "passed": true,
     "values": {
-      "baseline": 50,
-      "e2_guided_pertA_remove_20_rep1": 50,
-      "e2_guided_pertB_merge_13_20_rep1": 50
+      "baseline": 25,
+      "e2_guided_pertA_remove_20_rep1": 25,
+      "e2_guided_pertA_remove_20_rep2": 25,
+      "e2_guided_pertA_remove_20_rep3": 25,
+      "e2_guided_pertA_remove_20_rep4": 25,
+      "e2_guided_pertA_remove_20_rep5": 25,
+      "e2_guided_pertB_merge_13_20_rep1": 25,
+      "e2_guided_pertB_merge_13_20_rep2": 25,
+      "e2_guided_pertB_merge_13_20_rep3": 25,
+      "e2_guided_pertB_merge_13_20_rep4": 25,
+      "e2_guided_pertB_merge_13_20_rep5": 25,
+      "e2_guided_pertC_distractor_6_187_rep1": 25,
+      "e2_guided_pertC_distractor_6_187_rep2": 25,
+      "e2_guided_pertC_distractor_6_187_rep3": 25,
+      "e2_guided_pertC_distractor_6_187_rep4": 25,
+      "e2_guided_pertC_distractor_6_187_rep5": 25
     },
     "note": ""
   },
@@ -252,7 +1230,20 @@
     "values": {
       "baseline": "resolution",
       "e2_guided_pertA_remove_20_rep1": "resolution",
-      "e2_guided_pertB_merge_13_20_rep1": "resolution"
+      "e2_guided_pertA_remove_20_rep2": "resolution",
+      "e2_guided_pertA_remove_20_rep3": "resolution",
+      "e2_guided_pertA_remove_20_rep4": "resolution",
+      "e2_guided_pertA_remove_20_rep5": "resolution",
+      "e2_guided_pertB_merge_13_20_rep1": "resolution",
+      "e2_guided_pertB_merge_13_20_rep2": "resolution",
+      "e2_guided_pertB_merge_13_20_rep3": "resolution",
+      "e2_guided_pertB_merge_13_20_rep4": "resolution",
+      "e2_guided_pertB_merge_13_20_rep5": "resolution",
+      "e2_guided_pertC_distractor_6_187_rep1": "resolution",
+      "e2_guided_pertC_distractor_6_187_rep2": "resolution",
+      "e2_guided_pertC_distractor_6_187_rep3": "resolution",
+      "e2_guided_pertC_distractor_6_187_rep4": "resolution",
+      "e2_guided_pertC_distractor_6_187_rep5": "resolution"
     },
     "note": "Two guided conditions that induce against different Or frontiers partition different things and are not a paired comparison. The open arm carries no axis for the same reason it carries no goal model, and one open run serves every axis. Null throughout on a dataset declaring a single axis."
   },
@@ -263,7 +1254,20 @@
     "values": {
       "baseline": 231,
       "e2_guided_pertA_remove_20_rep1": 231,
-      "e2_guided_pertB_merge_13_20_rep1": 231
+      "e2_guided_pertA_remove_20_rep2": 231,
+      "e2_guided_pertA_remove_20_rep3": 231,
+      "e2_guided_pertA_remove_20_rep4": 231,
+      "e2_guided_pertA_remove_20_rep5": 231,
+      "e2_guided_pertB_merge_13_20_rep1": 231,
+      "e2_guided_pertB_merge_13_20_rep2": 231,
+      "e2_guided_pertB_merge_13_20_rep3": 231,
+      "e2_guided_pertB_merge_13_20_rep4": 231,
+      "e2_guided_pertB_merge_13_20_rep5": 231,
+      "e2_guided_pertC_distractor_6_187_rep1": 231,
+      "e2_guided_pertC_distractor_6_187_rep2": 231,
+      "e2_guided_pertC_distractor_6_187_rep3": 231,
+      "e2_guided_pertC_distractor_6_187_rep4": 231,
+      "e2_guided_pertC_distractor_6_187_rep5": 231
     },
     "note": ""
   },
@@ -272,15 +1276,28 @@
     "requirement": "same",
     "passed": true,
     "values": {
-      "baseline": "1.0.0",
-      "e2_guided_pertA_remove_20_rep1": "1.0.0",
-      "e2_guided_pertB_merge_13_20_rep1": "1.0.0"
+      "baseline": "1.1.0",
+      "e2_guided_pertA_remove_20_rep1": "1.1.0",
+      "e2_guided_pertA_remove_20_rep2": "1.1.0",
+      "e2_guided_pertA_remove_20_rep3": "1.1.0",
+      "e2_guided_pertA_remove_20_rep4": "1.1.0",
+      "e2_guided_pertA_remove_20_rep5": "1.1.0",
+      "e2_guided_pertB_merge_13_20_rep1": "1.1.0",
+      "e2_guided_pertB_merge_13_20_rep2": "1.1.0",
+      "e2_guided_pertB_merge_13_20_rep3": "1.1.0",
+      "e2_guided_pertB_merge_13_20_rep4": "1.1.0",
+      "e2_guided_pertB_merge_13_20_rep5": "1.1.0",
+      "e2_guided_pertC_distractor_6_187_rep1": "1.1.0",
+      "e2_guided_pertC_distractor_6_187_rep2": "1.1.0",
+      "e2_guided_pertC_distractor_6_187_rep3": "1.1.0",
+      "e2_guided_pertC_distractor_6_187_rep4": "1.1.0",
+      "e2_guided_pertC_distractor_6_187_rep5": "1.1.0"
     },
     "note": ""
   },
   {
     "element": "Goal model",
-    "requirement": "present, and distinct per perturbation",
+    "requirement": "present, distinct per perturbation, constant across that perturbation's own replicates",
     "passed": true,
     "values": {
       "baseline": {
@@ -293,13 +1310,78 @@
         "sha256": "75260074ac4eecba65ee87de8bfc6764fe2fed592f76b24a56d6a743b2776e09",
         "absent_by_design": false
       },
+      "e2_guided_pertA_remove_20_rep2": {
+        "arm": "guided",
+        "sha256": "75260074ac4eecba65ee87de8bfc6764fe2fed592f76b24a56d6a743b2776e09",
+        "absent_by_design": false
+      },
+      "e2_guided_pertA_remove_20_rep3": {
+        "arm": "guided",
+        "sha256": "75260074ac4eecba65ee87de8bfc6764fe2fed592f76b24a56d6a743b2776e09",
+        "absent_by_design": false
+      },
+      "e2_guided_pertA_remove_20_rep4": {
+        "arm": "guided",
+        "sha256": "75260074ac4eecba65ee87de8bfc6764fe2fed592f76b24a56d6a743b2776e09",
+        "absent_by_design": false
+      },
+      "e2_guided_pertA_remove_20_rep5": {
+        "arm": "guided",
+        "sha256": "75260074ac4eecba65ee87de8bfc6764fe2fed592f76b24a56d6a743b2776e09",
+        "absent_by_design": false
+      },
       "e2_guided_pertB_merge_13_20_rep1": {
         "arm": "guided",
         "sha256": "7367d6b3f478d945fe6c84f93390f701a325f1d60c91b12c089d9f67f7c3f511",
         "absent_by_design": false
+      },
+      "e2_guided_pertB_merge_13_20_rep2": {
+        "arm": "guided",
+        "sha256": "7367d6b3f478d945fe6c84f93390f701a325f1d60c91b12c089d9f67f7c3f511",
+        "absent_by_design": false
+      },
+      "e2_guided_pertB_merge_13_20_rep3": {
+        "arm": "guided",
+        "sha256": "7367d6b3f478d945fe6c84f93390f701a325f1d60c91b12c089d9f67f7c3f511",
+        "absent_by_design": false
+      },
+      "e2_guided_pertB_merge_13_20_rep4": {
+        "arm": "guided",
+        "sha256": "7367d6b3f478d945fe6c84f93390f701a325f1d60c91b12c089d9f67f7c3f511",
+        "absent_by_design": false
+      },
+      "e2_guided_pertB_merge_13_20_rep5": {
+        "arm": "guided",
+        "sha256": "7367d6b3f478d945fe6c84f93390f701a325f1d60c91b12c089d9f67f7c3f511",
+        "absent_by_design": false
+      },
+      "e2_guided_pertC_distractor_6_187_rep1": {
+        "arm": "guided",
+        "sha256": "87b40bd6fdf0e68beb25fcb39f9e981b6396ae98274e0a5e356a28cf6c6421d0",
+        "absent_by_design": false
+      },
+      "e2_guided_pertC_distractor_6_187_rep2": {
+        "arm": "guided",
+        "sha256": "87b40bd6fdf0e68beb25fcb39f9e981b6396ae98274e0a5e356a28cf6c6421d0",
+        "absent_by_design": false
+      },
+      "e2_guided_pertC_distractor_6_187_rep3": {
+        "arm": "guided",
+        "sha256": "87b40bd6fdf0e68beb25fcb39f9e981b6396ae98274e0a5e356a28cf6c6421d0",
+        "absent_by_design": false
+      },
+      "e2_guided_pertC_distractor_6_187_rep4": {
+        "arm": "guided",
+        "sha256": "87b40bd6fdf0e68beb25fcb39f9e981b6396ae98274e0a5e356a28cf6c6421d0",
+        "absent_by_design": false
+      },
+      "e2_guided_pertC_distractor_6_187_rep5": {
+        "arm": "guided",
+        "sha256": "87b40bd6fdf0e68beb25fcb39f9e981b6396ae98274e0a5e356a28cf6c6421d0",
+        "absent_by_design": false
       }
     },
-    "note": "Experiment 2's one intended difference. Every guided condition must read a distinct, present goal model: two conditions sharing a file means a perturbation did not write the edit it claims to test."
+    "note": "Experiment 2's one intended difference. Every guided condition must read a present goal model that matches every other replicate of its own perturbation and differs from every other perturbation's (and the baseline's): two different perturbations sharing a file means one of them did not write the edit it claims to test; two replicates of the same perturbation differing means they were not run against the same edit."
   },
   {
     "element": "Pre-registration (\u00a712)",
@@ -308,7 +1390,20 @@
     "values": {
       "baseline": true,
       "e2_guided_pertA_remove_20_rep1": true,
-      "e2_guided_pertB_merge_13_20_rep1": true
+      "e2_guided_pertA_remove_20_rep2": true,
+      "e2_guided_pertA_remove_20_rep3": true,
+      "e2_guided_pertA_remove_20_rep4": true,
+      "e2_guided_pertA_remove_20_rep5": true,
+      "e2_guided_pertB_merge_13_20_rep1": true,
+      "e2_guided_pertB_merge_13_20_rep2": true,
+      "e2_guided_pertB_merge_13_20_rep3": true,
+      "e2_guided_pertB_merge_13_20_rep4": true,
+      "e2_guided_pertB_merge_13_20_rep5": true,
+      "e2_guided_pertC_distractor_6_187_rep1": true,
+      "e2_guided_pertC_distractor_6_187_rep2": true,
+      "e2_guided_pertC_distractor_6_187_rep3": true,
+      "e2_guided_pertC_distractor_6_187_rep4": true,
+      "e2_guided_pertC_distractor_6_187_rep5": true
     },
     "note": "False means the run was launched with --allow-pending-decisions."
   }

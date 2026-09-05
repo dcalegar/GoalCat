@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "d489bde525988d72",
+  "latency_seconds": 3.265490082994802,
+  "input_tokens": 8870,
+  "output_tokens": 661,
+  "prompt_chars": 27780,
+  "response_chars": 2055,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Admission NC\",\n      \"description\": \"Patient is admitted to a normal care inpatient ward. This alternative advances normal care paths and is monitored against post-discharge outcomes.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative id=15 (Admission NC), appearing frequently in standard inpatient paths such as variant V0008.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0625\",\n        \"V0551\",\n        \"V0449\",\n        \"V0192\",\n        \"V0441\",\n        \"V0317\",\n        \"V0273\",\n        \"V0068\",\n        \"V0072\",\n        \"V0071\",\n        \"V0070\",\n        \"V0069\",\n        \"V0067\",\n        \"V0066\",\n        \"V0065\",\n        \"V0064\",\n        \"V0063\",\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Admission IC\",\n      \"description\": \"Patient is admitted to an intensive care inpatient ward. This alternative has a negative contribution profile regarding time-to-treatment (Admission IC --[SomeNegative (-25)]--> Minimize time-to-treatment) but handles critical severity cases.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative id=16 (Admission IC), supported by intensive care pathways such as variant V0605 and V0317.\",\n      \"evidence_variant_ids\": [\n        \"V0605\",\n        \"V0551\",\n        \"V0317\",\n        \"V0273\",\n        \"V0068\",\n        \"V0145\",\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_high_dependency_unit\",\n      \"name\": \"Admission to High-Dependency Unit\",\n      \"description\": \"Patient is admitted to a high-dependency unit for specialized intermediate care.\",\n      \"anchor_ids\": [\n        \"112\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative id=112 (Admission to High-Dependency Unit). Although sparse in the current sample, following the default rule, lack of sampled narratives is not a reason to fold it.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0043135
+}

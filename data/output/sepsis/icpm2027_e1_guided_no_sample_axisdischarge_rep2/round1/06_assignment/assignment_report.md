@@ -4,23 +4,23 @@ Run: `icpm2027_e1_guided_no_sample_axisdischarge_rep2` | Log: `sepsis` | Taxonom
 
 846 variants, 1050 cases total.
 
-## Release A (`release_a`)
+## Release A discharge (`release_a`)
 
-Discharge pathway Release A for admitted cases. Advances the softgoal Avoid post-discharge deterioration through Help contributions.
+Discharge via Release A, advancing the softgoal Avoid post-discharge deterioration and measured against Post-discharge ER return.
 
 **Taxonomy-derivation rationale (Step 5):** Default 1:1 mapping to declared alternative Release A (id=17) under the OR decomposition of goal id=6.
 
 **Goal-model linkage:** 17 (Task): Release A
 
-**Coverage:** macro 570/846 variants (67.4%) · micro 618/1050 cases (58.9%)
+**Coverage:** macro 598/846 variants (70.7%) · micro 646/1050 cases (61.5%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 11.23, nearest other category `release_b` at mean distance 15.00
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 11.43, nearest other category `release_b` at mean distance 15.09
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.342, nearest other category `release_d` at mean distance 0.449
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.348, nearest other category `release_d` at mean distance 0.444
 
-## Release B (`release_b`)
+## Release B discharge (`release_b`)
 
-Discharge pathway Release B for admitted cases. Advances the softgoal Avoid post-discharge deterioration through Help contributions.
+Discharge via Release B, advancing the softgoal Avoid post-discharge deterioration and measured against Post-discharge ER return.
 
 **Taxonomy-derivation rationale (Step 5):** Default 1:1 mapping to declared alternative Release B (id=18) under the OR decomposition of goal id=6.
 
@@ -28,27 +28,27 @@ Discharge pathway Release B for admitted cases. Advances the softgoal Avoid post
 
 **Coverage:** macro 55/846 variants (6.5%) · micro 56/1050 cases (5.3%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 16.61, nearest other category `release_a` at mean distance 15.00
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 16.61, nearest other category `release_a` at mean distance 15.09
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.248, nearest other category `release_e` at mean distance 0.547
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.248, nearest other category `release_d` at mean distance 0.545
 
-## Release C (`release_c`)
+## Release C discharge (`release_c`)
 
-Discharge pathway Release C for admitted cases.
+Discharge via Release C under the OR decomposition of goal id=6.
 
 **Taxonomy-derivation rationale (Step 5):** Default 1:1 mapping to declared alternative Release C (id=19) under the OR decomposition of goal id=6.
 
 **Goal-model linkage:** 19 (Task): Release C
 
-**Coverage:** macro 23/846 variants (2.7%) · micro 23/1050 cases (2.2%)
+**Coverage:** macro 24/846 variants (2.8%) · micro 24/1050 cases (2.3%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 23.86, nearest other category `release_a` at mean distance 18.62
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 23.33, nearest other category `release_a` at mean distance 18.49
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.242, nearest other category `release_d` at mean distance 0.443
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.255, nearest other category `release_d` at mean distance 0.437
 
-## Release D (`release_d`)
+## Release D discharge (`release_d`)
 
-Discharge pathway Release D for admitted cases.
+Discharge via Release D under the OR decomposition of goal id=6.
 
 **Taxonomy-derivation rationale (Step 5):** Default 1:1 mapping to declared alternative Release D (id=20) under the OR decomposition of goal id=6.
 
@@ -56,13 +56,13 @@ Discharge pathway Release D for admitted cases.
 
 **Coverage:** macro 23/846 variants (2.7%) · micro 23/1050 cases (2.2%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 19.47, nearest other category `release_a` at mean distance 17.33
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 19.17, nearest other category `release_a` at mean distance 16.94
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.298, nearest other category `release_e` at mean distance 0.442
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.296, nearest other category `release_c` at mean distance 0.437
 
-## Release E (`release_e`)
+## Release E discharge (`release_e`)
 
-Discharge pathway Release E for admitted cases.
+Discharge via Release E under the OR decomposition of goal id=6.
 
 **Taxonomy-derivation rationale (Step 5):** Default 1:1 mapping to declared alternative Release E (id=21) under the OR decomposition of goal id=6.
 
@@ -70,9 +70,9 @@ Discharge pathway Release E for admitted cases.
 
 **Coverage:** macro 6/846 variants (0.7%) · micro 6/1050 cases (0.6%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 17.67, nearest other category `release_a` at mean distance 16.34
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 17.67, nearest other category `release_a` at mean distance 16.38
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.253, nearest other category `release_d` at mean distance 0.442
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.253, nearest other category `release_d` at mean distance 0.443
 
 ## Divergence between structural and profile distance
 
@@ -106,174 +106,145 @@ Flagged for review, not resolved automatically — the two metrics measure diffe
 
 ## Residual
 
-169/846 variants (20.0%), 324/1050 cases (30.9%) unassigned.
+140/846 variants (16.5%), 295/1050 cases (28.1%) unassigned.
 
-- `V0001`: The narrative ends at ER Sepsis Triage and does not involve any discharge pathway.
-- `V0002`: The narrative ends at CRP and does not involve any discharge pathway.
-- `V0003`: The narrative ends at Leucocytes and does not involve any discharge pathway.
-- `V0004`: The narrative ends at IV Antibiotics without any admission or discharge pathway.
-- `V0005`: The narrative ends at LacticAcid without admission or discharge.
-- `V0006`: The narrative ends at IV Antibiotics without an admission or discharge pathway.
-- `V0007`: The narrative ends at IV Antibiotics without an admission or discharge pathway.
-- `V0009`: The narrative ends at IV Antibiotics without reaching a discharge pathway.
-- `V0010`: The narrative terminates at ER Sepsis Triage without any discharge pathway.
-- `V0011`: The narrative ends at IV Antibiotics without a discharge pathway.
-- `V0012`: The narrative ends at IV Antibiotics without reaching a discharge category.
-- `V0013`: The narrative terminates at Leucocytes without reaching a discharge pathway.
-- `V0017`: The narrative terminates at ER Sepsis Triage without reaching a discharge pathway.
-- `V0019`: The narrative ends at IV Antibiotics without reaching a discharge pathway.
-- `V0020`: The narrative terminates at CRP without reaching a discharge pathway.
-- `V0024`: The narrative ends at Admission NC without reaching any of the specified release categories.
-- `V0025`: The narrative ends at IV Antibiotics without reaching a discharge pathway.
-- `V0027`: The narrative ends at IV Antibiotics without reaching a discharge pathway.
-- `V0029`: The narrative terminates at Leucocytes without reaching a discharge pathway.
-- `V0031`: The narrative ends at LacticAcid without reaching a discharge pathway.
-- `V0034`: The narrative ends at IV Liquid without reaching a discharge pathway.
-- `V0036`: The narrative ends at CRP without reaching a discharge pathway.
-- `V0038`: The narrative ends at IV Antibiotics without reaching a discharge pathway.
-- `V0040`: The narrative ends at Admission NC without reaching a discharge pathway.
-- `V0043`: The narrative terminates at LacticAcid without reaching a discharge pathway.
-- `V0050`: The narrative terminates at CRP without reaching a discharge pathway.
-- `V0056`: The variant ends with IV Antibiotics and does not reach any discharge pathway category.
-- `V0062`: The variant ends with IV Antibiotics and does not reach any discharge pathway category.
-- `V0081`: The variant ends with IV Liquid and does not reach any discharge pathway category.
-- `V0088`: The variant ends with IV Antibiotics and does not reach any discharge pathway category.
-- `V0092`: The variant ends with LacticAcid and does not reach any discharge pathway category.
-- `V0111`: The variant ends at Admission NC without reaching any of the discharge categories.
-- `V0117`: The variant results in Release D which is not among the listed categories.
-- `V0127`: The variant terminates at LacticAcid without any discharge pathway.
-- `V0132`: The variant terminates at IV Antibiotics without reaching a discharge pathway category.
-- `V0133`: The variant terminates at IV Antibiotics without reaching a discharge pathway category.
-- `V0137`: The variant terminates at LacticAcid without reaching a discharge pathway category.
-- `V0146`: The variant terminates at Leucocytes without reaching a discharge pathway category.
-- `V0148`: The variant terminates at IV Antibiotics without reaching a discharge pathway category.
-- `V0187`: The narrative does not contain any valid discharge pathway matching the taxonomy categories.
-- `V0197`: The narrative ends with Leucocytes and does not reach a discharge pathway category.
-- `V0217`: The variant ends with IV Antibiotics and does not conclude with any of the release pathways.
-- `V0219`: The variant ends with Leucocytes and does not conclude with any of the release pathways.
-- `V0232`: The variant ends with IV Antibiotics and does not conclude with any of the release pathways.
-- `V0234`: The variant ends with Leucocytes and does not conclude with any of the release pathways.
-- `V0260`: The narrative terminates at IV Antibiotics and does not reach any of the specified release pathways.
-- `V0268`: The narrative terminates at Leucocytes and does not reach a discharge pathway.
-- `V0287`: The narrative terminates at CRP and does not reach a discharge pathway.
-- `V0292`: The narrative terminates at Leucocytes and does not reach a discharge pathway.
-- `V0295`: The narrative terminates at IV Antibiotics and does not reach any of the specified release pathways.
-- `V0302`: The narrative ends with ER Sepsis Triage and does not reach any discharge pathway category.
-- `V0305`: The process stops at IV Antibiotics and does not realize any release category.
-- `V0322`: The process stops at IV Antibiotics without a discharge pathway.
-- `V0325`: The process ends at IV Antibiotics and does not realize a release category.
-- `V0330`: The process terminates at IV Liquid and does not reach a discharge category.
-- `V0336`: The process stops at CRP without reaching a discharge pathway.
-- `V0342`: The process finishes at CRP and does not include a release category.
-- `V0349`: The process ends at ER Sepsis Triage and does not realize a release category.
-- `V0365`: The process variant ends with Leucocytes and does not reach any release category.
-- `V0368`: The process variant ends with Admission NC and does not reach any release category.
-- `V0374`: The process variant ends with Leucocytes and does not reach any release category.
-- `V0378`: The process variant ends with IV Antibiotics and does not reach any release category.
-- `V0379`: The process variant ends with IV Antibiotics and does not reach any release category.
-- `V0415`: The narrative ends with Admission NC and does not reach any specified release pathway.
-- `V0417`: The narrative terminates at ER Triage without reaching a release pathway.
-- `V0429`: The narrative terminates at IV Antibiotics without reaching a release pathway.
-- `V0462`: The narrative outcome is CRP, which does not match any of the release pathways.
-- `V0488`: The narrative outcome is IV Liquid, which does not match any of the release pathways.
-- `V0492`: The narrative outcome is IV Liquid, which does not match any of the release pathways.
-- `V0495`: The narrative outcome is IV Antibiotics, which does not match any of the release pathways.
-- `V0501`: The narrative ends with IV Liquid and does not reach a discharge pathway category.
-- `V0502`: The narrative ends with Admission NC and does not reach a final discharge pathway category.
-- `V0507`: The narrative ends with IV Antibiotics and does not reach any discharge pathway category.
-- `V0510`: The narrative ends with IV Antibiotics and does not reach any discharge pathway category.
-- `V0516`: The narrative ends with Leucocytes and does not reach any discharge pathway category.
-- `V0517`: The narrative ends with ER Triage and does not reach any discharge pathway category.
-- `V0549`: The narrative ends with IV Liquid and does not reach any discharge pathway category.
-- `V0556`: The outcome is Return ER, which does not match any of the defined release pathways.
-- `V0558`: The outcome is Return ER, which does not match any of the defined release pathways.
-- `V0559`: The outcome is Return ER, which does not match any of the defined release pathways.
-- `V0560`: The outcome is Return ER, which does not match any of the defined release pathways.
-- `V0564`: The outcome is Return ER, which does not match any of the defined release pathways.
-- `V0565`: The outcome is Admission NC, which does not match any of the defined release pathways.
-- `V0567`: The outcome is Return ER, which does not match any of the defined release pathways.
-- `V0573`: The outcome is Return ER, which does not match any of the defined release pathways.
-- `V0575`: The outcome is Leucocytes, which does not match any of the defined release pathways.
-- `V0577`: The outcome is Return ER, which does not match any of the defined release pathways.
-- `V0578`: The outcome is Return ER, which does not match any of the defined release pathways.
-- `V0579`: The outcome is Return ER, which does not match any of the defined release pathways.
-- `V0580`: The outcome is CRP, which does not match any of the defined release pathways.
-- `V0584`: The outcome is IV Liquid, which does not match any of the defined release pathways.
-- `V0585`: The outcome is LacticAcid, which does not match any of the defined release pathways.
-- `V0587`: The outcome is CRP, which does not match any of the defined release pathways.
-- `V0590`: The outcome is Return ER, which does not match any of the defined release pathways.
-- `V0591`: The outcome is Return ER, which does not match any of the defined release pathways.
-- `V0592`: The outcome is IV Antibiotics, which does not match any of the defined release pathways.
-- `V0595`: The outcome is Return ER, which does not match any of the defined release pathways.
-- `V0605`: The narrative outcome is Return ER rather than a standard release category.
-- `V0614`: The narrative ends in Return ER after an intermediate Release A.
-- `V0615`: The narrative ends in Return ER after an intermediate Release C.
-- `V0625`: The narrative ends with Return ER.
-- `V0627`: The narrative ends with Return ER.
-- `V0631`: The narrative ends with Return ER.
-- `V0632`: The narrative ends with Return ER.
-- `V0635`: The narrative ends with Return ER.
-- `V0636`: The outcome is LacticAcid, which does not correspond to any valid release category.
-- `V0638`: The narrative ends with Return ER.
-- `V0639`: The narrative ends with Return ER.
-- `V0640`: The narrative ends with Return ER.
-- `V0641`: The narrative ends with Return ER.
-- `V0643`: The narrative ends with Return ER.
-- `V0644`: The outcome is CRP, which does not correspond to any valid release category.
-- `V0645`: The outcome is LacticAcid, which does not correspond to any valid release category.
-- `V0646`: The narrative ends with Return ER.
-- `V0649`: The narrative ends with Return ER.
-- `V0650`: The narrative ends with Return ER.
-- `V0654`: The narrative ends with Leucocytes and does not conclude with any of the release pathways.
-- `V0663`: The process ends with Admission NC and does not complete a release pathway.
-- `V0664`: The process terminates with IV Liquid and does not reach any release category.
-- `V0676`: The process ends at IV Antibiotics without reaching a discharge pathway.
-- `V0679`: The process terminates with IV Antibiotics and does not realize a release category.
-- `V0685`: The process stops at IV Antibiotics without a release event.
-- `V0689`: The process terminates at IV Antibiotics.
-- `V0694`: The process stops at ER Sepsis Triage.
-- `V0703`: The narrative does not culminate in any of the discharge pathways (Release A-E); its final activity is IV Liquid.
-- `V0705`: Although the pathway passes through a release, the final outcome is Return ER rather than a recognized discharge pathway category.
-- `V0707`: The process terminates at Admission NC without reaching any of the discharge categories.
-- `V0708`: The narrative terminates at IV Antibiotics and does not reach a discharge pathway category.
-- `V0712`: The process ultimately leads to Return ER, not realizing any of the discharge categories.
-- `V0713`: The narrative ends at IV Antibiotics without reaching a release category.
-- `V0719`: The narrative ends with Return ER after an intermediate Release A, therefore not fitting a primary discharge category.
-- `V0720`: The final outcome is Return ER, rendering the discharge pathway category inapplicable.
-- `V0721`: The final outcome is Return ER.
-- `V0724`: The process ends with Return ER.
-- `V0727`: The final outcome of the case is Return ER.
-- `V0734`: The process ends with Return ER.
-- `V0742`: The process terminates at LacticAcid without reaching a discharge pathway.
-- `V0744`: The final outcome is Return ER.
-- `V0745`: The final outcome is Return ER.
-- `V0746`: The final outcome is Return ER.
-- `V0748`: The final outcome is Return ER.
-- `V0750`: The process terminates at IV Antibiotics without reaching a discharge pathway category.
-- `V0759`: The outcome is IV Antibiotics and does not reach any discharge pathway category.
-- `V0764`: The outcome is ER Sepsis Triage and does not complete a discharge category.
-- `V0772`: The outcome is CRP and does not realize any discharge category.
-- `V0774`: The outcome is ER Sepsis Triage without reaching a discharge category.
-- `V0775`: The outcome is CRP and lacks a discharge pathway.
-- `V0777`: The outcome is Leucocytes without achieving any discharge category.
-- `V0778`: The outcome is Leucocytes and does not reach a discharge pathway.
-- `V0791`: The outcome is IV Antibiotics and does not reach a discharge category.
-- `V0804`: The narrative outcome is Return ER rather than a standard release category.
-- `V0806`: The narrative outcome is Return ER rather than a standard release category.
-- `V0808`: The narrative outcome is Return ER rather than a standard release category.
-- `V0812`: The narrative outcome is Return ER rather than a standard release category.
-- `V0815`: The narrative outcome is Return ER rather than a standard release category.
-- `V0816`: The narrative does not conclude with any of the release pathways.
-- `V0817`: The narrative outcome is Return ER rather than a standard release category.
-- `V0820`: The narrative does not conclude with any of the release pathways.
-- `V0821`: The narrative outcome is Return ER rather than a standard release category.
-- `V0822`: The narrative outcome is Return ER rather than a standard release category.
-- `V0823`: The narrative outcome is Return ER rather than a standard release category.
-- `V0825`: The narrative outcome is Return ER rather than a standard release category.
-- `V0826`: The narrative does not conclude with any of the release pathways.
-- `V0827`: The narrative outcome is Return ER rather than a standard release category.
-- `V0828`: The narrative outcome is Return ER rather than a standard release category.
-- `V0832`: The narrative does not conclude with any of the release pathways.
-- `V0834`: The narrative outcome is Return ER rather than a standard release category.
-- `V0842`: The narrative outcome is Return ER rather than a standard release category.
-- `V0843`: The narrative does not conclude with any of the release pathways.
+- `V0001`: This narrative ends in ER Sepsis Triage and does not reach any discharge activity.
+- `V0002`: This narrative ends in CRP testing and does not reach any discharge activity.
+- `V0003`: This narrative ends in Leucocytes testing and does not reach any discharge activity.
+- `V0004`: This narrative ends in IV Antibiotics and does not reach any discharge activity.
+- `V0005`: This narrative ends in LacticAcid testing and does not reach any discharge activity.
+- `V0006`: This narrative ends in IV Antibiotics and does not reach any discharge activity.
+- `V0007`: This narrative ends in IV Antibiotics and does not reach any discharge activity.
+- `V0009`: This narrative ends in IV Antibiotics and does not reach any discharge activity.
+- `V0010`: This narrative ends in ER Sepsis Triage and does not reach any discharge activity.
+- `V0011`: This narrative ends in IV Antibiotics and does not reach any discharge activity.
+- `V0012`: This narrative ends in IV Antibiotics and does not reach any discharge activity.
+- `V0013`: This narrative ends in Leucocytes testing and does not reach any discharge activity.
+- `V0017`: This narrative ends in ER Sepsis Triage and does not reach any discharge activity.
+- `V0019`: This narrative ends in IV Antibiotics and does not reach any discharge activity.
+- `V0020`: This narrative ends in CRP testing and does not reach any discharge activity.
+- `V0024`: This narrative ends in Admission NC and does not reach any specific discharge category.
+- `V0025`: This narrative ends in IV Antibiotics and does not reach any discharge activity.
+- `V0027`: The narrative ends prematurely with IV Antibiotics and does not reach any discharge category.
+- `V0029`: The narrative ends with Leucocytes and does not reach any discharge category.
+- `V0031`: The narrative ends with LacticAcid and does not reach any discharge category.
+- `V0034`: The narrative ends with IV Liquid and does not reach any discharge category.
+- `V0036`: The narrative ends with CRP and does not reach any discharge category.
+- `V0038`: The narrative ends with IV Antibiotics and does not reach any discharge category.
+- `V0040`: The narrative ends with Admission NC and does not reach any discharge category.
+- `V0043`: The narrative ends with LacticAcid and does not reach any discharge category.
+- `V0050`: The narrative ends with CRP and does not reach any discharge category.
+- `V0056`: The narrative ends with IV Antibiotics and does not reach any discharge category.
+- `V0062`: The narrative ends with IV Antibiotics and does not reach any discharge category.
+- `V0081`: The narrative ends with IV Liquid and does not reach any discharge category.
+- `V0088`: The narrative ends with IV Antibiotics and does not reach any discharge category.
+- `V0092`: The narrative ends with LacticAcid and does not reach any discharge category.
+- `V0111`: The outcome is Admission NC, with no final discharge activity corresponding to the taxonomy categories.
+- `V0127`: The variant terminates at LacticAcid without completing any of the specified release activities.
+- `V0132`: The variant ends at IV Antibiotics and does not reach any discharge activity.
+- `V0133`: The variant terminates at IV Antibiotics without performing a release activity.
+- `V0137`: The variant ends at LacticAcid and does not include any discharge actions.
+- `V0146`: The variant ends at Leucocytes without reaching a release activity.
+- `V0148`: The variant terminates at IV Antibiotics without performing a discharge step.
+- `V0151`: The narrative ends with Release D, but does not specify the goal ID=6 OR decomposition context properly or lacks sufficient matching markers for release categories A-E in a recognizable way, or corresponds to residual.
+- `V0187`: The narrative does not conclude with any recognized discharge activity.
+- `V0197`: The narrative does not conclude with any recognized discharge activity.
+- `V0217`: The narrative ends with IV Antibiotics and does not reach any discharge activity.
+- `V0219`: The narrative ends with Leucocytes and does not reach any discharge activity.
+- `V0232`: The outcome is IV Antibiotics, which does not match any release category.
+- `V0234`: The outcome is Leucocytes, which does not match any release category.
+- `V0260`: The narrative ends at IV Antibiotics and does not reach any discharge category.
+- `V0268`: The narrative ends at Leucocytes and does not culminate in any discharge category.
+- `V0287`: The process terminates at CRP and does not reach any discharge category.
+- `V0292`: The narrative ends at Leucocytes without reaching any discharge milestone.
+- `V0295`: The process stops at IV Antibiotics and does not reach a discharge category.
+- `V0302`: The process terminates at ER Sepsis Triage and does not reach a discharge activity.
+- `V0305`: The process terminates at IV Antibiotics without reaching any discharge milestone.
+- `V0322`: The process terminates at IV Antibiotics without reaching a discharge activity.
+- `V0325`: The process terminates at IV Antibiotics without reaching a discharge activity.
+- `V0330`: The outcome is IV Liquid, which does not match any of the release discharge categories.
+- `V0336`: The outcome is CRP, which does not match any of the release categories.
+- `V0342`: The outcome is CRP, which does not match any of the release categories.
+- `V0349`: The outcome is ER Sepsis Triage, which does not match any of the release categories.
+- `V0365`: The narrative ends with Leucocytes and does not culminate in any of the specified release types.
+- `V0368`: The narrative terminates at Admission NC and does not reach a release category.
+- `V0374`: The narrative ends with Leucocytes and does not reach any release category.
+- `V0378`: The narrative ends with IV Antibiotics and does not reach a discharge category.
+- `V0379`: The narrative ends with IV Antibiotics and does not reach a discharge category.
+- `V0415`: The narrative ends at Admission NC without any discharge event.
+- `V0417`: The narrative ends at ER Triage without any discharge event.
+- `V0429`: The narrative ends with IV Antibiotics and does not reach any discharge category.
+- `V0462`: The narrative outcome is CRP rather than a recognized release category.
+- `V0488`: The narrative ends with IV Liquid and does not reach any discharge category.
+- `V0492`: The narrative ends with IV Liquid and does not reach any discharge category.
+- `V0495`: The narrative ends with IV Antibiotics and does not reach any discharge category.
+- `V0501`: The narrative ends with IV Liquid and does not reach a discharge or release activity.
+- `V0502`: The narrative ends with Admission NC and does not reach a discharge or release activity.
+- `V0504`: The narrative ends with Return ER after Release A, so it does not fit a standard release category.
+- `V0505`: The narrative ends with Return ER after Release A, so it does not fit a standard release category.
+- `V0507`: The narrative ends with IV Antibiotics and does not reach a discharge or release activity.
+- `V0508`: The narrative ends with Return ER after Release A, so it does not fit a standard release category.
+- `V0510`: The narrative ends with IV Antibiotics and does not reach a discharge or release activity.
+- `V0515`: The narrative ends with Return ER after Release A, so it does not fit a standard release category.
+- `V0516`: The narrative ends with Leucocytes and does not reach a discharge or release activity.
+- `V0517`: The narrative ends with ER Triage and does not reach a discharge or release activity.
+- `V0519`: The narrative ends with Return ER after Release A, so it does not fit a standard release category.
+- `V0520`: The narrative ends with Return ER after Release A, so it does not fit a standard release category.
+- `V0549`: The narrative ends in IV Liquid and does not reach a discharge category.
+- `V0556`: The narrative outcome is Return ER after a Release A, which does not cleanly match any final release goal category due to the post-discharge return.
+- `V0558`: The narrative outcome is Return ER after a Release A, which does not cleanly match any final release goal category due to the post-discharge return.
+- `V0559`: The narrative outcome is Return ER after a Release A, which does not cleanly match any final release goal category due to the post-discharge return.
+- `V0560`: The narrative outcome is Return ER after a Release A, which does not cleanly match any final release goal category due to the post-discharge return.
+- `V0564`: The narrative outcome is Return ER after a Release A, which does not cleanly match any final release goal category due to the post-discharge return.
+- `V0565`: The narrative terminates at Admission NC, meaning no discharge category is realized.
+- `V0567`: The narrative outcome is Return ER after a Release A, which does not cleanly match any final release goal category due to the post-discharge return.
+- `V0573`: The narrative outcome is Return ER after a Release A, which does not cleanly match any final release goal category due to the post-discharge return.
+- `V0575`: The narrative terminates early at Leucocytes, meaning no discharge category is realized.
+- `V0580`: The process terminates at CRP and does not reach any discharge activity.
+- `V0584`: The process terminates at IV Liquid and does not reach a discharge category.
+- `V0585`: The process terminates at LacticAcid without completing any discharge.
+- `V0587`: The process terminates at CRP without any discharge event.
+- `V0592`: The process terminates at IV Antibiotics without any discharge outcome.
+- `V0605`: Although it ends with Release A before a return, the ultimate outcome is Return ER, rendering the discharge tracking for post-discharge deterrence unsuccessful or outside standard successful discharge categories.
+- `V0614`: The narrative leads to Return ER after Release A, therefore not fulfilling the long-term non-deterioration goal successfully.
+- `V0615`: Despite containing Release C, the case culminates in Return ER, making it fall into the residual.
+- `V0625`: The case ends with Return ER following Release A, meaning it does not fulfill the successful avoidance of post-discharge deterioration.
+- `V0636`: The narrative ends in LacticAcid without any discharge or release activity, fitting none of the discharge categories.
+- `V0644`: The narrative ends in CRP without any discharge or release activity, fitting none of the discharge categories.
+- `V0645`: The narrative ends in LacticAcid without any discharge or release activity, fitting none of the discharge categories.
+- `V0654`: The narrative ends with Leucocytes rather than any discharge category.
+- `V0663`: The narrative ends with Admission NC and does not reach any discharge category.
+- `V0664`: The process terminates with IV Liquid and does not reach a discharge category.
+- `V0676`: The narrative ends with IV Antibiotics and does not reach a discharge activity.
+- `V0679`: The narrative ends with IV Antibiotics without reaching a discharge activity.
+- `V0685`: The narrative ends with IV Antibiotics and does not reach a discharge activity.
+- `V0689`: The narrative terminates at IV Antibiotics without a discharge event.
+- `V0694`: The narrative stops at ER Sepsis Triage and does not reach any discharge category.
+- `V0703`: The narrative ends with IV Liquid and does not reach any discharge category.
+- `V0707`: The narrative terminates at Admission NC without reaching any discharge outcome.
+- `V0708`: The narrative terminates at IV Antibiotics and does not reach a discharge category.
+- `V0713`: The narrative terminates at IV Antibiotics and does not reach a discharge category.
+- `V0742`: The outcome is LacticAcid, which does not match any discharge category in the taxonomy.
+- `V0750`: The outcome is IV Antibiotics, which does not match any discharge category in the taxonomy.
+- `V0759`: The narrative ends with IV Antibiotics and does not reach any discharge event.
+- `V0764`: The narrative terminates early at ER Sepsis Triage and does not reach discharge.
+- `V0772`: The narrative concludes with CRP and does not reach a discharge event.
+- `V0774`: The narrative terminates at ER Sepsis Triage and does not reach discharge.
+- `V0775`: The narrative ends with CRP and does not reach a discharge event.
+- `V0777`: The process terminates at Leucocytes without reaching any discharge activity, so no release category is realized.
+- `V0778`: The process terminates at Leucocytes and does not conclude with a discharge activity.
+- `V0791`: The process terminates at IV Antibiotics without reaching a discharge activity.
+- `V0804`: The outcome is Return ER, so it does not realize any discharge category.
+- `V0806`: The outcome is Return ER, so it does not realize any discharge category.
+- `V0808`: The outcome is Return ER, so it does not realize any discharge category.
+- `V0812`: The outcome is Return ER, so it does not realize any discharge category.
+- `V0815`: The outcome is Return ER, so it does not realize any discharge category.
+- `V0816`: The outcome is IV Antibiotics, which is not a discharge category.
+- `V0820`: The outcome is LacticAcid, which is not a discharge category.
+- `V0821`: The outcome is Return ER, so it does not realize any discharge category.
+- `V0822`: The outcome is Return ER, so it does not realize any discharge category.
+- `V0823`: The outcome is Return ER, so it does not realize any discharge category.
+- `V0825`: The outcome is Return ER, so it does not realize any discharge category.
+- `V0826`: The narrative ends with Admission NC and does not reach any discharge activity.
+- `V0832`: The narrative terminates at IV Antibiotics and does not reach a discharge activity.
+- `V0843`: The narrative terminates at IV Liquid and does not reach any discharge activity.

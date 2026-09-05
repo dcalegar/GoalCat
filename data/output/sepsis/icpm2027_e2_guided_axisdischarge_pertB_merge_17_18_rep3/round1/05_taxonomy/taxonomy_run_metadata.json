@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "8b11ade8d6de839f",
+  "latency_seconds": 3.4933602909877663,
+  "input_tokens": 8838,
+  "output_tokens": 632,
+  "prompt_chars": 27617,
+  "response_chars": 2118,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"merged_discharge\",\n      \"name\": \"Merged Discharge\",\n      \"description\": \"Represents the discharge pathway mapped to alternative 17, advancing the goal of reaching a captured discharge while helping avoid post-discharge deterioration as measured by post-discharge ER return indicators.\",\n      \"anchor_ids\": [\"17\"],\n      \"rationale\": \"Default 1:1 mapping for alternative 17 (Merged 17+18), supported by variants such as V0551 and V0625 ending in Release A or Return ER which trace to this element.\",\n      \"evidence_variant_ids\": [\"V0551\", \"V0625\", \"V0449\", \"V0192\", \"V0441\", \"V0317\", \"V0273\", \"V0072\", \"V0071\", \"V0070\", \"V0069\", \"V0067\", \"V0066\", \"V0065\", \"V0064\", \"V0063\"]\n    },\n    {\n      \"category_id\": \"release_c\",\n      \"name\": \"Release C\",\n      \"description\": \"Represents the discharge pathway mapped to alternative 19, leading to a captured discharge outcome evaluated against post-discharge performance indicators.\",\n      \"anchor_ids\": [\"19\"],\n      \"rationale\": \"Default 1:1 mapping for alternative 19 (Release C), supported directly by variant V0710 ending in Release C.\",\n      \"evidence_variant_ids\": [\"V0710\"]\n    },\n    {\n      \"category_id\": \"release_d\",\n      \"name\": \"Release D\",\n      \"description\": \"Represents the discharge pathway mapped to alternative 20, leading to a captured discharge outcome evaluated against post-discharge performance indicators.\",\n      \"anchor_ids\": [\"20\"],\n      \"rationale\": \"Default 1:1 mapping for alternative 20 (Release D), supported directly by variant V0273 ending in Release D.\",\n      \"evidence_variant_ids\": [\"V0273\"]\n    },\n    {\n      \"category_id\": \"release_e\",\n      \"name\": \"Release E\",\n      \"description\": \"Represents the discharge pathway mapped to alternative 21, leading to a captured discharge outcome evaluated against post-discharge performance indicators.\",\n      \"anchor_ids\": [\"21\"],\n      \"rationale\": \"Default 1:1 mapping for alternative 21 (Release E), preserving the full set of declared alternatives under the OR decomposition of goal 6.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0042314
+}

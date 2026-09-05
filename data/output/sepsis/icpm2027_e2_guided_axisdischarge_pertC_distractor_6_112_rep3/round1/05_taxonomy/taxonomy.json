@@ -1,0 +1,89 @@
+{
+  "categories": [
+    {
+      "category_id": "release_a",
+      "name": "Release A",
+      "description": "Standard patient release path from an inpatient ward, contributing to avoiding post-discharge deterioration and measured against post-discharge ER returns.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release A (id=17), observed frequently in the narrative sample (e.g. V0008, V0065, V0070) culminating in normal discharge.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0065",
+        "V0070",
+        "V0072",
+        "V0071",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0064",
+        "V0063",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0625",
+        "V0605",
+        "V0551"
+      ]
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release B",
+      "description": "Alternative inpatient release path B, contributing to avoiding post-discharge deterioration and measured against post-discharge ER returns.",
+      "anchor_ids": [
+        "18"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release B (id=18), explicitly observed in rare variants such as V0068 and V0145.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Alternative inpatient release path C, contributing to avoiding post-discharge deterioration and measured against post-discharge ER returns.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release C (id=19), observed in long-running complex variants like V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Alternative inpatient release path D, contributing to avoiding post-discharge deterioration and measured against post-discharge ER returns.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release D (id=20), observed in variant V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release E",
+      "description": "Alternative inpatient release path E, contributing to avoiding post-discharge deterioration and measured against post-discharge ER returns.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release E (id=21) as defined in the goal model decomposition for id=6.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "release_f",
+      "name": "Release F",
+      "description": "Alternative inpatient release path F, contributing to avoiding post-discharge deterioration and measured against post-discharge ER returns.",
+      "anchor_ids": [
+        "112"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release F (id=112) as defined in the goal model decomposition for id=6.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

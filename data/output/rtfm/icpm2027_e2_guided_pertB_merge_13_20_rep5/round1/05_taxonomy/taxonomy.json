@@ -1,0 +1,59 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Resolution of the fine case through payment realization, advancing the softgoal to maximize timely fine revenue and helping minimize administrative and enforcement cost, judged against time-to-closure indicators.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Maps 1:1 to declared alternative id=12. Supported by frequent variants like V0002 and V0004 where payment successfully closes the fine case.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0004",
+        "V0007"
+      ]
+    },
+    {
+      "category_id": "merged_closure",
+      "name": "Merged resolution",
+      "description": "Resolution via merged tasks (id=13), helping maximize timely fine revenue while hurting administrative cost and preserving due-process rights.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Maps 1:1 to declared alternative id=13. Represented in cases leading to credit collection and direct case completions.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0009"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal_prefecture",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Resolution path involving administrative appeals submitted to the Prefecture, advancing the offender's due-process rights while potentially increasing administrative costs and reducing timely revenue.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Maps 1:1 to declared alternative id=14. Evidenced in variants involving 'Insert Date Appeal to Prefecture', 'Send Appeal to Prefecture', and subsequent prefecture responses.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0137"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal_judge",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Resolution path involving judicial appeals to the Judge, making a strong positive contribution to preserving the offender's due-process rights while hurting administrative costs and timely revenue.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to declared alternative id=19. Evidenced in variants containing 'Appeal to Judge' activities.",
+      "evidence_variant_ids": [
+        "V0103",
+        "V0176",
+        "V0140"
+      ]
+    }
+  ]
+}

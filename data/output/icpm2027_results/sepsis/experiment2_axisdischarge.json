@@ -10,29 +10,119 @@
         "21"
       ],
       "valid": true,
-      "target_anchors": [
-        "21"
+      "k": 5,
+      "axis_problems": [],
+      "replicates": [
+        {
+          "target_anchors": [
+            "21"
+          ],
+          "TargetReassignment": {
+            "n": 6,
+            "changed": 6,
+            "rate": 1.0,
+            "cases_changed": 6
+          },
+          "CollateralReassignment": {
+            "n": 840,
+            "changed": 98,
+            "rate": 0.11666666666666667,
+            "cases_changed": 102
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        },
+        {
+          "target_anchors": [
+            "21"
+          ],
+          "TargetReassignment": {
+            "n": 6,
+            "changed": 6,
+            "rate": 1.0,
+            "cases_changed": 6
+          },
+          "CollateralReassignment": {
+            "n": 840,
+            "changed": 61,
+            "rate": 0.07261904761904762,
+            "cases_changed": 65
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        },
+        {
+          "target_anchors": [
+            "21"
+          ],
+          "TargetReassignment": {
+            "n": 6,
+            "changed": 6,
+            "rate": 1.0,
+            "cases_changed": 6
+          },
+          "CollateralReassignment": {
+            "n": 840,
+            "changed": 58,
+            "rate": 0.06904761904761905,
+            "cases_changed": 62
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        },
+        {
+          "target_anchors": [
+            "21"
+          ],
+          "TargetReassignment": {
+            "n": 6,
+            "changed": 6,
+            "rate": 1.0,
+            "cases_changed": 6
+          },
+          "CollateralReassignment": {
+            "n": 840,
+            "changed": 80,
+            "rate": 0.09523809523809523,
+            "cases_changed": 88
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        },
+        {
+          "target_anchors": [
+            "21"
+          ],
+          "TargetReassignment": {
+            "n": 6,
+            "changed": 6,
+            "rate": 1.0,
+            "cases_changed": 6
+          },
+          "CollateralReassignment": {
+            "n": 840,
+            "changed": 76,
+            "rate": 0.09047619047619047,
+            "cases_changed": 80
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        }
       ],
       "TargetReassignment": {
-        "n": 6,
-        "changed": 6,
-        "rate": 1.0,
-        "cases_changed": 6
+        "k": 5,
+        "mean": 1.0,
+        "min": 1.0,
+        "max": 1.0
       },
       "CollateralReassignment": {
-        "n": 840,
-        "changed": 43,
-        "rate": 0.05119047619047619,
-        "cases_changed": 43
+        "k": 5,
+        "mean": 0.08880952380952381,
+        "min": 0.06904761904761905,
+        "max": 0.11666666666666667
       },
-      "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint).",
       "CollateralReassignmentNull": {
         "k": 5,
         "n_pairs": 10,
         "collateral_population": 840,
-        "mean": 0.06523809523809523,
-        "min": 0.017857142857142856,
-        "max": 0.10595238095238095,
+        "mean": 0.06464285714285714,
+        "min": 0.03214285714285714,
+        "max": 0.09285714285714286,
         "pairs": [
           {
             "pair": [
@@ -40,9 +130,9 @@
               2
             ],
             "n": 840,
-            "changed": 49,
-            "rate": 0.058333333333333334,
-            "cases_changed": 49
+            "changed": 71,
+            "rate": 0.08452380952380953,
+            "cases_changed": 75
           },
           {
             "pair": [
@@ -50,9 +140,9 @@
               3
             ],
             "n": 840,
-            "changed": 15,
-            "rate": 0.017857142857142856,
-            "cases_changed": 15
+            "changed": 65,
+            "rate": 0.07738095238095238,
+            "cases_changed": 69
           },
           {
             "pair": [
@@ -60,9 +150,9 @@
               4
             ],
             "n": 840,
-            "changed": 76,
-            "rate": 0.09047619047619047,
-            "cases_changed": 80
+            "changed": 78,
+            "rate": 0.09285714285714286,
+            "cases_changed": 82
           },
           {
             "pair": [
@@ -70,59 +160,59 @@
               5
             ],
             "n": 840,
-            "changed": 62,
-            "rate": 0.07380952380952381,
+            "changed": 70,
+            "rate": 0.08333333333333333,
+            "cases_changed": 74
+          },
+          {
+            "pair": [
+              2,
+              3
+            ],
+            "n": 840,
+            "changed": 57,
+            "rate": 0.06785714285714285,
+            "cases_changed": 61
+          },
+          {
+            "pair": [
+              2,
+              4
+            ],
+            "n": 840,
+            "changed": 39,
+            "rate": 0.04642857142857143,
+            "cases_changed": 39
+          },
+          {
+            "pair": [
+              2,
+              5
+            ],
+            "n": 840,
+            "changed": 27,
+            "rate": 0.03214285714285714,
+            "cases_changed": 27
+          },
+          {
+            "pair": [
+              3,
+              4
+            ],
+            "n": 840,
+            "changed": 58,
+            "rate": 0.06904761904761905,
             "cases_changed": 62
           },
           {
             "pair": [
-              2,
-              3
-            ],
-            "n": 840,
-            "changed": 60,
-            "rate": 0.07142857142857142,
-            "cases_changed": 60
-          },
-          {
-            "pair": [
-              2,
-              4
-            ],
-            "n": 840,
-            "changed": 61,
-            "rate": 0.07261904761904762,
-            "cases_changed": 65
-          },
-          {
-            "pair": [
-              2,
-              5
-            ],
-            "n": 840,
-            "changed": 41,
-            "rate": 0.04880952380952381,
-            "cases_changed": 41
-          },
-          {
-            "pair": [
-              3,
-              4
-            ],
-            "n": 840,
-            "changed": 89,
-            "rate": 0.10595238095238095,
-            "cases_changed": 93
-          },
-          {
-            "pair": [
               3,
               5
             ],
             "n": 840,
-            "changed": 49,
-            "rate": 0.058333333333333334,
-            "cases_changed": 49
+            "changed": 32,
+            "rate": 0.0380952380952381,
+            "cases_changed": 36
           },
           {
             "pair": [
@@ -132,7 +222,7 @@
             "n": 840,
             "changed": 46,
             "rate": 0.05476190476190476,
-            "cases_changed": 50
+            "cases_changed": 46
           }
         ],
         "note": "Descriptive min-max of the collateral reassignment rate over the 10 unordered pairs of 5 unperturbed guided replicates, on one fixed collateral population (840 variants, from replicate 1). The pairs are not independent, so this is a replicate range, not a null distribution."
@@ -146,39 +236,133 @@
         "18"
       ],
       "valid": true,
-      "target_anchors": [
-        "17",
-        "18"
+      "k": 5,
+      "axis_problems": [],
+      "replicates": [
+        {
+          "target_anchors": [
+            "17",
+            "18"
+          ],
+          "TargetReassignment": {
+            "n": 640,
+            "changed": 640,
+            "rate": 1.0,
+            "cases_changed": 689
+          },
+          "CollateralReassignment": {
+            "n": 206,
+            "changed": 8,
+            "rate": 0.038834951456310676,
+            "cases_changed": 8
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        },
+        {
+          "target_anchors": [
+            "17",
+            "18"
+          ],
+          "TargetReassignment": {
+            "n": 640,
+            "changed": 640,
+            "rate": 1.0,
+            "cases_changed": 689
+          },
+          "CollateralReassignment": {
+            "n": 206,
+            "changed": 7,
+            "rate": 0.03398058252427184,
+            "cases_changed": 7
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        },
+        {
+          "target_anchors": [
+            "17",
+            "18"
+          ],
+          "TargetReassignment": {
+            "n": 640,
+            "changed": 634,
+            "rate": 0.990625,
+            "cases_changed": 676
+          },
+          "CollateralReassignment": {
+            "n": 206,
+            "changed": 7,
+            "rate": 0.03398058252427184,
+            "cases_changed": 7
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        },
+        {
+          "target_anchors": [
+            "17",
+            "18"
+          ],
+          "TargetReassignment": {
+            "n": 640,
+            "changed": 624,
+            "rate": 0.975,
+            "cases_changed": 673
+          },
+          "CollateralReassignment": {
+            "n": 206,
+            "changed": 7,
+            "rate": 0.03398058252427184,
+            "cases_changed": 7
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        },
+        {
+          "target_anchors": [
+            "17",
+            "18"
+          ],
+          "TargetReassignment": {
+            "n": 640,
+            "changed": 640,
+            "rate": 1.0,
+            "cases_changed": 689
+          },
+          "CollateralReassignment": {
+            "n": 206,
+            "changed": 7,
+            "rate": 0.03398058252427184,
+            "cases_changed": 7
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        }
       ],
       "TargetReassignment": {
-        "n": 624,
-        "changed": 624,
-        "rate": 1.0,
-        "cases_changed": 673
+        "k": 5,
+        "mean": 0.993125,
+        "min": 0.975,
+        "max": 1.0
       },
       "CollateralReassignment": {
-        "n": 222,
-        "changed": 0,
-        "rate": 0.0,
-        "cases_changed": 0
+        "k": 5,
+        "mean": 0.034951456310679606,
+        "min": 0.03398058252427184,
+        "max": 0.038834951456310676
       },
-      "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint).",
       "CollateralReassignmentNull": {
         "k": 5,
         "n_pairs": 10,
-        "collateral_population": 222,
-        "mean": 0.109009009009009,
-        "min": 0.06306306306306306,
-        "max": 0.1981981981981982,
+        "collateral_population": 206,
+        "mean": 0.11601941747572815,
+        "min": 0.02912621359223301,
+        "max": 0.1553398058252427,
         "pairs": [
           {
             "pair": [
               1,
               2
             ],
-            "n": 222,
+            "n": 206,
             "changed": 32,
-            "rate": 0.14414414414414414,
+            "rate": 0.1553398058252427,
             "cases_changed": 32
           },
           {
@@ -186,59 +370,301 @@
               1,
               3
             ],
-            "n": 222,
-            "changed": 14,
-            "rate": 0.06306306306306306,
-            "cases_changed": 14
+            "n": 206,
+            "changed": 28,
+            "rate": 0.13592233009708737,
+            "cases_changed": 28
           },
           {
             "pair": [
               1,
               4
             ],
-            "n": 222,
-            "changed": 16,
-            "rate": 0.07207207207207207,
-            "cases_changed": 16
+            "n": 206,
+            "changed": 19,
+            "rate": 0.09223300970873786,
+            "cases_changed": 19
           },
           {
             "pair": [
               1,
               5
             ],
-            "n": 222,
-            "changed": 31,
-            "rate": 0.13963963963963963,
-            "cases_changed": 31
+            "n": 206,
+            "changed": 25,
+            "rate": 0.12135922330097088,
+            "cases_changed": 25
           },
           {
             "pair": [
               2,
               3
             ],
-            "n": 222,
-            "changed": 44,
-            "rate": 0.1981981981981982,
-            "cases_changed": 44
+            "n": 206,
+            "changed": 25,
+            "rate": 0.12135922330097088,
+            "cases_changed": 25
           },
           {
             "pair": [
               2,
               4
             ],
-            "n": 222,
-            "changed": 16,
-            "rate": 0.07207207207207207,
-            "cases_changed": 16
+            "n": 206,
+            "changed": 19,
+            "rate": 0.09223300970873786,
+            "cases_changed": 19
           },
           {
             "pair": [
               2,
               5
             ],
-            "n": 222,
+            "n": 206,
+            "changed": 21,
+            "rate": 0.10194174757281553,
+            "cases_changed": 21
+          },
+          {
+            "pair": [
+              3,
+              4
+            ],
+            "n": 206,
+            "changed": 32,
+            "rate": 0.1553398058252427,
+            "cases_changed": 32
+          },
+          {
+            "pair": [
+              3,
+              5
+            ],
+            "n": 206,
+            "changed": 6,
+            "rate": 0.02912621359223301,
+            "cases_changed": 6
+          },
+          {
+            "pair": [
+              4,
+              5
+            ],
+            "n": 206,
+            "changed": 32,
+            "rate": 0.1553398058252427,
+            "cases_changed": 32
+          }
+        ],
+        "note": "Descriptive min-max of the collateral reassignment rate over the 10 unordered pairs of 5 unperturbed guided replicates, on one fixed collateral population (206 variants, from replicate 1). The pairs are not independent, so this is a replicate range, not a null distribution."
+      },
+      "MergeOriginSplit": {
+        "retained_id": "17",
+        "dropped_id": "18",
+        "retained_id_rate": {
+          "k": 5,
+          "mean": 0.9921847246891652,
+          "min": 0.9715808170515098,
+          "max": 1.0
+        },
+        "dropped_id_rate": {
+          "k": 5,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "note": "TargetReassignment split by which original alternative a variant realized. retained_id keeps its id after the merge (a variant already anchored there is correctly unmoved); dropped_id's anchor no longer exists post-merge (its variants are structurally guaranteed to move). The blended TargetReassignment above conflates these two populations."
+      }
+    },
+    {
+      "kind": "C",
+      "perturbation_id": "pertC_distractor_6_112",
+      "targets": [
+        "112"
+      ],
+      "valid": true,
+      "k": 5,
+      "axis_problems": [],
+      "replicates": [
+        {
+          "target_anchors": [
+            "112"
+          ],
+          "TargetReassignment": {
+            "n": 0,
+            "changed": 0,
+            "rate": NaN,
+            "cases_changed": 0
+          },
+          "CollateralReassignment": {
+            "n": 846,
+            "changed": 64,
+            "rate": 0.07565011820330969,
+            "cases_changed": 68
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        },
+        {
+          "target_anchors": [
+            "112"
+          ],
+          "TargetReassignment": {
+            "n": 0,
+            "changed": 0,
+            "rate": NaN,
+            "cases_changed": 0
+          },
+          "CollateralReassignment": {
+            "n": 846,
+            "changed": 85,
+            "rate": 0.10047281323877069,
+            "cases_changed": 89
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        },
+        {
+          "target_anchors": [
+            "112"
+          ],
+          "TargetReassignment": {
+            "n": 0,
+            "changed": 0,
+            "rate": NaN,
+            "cases_changed": 0
+          },
+          "CollateralReassignment": {
+            "n": 846,
+            "changed": 77,
+            "rate": 0.09101654846335698,
+            "cases_changed": 81
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        },
+        {
+          "target_anchors": [
+            "112"
+          ],
+          "TargetReassignment": {
+            "n": 0,
+            "changed": 0,
+            "rate": NaN,
+            "cases_changed": 0
+          },
+          "CollateralReassignment": {
+            "n": 846,
+            "changed": 85,
+            "rate": 0.10047281323877069,
+            "cases_changed": 89
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        },
+        {
+          "target_anchors": [
+            "112"
+          ],
+          "TargetReassignment": {
+            "n": 0,
+            "changed": 0,
+            "rate": NaN,
+            "cases_changed": 0
+          },
+          "CollateralReassignment": {
+            "n": 846,
+            "changed": 65,
+            "rate": 0.0768321513002364,
+            "cases_changed": 69
+          },
+          "note": "CollateralReassignment is interpretable only against the replicate range from Task C2 \u2014 without it, collateral change cannot be distinguished from ordinary run-to-run variance (Experiment 2's design constraint)."
+        }
+      ],
+      "TargetReassignment": {
+        "k": 0,
+        "mean": NaN,
+        "min": NaN,
+        "max": NaN
+      },
+      "CollateralReassignment": {
+        "k": 5,
+        "mean": 0.08888888888888889,
+        "min": 0.07565011820330969,
+        "max": 0.10047281323877069
+      },
+      "CollateralReassignmentNull": {
+        "k": 5,
+        "n_pairs": 10,
+        "collateral_population": 846,
+        "mean": 0.06418439716312056,
+        "min": 0.031914893617021274,
+        "max": 0.09219858156028368,
+        "pairs": [
+          {
+            "pair": [
+              1,
+              2
+            ],
+            "n": 846,
+            "changed": 71,
+            "rate": 0.08392434988179669,
+            "cases_changed": 75
+          },
+          {
+            "pair": [
+              1,
+              3
+            ],
+            "n": 846,
+            "changed": 65,
+            "rate": 0.0768321513002364,
+            "cases_changed": 69
+          },
+          {
+            "pair": [
+              1,
+              4
+            ],
+            "n": 846,
+            "changed": 78,
+            "rate": 0.09219858156028368,
+            "cases_changed": 82
+          },
+          {
+            "pair": [
+              1,
+              5
+            ],
+            "n": 846,
+            "changed": 70,
+            "rate": 0.08274231678486997,
+            "cases_changed": 74
+          },
+          {
+            "pair": [
+              2,
+              3
+            ],
+            "n": 846,
+            "changed": 57,
+            "rate": 0.0673758865248227,
+            "cases_changed": 61
+          },
+          {
+            "pair": [
+              2,
+              4
+            ],
+            "n": 846,
+            "changed": 39,
+            "rate": 0.04609929078014184,
+            "cases_changed": 39
+          },
+          {
+            "pair": [
+              2,
+              5
+            ],
+            "n": 846,
             "changed": 27,
-            "rate": 0.12162162162162163,
+            "rate": 0.031914893617021274,
             "cases_changed": 27
           },
           {
@@ -246,33 +672,50 @@
               3,
               4
             ],
-            "n": 222,
-            "changed": 28,
-            "rate": 0.12612612612612611,
-            "cases_changed": 28
+            "n": 846,
+            "changed": 58,
+            "rate": 0.06855791962174941,
+            "cases_changed": 62
           },
           {
             "pair": [
               3,
               5
             ],
-            "n": 222,
-            "changed": 19,
-            "rate": 0.08558558558558559,
-            "cases_changed": 19
+            "n": 846,
+            "changed": 32,
+            "rate": 0.037825059101654845,
+            "cases_changed": 36
           },
           {
             "pair": [
               4,
               5
             ],
-            "n": 222,
-            "changed": 15,
-            "rate": 0.06756756756756757,
-            "cases_changed": 15
+            "n": 846,
+            "changed": 46,
+            "rate": 0.054373522458628844,
+            "cases_changed": 46
           }
         ],
-        "note": "Descriptive min-max of the collateral reassignment rate over the 10 unordered pairs of 5 unperturbed guided replicates, on one fixed collateral population (222 variants, from replicate 1). The pairs are not independent, so this is a replicate range, not a null distribution."
+        "note": "Descriptive min-max of the collateral reassignment rate over the 10 unordered pairs of 5 unperturbed guided replicates, on one fixed collateral population (846 variants, from replicate 1). The pairs are not independent, so this is a replicate range, not a null distribution."
+      },
+      "DistractorUptake": {
+        "distractor_id": "112",
+        "rate": {
+          "k": 5,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cases": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "note": "Share of variants the perturbed run places in a category anchored on the distractor, out of every variant. TargetReassignment above is not applicable here (no baseline variant realizes an alternative that did not exist before the edit) and reads NaN/k=0 by construction; this is Perturbation C's own measurement, per `add_distractor`'s docstring."
       }
     }
   ]

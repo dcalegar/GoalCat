@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "62c56fbd21b9bd31",
+  "latency_seconds": 2.04650529200444,
+  "input_tokens": 8782,
+  "output_tokens": 463,
+  "prompt_chars": 27522,
+  "response_chars": 1077,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Admission NC\",\n      \"description\": \"Patient is admitted to a standard inpatient ward (Admission NC), advancing general care flow towards documented discharge or further disposition.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the single declared alternative under goal 5 (Patient is admitted to an inpatient ward). This alternative is realized in the sample by the Admission NC activity (e.g. in variants V0008, V0625, V0605, V0551, V0449, V0192, V0441, V0317, V0273, V0068, V0145, V0072, V0071, V0070, V0069, V0067, V0066, V0065, V0064, V0063, V0710).\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0625\",\n        \"V0605\",\n        \"V0551\",\n        \"V0449\",\n        \"V0192\",\n        \"V0441\",\n        \"V0317\",\n        \"V0273\",\n        \"V0068\",\n        \"V0145\",\n        \"V0072\",\n        \"V0071\",\n        \"V0070\",\n        \"V0069\",\n        \"V0067\",\n        \"V0066\",\n        \"V0065\",\n        \"V0064\",\n        \"V0063\",\n        \"V0710\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0037921
+}

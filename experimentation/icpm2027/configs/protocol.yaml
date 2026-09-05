@@ -9,7 +9,7 @@
 # Changing anything here invalidates every already-executed frozen run: bump protocol_version and
 # re-run, never edit a value under a version that has already produced results.
 
-protocol_version: "1.0.0"
+protocol_version: "1.1.0"
 
 # Steps 1-4, computed once per dataset and shared by every condition (§2.1).
 sampling:
@@ -50,10 +50,14 @@ llm:
   # backoff; a number paces Step 6's call starts proactively (see llm/assignment.py's
   # _RateLimiter). Held identical across arms either way.
   requests_per_minute: null
-  # Task C10 — a fixed protocol parameter, never tuned against categorization output. The value
-  # actually used is resolved through preregistration.yaml (which may pre-register a documented
-  # per-dataset exception on wall-clock grounds); this is the protocol default.
-  assignment_batch_size: 50
+  # Task C10 — a fixed protocol parameter, never tuned against categorization output. Was 50 by
+  # default with a pre-registered BPIC 2019 exception of 25 under protocol_version 1.0.0; 1.1.0
+  # (2026-09-04) adopts 25 everywhere, since 50 is the value that proved not to complete on the
+  # large log (see preregistration.yaml, C10, AMENDMENT 2026-09-04) and one number holds the
+  # freeze table's "identical across datasets by default" cleanly. Resolved through
+  # preregistration.yaml, which may still pre-register a per-dataset exception; none is declared
+  # now.
+  assignment_batch_size: 25
 
 # Which pipeline steps a frozen condition executes. Step 9 is deliberately absent: §3's paired
 # comparison runs *before* any analyst merge/split/rename, so no frozen condition may reach it.
@@ -65,6 +69,15 @@ steps:
 # Task C2 — replicate runs of each unperturbed condition, to establish the noise floor against
 # which Experiment 2's CollateralReassignment is interpreted (§4).
 replicates:
+  # 2026-09-04 — the open arm's own replicate-agreement floor was strengthened by temporarily
+  # bumping this to 5 (rtfm, sepsis) / 3 (bpic2019, matching guided's own count there — see below)
+  # and running only --arms open, the same bump-run-revert mechanism guided's own extension to
+  # five replicates used. Reverted to 2 here once those runs landed; the extra replicates remain
+  # on disk (rtfm/sepsis open: n=5; bpic2019 open: n=3) and are picked up by aggregate_tables.py
+  # directly, which does not read this field. bpic2019's guided arm was also brought from 2 to 3
+  # replicates the same day (one accidental rep3 from this same bump mechanism, kept rather than
+  # discarded — cost already spent — then matched by extending open to 3 as well for symmetry with
+  # RTFM/Sepsis's guided=open=5, rather than leaving bpic2019 at an unequal 3-vs-5).
   unperturbed: 2
   perturbed: 1
   # Task C12 — Step 5a induction stability. A DIFFERENT quantity from `unperturbed` above: that

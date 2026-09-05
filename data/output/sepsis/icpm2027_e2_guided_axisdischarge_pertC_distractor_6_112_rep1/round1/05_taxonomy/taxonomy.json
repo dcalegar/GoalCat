@@ -1,0 +1,75 @@
+{
+  "categories": [
+    {
+      "category_id": "release_a",
+      "name": "Release A",
+      "description": "Standard discharge pathway corresponding to Task Release A, measured by Avoid post-discharge deterioration and Post-discharge ER return indicators, contributing positively to avoiding post-discharge deterioration.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release A (id=17), supported by frequent and rare variants such as V0008, V0065, and V0070.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0065",
+        "V0070"
+      ]
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release B",
+      "description": "Discharge pathway corresponding to Task Release B, measured by Avoid post-discharge deterioration, contributing positively to avoiding post-discharge deterioration.",
+      "anchor_ids": [
+        "18"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release B (id=18), supported by variants such as V0068 and V0145.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Discharge pathway corresponding to Task Release C, measured against post-discharge indicators.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release C (id=19), supported by long-running variant V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Discharge pathway corresponding to Task Release D, measured against post-discharge indicators.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release D (id=20), supported by variant V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release E",
+      "description": "Discharge pathway corresponding to Task Release E, measured against post-discharge indicators.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release E (id=21) based on the goal model decomposition, with no separate divergence found in the sample.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "release_f",
+      "name": "Release F",
+      "description": "Discharge pathway corresponding to Task Release F, measured against post-discharge indicators.",
+      "anchor_ids": [
+        "112"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release F (id=112) based on the goal model decomposition.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

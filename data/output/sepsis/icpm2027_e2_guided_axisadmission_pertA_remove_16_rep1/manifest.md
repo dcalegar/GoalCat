@@ -2,7 +2,7 @@
 
 Experiment `e2` · dataset `sepsis` · arm `guided` · replicate 1 · tag `pertA_remove_16`
 
-Protocol version `1.0.0` · steps [5, 6] · 2026-08-31T18:30:14.087815+00:00 → 2026-08-31T18:31:36.188309+00:00
+Protocol version `1.1.0` · steps [5, 6] · 2026-09-04T15:12:40.813051+00:00 → 2026-09-04T15:13:19.300540+00:00
 
 ## Inputs
 
@@ -10,7 +10,7 @@ Protocol version `1.0.0` · steps [5, 6] · 2026-08-31T18:30:14.087815+00:00 →
 |---|---|---|
 | Event log | `data/logs/sepsis.xes.gz` | `709c523403064159` |
 | Goal model | `data/goals/perturbed/sepsis_goal_model__pertA_remove_16.jucm` | `e7e9df0d7ee112ef` |
-| Condition config | `data/output/sepsis/icpm2027_e2_guided_axisadmission_pertA_remove_16_rep1/condition_config.yaml` | `61232393769f57f2` |
+| Condition config | `data/output/sepsis/icpm2027_e2_guided_axisadmission_pertA_remove_16_rep1/condition_config.yaml` | `74ec4d1f06233d4a` |
 
 **Prompt templates:** `prompt_assignment_batch.txt`=`4fe1d4fb8ac2`, `prompt_description.txt`=`7683ed3205c4`, `prompt_taxonomy_intent_guided.txt`=`c3fe7d89554d`, `prompt_taxonomy_intent_guided_revision.txt`=`604be767fe9c`, `prompt_taxonomy_open.txt`=`d32f3f34b809`, `prompt_taxonomy_open_revision.txt`=`cf4eefe924c8`
 
@@ -59,7 +59,7 @@ Seed: null — no seed is exposed by PipelineConfig.llm or by the Gemini path th
         "temperature": 0.0
       }
     ],
-    "call_count": 17
+    "call_count": 34
   },
   "description": null
 }
@@ -69,11 +69,11 @@ Seed: null — no seed is exposed by PipelineConfig.llm or by the Gemini path th
 
 | Artifact | Path | SHA-256 (first 16) |
 |---|---|---|
-| taxonomy | `data/output/sepsis/icpm2027_e2_guided_axisadmission_pertA_remove_16_rep1/round1/05_taxonomy/taxonomy.json` | `3aee3f3509da7a1b` |
-| assignments | `data/output/sepsis/icpm2027_e2_guided_axisadmission_pertA_remove_16_rep1/round1/06_assignment/assignments.csv` | `74b42f1d6c1b0805` |
+| taxonomy | `data/output/sepsis/icpm2027_e2_guided_axisadmission_pertA_remove_16_rep1/round1/05_taxonomy/taxonomy.json` | `de40632c7419d9ee` |
+| assignments | `data/output/sepsis/icpm2027_e2_guided_axisadmission_pertA_remove_16_rep1/round1/06_assignment/assignments.csv` | `d9e9e8a8945e9e67` |
 | discovery_metrics | *(not produced)* | — |
 | descriptions | *(not produced)* | — |
 
 ## Environment
 
-`Mac-Daniel.local` · macOS-26.6.2-arm64-arm-64bit-Mach-O · Python 3.14.6 · git `b016cb958f1e` **(working tree dirty)**
+`Mac-Daniel.local` · macOS-26.6.2-arm64-arm-64bit-Mach-O · Python 3.14.6 · git `7d93545a98f0` **(working tree dirty)**

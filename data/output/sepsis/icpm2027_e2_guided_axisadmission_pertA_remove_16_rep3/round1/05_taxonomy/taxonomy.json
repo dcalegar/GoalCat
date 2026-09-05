@@ -1,0 +1,36 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission NC",
+      "description": "Patient is admitted to a standard inpatient ward (Admission NC), advancing general care flow towards documented discharge or further disposition.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to the single declared alternative under goal 5 (Patient is admitted to an inpatient ward). This alternative is realized in the sample by the Admission NC activity (e.g. in variants V0008, V0625, V0605, V0551, V0449, V0192, V0441, V0317, V0273, V0068, V0145, V0072, V0071, V0070, V0069, V0067, V0066, V0065, V0064, V0063, V0710).",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0625",
+        "V0605",
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0273",
+        "V0068",
+        "V0145",
+        "V0072",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063",
+        "V0710"
+      ]
+    }
+  ]
+}

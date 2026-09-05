@@ -27,7 +27,7 @@
     "max_retries": 3,
     "concurrency": 5,
     "requests_per_minute": null,
-    "assignment_batch_size": 50,
+    "assignment_batch_size": 25,
     "pricing_usd_per_million_tokens": {
       "gemini/gemini-3.5-flash-lite": {
         "input": 0.3,

@@ -1,0 +1,35 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission to Inpatient Ward Non-Critical",
+      "description": "Realizes the patient admission goal by admitting the patient to a non-critical inpatient ward (Admission NC). This pathway advances the organization's goal of structured inpatient placement following sepsis stabilization, and its performance is evaluated against post-discharge outcomes measured by indicators such as Post-discharge ER return (binary) (target 0, worst 1 binary).",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to the single declared alternative ID 15 ('Admission NC') under the OR-decomposition of goal id=5. The narrative sample demonstrates this alternative across multiple variants (e.g., V0008, V0625, V0551) leading to ward care and subsequent release or readmission outcomes.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0625",
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0273",
+        "V0068",
+        "V0145",
+        "V0072",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063",
+        "V0710"
+      ]
+    }
+  ]
+}

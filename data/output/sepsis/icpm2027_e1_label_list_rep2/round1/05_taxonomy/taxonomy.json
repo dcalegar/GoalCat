@@ -1,0 +1,44 @@
+{
+  "categories": [
+    {
+      "category_id": "uncomplicated_recovery",
+      "name": "Uncomplicated recovery",
+      "description": "The case follows a standard course to discharge, with no recorded escalation of care and no extended observation beyond the ordinary stay pattern.",
+      "anchor_ids": [],
+      "rationale": "The baseline disposition category against which the other four represent some departure \u2014 either in duration, care intensity, or discharge circumstance.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "extended_monitoring_recovery",
+      "name": "Extended monitoring before discharge",
+      "description": "The case recovers without escalation of care, but the trace shows a materially longer observation period than the uncomplicated pattern before discharge.",
+      "anchor_ids": [],
+      "rationale": "Separates duration from severity: a longer stay is not, on its own, evidence that care was escalated.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "care_escalation_during_stay",
+      "name": "Escalation of care during the stay",
+      "description": "The trace shows an increase in care intensity at some point after admission (e.g., a transfer to a higher level of care) followed by eventual discharge.",
+      "anchor_ids": [],
+      "rationale": "Captures cases whose clinical course was non-monotonic \u2014 an escalation mid-stay \u2014 independent of which specific unit received the transfer.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "early_or_irregular_discharge",
+      "name": "Early or irregular discharge",
+      "description": "The trace ends in a discharge that departs from the standard pattern captured by the other categories \u2014 e.g., an unusually short stay relative to the case's recorded severity indicators, suggesting discharge ahead of the typical course.",
+      "anchor_ids": [],
+      "rationale": "A residual pattern distinct from non_home_disposition: the case still ends in a discharge event, just not one following the ordinary course.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "non_home_disposition",
+      "name": "Non-home disposition",
+      "description": "The trace ends in a disposition other than a routine discharge \u2014 e.g., in-hospital death or transfer to another facility \u2014 rather than release to the patient's prior living situation.",
+      "anchor_ids": [],
+      "rationale": "The most severe disposition category, kept separate because it reflects a different kind of case ending than any discharge-based category.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

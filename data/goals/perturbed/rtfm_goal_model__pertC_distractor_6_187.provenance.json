@@ -1,0 +1,21 @@
+{
+  "schema": "icpm2027/perturbation/2",
+  "perturbation_id": "pertC_distractor_6_187",
+  "kind": "C - artificial plausible distractor",
+  "targets": [
+    "187"
+  ],
+  "base_model": {
+    "path": "data/goals/rtfm_goal_model.jucm",
+    "sha256": "7fb7e8f3c5c5631799d27ba18d38ae6f017ed9b7e3a13d034c37412d51c2f5b4"
+  },
+  "output": {
+    "path": "data/goals/perturbed/rtfm_goal_model__pertC_distractor_6_187.jucm",
+    "sha256": "87b40bd6fdf0e68beb25fcb39f9e981b6396ae98274e0a5e356a28cf6c6421d0"
+  },
+  "goal_model_filename": "perturbed/rtfm_goal_model__pertC_distractor_6_187.jucm",
+  "generated_on": "2026-09-04",
+  "notes": [
+    "Added 187 ('Resolve via fine annulment') as a leaf Task under 6, with no contribution links."
+  ]
+}

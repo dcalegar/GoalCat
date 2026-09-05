@@ -14,7 +14,7 @@
     "sha256": "e7e9df0d7ee112ef85068c6c49203e76bb5986f905a25fa46dc397058866d64b"
   },
   "goal_model_filename": "perturbed/sepsis_goal_model__pertA_remove_16.jucm",
-  "generated_on": "2026-08-31",
+  "generated_on": "2026-09-04",
   "notes": [
     "Removed element 16 (Task: 'Admission IC') and 2 link(s) touching it (decomposition and/or contribution).",
     "5's children are now ['15'] (was including 16).",

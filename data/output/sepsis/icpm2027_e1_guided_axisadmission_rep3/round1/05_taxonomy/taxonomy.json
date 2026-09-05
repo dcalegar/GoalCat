@@ -2,29 +2,51 @@
   "categories": [
     {
       "category_id": "admission_nc",
-      "name": "Non-Critical Ward Admission",
-      "description": "Represents admission of the patient to a non-critical inpatient ward (Admission NC). This pathway supports standard inpatient care following sepsis screening and initial workup and treatment.",
+      "name": "Admission to Non-Critical Ward",
+      "description": "Patient is admitted to an inpatient non-critical ward. Advances the patient along the disposition path and is typically measured by downstream post-discharge outcomes.",
       "anchor_ids": [
         "15"
       ],
-      "rationale": "Mapped 1:1 to the declared alternative id=15 (Admission NC) from the OR decomposition of goal id=5. Supported by frequent and extreme variant samples such as V0008, V0551, and V0317 where patients are transitioned to non-critical care.",
+      "rationale": "Mapped 1:1 to declared alternative Admission NC (id=15) under the OR-decomposition of goal 5. Supported by frequent and rare variants like V0008, V0625, and V0068 where Admission NC realizes the inpatient ward admission.",
       "evidence_variant_ids": [
         "V0008",
+        "V0625",
+        "V0605",
         "V0551",
-        "V0317"
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0273",
+        "V0068",
+        "V0145",
+        "V0072",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063",
+        "V0710"
       ]
     },
     {
       "category_id": "admission_ic",
-      "name": "Intensive Care Ward Admission",
-      "description": "Represents admission of the patient to an intensive care inpatient ward (Admission IC). This pathway is chosen for severe cases requiring intensive monitoring and treatment, impacting the goal softgoal 'Minimize time-to-treatment' with a negative contribution (-25) due to intensive transfer overhead.",
+      "name": "Admission to Intensive Care",
+      "description": "Patient is admitted to an intensive care inpatient ward. Associated with intensive care management and carries a negative contribution to minimizing time-to-treatment (SomeNegative -25).",
       "anchor_ids": [
         "16"
       ],
-      "rationale": "Mapped 1:1 to the declared alternative id=16 (Admission IC) from the OR decomposition of goal id=5. Supported by variant samples such as V0605 and V0317 which show direct realization of intensive care ward admission.",
+      "rationale": "Mapped 1:1 to declared alternative Admission IC (id=16) under the OR-decomposition of goal 5. Supported by narrative evidence in variants like V0605, V0317, and V0710 where patients are routed to intensive care.",
       "evidence_variant_ids": [
         "V0605",
-        "V0317"
+        "V0551",
+        "V0317",
+        "V0068",
+        "V0145",
+        "V0710"
       ]
     }
   ]

@@ -1,0 +1,885 @@
+# Step 6 — Narrative assignment report
+
+Run: `icpm2027_e2_guided_axisdischarge_pertB_merge_17_18_rep2` | Log: `sepsis` | Taxonomy mode: `intent_guided` | Assignment model: `gemini/gemini-3.5-flash-lite`
+
+846 variants, 1050 cases total.
+
+## Merged Discharge Path (`merged_discharge_path`)
+
+Represents discharges handled through the combined task pathway (Merged 17+18). Advances avoidance of post-discharge deterioration and is judged against post-discharge ER return indicators.
+
+**Taxonomy-derivation rationale (Step 5):** Maps 1:1 to the declared alternative id=17 in the goal model for goal id=6. It realizes the alternative through merged discharge handling tasks as observed in the sample.
+
+**Goal-model linkage:** 17 (Task): Merged 17+18
+
+**Coverage:** macro 2/846 variants (0.2%) · micro 6/1050 cases (0.6%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 3.00, nearest other category `release_e` at mean distance 15.42
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.005, nearest other category `release_d` at mean distance 0.319
+
+## Release C (`release_c`)
+
+Represents patient discharge via Release C. Aligns with goal id=6 alternatives, impacting post-discharge continuity and measured against return rates.
+
+**Taxonomy-derivation rationale (Step 5):** Maps 1:1 to the declared alternative id=19 in the goal model under goal id=6. Evidence is observed in variant V0710.
+
+**Goal-model linkage:** 19 (Task): Release C
+
+**Coverage:** macro 25/846 variants (3.0%) · micro 25/1050 cases (2.4%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 22.70, nearest other category `merged_discharge_path` at mean distance 16.20
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.268, nearest other category `merged_discharge_path` at mean distance 0.373
+
+## Release D (`release_d`)
+
+Represents patient discharge via Release D. Contributes to safe patient transitions under goal id=6.
+
+**Taxonomy-derivation rationale (Step 5):** Maps 1:1 to the declared alternative id=20 in the goal model under goal id=6. Evidence is observed in variant V0273.
+
+**Goal-model linkage:** 20 (Task): Release D
+
+**Coverage:** macro 24/846 variants (2.8%) · micro 24/1050 cases (2.3%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 19.12, nearest other category `merged_discharge_path` at mean distance 15.88
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.300, nearest other category `merged_discharge_path` at mean distance 0.319
+
+## Release E (`release_e`)
+
+Represents patient discharge via Release E. Fulfills the final disposition requirement under goal id=6.
+
+**Taxonomy-derivation rationale (Step 5):** Maps 1:1 to the declared alternative id=21 in the goal model under goal id=6 as a standard discharge route.
+
+**Goal-model linkage:** 21 (Task): Release E
+
+**Coverage:** macro 6/846 variants (0.7%) · micro 6/1050 cases (0.6%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 17.67, nearest other category `merged_discharge_path` at mean distance 15.42
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.253, nearest other category `merged_discharge_path` at mean distance 0.416
+
+## Divergence between structural and profile distance
+
+Flagged for review, not resolved automatically — the two metrics measure different things (control-flow vs. business profile) and disagreement is informative on its own.
+
+**Same category, structurally far apart** (possibly a category covering two distinct control-flow patterns):
+
+- `V0274` / `V0710` (category `release_c`): structural=177, profile=0.390
+- `V0084` / `V0710` (category `release_c`): structural=174, profile=0.253
+- `V0615` / `V0710` (category `release_c`): structural=174, profile=0.504
+- `V0138` / `V0710` (category `release_c`): structural=173, profile=0.253
+- `V0313` / `V0710` (category `release_c`): structural=173, profile=0.165
+- `V0314` / `V0710` (category `release_c`): structural=173, profile=0.148
+- `V0427` / `V0710` (category `release_c`): structural=173, profile=0.418
+- `V0433` / `V0710` (category `release_c`): structural=173, profile=0.313
+- `V0601` / `V0710` (category `release_c`): structural=173, profile=0.248
+- `V0710` / `V0747` (category `release_c`): structural=173, profile=0.049
+
+**Different category, structurally near-identical** (the TP/TA-style case — categories distinguished on business intent the activity sequence alone would not show):
+
+- `V0093` (`release_d`) / `V0601` (`release_c`): structural=3, profile=0.334
+- `V0023` (`merged_discharge_path`) / `V0313` (`release_c`): structural=4, profile=0.495
+- `V0023` (`merged_discharge_path`) / `V0376` (`release_c`): structural=4, profile=0.466
+- `V0084` (`release_c`) / `V0410` (`release_d`): structural=4, profile=0.334
+- `V0084` (`release_c`) / `V0470` (`release_d`): structural=4, profile=0.337
+- `V0138` (`release_c`) / `V0470` (`release_d`): structural=4, profile=0.338
+- `V0426` (`release_c`) / `V0802` (`release_d`): structural=4, profile=0.333
+- `V0470` (`release_d`) / `V0601` (`release_c`): structural=4, profile=0.343
+- `V0603` (`release_e`) / `V0725` (`release_d`): structural=4, profile=0.544
+- `V0021` (`merged_discharge_path`) / `V0084` (`release_c`): structural=5, profile=0.385
+
+## Residual
+
+789/846 variants (93.3%), 989/1050 cases (94.2%) unassigned.
+
+- `V0001`: The narrative ends in ER Sepsis Triage and does not represent any discharge pathway.
+- `V0002`: The narrative ends at CRP and does not represent a discharge pathway.
+- `V0003`: The narrative ends at Leucocytes and does not represent a discharge pathway.
+- `V0004`: The narrative terminates at IV Antibiotics without any discharge or return events.
+- `V0005`: The narrative terminates at LacticAcid without showing patient discharge.
+- `V0006`: The narrative ends with IV Antibiotics and does not reach a discharge disposition.
+- `V0007`: The narrative concludes with IV Antibiotics and lacks a discharge activity.
+- `V0008`: The narrative ends with Release A, which does not map to any of the specific categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0009`: The variant ends with IV Antibiotics and does not represent a discharge pathway.
+- `V0010`: The narrative terminates in ER Sepsis Triage and contains no discharge events.
+- `V0011`: The narrative ends with IV Antibiotics and does not show patient discharge.
+- `V0012`: The narrative concludes with IV Antibiotics without reaching a discharge destination.
+- `V0013`: The narrative ends with Leucocytes and does not include any discharge actions.
+- `V0014`: The narrative ends with Release A, which falls outside the target taxonomy categories.
+- `V0015`: The narrative terminates with Release A, not mapping to the defined categories.
+- `V0016`: The narrative concludes with Release A, which is not represented in the taxonomy categories.
+- `V0017`: The narrative ends with ER Sepsis Triage and does not represent a discharge pathway.
+- `V0018`: The narrative ends with Release A, which does not match any category in the taxonomy.
+- `V0019`: The narrative ends with IV Antibiotics and does not reach a discharge disposition.
+- `V0020`: The narrative terminates with CRP and has no discharge process.
+- `V0022`: The narrative terminates with Release A, which does not correspond to the targeted taxonomy categories.
+- `V0024`: The narrative ends with Admission NC and does not show final disposition or return.
+- `V0025`: The narrative terminates at IV Antibiotics without any discharge events.
+- `V0026`: The narrative ends with Release A followed by a return to ER, which does not map to any of the designated discharge pathways (merged discharge path, release_c, release_d, or release_e).
+- `V0027`: The variant ends with IV Antibiotics and does not reach a patient discharge disposition corresponding to the taxonomy categories.
+- `V0028`: The narrative results in Release A and a subsequent return to ER, which is outside the specified taxonomy categories.
+- `V0029`: The process variant terminates at Leucocytes without achieving any discharge disposition.
+- `V0030`: The narrative ends with Release A, which is not part of the merged discharge path or release types C, D, or E.
+- `V0031`: The variant terminates at LacticAcid without completing a discharge path.
+- `V0032`: The case concludes with Release A and a return to ER, failing to match any categories in the taxonomy.
+- `V0033`: The final outcome is Release A followed by Return ER, which does not align with the target category criteria.
+- `V0034`: The narrative stops at IV Liquid and lacks any disposition category matching the taxonomy.
+- `V0035`: The outcome is Release A, which is not represented within the target categories.
+- `V0036`: The process variant ends at CRP without reaching a final discharge event.
+- `V0037`: The narrative results in Release B, which does not match any of the specified taxonomy categories.
+- `V0038`: The sequence ends at IV Antibiotics without completing a discharge path.
+- `V0039`: The variant concludes with Release A, falling outside the defined taxonomy categories.
+- `V0040`: The process stops at Admission NC and does not reach a discharge disposition.
+- `V0041`: The narrative terminates at Release A, which is not among the listed category choices.
+- `V0042`: The variant ends in Release A, failing to align with any specific taxonomy categories.
+- `V0043`: The narrative stops at LacticAcid and does not achieve discharge.
+- `V0044`: The variant concludes with Release A, which is not included in the target taxonomy.
+- `V0045`: The process ends with Release A and a return to ER, which does not fit the taxonomy criteria.
+- `V0046`: The narrative terminates at Release A, outside the scope of the defined categories.
+- `V0047`: The outcome is Release A, which does not match any category in the taxonomy.
+- `V0048`: The variant ends with Release A, failing to align with the required categories.
+- `V0049`: The narrative finishes with Release A followed by Return ER, which does not map to the taxonomy.
+- `V0050`: The process variant terminates at CRP without reaching a discharge step.
+- `V0051`: The narrative ends in Release A, which does not map to merged_discharge_path, release_c, release_d, or release_e.
+- `V0052`: The narrative ends in Return ER following Release A, which does not map to any of the specific discharge categories in the taxonomy.
+- `V0053`: The narrative ends in Release A, which does not match the defined release categories.
+- `V0054`: The narrative ends in Return ER after Release A, which does not match the target taxonomy pathways.
+- `V0055`: The narrative ends in Return ER after Release A, which is not part of the specified release categories.
+- `V0056`: The narrative ends in IV Antibiotics without a final discharge category realization.
+- `V0057`: The narrative ends in Release A, which is not represented in the targeted taxonomy.
+- `V0058`: The narrative ends in Release A, which does not map to the categories.
+- `V0059`: The narrative ends in Release A, which falls outside the taxonomy categories.
+- `V0060`: The narrative ends in Return ER after Release A, not realizing any taxonomy categories.
+- `V0061`: The narrative ends in Release A, which is outside the specified category scope.
+- `V0062`: The narrative terminates at IV Antibiotics without matching any discharge categories.
+- `V0063`: The narrative ends in Release A, which does not realize the taxonomy alternatives.
+- `V0064`: The narrative ends in Release A, mapping to none of the category options.
+- `V0065`: The narrative ends in Release A, which is outside the taxonomy definitions.
+- `V0066`: The narrative ends in Release A, not matching any of the taxonomy release categories.
+- `V0067`: The narrative ends in Release A, which is not covered by the taxonomy.
+- `V0068`: The narrative ends in Release B, which does not match any of the given taxonomy category identifiers.
+- `V0069`: The narrative ends in Release A, which does not realize the target categories.
+- `V0070`: The narrative ends in Release A, falling outside the defined taxonomy.
+- `V0071`: The narrative ends in Return ER following Release A, not mapping to the taxonomy.
+- `V0072`: The narrative ends in Return ER after Release A, matching none of the categories.
+- `V0073`: The narrative ends in Release A, which is not included in the taxonomy.
+- `V0074`: The narrative ends in Return ER after Release A, which does not realize the taxonomy.
+- `V0075`: The narrative ends in Return ER following Release A, outside the scope of the taxonomy categories.
+- `V0076`: The narrative ends with Release B, which does not match any category in the taxonomy.
+- `V0077`: The narrative ends with Release B, which is outside the defined taxonomy categories.
+- `V0078`: The narrative ends with Return ER after Release A, fitting neither the merged path nor releases C, D, or E.
+- `V0079`: The outcome is Release A, which does not map to any of the specific taxonomy categories.
+- `V0080`: The outcome is Return ER following Release A, which does not realize any taxonomy category.
+- `V0081`: The process terminates at IV Liquid without reaching a discharge disposition category.
+- `V0082`: The narrative concludes with Release A, which falls outside the taxonomy categories.
+- `V0083`: The final event is Return ER after Release A, with no matching taxonomy category.
+- `V0085`: The narrative results in a Return ER following Release A, fitting no taxonomy category.
+- `V0086`: The outcome is Release A, which is not represented in the target taxonomy.
+- `V0087`: The narrative ends with Release A, outside the scope of the taxonomy categories.
+- `V0088`: The narrative concludes with IV Antibiotics, failing to reach a discharge disposition.
+- `V0089`: The variant ends with Return ER after Release A, matching none of the taxonomy choices.
+- `V0090`: The narrative terminates at Release A, which is not part of the taxonomy.
+- `V0092`: The process stops at LacticAcid without a discharge event.
+- `V0094`: The narrative ends in Return ER after Release A, with no matching taxonomy category.
+- `V0095`: The outcome is Release A, which falls outside the taxonomy categories.
+- `V0096`: The narrative ends with Release A, which is not part of the taxonomy.
+- `V0097`: The outcome is Release A, matching none of the defined taxonomy categories.
+- `V0098`: The narrative terminates with Return ER following Release A, outside the taxonomy scope.
+- `V0099`: The narrative concludes with Release A, which is not included in the taxonomy.
+- `V0100`: The variant ends with Release A, matching none of the taxonomy categories.
+- `V0101`: The narrative ends with Release A and Return ER, which does not match any of the specified target discharge categories (merged discharge path, release_c, release_d, release_e).
+- `V0102`: The narrative concludes with Release A, fitting neither the merged discharge pathway nor Release C, D, or E.
+- `V0103`: The narrative concludes with Release A, which falls outside the scope of the taxonomy categories.
+- `V0104`: The pathway results in Release A followed by Return ER, not realizing the defined taxonomy categories.
+- `V0105`: The narrative results in Release B, which is not part of the specified taxonomy categories.
+- `V0106`: The narrative ends with Release A, which does not map to any target taxonomy category.
+- `V0107`: The narrative concludes with Release A, falling outside the defined taxonomy categories.
+- `V0108`: The narrative ends with Release A and Return ER, which does not match the target category definitions.
+- `V0109`: The narrative finishes with Release A and Return ER, lacking alignment with the specified taxonomy.
+- `V0110`: The narrative concludes via Release A before returning to the ER, not realizing any target category.
+- `V0111`: The narrative ends with Admission NC and does not reach any final discharge category.
+- `V0112`: The pathway culminates in Release A and Return ER, fitting none of the taxonomy categories.
+- `V0113`: The narrative terminates with Release B, which is excluded from the taxonomy.
+- `V0114`: The narrative ends with Release A, failing to align with merged discharge paths, Release C, D, or E.
+- `V0115`: The narrative concludes with Release A and Return ER, matching none of the taxonomy alternatives.
+- `V0116`: The narrative ends in Release A followed by Return ER, not realizing the defined taxonomy.
+- `V0118`: The narrative concludes with Release A, which is not part of the target taxonomy.
+- `V0119`: The narrative finishes with Release A, leaving it in the residual category.
+- `V0120`: The narrative terminates with Release A and Return ER, fitting none of the specified taxonomy categories.
+- `V0121`: The narrative ends with Release A and Return ER, which does not match the taxonomy definitions.
+- `V0122`: The narrative concludes with Release A, falling outside the defined taxonomy categories.
+- `V0123`: The narrative ends with Release A followed by Return ER, failing to map to the target categories.
+- `V0124`: The narrative finishes via Release A and Return ER, not realizing any of the specified taxonomy categories.
+- `V0125`: The narrative culminates in Release A and Return ER, which does not match any of the target taxonomy alternatives.
+- `V0126`: The variant ends with Release A and does not match any of the specified discharge categories in the taxonomy.
+- `V0127`: The variant ends with LacticAcid and does not realize any discharge release categories.
+- `V0128`: The variant ends with Return ER following Release A, which does not match the target release categories.
+- `V0129`: The variant terminates with Return ER after Release A and does not map to any specified release category.
+- `V0130`: The variant ends with Release A, which is outside the scope of the taxonomy categories.
+- `V0131`: The variant ends with Return ER and does not realize the taxonomy pathways.
+- `V0132`: The variant concludes with IV Antibiotics and does not correspond to any discharge destination category.
+- `V0133`: The variant ends with IV Antibiotics, lacking a matching release disposition.
+- `V0134`: The variant terminates with Return ER following Release A.
+- `V0135`: The variant ends with Release A, which is not represented in the taxonomy.
+- `V0136`: The variant finishes with Return ER following Release A.
+- `V0137`: The variant ends with LacticAcid and does not contain a discharge pathway.
+- `V0139`: The variant ends with Release A, failing to align with any specified taxonomy category.
+- `V0140`: The variant terminates with Return ER after Release A.
+- `V0141`: The variant ends with Return ER following Release A.
+- `V0142`: The variant ends with Release A, which is outside the taxonomy categories.
+- `V0143`: The variant ends with Return ER after Release A.
+- `V0144`: The variant concludes with Release A, which is not part of the defined categories.
+- `V0145`: The variant ends with Release B, which does not match any of the target categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0146`: The variant ends with Leucocytes and does not represent a discharge pathway.
+- `V0147`: The variant concludes with Release B, which is outside the defined taxonomy categories.
+- `V0148`: The variant ends with IV Antibiotics and does not realize a discharge category.
+- `V0149`: The variant ends with Release A, which is not covered by the taxonomy.
+- `V0150`: The variant terminates with Release B, failing to match any of the target category options.
+- `V0152`: The variant ends with Release A, which does not match any of the specified taxonomy categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0153`: The variant ends with Release A, which is not part of the defined taxonomy categories.
+- `V0154`: The narrative concludes with Release A, fitting none of the target categories.
+- `V0155`: The narrative ends with Release A, which is outside the taxonomy scope.
+- `V0156`: The variant concludes with Release A and does not map to any category.
+- `V0157`: The variant concludes with Release A, falling into the residual category.
+- `V0158`: The variant ends with Release A, which is not represented in the taxonomy.
+- `V0159`: The narrative ends with Release A, leaving it unassigned.
+- `V0160`: The variant ends with Release A, which is outside the taxonomy categories.
+- `V0161`: The narrative concludes with Release A, resulting in a null assignment.
+- `V0162`: The variant ends with Release B, which does not match any category in the taxonomy.
+- `V0163`: The narrative finishes with Release A, fitting none of the options.
+- `V0164`: The variant ends with Release A, remaining part of the residual.
+- `V0165`: The variant terminates with Release A, which is not covered by the taxonomy.
+- `V0166`: The variant concludes with Release A and thus goes to the residual.
+- `V0167`: The narrative ends with Release A, leaving it unassigned.
+- `V0168`: The variant terminates with Release A, outside the target categories.
+- `V0169`: The variant ends with Release A, falling into the residual.
+- `V0170`: The variant concludes with Release B, which is not part of the taxonomy.
+- `V0171`: The variant ends with Release A, leaving it unassigned.
+- `V0172`: The narrative finishes with Release A, fitting none of the categories.
+- `V0173`: The variant ends with Release A, which is not included in the taxonomy.
+- `V0174`: The narrative terminates with Release A, belonging to the residual.
+- `V0175`: The variant ends with Release A, which has no matching category.
+- `V0176`: The narrative ends with Release A, which does not map to any of the specific taxonomy discharge pathways (Merged Discharge Path, Release C, Release D, or Release E).
+- `V0177`: The narrative results in Release A, outside the scope of the defined taxonomy categories.
+- `V0178`: The outcome is Release A, which does not correspond to the target categories of the taxonomy.
+- `V0179`: Although it leads to a return to the ER, the initial discharge is Release A, not realizing any of the taxonomy release categories.
+- `V0180`: The case terminates with Release A before returning to the ER, failing to match the target release categories.
+- `V0181`: The process variant ends with an intermediate activity (Leucocytes) rather than a final disposition matching the taxonomy.
+- `V0182`: The final outcome is Release A, which is not part of the defined taxonomy.
+- `V0183`: The variant concludes with Release A prior to the ER return, fitting none of the specified taxonomy paths.
+- `V0184`: The narrative results in Release A, which is outside the taxonomy scope.
+- `V0185`: The patient is discharged via Release A, not fulfilling any category criteria in the taxonomy.
+- `V0186`: The outcome is Release A, which does not match any category in the taxonomy.
+- `V0187`: The trace is incomplete, ending at CRP without a final disposition matching the taxonomy.
+- `V0188`: The narrative concludes with Release A, failing to realize the designated goal alternatives.
+- `V0189`: The variant ends with Release A, which is excluded from the targeted discharge categories.
+- `V0190`: The outcome is Release A, corresponding to none of the taxonomy categories.
+- `V0191`: The case concludes with Release A before the ER return, matching none of the taxonomy definitions.
+- `V0192`: The discharge type is Release A, which is outside the specific categories of the taxonomy.
+- `V0193`: The narrative results in Release A, aligning with none of the taxonomy release categories.
+- `V0194`: The outcome is Release A, which does not realize any taxonomy category.
+- `V0195`: The variant ends with Release A, falling outside the defined taxonomy.
+- `V0197`: The trace terminates on Leucocytes and lacks a formal disposition matching the taxonomy.
+- `V0198`: The outcome is Release A, which is not represented in the taxonomy.
+- `V0199`: The variant results in Release A prior to an ER return, matching none of the target categories.
+- `V0200`: The narrative concludes with Release A, failing to satisfy the criteria for any taxonomy category.
+- `V0201`: The narrative results in Release A and does not match any of the defined discharge pathways in the taxonomy.
+- `V0202`: The narrative ends with Release A, which is not covered by the categories in the taxonomy.
+- `V0203`: The outcome is Return ER following Release A, which does not align with the specific taxonomy discharge categories.
+- `V0204`: The final activity is Release A, outside the scope of the taxonomy categories.
+- `V0206`: The outcome is Release B, which is not part of the defined taxonomy categories.
+- `V0207`: The final activity is Release A, which does not correspond to any taxonomy category.
+- `V0208`: The variant ends with Release A, falling outside the target taxonomy.
+- `V0209`: The narrative concludes with Release A, not matching any taxonomy category.
+- `V0210`: The narrative results in Release A followed by an ER return, which does not map to the taxonomy.
+- `V0211`: The outcome is Release A leading to Return ER, outside the taxonomy categories.
+- `V0212`: The narrative ends with Release A and subsequent Return ER, not realizing any defined category.
+- `V0213`: The narrative ends with Release A and a return to ER, which is outside the taxonomy scope.
+- `V0214`: The final activity is Release A, which does not fit any category in the taxonomy.
+- `V0215`: The narrative terminates with Release A, falling into the residual.
+- `V0216`: The narrative concludes with Release A and an ER return, outside the taxonomy.
+- `V0217`: The outcome is IV Antibiotics, which does not represent a discharge pathway category.
+- `V0218`: The final state is Release B, which is not covered by the taxonomy categories.
+- `V0219`: The narrative ends with Leucocytes testing, not a discharge category.
+- `V0220`: The variant concludes with Release A and a return to ER, outside the taxonomy.
+- `V0221`: The outcome is Release A, which does not match any taxonomy category.
+- `V0222`: The narrative ends with Release A, falling into the residual.
+- `V0223`: The narrative culminates in Release A, outside the scope of the taxonomy.
+- `V0224`: The final activity is Release A followed by an ER return, not covered by the taxonomy.
+- `V0225`: The narrative ends with Release B, which is not part of the taxonomy categories.
+- `V0226`: The narrative outcome is Release A, which does not match any of the defined taxonomy categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0228`: The narrative outcome is Release A, which falls into the residual category as no taxonomy criteria fit.
+- `V0229`: The narrative ends with Return ER after Release A, so it does not realize any of the targeted discharge path categories.
+- `V0230`: The final activity is Return ER following Release A, fitting into the residual.
+- `V0231`: The narrative outcome is Return ER after Release A, which is outside the specific taxonomy categories.
+- `V0232`: The narrative terminates at IV Antibiotics and does not involve any of the specified discharge paths.
+- `V0233`: The final disposition leads to Return ER, leaving it outside the target categories.
+- `V0234`: The narrative ends at Leucocytes and has no discharge disposition matching the taxonomy.
+- `V0235`: The outcome is Release A, which is not part of the taxonomy.
+- `V0236`: The outcome is Release A, which is outside the defined taxonomy categories.
+- `V0237`: The narrative concludes with Return ER, meaning it does not realize the target discharge categories.
+- `V0238`: The outcome is Release A, belonging to the residual.
+- `V0240`: The outcome is Release A, which is not covered by the taxonomy.
+- `V0241`: The narrative leads to Return ER, falling into the residual.
+- `V0242`: The outcome is Return ER following Release A, which does not map to any defined category.
+- `V0243`: The narrative terminates with Return ER, fitting into the residual group.
+- `V0244`: The outcome is Release A, which is outside the taxonomy categories.
+- `V0245`: The outcome is Release A, placing it in the residual.
+- `V0246`: The outcome is Release A, which does not match any taxonomy category.
+- `V0247`: The narrative outcome is Release B, which is not represented in the specified taxonomy categories.
+- `V0248`: The outcome is Return ER after Release A, falling into the residual.
+- `V0249`: The outcome is Release A, which is not included in the taxonomy.
+- `V0250`: The outcome is Return ER following Release A, fitting the residual.
+- `V0251`: The narrative ends with Release A and does not match the specific discharge pathways for Release C, D, E, or the merged discharge path.
+- `V0252`: The narrative concludes with Release A, which does not correspond to categories release_c, release_d, release_e, or merged_discharge_path.
+- `V0253`: The variant results in Release A, outside the defined taxonomy categories.
+- `V0255`: The outcome is Release A, which is not represented in the taxonomy.
+- `V0256`: The narrative terminates with Return ER after an initial Release A, which does not match any category.
+- `V0257`: The narrative ends with Release A, falling outside the target categories.
+- `V0258`: The variant results in Release B, which is outside the scope of the given category definitions.
+- `V0259`: The outcome is Release A, not matching any of the taxonomy choices.
+- `V0260`: The process terminates at IV Antibiotics without a final discharge category.
+- `V0261`: The variant ends with Return ER following Release A, fitting none of the specified categories.
+- `V0262`: The narrative concludes with Return ER after Release A.
+- `V0263`: The outcome is Return ER following Release A.
+- `V0264`: The variant ends with Release A, which is not in the taxonomy.
+- `V0265`: The narrative terminates with Return ER.
+- `V0266`: The outcome is Release A.
+- `V0267`: The outcome is Release A.
+- `V0268`: The narrative ends with Leucocytes rather than a recognized discharge disposition.
+- `V0269`: The narrative ends with Return ER.
+- `V0270`: The narrative ends with Return ER.
+- `V0271`: The outcome is Release B, which is not part of the taxonomy.
+- `V0272`: The outcome is Release A.
+- `V0275`: The outcome is Release A.
+- `V0276`: The narrative ends in Release A, which is not part of the specified release categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0277`: The narrative ends in Return ER after Release A and does not map to any of the designated taxonomy pathways.
+- `V0278`: The narrative concludes with Release A, which does not correspond to the target taxonomy categories.
+- `V0279`: The outcome is Release A followed by Return ER, neither of which matches the taxonomy categories.
+- `V0280`: The narrative terminates with Release A and a return to the ER, fitting none of the specified discharge categories.
+- `V0281`: The narrative concludes with Release A, outside the defined target categories.
+- `V0282`: The outcome is Release A, which is not covered by the taxonomy.
+- `V0284`: The narrative ends with Release A and subsequent Return ER, not fitting the taxonomy.
+- `V0285`: The final activity is Release A, which does not match any of the target taxonomy categories.
+- `V0286`: The narrative ends with Release A, failing to match the target taxonomy categories.
+- `V0287`: The process terminates at CRP, which is not a discharge category.
+- `V0288`: The narrative concludes with Release A and Return ER, falling outside the taxonomy.
+- `V0289`: The narrative ends with Release A, which is not part of the taxonomy.
+- `V0290`: The outcome involves Release A and Return ER, matching none of the taxonomy categories.
+- `V0291`: The final activity is Release A, which does not fit the target categories.
+- `V0292`: The process stops at Leucocytes and does not reach a discharge disposition.
+- `V0293`: The narrative ends with Release A, which is outside the defined taxonomy.
+- `V0294`: The narrative concludes with Release A, matching none of the category options.
+- `V0295`: The process ends at IV Antibiotics without reaching a discharge disposition.
+- `V0296`: The outcome involves Release A and Return ER, which are not represented in the taxonomy.
+- `V0297`: The narrative terminates with Release A and Return ER, fitting none of the categories.
+- `V0298`: The final activity is Release A, outside the scope of the taxonomy.
+- `V0299`: The narrative ends with Release A, which is not part of the taxonomy.
+- `V0300`: The narrative finishes with Release A followed by Return ER, matching none of the defined taxonomy categories.
+- `V0301`: The narrative ends in Release A, which does not match any of the specified taxonomy categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0302`: The narrative ends in ER Sepsis Triage and does not represent a discharge pathway covered by the taxonomy.
+- `V0303`: The narrative concludes with Release A, which falls outside the target taxonomy categories.
+- `V0304`: The outcome is Release A, not corresponding to any categories in the taxonomy.
+- `V0305`: The narrative ends in IV Antibiotics, which is not a discharge category.
+- `V0306`: The outcome is Release A, which is outside the defined taxonomy.
+- `V0307`: The narrative ends in Release A before returning to the ER, not realizing any taxonomy category.
+- `V0308`: The narrative ends in Release A, which does not map to merged_discharge_path, release_c, release_d, or release_e.
+- `V0309`: The narrative ends in Admission NC and Release B, neither of which matches the taxonomy categories.
+- `V0310`: The outcome is Release A, which is excluded from the targeted taxonomy categories.
+- `V0311`: The narrative ends in Release A prior to an ER return, failing to match any category.
+- `V0312`: The narrative terminates with Release A, which is not part of the taxonomy.
+- `V0315`: The outcome is Release A, which does not match the available taxonomy categories.
+- `V0317`: The final discharge activity is Release A, which does not correspond to any category in the taxonomy.
+- `V0318`: The narrative results in Release A, outside the scope of the taxonomy categories.
+- `V0319`: The outcome is Release A, which is not included in the taxonomy.
+- `V0320`: The narrative ends in Release A, failing to match the defined taxonomy.
+- `V0321`: The narrative terminates in Release A, which is not part of the taxonomy.
+- `V0322`: The narrative ends in IV Antibiotics and lacks a discharge category from the taxonomy.
+- `V0323`: The narrative concludes with Release A, which does not fit any of the taxonomy categories.
+- `V0324`: The narrative results in Release A, which falls outside the target taxonomy categories.
+- `V0325`: The narrative ends in IV Antibiotics without reaching a relevant discharge category.
+- `V0326`: The narrative ends with Release A, which does not map to any of the specific discharge taxonomy categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0327`: The narrative ends with Return ER after a Release A, fitting into residual outcomes rather than the specific release pathways.
+- `V0328`: The final outcome is Return ER following Release A, falling outside the defined taxonomy categories.
+- `V0329`: The narrative terminates with Release A, which is not part of the specified release categories.
+- `V0330`: The variant ends in IV Liquid and does not reach a discharge disposition corresponding to the taxonomy.
+- `V0331`: The case concludes with Release A, which is outside the target discharge categories.
+- `V0332`: The narrative ends with Release B, which does not match any of the designated taxonomy category IDs.
+- `V0333`: The narrative terminates in Release B, outside the scope of the taxonomy categories.
+- `V0335`: The variant ends with a Return ER following Release A, which does not fit the taxonomy categories.
+- `V0336`: The process terminates at CRP, lacking a discharge disposition.
+- `V0337`: The narrative concludes with Release A, which is not covered by the defined taxonomy.
+- `V0338`: The narrative concludes with Release A, outside the designated category IDs.
+- `V0339`: The variant ends in Return ER after Release A, which falls into the residual category.
+- `V0340`: The case ends with Release A, not mapping to the specified category options.
+- `V0341`: The final activity is Release A, which does not match any category in the taxonomy.
+- `V0342`: The process ends at CRP without any discharge pathway.
+- `V0343`: The narrative finishes with Release A, falling outside the taxonomy.
+- `V0344`: The narrative ends with Release B, which is not among the allowed category IDs.
+- `V0345`: The case concludes with Release A, leaving it uncategorized by the specific release types.
+- `V0346`: The variant concludes with a Return ER following Release A, outside the target categories.
+- `V0348`: The narrative terminates with Return ER after Release A, which is not part of the taxonomy.
+- `V0349`: The process terminates at ER Sepsis Triage, lacking any discharge event.
+- `V0350`: The narrative ends in Return ER following Release A, which does not realize any of the targeted categories.
+- `V0351`: The narrative results in Release A, which does not map to merged_discharge_path, release_c, release_d, or release_e.
+- `V0352`: The narrative results in Return ER via Release A, which does not correspond to any of the specified taxonomy categories.
+- `V0353`: The narrative shows Release A followed by Return ER, with no matching category in the taxonomy.
+- `V0354`: The outcome is Release A, which does not align with merged_discharge_path, release_c, release_d, or release_e.
+- `V0355`: The outcome is Release A, not corresponding to any target release categories in the taxonomy.
+- `V0356`: The narrative concludes with Release A, outside the defined scope of the taxonomy.
+- `V0357`: The process ends in Return ER after Release A, which is not represented in the taxonomy.
+- `V0358`: The outcome involves Release A and Return ER, fitting none of the specified discharge categories.
+- `V0359`: The process concludes with Return ER following Release A, with no matching taxonomy category.
+- `V0360`: The outcome is Release A, which is not part of the defined taxonomy.
+- `V0361`: The narrative ends with Release A, failing to realize any taxonomy categories.
+- `V0362`: The variant results in Release A, which is excluded from the target categories.
+- `V0363`: The narrative outcome is Release A, matching none of the taxonomy goals.
+- `V0364`: The narrative results in Release A and Return ER, fitting no taxonomy definitions.
+- `V0365`: The process ends with Leucocytes testing, not discharging under any of the target categories.
+- `V0366`: The outcome includes Release A and Return ER, which are outside the taxonomy categories.
+- `V0367`: The narrative terminates with Return ER after Release A, with no applicable category.
+- `V0368`: The variant ends in Admission NC without reaching any specific discharge categories.
+- `V0369`: The outcome is Return ER following Release A, matching none of the target categories.
+- `V0370`: The process concludes with Return ER, which does not fit the taxonomy definitions.
+- `V0371`: The outcome is Release B, which is not represented in the given taxonomy categories.
+- `V0372`: The narrative results in Release A, failing to align with the specified taxonomy.
+- `V0373`: The outcome is Release A, not corresponding to any category in the taxonomy.
+- `V0374`: The process ends with Leucocytes testing, fulfilling none of the discharge pathways.
+- `V0375`: The narrative terminates with Release A, which is outside the taxonomy's scope.
+- `V0377`: The narrative concludes with Release A, which does not match any of the designated discharge categories in the taxonomy.
+- `V0378`: The narrative concludes with IV Antibiotics and does not involve any of the target discharge pathways.
+- `V0379`: The narrative ends with IV Antibiotics and lacks a final discharge disposition corresponding to the taxonomy.
+- `V0380`: The narrative concludes with Release A, which is outside the specified taxonomy categories.
+- `V0381`: The narrative concludes with Release A, failing to align with the categories provided.
+- `V0382`: The narrative ends with Return ER following Release A, which does not map to any category.
+- `V0383`: The narrative results in Release A, outside the scope of the taxonomy categories.
+- `V0384`: The narrative concludes with Release B, which is not part of the taxonomy.
+- `V0385`: The narrative results in Return ER after Release A, matching none of the defined categories.
+- `V0386`: The narrative ends in Return ER following Release A, fitting no category.
+- `V0387`: The narrative concludes with Release A, which is not represented in the taxonomy.
+- `V0388`: The narrative results in Release A, missing any fit with the given taxonomy categories.
+- `V0389`: The narrative concludes with Release A, which is not covered by the taxonomy.
+- `V0390`: The narrative ends with Release B, outside the listed category options.
+- `V0391`: The narrative concludes with Release A, fitting none of the taxonomy choices.
+- `V0392`: The narrative results in Release A, which is not one of the target categories.
+- `V0393`: The narrative concludes with Release B, falling outside the taxonomy.
+- `V0394`: The narrative ends with Release A, matching none of the taxonomy categories.
+- `V0395`: The narrative concludes with Release A, which is not part of the taxonomy.
+- `V0396`: The narrative results in Release A, outside the scope of the defined categories.
+- `V0397`: The narrative concludes with Release A, fitting none of the specified taxonomy options.
+- `V0398`: The narrative ends with Return ER after Release A, not matching any category.
+- `V0399`: The narrative concludes with Release B, which is absent from the taxonomy.
+- `V0400`: The narrative ends with Release A, outside the valid category choices.
+- `V0401`: Outcome is Release B, which does not match any category in the taxonomy.
+- `V0402`: Outcome is Return ER with Release A, not fitting the specified release categories.
+- `V0403`: Outcome is Return ER following Release A, which does not map to the taxonomy categories.
+- `V0404`: Outcome is Return ER following Release A, fitting none of the target categories.
+- `V0405`: Outcome is Release A, which is outside the defined taxonomy categories.
+- `V0406`: Outcome is Release A, not covered by the taxonomy.
+- `V0407`: Outcome is Release B, which is not in the taxonomy.
+- `V0408`: Outcome is Return ER after Release A, not matching the taxonomy.
+- `V0409`: Outcome is Return ER following Release A, which does not match any category.
+- `V0411`: Outcome is Leucocytes/Return ER, which does not match the taxonomy categories.
+- `V0412`: Outcome is Return ER following Release A, not fitting the taxonomy.
+- `V0413`: Outcome is Return ER after Release A, outside the scope of the categories.
+- `V0414`: Outcome is Return ER following Release A, not in the taxonomy.
+- `V0415`: Outcome is Admission NC, which is not a release category.
+- `V0416`: Outcome is Release A, which is not part of the taxonomy.
+- `V0417`: Outcome is ER Triage, which does not match any taxonomy category.
+- `V0418`: Outcome is Return ER following Release A, fitting none of the categories.
+- `V0419`: Outcome is Release A, not in the taxonomy.
+- `V0420`: Outcome is Release A, which is not part of the taxonomy.
+- `V0421`: Outcome is Release B, which does not fit the taxonomy.
+- `V0422`: Outcome is Return ER following Release A, not matching the categories.
+- `V0424`: Outcome is Return ER following Release A, not matching the taxonomy.
+- `V0425`: Outcome is Release A, which is outside the taxonomy categories.
+- `V0429`: The narrative outcome is IV Antibiotics without any of the target release types.
+- `V0430`: The narrative ends with Release A, which does not correspond to any of the specified taxonomy categories.
+- `V0431`: The narrative terminates with Release A, falling outside the defined taxonomy release categories.
+- `V0432`: The outcome is Release B, which is not part of the taxonomy category set.
+- `V0434`: The narrative outcome is Release A, which is not included in the taxonomy categories.
+- `V0435`: The narrative terminates at Release A and returns to the ER, not fitting any of the target categories.
+- `V0436`: The outcome is Release B, which does not match the target release categories.
+- `V0438`: The narrative concludes with Release A, which is outside the taxonomy scope.
+- `V0439`: The narrative ends with Release A, which does not map to any of the target taxonomy categories.
+- `V0440`: The outcome is Release A followed by Return ER, which does not fit the defined categories.
+- `V0441`: The narrative finishes with Release A, failing to match the target release categories.
+- `V0442`: The narrative terminates with Release A, which is not in the category set.
+- `V0443`: The narrative outcome is Release A, falling outside the target taxonomy.
+- `V0445`: The narrative concludes with Release A, which does not fit any taxonomy categories.
+- `V0446`: The outcome is Release A, outside the scope of the taxonomy categories.
+- `V0448`: The narrative ends with Release A, which is not among the target categories.
+- `V0449`: The outcome is Release A, thus falling into the residual.
+- `V0450`: The narrative terminates with Release A, which does not match any of the defined taxonomy categories.
+- `V0451`: The narrative ends with Release A, which does not match any of the defined taxonomy categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0452`: The narrative ends with Release A, which falls outside the scope of the target release categories.
+- `V0453`: The narrative ends with Release A and a subsequent Return ER, which does not map to any category in the taxonomy.
+- `V0454`: The narrative ends with Release A followed by Return ER, representing residual behavior outside the taxonomy.
+- `V0455`: The outcome is Release A, which is not part of the defined target categories.
+- `V0456`: The outcome is Release A, outside the taxonomy categories.
+- `V0457`: The narrative results in Release A, meaning it does not realize the specified target categories.
+- `V0458`: The final disposition is Release A, falling into the residual group.
+- `V0459`: The narrative ends in Release A, which is not captured by the provided taxonomy categories.
+- `V0460`: The outcome is Release A followed by Return ER, which does not align with any taxonomy definitions.
+- `V0461`: The outcome is Release A, which is outside the defined categories.
+- `V0462`: The process terminates at CRP without a recognized discharge category.
+- `V0463`: The narrative ends with Release A and Return ER, leaving it in the residual.
+- `V0464`: The narrative terminates at Release A, not matching any targeted discharge alternatives.
+- `V0465`: The outcome is Release A, which is excluded from the taxonomy categories.
+- `V0466`: The narrative ends in Release A, falling into the residual.
+- `V0467`: The process concludes with Release A and Return ER, outside the taxonomy.
+- `V0468`: The variant ends with Release A, not matching any of the specific release categories.
+- `V0469`: The outcome is Release A, which does not realize any of the targeted categories.
+- `V0471`: The narrative ends with Release A, outside the scope of the taxonomy.
+- `V0472`: The outcome is Release A, which does not fit any of the taxonomy categories.
+- `V0473`: The process finishes with Release A followed by Return ER, falling into the residual.
+- `V0474`: The narrative results in Release A, which is not represented in the categories.
+- `V0475`: The narrative concludes with Release A, leaving it unassigned in the residual.
+- `V0476`: The narrative ends with Release A and Return ER, which does not match any of the target categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0477`: The narrative ends with Release A, which is not part of the specified taxonomy categories.
+- `V0478`: The outcome is Release A, which does not correspond to any category in the taxonomy.
+- `V0479`: The narrative ends with Return ER following Release A, fitting none of the taxonomy choices.
+- `V0480`: The variant concludes with Release A, failing to realize any of the target categories.
+- `V0481`: The outcome is Release A, which is outside the scope of the defined categories.
+- `V0482`: The narrative ends with Return ER after Release A, matching none of the target taxonomy items.
+- `V0483`: The outcome is Release B, which is not represented in the category taxonomy.
+- `V0484`: The narrative concludes with Return ER, which does not map to any category.
+- `V0485`: The outcome is Release A, falling outside the target categories.
+- `V0487`: The narrative ends with Release A, which is not included in the taxonomy.
+- `V0488`: The outcome is IV Liquid, meaning the patient was not discharged in this variant.
+- `V0489`: The variant concludes with Release A, failing to match any taxonomy category.
+- `V0490`: The outcome is Release A, which does not fit any of the designated categories.
+- `V0491`: The narrative ends with Release A, outside the scope of the target taxonomy.
+- `V0492`: The outcome is IV Liquid without discharge, matching none of the release categories.
+- `V0493`: The narrative terminates in Release B, which is not part of the taxonomy.
+- `V0494`: The outcome is Release A, not corresponding to any category in the list.
+- `V0495`: The variant ends with IV Antibiotics, showing no discharge event.
+- `V0496`: The narrative ends with Release A, which is not covered by the taxonomy.
+- `V0497`: The outcome is Return ER after Release A, matching none of the specific taxonomy alternatives.
+- `V0499`: The outcome is Release A, which is outside the specified categories.
+- `V0500`: The narrative ends with Release A, realizing none of the taxonomy categories.
+- `V0501`: The variant ends with IV Liquid and does not reach any discharge or release category.
+- `V0502`: The variant terminates at Admission NC without reaching any final discharge or release pathway.
+- `V0503`: The variant terminates with Release B, which is outside the categories defined in the taxonomy.
+- `V0504`: The variant results in a Return ER outcome after Release A, fitting neither merged discharge nor specific release categories.
+- `V0505`: The variant results in a Return ER outcome after Release A, which does not map to the required taxonomy categories.
+- `V0506`: The variant ends in Release A, which is not represented in the targeted taxonomy categories.
+- `V0507`: The variant terminates at IV Antibiotics without reaching a discharge disposition.
+- `V0508`: The variant ends with a Return ER after Release A, fitting none of the specified taxonomy options.
+- `V0509`: The variant concludes with Release A, which does not map to any defined category_id.
+- `V0510`: The variant terminates at IV Antibiotics without reaching a final release state.
+- `V0511`: The variant ends in Release A, which is outside the taxonomy categories.
+- `V0512`: The variant terminates at Release A, not matching any taxonomy category.
+- `V0513`: The variant ends in Release A, which is not one of the allowed taxonomy options.
+- `V0514`: The variant concludes with Release A, failing to match the target taxonomy categories.
+- `V0515`: The variant results in a Return ER outcome following Release A, fitting none of the specified categories.
+- `V0516`: The variant terminates prematurely at Leucocytes without reaching a discharge or release.
+- `V0517`: The variant terminates at ER Triage without reaching any discharge outcome.
+- `V0518`: The variant ends with Release A, which is outside the specified taxonomy categories.
+- `V0519`: The variant ends in Return ER after Release A, not matching the taxonomy.
+- `V0520`: The variant terminates in Return ER after Release A, fitting none of the target categories.
+- `V0521`: The variant ends with Release A, which is not represented in the taxonomy.
+- `V0522`: The variant terminates at Release B, which is excluded from the defined taxonomy categories.
+- `V0523`: The variant concludes with Release A, not fitting any taxonomy categories.
+- `V0524`: The variant ends with Release A, which is not part of the taxonomy.
+- `V0525`: The variant terminates at Release A, failing to map to any specified category.
+- `V0526`: The narrative ends with Release A followed by Return ER, which does not map to merged_discharge_path, release_c, release_d, or release_e.
+- `V0527`: The narrative concludes with Release A, fitting neither merged_discharge_path nor release_c, release_d, or release_e.
+- `V0528`: The outcome is Release A followed by Return ER, which does not correspond to any of the specified target categories.
+- `V0529`: The variant results in Release A and then Return ER, which falls outside the taxonomy categories.
+- `V0530`: The narrative culminates in Release A and Return ER, meaning no target category is realized.
+- `V0531`: The final disposition involves Release A before a return to ER, matching none of the taxonomy choices.
+- `V0532`: The patient is discharged via Release A, which is outside the scope of the defined taxonomy categories.
+- `V0533`: The outcome is Release A, not corresponding to the specific release types or merged path of the taxonomy.
+- `V0534`: The narrative concludes with Release A, so it belongs to the residual set.
+- `V0535`: Discharge via Release A and subsequent ER return does not match any category.
+- `V0536`: The process ends with Release A, failing to align with the taxonomy's categories.
+- `V0537`: The patient is released with Release A, which is not represented in the taxonomy.
+- `V0538`: The final outcome is Release A, placing this variant in the residual.
+- `V0539`: The variant ends with Release A and a return to ER, falling outside the target taxonomy.
+- `V0540`: The final activity is Release B, which is not part of the target categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0541`: The narrative ends with Release A, making it part of the residual.
+- `V0542`: The variant concludes with Release A, which is outside the specified taxonomy categories.
+- `V0543`: The narrative results in Release A and Return ER, matching none of the taxonomy items.
+- `V0544`: The process finishes with Release A, fitting into the residual.
+- `V0545`: Discharge via Release A does not realize any of the defined taxonomy categories.
+- `V0546`: The variant ends in Release A and Return ER, which is not within the taxonomy.
+- `V0547`: The final activity is Release B, which is absent from the target taxonomy categories.
+- `V0548`: The narrative culminates in Release A, assigning it to the residual category.
+- `V0549`: The process ends prematurely with IV Liquid without a final discharge category match.
+- `V0550`: The outcome is Release B, which does not correspond to the targeted taxonomy categories.
+- `V0551`: Outcome is Release A, which does not map to any of the taxonomy categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0552`: Outcome is Release B, which does not match the target release categories defined in the taxonomy.
+- `V0554`: Outcome is Release A, falling outside the specified taxonomy categories.
+- `V0555`: Outcome is Release B, which is not part of the defined taxonomy categories.
+- `V0556`: Outcome is Return ER following Release A, which does not correspond to the targeted release categories.
+- `V0557`: Outcome is Release A, which is not included in the taxonomy.
+- `V0558`: Outcome is Return ER after Release A, fitting neither merged discharge nor release c/d/e.
+- `V0559`: Outcome is Return ER after Release A, not matching the taxonomy.
+- `V0560`: Outcome is Return ER after Release A, which is outside the taxonomy scope.
+- `V0561`: Outcome is Release A, not corresponding to the defined categories.
+- `V0562`: Outcome is Release A, which is not part of the taxonomy.
+- `V0563`: Outcome is Release A, outside the taxonomy categories.
+- `V0564`: Outcome is Return ER after Release A, not realizing any taxonomy category.
+- `V0565`: Outcome is Admission NC, which does not match any discharge release category.
+- `V0566`: Outcome is Release A, which is not represented in the taxonomy.
+- `V0567`: Outcome is Return ER after Release A, not fitting the categories.
+- `V0568`: Outcome is Release A, outside the scope of the taxonomy.
+- `V0569`: Outcome is Release A, not matching any taxonomy category.
+- `V0570`: Outcome is Release A, which does not map to the defined categories.
+- `V0571`: Outcome is Release B, which is excluded from the taxonomy categories.
+- `V0572`: Outcome is Release A, not matching the taxonomy.
+- `V0573`: Outcome is Return ER after Release A, outside the taxonomy.
+- `V0574`: Outcome is Release A, which is not part of the taxonomy categories.
+- `V0575`: Outcome is Leucocytes (incomplete pathway), not realizing any discharge category.
+- `V0576`: The narrative ends with Release A, which does not map to any of the specified release categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0577`: The narrative ends with Return ER after Release A, which does not match any of the defined discharge categories.
+- `V0578`: The narrative terminates with Release A and a subsequent Return ER, fitting none of the target categories.
+- `V0579`: The narrative ends with Release A followed by Return ER, which does not align with the target categories.
+- `V0580`: The outcome is CRP, which is not a discharge category.
+- `V0582`: The narrative terminates with Release A, which is not among the target categories.
+- `V0583`: The narrative ends with Release A, which falls into the residual.
+- `V0584`: The outcome is IV Liquid, representing an incomplete discharge process.
+- `V0585`: The narrative ends with LacticAcid and does not realize any release category.
+- `V0586`: The narrative ends with Release B, which is outside the defined taxonomy categories.
+- `V0587`: The outcome is CRP, with no discharge event present.
+- `V0589`: The narrative terminates with Release B, which is not included in the taxonomy categories.
+- `V0590`: The narrative ends with Release A and Return ER, which does not match the target release categories.
+- `V0591`: The narrative ends with Release A followed by Return ER, fitting none of the specified categories.
+- `V0592`: The outcome is IV Antibiotics, indicating an ongoing treatment phase rather than discharge.
+- `V0593`: The narrative ends with Release A, which is part of the residual.
+- `V0594`: The narrative terminates with Release B, outside the taxonomy scope.
+- `V0595`: The narrative ends with Release A and a return to the ER, matching none of the target categories.
+- `V0596`: The outcome is Release A, which is not part of the target taxonomy.
+- `V0597`: The narrative ends with Release A, falling into the residual.
+- `V0599`: The narrative terminates with Release A, which does not match any category.
+- `V0600`: The narrative ends with Release A, which is outside the specified categories.
+- `V0604`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0605`: The narrative concludes with Release A followed by Return ER, which does not fit any of the target taxonomy categories.
+- `V0606`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0607`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0608`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0609`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0610`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0611`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0612`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0613`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0614`: The narrative concludes with Release A followed by Return ER, which does not fit any of the target taxonomy categories.
+- `V0616`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0617`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0619`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0620`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0621`: The narrative concludes with Release B, which is not represented in the target taxonomy categories.
+- `V0622`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0623`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0624`: The narrative concludes with Release A, which is not represented in the target taxonomy categories.
+- `V0625`: The narrative concludes with Release A followed by Return ER, which does not fit any of the target taxonomy categories.
+- `V0626`: The variant ends with Release A and does not match any of the designated discharge pathway categories.
+- `V0627`: The variant ends with Return ER and does not match the specific release categories.
+- `V0628`: The variant results in Release A which is outside the specified taxonomy categories.
+- `V0630`: The variant ends in Release A, which is not part of the taxonomy.
+- `V0631`: The narrative terminates with Return ER.
+- `V0632`: The narrative terminates with Return ER following Release A.
+- `V0634`: The variant results in Release A.
+- `V0635`: The narrative results in Release A followed by Return ER.
+- `V0636`: The narrative outcome is LacticAcid, not a recognized discharge category.
+- `V0637`: The variant ends with Release A.
+- `V0638`: The narrative ends with Return ER.
+- `V0639`: The narrative results in Return ER.
+- `V0640`: The narrative outcome involves Return ER.
+- `V0641`: The narrative outcome involves Return ER.
+- `V0642`: The variant ends with Release A.
+- `V0643`: The variant ends with Return ER.
+- `V0644`: The narrative outcome is CRP.
+- `V0645`: The narrative outcome is LacticAcid.
+- `V0646`: The narrative ends with LacticAcid.
+- `V0647`: The variant ends with Release A.
+- `V0648`: The variant ends with Release A.
+- `V0649`: The narrative results in Return ER.
+- `V0650`: The narrative terminates with Return ER.
+- `V0651`: The narrative ends with Release A and a return to the ER, which does not match any of the designated discharge categories (merged discharge path, release_c, release_d, or release_e).
+- `V0652`: The variant concludes with Release A followed by an ER return, falling outside the defined taxonomy categories.
+- `V0653`: The narrative results in Release A, which does not correspond to the target categories in the taxonomy.
+- `V0654`: The outcome activity is Leucocytes rather than any discharge or release pathway.
+- `V0655`: The variant terminates with Release A, which is not part of the specified goal-model categories.
+- `V0657`: The case ends with Release A, failing to align with the specified categories.
+- `V0658`: The process concludes via Release A and subsequent ER return, fitting none of the target categories.
+- `V0659`: The outcome is Release A, which is outside the scope of the defined taxonomy categories.
+- `V0660`: The variant ends in Release A, meaning it does not realize the target categories.
+- `V0661`: The final activity is Release A, which does not match any taxonomy category.
+- `V0662`: The sequence terminates with Release A and an ER return, matching none of the criteria.
+- `V0663`: The process stops at Admission NC, representing an intermediate stage rather than a final discharge category.
+- `V0664`: The narrative ends abruptly at IV Liquid without reaching any final disposition or release category.
+- `V0665`: The outcome is Release A, which is not mapped to any of the taxonomy categories.
+- `V0666`: The narrative finishes with Release A, falling into the residual group.
+- `V0667`: The process results in Release A and an ER return, fitting none of the valid taxonomy categories.
+- `V0668`: The final state is Release A, outside the scope of the target taxonomy.
+- `V0669`: The narrative concludes with Release A, which is not covered by the taxonomy.
+- `V0670`: The sequence ends with Leucocytes following an ER return after Release A, matching none of the categories.
+- `V0671`: The outcome is Release A followed by an ER return, leaving it unassigned.
+- `V0672`: The narrative terminates with Release B, which is not among the allowed category values.
+- `V0673`: The case ends with Release A, failing to realize any taxonomy category.
+- `V0674`: The variant concludes with Release A, which does not fit any of the defined categories.
+- `V0676`: The narrative ends with IV Antibiotics and does not conclude with a discharge category aligned with the goal-model alternatives.
+- `V0677`: The narrative features Release A, which does not map to merged_discharge_path, release_c, release_d, or release_e.
+- `V0678`: The narrative concludes with Release A, which is outside the specified taxonomy categories.
+- `V0679`: The narrative terminates at IV Antibiotics without reaching a discharge pathway.
+- `V0680`: The narrative ends with Release A, which is not part of the target taxonomy.
+- `V0681`: The final disposition is Release A, not corresponding to any category in the taxonomy.
+- `V0682`: The narrative concludes with Release B, which is outside the defined taxonomy categories.
+- `V0683`: The final activity is Release A, which is not captured by the categories.
+- `V0684`: The narrative ends in Release A, outside the specified taxonomy.
+- `V0685`: The process terminates at IV Antibiotics without reaching discharge.
+- `V0686`: The narrative ends with Release A before a return to ER, not matching the target taxonomy categories.
+- `V0687`: The narrative concludes with Release A, which is not included in the taxonomy.
+- `V0688`: The process results in Release A, falling outside the defined categories.
+- `V0689`: The narrative terminates at IV Antibiotics without reaching any discharge milestone.
+- `V0690`: The narrative finishes with Release A, which is not part of the taxonomy.
+- `V0691`: The narrative terminates with Release B, which is outside the specific categories listed in the taxonomy.
+- `V0692`: The outcome is Release B, not corresponding to any of the four defined taxonomy categories.
+- `V0693`: The narrative concludes with Release A, which falls into the residual.
+- `V0694`: The process ends at ER Sepsis Triage and does not represent a discharge pathway.
+- `V0695`: The narrative ends with Release A, outside the target categories.
+- `V0696`: The outcome is Release A, which is not part of the taxonomy.
+- `V0697`: The narrative concludes with Release A, falling into the residual.
+- `V0698`: The narrative ends with Release A, not matching any specified category.
+- `V0699`: The process finishes with Release A, outside the taxonomy categories.
+- `V0700`: The narrative ends with Release B, which is not represented in the taxonomy.
+- `V0702`: The narrative outcome is Release A, which does not map to any of the specified taxonomy categories.
+- `V0703`: The narrative outcome is IV Liquid, which does not correspond to any discharge category in the taxonomy.
+- `V0704`: The narrative outcome is Release A, which falls outside the defined release categories in the taxonomy.
+- `V0705`: The narrative outcome is Return ER, which does not realize any of the discharge categories.
+- `V0706`: The narrative outcome is Release A, not matching any taxonomy category.
+- `V0707`: The narrative outcome is Admission NC, which is not a discharge category.
+- `V0708`: The narrative outcome is IV Antibiotics, which does not correspond to a taxonomy category.
+- `V0709`: The narrative outcome is Release B, which is outside the defined taxonomy categories.
+- `V0711`: The narrative outcome is Release A, not matching any taxonomy category.
+- `V0712`: The narrative outcome is Return ER, which does not realize any of the discharge categories.
+- `V0713`: The narrative outcome is IV Antibiotics, which does not map to any taxonomy category.
+- `V0714`: The narrative outcome is Release A, which is not represented in the taxonomy.
+- `V0715`: The narrative outcome is Release B, outside the taxonomy categories.
+- `V0716`: The narrative outcome is Release A, which does not match any category.
+- `V0717`: The narrative outcome is Release A, not matching any taxonomy category.
+- `V0719`: The narrative outcome is Return ER after a release, but the variant does not map directly to a target taxonomy discharge category.
+- `V0720`: The narrative outcome is Return ER, which does not fit any of the taxonomy categories.
+- `V0721`: The narrative outcome is Return ER, which does not match the target taxonomy categories.
+- `V0722`: The narrative outcome is Release A, which is not in the taxonomy.
+- `V0723`: The narrative outcome is Release A, not matching any category.
+- `V0724`: The narrative outcome is Return ER, which does not realize any taxonomy category.
+- `V0726`: Outcome is Release A, which does not match any of the defined taxonomy categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0727`: Outcome is Return ER with a prior Release A, which does not map to any of the specified release categories.
+- `V0728`: Outcome is Release A, not falling under merged discharge path or release C, D, or E.
+- `V0729`: Outcome is Release A, which is outside the scope of the target categories.
+- `V0730`: Outcome is Release A, outside the categories in the taxonomy.
+- `V0731`: Outcome is Release A, which is not represented in the category set.
+- `V0732`: Outcome is Release A, which does not match the target release categories.
+- `V0733`: Outcome is Release A, which does not match any category.
+- `V0734`: Outcome is Return ER following Release A, outside the taxonomy categories.
+- `V0735`: Outcome is Release A, which is not in the taxonomy.
+- `V0736`: Outcome is Release A, which does not fit the taxonomy categories.
+- `V0737`: Outcome is Release A, outside of the provided discharge categories.
+- `V0738`: Outcome is Release A, not part of the taxonomy.
+- `V0739`: Outcome is Release A, which does not match the defined categories.
+- `V0740`: Outcome is Release A, which is outside the target taxonomy.
+- `V0741`: Outcome is Release A, not corresponding to any taxonomy category.
+- `V0742`: Outcome is LacticAcid, which is an in-process diagnostic activity and not a discharge disposition.
+- `V0743`: Outcome is Release A, which is outside the taxonomy categories.
+- `V0744`: Outcome is Return ER following Release A, outside the scope of the taxonomy.
+- `V0745`: Outcome is Return ER following Release A, not fitting the taxonomy.
+- `V0746`: Outcome is Return ER following Release A, outside the target categories.
+- `V0748`: Outcome is Return ER following Release A, which does not match any taxonomy category.
+- `V0749`: Outcome is Release A, which is not covered by the taxonomy.
+- `V0750`: Outcome is IV Antibiotics, which is an intermediate care activity and not a discharge disposition.
+- `V0751`: This variant ends with Release A and does not align with merged discharge paths, Release C, Release D, or Release E.
+- `V0752`: This variant concludes with a return to the ER after Release A and does not fit any of the specified target discharge categories.
+- `V0753`: The narrative concludes with a return to the ER after Release A, falling outside the defined taxonomy categories.
+- `V0754`: The variant ends with a return to the ER following Release A and does not match the specific discharge pathways.
+- `V0755`: This variant terminates with Release A and is not mapped to the designated taxonomy alternatives.
+- `V0756`: Ending in a return to the ER after Release A, this variant does not realize any of the targeted discharge categories.
+- `V0757`: This variant results in a return to the ER following Release A, outside the scope of the given taxonomy.
+- `V0758`: The narrative terminates with Release A without realizing the specific categories of the taxonomy.
+- `V0759`: This process variant halts at IV Antibiotics and does not reach a patient discharge disposition.
+- `V0760`: The variant ends with Release A and does not fulfill any of the specialized discharge pathways.
+- `V0761`: This variant ends with Release A, failing to match any of the defined taxonomy categories.
+- `V0762`: Concluding with Release A, this narrative does not fit the target discharge categories.
+- `V0763`: This variant results in a return to the ER after Release A, not matching the taxonomy.
+- `V0764`: The variant stops at ER Sepsis Triage and does not represent a patient discharge.
+- `V0765`: Ending in a return to the ER after Release A, this variant falls into the residual category.
+- `V0766`: This narrative terminates with Release A and is not part of the specified taxonomy.
+- `V0767`: The variant ends with a return to the ER following Release A, without matching the target categories.
+- `V0768`: This narrative ends with Release A and does not realize any of the defined discharge goals.
+- `V0769`: Concluding with Release A, this variant is outside the scope of the taxonomy categories.
+- `V0770`: This variant finishes with a return to the ER after Release A, belonging to the residual group.
+- `V0771`: The narrative terminates with Release A and does not match the designated taxonomy.
+- `V0772`: This process variant ends with CRP and does not represent a discharge event.
+- `V0773`: Ending in Release A, this variant does not realize any of the targeted discharge paths.
+- `V0774`: The variant stops at ER Sepsis Triage and does not complete a patient discharge.
+- `V0775`: This variant halts at CRP and does not reach a final disposition or discharge.
+- `V0776`: Outcome is Release A, which does not match any category in the taxonomy.
+- `V0777`: Outcome is Leucocytes, which is not a discharge category.
+- `V0778`: Outcome is Leucocytes, which is not a discharge category.
+- `V0779`: Outcome is Return ER following Release A, not realizing any of the specific discharge categories.
+- `V0780`: Outcome is Release A, which does not match any taxonomy category.
+- `V0782`: Outcome is Release A, which does not map to the taxonomy categories.
+- `V0783`: Outcome is Release A, not part of the taxonomy.
+- `V0784`: Outcome is Release A, which is not covered by the taxonomy.
+- `V0785`: Outcome is Return ER via Release A, which does not fit the taxonomy categories.
+- `V0786`: Outcome is Release A, which does not match any taxonomy category.
+- `V0787`: Outcome is Return ER following Release A, outside the scope of the taxonomy.
+- `V0788`: Outcome is Release A, which is not included in the taxonomy.
+- `V0789`: Outcome is Release A, which does not fit any category.
+- `V0791`: Outcome is IV Antibiotics, which is not a discharge category.
+- `V0792`: Outcome is Release B, which is outside the taxonomy categories.
+- `V0793`: Outcome is Release A, which does not match the taxonomy.
+- `V0794`: Outcome is Return ER following Release A, not matching any category.
+- `V0795`: Outcome is Release A, which is not part of the taxonomy.
+- `V0796`: Outcome is Release A, which does not fit any category.
+- `V0797`: Outcome is Return ER after Release A, outside the taxonomy categories.
+- `V0798`: Outcome is Return ER after Release A, which does not map to the taxonomy.
+- `V0799`: Outcome is Release A, which is not covered by the taxonomy.
+- `V0800`: Outcome is Release A, which does not match any taxonomy category.
+- `V0801`: The variant ends with Release A, which does not map to any of the specified release taxonomy categories (merged_discharge_path, release_c, release_d, release_e).
+- `V0803`: The variant ends with Release B, which is outside the defined taxonomy categories.
+- `V0804`: The variant culminates in Return ER after Release A, fitting none of the designated discharge categories.
+- `V0805`: The variant ends with Release A, which is not part of the active taxonomy.
+- `V0806`: The variant concludes with Return ER following Release A, with no matching taxonomy category.
+- `V0807`: The variant terminates in Release A, outside the target categories.
+- `V0808`: The variant ends with Return ER after Release A, so it does not realize the target categories.
+- `V0809`: The variant ends with Release A, which is not in the taxonomy.
+- `V0810`: The variant ends with Release A, missing any taxonomy match.
+- `V0811`: The variant concludes with Release A, which falls outside the specified categories.
+- `V0812`: The variant results in Return ER after Release A, leaving no matching category.
+- `V0813`: The variant ends with Release A, failing to align with the defined taxonomy.
+- `V0814`: The variant ends with Release A, which is not included in the taxonomy.
+- `V0815`: The variant ends with Return ER following Release A, matching none of the target categories.
+- `V0816`: The variant stops at IV Antibiotics and does not realize any discharge taxonomy category.
+- `V0818`: The variant ends with Release A, which does not match the active taxonomy categories.
+- `V0819`: The variant ends with Release A, outside the scope of the taxonomy.
+- `V0820`: The variant stops at LacticAcid and does not reach a recognized discharge category.
+- `V0821`: The variant ends with Return ER after Release A, with no matching taxonomy category.
+- `V0822`: The variant concludes with Return ER following Release A, fitting none of the target categories.
+- `V0823`: The variant ends with Return ER after Release A, outside the defined categories.
+- `V0824`: The variant terminates in Release A, which is not in the taxonomy.
+- `V0825`: The variant ends with Return ER after Release A, leaving no valid category match.
+- `V0826`: The narrative ends with Admission NC and does not conclude with a discharge type matching Release C, Release D, Release E, or the merged discharge pathway.
+- `V0827`: The narrative ends with Release A followed by Return ER, which does not map to Release C, D, E, or the merged discharge pathway.
+- `V0828`: The narrative concludes with Release A and a subsequent Return ER, not fitting the specified release categories or merged discharge pathway.
+- `V0829`: The outcome is Release A, which does not correspond to Release C, D, E, or the merged discharge pathway.
+- `V0830`: The outcome is Release A, failing to align with Release C, D, E, or the merged discharge pathway.
+- `V0832`: The narrative ends with IV Antibiotics, which is not a patient discharge or disposition category.
+- `V0833`: The outcome is Release A, which does not match Release C, D, E, or the merged discharge pathway.
+- `V0834`: The narrative ends with Release A and Return ER, which does not fit any of the target discharge categories.
+- `V0835`: The narrative concludes with Release A, not matching Release C, D, E, or the merged discharge pathway.
+- `V0836`: The outcome is Release A, which falls outside Release C, D, E, and the merged discharge pathway.
+- `V0837`: The narrative concludes with Release A, not realizing Release C, D, E, or the merged discharge pathway.
+- `V0838`: The outcome is Release A, which does not match any of the taxonomy categories.
+- `V0839`: The narrative ends with Release A, failing to map to Release C, D, E, or the merged discharge pathway.
+- `V0840`: The narrative ends with Release B, which is not among the listed category options.
+- `V0841`: The outcome is Release A, which does not correspond to Release C, D, E, or the merged discharge pathway.
+- `V0842`: The narrative concludes with Release A followed by Return ER, matching none of the target categories.
+- `V0843`: The narrative ends with IV Liquid, which is not a discharge or disposition category.
+- `V0844`: The outcome is Release A, which does not match Release C, D, E, or the merged discharge pathway.
+- `V0845`: The narrative concludes with Release A, failing to align with Release C, D, E, or the merged discharge pathway.
+- `V0846`: The outcome is Release A, which falls outside the specified taxonomy categories.

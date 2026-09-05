@@ -1,0 +1,2227 @@
+# Step 6 — Narrative assignment report
+
+Run: `icpm2027_e1_label_list_rep1` | Log: `bpic2019` | Taxonomy mode: `open` | Assignment model: `gemini/gemini-3.5-flash-lite`
+
+11973 variants, 251734 cases total.
+
+## Straight-through processing (`straight_through_processing`)
+
+The invoice is processed and paid with no recorded exception, block, discrepancy correction, or cancellation — the shortest, most direct realization of the process.
+
+**Taxonomy-derivation rationale (Step 5):** The baseline exception-free category against which the other three represent some departure, independent of which matching mechanism the case used.
+
+**Goal-model linkage:** (no goal model)
+
+**Coverage:** macro 1589/11973 variants (13.3%) · micro 117013/251734 cases (46.5%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 60.05, nearest other category `discrepancy_resolved` at mean distance 44.25
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.388, nearest other category `discrepancy_resolved` at mean distance 0.436
+
+## Discrepancy resolved before payment (`discrepancy_resolved`)
+
+A price, quantity, or date discrepancy is detected and corrected on record before the invoice is paid, without a full block or cancellation.
+
+**Taxonomy-derivation rationale (Step 5):** Captures cases whose exception was resolved within the normal flow, distinct from a formally blocked case.
+
+**Goal-model linkage:** (no goal model)
+
+**Coverage:** macro 3359/11973 variants (28.1%) · micro 21355/251734 cases (8.5%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 16.01, nearest other category `delayed_or_blocked_payment` at mean distance 20.69
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.378, nearest other category `delayed_or_blocked_payment` at mean distance 0.392
+
+## Delayed or blocked payment (`delayed_or_blocked_payment`)
+
+Payment occurs materially after the invoice's recorded terms, or a payment-block event is on record, without the case ending in a cancellation or reversal.
+
+**Taxonomy-derivation rationale (Step 5):** A distinct operational failure mode from a resolved discrepancy: the case proceeds but payment itself is late or held.
+
+**Goal-model linkage:** (no goal model)
+
+**Coverage:** macro 3659/11973 variants (30.6%) · micro 52202/251734 cases (20.7%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 24.90, nearest other category `discrepancy_resolved` at mean distance 20.69
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.396, nearest other category `discrepancy_resolved` at mean distance 0.392
+
+## Cancelled or reversed (`cancelled_or_reversed`)
+
+The purchase order or invoice is cancelled or reversed on record rather than completed through to payment.
+
+**Taxonomy-derivation rationale (Step 5):** The most severe category, kept separate because it reflects the process not completing as intended rather than completing late or with correction.
+
+**Goal-model linkage:** (no goal model)
+
+**Coverage:** macro 1235/11973 variants (10.3%) · micro 16660/251734 cases (6.6%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 25.50, nearest other category `discrepancy_resolved` at mean distance 21.28
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.573, nearest other category `delayed_or_blocked_payment` at mean distance 0.561
+
+## Divergence between structural and profile distance
+
+Flagged for review, not resolved automatically — the two metrics measure different things (control-flow vs. business profile) and disagreement is informative on its own.
+
+**Same category, structurally far apart** (possibly a category covering two distinct control-flow patterns):
+
+- `V0670` / `V6776` (category `discrepancy_resolved`): structural=989, profile=0.748
+- `V6776` / `V9727` (category `discrepancy_resolved`): structural=989, profile=0.729
+- `V6776` / `V11436` (category `discrepancy_resolved`): structural=989, profile=0.751
+- `V6776` / `V11437` (category `discrepancy_resolved`): structural=989, profile=0.752
+- `V6776` / `V11470` (category `discrepancy_resolved`): structural=989, profile=0.753
+- `V6776` / `V11765` (category `discrepancy_resolved`): structural=989, profile=0.751
+- `V0034` / `V6776` (category `discrepancy_resolved`): structural=988, profile=0.748
+- `V0105` / `V6776` (category `discrepancy_resolved`): structural=988, profile=0.751
+- `V0170` / `V6776` (category `discrepancy_resolved`): structural=988, profile=0.751
+- `V0652` / `V6776` (category `discrepancy_resolved`): structural=988, profile=0.749
+
+**Different category, structurally near-identical** (the TP/TA-style case — categories distinguished on business intent the activity sequence alone would not show):
+
+- `V0001` (`straight_through_processing`) / `V0004` (`delayed_or_blocked_payment`): structural=1, profile=0.005
+- `V0001` (`straight_through_processing`) / `V0019` (`discrepancy_resolved`): structural=1, profile=0.006
+- `V0001` (`straight_through_processing`) / `V0025` (`discrepancy_resolved`): structural=1, profile=0.000
+- `V0001` (`straight_through_processing`) / `V0035` (`discrepancy_resolved`): structural=1, profile=0.004
+- `V0001` (`straight_through_processing`) / `V0045` (`delayed_or_blocked_payment`): structural=1, profile=0.339
+- `V0001` (`straight_through_processing`) / `V0072` (`discrepancy_resolved`): structural=1, profile=0.006
+- `V0001` (`straight_through_processing`) / `V0094` (`delayed_or_blocked_payment`): structural=1, profile=0.007
+- `V0001` (`straight_through_processing`) / `V0119` (`discrepancy_resolved`): structural=1, profile=0.005
+- `V0001` (`straight_through_processing`) / `V0135` (`discrepancy_resolved`): structural=1, profile=0.004
+- `V0001` (`straight_through_processing`) / `V0148` (`discrepancy_resolved`): structural=1, profile=0.005
+
+## Residual
+
+2131/11973 variants (17.8%), 44504/251734 cases (17.7%) unassigned.
+
+- `V0003`: The case ends prematurely at Record Goods Receipt without payment or cancellation, making it part of the residual process variants.
+- `V0011`: Ends at Record Invoice Receipt without clearing the invoice or being explicitly cancelled, remaining in the residual category.
+- `V0012`: Terminates at Record Goods Receipt without proceeding to payment or cancellation.
+- `V0013`: Stops at Record Invoice Receipt without reaching final payment/clearance.
+- `V0014`: Incomplete trace ending immediately at Create Purchase Order Item.
+- `V0015`: Incomplete trace ending at Record Invoice Receipt.
+- `V0017`: Trace ends at Record Invoice Receipt without final clearing.
+- `V0018`: Trace ends at Record Invoice Receipt without final clearing.
+- `V0024`: Incomplete trace ending at Create Purchase Order Item.
+- `V0054`: This is an incomplete administrative sequence involving purchase order changes and approvals rather than full invoice processing.
+- `V0063`: The case ends at goods receipt after a quantity change, without proceeding to invoice clearing or forming a complete payment cycle.
+- `V0064`: An operational fragment ending immediately at service entry sheet without reaching invoice processing.
+- `V0068`: A brief change approval sequence that does not complete an invoice processing lifecycle.
+- `V0071`: Consists solely of a delivery indicator change, representing an administrative update rather than a full process.
+- `V0073`: Involves a price change and goods receipt but does not complete through to invoicing or payment.
+- `V0085`: Process stops at repeated goods receipt without reaching invoice completion or cancellation, fitting neither standard STP nor the other categories.
+- `V0097`: Process halts at change quantity without completing invoice processing or reaching a cancellation state.
+- `V0099`: Process stops at goods receipt without completion to invoice matching or payment.
+- `V0108`: The process terminates at goods receipt without invoice completion or cancellation, falling outside the main taxonomy categories.
+- `V0113`: The variant terminates early at order confirmation and does not represent a completed payment or cancellation case.
+- `V0122`: Terminates early at order confirmation without progressing to invoicing or completion.
+- `V0127`: The process ends at Record Invoice Receipt without completing the payment or being fully cancelled, which does not fit any of the four complete-cycle categories.
+- `V0128`: The process terminates early at Change Price and does not reach completion or cancellation.
+- `V0130`: The variant consists entirely of approval changes and order creation without reaching invoicing or payment.
+- `V0133`: Terminates at Record Invoice Receipt without reaching payment or cancellation.
+- `V0139`: Terminates at Record Goods Receipt without reaching invoice or payment stages.
+- `V0140`: Ends prematurely at Change Quantity without invoice or payment steps.
+- `V0141`: Terminates early at Change Delivery Indicator.
+- `V0144`: Stops at purchase order creation.
+- `V0146`: Terminates early at Change Price.
+- `V0149`: Terminates at Record Invoice Receipt without completing payment.
+- `V0162`: Service entry and goods receipt are repeated rapidly without invoice clearance or cancellation, not fitting standard categories.
+- `V0163`: Ends in Change Delivery Indicator without reaching payment or cancellation.
+- `V0176`: The process ends at Record Invoice Receipt without payment or cancellation, falling outside the defined taxonomy categories.
+- `V0180`: The case terminates at Record Goods Receipt without invoice creation or payment, fitting neither straight-through processing nor the other defined categories.
+- `V0181`: The variant ends at Record Goods Receipt without invoicing or payment.
+- `V0182`: The process ends at Record Invoice Receipt with a quantity change, but lacks final payment or completion.
+- `V0192`: The case ends with a repeated Record Invoice Receipt without reaching payment completion.
+- `V0202`: The process ends at Record Invoice Receipt without completing payment or showing a clear exception/cancellation pattern that fits the other categories.
+- `V0203`: The process concludes with Record Invoice Receipt without reaching payment, cancellation, or a blocked state.
+- `V0211`: The process involves quantity and price changes but terminates at Record Invoice Receipt before reaching payment or cancellation.
+- `V0212`: The process ends prematurely at Record Goods Receipt after quantity and price changes, without reaching payment or cancellation.
+- `V0213`: The process stops at Record Goods Receipt without completing the full procurement and payment cycle.
+- `V0215`: The process terminates at Record Invoice Receipt without completing payment or undergoing cancellation/blocking.
+- `V0222`: The process ends at Record Invoice Receipt without reaching a payment clearance, cancellation, or block resolution.
+- `V0225`: The process stops at Record Invoice Receipt without completing payment or showing exception-handling characteristics.
+- `V0226`: The process ends with Clear Invoice after repeated goods receipts, but does not fit cleanly into straight-through processing due to the rework, nor does it explicitly show a discrepancy resolution, payment block, or cancellation.
+- `V0229`: The case ends prematurely at Record Goods Receipt without completing the full payment cycle, making it a residual case.
+- `V0230`: The case features a cancelled goods receipt and subsequent rework, but does not end in cancellation or exhibit a formal payment block/discrepancy resolution category match.
+- `V0232`: The case terminates at Record Goods Receipt without proceeding to invoice clearing or payment.
+- `V0233`: The narrative shows repeated invoice creation and clearing activities but does not neatly fit the standard taxonomy definitions.
+- `V0236`: The process terminates at Record Invoice Receipt and does not reach payment or cancellation.
+- `V0238`: Extensive repetition of invoicing, goods receipt, and clearing occurs, but it does not fit the specific criteria of the standard categories.
+- `V0242`: A goods receipt is cancelled and re-recorded, but the case completes normally without a payment block or cancellation outcome.
+- `V0243`: The case ends with a Change Delivery Indicator activity, which falls outside the primary invoice processing outcomes.
+- `V0244`: The process consists entirely of goods receipts and service entry sheets with zero duration, making it a residual variant.
+- `V0246`: The case terminates at Record Goods Receipt after a price change, without completing the invoice or payment cycle.
+- `V0248`: Heavy repetition of goods receipts and service entry sheets occurs prior to invoicing and clearing, not fitting standard categories neatly.
+- `V0253`: The process terminates at transmission and does not reach invoice clearing or payment.
+- `V0260`: Terminates early with a quantity change and does not complete the payment cycle.
+- `V0262`: Ends at goods receipt without invoice receipt or payment.
+- `V0267`: Ends at goods receipt with repeated actions, but no invoice or payment steps.
+- `V0271`: Consists only of service entry sheets and goods receipt without reaching invoicing.
+- `V0279`: The case ends with Record Invoice Receipt without clearing or cancellation, leaving it incomplete and falling outside the standard categories.
+- `V0280`: The sequence involves repeated invoice receipts without a clear categorization into standard processing, resolution, block, or cancellation.
+- `V0282`: The narrative includes a cancellation of the invoice receipt followed by re-recording and re-clearing, making it a complex residual case.
+- `V0286`: The process ends inconclusively with repeated approvals after clearing, not fitting any standard completion flow.
+- `V0287`: Multiple repetitions of goods receipts, invoice receipts, and vendor invoices occur repeatedly without neatly falling into standard resolution or block flows.
+- `V0288`: The trace stops abruptly at invoice receipt without reaching completion or cancellation.
+- `V0289`: The item is deleted and subsequently reactivated, introducing a structural exception that does not cleanly match the standard categories.
+- `V0291`: Multiple repeated invoicing and clearing cycles occur, rendering the flow an outlier residual.
+- `V0292`: The narrative contains multiple interleaved goods receipts and invoice receipts creating a complex residual pattern.
+- `V0293`: A delivery indicator change occurs late in the process, making it a residual case rather than standard straight-through.
+- `V0297`: Repeated clearing, goods receipts, and invoices characterize this complex residual variant.
+- `V0299`: Multiple service entry sheets and goods receipts are repeated, falling into the residual category.
+- `V0303`: The process ends at Record Invoice Receipt and does not complete through to payment or cancellation.
+- `V0305`: The process stops at Record Invoice Receipt without completing payment or cancellation.
+- `V0310`: Process terminates at Record Goods Receipt without continuing to invoicing or payment.
+- `V0313`: Process stops at Record Goods Receipt with multiple quantity changes, never reaching invoice or payment.
+- `V0314`: Case concludes at Record Invoice Receipt without reaching payment completion.
+- `V0315`: Process terminates at Vendor creates invoice without completion.
+- `V0316`: Process stops at Create Purchase Order Item in SRM.
+- `V0319`: Terminates at Record Goods Receipt after approval and quantity changes.
+- `V0350`: The variant consists entirely of repeated approval changes on an invoice without completing payment, goods receipt, or cancellation, falling outside the main payable lifecycle categories.
+- `V0351`: The narrative ends with Record Invoice Receipt and involves repeated change approvals, but does not fit cleanly into straight-through, discrepancy resolution, delayed/blocked payment, or cancellation.
+- `V0354`: The process repeatedly records goods receipts but terminates without an invoice or payment.
+- `V0356`: The variant terminates early at Change Price without completing through to invoicing or payment.
+- `V0359`: Shows repeated invoice creation and goods receipts without a clear block removal or explicit discrepancy correction activity.
+- `V0363`: Terminates at Record Goods Receipt after a quantity change, without reaching invoicing or payment.
+- `V0364`: Ends at Record Invoice Receipt without payment clearance or explicit exception blocks.
+- `V0365`: Straightforward invoice receipt ending without payment clearance recorded in the variant.
+- `V0369`: Consists of multiple service entry sheets leading immediately to a goods receipt without invoicing details.
+- `V0373`: Contains repeated invoices and goods receipts leading to payment clearance without explicitly logged block removals or discrepancies.
+- `V0381`: The process involves repeated service entry sheets and ends at goods receipt without an invoice or payment cycle to classify into standard invoice categories.
+- `V0384`: The case terminates at goods receipt with repeated goods receipts and a quantity change, making it a partial or incomplete process flow.
+- `V0390`: Terminates at invoice receipt with repeated goods receipts, lacking a final payment clearance or cancellation marker.
+- `V0400`: Terminates at goods receipt following SRM creation steps, without reaching the invoice and payment stages.
+- `V0401`: The process ends at Record Invoice Receipt without completion to payment or clear cancellation, and does not fit any other defined category cleanly.
+- `V0402`: The process concludes at Record Invoice Receipt without reaching final clearing or cancellation.
+- `V0405`: Repeated invoice receipts and unusual lingering without standard clearing or explicit cancellation make it residual.
+- `V0411`: Consists only of goods receipts and service entry sheets without reaching invoice or payment stages.
+- `V0421`: Extensive SRM workflow ending at Record Invoice Receipt without full payment clearing.
+- `V0436`: Process ends with Record Goods Receipt without reaching invoice payment or cancellation.
+- `V0437`: Terminates at Record Invoice Receipt without completing payment or cancellation.
+- `V0438`: Ends at Record Invoice Receipt without reaching payment or cancellation.
+- `V0439`: Terminates at Record Invoice Receipt without reaching payment completion or cancellation.
+- `V0440`: Ends at Record Invoice Receipt without payment clearance.
+- `V0442`: Terminates at Record Invoice Receipt without payment completion.
+- `V0444`: Process ends immediately after removing the payment block without completing payment.
+- `V0445`: Terminates at Record Goods Receipt without reaching invoice payment.
+- `V0448`: Terminates at Record Service Entry Sheet without reaching invoice processing or payment.
+- `V0453`: The case ends with a quantity change after clearing, fitting none of the standard categories cleanly.
+- `V0458`: Terminates early at change quantity with no payment or completion.
+- `V0463`: Ends prematurely at storage location change without reaching purchasing completion.
+- `V0468`: Terminates at record invoice receipt without final clearance or cancellation.
+- `V0469`: Terminates at record invoice receipt without completing payment.
+- `V0470`: Terminates at record invoice receipt without final clearance.
+- `V0472`: Ends at change price without completing the procurement lifecycle.
+- `V0476`: The narrative describes creation and repeated goods/service entry without reaching an invoice or payment completion stage, fitting none of the standard lifecycle outcomes.
+- `V0494`: Ends in record invoice receipt without progressing to clear payment or cancellation, leaving standard outcomes unfulfilled.
+- `V0499`: Terminates at record invoice receipt with multiple approval modifications, not quite completing straight-through settlement.
+- `V0523`: The process terminates at Record Goods Receipt without completing through to payment or cancellation.
+- `V0525`: The process stops at Record Invoice Receipt and does not reach final payment or cancellation.
+- `V0527`: The process involves repeated change approvals and does not neatly fit straightforward processing, resolution, blockage, or cancellation criteria.
+- `V0534`: The process ends prematurely at record goods receipt without completing payment or cancellation.
+- `V0543`: The process terminates at record invoice receipt without proceeding to payment or cancellation.
+- `V0547`: Ends with a change price activity without completing payment or cancellation.
+- `V0549`: Terminates at record invoice receipt without final clearance or cancellation.
+- `V0559`: The process ends with 'Record Goods Receipt' and does not reach invoice clearing or completion.
+- `V0564`: The process concludes with 'Change Quantity' rather than completing through to payment or cancellation.
+- `V0574`: The process terminates at 'Record Invoice Receipt' without reaching payment or cancellation.
+- `V0576`: The process ends with Record Invoice Receipt without payment clearance or cancellation, leaving it outside the standard categories.
+- `V0577`: The process concludes at Record Goods Receipt without invoice creation, payment, or cancellation.
+- `V0582`: The case terminates at repeated goods receipts without reaching invoice creation or payment.
+- `V0600`: The process stops at record invoice receipt without final payment clearance.
+- `V0607`: The process ends at Record Invoice Receipt and does not complete through to payment or cancellation, fitting neither category completely.
+- `V0610`: The process terminates at Record Goods Receipt without payment or cancellation, leaving it outside the standard categories.
+- `V0612`: Ends at Record Invoice Receipt with no payment step completed.
+- `V0618`: Ends at Record Invoice Receipt without completing payment.
+- `V0623`: Terminates at Record Goods Receipt without final payment or cancellation.
+- `V0624`: Unusual sequence ending with Change Approval for Purchase Order after intermediate clearing.
+- `V0625`: Terminates early at Vendor creates invoice without completion.
+- `V0638`: The process terminates at record goods receipt without reaching invoice clearing or cancellation.
+- `V0651`: The variant ends with Change Price without ever reaching an invoice clearance, payment block removal, or cancellation.
+- `V0658`: Ends in goods receipt without invoice creation, clearance, or cancellation.
+- `V0664`: Ends in change delivery indicator without leading to a clear payment, block, or cancellation category match.
+- `V0666`: Ends in record invoice receipt without completing payment or clearing.
+- `V0669`: Ends in record invoice receipt without final clearance or cancellation.
+- `V0672`: Ends at record goods receipt without invoice completion or block.
+- `V0674`: Short variant ending in record invoice receipt without standard straight-through process flow.
+- `V0675`: Consists primarily of repeated approval changes without reaching order creation or completion.
+- `V0676`: The process ends in purchase order item creation after repeated change approvals, without reaching payment, discrepancy resolution, or cancellation.
+- `V0680`: The process terminates at order confirmation and does not proceed to invoice clearing or payment.
+- `V0722`: The process terminates at vendor creates invoice, remaining incomplete relative to the defined categories.
+- `V0778`: The process ends at Record Invoice Receipt without completion through to payment or cancellation, leaving it outside the standard four categories.
+- `V0786`: The process terminates at Record Service Entry Sheet with no invoice clearance or payment.
+- `V0788`: The process ends at Record Invoice Receipt without reaching final payment or cancellation.
+- `V0789`: Terminates at Record Invoice Receipt without payment completion or cancellation.
+- `V0792`: Ends at Record Invoice Receipt without reaching final payment.
+- `V0793`: Terminates at Change Price without completing through to payment or cancellation.
+- `V0794`: Terminates at Record Invoice Receipt without reaching payment.
+- `V0796`: Ends at Record Invoice Receipt without completion to payment.
+- `V0797`: Ends at Record Invoice Receipt without payment completion.
+- `V0821`: The process terminates early at Record Goods Receipt without reaching invoice clearance, payment, or cancellation.
+- `V0823`: The process terminates at Record Invoice Receipt without completing payment or clearance.
+- `V0827`: The variant features extensive service entry and goods receipt repetitions culminating in a cleared invoice, but doesn't cleanly fit standard straight-through processing or discrepancy paths.
+- `V0830`: Involves repeated quantity changes and multiple goods receipts before clearing, not falling cleanly into a standard category.
+- `V0831`: Contains multiple repetitions of invoice creation, goods receipts, invoice receipts, and duplicate invoice clearing steps.
+- `V0833`: Features repetitive service entry sheets and goods receipts leading to payment.
+- `V0836`: Involves a price change and standard steps leading to clearing, but price adjustments don't fit the strict discrepancy resolved definition without explicit correction logging.
+- `V0841`: Involves multiple price and quantity changes and approvals prior to clearing.
+- `V0845`: Features repeated invoicing, goods receipts, and clearing steps.
+- `V0846`: Involves price and quantity changes during standard processing.
+- `V0848`: The process lingers and ends at record invoice receipt without completing payment or cancellation.
+- `V0852`: The process ends at SRM: Change was Transmitted and does not complete through to payment or cancellation, leaving it outside the standard categories.
+- `V0859`: Stops abruptly at 'Record Goods Receipt' without completing the payment or cancellation lifecycle.
+- `V0868`: Ends prematurely at 'Record Invoice Receipt' without reaching invoice clearance or cancellation.
+- `V0871`: Terminates at 'Record Invoice Receipt' without completing payment or cancellation.
+- `V0872`: Stops at 'Record Invoice Receipt' without reaching payment or cancellation.
+- `V0878`: The case ends with goods receipt and lacks completion through payment or standard processing markers.
+- `V0880`: The narrative terminates at Record Invoice Receipt with repeated goods receipts, but no final payment completion or clear block indicator.
+- `V0881`: Ends at Record Goods Receipt without reaching invoice processing or payment.
+- `V0883`: Involves delivery indicator changes and repeated goods receipts without reaching invoice clearing or formal block resolution.
+- `V0884`: Ends at Record Invoice Receipt following quantity changes, not meeting full payment or clear exception criteria.
+- `V0885`: Ends at Record Invoice Receipt after multiple goods receipts without final payment clearing.
+- `V0887`: Ends at Record Invoice Receipt after multiple goods receipts.
+- `V0890`: Terminates at Record Invoice Receipt after standard creation and goods receipt.
+- `V0891`: Involves multiple service entry sheets followed by standard invoice recording.
+- `V0892`: Ends with a goods receipt after quantity and approval changes.
+- `V0894`: Ends at Record Invoice Receipt following requisition release and price changes.
+- `V0895`: Terminates early at Change Price without completing goods receipt or invoicing.
+- `V0912`: Ends in changing the delivery indicator rather than completing through to payment or cancellation, fitting none of the standard categories cleanly.
+- `V0915`: Ends with a change in delivery indicator and quantity modifications without reaching standard payment or cancellation.
+- `V0921`: Ends with a price change long after invoice clearing, not matching standard lifecycle categories.
+- `V0955`: The process terminates at Record Goods Receipt without reaching invoice creation or payment completion, meaning it does not fit the final payment lifecycle categories.
+- `V0957`: The process ends at Record Goods Receipt without completing the payment lifecycle.
+- `V0963`: The process ends unexpectedly with a Change Price activity after invoice clearing, making standard lifecycle categorization inapplicable.
+- `V0971`: The process stops at Record Goods Receipt without reaching invoice creation or payment.
+- `V1002`: The process consists entirely of repeated goods receipts and service entry sheets without completing the procure-to-pay lifecycle or reaching a payment/cancellation stage.
+- `V1003`: The process ends with Record Invoice Receipt without clearing, payment, or cancellation.
+- `V1006`: The variant terminates prematurely at Change Price without order completion or invoicing.
+- `V1008`: The case terminates with Record Invoice Receipt without completing payment or cancellation.
+- `V1009`: Repeated approval changes occur throughout, lacking standard completion matching any category.
+- `V1010`: Process ends at Record Invoice Receipt with extensive approval changes but no standard payment or cancellation.
+- `V1012`: The process includes transfer loops and ends unexpectedly in SRM transfer states.
+- `V1016`: The process involves repeated goods receipts and service entry sheets without reaching standard completion.
+- `V1031`: The process repeatedly records service entry sheets and goods receipts without reaching an invoice clearing or cancellation outcome.
+- `V1041`: The variant consists entirely of repeated goods receipts and does not complete the standard purchase-to-pay lifecycle.
+- `V1049`: A price change occurs after the invoice has already been cleared, an unusual sequence that does not fit standard categories.
+- `V1050`: The variant consists of repeated service entry sheets and goods receipts without an invoice lifecycle or clear completion.
+- `V1052`: The process is incomplete, ending at Record Goods Receipt without invoice creation or clearing, so it does not fit any standard completion category.
+- `V1064`: The case terminates at Record Invoice Receipt without ever reaching clear invoice or cancellation, falling outside standard completion paths.
+- `V1078`: The process ends with Record Service Entry Sheet and does not reach completion or clear invoice, thus not fitting standard straight-through processing or other categories cleanly.
+- `V1084`: Ends in Record Goods Receipt without invoice creation or payment completion, not fitting the standard payment categories.
+- `V1103`: The process only records service entry sheets and goods receipt without completing through to payment or cancellation.
+- `V1131`: The process ends with Record Service Entry Sheet without payment, cancellation, or discrepancy resolution.
+- `V1134`: Ends in Record Invoice Receipt with no final payment or cancellation.
+- `V1135`: Terminates at Vendor creates invoice without being completed to payment.
+- `V1138`: Terminates at Record Goods Receipt with extensive SRM workflow activity and deletion, but no invoice or payment.
+- `V1148`: Ends at Record Invoice Receipt without reaching payment or cancellation.
+- `V1159`: The process is truncated at approval changes and does not proceed through invoicing, goods receipt, or payment completion.
+- `V1163`: The case concludes at record invoice receipt with significant duration and quantity/approval adjustments, fitting neither straight-through nor standard resolution/block flows clearly.
+- `V1166`: The variant ends at Record Invoice Receipt without completing payment or clearing, failing to realize straight-through processing.
+- `V1168`: The sequence consists solely of redundant goods receipts and service entry sheets without reaching invoice or payment stages.
+- `V1171`: Involves repeated invoicing and goods receipt cycles but ends without a definitive payment or block resolution.
+- `V1172`: An extreme repetition of goods receipts without payment or standard exception resolution.
+- `V1174`: The process terminates early at a price change without completing goods receipt, invoicing, or payment.
+- `V1176`: The process ends at Record Goods Receipt without completing payment or reaching a final invoice clearing state, so it does not fit any of the standard payment completion categories.
+- `V1177`: The process ends at Record Invoice Receipt without clearing the invoice or experiencing cancellation, delays, or discrepancy resolutions.
+- `V1178`: The process ends at Record Invoice Receipt with a price change, but lacks a clear payment clearance or cancellation endpoint.
+- `V1179`: The process terminates at Record Goods Receipt without invoice creation, payment, or cancellation.
+- `V1183`: The process exhibits extended delays and a transfer loop back to the execution system after clearing, fitting poorly into standard categories.
+- `V1202`: The process ends in Record Goods Receipt without completing the invoice or payment cycle, leaving it incomplete.
+- `V1209`: The process terminates at Record Goods Receipt without reaching invoice creation or payment.
+- `V1220`: The process terminates at Record Goods Receipt without payment or invoicing steps.
+- `V1226`: The process ends in Record Goods Receipt without completing payment or reaching a clean cancellation, and does not fit any of the standard payment or discrepancy categories cleanly.
+- `V1229`: The process ends with an additional Record Invoice Receipt and does not complete through to payment or cancellation.
+- `V1249`: The variant includes a payment block removal followed by invoice clearing, but then records another invoice receipt, leaving it incomplete.
+- `V1269`: The case sequence consists entirely of service entry sheets and goods receipts without normal invoice processing.
+- `V1276`: The process ends with Record Invoice Receipt without clearing/payment, cancellation, or explicit delay blocks.
+- `V1289`: Process stops at Record Invoice Receipt without reaching payment, cancellation, or clear blocks.
+- `V1300`: Terminates at Record Goods Receipt without completing payment or cancellation.
+- `V1309`: The process involves quantity adjustments and delivery indicator changes, terminating without invoice creation or payment, fitting none of the standard pay-process categories.
+- `V1323`: Terminates at service entry and goods receipts without reaching invoice creation or payment.
+- `V1358`: The process ends at Record Invoice Receipt without reaching final payment or cancellation.
+- `V1361`: The case terminates with Change Delivery Indicator without reaching payment or cancellation.
+- `V1362`: The process loops through service entry sheets and goods receipts without standard invoicing or completion.
+- `V1370`: Case terminates at Record Invoice Receipt with extended approval blocks and changes, leaving payment incomplete.
+- `V1379`: The process ends inconclusively at Record Invoice Receipt after multiple cancellations and re-recordings of invoice receipts, not fitting a clear completion or cancellation pattern.
+- `V1386`: The process ends at Record Invoice Receipt without reaching payment clearing or cancellation.
+- `V1393`: The case ends at Record Invoice Receipt without completing the payment or being formally cancelled.
+- `V1396`: The process terminates at Change Price without completing through to payment or cancellation.
+- `V1403`: The process ends in Record Invoice Receipt without clearing or cancelling, fitting none of the completed or blocked patterns cleanly.
+- `V1410`: Terminates at Change Delivery Indicator without reaching payment clearance or cancellation.
+- `V1413`: Ends with recording the invoice receipt without proceeding to payment or cancellation.
+- `V1417`: Consists primarily of repeating service entry sheets and goods receipts without clear end-to-end invoice resolution.
+- `V1426`: The process ends at Record Goods Receipt without reaching invoice creation or payment completion.
+- `V1430`: The process concludes at Record Service Entry Sheet without advancing to invoicing or payment.
+- `V1433`: The process ends at Record Invoice Receipt without completing payment or being explicitly blocked/cancelled.
+- `V1434`: The process terminates at Record Service Entry Sheet with no invoice or payment steps.
+- `V1437`: The process ends at Record Invoice Receipt without reaching payment or cancellation.
+- `V1439`: Includes purchase order item deletion and reactivation, but terminates at Record Invoice Receipt.
+- `V1440`: The variant ends at Record Invoice Receipt with no final payment or cancellation recorded.
+- `V1441`: The variant concludes at Record Invoice Receipt without completing payment or being blocked.
+- `V1443`: The process ends at Record Invoice Receipt without reaching a payment or cancellation stage.
+- `V1445`: The process ends at Record Goods Receipt without reaching invoice or payment completion.
+- `V1447`: The process concludes at Record Invoice Receipt without reaching payment or cancellation.
+- `V1448`: The variant ends prematurely at Record Invoice Receipt.
+- `V1449`: The process terminates at Record Goods Receipt without reaching invoice creation or payment.
+- `V1450`: The process ends at Record Invoice Receipt without reaching payment execution.
+- `V1452`: The process repeats invoice receipts and ends without reaching payment or cancellation.
+- `V1453`: The process ends at invoice receipt with repeated entries, never completing payment.
+- `V1454`: Involves blocking and reactivating the purchase order repeatedly, ending at invoice receipt.
+- `V1455`: Features heavy repetition of goods receipt and service entry sheets, ending at invoice receipt.
+- `V1458`: Ends with a repeated goods receipt and does not progress to invoice clearing.
+- `V1459`: Ends at record invoice receipt with a duplicate goods receipt, but no clear resolution or payment indicator.
+- `V1460`: Ends at record invoice receipt without proceeding to payment or cancellation.
+- `V1461`: Ends at record invoice receipt without any payment or blocking stages.
+- `V1462`: Stops at record goods receipt without creating an invoice or completing.
+- `V1464`: Stuck in continuous loops of change approval for purchase order.
+- `V1465`: Dominated by repeated change approvals for the purchase order.
+- `V1466`: Extensive looping on change approval for purchase order.
+- `V1467`: Repeated approval loops on the purchase order persist throughout the trace.
+- `V1470`: Interminable loops of change approval without completing to payment.
+- `V1471`: Contains multiple repeated change approvals ending simply at record invoice receipt.
+- `V1475`: Stops at record invoice receipt after duplicated goods receipts without payment or clearing.
+- `V1476`: The process ends in Record Invoice Receipt without completion, payment, block removal, or cancellation, so none of the standard categories fit.
+- `V1478`: The process terminates with a price change after invoice clearance, which does not cleanly match the core categories.
+- `V1484`: Stops at Service Entry Sheet recording without reaching invoice clearance or cancellation.
+- `V1504`: The process ends in record goods receipt without reaching payment or cancellation, leaving it outside the standard categories.
+- `V1511`: Consists solely of goods receipts and service entry sheets without reaching invoice processing or payment.
+- `V1514`: Represents a loop of service entry sheets and goods receipts terminating without invoicing or payment.
+- `V1518`: Consists of service entry sheets and goods receipts without reaching invoice processing or payment.
+- `V1520`: Ends with a change delivery indicator following goods receipt cancellations without payment completion.
+- `V1524`: Terminates with a goods receipt after a cancellation, without involving invoice processing or payment.
+- `V1533`: The process only records goods receipts and service entry sheets without reaching invoice creation or payment.
+- `V1550`: The process terminates at goods receipt without reaching invoicing or payment.
+- `V1579`: The process ends in recording goods receipt after quantity changes and multiple receipts, which does not cleanly fit standard payment clearing, discrepancy resolution, or cancellation categories.
+- `V1581`: The case ends in recording goods receipt after multiple quantity and delivery indicator changes without reaching invoice clearance.
+- `V1600`: The process concludes with changing the delivery indicator after invoice clearing, not matching standard exceptions or straight-through processing paths cleanly.
+- `V1604`: The case ends with an invoice receipt and no final payment/clearance, meaning it does not cleanly fit any of the completed payment or cancellation categories.
+- `V1611`: The process terminates at 'Record Service Entry Sheet' without reaching invoice clearance, cancellation, or a typical payment path.
+- `V1614`: The process concludes at record invoice receipt without any payment clearance or cancellation.
+- `V1622`: The process ends at invoice receipt without completion through to payment or cancellation.
+- `V1640`: The variant ends in a 'Change Quantity' activity rather than clearing or cancelling, meaning it does not fit the standard payment outcome categories.
+- `V1652`: The case ends with a repeated Record Invoice Receipt without completing payment or cancellation, leaving it outside the standard categories.
+- `V1670`: An unusual sequence ending with a late Record Invoice Receipt long after a clear invoice event.
+- `V1693`: The process ends in goods receipt without reaching invoice clearing, cancellation, or showing a clear payment block/discrepancy resolution pattern.
+- `V1697`: Ends in service entry sheet recording without completing payment, cancellation, or fitting other standard lifecycle patterns.
+- `V1700`: Ends prematurely with goods receipt recording and does not reach completion, cancellation, or processing exceptions.
+- `V1707`: The process ends in a goods receipt without completing through to payment or cancellation, leaving it outside the standard categories.
+- `V1714`: Consists primarily of service entry sheet loops ending in a goods receipt without reaching invoice payment.
+- `V1716`: Terminates at delivery indicator modification without reaching invoicing or completion.
+- `V1723`: Terminates early at record service entry without reaching billing or payment phases.
+- `V1725`: Represents only the initial SRM and purchase order creation phase, ending prior to execution and billing.
+- `V1739`: The process terminates prematurely at 'Record Service Entry Sheet' without reaching payment, cancellation, or standard completion, so it does not fit the defined categories.
+- `V1742`: The variant terminates at 'Record Goods Receipt' with repetitive service entry sheets, leaving the case incomplete regarding the payment or cancellation lifecycle.
+- `V1792`: The case ends with Record Invoice Receipt without completing payment or being explicitly cancelled or blocked, fitting none of the categories.
+- `V1798`: The narrative stops at Record Invoice Receipt with repeated goods receipts, lacking payment clearance or block/cancellation criteria.
+- `V1819`: Ends in invoice receipt without completing the payment clearing step or fitting cancellation/block definitions.
+- `V1822`: Ends with a change delivery indicator rather than clearing, payment delay, or full cancellation.
+- `V1828`: The process ends with changing the delivery indicator without reaching payment, cancellation, or clear exceptions fitting other categories.
+- `V1829`: The process ends at goods receipt without invoicing or payment.
+- `V1832`: The process ends at record invoice receipt without final clearance or cancellation.
+- `V1834`: The process terminates at record invoice receipt without proceeding to payment or cancellation.
+- `V1835`: The invoice is cleared but an intermediate change quantity and delivery indicator occur, though no explicit payment block or discrepancy resolution is recorded.
+- `V1836`: The process ends at record invoice receipt without clearance.
+- `V1837`: The process terminates at record goods receipt without invoice or payment steps.
+- `V1838`: The case ends prematurely at change approval for purchase order.
+- `V1839`: The case ends at record invoice receipt without clearance.
+- `V1843`: The process ends with record invoice receipt.
+- `V1844`: The process ends at record invoice receipt following a quantity change.
+- `V1845`: The process ends at record invoice receipt following a quantity change.
+- `V1846`: The process ends at record invoice receipt after multiple quantity and delivery changes.
+- `V1847`: The process terminates at change delivery indicator.
+- `V1855`: The case terminates with Change Delivery Indicator without reaching invoice clearing or clear payment/cancellation categories.
+- `V1858`: The narrative records repeated vendor invoicing and invoice receipts without clear standard completion or definitive block/cancellation.
+- `V1860`: The process concludes with Change Delivery Indicators and does not complete through to payment or cancellation.
+- `V1864`: Repeated vendor invoices and invoice receipts occur without a distinct payment block removal, cancellation, or discrepancy resolution.
+- `V1872`: Involves repeated invoicing and goods/invoice receipts without reaching final payment clearing or explicit payment block removal.
+- `V1873`: Features repeated goods receipts with a median duration of 35 days, lacking definitive block removal or cancellation features.
+- `V1874`: Ends abruptly at Record Goods Receipt after a long service entry sheet wait, without clearing or payment execution.
+- `V1877`: The narrative shows extensive goods receipt repetitions and ends at invoice receipt, fitting none of the clean standard categories.
+- `V1878`: Involves multiple invoice cancellations and clearings with frequent rework, not fitting straightforward or simple discrepancy resolution.
+- `V1879`: Contains multiple repeated goods receipts leading up to an invoice receipt without clear indication of standard resolution or delay categorization.
+- `V1880`: Involves cancelled goods receipts and repeated goods receipts, fitting none of the main defined categories.
+- `V1881`: Massive repetition of service entry sheets and goods receipts occurring with zero median duration, not fitting standard process categories.
+- `V1882`: Repeated goods receipts and service entry sheets before invoice receipt, fitting the residual category.
+- `V1883`: Contains goods receipt cancellations and repeated entries, placing it in the residual.
+- `V1884`: Invoice is created before purchase requisition and order items, an abnormal sequence falling into the residual.
+- `V1885`: Heavy repetition of service entry sheets and goods receipts, fitting the residual category.
+- `V1887`: Involves a storage location change which does not cleanly map to price, quantity, or date discrepancies or other defined flows.
+- `V1889`: Multiple quantity changes, repeated invoices, and goods receipts make this a complex residual case.
+- `V1890`: Multiple quantity changes occurring repeatedly without reaching completion, fitting the residual category.
+- `V1894`: Involves purchase order changes and approvals without completing fully through invoice or payment.
+- `V1896`: Excessive and repeated approval changes extending over a very long duration, fitting the residual.
+- `V1897`: Long sequence of approval changes with repeated steps, falling into the residual category.
+- `V1898`: Complex sequence involving invoice clearing and repeated approval changes over a long duration.
+- `V1899`: Extensive repetition of order approvals and delayed invoice creation, fitting the residual.
+- `V1900`: Starts with invoice creation followed by delayed order creation and repeated approvals, fitting the residual.
+- `V1902`: The process involves clearing an invoice and then later creating another vendor invoice, ending in an unusual sequence that does not cleanly fit standard processing or typical resolution.
+- `V1903`: The process fails during SRM transfer and ends in system failure, which is neither successful STP, simple discrepancy resolution, nor a standard delayed payment/cancellation.
+- `V1904`: The process ends in a change delivery indicator following a failed SRM transfer, falling outside the defined payment or cancellation taxonomy.
+- `V1907`: The case is left stranded at SRM transfer to execution system without completion, payment, or cancellation.
+- `V1909`: The process is completed with a change delivery indicator after a long delay and SRM transfer issue, not fitting the core payment categories.
+- `V1910`: The case terminates prematurely at recording goods receipt without reaching invoice receipt or payment.
+- `V1912`: The case halts at invoice receipt without proceeding to payment or cancellation.
+- `V1913`: Ends in a change delivery indicator following a long delay and transfer issue.
+- `V1936`: The case is extremely convoluted with repeated invoices and clearings over a long span without a clean mapping to any single category.
+- `V1953`: The process is incomplete, ending in service entries and goods receipts without reaching invoice clearing, delay, or cancellation.
+- `V1962`: Incomplete workflow ending in service entry sheets without payment or cancellation.
+- `V1972`: Incomplete activity sequence ending in service entry sheets with no invoice or payment steps.
+- `V1998`: The process terminates at record goods receipt without clearing or cancellation, fitting neither standard completion nor clear cancellation.
+- `V2058`: The process terminates at Record Service Entry Sheet without reaching invoice creation or payment clearance.
+- `V2065`: Process terminates prematurely at Record Goods Receipt without invoicing or payment.
+- `V2074`: Process terminates at Record Goods Receipt without reaching invoice creation or payment.
+- `V2134`: Does not fit standard invoicing patterns; represents repetitive service entry and goods receipt tracking without invoice lifecycle completion.
+- `V2156`: The narrative represents an incomplete service entry loop ending prematurely without invoice clearing or cancellation.
+- `V2164`: The sequence consists of recurring service entries and goods receipts without reaching invoice clearing or formal cancellation.
+- `V2171`: The process ends prematurely at a goods receipt without invoicing or payment.
+- `V2172`: An operational loop of service entries and goods receipts that does not complete the procurement cycle.
+- `V2173`: An incomplete operational sequence ending at service entry sheet creation.
+- `V2188`: The process variant ends at Record Goods Receipt without invoice creation or payment, fitting none of the standard settlement categories.
+- `V2199`: The process terminates at creating the purchase order item with no invoice or payment steps.
+- `V2237`: The process ends at Record Invoice Receipt and never completes invoice clearing or cancellation, fitting neither standard payment nor cancellation.
+- `V2318`: The case ends with Record Goods Receipt and does not complete through to payment or cancellation.
+- `V2338`: The process variant ends prematurely at Record Goods Receipt without reaching invoice clearing or cancellation.
+- `V2347`: The variant ends at Record Goods Receipt without reaching invoice clearing, cancellation, or payment completion.
+- `V2370`: The process terminates at Record Goods Receipt without completing through to payment, cancellation, or standard resolution, leaving it outside the primary invoice lifecycle categories.
+- `V2373`: The process ends at Record Goods Receipt with multiple quantity changes, stopping short of invoice creation or payment clearance.
+- `V2381`: The process terminates at Record Goods Receipt without reaching invoice creation or payment clearance.
+- `V2384`: The process terminates at Record Goods Receipt without reaching invoice processing or payment.
+- `V2387`: The process terminates at goods receipt without reaching invoice creation or payment.
+- `V2398`: Terminates at Record Goods Receipt without invoice creation or payment.
+- `V2452`: The process ends in goods receipt without completing through to payment or cancellation, leaving it outside the standard categories.
+- `V2460`: The case involves a cancelled goods receipt long after clearing, fitting poorly into standard lifecycle categories.
+- `V2461`: The variant terminates at goods receipt without payment or cancellation.
+- `V2462`: The flow terminates at invoice receipt without reaching payment.
+- `V2481`: The process ends with Record Goods Receipt without completing payment or reaching final invoice clearance, fitting neither straight-through processing nor payment block/cancellation categories well.
+- `V2493`: The process terminates at Record Invoice Receipt without completing the payment phase.
+- `V2499`: Terminates at Record Goods Receipt without reaching payment or invoice phases.
+- `V2505`: The process ends with the recording of service entry sheets and does not reach invoice clearance or show explicit blocking or cancellation.
+- `V2507`: The case terminates early at goods receipt and service entry recording without progressing to invoicing or payment.
+- `V2512`: The case ends with an invoice receipt event rather than reaching final clearance or cancellation.
+- `V2524`: The case concludes at goods receipt without proceeding to invoicing or payment.
+- `V2551`: The process ends with Record Goods Receipt without completing the payment cycle or fitting any cancellation or discrepancy-resolution pattern.
+- `V2553`: The case ends with Change Delivery Indicator and does not culminate in invoice clearing or payment.
+- `V2555`: The process terminates at Record Goods Receipt without reaching invoice clearing or payment.
+- `V2560`: Terminates with Change Delivery Indicator without reaching payment or cancellation.
+- `V2565`: Ends in Record Goods Receipt without reaching invoice clearing.
+- `V2568`: Terminates in Record Goods Receipt without completing the payment workflow.
+- `V2569`: Ends in Record Goods Receipt without completing the invoicing or payment cycle.
+- `V2584`: The process terminates at Record Invoice Receipt without completing to payment or fitting any standard completion pattern.
+- `V2612`: The process ends at Record Goods Receipt without clearing or cancellation, making it an incomplete or non-standard flow that does not fit the main categories.
+- `V2614`: The case sequence terminates at Record Goods Receipt with extensive service entry sheets, leaving payment incomplete.
+- `V2615`: The process ends at Record Service Entry Sheet without reaching invoice clearing or cancellation.
+- `V2617`: The process terminates at Record Goods Receipt without payment or cancellation.
+- `V2621`: The process ends unexpectedly with a storage location change long after invoice clearing, not fitting standard categories.
+- `V2622`: The process terminates at Record Goods Receipt following extensive service entry sheets.
+- `V2654`: The process repeats transfer steps and does not end in a clear payment completion or standard flow.
+- `V2664`: Involves excessive repeated goods receipt entries without concluding through to payment.
+- `V2677`: The process ends at Record Invoice Receipt without reaching payment or cancellation, leaving the ultimate outcome incomplete under the defined categories.
+- `V2679`: Repeated goods receipts and service entry sheets without invoice creation or payment completion do not fit standard invoice processing categories.
+- `V2680`: Ends with repeated change approval and release purchase order actions without reaching invoice receipt or payment.
+- `V2681`: Involves extensive quantity changes and approvals, but terminates at Record Invoice Receipt without completing payment.
+- `V2682`: Terminates at Record Goods Receipt without reaching invoice creation or payment.
+- `V2683`: Terminates at Record Invoice Receipt without final payment or cancellation.
+- `V2684`: Terminates at Record Invoice Receipt without completing the payment process.
+- `V2699`: Consists entirely of repeated service entry sheets and goods receipts without reaching invoice processing.
+- `V2701`: The process ends with Change Delivery Indicator and does not conclude with payment, cancellation, or standard completion, remaining in the residual category.
+- `V2704`: The process stops at Record Invoice Receipt and does not reach payment or cancellation.
+- `V2708`: The process involves repeated service entry sheets and goods receipts in a short loop without resolving or progressing to a standard invoice and payment.
+- `V2709`: The process concludes at Record Invoice Receipt without reaching a payment clearance or cancellation stage.
+- `V2718`: Stops at Record Invoice Receipt without payment clearance or explicit cancellation.
+- `V2749`: The process does not end in payment clearing or cancellation, and lacks specific exception or block markers fitting the main categories.
+- `V2750`: The case ends with a purchase order approval change and does not reach completion, payment, or cancellation in the normal sense.
+- `V2754`: The process consists entirely of repetitive goods receipts and service entry sheets without completing or clearing.
+- `V2758`: The case terminates at recording the goods receipt without completing payment or clearing.
+- `V2761`: The process halts at recording the invoice receipt without reaching final payment or clearing.
+- `V2762`: A repetitive sequence of service entry sheets and goods receipts without reaching invoice processing or payment.
+- `V2767`: Ends at the invoice receipt stage without clearing or payment.
+- `V2771`: Ends at the invoice receipt stage without final payment clearance.
+- `V2773`: Process stops at recording the invoice receipt.
+- `V2809`: The process ends with 'Record Invoice Receipt' and does not clearly fit standard completion, resolution, block, or cancellation definitions.
+- `V2812`: The variant ends with 'Record Invoice Receipt' and lacks a final payment, block removal, or cancellation status.
+- `V2814`: The process concludes with 'Record Invoice Receipt' without reaching clearing or cancellation.
+- `V2817`: The process terminates at 'Record Goods Receipt' without reaching invoice clearing or being cancelled.
+- `V2823`: The variant ends with 'Record Goods Receipt' and does not map cleanly to standard resolution, block, or cancellation.
+- `V2831`: The process ends at vendor creates invoice without payment completion, fitting neither standard STP nor resolved discrepancies.
+- `V2839`: Incomplete process sequence ending in service sheet and goods receipt without reaching payment.
+- `V2840`: Sequence of service entries and goods receipts without final invoice or payment completion.
+- `V2876`: The narrative shows multiple goods receipts and invoice receipts, but does not fit cleanly into resolution of a discrepancy, blocking, or cancellation.
+- `V2887`: Repeated service entry sheets are logged, but it does not cleanly align with pricing/quantity discrepancy resolutions or explicit blocks.
+- `V2888`: Excessive repetition of goods receipts is noted, which does not map well into the standard categories.
+- `V2892`: Frequent goods receipts are recorded without a clear discrepancy resolution, block, or cancellation.
+- `V2896`: Multiple duplicate invoice and goods receipt events occur, but without a definitive classification match.
+- `V2897`: Vendor creates invoice is repeated with a long gap, but lacks distinct exception markers.
+- `V2911`: Does not complete the procurement process (ends in approval changes).
+- `V2921`: Extremely prolonged approval loops and changes that do not fit standard execution paths.
+- `V2922`: Complex cyclical approval modifications dominating the variant case.
+- `V2923`: Prolonged approval loops and modifications without a standard completion path.
+- `V2924`: Repeated approval modifications spanning a long duration.
+- `V2925`: Extensive repetition of purchase order approvals and adjustments.
+- `V2933`: The process terminates at Record Invoice Receipt and does not complete full clearance, nor does it cleanly fit the failure definitions.
+- `V2966`: The variant ends abruptly at 'Record Invoice Receipt' without reaching payment clearance, cancellation, or a clear failure state, placing it in the residual.
+- `V2970`: Terminates at 'Record Invoice Receipt' without completing or cleanly failing, leaving it outside the standard categories.
+- `V2994`: The process culminates in a technical execution transfer failure rather than standard completion, cancellation, or resolution.
+- `V2995`: Terminates with a system transfer failure after multiple invoice cancellations and block removals.
+- `V3017`: Ends in SRM: Transaction Completed rather than complete invoice clearing, cancellation, or standard execution.
+- `V3090`: The process terminates prematurely at Record Goods Receipt without completing invoice clearance or payment.
+- `V3124`: The process terminates abruptly at Record Goods Receipt without reaching invoice receipt or payment clearing.
+- `V3125`: The process terminates at Record Goods Receipt and does not complete through to invoice receipt or payment.
+- `V3226`: The process ends with Record Goods Receipt without reaching invoice creation or payment completion, and does not fit any exception resolution, delay, or cancellation category.
+- `V3227`: The variant consists of extensive repetitive service entries and goods receipts without reaching final invoice clearing or cancellation.
+- `V3228`: The variant ends in Record Goods Receipt and lacks invoice processing steps or standard lifecycle closure.
+- `V3229`: The variant ends in Record Service Entry Sheet without an invoice or payment step.
+- `V3230`: The variant terminates at Record Goods Receipt without any financial invoice clearing or exception handling pattern.
+- `V3245`: The process terminates with Record Invoice Receipt after multiple price changes and partial clearing, leaving it outside simple categories.
+- `V3250`: The variant ends with Record Goods Receipt after a massive repetition of service entries and goods receipts without reaching an invoice or payment.
+- `V3251`: The process ends with Record Service Entry Sheet without reaching payment or cancellation, leaving it incomplete.
+- `V3252`: The process concludes at Record Goods Receipt without payment or cancellation.
+- `V3253`: The process ends at Record Service Entry Sheet with no final payment or invoice clearing.
+- `V3263`: The case ends with a Record Invoice Receipt after 367 days without final clearing or cancellation.
+- `V3264`: The case ends with a Record Invoice Receipt after 372 days without final clearing or cancellation.
+- `V3265`: The case concludes with a Record Invoice Receipt after 367 days without concluding with final clearance.
+- `V3266`: The case ends with a Record Invoice Receipt after 372 days without a final clearing step.
+- `V3267`: The process ends with a Record Invoice Receipt after 370 days without a final payment clearing.
+- `V3294`: The process is incomplete, ending in a goods receipt without progressing to invoicing or payment.
+- `V3295`: The process terminates at goods receipt and does not reach invoice processing or payment.
+- `V3296`: Incomplete process ending prematurely at goods receipt.
+- `V3297`: Incomplete case terminating at goods receipt.
+- `V3298`: Incomplete case ending in goods receipt without reaching payment stages.
+- `V3299`: Incomplete case stopping at goods receipt.
+- `V3300`: Incomplete case ending at goods receipt.
+- `V3301`: The case ends with Record Invoice Receipt after extensive loops of cancellations and corrections without ever reaching a completed payment or clean cancellation/reversal status.
+- `V3305`: The process is an extremely complex and prolonged series of invoice receipts, debit memos, and blocks ending without payment.
+- `V3359`: The process ends prematurely at Record Goods Receipt without completing through to payment or cancellation.
+- `V3360`: The process terminates at Record Goods Receipt without reaching invoice clearing or formal cancellation.
+- `V3361`: The process ends at Record Goods Receipt without completing the full procurement cycle.
+- `V3362`: The case terminates at Record Service Entry Sheet without reaching invoice creation or payment.
+- `V3363`: The trace stops at Record Goods Receipt without going through invoicing or payment.
+- `V3367`: The case terminates after an invoice receipt following massive goods receipt loops without completing payment.
+- `V3438`: The process ends at record goods receipt without reaching final payment or a formal cancellation, making none of the standard categories fully applicable.
+- `V3439`: The variant ends in record goods receipt rather than invoice clearing or cancellation.
+- `V3440`: The case terminates at record service entry sheet without concluding payment or cancellation.
+- `V3441`: The process concludes at record goods receipt without completion through to invoice clearing or cancellation.
+- `V3476`: The narrative ends abruptly at Record Goods Receipt without invoice creation or completion, making it part of the residual process variants.
+- `V3477`: The process terminates at Record Goods Receipt without proceeding to invoice handling or clearing, placing it in the residual.
+- `V3478`: The variant ends at Record Service Entry Sheet without reaching invoice or payment completion steps, falling into the residual category.
+- `V3551`: The process ends in a change of currency after item deletion and price adjustments, without reaching completion, payment, or standard discrepancy resolution.
+- `V3561`: The process terminates at Record Service Entry Sheet without reaching invoice creation, clearance, or cancellation.
+- `V3562`: The process terminates at Record Goods Receipt without reaching invoice creation, clearance, or cancellation.
+- `V3563`: The process terminates at Record Goods Receipt without reaching invoice creation, clearance, or cancellation.
+- `V3564`: The process terminates at Record Goods Receipt without reaching invoice creation, clearance, or cancellation.
+- `V3565`: The process terminates at Record Goods Receipt without reaching invoice creation, clearance, or cancellation.
+- `V3566`: The process terminates at Record Goods Receipt without reaching invoice creation, clearance, or cancellation.
+- `V3567`: The process terminates at Record Goods Receipt without reaching invoice creation, clearance, or cancellation.
+- `V3590`: The process terminates at Record Goods Receipt without reaching invoice clearance or cancellation, fitting neither category.
+- `V3607`: The case terminates at Record Goods Receipt without completing the full invoice and payment cycle.
+- `V3608`: The process ends prematurely at Record Goods Receipt without reaching invoice creation or payment.
+- `V3609`: Terminates at Record Service Entry Sheet before reaching invoicing and payment.
+- `V3610`: Terminates at Record Goods Receipt without proceeding to invoice processing.
+- `V3611`: Ends at Record Goods Receipt before invoice submission or clearing.
+- `V3640`: The process ends at Record Invoice Receipt without completion to payment or cancellation, fitting neither category.
+- `V3718`: The process is incomplete, ending in record goods receipt without reaching payment or cancellation.
+- `V3719`: The case is incomplete, ending in record service entry sheet without reaching invoicing or payment.
+- `V3720`: The process terminates early at record goods receipt without completion.
+- `V3721`: Incomplete case ending at record goods receipt.
+- `V3722`: Incomplete process ending at record service entry sheet.
+- `V3723`: Incomplete case ending at record goods receipt.
+- `V3724`: Incomplete case ending at record goods receipt.
+- `V3767`: The process did not complete through to payment and stopped at Record Invoice Receipt with an extreme delay; does not fit standard successful or blocked categories neatly.
+- `V3768`: Incomplete or erratic process ending in Record Goods Receipt with excessive loops and no final payment clear.
+- `V3771`: Terminates early at Record Service Entry Sheet without reaching invoice creation or payment.
+- `V3772`: Terminates early at Record Goods Receipt without reaching invoice creation or payment.
+- `V3773`: Terminates early at Record Service Entry Sheet without reaching invoice creation or payment.
+- `V3774`: Terminates early at Record Service Entry Sheet without reaching invoice creation or payment.
+- `V3850`: The process terminates abruptly at Record Goods Receipt without reaching invoice receipt, payment, block, or cancellation.
+- `V3898`: The process terminates incomplete at a goods receipt without clear resolution or payment, falling outside standard completion paths.
+- `V3899`: The case ends prematurely at a service entry sheet without reaching invoice creation, clearance, or cancellation.
+- `V3900`: The variant ends abruptly at a goods receipt step without progressing to billing or settlement.
+- `V3901`: The narrative ends with recording service entry sheets without reaching invoice creation, receipt, or payment completion.
+- `V3902`: The process consists entirely of repeated goods receipts and service entry sheets without reaching invoice processing or payment.
+- `V3903`: The process ends with recording service entry sheets and goods receipts without proceeding to invoicing or payment.
+- `V3904`: The sequence consists solely of goods receipts and service entry sheets without invoice or payment steps.
+- `V3942`: Process ends at recording goods receipt without completing through to payment or cancellation, leaving it incomplete for the standard categories.
+- `V3943`: Process terminates at goods receipt without proceeding to invoice or payment completion.
+- `V3944`: Terminates at goods receipt without reaching the invoice or payment stages.
+- `V3945`: Ends at goods receipt without proceeding to invoice or payment completion.
+- `V3946`: Terminates at recording service entry sheet without proceeding further.
+- `V3947`: Ends at goods receipt without reaching invoice or payment completion.
+- `V3977`: The case consists almost entirely of repeated goods receipts and service entry sheets without completing the invoice or payment cycle.
+- `V3978`: The case consists of goods receipts and service entry sheets without reaching invoice creation, clearing, or cancellation.
+- `V3979`: The sequence involves goods receipts and service entry sheets but does not reach invoice receipt, payment, or cancellation.
+- `V3980`: The variant ends with a service entry sheet and lacks a clear invoice lifecycle conclusion like clearing or cancellation.
+- `V4069`: The process terminates prematurely at Record Goods Receipt without reaching invoice or payment stages.
+- `V4070`: The case ends at Record Goods Receipt without completing the full procure-to-pay lifecycle.
+- `V4071`: Incomplete trace ending in Record Goods Receipt without invoice or payment steps.
+- `V4072`: Terminates at Record Goods Receipt without reaching completion.
+- `V4073`: Ends at Record Goods Receipt without invoice creation or payment.
+- `V4074`: Terminates at Record Goods Receipt prior to invoice processing.
+- `V4075`: Incomplete trace ending at Record Service Entry Sheet.
+- `V4129`: The case ends prematurely at Record Goods Receipt without payment or cancellation, leaving it outside the standard categories.
+- `V4130`: The case terminates at Record Goods Receipt without reaching invoice clearance or cancellation.
+- `V4131`: The case concludes at Record Goods Receipt without proceeding to payment or cancellation.
+- `V4132`: The process stops at Record Service Entry Sheet without completing payment or cancellation.
+- `V4150`: Terminates with a change delivery indicator without reaching payment or cancellation.
+- `V4159`: The process terminates abruptly at Record Goods Receipt without completing through payment or cancellation.
+- `V4160`: The process ends inconclusively at Record Goods Receipt without reaching payment or cancellation.
+- `V4161`: The case terminates at Record Goods Receipt and does not complete through to invoice clearing or cancellation.
+- `V4162`: The variant ends at Record Service Entry Sheet without going through invoice clearance or cancellation.
+- `V4163`: The process stops at Record Goods Receipt and lacks a final payment or cancellation outcome.
+- `V4169`: The case ends with an incomplete Record Invoice Receipt outcome rather than a completed payment or clean cancellation.
+- `V4170`: The case terminates prematurely at Record Invoice Receipt without reaching payment or formal cancellation.
+- `V4196`: The process is incomplete, ending prematurely at Record Goods Receipt without reaching payment, cancellation, or standard completion.
+- `V4197`: The process is incomplete, terminating at Record Goods Receipt without reaching invoicing or payment.
+- `V4198`: The process is incomplete, terminating at Record Goods Receipt without reaching payment or cancellation.
+- `V4199`: The process is incomplete, terminating at Record Goods Receipt without reaching payment or cancellation.
+- `V4200`: The process is incomplete, ending abruptly at Record Service Entry Sheet without reaching invoicing or payment.
+- `V4251`: The process ends in invoice clearing, but is bogged down by extensive repetitive goods receipts and service entries without fitting any other specific discrepancy or delay profile cleanly.
+- `V4252`: The process ends prematurely at Record Goods Receipt without clearing the invoice or being explicitly cancelled, leaving it incomplete.
+- `V4253`: The variant terminates at Record Goods Receipt with massive loops of service entries, thus not completing the full procure-to-pay lifecycle.
+- `V4254`: The case ends abruptly at Record Service Entry Sheet without concluding with invoice receipt or payment clearing.
+- `V4255`: The process terminates at Record Service Entry Sheet and does not reach invoice creation or payment clearance.
+- `V4256`: The narrative stops at Record Goods Receipt without proceeding to invoice receipt or payment.
+- `V4275`: Features a unique sequence involving the deletion and reactivation of a purchase order item along with storage location changes, fitting none of the standard payment/discrepancy categories neatly.
+- `V4302`: The process is incomplete, ending in recording a service entry sheet without reaching invoice clearing, cancellation, or standard completion.
+- `V4303`: The process consists entirely of repeating service entry sheets and goods receipts without reaching an invoice or completion.
+- `V4304`: The trace consists of repetitive goods receipts and service entry sheets without reaching any invoicing, payment, or cancellation milestone.
+- `V4305`: The process stops at recording a service entry sheet without any invoice or payment handling.
+- `V4306`: The trace only contains goods receipts and service entry sheets, falling short of invoice processing or payment.
+- `V4340`: The process terminates at record goods receipt without reaching payment, cancellation, or explicit resolution categories.
+- `V4341`: The process ends at record goods receipt without completing through to payment or cancellation.
+- `V4342`: The process concludes at record goods receipt without reaching payment or cancellation outcomes.
+- `V4343`: The case ends with recording goods receipt and does not progress to invoice or payment stages.
+- `V4344`: Goods receipt was cancelled and re-recorded, but the case ends at record goods receipt without reaching payment or cancellation of the order.
+- `V4406`: The case ends with Record Goods Receipt without reaching invoice clearance, payment, or cancellation.
+- `V4407`: The trace terminates at Record Goods Receipt without progressing to invoice processing or final settlement.
+- `V4408`: The variant ends prematurely at Record Service Entry Sheet without reaching invoice creation or payment.
+- `V4409`: The process sequence concludes at Record Goods Receipt without continuing to financial clearing or cancellation.
+- `V4410`: The narrative stops at Record Goods Receipt and does not complete the procure-to-pay lifecycle.
+- `V4411`: The trace terminates at Record Service Entry Sheet without going through invoice recording and payment clearance.
+- `V4424`: The process consists entirely of repeating goods receipts, service entries, and cancellations without reaching invoice creation or payment.
+- `V4504`: The process terminates at Record Goods Receipt without clearing or payment, making none of the payment-lifecycle categories fully applicable.
+- `V4505`: The process ends at Record Goods Receipt without reaching invoice clearing or cancellation.
+- `V4506`: Case concludes at Record Goods Receipt without reaching payment or cancellation.
+- `V4507`: The narrative terminates at Record Goods Receipt without proceeding to invoice handling or payment.
+- `V4508`: The process ends abruptly at Record Goods Receipt with no invoice or payment steps.
+- `V4509`: Ends at Record Service Entry Sheet without reaching invoice creation, clearance, or cancellation.
+- `V4510`: Terminates at Record Goods Receipt with no subsequent invoice or payment actions.
+- `V4546`: The case does not progress to invoice clearing or payment, remaining incomplete at service entry sheet.
+- `V4548`: The process ends at goods receipt without reaching invoice clearing or completion.
+- `V4549`: Terminates at goods receipt without reaching the invoice payment stage.
+- `V4550`: The variant concludes at goods receipt without proceeding to invoice processing and payment.
+- `V4551`: The narrative shows extensive repetitive goods receipts and service entry sheets without completing the full procure-to-pay lifecycle up to payment or cancellation, making it part of the residual.
+- `V4569`: The sequence consists almost entirely of an endless loop of service entry sheets without reaching invoice creation or payment, placing it in the residual.
+- `V4601`: The process ends inconclusively with Record Invoice Receipt without reaching a proper clearing or payment completion, and does not fit cleanly into the standard categories.
+- `V4611`: The process terminates prematurely at 'Record Goods Receipt' without reaching invoice clearing or payment.
+- `V4612`: The process terminates prematurely at 'Record Goods Receipt' without reaching invoice clearing or payment.
+- `V4613`: The process terminates prematurely at 'Record Goods Receipt' without reaching invoice clearing or payment.
+- `V4614`: The process terminates prematurely at 'Record Goods Receipt' without reaching invoice clearing or payment.
+- `V4615`: The process terminates prematurely at 'Record Goods Receipt' without reaching invoice clearing or payment.
+- `V4616`: The process terminates prematurely at 'Record Goods Receipt' without reaching invoice clearing or payment.
+- `V4617`: The process terminates prematurely at 'Record Goods Receipt' without reaching invoice clearing or payment.
+- `V4620`: The process terminates prematurely with an extra 'Record Invoice Receipt' event rather than clearing or formal cancellation.
+- `V4632`: The narrative consists almost entirely of repetitive service entry sheets and goods receipts without a final clear payment or cancellation.
+- `V4636`: Short duration ending in record goods receipt without reaching final invoice payment or cancellation.
+- `V4637`: Ends in record service entry sheet without concluding through invoice clearing or cancellation.
+- `V4638`: Repetitive service entries and goods receipts ending on record goods receipt.
+- `V4639`: High repetition of goods receipts and service entries ending on record goods receipt.
+- `V4640`: Extremely repetitive goods receipts and service entry sheets concluding in record goods receipt.
+- `V4674`: The process terminates inconclusively at Record Invoice Receipt rather than completing through to a full payment or cancellation.
+- `V4693`: The process ends prematurely at Record Goods Receipt without clearing, cancellation, or payment block.
+- `V4694`: The process terminates at Record Goods Receipt without reaching invoice clearance or cancellation.
+- `V4695`: The case ends at Record Goods Receipt without reaching completion or cancellation.
+- `V4696`: The case terminates at Record Goods Receipt without final clearing or cancellation.
+- `V4710`: The process ends in Record Invoice Receipt rather than being completed or fully cancelled, leaving it outside the standard categories.
+- `V4714`: Ends in Record Invoice Receipt with no payment clearance or cancellation recorded.
+- `V4723`: Ends in Record Goods Receipt without reaching invoice clearance or cancellation.
+- `V4732`: Does not fit standard invoicing/payment outcome paths; terminates at record goods receipt without reaching payment completion.
+- `V4733`: Terminates early at record goods receipt without reaching the invoice clearing or payment stage.
+- `V4734`: Terminates at record goods receipt without reaching invoice processing or payment completion.
+- `V4735`: Terminates at record goods receipt without reaching invoice processing or payment completion.
+- `V4736`: Terminates at record goods receipt without completing invoice clearing or payment stages.
+- `V4790`: The case terminates prematurely at recording a goods receipt without reaching invoice creation or payment.
+- `V4791`: The process ends at recording a goods receipt without invoice or payment steps.
+- `V4792`: The case terminates at a service entry sheet without reaching the invoicing or payment stages.
+- `V4793`: The sequence consists entirely of repeated goods receipts and service entry sheets without reaching invoice processing.
+- `V4794`: The variant stops at recording a goods receipt without progressing to billing or payment.
+- `V4795`: The narrative loops through goods receipts and service entry sheets, ending without invoice or payment processing.
+- `V4796`: The case ends with a goods receipt and does not reach the financial or payment phases.
+- `V4797`: The process terminates at a service entry sheet without invoice or payment milestones.
+- `V4841`: The case ends with a goods receipt and does not complete the full invoice-to-pay lifecycle.
+- `V4842`: The process terminates at goods receipt without reaching invoice payment or cancellation.
+- `V4843`: The case ends prematurely at a goods receipt activity without reaching complete payment or cancellation.
+- `V4844`: The process terminates at goods receipt without completion through payment or cancellation.
+- `V4845`: The variant ends at a service entry sheet and does not reach full completion.
+- `V4846`: The process terminates at goods receipt without reaching the invoice payment stage.
+- `V4847`: The narrative concludes at service entry without reaching invoice processing or payment.
+- `V4872`: The process is incomplete, ending prematurely at a service entry sheet without reaching payment or cancellation.
+- `V4873`: The variant ends prematurely at a service entry sheet without reaching completion, payment, or cancellation.
+- `V4885`: The case ends prematurely at recording goods receipts without completing through to payment or cancellation.
+- `V4887`: The process terminates at goods receipt without reaching invoice processing, payment, or cancellation.
+- `V4909`: The process terminates at Record Service Entry Sheet without reaching payment or cancellation, making standard payment categories inapplicable.
+- `V4910`: The process terminates at Record Goods Receipt without reaching invoice or payment milestones.
+- `V4911`: The process terminates at Record Goods Receipt without completing payment or cancellation.
+- `V4912`: The process terminates at Record Goods Receipt without reaching invoice or payment completion.
+- `V4913`: The process ends at Record Service Entry Sheet without reaching invoice receipt or payment.
+- `V4933`: The process terminates with a transfer state (SRM: In Transfer to Execution Syst.) rather than a clean completion, cancellation, or standard block.
+- `V4945`: Ends in a system transfer failure (SRM: Transfer Failed (E.Sys.)) after a prolonged delay, fitting neither standard completion nor cancellation.
+- `V4950`: Terminates with a technical system failure (SRM: Transfer Failed (E.Sys.)) rather than business-level completion or cancellation.
+- `V4954`: The process ended in a technical transfer failure to the execution system rather than normal completion or cancellation.
+- `V4961`: The process terminated with a system transfer failure after multiple adjustments and deletions.
+- `V4968`: The process stalled with repeated transfer attempts to the execution system and did not complete.
+- `V4972`: The variant ended in a system transfer failure after lengthy iterations of corrections and receipts.
+- `V4974`: The process failed to complete successfully, ending in a system transfer failure.
+- `V5041`: The process terminates abruptly at Record Invoice Receipt with a long delay, never reaching payment or completion.
+- `V5042`: The process ends at Record Service Entry Sheet without reaching invoice creation or payment.
+- `V5043`: The process ends at Record Goods Receipt without reaching invoicing or payment.
+- `V5044`: The variant terminates at Record Goods Receipt without completing the procure-to-pay lifecycle.
+- `V5045`: The variant ends immediately after goods receipt activities without progressing to invoicing or payment.
+- `V5046`: The variant terminates at Record Service Entry Sheet without reaching invoice or payment completion.
+- `V5047`: The process ends at Record Goods Receipt without invoicing or payment.
+- `V5076`: The narrative shows extensive rework with repeated goods receipts, invoice receipts, and invoice clearings, but does not fit standard discrepancies, blocks, or cancellations.
+- `V5086`: Complex series of multiple invoice receipts and subsequent invoice cancellations ending without a clear successful path.
+- `V5088`: Characterized by extensive repetitive goods receipts and service entry sheets without specific block or discrepancy resolution steps.
+- `V5089`: Excessive service entry sheets and goods receipts without a distinct categorization in the taxonomy.
+- `V5090`: Process ends at record goods receipt with massive repetitive service entry sheets, leaving payment incomplete.
+- `V5091`: Process terminates at record goods receipt after repetitive entries.
+- `V5092`: Terminates at record goods receipt with repetitive service entry sheets.
+- `V5093`: Terminates at record goods receipt with extensive repetitive service entry sheets.
+- `V5094`: Terminates at record goods receipt with repetitive service entry sheets.
+- `V5096`: Repeated invoice cancellations, debit memos, and delivery indicator changes indicate a complex residual case.
+- `V5131`: The process is incomplete, ending in Record Goods Receipt without reaching invoice clearing or cancellation.
+- `V5132`: The process is incomplete, terminating at Record Goods Receipt without full realization of payment or cancellation.
+- `V5133`: The process is incomplete, ending with Record Goods Receipt and lacking final invoice settlement.
+- `V5134`: The process is truncated, ending at Record Goods Receipt without reaching payment or cancellation.
+- `V5135`: The process ends at Record Service Entry Sheet without reaching invoice or payment completion.
+- `V5136`: The process is incomplete, ending in Record Goods Receipt.
+- `V5137`: The process is truncated and ends in Record Service Entry Sheet without completion.
+- `V5202`: The process terminates prematurely at Record Goods Receipt without reaching invoice clearing or payment.
+- `V5203`: The process terminates prematurely at Record Goods Receipt without reaching invoice clearing or payment.
+- `V5204`: The process terminates prematurely at Record Goods Receipt without reaching invoice clearing or payment.
+- `V5205`: The process terminates prematurely at Record Service Entry Sheet without reaching invoice clearing or payment.
+- `V5206`: The process terminates prematurely at Record Goods Receipt without reaching invoice clearing or payment.
+- `V5207`: The process terminates prematurely at Record Goods Receipt without reaching invoice clearing or payment.
+- `V5208`: The process terminates prematurely at Record Service Entry Sheet without reaching invoice clearing or payment.
+- `V5212`: The process ends with goods receipt actions and involves a cancellation of goods receipt, but does not complete the procurement lifecycle.
+- `V5265`: Case stops at recording goods receipt without completing through to payment or cancellation.
+- `V5266`: Case stops at recording goods receipt without completing through to payment or cancellation.
+- `V5267`: Case stops at recording goods receipt without completing through to payment or cancellation.
+- `V5268`: Case stops at recording goods receipt without completing through to payment or cancellation.
+- `V5269`: Case stops at recording goods receipt without completing through to payment or cancellation.
+- `V5274`: Case ends at invoice receipt without reaching payment clearance or cancellation.
+- `V5305`: The process ends at Record Goods Receipt without payment or cancellation, leaving it outside the standard categories.
+- `V5306`: The process terminates at Record Goods Receipt without concluding the financial or cancellation steps.
+- `V5307`: The process ends at Record Goods Receipt without completing the invoice or cancellation lifecycle.
+- `V5308`: The process terminates upon recording a goods receipt without payment or cancellation outcomes.
+- `V5309`: The process ends with Record Goods Receipt, missing payment or cancellation stages.
+- `V5310`: The sequence concludes with Record Goods Receipt without advancing to invoicing, payment, or cancellation.
+- `V5315`: The process ends at Record Invoice Receipt with a change delivery indicator, not completing full payment or cancellation.
+- `V5316`: The process concludes at Record Invoice Receipt after multiple adjustments and cancellations of receipts.
+- `V5318`: The case terminates with Record Invoice Receipt after numerous modifications and multiple invoice entries.
+- `V5333`: The process terminates early at Record Service Entry Sheet without reaching completion, payment, or cancellation stages.
+- `V5334`: The variant ends prematurely at Record Goods Receipt without completing the full procurement and payment cycle.
+- `V5335`: The process stops at Record Goods Receipt and does not progress to invoice creation or payment.
+- `V5336`: Terminates at Record Goods Receipt without reaching invoice processing or final clearing.
+- `V5337`: Ends at Record Goods Receipt without completing the full cycle.
+- `V5346`: The variant ends prematurely at Change Quantity without reaching invoice processing or payment.
+- `V5373`: The variant represents a massive looping sequence of service entry sheets and goods receipts ending abruptly without reaching standard invoice or payment stages.
+- `V5374`: Truncated sequence consisting purely of repeated goods receipts and service entry sheets without completing the procurement cycle.
+- `V5375`: Represents an incomplete workflow characterized by dense loops of service entry sheets and goods receipts without reaching an invoice or payment milestone.
+- `V5376`: The narrative consists purely of creating purchase order items, recording goods receipts, and recording service entry sheets, ending without payment or invoice processing, so none of the standard billing-oriented categories fit.
+- `V5392`: The narrative is an extremely long, repetitive loop of goods receipts, service entry sheets, and invoice receipts that does not neatly fit standard straight-through or simple exception categories without a clear resolution pattern.
+- `V5396`: The process involves only goods receipt recordings without invoice processing or payment.
+- `V5399`: The process concludes with changing the delivery indicator and does not reach invoice receipt or payment.
+- `V5400`: The process concludes with a change in quantity and does not involve billing or payment.
+- `V5516`: The process is incomplete, terminating prematurely at record goods receipt.
+- `V5517`: The process terminates early at record goods receipt without reaching payment or completion.
+- `V5518`: The process ends at record goods receipt and is incomplete.
+- `V5519`: Terminates prematurely at record goods receipt.
+- `V5531`: The process ends with Record Invoice Receipt and is never fully cleared or completed, making it part of the residual.
+- `V5555`: The process is incomplete, ending in 'Record Service Entry Sheet' without reaching payment, cancellation, or resolution.
+- `V5556`: The process is incomplete, ending in 'Record Goods Receipt' without reaching payment or cancellation.
+- `V5557`: The process is incomplete, ending in 'Record Goods Receipt' without reaching payment or cancellation.
+- `V5560`: The process is incomplete, ending in 'Record Goods Receipt' without reaching payment or cancellation.
+- `V5561`: The process is incomplete, ending in 'Record Goods Receipt' without reaching payment or cancellation.
+- `V5562`: The process is incomplete, ending in 'Record Goods Receipt' without reaching payment or cancellation.
+- `V5563`: The process is incomplete, ending in 'Record Goods Receipt' without reaching payment or cancellation.
+- `V5598`: The process terminates at record service entry sheet without reaching invoice clearing or cancellation, making standard payment categories inapplicable.
+- `V5599`: The process concludes at record goods receipt without progressing to invoice creation or payment.
+- `V5600`: The process ends at record goods receipt without reaching the invoice processing or payment stages.
+- `V5634`: The process terminates at Record Goods Receipt without completing payment or clearing.
+- `V5635`: The process terminates at Record Goods Receipt without completing payment or clearing.
+- `V5636`: The process terminates at Record Goods Receipt without completing payment or clearing.
+- `V5637`: The process terminates at Record Goods Receipt without completing payment or clearing.
+- `V5642`: The case ends in Record Invoice Receipt rather than completed payment.
+- `V5659`: The narrative ends in record goods receipt without reaching invoice clearing, cancellation, or a clear payment block definition.
+- `V5670`: The process terminates with a repeated 'Record Invoice Receipt' rather than complete clearing, cancellation, or standard resolution.
+- `V5690`: The process ends with recording service entry sheets and does not complete through to payment or cancellation.
+- `V5691`: The process terminates at goods receipt without progressing to invoice creation or payment.
+- `V5692`: Includes a cancelled goods receipt but does not finish through to payment or standard closure.
+- `V5693`: Terminates at goods receipt after extensive service entry sheet activities without reaching payment or cancellation.
+- `V5694`: Ends at record goods receipt without reaching the invoice payment stage.
+- `V5695`: Ends at record goods receipt without completing the procurement and payment lifecycle.
+- `V5696`: Stops at record goods receipt without proceeding to invoicing or payment.
+- `V5751`: The narrative only contains order creation and repetitive service entry and goods receipt activities without completing through to invoice processing or payment.
+- `V5752`: The process ends with repeated service entry and goods receipt activities without reaching invoice receipt or payment clearing.
+- `V5753`: The process sequence consists entirely of creation, service entries, and goods receipts without invoice or payment steps.
+- `V5754`: The sequence contains extensive repetitions of service entry sheets and goods receipts without proceeding to invoicing or payment.
+- `V5755`: The narrative consists of PO creation, service entries, and goods receipts, terminating without any invoice or payment handling.
+- `V5756`: The variant contains goods receipts and service entry sheets without reaching the invoicing or payment stages.
+- `V5757`: The process consists entirely of repeated goods receipts and service entry sheets, ending without invoice or payment stages.
+- `V5783`: The case ends with Record Goods Receipt and does not reach final invoice clearance or completion.
+- `V5784`: The case ends with Record Goods Receipt following a cancellation and does not complete through to payment.
+- `V5785`: The variant concludes prematurely at Record Goods Receipt without full payment processing.
+- `V5786`: The process concludes at Record Goods Receipt without reaching invoice completion or clearance.
+- `V5787`: Process ends at Record Service Entry Sheet and does not culminate in payment or clearance.
+- `V5788`: Ends at Record Goods Receipt without completing the end-to-end payment lifecycle.
+- `V5789`: Concludes at Record Service Entry Sheet without reaching invoice clearance.
+- `V5797`: The case ends at Record Invoice Receipt and does not complete through to payment.
+- `V5804`: The process ends with 'Record Invoice Receipt' and does not result in a final payment or clear invoice, nor does it cleanly fit the other categories.
+- `V5806`: The variant ends abruptly at 'Record Invoice Receipt' with price changes and does not complete the standard payment process.
+- `V5815`: The process terminates with 'Record Goods Receipt' and never reaches invoicing or payment completion.
+- `V5826`: The narrative consists only of purchase order item creation, service entry sheets, and goods receipts without reaching invoice clearing or representing a complete billing/payment cycle.
+- `V5827`: The narrative only records purchase order item creation, goods receipts, and service entry sheets, ending without invoice processing.
+- `V5828`: The process sequence is restricted to repeated service entry sheets and goods receipts, lacking any billing or invoice resolution steps.
+- `V5829`: The sequence involves only purchase order creation, goods receipts, and service entry sheets without culminating in an invoice or payment.
+- `V5830`: The narrative is composed of numerous goods receipts and service entry sheets but does not proceed to invoice handling or clearing.
+- `V5831`: The case ends with service entry sheets and goods receipts without any invoice lifecycle events.
+- `V5832`: The process only contains goods receipts and service entry sheets, terminating without invoice clearing.
+- `V5841`: The process concludes with a change to the delivery indicator after clearing and goods receipt cancellation, fitting outside standard categories.
+- `V5842`: The narrative terminates with a change delivery indicator event and never reaches invoice receipt or clearing.
+- `V5844`: The process ends with a goods receipt and quantity changes, lacking an invoice or clearing step.
+- `V5855`: The process ends at Record Goods Receipt without reaching invoice creation or payment, representing an incomplete case or different process residual.
+- `V5856`: Ends at Record Goods Receipt without payment or invoicing completion.
+- `V5857`: Terminates at Record Goods Receipt with no invoice or payment steps.
+- `V5882`: The process terminates at Change Price without completing through to payment or cancellation, leaving it outside the standard four categories.
+- `V5885`: The sequence ends with a Change Quantity modification after payment and cancellation events, not fitting neatly into straight-through, discrepancy resolution, delay, or cancellation.
+- `V5886`: The process terminates at Record Invoice Receipt and does not reach payment or cancellation.
+- `V5887`: The process terminates with Record Goods Receipt without reaching invoice clearance or cancellation.
+- `V5890`: The process stops at Record Goods Receipt without completing the payment phase.
+- `V5891`: Ends at Record Goods Receipt without reaching invoice clearing or payment.
+- `V5892`: Terminates at Record Goods Receipt without continuing to payment.
+- `V5893`: Ends with a Record Goods Receipt event without a final payment or cancellation.
+- `V5894`: Concludes with Record Goods Receipt without reaching invoice clearing.
+- `V5895`: The variant ends at Record Goods Receipt without invoice clearance.
+- `V5928`: The variant ends on Record Service Entry Sheet without reaching payment or cancellation.
+- `V5929`: The process terminates at Record Goods Receipt without completing payment or cancellation.
+- `V5930`: The process terminates at Record Goods Receipt without completing payment or cancellation.
+- `V5931`: The process terminates at Record Goods Receipt without completing payment or cancellation.
+- `V5932`: The process terminates at Record Goods Receipt without completing payment or cancellation.
+- `V5933`: The process terminates at Record Service Entry Sheet without reaching payment or cancellation.
+- `V5934`: The process terminates at Record Goods Receipt without completing payment or cancellation.
+- `V5956`: The process does not end in a clear payment or cancellation, but finishes with Record Invoice Receipt after multiple delays and changes.
+- `V5971`: The process terminates prematurely at Record Goods Receipt without completing payment or cancellation.
+- `V5972`: Ends abruptly at Record Goods Receipt without reaching invoice clearance or cancellation.
+- `V5973`: Incomplete process ending at Record Goods Receipt.
+- `V5974`: Incomplete process ending at Record Goods Receipt with extensive service entry sheet loops.
+- `V5975`: Incomplete process terminating at Record Goods Receipt.
+- `V6010`: The variant ends in Record Goods Receipt without completing the invoice or payment steps, thus not fitting any standard full payment lifecycle category.
+- `V6011`: The variant terminates at Record Goods Receipt without reaching invoice creation or payment clearance.
+- `V6013`: The process ends at Record Service Entry Sheet without reaching invoice or payment completion.
+- `V6014`: The process terminates at Record Goods Receipt without proceeding to invoicing or payment.
+- `V6015`: The process terminates at Record Goods Receipt without reaching invoice processing or payment clearance.
+- `V6023`: The process ends unexpectedly on a trailing Record Invoice Receipt following multiple clearings and price/quantity changes, failing to complete cleanly.
+- `V6024`: The variant ends with a trailing Record Invoice Receipt after multiple clearings, representing an incomplete or unresolved final state.
+- `V6026`: The process involves repeated invoices, goods receipts, and invoice receipts over 255 days without a clean resolution or payment clearance, ending indefinitely on Record Invoice Receipt.
+- `V6054`: The narrative ends in Record Invoice Receipt and does not fully complete or neatly fit the standard exceptions without cancellation or clearance.
+- `V6063`: Terminates at Record Goods Receipt without reaching final payment or clearance, rendering it a residual case.
+- `V6064`: Ends at Record Goods Receipt without reaching final payment or clearance.
+- `V6065`: Stops at Record Goods Receipt before reaching invoice clearing or payment.
+- `V6066`: Terminates at Record Goods Receipt without completing the full cycle to payment.
+- `V6067`: Ends with Record Goods Receipt without continuing through to invoice receipt and clearance.
+- `V6068`: Ends with Record Service Entry Sheet without reaching complete invoice clearance.
+- `V6069`: Stops at Record Service Entry Sheet before completion of invoice payment.
+- `V6070`: Terminates at Record Goods Receipt without final clearance.
+- `V6073`: Ends in Record Invoice Receipt following a partial clearing and extended processing without final resolution.
+- `V6166`: The case terminates early at record goods receipt without completing payment or cancellation.
+- `V6167`: Terminates at record goods receipt without reaching invoice creation or payment.
+- `V6168`: Terminates at record goods receipt without reaching payment or invoice milestones.
+- `V6169`: Terminates at record goods receipt without reaching invoice or payment completion.
+- `V6170`: Case ends abruptly at record goods receipt without proceeding to invoice processing.
+- `V6201`: This variant records a dense sequence of service entry sheets and goods receipts without completing a standard invoice-to-payment cycle.
+- `V6202`: This variant ends in a goods receipt without progressing to billing or payment completion.
+- `V6203`: The process terminates at a goods receipt record without invoice creation or payment.
+- `V6204`: The sequence involves service entries and goods receipts but concludes before invoicing.
+- `V6205`: This variant consists entirely of repetitive goods receipts and service entries without reaching payment.
+- `V6224`: The process contains numerous cancellations of goods receipts and repeated invoice entries, representing a complex non-standard exception flow.
+- `V6246`: The case ends with goods receipt and does not complete through to payment or cancellation.
+- `V6247`: Terminates at goods receipt without reaching final invoice payment or cancellation.
+- `V6248`: Ends at goods receipt without reaching final invoice payment or cancellation.
+- `V6249`: Terminates at goods receipt without reaching final invoice payment or cancellation.
+- `V6250`: Terminates at goods receipt without reaching final invoice payment or cancellation.
+- `V6251`: The narrative shows multiple repeated service entries and goods receipts with no clear payment or full processing cycle, remaining in the residual.
+- `V6265`: The process ends in a record invoice receipt event rather than a complete payment cycle or cancellation.
+- `V6297`: The process ends prematurely at Record Goods Receipt without reaching invoice clearance or cancellation.
+- `V6298`: The process terminates at Record Goods Receipt without completing payment or cancellation.
+- `V6299`: The case stops at Record Goods Receipt and does not reach final payment or cancellation.
+- `V6300`: The process concludes at Record Goods Receipt without progressing to invoice payment or cancellation.
+- `V6301`: The narrative ends with Record Service Entry Sheet without reaching invoice clearance, payment, or standard completion, so it does not fit any core lifecycle category.
+- `V6302`: The case involves a long series of goods receipts and service entry sheets without completing the invoicing or payment phase.
+- `V6303`: The trace terminates at Record Goods Receipt without proceeding to invoice generation or clearing.
+- `V6375`: The case terminates prematurely at record goods receipt without reaching payment or cancellation.
+- `V6376`: The narrative ends abruptly at Record Goods Receipt without completing the invoice or payment cycle, which does not fit any of the standard payment, discrepancy, or cancellation categories.
+- `V6377`: The process ends at Record Goods Receipt without reaching invoice clearing or cancellation, making it part of the residual.
+- `V6378`: The case terminates with Record Goods Receipt and does not progress to invoice processing or payment.
+- `V6379`: The sequence concludes with Record Goods Receipt without an invoice being cleared or processed through to completion.
+- `V6380`: The variant ends at Record Goods Receipt with extensive repetitive service entries and goods receipts, but lacks any invoice clearing or cancellation.
+- `V6444`: The process terminates at record goods receipt without reaching payment or cancellation.
+- `V6445`: The process stops at record goods receipt without proceeding to invoice clearing or cancellation.
+- `V6446`: The process terminates at record goods receipt without reaching payment.
+- `V6447`: Ends at record goods receipt without proceeding to invoice handling or payment.
+- `V6448`: The variant ends prematurely at a service entry sheet without reaching invoice or payment stages.
+- `V6449`: The process stops at record goods receipt without reaching completion or payment.
+- `V6492`: The process terminates at Record Goods Receipt without completing payment clearance or reaching a terminal status defined in the categories.
+- `V6493`: The process ends at Record Goods Receipt without reaching invoice clearance, cancellation, or payment execution.
+- `V6494`: The sequence stops at Record Goods Receipt without completing the full procurement cycle.
+- `V6495`: The trace terminates at Record Service Entry Sheet without invoicing or payment.
+- `V6496`: The case ends with a Record Service Entry Sheet activity, leaving the invoice and payment unaddressed.
+- `V6497`: The process stops at Record Goods Receipt without proceeding to invoice handling or clearance.
+- `V6529`: The process ends inconclusively at Record Goods Receipt without reaching payment or cancellation.
+- `V6530`: The process terminates at Record Goods Receipt and does not reach final invoice payment or cancellation.
+- `V6531`: The process ends at Record Goods Receipt without completing payment or cancellation.
+- `V6532`: The process ends at Record Service Entry Sheet without reaching invoice clearance.
+- `V6544`: The process terminates with Record Invoice Receipt after multiple quantity changes and repetitions without final clearance.
+- `V6564`: The process ends in Record Goods Receipt rather than a completed payment clearance or cancellation, leaving it outside the standard four categories.
+- `V6565`: The process concludes at Record Goods Receipt without reaching invoice clearing or cancellation.
+- `V6566`: The sequence terminates at Record Goods Receipt and does not proceed to invoice clearing or cancellation.
+- `V6567`: The variant ends in Record Goods Receipt without an invoice clearance or cancellation event.
+- `V6568`: The process ends with Record Goods Receipt, stopping short of invoice completion or cancellation.
+- `V6569`: The variant terminates at Record Goods Receipt without reaching invoice processing, payment, or cancellation.
+- `V6570`: The process finishes at Record Goods Receipt without proceeding to invoice clearing or cancellation.
+- `V6571`: The case concludes at Record Goods Receipt without any final invoice clearance or cancellation.
+- `V6574`: The case concludes with an unexpected Record Invoice Receipt rather than a final clear invoice or cancellation.
+- `V6601`: The process only consists of order creation, goods receipts, and service entry sheets without completing to an invoice or payment.
+- `V6614`: Ends in a service entry sheet with cancellations of goods receipts, never reaching invoice or payment.
+- `V6616`: Incomplete process ending in Record Goods Receipt without invoice or payment.
+- `V6617`: Incomplete process ending in Record Service Entry Sheet without invoice or payment.
+- `V6618`: Incomplete process ending in Record Goods Receipt without reaching invoice or payment.
+- `V6619`: Short process ending in Record Goods Receipt without invoice or payment completion.
+- `V6662`: The case is incomplete, ending at Record Service Entry Sheet without reaching payment or cancellation.
+- `V6663`: The process terminates at Record Goods Receipt without completing the invoice or payment cycle.
+- `V6664`: The process stops at Record Goods Receipt without reaching invoice creation or payment.
+- `V6665`: The process terminates at Record Goods Receipt before any invoicing or payment steps occur.
+- `V6666`: The process ends at Record Goods Receipt without proceeding to invoice processing.
+- `V6667`: The process ends early at Record Goods Receipt.
+- `V6668`: The variant terminates at Record Service Entry Sheet without reaching invoicing or payment.
+- `V6669`: The process finishes at Record Goods Receipt without progressing to payment.
+- `V6687`: This variant consists almost entirely of extensive service entry sheet recordings without standard completion or cancellation flows.
+- `V6701`: The narrative ends in Clear Invoice, but involves extensive operational rework on goods receipts and service entry sheets without showing a standard exception resolution, delay, or cancellation pattern fitting the taxonomy.
+- `V6702`: The process concludes with Clear Invoice but has repetitive goods receipts and service entry sheets creating a high-volume operational trace rather than a distinct categorized exception.
+- `V6703`: Finishes with Clear Invoice after extensive service entry sheet loops, fitting neither straight-through processing nor the specific discrepancy, delay, or cancellation patterns.
+- `V6704`: The process terminates at Record Service Entry Sheet and does not reach completion through to payment or cancellation.
+- `V6705`: The process terminates at Record Goods Receipt without completing the invoice or payment stages.
+- `V6706`: The case ends with Record Goods Receipt and does not complete the procurement lifecycle.
+- `V6707`: Terminates early at Record Goods Receipt without reaching invoice receipt or payment.
+- `V6709`: The case terminates with an extra Record Invoice Receipt rather than completing through to standard payment or cancellation.
+- `V6719`: Starts abnormally with a debit memo and invoice before order creation, ending in invoice cancellation and clearing in an irregular residual pattern.
+- `V6779`: The process terminates at Record Goods Receipt without reaching invoice completion or cancellation.
+- `V6780`: The process terminates at Record Service Entry Sheet without reaching invoice completion or cancellation.
+- `V6781`: The process terminates at Record Goods Receipt without completing payment or cancellation.
+- `V6782`: The process terminates at Record Goods Receipt without completing payment or cancellation.
+- `V6783`: The process terminates at Record Goods Receipt without completing payment or cancellation.
+- `V6785`: The process terminates at Record Goods Receipt without completing payment or cancellation.
+- `V6786`: The process terminates at Record Goods Receipt without completing payment or cancellation.
+- `V6787`: The process terminates at Record Service Entry Sheet without completing payment or cancellation.
+- `V6795`: The process terminates at Record Service Entry Sheet without reaching invoice completion or cancellation.
+- `V6805`: The case involved purchase order item deletion and reactivation rather than standard discrepancy resolution or payment delays.
+- `V6808`: The variant consists almost exclusively of massive service entry sheet and goods receipt loops without specific payment blocks or discrepancies indicated.
+- `V6809`: Heavy repetition of service entry sheets and goods receipts defines this operational loop rather than a categorized exception.
+- `V6810`: Repetitive goods receipts and service entry sheets without explicit block or discrepancy handling.
+- `V6811`: Incomplete process ending prematurely at Record Service Entry Sheet.
+- `V6812`: Incomplete process ending prematurely at Record Goods Receipt.
+- `V6813`: Incomplete process ending prematurely at Record Goods Receipt with extensive service entry sheet loops.
+- `V6814`: Incomplete process ending prematurely at Record Goods Receipt.
+- `V6815`: Incomplete process ending prematurely at Record Goods Receipt.
+- `V6816`: Incomplete process ending prematurely at Record Service Entry Sheet.
+- `V6817`: Incomplete process ending prematurely at Record Goods Receipt.
+- `V6874`: The process ends at Record Goods Receipt without completing through to payment or cancellation, remaining incomplete in this log sample.
+- `V6875`: The process terminates at Record Goods Receipt without reaching invoice clearance or cancellation.
+- `V6876`: The process ends at Record Goods Receipt without reaching invoice creation, clearance, or cancellation, remaining incomplete under the taxonomy.
+- `V6877`: The process concludes at Record Goods Receipt without invoice handling or payment closure.
+- `V6881`: The sequence stops at Record Goods Receipt without reaching any invoice or payment phase.
+- `V6882`: The process halts at Record Service Entry Sheet without proceeding to invoicing or payment.
+- `V6887`: The trace does not cleanly fit the standard payment, block, discrepancy, or cancellation paths defined in the taxonomy categories.
+- `V6888`: The process flow involves extensive service entries and goods receipts without fitting standard exception categories cleanly.
+- `V6889`: Terminates at Record Goods Receipt without invoice or payment steps.
+- `V6895`: Represents a heavy volume of service entries and goods receipts culminating in normal clearance without clear exception markers.
+- `V6896`: Proceeds from creation through goods receipt and invoice receipt to clearance without explicit discrepancy or block indicators.
+- `V6897`: Ends at Record Goods Receipt without reaching invoice or payment stages.
+- `V6898`: Terminates at Record Goods Receipt without invoice handling.
+- `V6899`: Concludes at Record Goods Receipt without entering the invoice or payment phases.
+- `V6900`: Stops at Record Goods Receipt without invoice or payment processing.
+- `V6901`: The process ends with Record Goods Receipt without completing payment or clearing invoice, making it part of the residual.
+- `V6902`: The process concludes at Record Goods Receipt without invoice clearing or payment completion, falling into the residual.
+- `V6954`: The process terminates at Record Goods Receipt without invoice creation or payment completion.
+- `V6955`: The process terminates at Record Goods Receipt without ever reaching invoice creation or payment.
+- `V6956`: Terminates at Record Goods Receipt without completing invoicing or payment steps.
+- `V6957`: Ends with Record Goods Receipt without reaching invoice receipt or payment completion.
+- `V6958`: Ends with Record Goods Receipt without any invoice handling or payment.
+- `V6959`: Terminates at Record Service Entry Sheet without progressing to invoice or payment.
+- `V6960`: Process stops at Record Goods Receipt without invoice recording or payment.
+- `V6961`: Process ends with Record Goods Receipt and does not reach payment.
+- `V7007`: The process terminates at Record Goods Receipt without reaching invoice clearance, cancellation, or payment.
+- `V7008`: The variant ends at Record Goods Receipt without proceeding to invoice clearing or being cancelled.
+- `V7009`: Process concludes at Record Goods Receipt without reaching payment, matching none of the final payment-oriented lifecycle categories.
+- `V7010`: Case terminates at Record Goods Receipt without reaching completion through payment or cancellation.
+- `V7011`: Terminates at Record Goods Receipt without progressing to invoicing or final clearance.
+- `V7012`: Process ends early at Record Service Entry Sheet without reaching invoice creation, payment, or cancellation.
+- `V7071`: The case terminates unusually or does not cleanly map to standard invoice processing exceptions, as it consists predominantly of massive service entry sheet and goods receipt loops without a clear classification under the four defined categories.
+- `V7072`: Extensive repetition of service entry sheets and goods receipts makes this variant an edge case that does not clearly fit standard discrepancy resolution or payment blocking definitions.
+- `V7073`: The process terminates at 'Record Goods Receipt' rather than completing through to invoice clearing or formal cancellation.
+- `V7074`: The case ends with a record goods receipt step without reaching invoice clearance, payment, or standard cancellation.
+- `V7075`: Terminates early at record goods receipt without completing the full invoice lifecycle.
+- `V7076`: The process involves high repetition of goods receipts and service entry sheets but does not follow through to invoice clearance or cancellation, remaining incomplete relative to standard financial flow.
+- `V7077`: Extremely high repetition of goods receipt and service entry sheet activities without progressing to standard invoice creation or clearance, lacking standard invoice lifecycle progression.
+- `V7078`: Process consists of repeated goods receipts and service entry sheets without reaching invoice creation, clearance, or cancellation.
+- `V7107`: The process ends in Record Goods Receipt without reaching invoice creation or payment completion.
+- `V7108`: The process ends in Record Goods Receipt without completing through to payment.
+- `V7109`: The process ends in Record Goods Receipt without reaching invoice processing or payment.
+- `V7110`: The process terminates at Record Goods Receipt without payment.
+- `V7111`: Terminates at Record Goods Receipt without reaching invoicing or payment.
+- `V7112`: Terminates at Record Service Entry Sheet without invoicing or payment.
+- `V7113`: Terminates at Record Service Entry Sheet without invoicing or payment.
+- `V7126`: The narrative only records the creation of the PO, service entry sheets, and goods receipts without completing an invoice processing or payment cycle.
+- `V7129`: The narrative shows extensive goods receipt repetitions and standard processing without explicit discrepancies being corrected or payment blocks.
+- `V7141`: The trace is dominated by repetitive goods receipts and service entry sheets over a moderately long duration without explicit blocks or cancellations.
+- `V7142`: The trace consists of massive repetitions of goods receipts and service entry sheets before standard invoice clearing.
+- `V7143`: Features repetitive service entry sheets and goods receipts leading up to a standard invoice clearing.
+- `V7144`: Short execution ending in a record goods receipt with heavy service entry sheet repetitions.
+- `V7145`: Consists primarily of service entry sheet and goods receipt repetitions ending in a service entry sheet.
+- `V7146`: Contains intensive loops of service entry sheets and goods receipts without invoice or payment steps.
+- `V7147`: Consists of multiple goods receipts and service entry sheets ending in a goods receipt.
+- `V7148`: Short process ending in a record goods receipt with extensive service entry sheet loops.
+- `V7149`: Exhibits a high volume of repetitive goods receipts and service entry sheets.
+- `V7150`: Consists of repeated goods receipts and service entry sheets terminating in a service entry sheet.
+- `V7170`: The variant ends in a change quantity activity without completing or clearing the invoice.
+- `V7183`: The process terminates with recording service entry sheets and does not reach payment or cancellation.
+- `V7184`: Terminates at recording service entry sheets without completing the invoice or payment stages.
+- `V7185`: Case ends at goods receipt without completion through payment.
+- `V7186`: Stops at record goods receipt without reaching payment.
+- `V7187`: Process concludes at recording goods receipt without payment execution.
+- `V7188`: Ends at recording service entry sheet without moving to invoicing and payment.
+- `V7189`: Terminates at record goods receipt before invoice lifecycle activities occur.
+- `V7190`: Terminates early at record service entry sheet.
+- `V7197`: Terminates at record invoice receipt without finishing through payment.
+- `V7225`: The variant ends in a goods receipt and does not complete through to payment, nor does it fit cleanly into standard straight-through processing, discrepancy resolution, delayed/blocked payment, or cancellation/reversal as it is an incomplete or intermediate sequence.
+- `V7232`: The process terminates prematurely at 'Record Service Entry Sheet' and does not complete through to payment or cancellation.
+- `V7233`: The process terminates prematurely at 'Record Goods Receipt' and does not complete through to payment or cancellation.
+- `V7234`: The process terminates prematurely at 'Record Goods Receipt' and does not reach payment.
+- `V7235`: The process terminates prematurely at 'Record Goods Receipt' and does not complete through to payment.
+- `V7236`: The process terminates prematurely at 'Record Goods Receipt' and does not complete through to payment.
+- `V7237`: The process terminates prematurely at 'Record Service Entry Sheet' and does not reach invoice clearing.
+- `V7297`: Ends with a quantity change after cancellation of goods receipt, leaving the case unresolved or in an anomalous state.
+- `V7298`: Finishes with a change in delivery indicator after initial clearing, representing an incomplete or atypical trailing state.
+- `V7314`: The process terminates at Record Service Entry Sheet without reaching payment or cancellation.
+- `V7315`: The process terminates at Record Goods Receipt without reaching payment or cancellation.
+- `V7316`: The process terminates at Record Goods Receipt without reaching payment or cancellation.
+- `V7317`: The process terminates at Record Goods Receipt without reaching payment or cancellation.
+- `V7319`: The process terminates at Record Goods Receipt without reaching payment or cancellation.
+- `V7320`: The process terminates at Record Goods Receipt without reaching payment or cancellation.
+- `V7321`: The process terminates at Record Goods Receipt without reaching payment or cancellation.
+- `V7357`: The process ends at Record Goods Receipt without invoice creation or payment clearing, making standard payment-related categories inapplicable.
+- `V7358`: The process terminates at Record Goods Receipt without reaching invoice receipt or payment clearing.
+- `V7359`: The process terminates at Record Goods Receipt without proceeding to invoice receipt or payment.
+- `V7360`: The sequence ends with Record Goods Receipt without reaching invoice or payment stages.
+- `V7361`: The process ends at Record Goods Receipt and does not reach the invoicing or payment phase.
+- `V7362`: The case terminates upon recording goods receipts and service entry sheets without progressing to invoicing or payment.
+- `V7363`: The process ends at Record Service Entry Sheet without reaching invoice creation or payment.
+- `V7372`: The sequence starts atypically with vendor invoice creation before purchase order completion, fitting none of the standard categories cleanly.
+- `V7376`: The process variant ends with Record Service Entry Sheet without completing through to payment, cancellation, or standard execution.
+- `V7377`: The process variant terminates at Record Goods Receipt without invoice creation or payment.
+- `V7379`: The process variant ends with Record Goods Receipt without reaching invoice receipt or payment completion.
+- `V7380`: The process variant ends with Record Service Entry Sheet without proceeding to invoicing or payment.
+- `V7381`: The process variant finishes at Record Goods Receipt without any invoice or payment processing.
+- `V7393`: The variant ends in Record Goods Receipt without invoice or payment steps.
+- `V7394`: The process terminates at Record Goods Receipt without moving to invoice or payment stages.
+- `V7395`: The sequence consists entirely of service entry sheets and goods receipts, terminating without invoice or payment.
+- `V7396`: The variant ends in Record Goods Receipt without reaching invoicing or payment completion.
+- `V7425`: The process terminates at record goods receipt without reaching payment or cancellation, falling outside the defined payment-lifecycle outcomes.
+- `V7426`: The narrative ends with Record Goods Receipt and does not reach completion or payment, nor does it fit standard invoice resolution patterns.
+- `V7427`: The process concludes at Record Goods Receipt without invoice creation, clearing, or other terminal process activities.
+- `V7433`: The process ends with the reactivation of a purchase order item after clearing, which is anomalous and does not fit standard tracks.
+- `V7451`: The narrative represents an incomplete or abnormal process flow ending prematurely at Record Goods Receipt with excessive repetitions of service entry sheets, not fitting standard STP or resolution patterns.
+- `V7452`: The process is truncated and abnormal with repeated goods receipts and service entry sheets, falling outside the defined lifecycle categories.
+- `V7454`: The case ends with an explicit transfer failure in the execution system ('SRM: Transfer Failed (E.Sys.)'), which does not fit standard clean completion or cancellation.
+- `V7456`: The process fails with an execution system transfer error after multiple price and invoice modifications, fitting the residual category.
+- `V7458`: The workflow involves deletion and re-creation of SRM items and price changes, ending in 'SRM: Transaction Completed' without standard invoice processing.
+- `V7462`: The process halts at Record Invoice Receipt following a long sequence of repeated invoices and goods receipts without final clearance.
+- `V7467`: The process concludes with a persistent 'SRM: In Transfer to Execution Syst.' state, representing an incomplete or hanging system transfer.
+- `V7468`: Ends unusually with a 'Change Delivery Indicator' activity long after invoice clearance, making it an exception flow.
+- `V7473`: Terminates while stuck or looping in 'SRM: In Transfer to Execution Syst.', falling outside completed process outcomes.
+- `V7475`: Ends abnormally while repeating the execution system transfer step without completing procurement.
+- `V7551`: The process ends in Clear Invoice after excessive repetitive recording activities, but it does not fit neatly into straight-through processing, discrepancy resolution, delayed/blocked payment, or cancellation; it represents an outlier data-entry artifact.
+- `V7552`: The process involves excessive repetitive goods receipts and service entry sheets before clearing, forming an anomalous outlier rather than standard processing.
+- `V7553`: The process terminates abruptly at Record Goods Receipt without completing through to payment or cancellation.
+- `V7554`: The process terminates at Record Goods Receipt without completing through to payment or cancellation.
+- `V7555`: The process terminates at Record Goods Receipt without reaching invoice creation or payment.
+- `V7556`: The case terminates at Record Goods Receipt without reaching invoice receipt or payment.
+- `V7557`: The case terminates at Record Goods Receipt without reaching invoice receipt or payment.
+- `V7558`: The case terminates at Record Goods Receipt without reaching invoice receipt or payment.
+- `V7559`: The case terminates at Record Service Entry Sheet without reaching invoice receipt or payment.
+- `V7560`: The case terminates at Record Goods Receipt without reaching invoice receipt or payment.
+- `V7584`: The case terminates at Record Goods Receipt without reaching invoice clearance or cancellation, leaving it outside the standard categories.
+- `V7585`: The case ends at Record Goods Receipt without final payment clearance or cancellation.
+- `V7586`: The process ends at Record Goods Receipt without reaching final invoice clearance or cancellation.
+- `V7587`: Terminates at Record Goods Receipt with no final payment or cancellation.
+- `V7588`: Terminates at Record Goods Receipt without completion of the invoice or payment cycle.
+- `V7589`: The variant ends at Record Service Entry Sheet without concluding with payment, cancellation, or invoice clearance.
+- `V7590`: Terminates at Record Goods Receipt without proceeding to invoice clearance or cancellation.
+- `V7596`: The variant ends on Record Invoice Receipt rather than reaching payment clearance or cancellation.
+- `V7623`: The process recorded a goods receipt after the invoice was already cleared and payment occurred, which does not cleanly fit any standard category.
+- `V7628`: The process terminates at Record Goods Receipt without invoice creation, payment, or cancellation.
+- `V7629`: The process ends with goods receipts and a quantity change without reaching invoice receipt or payment.
+- `V7630`: The process ends with a delivery indicator change following quantity adjustments, never reaching invoicing or payment.
+- `V7637`: Terminates at Record Service Entry Sheet without invoicing or payment.
+- `V7640`: Terminates at Record Service Entry Sheet without invoicing or payment.
+- `V7641`: Terminates at Record Goods Receipt without reaching invoicing or payment.
+- `V7642`: Terminates at Record Goods Receipt without reaching invoicing or payment.
+- `V7643`: Terminates at Record Goods Receipt without reaching invoicing or payment.
+- `V7644`: Terminates at Record Goods Receipt without reaching invoicing or payment.
+- `V7645`: Terminates at Record Service Entry Sheet without reaching invoicing or payment.
+- `V7707`: The case does not complete fully through to payment/clearing or cancellation, stopping prematurely at Record Goods Receipt.
+- `V7709`: Case stops at a record goods receipt activity without completing to invoicing or cancellation.
+- `V7710`: The process terminates at goods receipt without reaching a final payment or cancellation stage.
+- `V7711`: Incomplete process ending at service entry sheet without payment or cancellation.
+- `V7712`: Incomplete process ending at goods receipt.
+- `V7713`: Incomplete process ending at goods receipt.
+- `V7714`: Incomplete process ending at goods receipt.
+- `V7716`: Incomplete process ending at record invoice receipt without final payment or clearing.
+- `V7735`: The process ends prematurely at Record Goods Receipt without reaching invoice clearing, cancellation, or explicit payment blocking.
+- `V7736`: The process terminates at Record Goods Receipt without completion or clear exception handling from the categories.
+- `V7737`: Ends at Record Goods Receipt without reaching an invoice payment or cancellation state.
+- `V7738`: Terminates at Record Goods Receipt before any invoicing or clearing stages.
+- `V7739`: Ends with a service entry sheet and does not proceed to invoice creation, clearing, or cancellation.
+- `V7740`: Terminates at Record Goods Receipt without reaching invoice recording or payment.
+- `V7741`: Ends at Record Goods Receipt without completing the standard payment or cancellation lifecycle.
+- `V7747`: The case halts at Record Invoice Receipt without reaching a final clearing, cancellation, or payment block state.
+- `V7771`: Incomplete process ending at Record Goods Receipt without reaching payment or cancellation.
+- `V7772`: Terminates at Record Goods Receipt without final payment or cancellation.
+- `V7773`: Ends at Record Goods Receipt without completing payment or cancellation.
+- `V7774`: Stops at Record Service Entry Sheet without reaching completion or payment.
+- `V7775`: Terminates at Record Goods Receipt without completing the full payment cycle.
+- `V7776`: This narrative involves extensive loops of goods receipts and service entry sheets without reaching standard payment or cancellation outcomes in a clear operational category.
+- `V7777`: The process terminates at Record Goods Receipt without invoice creation or payment completion.
+- `V7811`: The process terminates at Record Goods Receipt without completing payment or cancellation, leaving it outside the standard categories.
+- `V7812`: The process terminates at Record Goods Receipt without reaching invoice clearance or cancellation.
+- `V7813`: The sequence terminates at Record Goods Receipt without concluding in payment or cancellation.
+- `V7814`: The process ends at Record Goods Receipt and does not reach payment, blocking, or cancellation stages.
+- `V7815`: The process terminates at Record Goods Receipt without reaching final payment or cancellation.
+- `V7816`: The variant concludes at Record Service Entry Sheet without going through invoice clearance or cancellation.
+- `V7846`: The process terminates at record goods receipt without reaching payment clearance or cancellation.
+- `V7847`: The process terminates at record goods receipt without reaching payment clearance or cancellation.
+- `V7848`: The process terminates at record service entry sheet without reaching payment clearance or cancellation.
+- `V7849`: The process terminates at record service entry sheet without reaching payment clearance or cancellation.
+- `V7850`: The process terminates at record goods receipt without reaching payment clearance or cancellation.
+- `V7889`: The process terminates at Record Goods Receipt without final clearance or cancellation.
+- `V7890`: The process terminates at Record Goods Receipt without reaching invoice clearance.
+- `V7891`: The case ends with Record Goods Receipt and does not complete payment or cancellation.
+- `V7892`: The case terminates at Record Goods Receipt without finishing the payment cycle.
+- `V7893`: The variant ends at Record Goods Receipt without reaching final clearance.
+- `V7894`: The process stops at Record Service Entry Sheet without reaching invoice clearance or cancellation.
+- `V7917`: The variant represents an unusually high volume of goods receipts and service entry sheets without cleanly fitting standard payment blocks or cancellations.
+- `V7918`: Consists overwhelmingly of massive repetitive loops of goods receipts and service entry sheets, making it part of the residual process noise.
+- `V7920`: Incomplete process variant ending prematurely at record goods receipt without reaching invoicing or payment.
+- `V7921`: Incomplete process variant ending prematurely at record goods receipt without reaching invoicing or payment.
+- `V7922`: Incomplete process variant ending prematurely at record goods receipt without reaching invoicing or payment.
+- `V7923`: Incomplete process variant consisting entirely of service entry and goods receipt loops, terminating without an invoice.
+- `V7924`: Incomplete process variant terminating at record goods receipt without reaching invoicing or payment.
+- `V7925`: Incomplete process variant terminating at record goods receipt without reaching invoicing or payment.
+- `V7926`: The narrative ends with recording service entry sheets and goods receipts without reaching invoice clearing, cancellation, or showing explicit payment blocks or discrepancy resolution.
+- `V7927`: The process terminates at Record Service Entry Sheet without completing invoice creation, payment, or cancellation.
+- `V7944`: The process terminates early at Update Order Confirmation without reaching invoice processing or completion.
+- `V7951`: The narrative ends with Clear Invoice, but the process trace lacks enough details on standard completion terms or is an incomplete service/goods loop anomaly not fitting cleanly into standard paths.
+- `V7952`: The process terminates at Record Goods Receipt without invoice creation or payment clearance.
+- `V7953`: The process terminates at Record Service Entry Sheet without reaching invoice creation or payment completion.
+- `V7954`: The process terminates at Record Goods Receipt without proceeding to invoice receipt or payment.
+- `V7955`: The process terminates at Record Goods Receipt with excessive service entry repetition and no final invoice or payment step.
+- `V7956`: The process terminates at Record Goods Receipt without an invoice or payment cycle.
+- `V7957`: The process terminates at Record Goods Receipt without reaching invoicing or payment execution.
+- `V7958`: The process terminates at Record Goods Receipt without reaching invoicing or payment.
+- `V7959`: The process terminates at Record Goods Receipt without completing an invoice or payment.
+- `V7971`: The process ends at Record Goods Receipt without reaching invoice creation or payment.
+- `V7972`: The process ends at Record Goods Receipt without reaching invoice creation or payment.
+- `V7988`: Case ends in goods receipt without proceeding to full payment or formal cancellation.
+- `V7989`: Case terminates at goods receipt without completion through to invoice payment.
+- `V7990`: Case concludes at goods receipt without invoice processing or payment.
+- `V7991`: Stops at record goods receipt without completing payment clearance.
+- `V7992`: Finishes at record goods receipt without reaching payment stages.
+- `V7993`: Terminates at goods receipt without invoice clearing.
+- `V7994`: Ends with a record service entry sheet and does not reach payment or cancellation.
+- `V7995`: Concludes at record goods receipt without invoice processing.
+- `V8029`: The process is incomplete, ending at Record Service Entry Sheet without reaching payment or cancellation.
+- `V8030`: The process is incomplete, ending at Record Goods Receipt without reaching invoice receipt or payment.
+- `V8031`: The case terminates at Record Goods Receipt without completing payment or being cancelled.
+- `V8032`: The process stops at Record Goods Receipt before reaching the invoicing and payment stages.
+- `V8033`: The case ends with Record Goods Receipt and does not complete invoicing or payment.
+- `V8034`: The case terminates at Record Goods Receipt without reaching invoice processing or payment.
+- `V8035`: The process ends at Record Goods Receipt and does not proceed to invoice clearing.
+- `V8064`: The process features repeated invoicing and a payment block removal, but ultimately stalls at Record Invoice Receipt rather than completing through to payment or cancellation.
+- `V8072`: The process terminates prematurely at Record Goods Receipt without reaching invoice creation, clearance, or formal cancellation.
+- `V8073`: The process stops at Record Service Entry Sheet without reaching invoice processing, payment, or cancellation.
+- `V8074`: The execution stops at Record Goods Receipt without completing through to invoicing, payment, or cancellation.
+- `V8075`: The activity sequence terminates at Record Goods Receipt without advancing to invoice processing, clearance, or cancellation.
+- `V8076`: This process variant ends with goods and service entry records without proceeding to invoicing or payment clearance, fitting none of the completed payment-cycle categories.
+- `V8077`: The process terminates at record service entry sheet stage without reaching invoice creation or payment clearance.
+- `V8078`: This variant shows repetitive goods and service entries but does not proceed to invoicing or payment completion.
+- `V8079`: The trace only contains creation and goods/service recording loops without reaching invoice handling or clearance.
+- `V8097`: Terminates at goods receipt without reaching invoice receipt or payment.
+- `V8098`: Terminates at service entry sheet without proceeding to invoicing.
+- `V8099`: Contains numerous repetitive service and goods receipt entries without invoice processing.
+- `V8100`: Ends with goods receipt recording without progressing to invoice creation or payment.
+- `V8101`: The process ends in 'Record Service Entry Sheet' without completing the full invoice-to-payment cycle, so it does not fit any standard completion or resolution categories.
+- `V8102`: The process concludes with recording service entry sheets and goods receipts repeatedly without reaching clear invoice or payment.
+- `V8103`: The narrative terminates at 'Record Goods Receipt' and does not proceed through invoicing or payment clearance.
+- `V8114`: The process involves goods receipt cancellation and multiple invoice receipts but terminates without final clearance or cancellation of the order.
+- `V8130`: The process ends early at record goods receipt without reaching payment, clearing, cancellation, or showing a distinct payment block or resolved discrepancy.
+- `V8138`: Terminates prematurely at record service entry sheet without completing the payment or processing cycle.
+- `V8139`: Terminates prematurely at record service entry sheet without completing the payment or processing cycle.
+- `V8140`: Terminates prematurely at record goods receipt without completing the payment or processing cycle.
+- `V8141`: Terminates prematurely at record goods receipt without completing the payment or processing cycle.
+- `V8142`: Terminates prematurely at record goods receipt without completing the payment or processing cycle.
+- `V8143`: Terminates prematurely at record goods receipt without completing the payment or processing cycle.
+- `V8144`: Terminates prematurely at record goods receipt without completing the payment or processing cycle.
+- `V8177`: The process ends in goods receipt with no payment or clearance.
+- `V8181`: Terminates at goods receipt without completion to payment.
+- `V8182`: Terminates at service entry sheet without payment.
+- `V8183`: Terminates at goods receipt without payment.
+- `V8184`: Terminates at goods receipt without payment.
+- `V8185`: Terminates at goods receipt without payment.
+- `V8186`: Terminates at goods receipt without payment.
+- `V8187`: Terminates at goods receipt without payment.
+- `V8190`: Terminates at goods receipt with cancellations and changes, no invoice clearance.
+- `V8199`: Terminates at goods receipt without payment.
+- `V8202`: The case loops extensively on service entry sheets and goods receipts without reaching invoice clearing, cancellation, or standard payment completion.
+- `V8203`: This narrative involves massive repetition of goods receipts and service entry sheets without completing the invoice and payment lifecycle.
+- `V8204`: The trace consists of repetitive goods receipts and service entry sheets and terminates before invoicing or payment.
+- `V8205`: The trace stops at goods receipt after repeating service entry sheets and goods receipts.
+- `V8206`: The process terminates at goods receipt with extensive service entry sheet loops and no invoice processing.
+- `V8218`: The sequence ends at goods receipt without reaching the billing or payment stages.
+- `V8219`: The process terminates at goods receipt after repeated service entries.
+- `V8220`: The trace stops at goods receipt without invoicing or payment.
+- `V8221`: The case ends at a service entry sheet without reaching invoicing or payment.
+- `V8252`: The process ends at Record Goods Receipt without completing through to payment or cancellation, leaving the case unfulfilled by standard completion.
+- `V8253`: The process terminates at Record Goods Receipt without reaching a payment or cancellation outcome.
+- `V8254`: The case ends prematurely at Record Service Entry Sheet without reaching payment, block resolution, or cancellation.
+- `V8255`: The case concludes at Record Goods Receipt without completing payment or cancellation.
+- `V8256`: The process ends at Record Goods Receipt without any payment or cancellation event.
+- `V8257`: The narrative stops at Record Goods Receipt and does not progress to payment or cancellation.
+- `V8270`: The case ends at Record Goods Receipt without reaching payment, clearance, or cancellation.
+- `V8286`: The process ends in a repeated Record Invoice Receipt without reaching final invoice clearance, fitting neither straight-through nor resolution cleanly.
+- `V8291`: The process terminates at Record Goods Receipt without completing payment or cancellation.
+- `V8292`: Case concludes at Record Goods Receipt without reaching invoice payment or cancellation.
+- `V8293`: Terminates early at Record Goods Receipt without proceeding to invoice handling or payment.
+- `V8294`: Ends at Record Goods Receipt without reaching payment processing.
+- `V8295`: Terminates at Record Service Entry Sheet without reaching payment or invoice closure.
+- `V8296`: Stops at Record Goods Receipt without full process completion.
+- `V8309`: The case ends with a record goods receipt and never reaches invoice clearance or cancellation, so none of the standard outcome categories fit.
+- `V8314`: The case terminates at 'Record Goods Receipt' and does not reach payment or cancellation.
+- `V8315`: The case terminates at 'Record Goods Receipt' and does not complete through to payment or cancellation.
+- `V8316`: The case terminates at 'Record Goods Receipt' without reaching payment or cancellation.
+- `V8317`: The case terminates at 'Record Goods Receipt' without completing through to payment or cancellation.
+- `V8318`: The case terminates at 'Record Goods Receipt' without reaching payment or cancellation.
+- `V8319`: The case terminates at 'Record Goods Receipt' without reaching payment or cancellation.
+- `V8320`: The case terminates at 'Record Goods Receipt' without reaching payment or cancellation.
+- `V8327`: The process contains extensive repetition of Goods Receipts without clear exceptions or payment blocks fitting the other categories.
+- `V8329`: The process consists mostly of repeated goods receipts and standard invoice completion without distinct block, discrepancy, or cancellation markers.
+- `V8334`: The process involves multiple invoice receipts without a clear block, cancellation, or discrepancy correction.
+- `V8339`: Repeated goods receipts and invoice receipts occur without a clear block or discrepancy type matching the categories.
+- `V8342`: The process involves multiple invoice clearing and debit memo entries without fitting neatly into the main categories.
+- `V8346`: Multiple recurring goods and invoice receipts happen with extended durations but without explicit blocks or cancellations.
+- `V8347`: The sequence shows multiple invoice receipts occurring quickly without an explicit block or cancellation.
+- `V8349`: Contains extensive service entry and goods receipt repetitions before concluding with standard invoice clearing.
+- `V8350`: The process terminates early at 'Record Goods Receipt' rather than completing through to payment or cancellation.
+- `V8351`: The process only consists of order creation, service entry sheets, and goods receipts without proceeding to invoicing or completion.
+- `V8352`: The variant ends at recording goods receipts without reaching invoice processing or payment.
+- `V8353`: The case terminates with goods receipt recording and does not reach the billing or payment stage.
+- `V8354`: The variant only records goods receipts and service entry sheets without completing invoicing or payment steps.
+- `V8375`: The variant ends with a goods receipt and does not complete invoicing or payment.
+- `V8376`: The process ends in recording goods receipt with extensive repetition of service entry sheets and goods receipts, fitting neither standard processing nor payment lifecycle categories cleanly.
+- `V8377`: The narrative consists of massive repetitive entries of service entry sheets and goods receipts without reaching an invoice payment or cancellation lifecycle.
+- `V8378`: Process is dominated by repetitive goods receipts and service entry sheets, ending without payment or invoice processing.
+- `V8379`: High volume of repeated goods receipts and service entry sheets ending in record goods receipt without payment or invoice stages.
+- `V8380`: Consists of repeated service entry sheets and goods receipts, concluding without standard invoice processing or completion.
+- `V8418`: Case incomplete, ending prematurely at record goods receipt without reaching invoice clearing or cancellation.
+- `V8419`: Case terminates early at record goods receipt without concluding.
+- `V8420`: Process stops at record goods receipt without reaching payment or cancellation.
+- `V8421`: Incomplete trace ending in record goods receipt.
+- `V8422`: Incomplete case stopping at record goods receipt.
+- `V8423`: Terminates at record service entry sheet without completing the full cycle.
+- `V8424`: Incomplete trace ending at record goods receipt.
+- `V8440`: The case ends with Record Goods Receipt and does not reach final payment or cancellation.
+- `V8441`: The process terminates at Record Goods Receipt without reaching invoice clearance or cancellation.
+- `V8442`: The case ends with Record Goods Receipt without completing payment or being cancelled.
+- `V8443`: The process ends at Record Goods Receipt without reaching invoice clearing.
+- `V8444`: The process finishes at Record Goods Receipt without invoice clearance or cancellation.
+- `V8445`: The process concludes at Record Service Entry Sheet without reaching invoice payment or cancellation.
+- `V8446`: Terminates at Record Goods Receipt without completion or cancellation.
+- `V8447`: The case terminates at Record Service Entry Sheet without reaching payment or cancellation.
+- `V8470`: Case terminates prematurely at record goods receipt without reaching final invoice clearing or cancellation.
+- `V8471`: Case ends at record goods receipt without final clearance or cancellation.
+- `V8472`: Case finishes at record goods receipt without completing the full cycle to payment clearance or cancellation.
+- `V8477`: The process ended early at Record Goods Receipt without clearing or completion of the invoice lifecycle.
+- `V8478`: The case terminated at Record Goods Receipt without proceeding to invoice verification and payment.
+- `V8481`: The case ended at Record Invoice Receipt and did not successfully reach final payment or cancellation.
+- `V8489`: The process stopped at Record Goods Receipt without generating an invoice or payment.
+- `V8541`: The process terminates at Record Goods Receipt without reaching invoice creation, payment, or cancellation.
+- `V8542`: The case ends with Record Goods Receipt without completing the full invoice-to-payment cycle.
+- `V8543`: The variant halts at Record Goods Receipt without reaching payment or cancellation stages.
+- `V8544`: Ends in Record Goods Receipt before invoicing or payment can occur.
+- `V8545`: Stops at Record Service Entry Sheet without an invoice or payment realization.
+- `V8546`: The process concludes at Record Goods Receipt without advancing to invoice processing.
+- `V8547`: Terminates at Record Goods Receipt without completing a payment or cancellation workflow.
+- `V8559`: The process ends in 'Record Invoice Receipt' and is incomplete, lacking a final payment clearing or cancellation.
+- `V8561`: The narrative stops at 'Record Invoice Receipt' without reaching a clear-invoice or cancellation outcome, remaining incomplete.
+- `V8574`: The process terminates abruptly at 'Record Goods Receipt' without reaching a clear-invoice or cancellation outcome.
+- `V8575`: The case sequence terminates at 'Record Goods Receipt' without completing invoice clearing or cancellation.
+- `V8576`: The narrative records massive repetition of recording service entry sheets and goods receipts without completing through to payment or cancellation, falling outside standard process lifecycles.
+- `V8577`: The process consists entirely of repetitive goods receipt and service entry sheet entries without reaching a final payment or closure.
+- `V8578`: The variant ends abruptly on recording goods receipts without progressing to invoice receipt or payment.
+- `V8608`: The process ends with Record Goods Receipt and does not complete through to payment.
+- `V8609`: The process terminates at Record Goods Receipt without reaching invoice clearing or payment.
+- `V8610`: The process ends at Record Goods Receipt without reaching payment completion.
+- `V8611`: The variant terminates at Record Goods Receipt and does not reach payment.
+- `V8612`: The process stops at Record Goods Receipt without completing the payment phase.
+- `V8613`: The process concludes with Record Goods Receipt without proceeding to invoice clearing.
+- `V8650`: Case ends prematurely at change quantity without completing through to payment, cancellation, or standard execution.
+- `V8683`: The process ends at Record Service Entry Sheet and is incomplete, not reaching payment or cancellation.
+- `V8684`: The process stops at Record Goods Receipt without completing payment or cancellation.
+- `V8685`: Incomplete case sequence ending at Record Goods Receipt without final payment or cancellation.
+- `V8686`: Incomplete workflow ending at Record Goods Receipt without reaching invoice clearance.
+- `V8687`: Process terminates at Record Goods Receipt without completing payment.
+- `V8688`: Workflow terminates at Record Goods Receipt without payment or cancellation.
+- `V8700`: Incomplete case sequence ending at Record Goods Receipt without payment or cancellation.
+- `V8701`: The narrative consists of batch operations recording goods and service entry sheets without reaching payment or invoice clearing, leaving it incomplete for the standard payment lifecycle.
+- `V8702`: The process sequence repeatedly loops through goods receipts and service entry sheets without showing final invoice processing or payment completion.
+- `V8703`: The variant terminates at Record Goods Receipt after repetitive service entry sheet and goods receipt loops, without showing any invoice or payment lifecycle.
+- `V8704`: The variant ends with Record Goods Receipt after extensive repetitive entry recording, missing the invoice and payment steps entirely.
+- `V8705`: The case terminates upon recording goods receipt without advancing to invoicing or payment clearance.
+- `V8706`: The sequence ends at Record Service Entry Sheet with no invoice or payment activities present.
+- `V8720`: The variant ends abruptly at Record Goods Receipt after an invoice and order confirmation, without full payment clearance.
+- `V8756`: The case ends with Record Service Entry Sheet and does not reach final payment or cancellation.
+- `V8757`: The case concludes prematurely with Record Service Entry Sheet without reaching invoice clearance.
+- `V8758`: The process terminates at Record Goods Receipt without completing the payment cycle.
+- `V8759`: The sequence stops at Record Goods Receipt and does not proceed to invoice or payment.
+- `V8760`: The process finishes at Record Goods Receipt without reaching invoice processing or completion.
+- `V8761`: The case terminates at Record Goods Receipt without completing invoice processing.
+- `V8786`: The process terminates at Record Goods Receipt without reaching invoice clearing or payment.
+- `V8787`: The process terminates at Record Goods Receipt without reaching invoice clearing or payment.
+- `V8788`: The process terminates at Record Goods Receipt without completing through to payment.
+- `V8790`: The process terminates at Record Goods Receipt without completing through to payment.
+- `V8791`: The process terminates at Record Service Entry Sheet without reaching invoice creation or payment.
+- `V8792`: The process terminates at Record Goods Receipt without completing through to payment.
+- `V8793`: The process terminates at Record Goods Receipt without completing through to payment.
+- `V8816`: Process ends at Record Goods Receipt without reaching invoice clearance or cancellation.
+- `V8817`: Process stops at Record Goods Receipt and does not complete the full invoice-to-pay lifecycle.
+- `V8818`: Process terminates prematurely at goods receipt without invoice processing.
+- `V8819`: Incomplete lifecycle, ending at goods receipt without invoicing or payment.
+- `V8820`: Terminates at goods receipt without completing the financial payment steps.
+- `V8821`: Ends at goods receipt without reaching invoicing or payment clearance.
+- `V8863`: The case ends with Record Invoice Receipt and never reaches payment clearance or a formal cancellation, leaving it outside the standard categories.
+- `V8873`: The case terminates at Record Goods Receipt without completing an invoice receipt or payment.
+- `V8874`: The case terminates at Record Service Entry Sheet without reaching invoice creation or payment.
+- `V8877`: The process ends prematurely at Record Goods Receipt without completing the full invoice and payment cycle, making it part of the residual.
+- `V8878`: The process stops at Record Goods Receipt without reaching invoice creation or payment, fitting the residual category.
+- `V8879`: The process ends at Record Goods Receipt without moving through to invoice receipt or payment completion, meaning it belongs in the residual.
+- `V8880`: The process terminates at Record Goods Receipt without progressing to invoicing or payment, falling into the residual category.
+- `V8881`: The process concludes at Record Service Entry Sheet without reaching invoice creation or payment, placing it in the residual.
+- `V8882`: The case ends with a goods receipt and does not complete the invoice or payment stages, making it part of the residual.
+- `V8911`: The process ends prematurely at Record Service Entry Sheet without reaching invoice clearing or cancellation.
+- `V8912`: The process terminates at Record Goods Receipt without reaching invoice clearing or cancellation.
+- `V8913`: The process halts at Record Goods Receipt without progressing to invoice payment or cancellation.
+- `V8914`: Ends at Record Goods Receipt without proceeding to invoice clearing.
+- `V8915`: Ends at Record Goods Receipt without completing payment or cancellation.
+- `V8916`: Terminates at Record Service Entry Sheet without invoice processing or payment.
+- `V8917`: Terminates early at Record Service Entry Sheet without invoice resolution.
+- `V8923`: Terminates at Change Delivery Indicator after invoice clearing, not fitting any standard completion pattern.
+- `V8927`: The process ends at Record Goods Receipt without invoice creation or payment completion, falling outside the defined categories.
+- `V8928`: The process terminates at Record Goods Receipt without reaching invoice completion or cancellation.
+- `V8929`: The process stops at Record Goods Receipt and does not progress to invoicing or payment.
+- `V8930`: The case ends with Record Goods Receipt without going through invoice clearance or payment.
+- `V8944`: The case terminates at Record Goods Receipt without reaching invoice or payment stages.
+- `V8945`: The case ends with Record Goods Receipt and does not progress to invoice processing.
+- `V8946`: The activity sequence terminates at Record Goods Receipt without invoicing or payment.
+- `V8947`: The variant ends at Record Goods Receipt without reaching invoice completion.
+- `V8982`: The process ends with Record Goods Receipt without reaching invoice creation or payment completion, and does not fit any exception resolution, delay, or cancellation category.
+- `V8983`: The trace terminates at Record Goods Receipt without proceeding to invoice handling or payment, rendering standard process categories inapplicable.
+- `V8984`: The case ends with Record Goods Receipt and does not complete through to invoice clearing or fit standard exception criteria.
+- `V8985`: The narrative terminates at Record Goods Receipt without advancing to invoice processing, payment, or cancellation.
+- `V8986`: The case ends at Record Goods Receipt and does not reach the invoice or payment stages.
+- `V8987`: The case finishes at Record Service Entry Sheet without reaching invoice creation or payment steps.
+- `V8997`: The case ends with Record Goods Receipt without proceeding to invoicing or payment completion.
+- `V9007`: The process ends in Record Goods Receipt without reaching invoice clearing or cancellation, making none of the completed categories fit cleanly.
+- `V9008`: The process ends in Record Goods Receipt without final payment or cancellation, leaving it outside the standard categories.
+- `V9009`: The process ends at Record Goods Receipt without clearing the invoice or being cancelled.
+- `V9010`: Case terminates at Record Goods Receipt without progressing to invoicing, payment, or cancellation.
+- `V9011`: Case concludes at Record Goods Receipt without invoice clearing or cancellation.
+- `V9012`: Terminates at Record Goods Receipt without reaching invoice payment or cancellation.
+- `V9013`: Terminates at Record Goods Receipt without invoice handling or cancellation.
+- `V9031`: The process ends at Record Service Entry Sheet without reaching completion, cancellation, or payment.
+- `V9032`: The process terminates prematurely at Record Goods Receipt without payment or cancellation.
+- `V9033`: The case terminates at Record Goods Receipt without proceeding to invoice or payment.
+- `V9034`: Terminates at Record Goods Receipt without completing payment or cancellation.
+- `V9035`: Incomplete process ending at Record Goods Receipt.
+- `V9037`: Incomplete execution ending in a goods receipt rather than payment or cancellation.
+- `V9038`: Ends in Record Goods Receipt without completing payment processing.
+- `V9039`: Incomplete process ending with a goods receipt.
+- `V9040`: Terminates at Record Goods Receipt without invoice clearance or cancellation.
+- `V9053`: The case ends with Record Invoice Receipt without reaching payment, cancellation, or a completed resolution state in the log.
+- `V9064`: The process terminates at Record Invoice Receipt with extensive quantity changes and no payment or cancellation.
+- `V9066`: The variant terminates at Record Goods Receipt without reaching invoice creation, payment, or cancellation.
+- `V9067`: The variant terminates at Record Goods Receipt without reaching invoice creation, payment, or cancellation.
+- `V9071`: The variant terminates at Record Goods Receipt with extensive service entries, without reaching invoicing or payment.
+- `V9072`: The variant terminates at Record Goods Receipt without reaching invoicing or payment stages.
+- `V9073`: The variant terminates at Record Goods Receipt without reaching invoicing or payment stages.
+- `V9074`: The variant terminates at Record Goods Receipt without reaching invoicing or payment stages.
+- `V9075`: The variant terminates at Record Service Entry Sheet without reaching invoicing or payment stages.
+- `V9087`: The process ends in a price change and never reaches completion, payment, or cancellation, remaining incomplete.
+- `V9088`: The process stops at recording goods receipt and does not reach completion or payment.
+- `V9091`: The process stops at recording goods receipt after payment block removal without reaching completion.
+- `V9095`: Incomplete process ending at record goods receipt without reaching payment.
+- `V9096`: Incomplete process ending at record goods receipt without reaching payment.
+- `V9097`: Incomplete process terminating at record goods receipt.
+- `V9098`: Incomplete process terminating at record service entry sheet.
+- `V9099`: Incomplete process terminating at record service entry sheet.
+- `V9116`: The case ends with Record Service Entry Sheet and does not reach completion or involve defined exception patterns.
+- `V9117`: The case ends prematurely at Record Goods Receipt without reaching invoice clearing or cancellation.
+- `V9118`: The process terminates at Record Goods Receipt without final clearing or cancellation.
+- `V9119`: The process ends at Record Goods Receipt without reaching invoice payment.
+- `V9120`: The case terminates at Record Service Entry Sheet without reaching payment or cancellation.
+- `V9121`: The process ends at Record Goods Receipt without final invoice clearance.
+- `V9155`: The process ends at Record Goods Receipt without completing through to payment or cancellation, making it part of the residual.
+- `V9156`: The process terminates at Record Goods Receipt without reaching invoice clearing or cancellation.
+- `V9157`: The process concludes at Record Goods Receipt without reaching final payment or cancellation.
+- `V9158`: The process ends with Record Goods Receipt and does not complete to payment.
+- `V9159`: The case terminates at Record Goods Receipt without reaching completion through payment.
+- `V9165`: The case concludes with a change delivery indicator rather than completing to invoice payment.
+- `V9168`: The case terminates at Record Goods Receipt without reaching invoice processing or payment.
+- `V9174`: The case stops at Record Goods Receipt and does not reach invoice clearing.
+- `V9175`: The process finishes at Record Goods Receipt without reaching invoice completion or payment.
+- `V9176`: The process does not reach payment or completion, ending instead on Record Service Entry Sheet.
+- `V9177`: The process does not complete through to payment, ending instead on Record Goods Receipt.
+- `V9179`: The case ends with a subsequent invoice record after clearing, which is outside standard processing categories.
+- `V9194`: The process terminates at Record Invoice Receipt without completing payment.
+- `V9200`: Process ends on Record Goods Receipt without completing payment or reaching an invoice clearance.
+- `V9201`: The process ends prematurely at Record Goods Receipt without invoice creation or payment completion.
+- `V9202`: The process ends at Record Goods Receipt without completing the invoice and payment cycle.
+- `V9203`: The case terminates with Record Goods Receipt without reaching invoice receipt or payment.
+- `V9204`: The sequence concludes with Record Service Entry Sheet without going through invoice receipt or payment.
+- `V9212`: The process ends with a quantity change after clearing, representing an anomalous end state.
+- `V9213`: The process concludes with multiple quantity changes without reaching invoice clearance or proper completion.
+- `V9216`: The process stops at Record Goods Receipt without completing invoice receipt or payment.
+- `V9217`: The case terminates at Record Goods Receipt without completing the purchase-to-pay cycle.
+- `V9218`: The process ends at Record Goods Receipt without invoice or payment steps.
+- `V9219`: The activity sequence finishes at Record Service Entry Sheet without reaching invoicing or payment.
+- `V9231`: The case ends with a Change Quantity activity and does not complete through to invoice payment or cancellation.
+- `V9249`: The process terminates at Record Goods Receipt without completing through to payment or cancellation.
+- `V9250`: The process ends at Record Goods Receipt and does not reach payment clearance or cancellation.
+- `V9281`: Case ends prematurely at Record Goods Receipt without completing payment or cancellation.
+- `V9282`: Case ends prematurely at Record Goods Receipt without reaching invoice clearance.
+- `V9283`: Terminates at Record Goods Receipt without reaching completion or cancellation.
+- `V9284`: Terminates at Record Goods Receipt without reaching payment completion.
+- `V9285`: Terminates at Record Goods Receipt without reaching final payment.
+- `V9286`: Terminates at Record Goods Receipt without payment or cancellation.
+- `V9287`: Terminates at Record Goods Receipt without final payment completion.
+- `V9302`: The process terminates early at Record Goods Receipt without completing the invoice or payment cycle.
+- `V9303`: The process terminates early at Record Goods Receipt without reaching invoice creation or payment.
+- `V9304`: The process terminates early at Record Goods Receipt without completing through to invoice payment.
+- `V9305`: The process terminates at Record Goods Receipt without proceeding to invoice handling or payment.
+- `V9306`: The process terminates prematurely at Record Service Entry Sheet without invoice or payment processing.
+- `V9307`: The process terminates at Record Goods Receipt without reaching the invoice lifecycle.
+- `V9323`: Terminates early at Record Goods Receipt without reaching invoice or payment stages.
+- `V9324`: Terminates early at Record Goods Receipt without reaching the invoice lifecycle.
+- `V9325`: Terminates early at Record Goods Receipt without completing through to payment.
+- `V9326`: The process ends with Record Goods Receipt and does not complete through to invoice clearing or contain standard purchase-to-pay exception flows like blocks or cancellations.
+- `V9327`: The process ends with Record Service Entry Sheet without reaching payment or cancellation.
+- `V9328`: The process concludes with Record Goods Receipt and does not progress to invoice receipt or payment completion.
+- `V9332`: The process stops at Record Invoice Receipt without completing payment or representing a full cancellation/block.
+- `V9344`: Terminates with Change Delivery Indicator without reaching payment or invoice clearing.
+- `V9345`: Ends with Change Quantity without completing through to invoice clearing or payment.
+- `V9347`: A standard long-running execution of goods receipts and service entry sheets without explicit block removals or cancellations.
+- `V9348`: A standard processing variant with multiple goods receipts and service entry sheets, ending in normal invoice clearing.
+- `V9349`: Terminates at Record Goods Receipt without completing the procure-to-pay cycle.
+- `V9350`: Terminates at Record Goods Receipt without proceeding to invoice receipt or payment.
+- `V9351`: The process ends with Record Service Entry Sheet without reaching invoice creation or payment completion.
+- `V9352`: The process ends with Record Goods Receipt without reaching invoice creation or payment completion.
+- `V9353`: The process ends with Record Service Entry Sheet without reaching invoice creation or payment completion.
+- `V9354`: The process ends with Record Goods Receipt without reaching invoice creation or payment completion.
+- `V9374`: The process ends with Record Goods Receipt without reaching invoice creation or payment.
+- `V9375`: The process ends with Record Goods Receipt without reaching invoice creation or payment.
+- `V9376`: This process variant involves heavy batch creation of goods receipts and service entry sheets without reaching invoice processing or payment.
+- `V9377`: This process variant records goods receipts and service entry sheets but terminates before invoice processing.
+- `V9378`: This process variant only contains purchase order item creation, service entry sheets, and goods receipts.
+- `V9379`: This variant only records service entry sheets and goods receipts without invoice activities.
+- `V9380`: The variant consists solely of order creation, goods receipts, and service entry sheets.
+- `V9395`: Variant ends at goods receipt without reaching invoicing or payment.
+- `V9396`: Variant ends with a service entry sheet, lacking invoicing or payment stages.
+- `V9397`: Process terminates at goods receipt without invoice handling.
+- `V9398`: Consists entirely of order creation, service entry sheets, and goods receipts.
+- `V9399`: Terminates at goods receipt without reaching the payment stage.
+- `V9400`: Involves goods receipts and service entry sheets but does not complete the invoice or payment cycle.
+- `V9401`: The process ends at Record Goods Receipt without completing the full cycle to invoice clearing or showing clear exception patterns.
+- `V9402`: The process stops at Record Service Entry Sheet and does not reach payment or standard exceptions.
+- `V9414`: Terminates at Record Service Entry Sheet without reaching payment or exception states.
+- `V9415`: Ends at Record Goods Receipt without completing the workflow.
+- `V9416`: Terminates at Record Goods Receipt without payment processing.
+- `V9417`: Ends at Record Goods Receipt without reaching invoice clearing.
+- `V9418`: Finishes at Record Goods Receipt without invoice handling.
+- `V9419`: Stops at Record Goods Receipt without completing the full procure-to-pay lifecycle.
+- `V9459`: The process ends with Record Goods Receipt and does not reach payment or cancellation, leaving it outside the standard payment taxonomy.
+- `V9469`: The process terminates at Record Goods Receipt without reaching invoice clearing or payment.
+- `V9470`: The process terminates at Record Goods Receipt without reaching invoice clearing or payment.
+- `V9471`: The process terminates at Record Service Entry Sheet without reaching invoice clearing or payment.
+- `V9472`: The process terminates at Record Goods Receipt without reaching invoice clearing or payment.
+- `V9473`: The process terminates at Record Goods Receipt without reaching invoice clearing or payment.
+- `V9475`: The process terminates at Record Invoice Receipt without final clearing, payment, or cancellation.
+- `V9476`: The narrative ends with recording a service entry sheet and does not reach invoice clearing or complete the standard payment process, so none of the standard outcome categories fit.
+- `V9486`: The case ends with Record Invoice Receipt and does not complete to payment, nor is it cancelled.
+- `V9493`: The case terminates at Record Invoice Receipt without progressing to payment or cancellation.
+- `V9494`: The process stops at SRM: Change was Transmitted and does not reach invoicing or payment.
+- `V9496`: The process stops early at SRM: Change was Transmitted.
+- `V9497`: The case ends at Record Invoice Receipt without payment completion.
+- `V9498`: The case terminates at Record Invoice Receipt without clearing.
+- `V9500`: The case ends with Record Invoice Receipt and does not reach payment or cancellation.
+- `V9526`: The process ends at Record Invoice Receipt with several repetitions and no final payment clearance, falling outside the clear process definitions.
+- `V9527`: The process concludes at Record Invoice Receipt without reaching final invoice clearance.
+- `V9544`: The variant ends unusually with Record Subsequent Invoice rather than standard completion or cancellation.
+- `V9558`: The case ends with a change delivery indicator rather than a payment or cancellation, leaving the outcome uncompleted.
+- `V9564`: The process terminates at record goods receipt without reaching invoice clearing or formal cancellation.
+- `V9565`: The case concludes at record goods receipt without progressing to billing or payment completion.
+- `V9566`: The sequence stops after a series of service entry sheets and goods receipts without final payment or cancellation.
+- `V9567`: The flow halts at a goods receipt event without reaching invoice clearance or cancellation.
+- `V9568`: The process terminates upon recording goods receipt without reaching invoicing or payment steps.
+- `V9569`: The variant ends on a service entry sheet without moving towards financial clearance or closure.
+- `V9570`: The case concludes with a goods receipt event and does not proceed to invoice clearing.
+- `V9575`: The variant ends in an interim record invoice receipt state rather than full clearance or formal cancellation.
+- `V9596`: The process ends prematurely at Record Goods Receipt without reaching invoice clearing or cancellation, so none of the standard payment categories fit.
+- `V9599`: The process terminates at Record Goods Receipt without any invoice handling or payment.
+- `V9600`: The process ends at Record Service Entry Sheet without reaching invoice processing or payment.
+- `V9601`: The process is focused on excessive service entry and goods receipt records without reaching completion or fitting a standard financial discrepancy, delay, or cancellation pattern.
+- `V9602`: The variant consists almost entirely of repetitive goods receipt and service entry activities without reaching invoice clearance or representing a defined discrepancy/cancellation flow.
+- `V9603`: The sequence involves repetitive goods receipts and service entry sheets ending abruptly without a clear invoice, cancellation, or payment block pattern.
+- `V9604`: This variant shows extensive looping of goods receipts and service entry sheets without reaching completion or standard exception resolution.
+- `V9605`: The case ends prematurely at Record Service Entry Sheet with extensive repetition of goods receipts and service entry steps.
+- `V9611`: The process ends at Record Invoice Receipt without completing through to payment or clearance.
+- `V9621`: The case ends at Record Invoice Receipt and does not proceed to payment or clearance.
+- `V9622`: The process concludes at Record Invoice Receipt without reaching final payment or clearance.
+- `V9639`: Incomplete path ending in goods receipt without finishing the invoice lifecycle.
+- `V9640`: Terminates at service entry sheet without invoice completion.
+- `V9641`: Terminates at goods receipt without full invoice lifecycle.
+- `V9642`: Terminates at goods receipt without reaching invoice clearing.
+- `V9643`: Terminates at goods receipt without completing payment.
+- `V9644`: Terminates at goods receipt without completing payment.
+- `V9645`: Terminates at goods receipt without invoice clearance.
+- `V9670`: Incomplete case ending prematurely at Record Service Entry Sheet without reaching invoice creation, clearance, or cancellation.
+- `V9671`: Incomplete case terminating at Record Goods Receipt without completing invoicing or payment steps.
+- `V9672`: Terminates at Record Goods Receipt with no invoice receipt or payment clearance.
+- `V9673`: Stops at Record Goods Receipt without proceeding to invoice receipt or payment.
+- `V9674`: Ends at Record Goods Receipt without completing the procure-to-pay lifecycle.
+- `V9675`: Incomplete process ending at Record Goods Receipt without vendor invoice or payment steps.
+- `V9698`: The process is incomplete, ending in a goods receipt without payment or cancellation, leaving it outside the standard categories.
+- `V9703`: The case ends prematurely at Record Goods Receipt without completing payment or clearing, leaving it outside the standard categories.
+- `V9704`: The narrative terminates at Record Goods Receipt without reaching invoice creation, receipt, or payment clearing.
+- `V9705`: The process ends at Record Goods Receipt without concluding with invoice processing or payment.
+- `V9706`: The trace stops at Record Service Entry Sheet and does not reach completion, invoice receipt, or payment.
+- `V9707`: The activity sequence terminates at Record Goods Receipt without any financial settlement or invoice steps.
+- `V9708`: The process concludes at Record Goods Receipt without reaching invoicing or payment clearance.
+- `V9758`: The case is purely operational with extensive service entry and goods receipt loops, never reaching invoice creation or payment.
+- `V9760`: The sequence consists solely of service entries and goods receipts without reaching purchasing milestones, invoicing, or payment.
+- `V9762`: An operational loop of service entry and goods receipt recording without invoicing or payment stages.
+- `V9763`: A localized sequence of service entry sheets and goods receipts without reaching final billing or payment.
+- `V9764`: A repetitive sequence of goods receipts and service entry sheets without progressing to invoice or payment stages.
+- `V9766`: Short operational sequence ending in a goods receipt without invoicing or payment.
+- `V9767`: Rapid operational loop recording service entries and goods receipts without invoice or payment milestones.
+- `V9768`: Instantaneous operational sequence consisting only of order creation, goods receipts, and service entries.
+- `V9769`: Massive loop of service entries and goods receipts without reaching invoice receipt or payment.
+- `V9770`: Routine operational record of goods receipts and service entries without financial settlement steps.
+- `V9771`: Routine operational service entry and goods receipt logging without invoicing.
+- `V9772`: Routine service entry and goods receipt recording without advancing to invoice processing.
+- `V9773`: Intensive operational sequence of service entries and goods receipts without invoice clearance.
+- `V9776`: The process ends at Record Goods Receipt without reaching payment, completion, or cancellation.
+- `V9777`: The process concludes at Record Goods Receipt without reaching payment or cancellation.
+- `V9778`: The narrative stops at Record Goods Receipt without full payment processing.
+- `V9779`: The process is incomplete, ending at Change Approval for Purchase Order.
+- `V9780`: The process terminates at Record Invoice Receipt before payment is cleared.
+- `V9781`: The process ends at Record Invoice Receipt without completing payment clearing.
+- `V9782`: The workflow stops at Record Invoice Receipt without reaching final payment.
+- `V9783`: The variant ends at Record Invoice Receipt without full payment conclusion.
+- `V9785`: The process finishes at Record Invoice Receipt without reaching final payment clearing.
+- `V9786`: The process ends at Record Invoice Receipt without final payment or clearing.
+- `V9787`: The sequence is incomplete and stops at Change Approval for Purchase Order.
+- `V9788`: The workflow terminates at Record Invoice Receipt prior to payment clearing.
+- `V9789`: The process ends at Record Invoice Receipt without completing payment.
+- `V9790`: The narrative stops at Record Goods Receipt without invoice or payment steps.
+- `V9791`: The narrative ends at Record Goods Receipt without reaching invoicing or payment.
+- `V9799`: The process ends at Record Invoice Receipt without reaching final payment or clearing.
+- `V9838`: The case ends with a goods receipt rather than invoice clearance, cancellation, or payment, leaving it outside the standard lifecycle categories.
+- `V9850`: The case terminates at the invoice receipt stage without clearing, cancellation, or reaching clear payment terms.
+- `V9859`: The case terminates mid-process at Record Goods Receipt without reaching final invoice clearance or formal cancellation.
+- `V9860`: The sequence ends prematurely at Record Goods Receipt without a final invoice clearing or cancellation.
+- `V9862`: Incomplete process ending at Record Goods Receipt without reaching invoice resolution or cancellation.
+- `V9863`: Terminates at Record Goods Receipt without proceeding to invoice clearing or formal resolution.
+- `V9864`: Stops at Record Service Entry Sheet without reaching invoice clearing or formal cancellation.
+- `V9866`: Ends at Record Invoice Receipt without reaching final invoice clearance.
+- `V9870`: Terminates with a subsequent invoice record after an initial clearing, falling outside the main categories.
+- `V9881`: The process terminates early at Record Service Entry Sheet without reaching invoice clearing or payment.
+- `V9882`: The process terminates at Record Goods Receipt without completing payment or invoice lifecycle.
+- `V9883`: The case ends at Record Goods Receipt prematurely.
+- `V9884`: Terminates at Record Goods Receipt without completion of the financial settlement.
+- `V9885`: Ends at Record Service Entry Sheet without reaching payment.
+- `V9886`: Ends at Record Service Entry Sheet without invoice processing.
+- `V9887`: Terminates at Record Goods Receipt without reaching invoice clearing.
+- `V9888`: Case terminates at Record Service Entry Sheet without reaching final payment.
+- `V9891`: Terminates at Release Purchase Order, never reaching invoice or payment.
+- `V9897`: Terminates at Change Storage Location without financial settlement.
+- `V9899`: Terminates at Record Goods Receipt without completing the invoice or payment steps.
+- `V9920`: Incomplete service entry process ending without payment clearance, cancellation, or block; forms part of the residual.
+- `V9921`: Incomplete activity sequence ending at Record Service Entry Sheet without concluding payment or cancellation.
+- `V9922`: Variant ends at Record Service Entry Sheet without standard completion or block outcomes.
+- `V9923`: Terminates at Record Service Entry Sheet without reaching payment or cancellation stages.
+- `V9924`: Finishes at Record Service Entry Sheet without reaching a final payment, block, or cancellation state.
+- `V9925`: Ends on Record Service Entry Sheet without completing the full payment cycle or resulting in cancellation.
+- `V9928`: The process is incomplete, ending prematurely at Record Goods Receipt without reaching invoice clearing or cancellation.
+- `V9929`: The process terminates early at Record Goods Receipt and does not complete the full procurement lifecycle.
+- `V9930`: The case ends prematurely at Record Goods Receipt without reaching invoice creation, payment, or cancellation.
+- `V9931`: The sequence stops at Record Goods Receipt, failing to reach payment or completion.
+- `V9932`: The sequence terminates at Record Service Entry Sheet without reaching invoice receipt or payment.
+- `V9933`: The variant ends at Record Goods Receipt without completing the invoicing and payment stages.
+- `V9934`: The case ends at Record Service Entry Sheet without progressing to invoice or payment stages.
+- `V9935`: The process terminates early at Record Goods Receipt without an invoice or payment.
+- `V9936`: The case ends abruptly at Record Goods Receipt with multiple price and quantity changes, lacking invoice processing.
+- `V9942`: The case ends at Change Quantity after payment block removal, failing to reach a final invoice clearing or cancellation.
+- `V9947`: The case terminates with a late price change after invoice receipt without reaching final clearing or cancellation.
+- `V9950`: The variant ends with a quantity change after invoice receipt without completing payment clearing or cancellation.
+- `V9956`: The case terminates prematurely at Record Goods Receipt without completing the payment lifecycle, making none of the completion categories fit.
+- `V9957`: The case terminates prematurely at Record Goods Receipt without reaching invoice or payment steps.
+- `V9958`: The case terminates prematurely at Record Goods Receipt without reaching invoice or payment steps.
+- `V9959`: The case terminates prematurely at Record Goods Receipt without reaching invoice or payment steps.
+- `V9960`: The case terminates prematurely at Record Goods Receipt without reaching invoice or payment steps.
+- `V9961`: The case terminates prematurely at Record Goods Receipt without reaching invoice or payment steps.
+- `V9962`: The case terminates prematurely at Record Goods Receipt without reaching invoice or payment steps.
+- `V9963`: The case terminates prematurely at Record Goods Receipt without reaching invoice or payment steps.
+- `V9964`: The case terminates prematurely at Record Goods Receipt without reaching invoice or payment steps.
+- `V9974`: The case terminates at Record Invoice Receipt and never reaches payment or cancellation.
+- `V9982`: The process ends at Record Invoice Receipt and does not complete through to payment.
+- `V9989`: Case terminates at Record Goods Receipt without completing payment or invoice.
+- `V9990`: Case terminates at Record Goods Receipt without reaching invoice or payment stages.
+- `V9991`: Terminates at Record Goods Receipt without invoice completion or payment.
+- `V9992`: Ends at Record Goods Receipt and does not proceed to invoice or payment.
+- `V9993`: Case terminates early at Record Goods Receipt.
+- `V10015`: The case ends with a record goods receipt and lacks invoice creation, receipt, or payment clearing, meaning it does not fit standard completion categories.
+- `V10016`: The process terminates at record goods receipt without progressing to invoice creation, receipt, or payment.
+- `V10017`: The case concludes at record goods receipt without reaching invoicing or payment completion stages.
+- `V10019`: The variant terminates at record goods receipt without completing invoice processing or payment.
+- `V10021`: The variant ends with a record service entry sheet and does not reach invoice receipt or payment.
+- `V10022`: The case concludes with a record goods receipt and does not progress to invoice or payment activities.
+- `V10023`: The process stops at record goods receipt without any billing or payment steps.
+- `V10034`: The case ends with a goods receipt and does not complete the procurement or payment cycle.
+- `V10035`: The process ends at invoice receipt without reaching payment or clear invoice.
+- `V10041`: The variant ends at a goods receipt without progressing to invoicing or payment.
+- `V10042`: The variant concludes prematurely at a goods receipt stage.
+- `V10043`: The process stops at record goods receipt without reaching invoicing or payment.
+- `V10045`: The process terminates at record goods receipt.
+- `V10046`: The process terminates at record goods receipt.
+- `V10047`: The process terminates at record goods receipt.
+- `V10078`: The process ends at Record Goods Receipt without payment or completion.
+- `V10079`: The process terminates at Record Goods Receipt before invoice or payment.
+- `V10080`: The process ends at Record Goods Receipt without reaching invoice receipt or payment.
+- `V10081`: Process stops at Record Goods Receipt without invoice clearing.
+- `V10082`: The process terminates at Record Goods Receipt without reaching invoice or payment.
+- `V10083`: Process ends with Record Goods Receipt and does not complete the full invoice-to-payment cycle.
+- `V10084`: The process finishes at Record Goods Receipt without invoicing or payment.
+- `V10085`: Process ends at Record Goods Receipt without completing payment.
+- `V10111`: Case remains incomplete at change delivery indicator, ending before invoice clearing or payment.
+- `V10123`: Incomplete execution ending in record goods receipt without invoicing or payment.
+- `V10124`: Incomplete execution ending in record goods receipt without invoicing or payment.
+- `V10125`: Incomplete execution ending in record goods receipt without invoicing or payment.
+- `V10127`: The process is incomplete, ending in recording a goods receipt without payment, cancellation, or invoice clearance.
+- `V10128`: The process is incomplete, ending in recording a service entry sheet without payment or completion.
+- `V10129`: The process is incomplete, ending in recording a goods receipt without invoicing or payment.
+- `V10147`: The process is incomplete, ending in recording a goods receipt without invoicing or payment.
+- `V10148`: The process is incomplete, ending in recording a goods receipt without invoicing or payment.
+- `V10149`: The process is incomplete, ending in recording a goods receipt without invoicing or payment.
+- `V10150`: The process is incomplete, ending in recording a service entry sheet without payment or completion.
+- `V10188`: The case terminates at record goods receipt without completing the procurement or payment process, fitting none of the completed payment or cancellation categories.
+- `V10189`: The case stops at record goods receipt without advancing to invoice processing or cancellation.
+- `V10190`: The process terminates at record service entry sheet without reaching invoice receipt or cancellation.
+- `V10191`: The case ends with a record service entry sheet and does not proceed to invoice clearing or formal cancellation.
+- `V10192`: The case stops at record goods receipt without progressing to invoice processing.
+- `V10193`: The case ends at record goods receipt without completing payment or being cancelled.
+- `V10229`: The process does not end in payment or completion, terminating instead on an invoice receipt with various repetitions and no final clearing.
+- `V10233`: The case does not progress to payment or a clear resolution, terminating with an invoice receipt.
+- `V10248`: The process terminates prematurely at a change quantity activity without reaching payment or completion.
+- `V10253`: The process ends with Record Invoice Receipt without completing payment or cancellation, leaving it outside the standard categories.
+- `V10255`: The case ends with an invoice receipt after multiple quantity changes and an invoice cancellation without clear payment completion.
+- `V10259`: The variant ends abruptly at Record Goods Receipt without reaching invoice creation or payment.
+- `V10260`: The variant terminates at Record Goods Receipt without reaching invoicing or payment.
+- `V10261`: The process terminates at Record Goods Receipt without reaching invoice or payment completion.
+- `V10313`: The process ends with Record Invoice Receipt and does not complete payment or get cancelled/blocked.
+- `V10314`: The case terminates at Record Invoice Receipt without reaching payment clearance or cancellation.
+- `V10316`: Process stops at Record Goods Receipt without invoicing or payment.
+- `V10317`: Terminates at Record Goods Receipt without reaching invoicing or payment stages.
+- `V10318`: Ends at Record Goods Receipt without advancing to invoicing or payment.
+- `V10321`: Terminates at Record Invoice Receipt without reaching payment or cancellation.
+- `V10322`: Ends at Record Invoice Receipt without completion of payment.
+- `V10323`: Stops at Record Invoice Receipt with price and goods receipt adjustments.
+- `V10325`: Terminates at Record Invoice Receipt without reaching payment or cancellation.
+- `V10355`: The case involves subsequent invoice creation after clearance, which does not cleanly fit standard exception or STP definitions without a dedicated resolution category.
+- `V10360`: The process terminates at record goods receipt without reaching payment or invoice states.
+- `V10361`: The process ends at record goods receipt without reaching final billing or payment.
+- `V10363`: The process terminates at record goods receipt without reaching completion.
+- `V10364`: The process ends at record goods receipt without completing the procure-to-pay lifecycle.
+- `V10365`: The process concludes at record goods receipt.
+- `V10366`: The process stops at record service entry sheet without moving to invoicing or payment.
+- `V10382`: The process ends with Record Goods Receipt and does not complete through to payment, so it does not fit the standard completion categories.
+- `V10383`: The process concludes at Record Goods Receipt without reaching invoice creation or payment completion.
+- `V10384`: Terminates at Record Service Entry Sheet without reaching invoice processing or payment.
+- `V10385`: Ends at Record Goods Receipt without proceeding to invoicing or payment.
+- `V10386`: Ends at Record Goods Receipt without proceeding to invoicing or payment.
+- `V10387`: Ends at Record Goods Receipt without reaching invoice processing or payment.
+- `V10388`: Terminates at Record Service Entry Sheet without reaching invoice processing or payment.
+- `V10396`: Terminates at Record Goods Receipt without completing through to invoice payment.
+- `V10397`: Terminates at Record Goods Receipt without completing through to invoice payment.
+- `V10398`: Terminates at Record Goods Receipt without completing through to invoice payment.
+- `V10401`: The variant ends with multiple Goods Receipts and does not reach invoice clearing or cancellation, so it does not fit standard process completion or standard exception patterns.
+- `V10403`: The variant contains repeated changes and goods receipts, but ends without clearing or explicit cancellation, falling outside the main categories.
+- `V10407`: The goods receipt was cancelled and re-recorded, but the case ends at Record Invoice Receipt without clearing.
+- `V10408`: Multiple repeated invoicing and goods receipt loops occur without clear categorization under the standard paths.
+- `V10418`: An irregular pattern of duplicated vendor invoices and receipts ending without clear payment execution.
+- `V10420`: Repeated vendor invoices and goods receipts without block removal or straight-through processing.
+- `V10422`: Multiple recurring invoices and quantity changes ending with a delivery indicator change rather than payment.
+- `V10431`: The process terminates immediately after a payment term change without reaching payment or invoice completion.
+- `V10433`: The process terminates at record service entry sheet without reaching invoice creation or payment.
+- `V10434`: The process ends at record goods receipt without reaching invoice or payment completion.
+- `V10435`: The process ends at record goods receipt without reaching invoice or payment completion.
+- `V10436`: The process ends at record goods receipt without reaching invoice or payment completion.
+- `V10437`: The process ends at record service entry sheet without reaching invoice or payment completion.
+- `V10438`: The process ends at record goods receipt without reaching invoice or payment completion.
+- `V10439`: The process ends at record goods receipt without reaching invoice or payment completion.
+- `V10502`: The variant consists entirely of repeating goods receipts and a quantity change, ending at goods receipt without clearing an invoice.
+- `V10504`: Involves changing delivery indicators and repeating goods receipts, ending before invoicing or payment.
+- `V10505`: Consists of multiple goods receipts and delivery indicator updates without invoicing.
+- `V10511`: Ends at goods receipt with extensive service entry repetitions, never reaching invoice or payment.
+- `V10512`: Ends at goods receipt with service entry repetitions.
+- `V10513`: Ends at goods receipt with multiple service entries.
+- `V10514`: Ends at service entry sheet with no invoice or payment stages.
+- `V10517`: Ends at goods receipt without invoicing.
+- `V10518`: Ends at goods receipt with extensive service entries.
+- `V10519`: Ends at goods receipt.
+- `V10537`: The process ends at Record Invoice Receipt without completing payment or being explicitly cancelled or blocked.
+- `V10542`: The process terminates at Record Goods Receipt without reaching invoice clearing or containing exceptions matching the categories.
+- `V10544`: Ends at Record Goods Receipt with multiple service entry sheets and goods receipts, but no payment or exception matching categories.
+- `V10545`: Terminates at Record Service Entry Sheet with repetitive fulfillment steps and no final financial clearing.
+- `V10546`: Ends at Record Goods Receipt with extensive service entry activity but no payment or cancellation milestone.
+- `V10547`: Consists of repetitive goods receipts and service entry sheets ending at Record Goods Receipt without payment processing.
+- `V10548`: Terminates at Record Service Entry Sheet without reaching invoice or payment stages.
+- `V10549`: Ends at Record Service Entry Sheet with extensive operational repetitions and no financial clearance.
+- `V10571`: Incomplete process ending prematurely at Record Service Entry Sheet without reaching payment or cancellation.
+- `V10572`: Incomplete process ending prematurely at Record Goods Receipt without reaching payment or cancellation.
+- `V10573`: Incomplete process ending prematurely at Record Goods Receipt without reaching payment or cancellation.
+- `V10575`: Incomplete process ending prematurely at Record Goods Receipt without reaching payment or cancellation.
+- `V10601`: This narrative involves massive repetition of service entry sheets and goods receipts without reaching a clear completion or standard payment, fitting none of the core process outcomes.
+- `V10602`: The process consists entirely of loops of service entry sheets and goods receipts without proceeding to invoicing or payment.
+- `V10603`: The narrative shows extensive repetitions of goods receipts and service entry sheets without completing the order or reaching an invoice stage.
+- `V10606`: The process loops through numerous goods receipts and service entry sheets over an extended duration, ending in a service entry sheet without reaching a full resolution or payment.
+- `V10607`: The case involves extensive loops of service entry sheets and goods receipts, concluding on a goods receipt without progressing to billing.
+- `V10608`: The process consists of repetitive goods receipts and service entry sheets without completing the invoice or payment cycle.
+- `V10617`: The process terminates at an invoice receipt stage without progressing to clearance or cancellation.
+- `V10618`: The case ends with a change to the delivery indicator without reaching invoice clearance or cancellation.
+- `V10619`: The process terminates by changing the delivery indicator after multiple quantity changes and goods receipts.
+- `V10620`: The workflow ends with recording a goods receipt without progressing to invoice creation or clearance.
+- `V10626`: The process stops at Record Service Entry Sheet without reaching invoice or payment completion, and does not fit standard exception or cancellation patterns.
+- `V10628`: The variant ends prematurely at Record Service Entry Sheet without reaching invoicing or payment.
+- `V10629`: The process terminates at Record Goods Receipt without invoice creation or payment execution.
+- `V10631`: The process ends at Record Service Entry Sheet without proceeding to invoice or payment.
+- `V10633`: The sequence ends at Record Goods Receipt without any invoice or payment processing.
+- `V10634`: The process terminates at Record Goods Receipt without reaching invoice creation or payment.
+- `V10635`: The process finishes at Record Goods Receipt without advancing to invoice or payment.
+- `V10666`: The process terminates prematurely at recording service entry sheet without reaching a payment or completion state.
+- `V10672`: Incomplete process variant ending on a service entry sheet without a terminal payment or resolution state.
+- `V10675`: Terminates on a service entry sheet without reaching a full completion milestone.
+- `V10676`: The narrative ends abruptly at Record Goods Receipt without invoice creation, completion, or payment.
+- `V10683`: Ends with Record Invoice Receipt without completing the payment.
+- `V10684`: Ends with Record Invoice Receipt without reaching payment completion.
+- `V10688`: Involves deletion and reactivation of a purchase order item, ending at invoice receipt without payment.
+- `V10689`: Ends in Record Invoice Receipt without reaching final payment or clearing.
+- `V10697`: Terminates at Record Invoice Receipt without payment clearing.
+- `V10699`: Incomplete process ending at Record Service Entry Sheet.
+- `V10700`: Incomplete process ending at Record Goods Receipt without invoice or payment.
+- `V10702`: The process is incomplete, ending in goods receipt recording without reaching an invoice payment, cancellation, or resolution.
+- `V10704`: The process terminates abruptly at Record Service Entry Sheet without reaching payment, block, discrepancy resolution, or cancellation.
+- `V10705`: The process ends inconclusively at Record Goods Receipt without completing payment or cancellation.
+- `V10706`: The case ends with goods receipt recording and does not proceed to invoice clearing or formal cancellation.
+- `V10771`: The case does not complete through to payment or invoice processing, ending merely at service entry.
+- `V10772`: The case does not progress to invoice or payment stages, ending at a goods receipt.
+- `V10773`: The process terminates prematurely at goods receipt without reaching invoicing or payment.
+- `V10775`: The variant ends at a goods receipt and does not reach the invoice or payment phases.
+- `V10777`: The narrative shows extensive automated batch entries and duplicate recording loops without reaching clear payment or standard resolution.
+- `V10778`: The process consists only of repeated service entries and goods receipts without reaching an invoice or payment stage.
+- `V10779`: The process involves dense, repeated loops of goods receipts and service entry sheets without completing the procure-to-pay lifecycle.
+- `V10790`: The case ends at record invoice receipt without proceeding to payment or clearing.
+- `V10791`: The process stops at record goods receipt without reaching the invoicing or payment stage.
+- `V10793`: The process concludes with a change delivery indicator rather than proceeding to invoicing or payment.
+- `V10796`: The purchase order item is blocked, reactivated, and modified, terminating without invoice or payment.
+- `V10798`: The narrative is dominated by hundreds of repetitive automated batch entries for service sheets and goods receipts before clearing.
+- `V10799`: The sequence consists entirely of repeated service entry sheets and goods receipts without reaching invoicing.
+- `V10800`: The sequence consists of recurring service entry sheets and goods receipts without progressing to invoice or payment.
+- `V10801`: The process ends in recording goods receipts and service entry sheets without completing through to payment or cancellation, leaving it outside the standard four completion lifecycles.
+- `V10802`: The process ends with goods receipt recording and does not reach invoice clearing or cancellation.
+- `V10803`: The process consists entirely of repeated service entry and goods receipt logs without reaching invoice handling or payment.
+- `V10804`: The process ends at a goods receipt without progressing to invoicing or payment.
+- `V10820`: Terminates early at goods receipt following final invoice indicator changes without reaching invoice receipt or payment.
+- `V10821`: Terminates after an invoice receipt following an earlier cleared invoice and subsequent duplicate receipt.
+- `V10822`: Terminates at a secondary invoice receipt after an intervening clearance event.
+- `V10827`: The process ends in a change of storage location without completing through to payment, cancellation, or clear exception classification.
+- `V10829`: The process ends prematurely at Record Invoice Receipt without reaching final payment or clearing.
+- `V10839`: The process terminates at Record Goods Receipt without completing payment or clearing.
+- `V10841`: Process ends at Record Service Entry Sheet without reaching invoice or payment completion.
+- `V10842`: Process ends at Record Goods Receipt without completing the procure-to-pay lifecycle.
+- `V10843`: Process terminates at Record Goods Receipt without reaching invoice receipt or payment.
+- `V10845`: Process ends at Record Goods Receipt without reaching completion or cancellation.
+- `V10848`: Process ends at Record Service Entry Sheet without reaching final payment or cancellation.
+- `V10849`: Terminates at Record Goods Receipt without completing full invoice and payment processing.
+- `V10850`: Terminates at Record Goods Receipt without completing full processing or cancellation.
+- `V10865`: The process terminates with a record goods receipt without reaching invoice clearing, cancellation, or payment, leaving it outside the main payment lifecycle categories.
+- `V10866`: The process ends at record goods receipt without proceeding to invoicing or cancellation.
+- `V10870`: Stops at record goods receipt without advancing to invoicing or payment stages.
+- `V10871`: Terminates at record goods receipt without completing the financial lifecycle.
+- `V10872`: Ends prematurely at record service entry sheet without proceeding through to invoice or payment.
+- `V10876`: The process ends with Record Invoice Receipt without reaching payment, cancellation, or clear resolution of all exceptions.
+- `V10877`: The process ends with Change Quantity and does not reach invoice clearing, cancellation, or payment completion.
+- `V10895`: The trace consists of service entry sheets and goods receipts without reaching final payment or cancellation.
+- `V10897`: Ends at Record Goods Receipt without completing the invoice or payment cycle.
+- `V10898`: Ends at Record Goods Receipt without completing the invoice or payment cycle.
+- `V10900`: Ends at Record Goods Receipt without reaching invoice processing or payment.
+- `V10933`: The case terminates early at Record Service Entry Sheet without reaching invoice creation or payment completion, so it does not fit standard processing or payment categories.
+- `V10934`: The narrative terminates early at Record Goods Receipt without reaching invoice or payment completion.
+- `V10935`: The process terminates early at Record Goods Receipt without reaching invoice or payment phases.
+- `V10936`: The process ends at Record Goods Receipt without involving invoicing or payment.
+- `V10939`: The narrative ends abruptly at Record Service Entry Sheet without completing invoicing or payment steps.
+- `V10940`: Terminates at Record Goods Receipt with no invoicing or payment milestones reached.
+- `V10941`: Terminates at Record Service Entry Sheet with no invoicing or payment milestones reached.
+- `V10945`: Terminates at Record Goods Receipt after confirmation updates, without reaching invoice or payment.
+- `V10966`: The variant ends prematurely at Record Service Entry Sheet without reaching invoice receipt or payment.
+- `V10967`: The variant terminates at Record Goods Receipt without completing invoicing or payment steps.
+- `V10969`: The variant ends at Record Service Entry Sheet with no invoice or payment activities.
+- `V10971`: The variant ends abruptly at Record Service Entry Sheet prior to invoice processing.
+- `V10973`: The variant stops at Record Goods Receipt without reaching invoice recording or clearing.
+- `V10974`: The variant concludes at Record Goods Receipt without any invoice handling.
+- `V10975`: The variant stops at Record Goods Receipt without proceeding to invoicing or payment.
+- `V11057`: The case ends prematurely at Vendor creates invoice without completing the process or reaching a defined final state in the taxonomy.
+- `V11063`: The process stops at Record Goods Receipt without completing the full lifecycle to payment or cancellation.
+- `V11064`: The process ends unexpectedly at Change Quantity rather than reaching completion, cancellation, or standard resolution.
+- `V11065`: The process ends at Record Invoice Receipt without reaching a final clearing, cancellation, or complete payment state.
+- `V11066`: Incomplete process variant ending with Record Service Entry Sheet.
+- `V11067`: Incomplete process variant ending with Record Goods Receipt.
+- `V11068`: Incomplete process variant ending with Record Goods Receipt.
+- `V11070`: Incomplete process variant ending with Record Goods Receipt.
+- `V11071`: Incomplete process variant ending with Record Service Entry Sheet.
+- `V11072`: Incomplete process variant ending with Record Service Entry Sheet.
+- `V11073`: Incomplete process variant ending with Record Goods Receipt.
+- `V11074`: Incomplete process variant ending with Record Service Entry Sheet.
+- `V11100`: The narrative consists of massive repetitive service entry sheets and goods receipts without clear categorization into standard payment exceptions or straight-through paths.
+- `V11154`: The process ends at Update Order Confirmation without reaching payment or cancellation, leaving it outside the standard categories.
+- `V11155`: The case terminates at Record Invoice Receipt and does not complete payment, cancellation, or block handling.
+- `V11157`: The case ends with Change Approval for Purchase Order and does not proceed through to invoice or payment.
+- `V11160`: The process ends at Record Goods Receipt without completing the procure-to-pay lifecycle or involving payment blocks/cancellations.
+- `V11162`: The case ends with Record Invoice Receipt without completing the full payment cycle.
+- `V11163`: The process concludes at Record Invoice Receipt with extensive service entry and goods receipt loops, but without final payment clearance.
+- `V11164`: The variant ends prematurely at Record Service Entry Sheet.
+- `V11165`: The variant ends at Record Goods Receipt without reaching invoice or payment stages.
+- `V11166`: The variant terminates at Record Goods Receipt.
+- `V11167`: The variant terminates at Record Service Entry Sheet.
+- `V11170`: The variant ends at Record Service Entry Sheet without reaching completion of payment or cancellation.
+- `V11171`: The variant terminates at Record Goods Receipt.
+- `V11172`: The variant stops at Record Invoice Receipt without reaching final payment.
+- `V11201`: The narrative is incomplete, ending at Record Invoice Receipt without payment or completion.
+- `V11202`: The narrative ends abruptly at Record Goods Receipt without reaching invoice creation or payment.
+- `V11203`: The narrative ends abruptly at Record Goods Receipt without reaching invoice creation or payment.
+- `V11204`: The narrative ends at Record Service Entry Sheet without completion through to payment.
+- `V11205`: The narrative ends at Record Goods Receipt without invoice creation or payment.
+- `V11206`: The narrative ends at Record Service Entry Sheet without reaching invoice or payment.
+- `V11207`: The process terminates at Record Invoice Receipt without completing payment.
+- `V11212`: Terminates at Record Invoice Receipt without a final payment step.
+- `V11213`: Terminates at Change Delivery Indicator without reaching an invoice or payment.
+- `V11214`: Terminates at Record Goods Receipt without reaching payment.
+- `V11215`: Terminates at Record Goods Receipt without final payment completion.
+- `V11216`: Terminates at Record Invoice Receipt without payment.
+- `V11217`: Terminates at Record Invoice Receipt without payment.
+- `V11218`: Terminates at Record Invoice Receipt without payment.
+- `V11220`: Terminates at Record Invoice Receipt without completion to payment.
+- `V11222`: Terminates at Record Goods Receipt without invoice or payment steps.
+- `V11224`: Terminates at Record Invoice Receipt without payment.
+- `V11225`: Terminates at Record Invoice Receipt without payment.
+- `V11251`: The process ends in recording service entry sheets with intensive batch repetition and does not reach completion, payment, or standard discrepancy resolution.
+- `V11252`: The process consists entirely of repeated goods receipts and service entry sheets without progressing to invoice or payment.
+- `V11253`: An extensive sequence of repetitive service entry sheets and goods receipts without reaching invoicing or payment.
+- `V11254`: The process involves quantity changes and invoice receipt but does not show clear payment clearance or extended payment blocks.
+- `V11268`: Iterative goods and invoice receipts without reaching clear invoice or formal payment block.
+- `V11272`: Extensive repetition of service entry sheets and goods receipts ending at invoice receipt without clearing.
+- `V11273`: Repetitive service entry and goods receipt loops ending at goods receipt.
+- `V11274`: Dense loops of goods receipt and service entry sheets without reaching completion.
+- `V11275`: Extended repetitions of goods receipts and service entry sheets without reaching invoicing or payment.
+- `V11301`: The process ends with Record Invoice Receipt without final clearing or clear exception resolution/block patterns matching the standard definitions, falling into the residual.
+- `V11302`: The process ends prematurely at Record Goods Receipt without an invoice or payment completion.
+- `V11304`: The process terminates at Record Goods Receipt without reaching invoice receipt or payment.
+- `V11305`: The process terminates at Record Goods Receipt without reaching invoice receipt or payment.
+- `V11312`: The process ends at Record Invoice Receipt without a clear payment or blockage outcome.
+- `V11313`: The process terminates at Record Goods Receipt without reaching invoice or payment.
+- `V11314`: The process terminates at Record Goods Receipt without reaching invoice or payment.
+- `V11317`: The process terminates at Record Goods Receipt without reaching invoice or payment.
+- `V11318`: The process terminates at Record Service Entry Sheet without reaching invoice or payment.
+- `V11319`: The process terminates at Record Service Entry Sheet without reaching invoice or payment.
+- `V11335`: The process ends incomplete at Record Goods Receipt without final payment or cancellation, fitting neither standard processing nor the specified exception categories.
+- `V11338`: The variant ends at Record Invoice Receipt without completing through to payment or cancellation, leaving it outside the standard categories.
+- `V11339`: The process terminates early at Change Delivery Indicator without reaching invoice creation, payment, or cancellation.
+- `V11342`: The case terminates at Record Invoice Receipt without reaching payment, clearance, or cancellation.
+- `V11344`: The process ends prematurely at Record Service Entry Sheet without reaching invoice creation, payment, or cancellation.
+- `V11345`: The process terminates early at Record Goods Receipt without reaching billing, payment, or cancellation.
+- `V11346`: The process terminates at Record Goods Receipt without progressing to invoice creation, payment, or cancellation.
+- `V11347`: The process ends at Record Goods Receipt without reaching invoice processing, payment, or cancellation.
+- `V11349`: The process terminates at Record Goods Receipt without reaching invoice processing, payment, or cancellation.
+- `V11350`: The process ends at Record Goods Receipt without reaching invoice processing, payment, or cancellation.
+- `V11380`: The process consists entirely of automated batch service entry sheets and goods receipts without reaching a standard payment completion.
+- `V11381`: High volume of automated service entries and goods receipts culminating in a standard invoice receipt without clear exception classification.
+- `V11382`: Short process ending simply in a goods receipt with extensive automated entries.
+- `V11383`: Automated batch entries ending in a goods receipt.
+- `V11385`: Repetitive automated service entries and goods receipts ending without invoice processing.
+- `V11386`: Consists of extensive automated batch service entries and goods receipts.
+- `V11387`: Automated repetitive entries ending in a goods receipt.
+- `V11388`: Extended sequence of automated goods receipts and service entry sheets.
+- `V11389`: Automated batch sequence ending with a service entry sheet.
+- `V11397`: Extensive repetitive automated entries followed by a standard invoice receipt.
+- `V11398`: Automated batch entries ending in a service entry sheet.
+- `V11399`: Automated batch sequence concluding with a goods receipt.
+- `V11400`: Automated batch sequence concluding with a goods receipt.
+- `V11401`: The narrative shows repetitive creation of goods receipts and service entry sheets without reaching standard payment or completion stages, fitting none of the specified standard categories cleanly.
+- `V11403`: The narrative consists entirely of repeated goods receipts and service entry sheets without an invoice, payment, or cancellation.
+- `V11404`: The sequence is an extensive loop of goods receipts and service entry sheets ending abruptly without an invoice or payment.
+- `V11409`: The case involves numerous repeated goods receipts ending in an invoice receipt without explicit discrepancy correction, blocks, or cancellations.
+- `V11412`: Shows multiple goods receipt entries followed by an invoice receipt, lacking exceptions like blocks or cancellations.
+- `V11414`: A complex recurring sequence of vendor invoices, goods receipts, and service entry sheets lacking a clear categorization into standard paths.
+- `V11415`: Alternating vendor invoices and goods/invoice receipts without blocks, cancellations, or resolved discrepancies falling neatly under standard definitions.
+- `V11416`: Multiple vendor invoice and invoice receipt entries occurring over a prolonged duration without recorded payment blocks or cancellations.
+- `V11419`: Involves deletion and reactivation of a purchase order item followed by normal receipt and invoice processing, fitting none of the core exception categories cleanly.
+- `V11420`: Involves purchase order item deletion and reactivation with delayed invoice and receipt steps.
+- `V11421`: Extensive repetition of service entry sheets and goods receipts culminating in an invoice receipt.
+- `V11422`: Short sequence consisting of repetitive service entry sheets and goods receipts.
+- `V11423`: Consists of multiple service entry sheets and goods receipts without reaching final invoice or payment.
+- `V11424`: Consists of alternating service entry sheets and goods receipts ending quickly.
+- `V11425`: Repetitive pattern of goods receipts and service entry sheets terminating without invoice or payment events.
+- `V11426`: The narrative ends prematurely with recording service entry sheets and goods receipts without reaching invoice receipt or payment completion.
+- `V11427`: The narrative consists only of creating the purchase order and recording service entry sheets and goods receipts, without proceeding to invoice processing.
+- `V11428`: The process terminates at goods receipt without invoicing or payment activities.
+- `V11429`: The process stops at recording service entry sheets and goods receipts without ever reaching invoice receipt or clearing.
+- `V11431`: The process concludes with repeated invoice receipts over an extended period without a final clearing or payment step.
+- `V11442`: The narrative ends with an invoice receipt without reaching payment clearing or cancellation.
+- `V11443`: The process terminates early with service entry sheets and goods receipts.
+- `V11444`: The process ends at goods receipt without invoicing or payment steps.
+- `V11445`: The process concludes at goods receipt without reaching the invoicing stage.
+- `V11446`: The process terminates with a goods receipt and does not reach invoice verification or payment.
+- `V11448`: The narrative stops at goods receipt without invoicing or payment completion.
+- `V11449`: The process concludes with recording service entry sheets and goods receipts without proceeding to invoicing.
+- `V11450`: The process ends at recording service entry sheets without reaching invoice creation or payment.
+- `V11451`: The process ends at Record Service Entry Sheet without reaching invoice clearing, cancellation, or standard completion.
+- `V11456`: The process stops at Record Invoice Receipt without completing the payment or clearing stage.
+- `V11471`: Stops at Record Invoice Receipt without completing payment or clearing.
+- `V11472`: Process halts at Record Goods Receipt without achieving invoice processing or clearing.
+- `V11473`: Process halts at Record Goods Receipt without achieving invoice processing or clearing.
+- `V11474`: Process halts at Record Goods Receipt without achieving invoice processing or clearing.
+- `V11475`: Process halts at Record Goods Receipt without achieving invoice processing or clearing.
+- `V11476`: The narrative consists entirely of service entry and goods receipt batch actions without reaching an invoice receipt, payment block removal, or clear invoice step, so it does not fit standard process completion or known exception categories.
+- `V11477`: The narrative shows repetitive service entry and goods receipt activities ending in a service entry sheet without reaching a payment or completion phase.
+- `V11482`: The variant ends with Record Invoice Receipt after multiple goods receipts and a vendor invoice, without a payment or cancellation.
+- `V11484`: The process ends with a change delivery indicator following multiple goods receipts and does not complete the financial lifecycle.
+- `V11485`: The process ends at record goods receipt after a delivery indicator change, lacking full completion or standard exception patterns.
+- `V11486`: The case ends with a change delivery indicator following goods receipts without reaching an invoice or payment.
+- `V11487`: The variant concludes with a record goods receipt activity after several adjustments and delivery changes.
+- `V11492`: The narrative consists of extensive service entry and goods receipt batches followed by an invoice receipt without a clear payment or cancellation.
+- `V11493`: The sequence consists of repetitive service entry and goods receipt actions ending in a service entry sheet.
+- `V11494`: The process consists entirely of batch service entries and goods receipts.
+- `V11495`: The sequence consists of batch service entries and goods receipts ending without financial clearance.
+- `V11498`: The narrative is composed almost entirely of repeated service entry sheets and goods receipts.
+- `V11499`: The process consists of repetitive service entries and goods receipts.
+- `V11500`: The narrative contains only repeated goods receipts and service entry sheets.
+- `V11501`: The process involves repeated batch service entry sheet and goods receipt records without reaching a standard payment or exception resolution stage.
+- `V11502`: The narrative shows extensive batch repetition of service entry sheets and goods receipts terminating without standard invoicing or payment completion.
+- `V11503`: The case ends with a record invoice receipt but lacks a final payment clearance or exception clearance.
+- `V11506`: Extensive repetition of vendor invoice creation, goods receipts, and service entry sheets occurs throughout a prolonged duration without fitting simple categories.
+- `V11521`: The sequence consists almost entirely of extensive batch service entry sheets and goods receipts followed by invoice receipt without a clear payment clearance.
+- `V11522`: The process consists entirely of interleaved batch service entry sheets and goods receipts without reaching an invoice or payment stage.
+- `V11523`: The process terminates at goods receipt following extensive service entry sheet entries without completing an invoice or payment.
+- `V11524`: The narrative terminates early at a goods receipt after a series of service entry sheets without reaching invoicing or payment.
+- `V11525`: The sequence involves massive repetitive loops of service entry sheets and goods receipts without reaching a formal completion stage like invoicing or payment.
+- `V11526`: The process terminates at Record Goods Receipt without completing the full cycle to invoice clearing, cancellation, or payment blocking.
+- `V11528`: The variant ends prematurely at Record Goods Receipt without reaching invoice completion or cancellation.
+- `V11529`: The process stops at Record Service Entry Sheet without reaching invoice resolution, payment, or cancellation.
+- `V11538`: Terminates early at Record Goods Receipt after multiple attribute updates without completing the financial cycle.
+- `V11541`: Completed through to clear invoice, but has heavy service entry/goods receipt iterations that do not fit standard straight-through processing cleanly.
+- `V11542`: Completed to invoice clearing with extensive service entry and goods receipt loops.
+- `V11543`: Completed to invoice clearing with intensive service entry and goods receipt loops.
+- `V11544`: Completed to invoice clearing with repetitive service entry and goods receipt loops.
+- `V11545`: Completed to invoice clearing with multiple service entry and goods receipt iterations.
+- `V11548`: Variant ends at Change Quantity without reaching invoice completion or cancellation.
+- `V11550`: Completed to invoice clearing with extensive repetitive goods receipt and service entry activities.
+- `V11554`: This narrative represents a sequence of repeating goods receipts and service entry sheets without completing a standard payment or resolution lifecycle.
+- `V11555`: An incomplete sequence consisting of service entry sheets and goods receipt repetitions without a final invoice or payment resolution.
+- `V11557`: Contains intensive looping and rework of service entry sheets and goods receipts without reaching an invoicing or payment stage.
+- `V11558`: Consists of multiple service entry sheets and goods receipt corrections without reaching an invoice or payment milestone.
+- `V11559`: Consists of heavy rework of goods receipts and service entry sheets without concluding with invoicing or payment.
+- `V11561`: Represents operational rework with multiple goods receipts and service entry sheets, ending without financial settlement.
+- `V11562`: Involves repeated goods receipts and service entry sheets without progressing to invoicing or payment processing.
+- `V11577`: The process involves repeated invoice creation without reaching payment or clear resolution, falling outside the main categories.
+- `V11579`: The process consists entirely of changing delivery indicators and recording goods receipt without leading to invoice processing or payment.
+- `V11581`: The sequence is dominated by excessive loops of goods receipts and service entry sheets without a clear standard business path.
+- `V11582`: The variant consists entirely of repetitive goods receipts and service entry sheets terminating immediately.
+- `V11583`: Extensive repetition of goods receipts and service entry sheets with delayed invoice receipt does not cleanly fit standard classifications.
+- `V11584`: The variant consists of massive looping of service entry sheets and goods receipts.
+- `V11586`: The narrative shows extensive repetitive service entry and goods receipt loops.
+- `V11587`: The sequence involves looping goods receipts and service entry sheets without completing the cycle.
+- `V11588`: Repetitive goods receipts and service entry sheets form a loop without concluding payment or cancellation.
+- `V11589`: Repetitive activity loops of goods receipts and service entry sheets characterize this variant.
+- `V11590`: The process flow is overwhelmed by recurring goods receipt and service entry loops.
+- `V11594`: The variant features prolonged repetition of goods receipt activities without standard resolution.
+- `V11595`: The variant exhibits extensive repetitive goods receipt loops prior to invoice receipt.
+- `V11596`: Duplicate goods receipts occurring after invoice receipt represent an anomalous flow rather than standard categories.
+- `V11597`: High repetition of goods receipts and service entry sheets characterizes this variant.
+- `V11598`: Excessive looping of goods receipts and service entry sheets makes this variant non-standard.
+- `V11599`: The variant contains repeated service entry sheets and goods receipts in a short loop.
+- `V11600`: The process consists of prolonged, repetitive loops of goods receipts and service entry sheets.
+- `V11601`: The variant represents a short internal sequence involving repeated service entry sheets and goods receipts without a final standard invoice payment cycle fitting the defined categories.
+- `V11602`: Extensive repetition of record goods receipt and service entry sheet activities without completing the standard payment cycle.
+- `V11609`: Consists mostly of repeated automated batch goods receipts and service entry sheets without typical financial flow.
+- `V11610`: Consists of intensive batch service entry sheets and goods receipts without clearing or payment details.
+- `V11611`: Consists of repetitive goods receipts and service entry sheets with short duration.
+- `V11616`: Contains repeated vendor invoices and goods receipts without a clear resolution or blocking classification.
+- `V11618`: Involves deletion and reactivation of purchase order items, which does not cleanly fit standard categories.
+- `V11619`: Involves purchase order item deletion and reactivation with subsequent quantity change.
+- `V11620`: Contains recurring vendor invoice and goods receipt loops without explicit block removal or cancellation.
+- `V11621`: Short automated sequence of service entry sheets and goods receipts.
+- `V11622`: Extensive automated repetitions of service entry sheets and goods receipts.
+- `V11623`: Short sequence of service entry and goods receipt loops.
+- `V11624`: Extensive repetition of service entry sheets and goods receipts by batch processing.
+- `V11625`: Repetitive batch goods receipts and service entry sheets concluding without standard financial lifecycle events.
+- `V11630`: The narrative shows repeated goods receipts and invoice receipts without clear pricing discrepancies or payment blocks, falling into the residual pattern.
+- `V11632`: This variant involves goods receipt cancellations and repetitions but does not cleanly fit the standard definitions for pricing discrepancies, blocks, or cancellations of the entire order/invoice.
+- `V11635`: The narrative shows repetitive service entry sheets, invoice receipts, and goods receipts without a final payment block removal or clear discrepancy resolution workflow.
+- `V11636`: Contains repetitions of goods receipts but no explicit price/quantity corrections, payment blocks, or cancellations.
+- `V11638`: Exhibits repetitive goods and invoice receipts without matching the specific criteria for discrepancy resolution or payment blocks.
+- `V11639`: Massive repetition of goods receipt activities without a clear classification in the primary categories.
+- `V11640`: Shows multiple goods receipt entries ending in invoice receipt, fitting the residual loop behavior.
+- `V11641`: Repeated goods receipts without discrepancy handling or payment block removal.
+- `V11642`: Involves multiple recurring goods and invoice receipts that form part of the residual process category.
+- `V11643`: Extensive repetition of service entry sheets and goods receipts representing operational looping rather than standard exception categories.
+- `V11644`: Characterized by high-frequency service entry sheet and goods receipt loops.
+- `V11645`: Consists primarily of repeating service entry sheets and goods receipts.
+- `V11646`: Repetitive recording of service entry sheets and goods receipts without standard discrepancy or block events.
+- `V11647`: Repetitive service entry and goods receipt flow falling into the residual log patterns.
+- `V11648`: Involves cancelled goods receipts, but ends in cancellation rather than full order cancellation or reversal under the precise category definition; treated as residual.
+- `V11649`: Extensive loops of service entry sheets and goods receipts.
+- `V11650`: Contains cancellations of goods receipts within a loop of service entry sheets, fitting the residual category.
+- `V11651`: The process consists entirely of automated loops creating purchase order items, goods receipts, and service entry sheets without completing the full procure-to-pay lifecycle or reaching a standard payment or cancellation outcome.
+- `V11652`: The narrative shows iterative creation of goods receipts and service entries with no clear invoice or payment conclusion.
+- `V11653`: Extensive repetition of goods receipt and service entry activities without reaching invoice creation or payment stages.
+- `V11657`: The variant ends prematurely at order confirmation without progressing to invoice or payment.
+- `V11661`: Ends at record goods receipt with heavy looping of service entries and no financial settlement.
+- `V11662`: Repetitive recording of service entries and goods receipts ending on service entry without payment or invoice.
+- `V11663`: Extended iterative loops of goods receipts and service entries without reaching an invoice or payment milestone.
+- `V11664`: Repetitive goods receipts and service entry recordings ending in goods receipt without reaching the payment stage.
+- `V11669`: A prolonged sequence of repetitive goods receipts and service entries without invoice processing or payment.
+- `V11670`: Concludes with service entry sheet recording after minor loops, lacking financial completion.
+- `V11671`: Consists primarily of looping service entries and goods receipts without invoicing or payment.
+- `V11672`: Contains repeated service entries and goods receipts concluding on goods receipt.
+- `V11673`: Extremely long repetition of service entry sheets and goods receipts without reaching an invoice or payment.
+- `V11677`: The process contains repeated service entry and goods receipt logs without proceeding to invoicing, payment, or explicit cancellation.
+- `V11678`: The process consists entirely of service entry and goods receipt loops without reaching payment or cancellation.
+- `V11679`: The sequence involves extensive recording of goods receipts and service entry sheets without completing the downstream payment process.
+- `V11680`: The case reaches the invoice receipt stage but does not progress to payment, clearing, or cancellation.
+- `V11682`: The case records an invoice receipt after various goods receipts and service entries, but does not complete final clearing or show a payment block.
+- `V11683`: The variant ends at invoice receipt after numerous goods receipts, lacking final payment or exception resolution details.
+- `V11685`: The process successfully creates an invoice, records receipts, and clears the invoice, but does not fit cleanly into straight-through processing due to extensive modifications and rework.
+- `V11686`: The case records an invoice receipt after multiple service entries and goods receipts without a final clearing step or explicit exception flag.
+- `V11688`: The process involves price changes and a goods receipt but stops short of invoicing or completion.
+- `V11690`: Quantity changes occur during the process before an invoice receipt is recorded, but no explicit block or cancellation is present.
+- `V11691`: Quantity changes are recorded between the goods receipt and invoice receipt, representing a discrepancy or adjustment not fully fitting the defined categories.
+- `V11694`: Multiple recurring vendor invoices and receipts occur over a long duration without clear resolution to straight-through processing or formal blockage.
+- `V11696`: The variant features multiple repeated goods receipts and quantity changes without reaching invoicing or payment.
+- `V11697`: The sequence consists of extensive alternating service entry sheets and goods receipts without further processing.
+- `V11698`: The narrative records multiple service entry sheets and goods receipts without progressing to invoice or payment stages.
+- `V11699`: The process is dominated by numerous service entry sheets and occasional goods receipts without completing the procurement lifecycle.
+- `V11700`: The process records multiple service entries and goods receipts without reaching final invoice creation or payment.
+- `V11701`: This is an automated batch process variant featuring repeated goods receipts and service entry sheets without completing the full procure-to-pay lifecycle.
+- `V11702`: The process consists of repetitive batch activities (goods receipts and service entry sheets) without reaching a standard conclusion like invoice receipt or payment.
+- `V11715`: The process loops on repeated goods receipts without reaching a completion state like invoice receipt.
+- `V11719`: The process ends prematurely with repeated delivery indicator changes without completing the purchasing lifecycle.
+- `V11720`: This is an automated batch process variant with massive repetition of goods receipts and service entry sheets, ending without an invoice.
+- `V11721`: An automated batch variant consisting entirely of repeating service entry sheets and goods receipts.
+- `V11722`: An automated batch variant featuring alternating service entry sheets and goods receipts.
+- `V11723`: An automated batch sequence consisting of service entry sheets and goods receipts without standard lifecycle conclusion.
+- `V11724`: An automated batch sequence involving recurring service entry and goods receipt activities.
+- `V11725`: An automated batch process with extensive service entry sheet creation and goods receipts.
+- `V11776`: The variant ends with Record Goods Receipt and lacks a complete invoice and payment lifecycle, so none of the standard taxonomy categories fit.
+- `V11777`: The process terminates at Record Invoice Receipt without reaching payment or cancellation, leaving it outside the standard categories.
+- `V11780`: The case ends with Record Invoice Receipt without completing the payment or being cancelled, so it does not fit any primary category.
+- `V11781`: The process terminates prematurely at Change Quantity without invoicing or payment, placing it in the residual.
+- `V11783`: The process ends at Change Price without completing through to invoicing or payment, so it does not fit any category.
+- `V11784`: The process terminates at Record Invoice Receipt with extensive goods receipt and service entry repeats, but no payment or cancellation.
+- `V11785`: The variant ends at Record Goods Receipt without reaching invoice receipt or payment.
+- `V11786`: The variant terminates at Record Goods Receipt without proceeding to invoice receipt or payment.
+- `V11787`: The process ends at Record Goods Receipt without completing the full procurement lifecycle.
+- `V11788`: The variant ends at Record Goods Receipt without progressing to invoicing or payment.
+- `V11789`: The process ends at Record Service Entry Sheet without reaching invoice receipt or payment.
+- `V11790`: The variant terminates at Record Service Entry Sheet without reaching invoice receipt or payment.
+- `V11791`: The process ends at Record Service Entry Sheet without advancing to invoice receipt or payment.
+- `V11792`: The variant ends at Record Goods Receipt without reaching invoicing or payment.
+- `V11797`: The process terminates at Record Invoice Receipt without completing payment or cancellation.
+- `V11798`: The variant ends at Record Invoice Receipt without proceeding to payment or being cancelled.
+- `V11800`: The process ends at Record Invoice Receipt without proceeding to payment or cancellation.
+- `V11801`: The process ends with invoice receipt and does not show clear straight-through payment completion, discrepancy resolution, blocking, or cancellation.
+- `V11803`: The variant ends with a price change and does not complete the standard invoice or payment flow.
+- `V11806`: Represents a repetitive service entry and goods receipt loop without reaching invoicing or payment conclusion.
+- `V11807`: Involves repetitive service entries and goods receipts without clear financial completion or exception resolution.
+- `V11808`: Consists of repetitive service entries and goods receipts without a final invoicing or payment step.
+- `V11809`: High volume of repetitive service entry and goods receipt activities without reaching invoice or payment.
+- `V11810`: Repetitive sequence of goods receipts and service entry sheets concluding without invoice or payment.
+- `V11811`: Extensive repetition of goods receipts and service entry sheets eventually leading to invoice receipt, but lacking payment confirmation.
+- `V11812`: Repetitive goods receipt and service entry activities ending in a goods receipt without invoicing or payment.
+- `V11814`: Extensive repetition of goods receipts and service entry sheets concluding at a goods receipt.
+- `V11821`: Proceeds from invoice to delivery indicator change and invoice receipt, but lacks clear payment or exception categorization.
+- `V11822`: Order confirmation updates occur with a significant delay, but it does not represent a standard payment block or cancellation.
+- `V11823`: Series of repeated service entries and goods receipts without reaching financial completion.
+- `V11824`: Short sequence of goods receipts and service entry sheets ending abruptly.
+- `V11825`: Repetitive goods receipts and service entry sheets concluding at a goods receipt without financial settlement.
+- `V11830`: The case terminates with a quantity change and never completes the invoice or payment process.
+- `V11832`: The process terminates at invoice receipt without reaching payment or clear invoice status.
+- `V11833`: Terminates at invoice receipt without payment completion or standard lifecycle clearance.
+- `V11834`: Completes through invoice clearing, but does not fit cleanly into straight-through due to multiple service entries and rework.
+- `V11835`: Ends at invoice receipt without reaching payment or clearance.
+- `V11836`: Ends at invoice receipt with extensive rework and duplicate entries, missing final payment clearance.
+- `V11837`: Terminates at goods receipt without reaching the invoice or payment stage.
+- `V11840`: Finishes at invoice receipt without payment confirmation.
+- `V11843`: Contains excessive service entry and goods receipt loops and ends at invoice receipt without standard payment completion.
+- `V11844`: Terminates early at a service entry sheet without reaching invoicing or payment.
+- `V11845`: Terminates at goods receipt without proceeding to invoice creation.
+- `V11846`: Terminates early at a service entry sheet without reaching the invoice stage.
+- `V11847`: Terminates at goods receipt with extensive repeated service entries and no invoice processing.
+- `V11848`: Terminates at goods receipt without invoice handling.
+- `V11853`: The process terminates prematurely at record goods receipt without reaching invoice creation or payment.
+- `V11856`: Incomplete service entry and repeated invoicing loops without a clear resolution or payment completion.
+- `V11858`: Terminates at record service entry sheet with extensive rework of goods receipts and entries without final billing.
+- `V11859`: Process stops at record goods receipt with multiple service sheet repetitions and no invoice processing.
+- `V11860`: Ends at record goods receipt with service entry sheet loops and no invoice or payment steps.
+- `V11861`: Involves multiple goods receipts and service entry sheet entries ending prematurely without billing.
+- `V11862`: Heavy looping of service entry sheets and goods receipts ending at record goods receipt without invoice completion.
+- `V11863`: Short sequence ending at record service entry sheet without reaching invoicing or payment.
+- `V11864`: Ends at record service entry sheet with repetitive goods receipt and entry actions.
+- `V11869`: Finishes at record service entry sheet with repetitive entries and no invoice or payment step.
+- `V11871`: Ends at record service entry sheet without invoice or payment steps.
+- `V11872`: Ends at record service entry sheet with repetitive goods receipts and service entry actions.
+- `V11873`: Ends at record goods receipt with heavy looping of service entry sheets and no invoice milestone.
+- `V11875`: Terminates at record goods receipt after numerous service entry sheet iterations without reaching invoice or payment.
+- `V11905`: The case ends with an intermediate activity (Change Approval for Purchase Order) rather than reaching completion, cancellation, or clear invoice.
+- `V11907`: The case terminates prematurely at 'Record Invoice Receipt' following invoice cancellation and re-creation without reaching a full payment clearance.
+- `V11908`: The process ends at 'Record Invoice Receipt' after cancellation and re-creation activities, leaving it uncompleted regarding final payment.
+- `V11910`: The case terminates at 'Record Invoice Receipt' following a price change, without completing the full payment cycle.
+- `V11912`: The process remains uncompleted, ending on an intermediate 'Change Approval for Purchase Order' activity.
+- `V11914`: The variant ends on an intermediate approval activity after a complex cycle of invoice cancellations and re-recordings.
+- `V11915`: The process stops at an intermediate change approval step without reaching final resolution or payment.
+- `V11916`: The case concludes prematurely at 'Record Invoice Receipt' after extensive approval loops.
+- `V11919`: The workflow ends at 'Record Invoice Receipt' without reaching clear invoice status.

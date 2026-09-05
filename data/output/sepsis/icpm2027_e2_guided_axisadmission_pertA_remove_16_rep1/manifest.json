@@ -1,6 +1,6 @@
 {
   "schema": "icpm2027/manifest/1",
-  "protocol_version": "1.0.0",
+  "protocol_version": "1.1.0",
   "experiment": "e2",
   "condition_id": "e2_guided_axisadmission_pertA_remove_16_rep1",
   "dataset": "sepsis",
@@ -13,8 +13,8 @@
     5,
     6
   ],
-  "started_at": "2026-08-31T18:30:14.087815+00:00",
-  "finished_at": "2026-08-31T18:31:36.188309+00:00",
+  "started_at": "2026-09-04T15:12:40.813051+00:00",
+  "finished_at": "2026-09-04T15:13:19.300540+00:00",
   "preregistered": true,
   "pending_decisions": [],
   "decisions": {
@@ -22,13 +22,11 @@
       "task": "C10",
       "status": "decided",
       "value": {
-        "default": 50,
-        "exceptions": {
-          "bpic2019": 25
-        }
+        "default": 25,
+        "exceptions": {}
       },
       "decided_on": "2026-08-19",
-      "rationale": "50 everywhere (raised from 20), on call-count/wall-clock grounds only, per Task C10's required basis \u2014 not against observed categorization quality. Google AI Studio billing was enabled on the project behind GEMINI_API_KEY and verified at aistudio.google.com/rate-limit: 4,000 RPM / 4M TPM for gemini-3.5-flash-lite (150K RPD), several orders of magnitude above this protocol's actual volume. At batch_size=50 with protocol.yaml's concurrency=5, a 231-variant run costs ~5 Step-6 calls instead of 231/12 (batch=20); BPIC 2019 at the C7 top_n=1000 scope costs ~20 calls instead of 50. No BPIC 2019 exception needed: one value holds the freeze table's \"identical across datasets by default\" with nothing to justify. Not yet empirically re-validated against a frozen run at this batch size \u2014 the example case studies under experimentation/examples/ (not the frozen protocol) are the first runs to exercise batch_size=50, and should be watched for any assignment-quality regression before the first real frozen run under this protocol_version. . AMENDMENT 2026-08-29 \u2014 bpic2019 exception added, batch_size 50 -> 25, on wall-clock/ reliability grounds only (Task C10's permitted basis), never against categorization quality. Two full-scope BPIC 2019 Step-6 runs at batch_size=50 (the example study 20260829_080358 and the first frozen e1_guided_rep1 attempt) both degraded on gemini-3.5-flash-lite: per-call latency on a 50-narrative BPIC batch (mean narrative ~1,285 chars, ~17k input tokens/call) routinely exceeded the protocol's 120 s timeout, so ~5% of batches (602/11,973 in the example study; ~6 of the first 40 in the frozen attempt) exhausted all 3 retries and the condition aborted with IncompleteAssignmentError. rtfm (231 variants, ~711-char narratives) and sepsis (846 variants) show no such degradation at 50 and keep the default. At batch_size=25 each BPIC call carries ~half the tokens and lands within the 120 s ceiling; cost rises from ~$18 to ~$32 across the four E1 conditions and call count from ~964 to ~1,920, both far below the verified rate limits. This amends an as-yet-unexecuted portion of the decision (no frozen BPIC 2019 run had completed), so rtfm/sepsis results already produced under protocol_version 1.0.0 are unaffected and no version bump is required."
+      "rationale": "50 everywhere (raised from 20), on call-count/wall-clock grounds only, per Task C10's required basis \u2014 not against observed categorization quality. Google AI Studio billing was enabled on the project behind GEMINI_API_KEY and verified at aistudio.google.com/rate-limit: 4,000 RPM / 4M TPM for gemini-3.5-flash-lite (150K RPD), several orders of magnitude above this protocol's actual volume. At batch_size=50 with protocol.yaml's concurrency=5, a 231-variant run costs ~5 Step-6 calls instead of 231/12 (batch=20); BPIC 2019 at the C7 top_n=1000 scope costs ~20 calls instead of 50. No BPIC 2019 exception needed: one value holds the freeze table's \"identical across datasets by default\" with nothing to justify. Not yet empirically re-validated against a frozen run at this batch size \u2014 the example case studies under experimentation/examples/ (not the frozen protocol) are the first runs to exercise batch_size=50, and should be watched for any assignment-quality regression before the first real frozen run under this protocol_version. . AMENDMENT 2026-08-29 \u2014 bpic2019 exception added, batch_size 50 -> 25, on wall-clock/ reliability grounds only (Task C10's permitted basis), never against categorization quality. Two full-scope BPIC 2019 Step-6 runs at batch_size=50 (the example study 20260829_080358 and the first frozen e1_guided_rep1 attempt) both degraded on gemini-3.5-flash-lite: per-call latency on a 50-narrative BPIC batch (mean narrative ~1,285 chars, ~17k input tokens/call) routinely exceeded the protocol's 120 s timeout, so ~5% of batches (602/11,973 in the example study; ~6 of the first 40 in the frozen attempt) exhausted all 3 retries and the condition aborted with IncompleteAssignmentError. rtfm (231 variants, ~711-char narratives) and sepsis (846 variants) show no such degradation at 50 and keep the default. At batch_size=25 each BPIC call carries ~half the tokens and lands within the 120 s ceiling; cost rises from ~$18 to ~$32 across the four E1 conditions and call count from ~964 to ~1,920, both far below the verified rate limits. This amends an as-yet-unexecuted portion of the decision (no frozen BPIC 2019 run had completed), so rtfm/sepsis results already produced under protocol_version 1.0.0 are unaffected and no version bump is required. . AMENDMENT 2026-09-04 \u2014 the bpic2019 exception is retired; batch_size 50 -> 25 becomes the one value for all three datasets, under protocol_version 1.1.0. Rationale is uniformity, not a new feasibility finding: with the exception in place, rtfm and sepsis's guided/open contrasts ran under a different assignment mechanism than bpic2019's, which is a threat this project can remove rather than merely disclose (the 2026-08-29 amendment's own reliability finding already shows 50 is not a value every log tolerates, so 25 is the correct default, not a compromise). rtfm's and sepsis's full E1/E2/C12 run sets are re-executed under 1.1.0 at batch_size=25; C12 (Step 5a only, no Step 6) is unaffected by this parameter and is not re-run. Estimated added cost ~$6-7 on top of the ~$3.5 already spent on these two logs at batch 50 (analysis/cost.py), scaled from the 2026-08-29 amendment's own measured BPIC 2019 before/after ratio (calls ~964->~1,920, cost ~$18->~$32); reported exactly in the regenerated cost.md rather than re-estimated in the paper. This closes Internal validity's \"fixed on wall-clock grounds rather than varied\" clause (paperICPM27.tex, \u00a7Threats). It is scoped to batch_size alone: bpic2019's separate axis-declaration prompt gap (\u00a7Discussion) is untouched by this amendment."
     },
     "C6_sepsis_perturbations": {
       "task": "C6",
@@ -42,7 +40,7 @@
       "status": "decided",
       "value": false,
       "decided_on": "2026-08-25",
-      "rationale": "Not adopted for the minimum design. It remains the highest-value optional item and also its largest budget increase (a third full arm on every dataset). The confound it addresses - that the guided prompt supplies an axis AND a cardinality AND a vocabulary AND extra context at once - is instead carried explicitly as a Threat to Validity, and Task C11a's guided_no_sample ablation attacks the same attribution question for one LLM call per dataset rather than a full arm. THIS IS THE MOST REVISITABLE DECISION HERE: conditions.py already supports arm \"label_list\", so flipping this to true costs configuration plus LLM budget, no new code. Do it before any frozen run rather than after, per this file's own discipline."
+      "rationale": "Not adopted for the minimum design. It remains the highest-value optional item and also its largest budget increase (a third full arm on every dataset). The confound it addresses - that the guided prompt supplies an axis AND a cardinality AND a vocabulary AND extra context at once - is instead carried explicitly as a Threat to Validity, and Task C11a's guided_no_sample ablation attacks the same attribution question for one LLM call per dataset rather than a full arm. THIS IS THE MOST REVISITABLE DECISION HERE, but it is not configuration-only, as an earlier wording of this rationale claimed (corrected 2026-09-03): conditions.py supports arm \"label_list\" and write_label_list_taxonomy reads configs/label_lists/<dataset>.yaml, but that directory does not exist and the lists were never authored. Authoring them is itself a construct-validity judgment - a domain-plausible, not-goal-derived list of matching cardinality per log - not a config edit, and the paper's Threats section now describes the control as supported by the harness but never instantiated. Do it before any frozen run rather than after, per this file's own discipline."
     },
     "D6_open_arm_steps_7_9": {
       "task": "D6",
@@ -61,7 +59,7 @@
         ]
       },
       "decided_on": "2026-08-25",
-      "rationale": "RTFM guided arm only. Step 7b measures indicator satisfaction from the log against the goal model's declared KPIs, so it is the one result in the paper not exposed to the LLM-dependence threat - it is the single counterweight to it. It cannot run in the open arm at all: open-mode categories carry no anchor_ids, so there is nothing to attach an indicator to, which also means it can never enter RQ1's paired contrast and is reported as characterization of the guided arm, not as validation. Scoped to RTFM because only rtfm_goal_model.jucm (v1.2) and rtfm_mini_goal_model.jucm declare indicators; the Sepsis and BPIC 2019 models' indicators are this project's own log-computed percentiles rather than organizational targets. Reporting requirement: indicators with low applicability are reported as NOT-APPLICABLE, never as bad values - RTFM's timely_payment category has 7% dispatch-indicator coverage because most of its cases paid before dispatch occurred, and scoring that as a bad value would invert the measurement."
+      "rationale": "RTFM guided arm only. Step 7b measures indicator satisfaction from the log against the goal model's declared KPIs, so it is the one result in the paper not exposed to the LLM-dependence threat - it is the single counterweight to it. It cannot run in the open arm at all: open-mode categories carry no anchor_ids, so there is nothing to attach an indicator to, which also means it can never enter RQ1's paired contrast and is reported as characterization of the guided arm, not as validation. Scoped to RTFM on construct-validity grounds alone: all four models declare working indicators with valid measure_specs (BPIC 2019 five, RTFM four, Sepsis three), but only RTFM's are organizational targets, whereas the Sepsis and BPIC 2019 models' are this project's own log-computed percentiles, which Step 7b would merely report back to itself. An earlier wording of this clause claimed only the RTFM models declare indicators; that was false and is corrected here (2026-09-03). Reporting requirement: indicators with low applicability are reported as NOT-APPLICABLE, never as bad values - RTFM's timely_payment category has 7% dispatch-indicator coverage because most of its cases paid before dispatch occurred, and scoring that as a bad value would invert the measurement."
     },
     "E2_degenerate_or_after_perturbation": {
       "task": "E2",
@@ -112,7 +110,7 @@
     "goal_model_absent_by_design": false,
     "condition_config": {
       "path": "data/output/sepsis/icpm2027_e2_guided_axisadmission_pertA_remove_16_rep1/condition_config.yaml",
-      "sha256": "61232393769f57f2f436afd8f4a1b002155c7f4777572a9df082699274f61f7c",
+      "sha256": "74ec4d1f06233d4a40459afdb9820efdb82e215aa0a96a0470f8fdeb48b85c44",
       "bytes": 1300
     },
     "prompt_templates": {
@@ -144,23 +142,40 @@
       "bytes": 27546
     },
     "assignment_prompts": {
-      "V0001_V0050.txt": "bee1490acad03e790cf025e9d3cfbc126974296bcd63760dfef232e5bd577e8c",
-      "V0051_V0100.txt": "1f4db546d1475f80519ec1a64149ca63adfc941b4a3d066abefbbeac1733c3f4",
-      "V0101_V0150.txt": "2860ee5ac5e7496ff5f43e8fec70de7fc7137b9a4ec85c4569a52ea79c61973c",
-      "V0151_V0200.txt": "f56cfedb821ac7ffe025eccb71ee25d7109c143f1ebf3ea9d902e0efda9e28ec",
-      "V0201_V0250.txt": "cadfa2a17a30e7d0e265f836bede5f215433e43cee10afde95696d2b90ee8681",
-      "V0251_V0300.txt": "694b963ccff8d35b10cf6b45975e2535480267249567617bd3d3f5e0bba11a5e",
-      "V0301_V0350.txt": "c4df2024cb4f627dbcdda1d7cecc808b50d86d72f93d9fc9b270acd3df61ec51",
-      "V0351_V0400.txt": "843e743660bc96258995beb2eef88642c6b5ab9b9d2f197bb34d5be3d196180c",
-      "V0401_V0450.txt": "333cb08504370bfe8f18a8f6ff0892327e273332ee83b23041a2cc66ed35c319",
-      "V0451_V0500.txt": "bb0324e804b634accf94642d9897343ceb308770ffea1cb415a8088ec366faf3",
-      "V0501_V0550.txt": "71d9e216446957573047715be1bec6fd5334b61547fe0fb69301210746d3423e",
-      "V0551_V0600.txt": "933c7f67d8d643944735638446b46b1dea207e0e13de85f20728c51640e3996f",
-      "V0601_V0650.txt": "47486d824e1dcf9777c91b34043f5696ab5a0ec6a1ca89354b5f628c292d53af",
-      "V0651_V0700.txt": "3a660745fef4fd20ff8a5bcd8937df690d22465897a915b5e5dca8e10c21e07d",
-      "V0701_V0750.txt": "572901ade9967ee93590d797b11ccd221666bbbc3930c3862c0847137d8de050",
-      "V0751_V0800.txt": "b76b48af555cc0e410eb80fc0c28ca0b4df7b25367e5a84e174e63f3e45b6071",
-      "V0801_V0846.txt": "62c361269efc288e8361ef24c26430bd374dc6a44b1dc42f3662e7089cb6cb99"
+      "V0001_V0025.txt": "31f66a0479023ce5dbe742724ef5a27f0a55cb95bd901b2f0a34f8777e124f4b",
+      "V0026_V0050.txt": "e86d1d2fcf490e66b3d4a3d8554096a6ebb9c0252655aa41c59c5a792dfb8ca6",
+      "V0051_V0075.txt": "a3541a293d53e2dd0043826b6cc15b9f47c7325182cd7e6ef5059593d504b83c",
+      "V0076_V0100.txt": "df1ba4fbc7fe9e881c49706b2e9cacfb7bf7ad913c67bb92a391d27ac099be7b",
+      "V0101_V0125.txt": "53ad0ae3bcb18736924d46238f1cbafeb5cbc13f03b23567b04c700516928878",
+      "V0126_V0150.txt": "9702a9b3bc3dc66ccdc331f4588330b2554f95de512752c37364658158039655",
+      "V0151_V0175.txt": "ba865e0a44c18373e1afef19155f4c1d00649f54f4adf184eabbffef0ce8356f",
+      "V0176_V0200.txt": "5cc17e59d4abe221a6c335437a3498cc27c09cef7dfbac5f806433ca214605f1",
+      "V0201_V0225.txt": "31596bb78d6adf335ffe3b7e7b2c90905024afa225ef31214965e8a62bd93bbe",
+      "V0226_V0250.txt": "28b68896c6387105cd6cf1f01c94a048744c60f3541c9374cbd7a927c2ab995d",
+      "V0251_V0275.txt": "2516e54276bdded99d47c18a85883dea1721a78c79e4a2c79de38de633064a67",
+      "V0276_V0300.txt": "5740ddc39814313f33d35e291466dd765c0b6b37928c34996839e584f8aab8d8",
+      "V0301_V0325.txt": "886c85a955052dd0332a6d744a89dcddd6f876c2d1ec988910d0944c1ec98dba",
+      "V0326_V0350.txt": "f3f0ef4ccd2c16d85f86ddd75c02b2ffb8e5eb2814a71d0187fb1c0058c580a3",
+      "V0351_V0375.txt": "24c48b46c543affb65a81b6752b16a069ba6470777305de7dd7b073a8b1d6502",
+      "V0376_V0400.txt": "f7e3a5b68b81b9832b07e9ee5ebc6d9cd3f4ef91e2a27aab1e45668954388c32",
+      "V0401_V0425.txt": "ddc51a4b3c2838ac33aedd0b965de1ab486b176297c44ae4c2222396ee362811",
+      "V0426_V0450.txt": "a300e8ad86aefe60f2586acc94ee0e478bd2e2fceb6e2e31395391c4804a3eec",
+      "V0451_V0475.txt": "2b4df36242bdfe860aedaf4b0d826729e57a86458085785b4308f6cca5169216",
+      "V0476_V0500.txt": "bd8977e1fdb012e9c64dfd093dacc7b7da8699050236ebfcb66b69a581f39344",
+      "V0501_V0525.txt": "133255fb2ac0a99f7eb6d030c23150359fc4dd7013473e97f0b78b318d56b486",
+      "V0526_V0550.txt": "f90897b570b9c7385029b165f127fb4e6cdd95829a50218ce0ebf67a0d8f1695",
+      "V0551_V0575.txt": "1c3f5e16ae894b9c1ba427948a7b4cac9eceaa823c0fab3117709167c1ed15fe",
+      "V0576_V0600.txt": "e2cf4fad9cfe78f217b726365bca54b0e2e7d61a5f2c4dd35d1113aa4d76f7b5",
+      "V0601_V0625.txt": "d5f1f5c433c0e15251834e2a84f82fd45b0fcbb9bccd35f78c2be0502db960ef",
+      "V0626_V0650.txt": "27ca9ee6afc35861f89e72cda0ba834633f5719e92092bb65fabe9246782bdd6",
+      "V0651_V0675.txt": "5744041dabb84ed53217b205a8db913973f6caeccd535045fe392c9b63b6ac6e",
+      "V0676_V0700.txt": "7e2516b71d5fdc6483e085d87cca08a0a01b9f2e0eb17e8779f67301d1c02360",
+      "V0701_V0725.txt": "b26f9e008176546b971d29f95103c323f8440af6d46a28150f02c4f1afc0df88",
+      "V0726_V0750.txt": "f0a82117abee0b0c87c6ee8c34580454556698efbe4cd3ac8216a9e221919f80",
+      "V0751_V0775.txt": "10acbb0606c2239cb98391b068e4960957bd6ce7220ae6c3a29f32ef88ad69e9",
+      "V0776_V0800.txt": "7c0740a8e7d04f7c292a4ccac77b472cb8a6a2d48bbf55ff09193c5146e0c03c",
+      "V0801_V0825.txt": "3b0a95c436f3ac6138abf78951749edaa77e85de2c6ab8157927abcba62a1a95",
+      "V0826_V0846.txt": "805429eec44f6624056f571967992b2c0c9e2572a4e8350f3fe9eca98e619afa"
     }
   },
   "llm": {
@@ -188,20 +203,20 @@
           "temperature": 0.0
         }
       ],
-      "call_count": 17
+      "call_count": 34
     },
     "description": null
   },
   "outputs": {
     "taxonomy": {
       "path": "data/output/sepsis/icpm2027_e2_guided_axisadmission_pertA_remove_16_rep1/round1/05_taxonomy/taxonomy.json",
-      "sha256": "3aee3f3509da7a1bd2b5a8b0c52f37e9b819ef46fb13b3cf82c9099753edf791",
-      "bytes": 1009
+      "sha256": "de40632c7419d9ee469e8661808d6979a024420a868f6ede2c2d5592891e1d19",
+      "bytes": 972
     },
     "assignments": {
       "path": "data/output/sepsis/icpm2027_e2_guided_axisadmission_pertA_remove_16_rep1/round1/06_assignment/assignments.csv",
-      "sha256": "74b42f1d6c1b0805aeef6124e39bab4f48ff75cbf2846e05b430175f5afb1b5a",
-      "bytes": 113203
+      "sha256": "d9e9e8a8945e9e6763ba7433a20077b4c1ce8085523ef1c3f2d55254ec09c3eb",
+      "bytes": 143272
     },
     "discovery_metrics": null,
     "descriptions": null
@@ -212,16 +227,16 @@
     "host": "Mac-Daniel.local",
     "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
     "python": "3.14.6",
-    "git_commit": "b016cb958f1e0e53bd2da470637d081faa6b284e",
+    "git_commit": "7d93545a98f0ed32c9b32b5df1b951651a9869a2",
     "git_dirty": true
   },
   "estimated_llm_calls": {
     "step5": 1,
-    "step6": 17,
+    "step6": 34,
     "step8": 0,
-    "total": 18
+    "total": 35
   },
-  "assignment_batch_size": 50,
+  "assignment_batch_size": 25,
   "narrative_sample": {
     "withheld": false
   },

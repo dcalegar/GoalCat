@@ -3,25 +3,25 @@
     {
       "category_id": "release_a",
       "name": "Release A",
-      "description": "Standard release pathway supporting discharge for admitted patients, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return.",
+      "description": "Represents the standard discharge pathway for patients after successful admission and treatment, evaluated against post-discharge ER return indicators, contributing positively to avoiding post-discharge deterioration.",
       "anchor_ids": [
         "17"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release A (id=17) as observed in variants like V0008, contributing to avoid post-discharge deterioration softgoal and measured by post-discharge ER return indicator.",
+      "rationale": "Mapped 1:1 to declared alternative Release A (id=17) as observed in multiple variants such as V0008, V0070, and V0069 representing normal discharge outcomes.",
       "evidence_variant_ids": [
         "V0008",
-        "V0551",
-        "V0070"
+        "V0070",
+        "V0069"
       ]
     },
     {
       "category_id": "release_b",
       "name": "Release B",
-      "description": "Alternative discharge pathway for admitted patients, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return.",
+      "description": "Represents an alternative discharge pathway following inpatient care, tracked via post-discharge ER return measures and supporting the avoidance of post-discharge deterioration.",
       "anchor_ids": [
         "18"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release B (id=18) as observed in variants like V0068, contributing to avoid post-discharge deterioration softgoal and measured by post-discharge ER return indicator.",
+      "rationale": "Mapped 1:1 to declared alternative Release B (id=18) as seen in rare variants like V0068 and V0145.",
       "evidence_variant_ids": [
         "V0068",
         "V0145"
@@ -30,11 +30,11 @@
     {
       "category_id": "release_c",
       "name": "Release C",
-      "description": "Specific discharge pathway for long-stay admitted patients, measured against post-discharge ER return.",
+      "description": "Represents a specific discharge route for long-stay or complex admitted cases, measured against post-discharge return rates.",
       "anchor_ids": [
         "19"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release C (id=19) as observed in variant V0710, measured against the post-discharge ER return indicator.",
+      "rationale": "Mapped 1:1 to declared alternative Release C (id=19) as observed in prolonged complex variants such as V0710.",
       "evidence_variant_ids": [
         "V0710"
       ]
@@ -42,11 +42,11 @@
     {
       "category_id": "release_d",
       "name": "Release D",
-      "description": "Alternative discharge pathway for complex admitted cases, measured against post-discharge ER return.",
+      "description": "Represents a specialized discharge pathway for patients requiring extended recovery monitoring prior to leaving the hospital.",
       "anchor_ids": [
         "20"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release D (id=20) as observed in variant V0273, measured against the post-discharge ER return indicator.",
+      "rationale": "Mapped 1:1 to declared alternative Release D (id=20) corresponding to outcomes found in complex long-duration trace samples like V0273.",
       "evidence_variant_ids": [
         "V0273"
       ]
@@ -54,11 +54,11 @@
     {
       "category_id": "release_e",
       "name": "Release E",
-      "description": "Alternative discharge pathway for specific admitted cases, measured against post-discharge ER return.",
+      "description": "Represents alternative discharge routing for specific treated patient subsets.",
       "anchor_ids": [
         "21"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release E (id=21) based on the goal model decomposition, acting as a mutually exclusive discharge option.",
+      "rationale": "Mapped 1:1 to declared alternative Release E (id=21) based on the goal model decomposition axis without subdivision since no distinct sub-patterns emerged.",
       "evidence_variant_ids": []
     }
   ]

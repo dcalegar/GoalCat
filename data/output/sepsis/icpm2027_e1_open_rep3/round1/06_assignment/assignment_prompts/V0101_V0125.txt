@@ -1,0 +1,72 @@
+You are deciding, for each of several process-variant narratives, which single taxonomy category (if any) it realizes.
+
+The taxonomy was derived directly from a narrative sample, with no external declaration to anchor to — 'realize' means the narrative matches the recurring pattern the category describes.
+
+=== TAXONOMY CATEGORIES ===
+- category_id=rapid_triage_only | name=Rapid Triage / Outpatient Workup
+  description: Short, fast-paced pathways ending quickly with basic triage or initial blood work (CRP/Leucocytes) without admission, typically completing within minutes.
+- category_id=acute_iv_treatment | name=Acute IV Intervention
+  description: Mid-length pathways featuring administration of intravenous fluids and antibiotics alongside standard blood panels, resolving within hours.
+- category_id=standard_admission_release | name=Standard Inpatient Admission & Release
+  description: Pathways requiring ward admission (Admission NC/IC) followed by multi-day observation and eventual successful release (Release A, B, C, or D).
+- category_id=readmission_loop | name=Readmission / Extended Complication Path
+  description: Complex, highly repetitive or long-duration pathways that result in patient readmissions or return to the emergency room ('Return ER').
+
+=== NARRATIVES TO CLASSIFY (25) ===
+How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
+- frequency is how many cases share that sequence, with that count as a share of all cases in the log in parentheses; duration_median is the median case duration for that variant, written compactly on the same scale as the waits inside the narrative ("134d", "3h", "45m"); outcome is the variant's final activity.
+- The activity sequence shown after "narrative:" is that of a single representative case (the one whose duration is closest to the variant's median), so a "(+34d)" after an activity is that case's waiting time since the preceding activity, not a variant-wide average. Activities are listed in the order they occurred. A "(handled by resource R)" clause, where present, names the resource that performed that activity in the representative case. A trailing "Rework observed: ..." sentence, where present, is a variant-level count over the variant's own cases, not part of the representative case's sequence.
+- Activity labels come from the event log and need not match a category's wording verbatim: a logged activity realizes a category by meaning, not by string equality.
+
+- variant_id=V0101 | frequency=1 (0.1%) | duration_median=246d | outcome=Return ER
+  narrative: ER Registration Leucocytes (+9m) LacticAcid CRP ER Triage (+2m) ER Sepsis Triage (+15m) IV Liquid (+17s) IV Antibiotics (+6s) Admission NC (+2h) Leucocytes (+2d) CRP Release A (+6h) Return ER (+243d) Rework observed: CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0102 | frequency=1 (0.1%) | duration_median=5d | outcome=Release A
+  narrative: ER Registration ER Triage (+20m) ER Sepsis Triage (+9s) CRP (+7m) LacticAcid Leucocytes IV Liquid (+4m) IV Antibiotics (+1h) Admission NC (+1h) CRP (+14h) Leucocytes Admission NC (+1d) Leucocytes (+16h) CRP Release A (+2d) Rework observed: Admission NC was repeated (seen in 1 cases); CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0103 | frequency=1 (0.1%) | duration_median=3d | outcome=Release A
+  narrative: ER Registration Leucocytes (+17m) CRP LacticAcid ER Triage (+9m) ER Sepsis Triage (+1m) IV Liquid (+19s) IV Antibiotics (+6s) Admission NC (+2h) Leucocytes (+4h) Admission NC (+5h) CRP (+2d) Leucocytes Release A (+1d) Rework observed: Admission NC was repeated (seen in 1 cases); CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0104 | frequency=1 (0.1%) | duration_median=145d | outcome=Return ER
+  narrative: ER Registration ER Triage (+7m) ER Sepsis Triage (+25s) LacticAcid (+10m) CRP Leucocytes IV Antibiotics (+10m) IV Liquid Admission NC (+4h) Release A (+6d) Return ER (+138d)
+- variant_id=V0105 | frequency=1 (0.1%) | duration_median=10d | outcome=Release B
+  narrative: ER Registration ER Triage (+8m) LacticAcid (+17m) CRP Leucocytes ER Sepsis Triage (+53m) IV Liquid (+30s) IV Antibiotics Admission NC (+1h) Admission NC (+2h) CRP (+2d) Leucocytes Leucocytes (+2d) CRP CRP (+2d) Leucocytes Leucocytes (+3d) CRP Release B (+23h) Rework observed: Admission NC was repeated (seen in 1 cases); CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0106 | frequency=1 (0.1%) | duration_median=9d | outcome=Release A
+  narrative: ER Registration ER Triage (+17m) ER Sepsis Triage (+12s) Leucocytes (+15m) LacticAcid CRP IV Liquid (+1h) IV Antibiotics (+1h) Admission NC (+3m) LacticAcid (+10h) Leucocytes CRP Admission NC (+4h) CRP (+21h) Leucocytes (+2d) CRP CRP (+2d) Leucocytes CRP (+3d) Leucocytes Release A (+5h) Rework observed: Admission NC was repeated (seen in 1 cases); CRP was repeated (seen in 1 cases); LacticAcid was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0107 | frequency=1 (0.1%) | duration_median=8d | outcome=Release A
+  narrative: ER Registration ER Triage (+3m) CRP (+23m) LacticAcid Leucocytes ER Sepsis Triage (+16m) IV Liquid (+23s) IV Antibiotics (+1h) Admission NC (+4h) CRP (+2d) Leucocytes Leucocytes (+3d) CRP Leucocytes (+2d) CRP Release A (+1d) Rework observed: CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0108 | frequency=1 (0.1%) | duration_median=19d | outcome=Return ER
+  narrative: ER Registration ER Triage (+1m) ER Sepsis Triage (+19s) IV Liquid (+12s) CRP (+22m) LacticAcid Leucocytes IV Antibiotics (+4h) Admission NC (+1m) CRP (+17h) Leucocytes Leucocytes (+8h) CRP (+2d) Leucocytes Release A (+2d) Return ER (+14d) Rework observed: CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0109 | frequency=1 (0.1%) | duration_median=107d | outcome=Return ER
+  narrative: ER Registration ER Triage (+8m) ER Sepsis Triage (+14s) IV Liquid (+8s) IV Antibiotics Leucocytes (+13s) CRP LacticAcid Admission NC (+2h) CRP (+2d) Admission NC (+5s) CRP (+5d) Release A (+2d) Return ER (+98d) Rework observed: Admission NC was repeated (seen in 1 cases); CRP was repeated (seen in 1 cases).
+- variant_id=V0110 | frequency=1 (0.1%) | duration_median=166d | outcome=Return ER
+  narrative: ER Registration ER Triage (+7m) ER Sepsis Triage (+2m) Leucocytes (+22m) LacticAcid CRP Admission NC (+4h) Release A (+9d) Return ER (+157d)
+- variant_id=V0111 | frequency=1 (0.1%) | duration_median=3h | outcome=Admission NC
+  narrative: ER Registration ER Triage (+18m) ER Sepsis Triage (+3m) IV Liquid (+15s) CRP (+5m) LacticAcid Leucocytes IV Antibiotics (+1m) Admission NC (+3h)
+- variant_id=V0112 | frequency=1 (0.1%) | duration_median=79d | outcome=Return ER
+  narrative: ER Registration ER Triage (+20m) ER Sepsis Triage (+37s) Leucocytes (+7m) CRP LacticAcid IV Antibiotics (+3h) Admission NC (+4m) Admission NC (+17h) CRP (+18h) Leucocytes Release A (+5d) Return ER (+72d) Rework observed: Admission NC was repeated (seen in 1 cases); CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0113 | frequency=1 (0.1%) | duration_median=2d | outcome=Release B
+  narrative: ER Registration ER Triage (+3m) ER Sepsis Triage (+30s) Leucocytes (+14m) LacticAcid CRP IV Liquid (+2h) IV Antibiotics (+5s) Admission NC (+33s) LacticAcid (+27m) Release B (+1d) Rework observed: LacticAcid was repeated (seen in 1 cases).
+- variant_id=V0114 | frequency=1 (0.1%) | duration_median=4d | outcome=Release A
+  narrative: ER Registration ER Triage (+13m) ER Sepsis Triage (+44s) CRP (+19m) LacticAcid Leucocytes IV Antibiotics (+45m) IV Liquid (+2h) Admission NC (+11m) Admission NC (+12h) CRP (+21h) Leucocytes Leucocytes (+2d) CRP Release A (+12h) Rework observed: Admission NC was repeated (seen in 1 cases); CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0115 | frequency=1 (0.1%) | duration_median=252d | outcome=Return ER
+  narrative: ER Registration ER Triage (+43m) ER Sepsis Triage (+17s) Leucocytes (+4m) LacticAcid CRP IV Antibiotics (+5h) Admission NC (+2m) IV Liquid (+19h) Leucocytes (+12h) CRP Leucocytes (+1d) CRP (+3h) Leucocytes (+2d) Release A (+6h) Return ER (+247d) Rework observed: CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0116 | frequency=1 (0.1%) | duration_median=69d | outcome=Return ER
+  narrative: ER Registration ER Triage (+13m) ER Sepsis Triage (+3m) Leucocytes (+9m) LacticAcid CRP IV Liquid (+1h) IV Antibiotics (+2h) Admission NC (+2h) CRP (+3d) Leucocytes Release A (+3d) Return ER (+63d) Rework observed: CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0117 | frequency=1 (0.1%) | duration_median=4d | outcome=Return ER
+  narrative: ER Registration ER Triage (+10m) ER Sepsis Triage (+19s) IV Liquid (+33s) IV Antibiotics (+4s) CRP (+15m) Leucocytes LacticAcid Admission NC (+2h) Admission NC (+12h) CRP (+17h) Leucocytes Release D (+1d) Return ER (+1d) Rework observed: Admission NC was repeated (seen in 1 cases); CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0118 | frequency=1 (0.1%) | duration_median=17d | outcome=Release A
+  narrative: ER Registration ER Triage (+3m) ER Sepsis Triage (+51s) LacticAcid (+28m) Leucocytes CRP IV Liquid (+2h) IV Antibiotics (+2h) Admission NC (+1m) CRP (+3d) Leucocytes Leucocytes (+1d) CRP Leucocytes (+2d) CRP Leucocytes (+10d) Release A (+1d) Rework observed: CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0119 | frequency=1 (0.1%) | duration_median=6d | outcome=Release A
+  narrative: ER Registration ER Triage (+3m) ER Sepsis Triage (+16m) IV Liquid (+25s) IV Antibiotics (+14s) Leucocytes (+2m) CRP LacticAcid Admission NC (+2h) CRP (+3d) Leucocytes Release A (+3d) Rework observed: CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0120 | frequency=1 (0.1%) | duration_median=64d | outcome=Return ER
+  narrative: ER Triage ER Registration (+3h) ER Sepsis Triage (+2m) IV Liquid (+26m) IV Antibiotics (+14s) Leucocytes (+1s) CRP LacticAcid Admission NC (+3h) Leucocytes (+5d) Release A (+3d) Return ER (+55d) Rework observed: Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0121 | frequency=1 (0.1%) | duration_median=81d | outcome=Return ER
+  narrative: ER Registration ER Triage (+1m) ER Sepsis Triage (+16s) IV Liquid (+2m) IV Antibiotics (+19s) Leucocytes (+2m) CRP LacticAcid Admission NC (+3h) CRP (+12h) Leucocytes CRP (+2d) Leucocytes Release A (+2d) Return ER (+76d) Rework observed: CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0122 | frequency=1 (0.1%) | duration_median=17d | outcome=Release A
+  narrative: ER Registration ER Triage (+9m) ER Sepsis Triage (+15s) Leucocytes (+21m) LacticAcid CRP IV Liquid (+18m) IV Antibiotics (+16s) Admission NC (+2h) CRP (+2d) Leucocytes CRP (+1d) Release A (+14d) Rework observed: CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0123 | frequency=1 (0.1%) | duration_median=24d | outcome=Return ER
+  narrative: ER Registration ER Triage (+1m) ER Sepsis Triage (+8m) CRP (+4m) LacticAcid Leucocytes IV Antibiotics (+2h) Admission NC (+14m) Admission NC (+6h) CRP (+2d) CRP (+4d) Leucocytes (+5d) CRP CRP (+3d) Leucocytes CRP (+3d) Leucocytes (+2d) CRP (+1d) Leucocytes Release A (+2d) Return ER (+2d) Rework observed: Admission NC was repeated (seen in 1 cases); CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0124 | frequency=1 (0.1%) | duration_median=10d | outcome=Return ER
+  narrative: ER Registration ER Triage (+22m) ER Sepsis Triage (+13s) IV Liquid (+39s) Leucocytes (+13m) CRP LacticAcid IV Antibiotics (+4h) Admission NC (+1m) Leucocytes (+2h) CRP (+1d) Leucocytes Release A (+2d) Return ER (+6d) Rework observed: CRP was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+- variant_id=V0125 | frequency=1 (0.1%) | duration_median=252d | outcome=Return ER
+  narrative: ER Registration ER Triage (+2m) ER Sepsis Triage (+36s) IV Liquid (+5m) IV Antibiotics (+12s) Leucocytes (+27m) CRP CRP (+3m) Leucocytes LacticAcid Admission IC (+3h) CRP (+15h) LacticAcid Leucocytes Leucocytes (+1d) CRP LacticAcid Admission NC (+8h) Leucocytes (+2d) CRP Release A (+2d) Return ER (+246d) Rework observed: CRP was repeated (seen in 1 cases); LacticAcid was repeated (seen in 1 cases); Leucocytes was repeated (seen in 1 cases).
+
+For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids. When a category does match, category_id must be copied verbatim, character-for-character, from one of the category_id values listed above under === TAXONOMY CATEGORIES === — never a paraphrase, abbreviation, or reworded variant of a category's name or description, even if it reads more naturally. A category_id that does not appear above exactly as written cannot be matched back to that category afterward, silently corrupting the result.

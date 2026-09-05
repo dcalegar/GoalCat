@@ -1,0 +1,81 @@
+{
+  "categories": [
+    {
+      "category_id": "standard_procurement",
+      "name": "Standard Procurement and Invoicing",
+      "description": "Typical, high-frequency procurement cycles following a straightforward sequence from purchase order creation, goods/service receipt, and invoice recording to final clearing, with minimal or no friction.",
+      "anchor_ids": [],
+      "rationale": "Represented by high frequency variants like V0001, V0002, V0005, and V0006, which make up the vast majority of normal business operations.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0002",
+        "V0003",
+        "V0004",
+        "V0005",
+        "V0006",
+        "V0007",
+        "V0008",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "short_cancellation",
+      "name": "Short-Circuit or Immediate Cancellation",
+      "description": "Minimal-length traces where the purchase order is deleted, left unexecuted, or immediately closed without proceeding through goods receipt or invoicing.",
+      "anchor_ids": [],
+      "rationale": "Corresponds to low-length, rapid variants such as V0009 and V0014 where orders are abandoned or cancelled right after creation.",
+      "evidence_variant_ids": [
+        "V0009",
+        "V0014",
+        "V0024",
+        "V0068"
+      ]
+    },
+    {
+      "category_id": "service_entry_execution",
+      "name": "Service Entry Execution",
+      "description": "Variants characterized by the recording of service entry sheets alongside goods receipts, representing service-oriented procurement paths.",
+      "anchor_ids": [],
+      "rationale": "Observed in variants like V0064, V0162, V0244, and V0271 where service entry sheets are central to fulfillment.",
+      "evidence_variant_ids": [
+        "V0064",
+        "V0162",
+        "V0244",
+        "V0271"
+      ]
+    },
+    {
+      "category_id": "srm_transfer_failure",
+      "name": "SRM Execution and Transfer Failures",
+      "description": "Complex workflows originating in Supplier Relationship Management (SRM) systems that encounter transfer issues, execution errors, or repeated synchronization states before completion or failure.",
+      "anchor_ids": [],
+      "rationale": "Characterizes specialized SRM variants like V2944, V2952, V2950, V2949, and V2947 that end in system transfer failures or require multiple integration steps.",
+      "evidence_variant_ids": [
+        "V2944",
+        "V2952",
+        "V2950",
+        "V2949",
+        "V2947",
+        "V2953",
+        "V2951"
+      ]
+    },
+    {
+      "category_id": "chronic_rework_outlier",
+      "name": "Chronic Rework and Extreme Duration Outliers",
+      "description": "Extremely long-running variants featuring massive trace lengths, extensive document cancellations, repeated invoice postings, and chronic payment block removals spanning years.",
+      "anchor_ids": [],
+      "rationale": "Captured by extreme outlier variants like V1038, V5418, V3680, V3305, V3102, V3074, V2989, and V6776 that deviate heavily from standard execution paths.",
+      "evidence_variant_ids": [
+        "V1038",
+        "V5418",
+        "V3680",
+        "V3305",
+        "V3102",
+        "V3074",
+        "V2989",
+        "V6776"
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 Experiment `e2` · dataset `rtfm` · arm `guided` · replicate 1 · tag `pertA_remove_20`
 
-Protocol version `1.0.0` · steps [5, 6] · 2026-08-31T18:19:28.294335+00:00 → 2026-08-31T18:21:50.655485+00:00
+Protocol version `1.1.0` · steps [5, 6] · 2026-09-04T15:00:53.497232+00:00 → 2026-09-04T15:02:40.144541+00:00
 
 ## Inputs
 
@@ -10,7 +10,7 @@ Protocol version `1.0.0` · steps [5, 6] · 2026-08-31T18:19:28.294335+00:00 →
 |---|---|---|
 | Event log | `data/logs/rtfm.xes.gz` | `dc9e0e65c964c8ce` |
 | Goal model | `data/goals/perturbed/rtfm_goal_model__pertA_remove_20.jucm` | `75260074ac4eecba` |
-| Condition config | `data/output/rtfm/icpm2027_e2_guided_pertA_remove_20_rep1/condition_config.yaml` | `6c2f279e8178618e` |
+| Condition config | `data/output/rtfm/icpm2027_e2_guided_pertA_remove_20_rep1/condition_config.yaml` | `a672df05ca85b826` |
 
 **Prompt templates:** `prompt_assignment_batch.txt`=`4fe1d4fb8ac2`, `prompt_description.txt`=`7683ed3205c4`, `prompt_taxonomy_intent_guided.txt`=`c3fe7d89554d`, `prompt_taxonomy_intent_guided_revision.txt`=`604be767fe9c`, `prompt_taxonomy_open.txt`=`d32f3f34b809`, `prompt_taxonomy_open_revision.txt`=`cf4eefe924c8`
 
@@ -59,7 +59,7 @@ Seed: null — no seed is exposed by PipelineConfig.llm or by the Gemini path th
         "temperature": 0.0
       }
     ],
-    "call_count": 5
+    "call_count": 10
   },
   "description": null
 }
@@ -69,11 +69,11 @@ Seed: null — no seed is exposed by PipelineConfig.llm or by the Gemini path th
 
 | Artifact | Path | SHA-256 (first 16) |
 |---|---|---|
-| taxonomy | `data/output/rtfm/icpm2027_e2_guided_pertA_remove_20_rep1/round1/05_taxonomy/taxonomy.json` | `f58ca3b56a7368ee` |
-| assignments | `data/output/rtfm/icpm2027_e2_guided_pertA_remove_20_rep1/round1/06_assignment/assignments.csv` | `808ee1740b7b17df` |
+| taxonomy | `data/output/rtfm/icpm2027_e2_guided_pertA_remove_20_rep1/round1/05_taxonomy/taxonomy.json` | `f8b93defe208eec7` |
+| assignments | `data/output/rtfm/icpm2027_e2_guided_pertA_remove_20_rep1/round1/06_assignment/assignments.csv` | `f1840d8cf8d5827a` |
 | discovery_metrics | *(not produced)* | — |
 | descriptions | *(not produced)* | — |
 
 ## Environment
 
-`Mac-Daniel.local` · macOS-26.6.2-arm64-arm-64bit-Mach-O · Python 3.14.6 · git `b016cb958f1e` **(working tree dirty)**
+`Mac-Daniel.local` · macOS-26.6.2-arm64-arm-64bit-Mach-O · Python 3.14.6 · git `7d93545a98f0` **(working tree dirty)**

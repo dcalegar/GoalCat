@@ -14,7 +14,7 @@
     "sha256": "11008027d003ca3469ad23bf8813d099b6b5512c8035b66713fdf59ece547398"
   },
   "goal_model_filename": "perturbed/sepsis_goal_model__pertA_remove_21.jucm",
-  "generated_on": "2026-08-31",
+  "generated_on": "2026-09-04",
   "notes": [
     "Removed element 21 (Task: 'Release E') and 1 link(s) touching it (decomposition and/or contribution).",
     "6's children are now ['17', '18', '19', '20'] (was including 21)."

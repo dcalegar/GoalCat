@@ -1,0 +1,65 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Cases resolved through prompt payment of the fine, advancing the softgoal to maximize timely fine revenue and helping to minimize administrative and enforcement cost. Evaluated against indicator 'Time to fine dispatch (days)' and 'Average time to case closure (days)'.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=12 as observed in frequent variants such as V0002.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0007",
+        "V0012"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Resolve via delinquent payment",
+      "description": "Cases resolved via payment after penalties or enforcement steps have been initiated, helping to maximize timely fine revenue. Judged against indicator 'Average time to case closure (days)'.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=13, evidenced by variants like V0004 and V0009 where payments occur after notification and penalty additions.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0004",
+        "V0005",
+        "V0006",
+        "V0009",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal_prefecture",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Cases involving an administrative appeal submitted to the Prefecture, preserving the offender's due-process rights while incurring trade-offs on administrative cost and revenue. Judged against 'Time to appeal filing, Prefecture (days)'.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=14, supported by variants showing activities such as Insert Date Appeal to Prefecture and Send Appeal to Prefecture.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0135",
+        "V0137",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal_judge",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Cases involving a judicial appeal to the Judge, making a strong contribution to preserving the offender's due-process rights while hurting administrative costs. Judged against 'Time to appeal filing, Judge (days)'.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=19, observed in complex or contested variants where judicial appeals are recorded.",
+      "evidence_variant_ids": [
+        "V0103",
+        "V0140",
+        "V0176"
+      ]
+    }
+  ]
+}

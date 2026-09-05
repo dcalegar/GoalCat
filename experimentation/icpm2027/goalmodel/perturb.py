@@ -363,7 +363,15 @@ def add_distractor(
     return _finalize(
         model,
         base=base,
-        perturbation_id=f"pertC_distractor_{distractor_id}",
+        # `distractor_id` alone is not unique enough to key the output filename on: it comes from
+        # `model.new_id()` counting up from the *base* model's own `nextGlobalID`, so two different
+        # axes of the same dataset that each add exactly one distractor to a freshly-loaded base
+        # (Sepsis's admission and discharge, both read from sepsis_goal_model.jucm) allocate the
+        # *same* id and would otherwise collide on one perturbed-model file, each overwriting the
+        # other's. `parent_id` is the axis attachment point and is always axis-specific, so folding
+        # it into the id is what `pertA`/`pertB` get for free from perturbing pre-existing,
+        # already axis-specific element ids.
+        perturbation_id=f"pertC_distractor_{parent_id}_{distractor_id}",
         kind="C - artificial plausible distractor",
         targets=(distractor_id,),
         summary=summary,

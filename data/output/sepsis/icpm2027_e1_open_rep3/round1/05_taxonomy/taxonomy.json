@@ -1,0 +1,69 @@
+{
+  "categories": [
+    {
+      "category_id": "rapid_triage_only",
+      "name": "Rapid Triage / Outpatient Workup",
+      "description": "Short, fast-paced pathways ending quickly with basic triage or initial blood work (CRP/Leucocytes) without admission, typically completing within minutes.",
+      "anchor_ids": [],
+      "rationale": "Grounded in short trace lengths, low durations, and early terminal activities like ER Sepsis Triage, CRP, or Leucocytes.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0002",
+        "V0003",
+        "V0292",
+        "V0694"
+      ]
+    },
+    {
+      "category_id": "acute_iv_treatment",
+      "name": "Acute IV Intervention",
+      "description": "Mid-length pathways featuring administration of intravenous fluids and antibiotics alongside standard blood panels, resolving within hours.",
+      "anchor_ids": [],
+      "rationale": "Characterized by the inclusion of IV Liquid and IV Antibiotics and intermediate durations (1-4 hours).",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0005",
+        "V0006",
+        "V0007",
+        "V0009",
+        "V0036"
+      ]
+    },
+    {
+      "category_id": "standard_admission_release",
+      "name": "Standard Inpatient Admission & Release",
+      "description": "Pathways requiring ward admission (Admission NC/IC) followed by multi-day observation and eventual successful release (Release A, B, C, or D).",
+      "anchor_ids": [],
+      "rationale": "Reflects standard hospital stays involving nursing or intensive care admissions and structured release outcomes.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0066",
+        "V0067",
+        "V0068",
+        "V0069",
+        "V0070",
+        "V0145",
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "readmission_loop",
+      "name": "Readmission / Extended Complication Path",
+      "description": "Complex, highly repetitive or long-duration pathways that result in patient readmissions or return to the emergency room ('Return ER').",
+      "anchor_ids": [],
+      "rationale": "Identified by exceptionally long durations (weeks to over a year), high trace lengths, and the 'Return ER' final outcome.",
+      "evidence_variant_ids": [
+        "V0071",
+        "V0072",
+        "V0192",
+        "V0273",
+        "V0317",
+        "V0441",
+        "V0449",
+        "V0551",
+        "V0605",
+        "V0625"
+      ]
+    }
+  ]
+}

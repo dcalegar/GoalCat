@@ -2,52 +2,52 @@
   "categories": [
     {
       "category_id": "release_a",
-      "name": "Release A",
-      "description": "Patient discharge via Release A pathway. This pathway helps avoid post-discharge deterioration and is evaluated against post-discharge ER return metrics.",
+      "name": "Release A Discharge",
+      "description": "Represents the discharge pathway through Release A, which helps avoid post-discharge deterioration and contributes to overall discharge completion.",
       "anchor_ids": [
         "17"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release A (id 17) under the OR-decomposition of goal 6. Helps avoid post-discharge deterioration.",
+      "rationale": "Mapped 1:1 to the declared alternative Release A (id=17) under the OR-decomposition of goal id=6.",
       "evidence_variant_ids": []
     },
     {
       "category_id": "release_b",
-      "name": "Release B",
-      "description": "Patient discharge via Release B pathway. This pathway helps avoid post-discharge deterioration and is evaluated against post-discharge ER return metrics.",
+      "name": "Release B Discharge",
+      "description": "Represents the discharge pathway through Release B, which helps avoid post-discharge deterioration and contributes to overall discharge completion.",
       "anchor_ids": [
         "18"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release B (id 18) under the OR-decomposition of goal 6. Helps avoid post-discharge deterioration.",
+      "rationale": "Mapped 1:1 to the declared alternative Release B (id=18) under the OR-decomposition of goal id=6.",
       "evidence_variant_ids": []
     },
     {
       "category_id": "release_c",
-      "name": "Release C",
-      "description": "Patient discharge via Release C pathway.",
+      "name": "Release C Discharge",
+      "description": "Represents the discharge pathway through Release C, leading to a captured discharge for the admitted case.",
       "anchor_ids": [
         "19"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release C (id 19) under the OR-decomposition of goal 6.",
+      "rationale": "Mapped 1:1 to the declared alternative Release C (id=19) under the OR-decomposition of goal id=6.",
       "evidence_variant_ids": []
     },
     {
       "category_id": "release_d",
-      "name": "Release D",
-      "description": "Patient discharge via Release D pathway.",
+      "name": "Release D Discharge",
+      "description": "Represents the discharge pathway through Release D, leading to a captured discharge for the admitted case.",
       "anchor_ids": [
         "20"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release D (id 20) under the OR-decomposition of goal 6.",
+      "rationale": "Mapped 1:1 to the declared alternative Release D (id=20) under the OR-decomposition of goal id=6.",
       "evidence_variant_ids": []
     },
     {
       "category_id": "release_e",
-      "name": "Release E",
-      "description": "Patient discharge via Release E pathway.",
+      "name": "Release E Discharge",
+      "description": "Represents the discharge pathway through Release E, leading to a captured discharge for the admitted case.",
       "anchor_ids": [
         "21"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release E (id 21) under the OR-decomposition of goal 6.",
+      "rationale": "Mapped 1:1 to the declared alternative Release E (id=21) under the OR-decomposition of goal id=6.",
       "evidence_variant_ids": []
     }
   ]

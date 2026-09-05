@@ -152,7 +152,7 @@
         <kpiEvalValueSet targetValue="150.0" thresholdValue="180.0" worstValue="365.0" evaluationValue="378.7231" unit="days" qualitativeEvaluationValue="measured over 126840 of 150370 cases"/>
       </evaluations>
     </strategies>
-    <strategies name="measured: coercive_credit_collection" id="189" author="goalcat Step 7b (icpm2027_e1_guided_no_sample_rep1 round1)" type="Private" group="187">
+    <strategies name="measured: resolve_coercive_credit_collection" id="189" author="goalcat Step 7b (icpm2027_e1_guided_no_sample_rep1 round1)" type="Private" group="187">
       <evaluations intElement="2" evaluation="0"/>
       <evaluations intElement="3" evaluation="0"/>
       <evaluations intElement="4" evaluation="0"/>
@@ -174,21 +174,21 @@
       <evaluations intElement="20" evaluation="0"/>
       <evaluations intElement="21" evaluation="-50"/>
       <evaluations intElement="22" evaluation="-46"/>
-      <evaluations intElement="23" evaluation="0"/>
+      <evaluations intElement="23" evaluation="22"/>
       <evaluations intElement="112" evaluation="9">
-        <kpiEvalValueSet targetValue="30.0" thresholdValue="90.0" worstValue="360.0" evaluationValue="84.1248" unit="days" qualitativeEvaluationValue="measured over 59013 of 59013 cases"/>
+        <kpiEvalValueSet targetValue="30.0" thresholdValue="90.0" worstValue="360.0" evaluationValue="84.1167" unit="days" qualitativeEvaluationValue="measured over 58991 of 58991 cases"/>
       </evaluations>
       <evaluations intElement="113" evaluation="100">
-        <kpiEvalValueSet targetValue="60.0" thresholdValue="60.0" worstValue="120.0" evaluationValue="41.7267" unit="days" qualitativeEvaluationValue="measured over 282 of 59013 cases"/>
+        <kpiEvalValueSet targetValue="60.0" thresholdValue="60.0" worstValue="120.0" evaluationValue="41.6081" unit="days" qualitativeEvaluationValue="measured over 276 of 58991 cases"/>
       </evaluations>
-      <evaluations intElement="175" evaluation="-100">
-        <kpiEvalValueSet targetValue="30.0" thresholdValue="30.0" worstValue="60.0" evaluationValue="60.8727" unit="days" qualitativeEvaluationValue="measured over 148 of 59013 cases"/>
+      <evaluations intElement="175" evaluation="-55">
+        <kpiEvalValueSet targetValue="30.0" thresholdValue="30.0" worstValue="60.0" evaluationValue="46.6362" unit="days" qualitativeEvaluationValue="measured over 126 of 58991 cases"/>
       </evaluations>
       <evaluations intElement="114" evaluation="-100">
-        <kpiEvalValueSet targetValue="150.0" thresholdValue="180.0" worstValue="365.0" evaluationValue="690.5529" unit="days" qualitativeEvaluationValue="measured over 59013 of 59013 cases"/>
+        <kpiEvalValueSet targetValue="150.0" thresholdValue="180.0" worstValue="365.0" evaluationValue="690.3870" unit="days" qualitativeEvaluationValue="measured over 58991 of 58991 cases"/>
       </evaluations>
     </strategies>
-    <strategies name="measured: timely_payment" id="190" author="goalcat Step 7b (icpm2027_e1_guided_no_sample_rep1 round1)" type="Private" group="187">
+    <strategies name="measured: resolve_timely_payment" id="190" author="goalcat Step 7b (icpm2027_e1_guided_no_sample_rep1 round1)" type="Private" group="187">
       <evaluations intElement="2" evaluation="0"/>
       <evaluations intElement="3" evaluation="0"/>
       <evaluations intElement="4" evaluation="0"/>
@@ -210,19 +210,21 @@
       <evaluations intElement="20" evaluation="0"/>
       <evaluations intElement="21" evaluation="50"/>
       <evaluations intElement="22" evaluation="69"/>
-      <evaluations intElement="23" evaluation="50"/>
+      <evaluations intElement="23" evaluation="0"/>
       <evaluations intElement="112" evaluation="38">
-        <kpiEvalValueSet targetValue="30.0" thresholdValue="90.0" worstValue="360.0" evaluationValue="66.7804" unit="days" qualitativeEvaluationValue="measured over 3242 of 49625 cases"/>
+        <kpiEvalValueSet targetValue="30.0" thresholdValue="90.0" worstValue="360.0" evaluationValue="67.1642" unit="days" qualitativeEvaluationValue="measured over 3343 of 49726 cases"/>
       </evaluations>
       <evaluations intElement="113" evaluation="100">
-        <kpiEvalValueSet targetValue="60.0" thresholdValue="60.0" worstValue="120.0" evaluationValue="53.0000" unit="days" qualitativeEvaluationValue="measured over 2 of 49625 cases"/>
+        <kpiEvalValueSet targetValue="60.0" thresholdValue="60.0" worstValue="120.0" evaluationValue="48.8211" unit="days" qualitativeEvaluationValue="measured over 17 of 49726 cases"/>
       </evaluations>
-      <evaluations intElement="175" evaluation="0"/>
+      <evaluations intElement="175" evaluation="-100">
+        <kpiEvalValueSet targetValue="30.0" thresholdValue="30.0" worstValue="60.0" evaluationValue="110.0000" unit="days" qualitativeEvaluationValue="measured over 5 of 49726 cases"/>
+      </evaluations>
       <evaluations intElement="114" evaluation="100">
-        <kpiEvalValueSet targetValue="150.0" thresholdValue="180.0" worstValue="365.0" evaluationValue="17.4292" unit="days" qualitativeEvaluationValue="measured over 49625 of 49625 cases"/>
+        <kpiEvalValueSet targetValue="150.0" thresholdValue="180.0" worstValue="365.0" evaluationValue="18.0268" unit="days" qualitativeEvaluationValue="measured over 49726 of 49726 cases"/>
       </evaluations>
     </strategies>
-    <strategies name="measured: delinquent_payment" id="191" author="goalcat Step 7b (icpm2027_e1_guided_no_sample_rep1 round1)" type="Private" group="187">
+    <strategies name="measured: resolve_delinquent_payment" id="191" author="goalcat Step 7b (icpm2027_e1_guided_no_sample_rep1 round1)" type="Private" group="187">
       <evaluations intElement="2" evaluation="0"/>
       <evaluations intElement="3" evaluation="0"/>
       <evaluations intElement="4" evaluation="0"/>
@@ -246,19 +248,19 @@
       <evaluations intElement="22" evaluation="-48"/>
       <evaluations intElement="23" evaluation="0"/>
       <evaluations intElement="112" evaluation="0">
-        <kpiEvalValueSet targetValue="30.0" thresholdValue="90.0" worstValue="360.0" evaluationValue="91.5091" unit="days" qualitativeEvaluationValue="measured over 16891 of 16891 cases"/>
+        <kpiEvalValueSet targetValue="30.0" thresholdValue="90.0" worstValue="360.0" evaluationValue="91.5768" unit="days" qualitativeEvaluationValue="measured over 16848 of 16848 cases"/>
       </evaluations>
       <evaluations intElement="113" evaluation="100">
-        <kpiEvalValueSet targetValue="60.0" thresholdValue="60.0" worstValue="120.0" evaluationValue="16.5271" unit="days" qualitativeEvaluationValue="measured over 40 of 16891 cases"/>
+        <kpiEvalValueSet targetValue="60.0" thresholdValue="60.0" worstValue="120.0" evaluationValue="27.8210" unit="days" qualitativeEvaluationValue="measured over 78 of 16848 cases"/>
       </evaluations>
       <evaluations intElement="175" evaluation="-100">
-        <kpiEvalValueSet targetValue="30.0" thresholdValue="30.0" worstValue="60.0" evaluationValue="206.9583" unit="days" qualitativeEvaluationValue="measured over 1 of 16891 cases"/>
+        <kpiEvalValueSet targetValue="30.0" thresholdValue="30.0" worstValue="60.0" evaluationValue="69.3229" unit="days" qualitativeEvaluationValue="measured over 12 of 16848 cases"/>
       </evaluations>
       <evaluations intElement="114" evaluation="-95">
-        <kpiEvalValueSet targetValue="150.0" thresholdValue="180.0" worstValue="365.0" evaluationValue="356.6743" unit="days" qualitativeEvaluationValue="measured over 16891 of 16891 cases"/>
+        <kpiEvalValueSet targetValue="150.0" thresholdValue="180.0" worstValue="365.0" evaluationValue="357.2189" unit="days" qualitativeEvaluationValue="measured over 16848 of 16848 cases"/>
       </evaluations>
     </strategies>
-    <strategies name="measured: administrative_appeal_prefecture" id="192" author="goalcat Step 7b (icpm2027_e1_guided_no_sample_rep1 round1)" type="Private" group="187">
+    <strategies name="measured: resolve_administrative_appeal_prefecture" id="192" author="goalcat Step 7b (icpm2027_e1_guided_no_sample_rep1 round1)" type="Private" group="187">
       <evaluations intElement="2" evaluation="0"/>
       <evaluations intElement="3" evaluation="0"/>
       <evaluations intElement="4" evaluation="0"/>
@@ -282,19 +284,19 @@
       <evaluations intElement="22" evaluation="-38"/>
       <evaluations intElement="23" evaluation="0"/>
       <evaluations intElement="112" evaluation="0">
-        <kpiEvalValueSet targetValue="30.0" thresholdValue="90.0" worstValue="360.0" evaluationValue="90.1955" unit="days" qualitativeEvaluationValue="measured over 3693 of 3693 cases"/>
+        <kpiEvalValueSet targetValue="30.0" thresholdValue="90.0" worstValue="360.0" evaluationValue="90.1464" unit="days" qualitativeEvaluationValue="measured over 3641 of 3641 cases"/>
       </evaluations>
       <evaluations intElement="113" evaluation="100">
-        <kpiEvalValueSet targetValue="60.0" thresholdValue="60.0" worstValue="120.0" evaluationValue="50.0564" unit="days" qualitativeEvaluationValue="measured over 3556 of 3693 cases"/>
+        <kpiEvalValueSet targetValue="60.0" thresholdValue="60.0" worstValue="120.0" evaluationValue="49.9773" unit="days" qualitativeEvaluationValue="measured over 3503 of 3641 cases"/>
       </evaluations>
       <evaluations intElement="175" evaluation="-100">
-        <kpiEvalValueSet targetValue="30.0" thresholdValue="30.0" worstValue="60.0" evaluationValue="84.2738" unit="days" qualitativeEvaluationValue="measured over 7 of 3693 cases"/>
+        <kpiEvalValueSet targetValue="30.0" thresholdValue="30.0" worstValue="60.0" evaluationValue="110.3833" unit="days" qualitativeEvaluationValue="measured over 5 of 3641 cases"/>
       </evaluations>
       <evaluations intElement="114" evaluation="-76">
-        <kpiEvalValueSet targetValue="150.0" thresholdValue="180.0" worstValue="365.0" evaluationValue="321.7112" unit="days" qualitativeEvaluationValue="measured over 599 of 3693 cases"/>
+        <kpiEvalValueSet targetValue="150.0" thresholdValue="180.0" worstValue="365.0" evaluationValue="321.7876" unit="days" qualitativeEvaluationValue="measured over 553 of 3641 cases"/>
       </evaluations>
     </strategies>
-    <strategies name="measured: judicial_appeal_judge" id="193" author="goalcat Step 7b (icpm2027_e1_guided_no_sample_rep1 round1)" type="Private" group="187">
+    <strategies name="measured: resolve_judicial_appeal_judge" id="193" author="goalcat Step 7b (icpm2027_e1_guided_no_sample_rep1 round1)" type="Private" group="187">
       <evaluations intElement="2" evaluation="0"/>
       <evaluations intElement="3" evaluation="0"/>
       <evaluations intElement="4" evaluation="0"/>
@@ -317,17 +319,17 @@
       <evaluations intElement="21" evaluation="-50"/>
       <evaluations intElement="22" evaluation="-52"/>
       <evaluations intElement="23" evaluation="0"/>
-      <evaluations intElement="112" evaluation="-3">
-        <kpiEvalValueSet targetValue="30.0" thresholdValue="90.0" worstValue="360.0" evaluationValue="99.7679" unit="days" qualitativeEvaluationValue="measured over 396 of 396 cases"/>
+      <evaluations intElement="112" evaluation="-4">
+        <kpiEvalValueSet targetValue="30.0" thresholdValue="90.0" worstValue="360.0" evaluationValue="101.1637" unit="days" qualitativeEvaluationValue="measured over 389 of 389 cases"/>
       </evaluations>
       <evaluations intElement="113" evaluation="100">
-        <kpiEvalValueSet targetValue="60.0" thresholdValue="60.0" worstValue="120.0" evaluationValue="35.6004" unit="days" qualitativeEvaluationValue="measured over 156 of 396 cases"/>
+        <kpiEvalValueSet targetValue="60.0" thresholdValue="60.0" worstValue="120.0" evaluationValue="37.1071" unit="days" qualitativeEvaluationValue="measured over 147 of 389 cases"/>
       </evaluations>
       <evaluations intElement="175" evaluation="-100">
-        <kpiEvalValueSet targetValue="30.0" thresholdValue="30.0" worstValue="60.0" evaluationValue="109.3833" unit="days" qualitativeEvaluationValue="measured over 382 of 396 cases"/>
+        <kpiEvalValueSet targetValue="30.0" thresholdValue="30.0" worstValue="60.0" evaluationValue="112.5697" unit="days" qualitativeEvaluationValue="measured over 382 of 389 cases"/>
       </evaluations>
       <evaluations intElement="114" evaluation="-100">
-        <kpiEvalValueSet targetValue="150.0" thresholdValue="180.0" worstValue="365.0" evaluationValue="559.9850" unit="days" qualitativeEvaluationValue="measured over 349 of 396 cases"/>
+        <kpiEvalValueSet targetValue="150.0" thresholdValue="180.0" worstValue="365.0" evaluationValue="598.8764" unit="days" qualitativeEvaluationValue="measured over 345 of 389 cases"/>
       </evaluations>
     </strategies>
     <impactModel/>

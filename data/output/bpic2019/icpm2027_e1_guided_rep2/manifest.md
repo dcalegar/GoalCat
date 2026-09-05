@@ -2,7 +2,7 @@
 
 Experiment `e1` · dataset `bpic2019` · arm `guided` · replicate 2
 
-Protocol version `1.0.0` · steps [5, 6] · 2026-08-31T00:39:31.056371+00:00 → 2026-08-31T01:05:07.807167+00:00
+Protocol version `1.1.0` · steps [5, 6] · 2026-09-04T19:21:02.154278+00:00 → 2026-09-04T19:32:09.604085+00:00
 
 ## Inputs
 
@@ -10,7 +10,7 @@ Protocol version `1.0.0` · steps [5, 6] · 2026-08-31T00:39:31.056371+00:00 →
 |---|---|---|
 | Event log | `data/logs/bpic2019.xes.gz` | `131dedcb49f305c8` |
 | Goal model | `data/goals/bpic2019_goal_model.jucm` | `68c8d4d4a42e5f45` |
-| Condition config | `data/output/bpic2019/icpm2027_e1_guided_rep2/condition_config.yaml` | `9358e323bae9397d` |
+| Condition config | `data/output/bpic2019/icpm2027_e1_guided_rep2/condition_config.yaml` | `505b68af6f80e846` |
 
 **Prompt templates:** `prompt_assignment_batch.txt`=`4fe1d4fb8ac2`, `prompt_description.txt`=`7683ed3205c4`, `prompt_taxonomy_intent_guided.txt`=`c3fe7d89554d`, `prompt_taxonomy_intent_guided_revision.txt`=`604be767fe9c`, `prompt_taxonomy_open.txt`=`d32f3f34b809`, `prompt_taxonomy_open_revision.txt`=`cf4eefe924c8`
 
@@ -73,11 +73,11 @@ Seed: null — no seed is exposed by PipelineConfig.llm or by the Gemini path th
 
 | Artifact | Path | SHA-256 (first 16) |
 |---|---|---|
-| taxonomy | `data/output/bpic2019/icpm2027_e1_guided_rep2/round1/05_taxonomy/taxonomy.json` | `880ffdcd5a86ff4f` |
-| assignments | `data/output/bpic2019/icpm2027_e1_guided_rep2/round1/06_assignment/assignments.csv` | `bd62963c1b522997` |
+| taxonomy | `data/output/bpic2019/icpm2027_e1_guided_rep2/round1/05_taxonomy/taxonomy.json` | `7a40da90bb886f47` |
+| assignments | `data/output/bpic2019/icpm2027_e1_guided_rep2/round1/06_assignment/assignments.csv` | `e4ce6260ee47d590` |
 | discovery_metrics | *(not produced)* | — |
 | descriptions | *(not produced)* | — |
 
 ## Environment
 
-`192.168.68.56` · macOS-26.5.2-arm64-arm-64bit-Mach-O · Python 3.14.6 · git `bb77e5f68bc9` **(working tree dirty)**
+`Mac-Daniel.local` · macOS-26.6.2-arm64-arm-64bit-Mach-O · Python 3.14.6 · git `7d93545a98f0` **(working tree dirty)**

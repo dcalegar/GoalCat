@@ -67,18 +67,21 @@ def _bucket(run_id: str) -> str:
 
 def aggregate() -> dict:
     per_bucket: dict[tuple[str, str], list[float]] = defaultdict(lambda: [0.0, 0, 0, 0])
+    conditions: dict[str, set[tuple[str, str]]] = defaultdict(set)
     grand = [0.0, 0, 0, 0]
     for dataset, run_id, md in _iter_metadata():
         cost, n, tin, tout = _call(md)
-        key = (dataset, _bucket(run_id))
+        bucket = _bucket(run_id)
+        key = (dataset, bucket)
         acc = per_bucket[key]
         acc[0] += cost
         acc[1] += n
         acc[2] += tin
         acc[3] += tout
+        conditions[bucket].add((dataset, run_id))
         for i, v in enumerate((cost, n, tin, tout)):
             grand[i] += v
-    return {"per_bucket": per_bucket, "grand": grand}
+    return {"per_bucket": per_bucket, "grand": grand, "conditions": conditions}
 
 
 def to_markdown(agg: dict) -> str:
@@ -104,12 +107,13 @@ def to_markdown(agg: dict) -> str:
     e1 = sum(v[0] for k, v in rows.items() if k[1] == "E1")
     e1_calls = sum(v[1] for k, v in rows.items() if k[1] == "E1")
     e1_by_ds = {k[0]: v[0] for k, v in rows.items() if k[1] == "E1"}
+    e1_conditions = len(agg["conditions"].get("E1", ()))
     lines += [
         "## Headline",
         "",
         f"- **Whole study: ~{int(g[1])} calls, ~USD {g[0]:.2f}** "
         f"({g[2] / 1e6:.1f} M input + {g[3] / 1e6:.1f} M output tokens).",
-        f"- **Experiment 1 (22 conditions): ~USD {e1:.2f}** ({int(e1_calls)} calls) — "
+        f"- **Experiment 1 ({e1_conditions} conditions): ~USD {e1:.2f}** ({int(e1_calls)} calls) — "
         + ", ".join(f"{ds} USD {c:.2f}" for ds, c in sorted(e1_by_ds.items())) + ".",
         "- BPIC 2019 dominates because its assignment runs at `batch_size = 25` over 11,973 "
         "variants (~480 calls per condition).",

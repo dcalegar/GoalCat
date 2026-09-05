@@ -1,0 +1,48 @@
+{
+  "categories": [
+    {
+      "category_id": "merged_discharge_path",
+      "name": "Merged Discharge Path",
+      "description": "Represents discharges handled through the combined task pathway (Merged 17+18). Advances avoidance of post-discharge deterioration and is judged against post-discharge ER return indicators.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=17 in the goal model for goal id=6. It realizes the alternative through merged discharge handling tasks as observed in the sample.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Represents patient discharge via Release C. Aligns with goal id=6 alternatives, impacting post-discharge continuity and measured against return rates.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=19 in the goal model under goal id=6. Evidence is observed in variant V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Represents patient discharge via Release D. Contributes to safe patient transitions under goal id=6.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=20 in the goal model under goal id=6. Evidence is observed in variant V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release E",
+      "description": "Represents patient discharge via Release E. Fulfills the final disposition requirement under goal id=6.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=21 in the goal model under goal id=6 as a standard discharge route.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

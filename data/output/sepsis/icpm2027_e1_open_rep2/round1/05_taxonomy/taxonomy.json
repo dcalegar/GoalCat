@@ -2,57 +2,71 @@
   "categories": [
     {
       "category_id": "rapid_triage_and_discharge",
-      "name": "Rapid Triage and Outpatient-Style Resolution",
-      "description": "Cases that move swiftly through registration, triage, and basic lab work (CRP, Leucocytes) with very short total durations (minutes to hours) and terminate directly after initial evaluation or mild intervention without requiring inpatient admission.",
+      "name": "Rapid Triage and Outpatient Discharge",
+      "description": "Short diagnostic pathways characterized by fast ER registration, triage, and immediate laboratory workups (CRP, Leucocytes, LacticAcid) resulting in rapid discharge or completion of the initial emergency visit without admission.",
       "anchor_ids": [],
-      "rationale": "Grouped based on low duration, short trace length, and simple diagnostic or triage outcomes without ward admissions.",
+      "rationale": "Groups fast, low-complexity variants with short trace lengths and quick durations ending in early triage or initial test outcomes.",
       "evidence_variant_ids": [
         "V0001",
         "V0002",
         "V0003",
+        "V0010",
         "V0292",
         "V0694"
       ]
     },
     {
-      "category_id": "active_medical_intervention",
-      "name": "Active Medical Intervention & Short Stay",
-      "description": "Cases requiring active treatment steps such as IV liquids and IV antibiotics following initial lab and triage workups. These resolve either with discharge (Release A, B, etc.) or short-term observation within a moderate timeframe.",
+      "category_id": "acute_medical_intervention",
+      "name": "Acute Medical Intervention",
+      "description": "Pathways featuring comprehensive emergency evaluation followed by prompt fluid resuscitation and intravenous antibiotic administration, indicating active treatment of suspected sepsis in the emergency department.",
       "anchor_ids": [],
-      "rationale": "Reflects standard acute care pathways involving medication administration (IV Antibiotics/Liquid) and moderate durations.",
+      "rationale": "Captures standard, moderately-paced clinical pathways where patients receive targeted IV interventions after standard blood work.",
       "evidence_variant_ids": [
         "V0004",
+        "V0005",
         "V0006",
         "V0007",
         "V0009",
-        "V0066"
+        "V0036"
       ]
     },
     {
-      "category_id": "inpatient_admission_standard",
-      "name": "Standard Inpatient Admission & Release",
-      "description": "Cases where patients are admitted to nursing care (Admission NC) or intensive care (Admission IC) units following diagnostic testing and interventions, culminating in a successful discharge or release after several days.",
+      "category_id": "inpatient_admission_and_release",
+      "name": "Inpatient Admission and Planned Release",
+      "description": "Process variants where patients are admitted to nursing care (NC) or intensive care (IC) units following initial stabilization and treatment, eventually leading to successful release variants (Release A, B, C, or D).",
       "anchor_ids": [],
-      "rationale": "Characterized by formal ward admission steps and medium-range durations spanning multiple days.",
+      "rationale": "Represents the standard inpatient lifecycle from emergency arrival through ward admission to eventual discharge.",
       "evidence_variant_ids": [
         "V0008",
+        "V0063",
+        "V0064",
+        "V0065",
+        "V0066",
+        "V0067",
         "V0068",
+        "V0069",
         "V0070",
-        "V0071"
+        "V0145",
+        "V0710",
+        "V273"
       ]
     },
     {
-      "category_id": "chronic_rework_and_readmission",
+      "category_id": "extended_chronic_rework",
       "name": "Extended Stay with Chronic Rework and Readmission",
-      "description": "Complex, highly extended cases featuring extensive repetitive testing (frequent looping of CRP, LacticAcid, Leucocytes), multiple ward transfers, and extreme durations (weeks to over a year), often culminating in return to the emergency room or prolonged hospitalization.",
+      "description": "Extremely long, highly complex process variants characterized by extensive repetition of laboratory tests and ward admissions, frequently culminating in patient readmission or long-term hospital stays.",
       "anchor_ids": [],
-      "rationale": "Captures extreme outliers characterized by massive trace lengths, severe rework, and exceptionally long durations leading to return visits or complex releases.",
+      "rationale": "Isolates outlier and extreme cases marked by massive trace lengths, severe rework loops, and high durations.",
       "evidence_variant_ids": [
-        "V0551",
+        "V0071",
+        "V0072",
+        "V0192",
         "V0317",
-        "V0273",
-        "V0145",
-        "V0710"
+        "V0441",
+        "V0449",
+        "V0551",
+        "V0605",
+        "V0625"
       ]
     }
   ]

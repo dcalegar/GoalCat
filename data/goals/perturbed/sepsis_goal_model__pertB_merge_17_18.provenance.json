@@ -15,7 +15,7 @@
     "sha256": "f8e4a6edecd0daebb37820715fe76427e4009c6c8bd99d56ed9cb6a8176d6bf7"
   },
   "goal_model_filename": "perturbed/sepsis_goal_model__pertB_merge_17_18.jucm",
-  "generated_on": "2026-08-31",
+  "generated_on": "2026-09-04",
   "notes": [
     "Merged 17 ('Release A') and 18 ('Release B') into 17 ('Merged 17+18')."
   ]

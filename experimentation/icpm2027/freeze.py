@@ -15,6 +15,7 @@ report says which manifests disagreed and how.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable, Iterable
@@ -22,6 +23,7 @@ from typing import Any, Callable, Iterable
 from goalcat.atomic_io import atomic_write_json, atomic_write_text
 
 from .manifest import read_manifest
+from .protocol import LABEL_LIST_ARMS
 
 
 @dataclass(frozen=True)
@@ -81,6 +83,40 @@ def _llm_configurations(manifest: dict) -> Any:
     return sorted(out, key=lambda e: (e["role"], str(e["model"])))
 
 
+def _llm_configurations_by_role(manifest: dict) -> dict[str, list[dict]]:
+    """`_llm_configurations`, regrouped by role.
+
+    Task C5's label-list arm makes no Step 5 (taxonomy) call by design — the taxonomy is supplied,
+    not induced — so its "taxonomy" role is absent here, not merely empty. A row built on top of
+    this must compare each role only among the conditions that actually call it, the same way the
+    "Categorization axis" row above already treats the open arm's absent axis.
+    """
+    by_role: dict[str, list[dict]] = {}
+    for entry in _llm_configurations(manifest):
+        by_role.setdefault(entry["role"], []).append(entry)
+    return by_role
+
+
+def _identical_per_role(
+    manifests: dict[str, dict], role_configs: dict[str, dict[str, list[dict]]], extra: Callable[[str, dict], Any]
+) -> tuple[dict[str, Any], bool]:
+    """Checks agreement role by role, each among only the labels whose manifest has that role,
+    then folds the per-label view (role configs plus `extra`, e.g. seed) back together for
+    reporting. A role missing from every manifest in the comparison contributes nothing; a role
+    present in some but not others is compared only across the ones that have it."""
+    roles = sorted({role for cfg in role_configs.values() for role in cfg})
+    ok = True
+    for role in roles:
+        role_values = {label: cfg[role] for label, cfg in role_configs.items() if role in cfg}
+        distinct = {json.dumps(v, sort_keys=True, default=str) for v in role_values.values()}
+        if len(distinct) > 1:
+            ok = False
+    values = {
+        label: {"by_role": role_configs[label], **extra(label, m)} for label, m in manifests.items()
+    }
+    return values, ok
+
+
 def check_pair(manifests: dict[str, dict], *, perturbed: bool = False) -> list[FreezeCheck]:
     """Runs every freeze-table row across two or more conditions of one within-log pair.
 
@@ -125,15 +161,39 @@ def check_pair(manifests: dict[str, dict], *, perturbed: bool = False) -> list[F
         lambda m: _extract(m, ("inputs", "shared_base", "artifacts", "04_sampling/narrative_sample.csv")),
         note="The row the design turns on: both arms consume one Step 4 output, copied, not recomputed.",
     )
-    add("LLM / provider / model", "same", _llm_configurations, note="Read from the provider's own per-call echo.")
-    add(
-        "LLM parameters (temperature, seed)",
-        "same",
-        lambda m: {
-            "temperature": [c["temperature"] for c in _llm_configurations(m)],
-            "seed": _extract(m, ("llm", "seed")),
+    role_configs = {label: _llm_configurations_by_role(m) for label, m in manifests.items()}
+    llm_values, llm_ok = _identical_per_role(manifests, role_configs, lambda label, m: {})
+    checks.append(
+        FreezeCheck(
+            element="LLM / provider / model",
+            requirement="same per role, among conditions that make that role's call",
+            values=llm_values,
+            passed=llm_ok,
+            note="Read from the provider's own per-call echo. The label-list arm (Task C5) makes "
+            "no Step 5 (taxonomy) call by design, so that role is compared only among the "
+            "conditions that do call it — the same treatment as the Categorization-axis row above.",
+        )
+    )
+    temp_values, temp_ok = _identical_per_role(
+        manifests,
+        {
+            label: {
+                role: [{"temperature": c["temperature"]} for c in entries]
+                for role, entries in cfg.items()
+            }
+            for label, cfg in role_configs.items()
         },
-        note="Seed is null throughout — no seed is exposed by this provider path (see manifest.py).",
+        lambda label, m: {"seed": _extract(m, ("llm", "seed"))},
+    )
+    checks.append(
+        FreezeCheck(
+            element="LLM parameters (temperature, seed)",
+            requirement="same per role, among conditions that make that role's call",
+            values=temp_values,
+            passed=temp_ok,
+            note="Seed is null throughout — no seed is exposed by this provider path (see "
+            "manifest.py). Temperature is compared per role for the same reason as the row above.",
+        )
     )
     add("Assignment mechanism", "same", lambda m: sorted(_extract(m, ("inputs", "prompt_templates"), {}).items()),
         note="Prompt-template set hashed as a whole; a wording change to any template fails this row.")
@@ -176,15 +236,41 @@ def check_pair(manifests: dict[str, dict], *, perturbed: bool = False) -> list[F
         label: v["sha256"] for label, v in goal_models.items() if v["arm"] == "guided"
     }
     open_absent = all(
-        v["absent_by_design"] for v in goal_models.values() if v["arm"] in ("open", "label_list")
+        v["absent_by_design"] for v in goal_models.values() if v["arm"] in ({"open"} | LABEL_LIST_ARMS)
     )
     if perturbed:
-        guided_ok = bool(guided_hashes) and len(set(guided_hashes.values())) == len(guided_hashes) and all(guided_hashes.values())
-        requirement = "present, and distinct per perturbation"
+        # A perturbation replicated k times (`run_e2`'s `perturbation_replicates`) reuses the same
+        # perturbed-model file across its own replicates by design — that hash is *supposed* to
+        # repeat. What must never repeat is a hash shared *across* two different perturbations, or
+        # between a perturbation and the baseline: that would mean two intended-different edits
+        # produced the same file (or one edit produced no file at all). "Family" strips a condition
+        # id's trailing `_repN` — the only thing distinguishing replicates of one perturbation — so
+        # the check becomes: hash is constant within a family, and distinct across families.
+        def _family(label: str) -> str:
+            return re.sub(r"_rep\d+$", "", label)
+
+        family_hash: dict[str, str | None] = {}
+        consistent = True
+        for label, sha in guided_hashes.items():
+            family = _family(label)
+            if family not in family_hash:
+                family_hash[family] = sha
+            elif family_hash[family] != sha:
+                consistent = False
+        guided_ok = (
+            bool(guided_hashes)
+            and consistent
+            and len(set(family_hash.values())) == len(family_hash)
+            and all(guided_hashes.values())
+        )
+        requirement = "present, distinct per perturbation, constant across that perturbation's own replicates"
         note = (
-            "Experiment 2's one intended difference. Every guided condition must read a distinct, "
-            "present goal model: two conditions sharing a file means a perturbation did not write "
-            "the edit it claims to test."
+            "Experiment 2's one intended difference. Every guided condition must read a present "
+            "goal model that matches every other replicate of its own perturbation and differs "
+            "from every other perturbation's (and the baseline's): two different perturbations "
+            "sharing a file means one of them did not write the edit it claims to test; two "
+            "replicates of the same perturbation differing means they were not run against the "
+            "same edit."
         )
     else:
         guided_ok = bool(guided_hashes) and len(set(guided_hashes.values())) == 1 and all(guided_hashes.values())

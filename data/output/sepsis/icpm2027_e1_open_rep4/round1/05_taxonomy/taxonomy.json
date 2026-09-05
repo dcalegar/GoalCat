@@ -1,0 +1,63 @@
+{
+  "categories": [
+    {
+      "category_id": "fast_triage_only",
+      "name": "Fast Triage / Minimal Evaluation",
+      "description": "Short, rapid patient encounters concluding quickly after initial triage and minimal lab work without progression to admission or intensive treatment.",
+      "anchor_ids": [],
+      "rationale": "Characterized by very low duration (minutes), short trace lengths, and outcomes like ER Sepsis Triage or basic lab tests.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0002",
+        "V0003",
+        "V0292",
+        "V0694"
+      ]
+    },
+    {
+      "category_id": "standard_acute_care",
+      "name": "Standard Acute Care & Treatment",
+      "description": "Standard emergency department pathways involving comprehensive diagnostics (blood tests) followed by acute interventions such as IV liquids and IV antibiotics.",
+      "anchor_ids": [],
+      "rationale": "Medium duration (hours to a few days) with intermediate trace lengths, ending in IV antibiotics or initial admission/release.",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0005",
+        "V0006",
+        "V0007",
+        "V0009",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "inpatient_admission_release",
+      "name": "Inpatient Admission & Controlled Release",
+      "description": "Encounters requiring inpatient nursing or intensive care unit admission following diagnostics and treatment, eventually resulting in a stable release.",
+      "anchor_ids": [],
+      "rationale": "Longer durations (days) involving bed allocation (Admission NC/IC) and structured discharge outcomes (Release A, B, C, D).",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0066",
+        "V0068",
+        "V0070",
+        "V0145",
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "chronic_readmission_rework",
+      "name": "Chronic Readmission & Heavy Rework",
+      "description": "Extremely long, highly complex pathways characterized by extensive repetition of lab tests and admissions, frequently resulting in patient return to the emergency room.",
+      "anchor_ids": [],
+      "rationale": "Extreme duration (up to hundreds of days), massive trace lengths, heavy rework observed across multiple variables, and Return ER outcomes.",
+      "evidence_variant_ids": [
+        "V0317",
+        "V0441",
+        "V0449",
+        "V0551",
+        "V0605",
+        "V0625"
+      ]
+    }
+  ]
+}

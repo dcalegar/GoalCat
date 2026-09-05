@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "62c56fbd21b9bd31",
+  "latency_seconds": 2.556546541993157,
+  "input_tokens": 8782,
+  "output_tokens": 241,
+  "prompt_chars": 27522,
+  "response_chars": 921,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Admission to Inpatient Ward (Admission NC)\",\n      \"description\": \"Represents the standard process alternative where a patient is admitted to a non-critical inpatient ward, as realized by the Admission NC task. This step supports the broader goal of inpatient care management and is evaluated against post-discharge outcomes.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the single declared alternative under the OR-decomposed Patient is admitted to an inpatient ward goal (id=5), specifically task id=15 (Admission NC). The narrative sample frequently shows this alternative realized in variants such as V0008, V0065, and V0710 without evidence for further meaningful subdivisions on this specific axis.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0065\",\n        \"V0710\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0032370999999999997
+}

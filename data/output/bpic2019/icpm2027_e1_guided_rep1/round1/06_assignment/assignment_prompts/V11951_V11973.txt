@@ -3,14 +3,14 @@ You are deciding, for each of several process-variant narratives, which single t
 The taxonomy was derived by subdividing a declared goal-model axis — every category is traceable to specific goal-model elements, so 'realize' means the narrative satisfies that declared alternative.
 
 === TAXONOMY CATEGORIES ===
-- category_id=matched_after_gr | name=3-way matched, invoice recorded after goods receipt
-  description: The item is resolved via 3-way matching where the goods receipt is recorded before the invoice receipt, advancing control integrity under indicator 17 (Time to clearance, 3-way after GR) and indicator 20 (3-way matching compliance).
-- category_id=matched_before_gr | name=3-way matched, invoice recorded before goods receipt
-  description: The item is resolved via 3-way matching where the invoice is recorded before the goods receipt, helping working-capital efficiency under indicator 18 (Time to clearance, 3-way before GR) while balancing control integrity.
-- category_id=two_way_matched | name=2-way matched (no goods receipt required)
-  description: The item is resolved via 2-way matching without requiring a goods receipt, minimizing procurement overhead and evaluated against indicator 19 (Time to clearance, 2-way match).
-- category_id=consignment_consumption | name=Resolve via consignment consumption
-  description: The item is resolved through consignment stock consumption, reducing procurement overhead while supporting working capital targets.
+- category_id=matched_invoice_after_gr | name=3-Way Matched, Invoice After Goods Receipt
+  description: Standard 3-way matching process where the goods receipt is recorded before the vendor invoice and invoice receipt, advancing value-matching control integrity.
+- category_id=matched_invoice_before_gr | name=3-Way Matched, Invoice Before Goods Receipt
+  description: 3-way matching process where the vendor invoice is received and recorded prior to the goods receipt, helping working-capital efficiency.
+- category_id=matched_2_way | name=2-Way Matched (No Goods Receipt Required)
+  description: Procurement closure using a 2-way match where goods receipt is bypassed, minimizing procurement and matching overhead.
+- category_id=consignment_consumption | name=Resolve via Consignment Consumption
+  description: Resolution of purchase order items via direct consignment consumption, minimizing procurement overhead.
 
 === NARRATIVES TO CLASSIFY (23) ===
 How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.

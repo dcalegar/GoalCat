@@ -3,37 +3,28 @@
     {
       "category_id": "release_a",
       "name": "Release A",
-      "description": "Patient discharge pathway A realizing captured discharge, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return indicators.",
+      "description": "Represents the standard discharge outcome for admitted patients, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return.",
       "anchor_ids": [
         "17"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release A under goal id=6. Observed in variants such as V0008.",
+      "rationale": "Mapped 1:1 to declared alternative Release A (id=17) as observed in the narrative sample (e.g., V0008, V0065).",
       "evidence_variant_ids": [
         "V0008",
-        "V0551",
-        "V0449",
-        "V0192",
-        "V0441",
-        "V0317",
-        "V0072",
-        "V0071",
-        "V0070",
-        "V0069",
-        "V0067",
-        "V0066",
         "V0065",
-        "V0064",
-        "V0063"
+        "V0066",
+        "V0067",
+        "V0069",
+        "V0070"
       ]
     },
     {
       "category_id": "release_b",
       "name": "Release B",
-      "description": "Patient discharge pathway B realizing captured discharge, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return indicators.",
+      "description": "Represents an alternative discharge path for admitted cases, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return.",
       "anchor_ids": [
         "18"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release B under goal id=6. Observed in variants such as V0068 and V0145.",
+      "rationale": "Mapped 1:1 to declared alternative Release B (id=18) as observed in the narrative sample (e.g., V0068, V0145).",
       "evidence_variant_ids": [
         "V0068",
         "V0145"
@@ -42,11 +33,11 @@
     {
       "category_id": "release_c",
       "name": "Release C",
-      "description": "Patient discharge pathway C realizing captured discharge, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return indicators.",
+      "description": "Represents an alternative discharge outcome for complex or long-stay admitted cases, measured against post-discharge ER return.",
       "anchor_ids": [
         "19"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release C under goal id=6. Observed in variant V0710.",
+      "rationale": "Mapped 1:1 to declared alternative Release C (id=19) as observed in long-duration variants like V0710.",
       "evidence_variant_ids": [
         "V0710"
       ]
@@ -54,11 +45,11 @@
     {
       "category_id": "release_d",
       "name": "Release D",
-      "description": "Patient discharge pathway D realizing captured discharge, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return indicators.",
+      "description": "Represents an alternative discharge outcome for admitted patients, measured against post-discharge ER return.",
       "anchor_ids": [
         "20"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release D under goal id=6. Observed in variant V0273.",
+      "rationale": "Mapped 1:1 to declared alternative Release D (id=20) as observed in the narrative sample (e.g., V0273).",
       "evidence_variant_ids": [
         "V0273"
       ]
@@ -66,11 +57,11 @@
     {
       "category_id": "release_e",
       "name": "Release E",
-      "description": "Patient discharge pathway E realizing captured discharge, contributing to avoiding post-discharge deterioration and measured against post-discharge ER return indicators.",
+      "description": "Represents an alternative discharge path for admitted cases, measured against post-discharge ER return.",
       "anchor_ids": [
         "21"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Release E under goal id=6. Kept as a distinct category by default despite lack of sampled narratives.",
+      "rationale": "Default 1:1 mapping to declared alternative Release E (id=21) per goal model decomposition.",
       "evidence_variant_ids": []
     }
   ]

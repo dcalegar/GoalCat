@@ -2,7 +2,7 @@
 
 Experiment `e1` · dataset `rtfm` · arm `guided` · replicate 4
 
-Protocol version `1.0.0` · steps [5, 6] · 2026-08-31T18:07:03.467932+00:00 → 2026-08-31T18:10:34.118943+00:00
+Protocol version `1.1.0` · steps [5, 6] · 2026-09-04T14:57:16.008717+00:00 → 2026-09-04T14:59:05.088788+00:00
 
 ## Inputs
 
@@ -10,7 +10,7 @@ Protocol version `1.0.0` · steps [5, 6] · 2026-08-31T18:07:03.467932+00:00 →
 |---|---|---|
 | Event log | `data/logs/rtfm.xes.gz` | `dc9e0e65c964c8ce` |
 | Goal model | `data/goals/rtfm_goal_model.jucm` | `0b2a7ea87d75967f` |
-| Condition config | `data/output/rtfm/icpm2027_e1_guided_rep4/condition_config.yaml` | `e4ec78666f74a45a` |
+| Condition config | `data/output/rtfm/icpm2027_e1_guided_rep4/condition_config.yaml` | `4044fbd394c5641f` |
 
 **Prompt templates:** `prompt_assignment_batch.txt`=`4fe1d4fb8ac2`, `prompt_description.txt`=`7683ed3205c4`, `prompt_taxonomy_intent_guided.txt`=`c3fe7d89554d`, `prompt_taxonomy_intent_guided_revision.txt`=`604be767fe9c`, `prompt_taxonomy_open.txt`=`d32f3f34b809`, `prompt_taxonomy_open_revision.txt`=`cf4eefe924c8`
 
@@ -59,7 +59,7 @@ Seed: null — no seed is exposed by PipelineConfig.llm or by the Gemini path th
         "temperature": 0.0
       }
     ],
-    "call_count": 5
+    "call_count": 10
   },
   "description": null
 }
@@ -69,11 +69,11 @@ Seed: null — no seed is exposed by PipelineConfig.llm or by the Gemini path th
 
 | Artifact | Path | SHA-256 (first 16) |
 |---|---|---|
-| taxonomy | `data/output/rtfm/icpm2027_e1_guided_rep4/round1/05_taxonomy/taxonomy.json` | `fd06e028379c3eb1` |
-| assignments | `data/output/rtfm/icpm2027_e1_guided_rep4/round1/06_assignment/assignments.csv` | `d1b292cadee92648` |
+| taxonomy | `data/output/rtfm/icpm2027_e1_guided_rep4/round1/05_taxonomy/taxonomy.json` | `f683e493775ab43d` |
+| assignments | `data/output/rtfm/icpm2027_e1_guided_rep4/round1/06_assignment/assignments.csv` | `c97394ce3033ddc0` |
 | discovery_metrics | *(not produced)* | — |
 | descriptions | *(not produced)* | — |
 
 ## Environment
 
-`Mac-Daniel.local` · macOS-26.6.2-arm64-arm-64bit-Mach-O · Python 3.14.6 · git `b016cb958f1e` **(working tree dirty)**
+`Mac-Daniel.local` · macOS-26.6.2-arm64-arm-64bit-Mach-O · Python 3.14.6 · git `7d93545a98f0` **(working tree dirty)**

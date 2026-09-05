@@ -1,0 +1,67 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Resolution of the fine case through prompt payment by the offender. This pathway advances the softgoal 'Maximize timely fine revenue' (via Make contribution) and helps 'Minimize administrative & enforcement cost' (via Help contribution). Performance is judged against the indicator 'Time to fine dispatch' and 'Average time to case closure'.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=12. Supported by frequent narrative samples such as V0002 and V0007 where payment occurs directly.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0003",
+        "V0007",
+        "V0012"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Resolve via delinquent payment",
+      "description": "Resolution of the fine case through payment after notifications and penalties have been applied. This pathway helps 'Maximize timely fine revenue'. Performance is judged against 'Average time to case closure'.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=13. Supported by narrative samples such as V0004, V0005, and V0006 where payments follow penalty and notification tasks.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0004",
+        "V0005",
+        "V0006",
+        "V0009",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Resolution of the fine case through an administrative appeal lodged with the Prefecture. This pathway helps 'Preserve offender's due-process rights' while incurring some negative effects on administrative cost and timely revenue. Performance is evaluated against 'Time to appeal filing, Prefecture' and 'Average time to case closure'.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=14. Supported by variants like V0008, V0057, and V0135 containing administrative appeal steps.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0135",
+        "V0137",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Resolution of the fine case through a judicial appeal to a judge. This pathway strongly advances 'Preserve offender's due-process rights' (Make contribution) but hurts 'Minimize administrative & enforcement cost' and 'Maximize timely fine revenue'. Judged against 'Time to appeal filing, Judge' and 'Average time to case closure'.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Mapped 1:1 to the declared alternative id=19. Supported by variants such as V0103, V0176, and V0140 demonstrating judicial appeals.",
+      "evidence_variant_ids": [
+        "V0103",
+        "V0140",
+        "V0176",
+        "V0224"
+      ]
+    }
+  ]
+}

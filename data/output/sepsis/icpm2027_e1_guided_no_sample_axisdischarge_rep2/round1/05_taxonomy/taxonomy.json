@@ -2,8 +2,8 @@
   "categories": [
     {
       "category_id": "release_a",
-      "name": "Release A",
-      "description": "Discharge pathway Release A for admitted cases. Advances the softgoal Avoid post-discharge deterioration through Help contributions.",
+      "name": "Release A discharge",
+      "description": "Discharge via Release A, advancing the softgoal Avoid post-discharge deterioration and measured against Post-discharge ER return.",
       "anchor_ids": [
         "17"
       ],
@@ -12,8 +12,8 @@
     },
     {
       "category_id": "release_b",
-      "name": "Release B",
-      "description": "Discharge pathway Release B for admitted cases. Advances the softgoal Avoid post-discharge deterioration through Help contributions.",
+      "name": "Release B discharge",
+      "description": "Discharge via Release B, advancing the softgoal Avoid post-discharge deterioration and measured against Post-discharge ER return.",
       "anchor_ids": [
         "18"
       ],
@@ -22,8 +22,8 @@
     },
     {
       "category_id": "release_c",
-      "name": "Release C",
-      "description": "Discharge pathway Release C for admitted cases.",
+      "name": "Release C discharge",
+      "description": "Discharge via Release C under the OR decomposition of goal id=6.",
       "anchor_ids": [
         "19"
       ],
@@ -32,8 +32,8 @@
     },
     {
       "category_id": "release_d",
-      "name": "Release D",
-      "description": "Discharge pathway Release D for admitted cases.",
+      "name": "Release D discharge",
+      "description": "Discharge via Release D under the OR decomposition of goal id=6.",
       "anchor_ids": [
         "20"
       ],
@@ -42,8 +42,8 @@
     },
     {
       "category_id": "release_e",
-      "name": "Release E",
-      "description": "Discharge pathway Release E for admitted cases.",
+      "name": "Release E discharge",
+      "description": "Discharge via Release E under the OR decomposition of goal id=6.",
       "anchor_ids": [
         "21"
       ],

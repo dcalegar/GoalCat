@@ -25,6 +25,12 @@ find data/output/bpic2019 \( -name 'profiles.json.gz' -o -name 'lupin_input.json
 `gunzip -k` keeps the `.gz` alongside the restored file, so the working tree
 still matches what is tracked.
 
+## Cached derived files — committed directly
+
+| Tracked file | Produced by | Purpose |
+|---|---|---|
+| `heldout_case_Item_Category.parquet` | `analysis/heldout.py`'s `extract_heldout_series()` | Per-case `case:Item Category` values, extracted from the full XES log. Parsing the log takes ~90s, so the result is cached here; Task C1 reads this file instead of re-parsing on every run. |
+
 ## Omitted files — not in this repository
 
 The Step 6 pairwise distance matrices are **not committed** in any form:

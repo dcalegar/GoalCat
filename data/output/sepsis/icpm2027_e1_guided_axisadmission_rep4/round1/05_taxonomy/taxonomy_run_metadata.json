@@ -4,11 +4,11 @@
   "backend": "remote",
   "temperature": 0.0,
   "prompt_hash": "8c3730da85e1a90f",
-  "latency_seconds": 2.2126196249992063,
+  "latency_seconds": 2.0615462090063374,
   "input_tokens": 8833,
-  "output_tokens": 505,
+  "output_tokens": 355,
   "prompt_chars": 27667,
-  "response_chars": 1527,
-  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Admission NC\",\n      \"description\": \"Patient is admitted to a non-critical inpatient ward. This contributes to general inpatient care after stabilization or initial sepsis workup in the emergency department.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared OR alternative Admission NC (id=15), as evidenced by frequent occurrences in standard inpatient paths such as variant V0008, and measured by discharge outcomes.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0551\",\n        \"V0449\",\n        \"V0192\",\n        \"V0441\",\n        \"V0317\",\n        \"V0273\",\n        \"V0068\",\n        \"V0071\",\n        \"V0070\",\n        \"V0069\",\n        \"V0067\",\n        \"V0066\",\n        \"V0065\",\n        \"V0064\",\n        \"V0063\",\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Admission IC\",\n      \"description\": \"Patient is admitted to an intensive care inpatient ward. This alternative has a negative contribution link to minimizing time-to-treatment due to higher transfer overhead, but is utilized for severe cases.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared OR alternative Admission IC (id=16), as observed in severe and complex variants like V0605 and V0317.\",\n      \"evidence_variant_ids\": [\n        \"V0605\",\n        \"V0551\",\n        \"V0317\",\n        \"V0068\",\n        \"V0145\",\n        \"V0710\"\n      ]\n    }\n  ]\n}",
-  "estimated_cost_usd": 0.0039124
+  "response_chars": 1141,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Admission NC\",\n      \"description\": \"Patient is admitted to a non-critical inpatient ward.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Maps 1:1 to the declared alternative Admission NC (id=15) under the OR-decomposition of goal id=5. It appears frequently in the sample (e.g. V0008, V0068) representing standard inpatient ward placement.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0068\",\n        \"V0625\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Admission IC\",\n      \"description\": \"Patient is admitted to an intensive care inpatient ward, which harms the softgoal to minimize time-to-treatment via some negative contribution.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Maps 1:1 to the declared alternative Admission IC (id=16) under the OR-decomposition of goal id=5. Evidence in the sample (such as V0605 and V0317) shows cases realizing intensive care admission.\",\n      \"evidence_variant_ids\": [\n        \"V0605\",\n        \"V0317\",\n        \"V0551\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0035374
 }

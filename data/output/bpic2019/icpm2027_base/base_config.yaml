@@ -1,5 +1,5 @@
 # GENERATED — do not edit. The Steps 1-4 config for the shared base every ICPM 2027
-# condition of dataset 'bpic2019' inherits from (protocol 1.0.0). See experimentation/icpm2027/inputs.py.
+# condition of dataset 'bpic2019' inherits from (protocol 1.1.0). See experimentation/icpm2027/inputs.py.
 
 log_filename: bpic2019.xes.gz
 goal_model_filename: bpic2019_goal_model.jucm
@@ -28,4 +28,4 @@ llm:
   max_retries: 3
   concurrency: 5
   requests_per_minute: null
-  assignment_batch_size: 50
+  assignment_batch_size: 25

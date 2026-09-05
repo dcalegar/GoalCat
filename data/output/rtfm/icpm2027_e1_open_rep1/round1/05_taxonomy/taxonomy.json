@@ -3,9 +3,9 @@
     {
       "category_id": "direct_payment",
       "name": "Direct Payment",
-      "description": "Cases where the fine is created and promptly paid with little to no intervening notification or penalty steps, resulting in very short durations and straightforward fulfillment.",
+      "description": "Cases that result in a prompt payment either immediately after fine creation or shortly after sending the fine, with short trace lengths and durations.",
       "anchor_ids": [],
-      "rationale": "High frequency variants like V0002 and V0007 clearly group here as they skip complex notifications or appeals and go straight to payment.",
+      "rationale": "High frequency variants like V0002 and V0007 show a straightforward path from fine creation to payment without complex notifications or appeals.",
       "evidence_variant_ids": [
         "V0002",
         "V0003",
@@ -14,11 +14,11 @@
       ]
     },
     {
-      "category_id": "standard_collection",
-      "name": "Standard Collection / Escalation",
-      "description": "Standard processing involving fine creation, fine notifications, penalties, and eventual escalation to credit collection after extended periods of non-payment.",
+      "category_id": "standard_fine_lifecycle",
+      "name": "Standard Fine Lifecycle with Penalties",
+      "description": "Standard progression involving fine notification, addition of penalties, and standard closure paths like credit collection or delayed payment.",
       "anchor_ids": [],
-      "rationale": "Dominates the high-frequency baseline (e.g., V0001, V0004) where notifications and penalties are standard before terminating in credit collection or delayed payment.",
+      "rationale": "Represents the most common heavy traffic patterns (e.g., V0001, V0004) where notifications and penalties are standard steps leading to either eventual payment or credit collection.",
       "evidence_variant_ids": [
         "V0001",
         "V0004",
@@ -27,33 +27,34 @@
       ]
     },
     {
-      "category_id": "payment_rework",
-      "name": "Payment Rework Loop",
-      "description": "Cases characterized by multiple repeated payment attempts or fragmented installments over a prolonged trace length and duration.",
+      "category_id": "payment_rework_loops",
+      "name": "Payment Rework Loops",
+      "description": "Cases characterized by a high frequency of repeated payment activities stretching trace lengths and durations significantly.",
       "anchor_ids": [],
-      "rationale": "Variants V0005, V0006, and long tail cases like V0153, V0151 display repeated payment activities constituting an installment-like or corrective payment pattern.",
+      "rationale": "Variants such as V0005, V0006, and V0153 demonstrate multiple repeated payment actions indicating installment-like behavior or processing corrections.",
       "evidence_variant_ids": [
         "V0005",
         "V0006",
         "V0048",
-        "V0153",
         "V0151",
+        "V0153",
         "V0147"
       ]
     },
     {
-      "category_id": "appeal_process",
-      "name": "Appeal and Prefecture Handling",
-      "description": "Complex lifecycle paths that involve formal appeals to the prefecture or judge, results notifications, and deeply extended durations spanning multiple years.",
+      "category_id": "appeal_and_legal_process",
+      "name": "Appeal and Legal Proceedings",
+      "description": "Complex variants involving appeals to the prefecture or judge, results processing, and extended durations spanning several years.",
       "anchor_ids": [],
-      "rationale": "Characterized by activities such as Insert Date Appeal to Prefecture, Send Appeal to Prefecture, and Receive Result Appeal from Prefecture (e.g., V0008, V0057, V0103).",
+      "rationale": "Variants like V0008, V0057, and V0103 involve formal appeal steps, long waiting times, and interactions with external legal authorities.",
       "evidence_variant_ids": [
         "V0008",
         "V0057",
         "V0103",
         "V0177",
         "V0176",
-        "V0144"
+        "V0144",
+        "V0158"
       ]
     }
   ]

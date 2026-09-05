@@ -1,0 +1,36 @@
+# GENERATED — do not edit. Written by experimentation/icpm2027/protocol.py for one frozen
+# experimental condition, and hashed into that condition's manifest. Edit configs/protocol.yaml,
+# configs/<dataset>.yaml, or configs/preregistration.yaml and re-generate instead; editing this
+# file makes the run's manifest a record of settings that were not the ones used.
+#
+# Condition: e1_label_list_strict_rep1 | dataset: sepsis | protocol version: 1.1.0
+
+log_filename: sepsis.xes.gz
+goal_model_filename: null
+output_dir: data/output
+run_id: icpm2027_e1_label_list_strict_rep1
+round: 1
+case_id_key: case:concept:name
+activity_key: concept:name
+timestamp_key: time:timestamp
+resource_key: org:resource
+sample_frequent_n: 10
+sample_rare_n: 10
+sample_extreme_n: 5
+taxonomy_mode: intent_guided
+axis_root: null
+discovery_noise_threshold: 0.0
+llm:
+  taxonomy_model: gemini/gemini-3.5-flash-lite
+  assignment_model: gemini/gemini-3.5-flash-lite
+  description_model: gemini/gemini-3.5-flash-lite
+  pricing_usd_per_million_tokens:
+    gemini/gemini-3.5-flash-lite:
+      input: 0.3
+      output: 2.5
+  temperature: 0
+  timeout_seconds: 120
+  max_retries: 3
+  concurrency: 5
+  requests_per_minute: null
+  assignment_batch_size: 25

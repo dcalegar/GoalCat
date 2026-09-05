@@ -1,0 +1,38 @@
+You are deciding, for each of several process-variant narratives, which single taxonomy category (if any) it realizes.
+
+The taxonomy was derived by subdividing a declared goal-model axis — every category is traceable to specific goal-model elements, so 'realize' means the narrative satisfies that declared alternative.
+
+=== TAXONOMY CATEGORIES ===
+- category_id=timely_payment | name=Resolve via timely payment
+  description: Cases resolved through prompt payment of the fine, advancing the softgoal 'Maximize timely fine revenue' and helping 'Minimize administrative & enforcement cost', judged against indicator 'Average time to case closure'.
+- category_id=delinquent_payment | name=Resolve via delinquent payment
+  description: Cases resolved through payment made after penalties have been added and notifications sent, helping 'Maximize timely fine revenue', judged against indicator 'Average time to case closure'.
+- category_id=administrative_appeal | name=Resolve via administrative appeal to the Prefecture
+  description: Cases involving an administrative appeal process directed to the Prefecture, preserving offender's due-process rights while potentially increasing costs and delaying revenue, judged against 'Time to appeal filing, Prefecture'.
+- category_id=judicial_appeal | name=Resolve via judicial appeal to the Judge
+  description: Cases involving judicial appeal to a judge, strongly making 'Preserve offender's due-process rights' while hurting cost minimization, judged against 'Time to appeal filing, Judge'.
+- category_id=coercive_credit_collection | name=Resolve via coercive credit collection
+  description: Cases escalated and resolved through coercive credit collection measures, helping revenue maximization but hurting cost minimization, judged against 'Average time to case closure'.
+- category_id=fine_annulment | name=Resolve via fine annulment
+  description: Cases resulting in the annulment of the fine.
+
+=== NARRATIVES TO CLASSIFY (6) ===
+How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
+- frequency is how many cases share that sequence, with that count as a share of all cases in the log in parentheses; duration_median is the median case duration for that variant, written compactly on the same scale as the waits inside the narrative ("134d", "3h", "45m"); outcome is the variant's final activity.
+- The activity sequence shown after "narrative:" is that of a single representative case (the one whose duration is closest to the variant's median), so a "(+34d)" after an activity is that case's waiting time since the preceding activity, not a variant-wide average. Activities are listed in the order they occurred. A "(handled by resource R)" clause, where present, names the resource that performed that activity in the representative case. A trailing "Rework observed: ..." sentence, where present, is a variant-level count over the variant's own cases, not part of the representative case's sequence.
+- Activity labels come from the event log and need not match a category's wording verbatim: a logged activity realizes a category by meaning, not by string equality.
+
+- variant_id=V0226 | frequency=1 (0.0%) | duration_median=416d | outcome=Payment
+  narrative: Create Fine Send Fine (+37d) Insert Fine Notification (+36d) Insert Date Appeal to Prefecture (+1d) Send Appeal to Prefecture (+1d) Add penalty (+58d) Payment (+105d) Receive Result Appeal from Prefecture (+82d) Notify Result Appeal to Offender (+4d) Payment (+92d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0227 | frequency=1 (0.0%) | duration_median=236d | outcome=Payment
+  narrative: Create Fine Send Fine (+47d) Send Appeal to Prefecture (+27d) Insert Fine Notification (+3d) Insert Date Appeal to Prefecture (+3d) Add penalty (+57d) Payment (+99d)
+- variant_id=V0228 | frequency=1 (0.0%) | duration_median=326d | outcome=Payment
+  narrative: Create Fine Send Fine (+7d) Insert Fine Notification (+33d) Insert Date Appeal to Prefecture (+27d) Add penalty (+33d) Payment (+164d) Payment (+32d) Payment (+30d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0229 | frequency=1 (0.0%) | duration_median=770d | outcome=Send for Credit Collection
+  narrative: Create Fine Send Fine (+23d) Insert Fine Notification (+12d) Insert Date Appeal to Prefecture (+24d) Send Appeal to Prefecture (+6d) Add penalty (+30d) Receive Result Appeal from Prefecture (+55d) Notify Result Appeal to Offender (+130d) Payment (+353d) Send for Credit Collection (+137d)
+- variant_id=V0230 | frequency=1 (0.0%) | duration_median=797d | outcome=Payment
+  narrative: Create Fine Send Fine (+86d) Insert Fine Notification (+10d) Insert Date Appeal to Prefecture (+9d) Send Appeal to Prefecture (+19d) Add penalty (+32d) Receive Result Appeal from Prefecture (+56d) Notify Result Appeal to Offender (+54d) Appeal to Judge (+9d) Payment (+367d) Payment (+29d) Payment (+30d) Payment (+34d) Payment (+50d) Payment (+12d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0231 | frequency=1 (0.0%) | duration_median=239d | outcome=Payment
+  narrative: Create Fine Send Fine (+81d) Insert Date Appeal to Prefecture (+3d) Send Appeal to Prefecture (+1d) Insert Fine Notification (+2d) Appeal to Judge (+1d) Add penalty (+59d) Payment (+92d)
+
+For each narrative listed above, decide which single category_id (if any) it realizes. If none of the categories fit, set category_id to null and explain why in rationale — that is expected for some narratives, not a failure. Always provide a rationale, whether or not a category matches. Write exactly one assignment per narrative listed above, using exactly the variant_id given — no more, no fewer, no invented ids. When a category does match, category_id must be copied verbatim, character-for-character, from one of the category_id values listed above under === TAXONOMY CATEGORIES === — never a paraphrase, abbreviation, or reworded variant of a category's name or description, even if it reads more naturally. A category_id that does not appear above exactly as written cannot be matched back to that category afterward, silently corrupting the result.

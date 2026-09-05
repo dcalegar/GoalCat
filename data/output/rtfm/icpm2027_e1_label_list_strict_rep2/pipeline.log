@@ -1,0 +1,22 @@
+2026-09-04 13:51:33,335 [INFO] goalcat: Run environment: host=Mac-Daniel.local, platform=macOS-26.6.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-09-04 13:51:33,336 [INFO] goalcat: ICPM 2027 condition run starting: run_id=icpm2027_e1_label_list_strict_rep2, steps=[6], taxonomy_mode=intent_guided, goal_model=None
+2026-09-04 13:51:33,336 [INFO] goalcat: Step 6 (narrative assignment) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/rtfm.xes.gz
+2026-09-04 13:51:33,337 [INFO] goalcat: Loading profiles/narratives from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_label_list_strict_rep2
+2026-09-04 13:51:33,346 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_label_list_strict_rep2/round1/05_taxonomy/taxonomy.json
+2026-09-04 13:51:33,348 [INFO] goalcat: Assigning 231 narratives against 5 categories (model=gemini/gemini-3.5-flash-lite, batch_size=25, concurrency=5)
+2026-09-04 13:51:39,011 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=840dfb87a03e5b89, latency=4.55s)
+2026-09-04 13:51:39,277 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=3554b4115dafcaff, latency=4.82s)
+2026-09-04 13:51:39,634 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=1c945dc238d919e9, latency=5.17s)
+2026-09-04 13:51:39,995 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=d258200028ede0c4, latency=5.52s)
+2026-09-04 13:51:40,150 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=6dca26e11655cb7c, latency=5.68s)
+2026-09-04 13:51:42,091 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=ce77ac7bd3a4576f, latency=1.94s)
+2026-09-04 13:51:43,465 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4e2ae2d12149388f, latency=4.45s)
+2026-09-04 13:51:44,756 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=82c628050977fa52, latency=5.48s)
+2026-09-04 13:51:44,790 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=61da531076699a2d, latency=4.79s)
+2026-09-04 13:51:45,046 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=b18edb6ecc1c57db, latency=5.41s)
+2026-09-04 13:51:45,053 [INFO] goalcat: Assigned 230/231 narratives to a category, 1 residual, 0 still pending
+2026-09-04 13:51:45,053 [INFO] goalcat: Assignment grounding check: no problems found.
+2026-09-04 13:51:45,171 [INFO] goalcat: Saved assignment outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/rtfm/icpm2027_e1_label_list_strict_rep2/round1/06_assignment
+2026-09-04 13:51:45,172 [INFO] goalcat: Step 6 complete.
+2026-09-04 13:51:45,172 [INFO] goalcat: Peak RSS after Step 6: 406.7 MiB
+2026-09-04 13:51:45,172 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_e1_label_list_strict_rep2

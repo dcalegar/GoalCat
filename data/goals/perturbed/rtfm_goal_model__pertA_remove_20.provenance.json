@@ -14,7 +14,7 @@
     "sha256": "75260074ac4eecba65ee87de8bfc6764fe2fed592f76b24a56d6a743b2776e09"
   },
   "goal_model_filename": "perturbed/rtfm_goal_model__pertA_remove_20.jucm",
-  "generated_on": "2026-08-31",
+  "generated_on": "2026-09-04",
   "notes": [
     "Removed element 20 (Task: 'Resolve via coercive credit collection') and 4 link(s) touching it (decomposition and/or contribution).",
     "6's children are now ['13', '7'] (was including 20)."

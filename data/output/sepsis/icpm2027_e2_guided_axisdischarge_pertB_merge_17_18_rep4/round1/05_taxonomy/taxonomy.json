@@ -1,0 +1,68 @@
+{
+  "categories": [
+    {
+      "category_id": "merged_discharge_path",
+      "name": "Merged Discharge Path",
+      "description": "Represents the discharge alternative captured under task 17+18, helping avoid post-discharge deterioration and measured against post-discharge ER return indicator.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id 17 as per default rule.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0068",
+        "V0070",
+        "V0071",
+        "V0072",
+        "V0145",
+        "V0192",
+        "V0317",
+        "V0441",
+        "V0449",
+        "V0551",
+        "V0605",
+        "V0625",
+        "V0063",
+        "V0064",
+        "V0065",
+        "V0066",
+        "V0067",
+        "V0069"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Represents discharge via Release C alternative, measured against post-discharge ER return indicator.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id 19 as per default rule, supported by variant V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Represents discharge via Release D alternative, measured against post-discharge ER return indicator.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id 20 as per default rule, supported by variant V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release E",
+      "description": "Represents discharge via Release E alternative, measured against post-discharge ER return indicator.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id 21 as per default rule.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

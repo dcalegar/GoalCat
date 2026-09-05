@@ -2,22 +2,22 @@
   "categories": [
     {
       "category_id": "admission_nc",
-      "name": "Admission to Normal Care",
-      "description": "Patient is admitted to a normal care inpatient ward (Admission NC). Advances the goal of inpatient care disposition while managing patient flow, assessed against indicators such as time to treatment and post-discharge outcomes.",
+      "name": "Admission to Normal Care (NC)",
+      "description": "Patient is admitted to a normal care inpatient ward (Admission NC), advancing the patient toward disposition while balancing ward capacity and care needs. Judged against post-discharge indicators and timeliness.",
       "anchor_ids": [
         "15"
       ],
-      "rationale": "Mapped 1:1 to the declared OR alternative Admission NC (id=15).",
+      "rationale": "Maps 1:1 to the declared OR alternative id=15 (Admission NC). It represents standard inpatient admission without intensive care routing.",
       "evidence_variant_ids": []
     },
     {
       "category_id": "admission_ic",
-      "name": "Admission to Intensive Care",
-      "description": "Patient is admitted to an intensive care inpatient ward (Admission IC). This alternative advances treatment speed but carries a negative contribution to minimizing time-to-treatment softgoals.",
+      "name": "Admission to Intensive Care (IC)",
+      "description": "Patient is admitted to an intensive care inpatient ward (Admission IC). This option impacts the Minimize time-to-treatment softgoal via a SomeNegative (-25) contribution due to resource intensity, and is measured against treatment windows and outcomes.",
       "anchor_ids": [
         "16"
       ],
-      "rationale": "Mapped 1:1 to the declared OR alternative Admission IC (id=16).",
+      "rationale": "Maps 1:1 to the declared OR alternative id=16 (Admission IC). Represents high-acuity ward placement for severe sepsis presentations.",
       "evidence_variant_ids": []
     }
   ]

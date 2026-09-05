@@ -2,15 +2,14 @@
   "categories": [
     {
       "category_id": "admission_nc",
-      "name": "Non-Critical Ward Admission",
-      "description": "Represents the patient admission to a non-critical inpatient ward (Admission NC), supporting general treatment flow and aiming for discharge outcomes.",
+      "name": "Non-Critical Admission",
+      "description": "Patient is admitted to a non-critical inpatient ward, advancing the goal of reaching a documented disposition while supporting avoidance of post-discharge deterioration, measured against post-discharge ER return indicators.",
       "anchor_ids": [
         "15"
       ],
-      "rationale": "Mapped 1:1 to declared alternative id=15 (Admission NC) as observed in frequent sample variants like V0008, where non-critical ward admission leads toward release outcomes such as Release A.",
+      "rationale": "Mapped 1:1 to declared alternative Admission NC (id=15) under the OR decomposition of goal id=5. Supported by frequent samples such as variant V0008 where Admission NC precedes Release A.",
       "evidence_variant_ids": [
         "V0008",
-        "V0625",
         "V0551",
         "V0449",
         "V0192",
@@ -32,16 +31,16 @@
     },
     {
       "category_id": "admission_ic",
-      "name": "Intensive Care Ward Admission",
-      "description": "Represents the patient admission to an intensive care inpatient ward (Admission IC). This path involves intensive resources and carries a negative contribution (-25) to minimizing time-to-treatment softgoals due to heightened complexity.",
+      "name": "Intensive Care Admission",
+      "description": "Patient is admitted to an intensive care unit, realizing inpatient ward admission with some negative contribution to minimizing time-to-treatment.",
       "anchor_ids": [
         "16"
       ],
-      "rationale": "Mapped 1:1 to declared alternative id=16 (Admission IC). Grounded in evidence from variants like V0605 and V0317 where Admission IC is utilized for complex patient trajectories.",
+      "rationale": "Mapped 1:1 to declared alternative Admission IC (id=16) under the OR decomposition of goal id=5. Supported by variants such as V0605 and V0317 where Admission IC is utilized.",
       "evidence_variant_ids": [
         "V0605",
-        "V0551",
         "V0317",
+        "V0273",
         "V0068",
         "V0145",
         "V0710"

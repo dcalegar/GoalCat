@@ -1,0 +1,847 @@
+variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
+V0001,rapid_triage_only,"Short pathway ending in triage with no admission or IV intervention, completing in minutes.",2.0,standard_admission_release,2.0,0.3600192070007324,0.3428671360015869
+V0002,rapid_triage_only,"Outpatient workup involving initial blood work (CRP, Leucocytes) and triage, completing quickly.",2.0,standard_admission_release,2.0,0.34722384810447693,0.002573289442807436
+V0003,rapid_triage_only,"Fast-paced triage and blood panels (CRP, Leucocytes) finishing within minutes without admission.",0.0,acute_iv_treatment,1.0,0.020806893706321716,0.3369881808757782
+V0004,acute_iv_treatment,"Mid-length pathway featuring IV fluids and antibiotics alongside standard blood panels, resolving within an hour.",2.0,rapid_triage_only,2.0,0.03380906209349632,0.004699913784861565
+V0005,rapid_triage_only,"Fast triage and routine blood work (Leucocytes, CRP, LacticAcid) completing in 26 minutes without admission.",2.0,acute_iv_treatment,2.0,0.3485236167907715,0.022337401285767555
+V0006,acute_iv_treatment,"Pathway administering intravenous fluids and antibiotics alongside blood work, resolving in 3 hours.",0.0,rapid_triage_only,2.0,0.011353126727044582,0.0062922220677137375
+V0007,acute_iv_treatment,"Mid-length pathway featuring IV fluids and antibiotics administration, resolving in 4 hours.",2.0,rapid_triage_only,2.0,0.004311275202780962,0.000749628699850291
+V0008,standard_admission_release,Requires ward admission (Admission NC) followed by multi-day observation and release.,7.0,readmission_loop,1.0,0.3491789400577545,0.3509630858898163
+V0009,acute_iv_treatment,"Involves IV liquid and IV antibiotics administration with blood panels, resolving in 2 hours.",2.0,standard_admission_release,2.0,0.022439859807491302,0.004101776983588934
+V0010,rapid_triage_only,Outpatient process involving basic labs and triage completed within 2 hours without admission.,2.0,standard_admission_release,2.0,0.3569355309009552,0.3355148136615753
+V0011,acute_iv_treatment,"Pathway featuring IV fluids and antibiotics administration alongside blood tests, resolving in 3 hours.",2.0,rapid_triage_only,1.0,0.0074612232856452465,0.0024003193248063326
+V0012,acute_iv_treatment,"Features IV liquid and IV antibiotics along with blood work, resolving quickly within 24 minutes.",3.0,rapid_triage_only,1.0,0.06779143214225769,0.0062239631079137325
+V0013,rapid_triage_only,"Short outpatient workup involving basic blood panels and triage, completing in 37 minutes.",1.0,acute_iv_treatment,1.0,0.00458724657073617,0.3341836631298065
+V0014,standard_admission_release,Involves ward admission (Admission NC) followed by multi-day observation and eventual release (Release A).,6.0,rapid_triage_only,2.0,0.34503400325775146,0.34681808948516846
+V0015,standard_admission_release,Requires ward admission (Admission NC) and multi-day observation before release.,5.0,readmission_loop,1.0,0.02294745109975338,0.16286888718605042
+V0016,standard_admission_release,Involves inpatient ward admission (Admission NC) followed by multi-day observation and eventual release.,5.0,readmission_loop,1.0,0.010513233952224255,0.150434672832489
+V0017,rapid_triage_only,"Short outpatient workup with basic blood tests and triage, completing in 37 minutes.",2.0,standard_admission_release,3.0,0.33803024888038635,0.33429333567619324
+V0018,standard_admission_release,Requires ward admission (Admission NC) followed by multi-day observation and eventual release.,7.0,acute_iv_treatment,2.0,0.34414079785346985,0.34592488408088684
+V0019,acute_iv_treatment,"Mid-length pathway featuring IV fluids and antibiotics administration alongside blood panels, resolving in 2 hours.",4.0,rapid_triage_only,2.0,0.022944986820220947,0.003596652066335082
+V0020,acute_iv_treatment,"Features IV liquid and IV antibiotics administration alongside blood work, resolving in 25 minutes.",5.0,rapid_triage_only,2.0,0.40043649077415466,0.002573289442807436
+V0021,readmission_loop,"Complex, long-duration pathway resulting in a return to the emergency room (Return ER).",4.0,standard_admission_release,2.0,0.014230657368898392,0.3340064585208893
+V0022,standard_admission_release,Requires ward admission (Admission NC) followed by multi-day observation and eventual release.,6.0,acute_iv_treatment,1.0,0.34359899163246155,0.34538307785987854
+V0023,readmission_loop,"Long-duration, complex pathway involving ward admission, release, and subsequent readmission to the ER.",6.0,standard_admission_release,1.0,0.009618755429983139,0.33626195788383484
+V0024,acute_iv_treatment,"Mid-length pathway featuring IV fluids, IV antibiotics, and blood tests, culminating in admission NC within hours.",4.0,readmission_loop,2.0,0.34866997599601746,0.3363097608089447
+V0025,acute_iv_treatment,"Pathway featuring IV fluids and antibiotics administration alongside blood work, resolving in 3 hours.",2.0,standard_admission_release,2.0,0.009939380921423435,0.004878477193415165
+V0026,readmission_loop,"The pathway includes ward admission and treatment followed by a Return ER event, placing it in the readmission category.",5.0,standard_admission_release,2.0,0.20062470436096191,0.34123948216438293
+V0027,acute_iv_treatment,The variant features IV fluids and antibiotics with standard blood panels and resolves within hours.,2.0,rapid_triage_only,2.0,0.0051130917854607105,5.2188017434673384e-05
+V0028,readmission_loop,The pathway ends with a Return ER event after a multi-day admission.,4.0,standard_admission_release,1.0,0.01764591969549656,0.3635266125202179
+V0029,rapid_triage_only,A short pathway finishing quickly with blood work without admission.,3.0,acute_iv_treatment,2.0,0.00722896121442318,0.3368253707885742
+V0030,standard_admission_release,Requires ward admission followed by multi-day observation and eventual release.,5.0,readmission_loop,2.0,0.011842985637485981,0.1517644226551056
+V0031,rapid_triage_only,A fast-paced initial workup path ending within minutes with lab tests.,3.0,acute_iv_treatment,2.0,0.3417147696018219,0.0012343546841293573
+V0032,readmission_loop,"Involves admission, release, and a subsequent Return ER event.",5.0,standard_admission_release,2.0,0.03388042747974396,0.33339741826057434
+V0033,readmission_loop,Long duration pathway leading to a Return ER event.,3.0,standard_admission_release,2.0,0.20129208266735077,0.409822940826416
+V0034,acute_iv_treatment,"Features IV treatment and blood panels, resolving within hours.",2.0,rapid_triage_only,2.0,0.369386225938797,0.014998753555119038
+V0035,standard_admission_release,Includes inpatient admission followed by multi-day observation and release.,4.0,readmission_loop,2.0,0.01020983885973692,0.1297115981578827
+V0036,rapid_triage_only,Short outpatient workup finishing with basic lab work.,4.0,acute_iv_treatment,2.0,0.35510480403900146,0.005307679995894432
+V0037,standard_admission_release,Involves ward admission and subsequent release after multiple days.,8.0,rapid_triage_only,2.0,0.6861063838005066,0.3506373167037964
+V0038,acute_iv_treatment,"Administers IV fluids and antibiotics, resolving within hours.",2.0,rapid_triage_only,2.0,0.006480359937995672,0.001419456209987402
+V0039,standard_admission_release,Requires ward admission and multi-day observation before release.,4.0,readmission_loop,3.0,0.12023075670003891,0.019690681248903275
+V0040,acute_iv_treatment,"Mid-length pathway featuring IV treatment and blood panels, resolving within hours.",3.0,standard_admission_release,1.0,0.3350802958011627,0.33664727210998535
+V0041,standard_admission_release,Inpatient admission followed by observation and release.,5.0,readmission_loop,1.0,0.12563936412334442,0.0433385968208313
+V0042,standard_admission_release,Ward admission followed by multi-day stay and release.,4.0,readmission_loop,2.0,0.013154135085642338,0.15307557582855225
+V0043,rapid_triage_only,Short pathway ending quickly with initial blood work.,1.0,acute_iv_treatment,1.0,0.33735302090644836,0.011166810989379883
+V0044,standard_admission_release,Requires admission and several days of observation leading to release.,4.0,acute_iv_treatment,1.0,0.016234682872891426,0.15615612268447876
+V0045,readmission_loop,Features admission and release followed by a Return ER event.,7.0,standard_admission_release,2.0,0.33941638469696045,0.3633025586605072
+V0046,standard_admission_release,Inpatient admission followed by multi-day stay and release.,5.0,readmission_loop,1.0,0.0024146081414073706,0.13750682771205902
+V0047,standard_admission_release,Ward admission followed by observation and release.,6.0,readmission_loop,1.0,0.364365816116333,0.34789910912513733
+V0048,standard_admission_release,Involves admission and multi-day observation ending in release.,5.0,readmission_loop,3.0,0.00023297588631976396,0.1401544064283371
+V0049,readmission_loop,Complex long-duration pathway resulting in patient readmission/Return ER.,6.0,standard_admission_release,3.0,0.041736260056495667,0.38761699199676514
+V0050,rapid_triage_only,Short outpatient pathway completing quickly with basic blood tests.,2.0,acute_iv_treatment,2.0,0.34123337268829346,0.008563732728362083
+V0051,standard_admission_release,The narrative includes ward admission (Admission NC) and multi-day observation followed by Release A.,4.0,readmission_loop,3.0,0.11430267244577408,0.03200190141797066
+V0052,readmission_loop,The pathway results in a return to the emergency room (Return ER) after initial admission and release.,4.0,standard_admission_release,1.0,0.018800979480147362,0.3646817207336426
+V0053,standard_admission_release,The patient is admitted to the ward (Admission NC) and eventually released with Release A.,8.0,rapid_triage_only,2.0,0.36726900935173035,0.3449959456920624
+V0054,readmission_loop,The sequence leads to a subsequent Return ER event following inpatient care.,2.0,standard_admission_release,1.0,0.00875108502805233,0.3371296226978302
+V0055,readmission_loop,Involves repeated admission actions and culminates in a Return ER outcome.,4.0,standard_admission_release,1.0,0.11409779638051987,0.3400157690048218
+V0056,acute_iv_treatment,"This is a short pathway involving IV antibiotics and labs, concluding within an hour without admission.",2.0,rapid_triage_only,1.0,0.03763789311051369,0.000871086202096194
+V0057,standard_admission_release,Proceeds from IV treatment to Admission NC and finishes with a standard release (Release A).,7.0,acute_iv_treatment,2.0,0.3649376928806305,0.34732726216316223
+V0058,standard_admission_release,Features ward admission (Admission NC) followed by a successful release.,7.0,readmission_loop,1.0,0.35969236493110657,0.35257256031036377
+V0059,standard_admission_release,Includes inpatient admission and subsequent release after monitoring.,5.0,readmission_loop,1.0,0.020657068118453026,0.16057850420475006
+V0060,readmission_loop,Features an inpatient stay followed by a delayed Return ER event.,5.0,standard_admission_release,1.0,0.028318779543042183,0.3741995096206665
+V0061,standard_admission_release,Involves admission to the ward and multiple day observations leading to Release A.,1.0,readmission_loop,3.0,0.008385705761611462,0.13153572380542755
+V0062,acute_iv_treatment,"Consists of blood panels and IV intervention, resolving in a few hours without admission.",2.0,standard_admission_release,2.0,0.01397615671157837,0.008915252983570099
+V0063,standard_admission_release,Extensive lab work and IV treatment followed by ward admission and ultimate release.,13.0,readmission_loop,8.0,0.020601456984877586,0.11931997537612915
+V0064,standard_admission_release,Progresses through IV intervention and Admission NC before concluding with Release A.,6.0,readmission_loop,3.0,0.16775353252887726,0.25211942195892334
+V0065,standard_admission_release,Features repeated ward admissions and subsequent discharge.,4.0,readmission_loop,2.0,0.11169963330030441,0.028221802785992622
+V0066,standard_admission_release,Includes IV treatment followed by Admission NC and Release A.,7.0,acute_iv_treatment,3.0,0.36772868037223816,0.34453627467155457
+V0067,standard_admission_release,"Involves IV medication, admission to the ward, and multi-day observation before release.",5.0,acute_iv_treatment,2.0,0.006193116307258606,0.13372832536697388
+V0068,standard_admission_release,Involves admission to intensive and normal care wards followed by Release B.,6.0,readmission_loop,4.0,0.4493599832057953,0.2006756067276001
+V0069,standard_admission_release,"Proceeds via IV antibiotics and ward admission, ending in a standard release.",5.0,readmission_loop,3.0,0.007643458899110556,0.1322779804468155
+V0070,standard_admission_release,"Features lab tests, IV treatment, ward admission, and final release.",4.0,readmission_loop,2.0,0.17760534584522247,0.26197120547294617
+V0071,readmission_loop,Involves complex inpatient care cycles and terminates with a Return ER event.,5.0,standard_admission_release,3.0,0.13023322820663452,0.35615119338035583
+V0072,readmission_loop,Features extensive lab repetitions during admission and concludes with a Return ER occurrence.,3.0,standard_admission_release,2.0,0.04593129828572273,0.33342957496643066
+V0073,standard_admission_release,"Includes triage, IV treatment, Admission NC, and a multi-day release pathway.",5.0,acute_iv_treatment,3.0,0.0017798012122511864,0.14170123636722565
+V0074,readmission_loop,Progresses from admission and release directly into a Return ER event.,8.0,standard_admission_release,1.0,0.39817824959754944,0.3339029848575592
+V0075,readmission_loop,"A very long-duration, highly complex pathway resulting in a final Return ER event.",6.0,standard_admission_release,4.0,0.20674610137939453,0.3523659408092499
+V0076,standard_admission_release,The pathway involves ward admission followed by multi-day observation and ends with Release B.,8.0,rapid_triage_only,2.0,0.6926496624946594,0.34409400820732117
+V0077,standard_admission_release,The pathway includes ward admission and concludes with Release B after a couple of days.,6.0,acute_iv_treatment,5.0,0.5300671458244324,0.23107947409152985
+V0078,readmission_loop,The pathway spans an extended duration of over two months and finishes with a Return ER event.,10.0,standard_admission_release,5.0,0.12272989749908447,0.3549003303050995
+V0079,standard_admission_release,The pathway includes admission to NC ward and results in Release A within several days.,6.0,readmission_loop,3.0,0.17764191329479218,0.26200777292251587
+V0080,readmission_loop,The pathway lasts over 200 days and loops back to the emergency room with a Return ER outcome.,7.0,standard_admission_release,4.0,0.15069396793842316,0.382864385843277
+V0081,rapid_triage_only,"A short-duration pathway ending quickly with triage, initial labs, and IV liquid without any ward admission.",3.0,acute_iv_treatment,2.0,0.3393698036670685,0.02226216532289982
+V0082,standard_admission_release,The pathway features ICU and NC ward admissions followed by multi-day observation and Release A.,7.0,acute_iv_treatment,3.0,0.3421350419521332,0.25983425974845886
+V0083,readmission_loop,This long-duration pathway spans close to three months and results in a Return ER outcome.,7.0,standard_admission_release,3.0,0.012694957666099072,0.3585756719112396
+V0084,standard_admission_release,"The pathway includes ward admission and multi-day observation, concluding with Release C.",3.0,acute_iv_treatment,4.0,0.3342151343822479,0.33722183108329773
+V0085,readmission_loop,The pathway takes over 160 days and culminates in a Return ER outcome.,4.0,standard_admission_release,2.0,0.1427396982908249,0.3686576783657074
+V0086,standard_admission_release,"The pathway involves NC ward admission and observation, ending with Release A.",5.0,readmission_loop,1.0,0.008444412611424923,0.1483658403158188
+V0087,standard_admission_release,"The pathway requires ward admission, multi-day observation, and concludes with Release A.",5.0,readmission_loop,3.0,0.11333689093589783,0.026584545150399208
+V0088,rapid_triage_only,"A very brief pathway concluding within minutes with basic triage, initial lab work, and IV antibiotics.",3.0,acute_iv_treatment,1.0,0.34426143765449524,0.005613516550511122
+V0089,readmission_loop,The pathway spans over two months and ends with a Return ER complication event.,9.0,standard_admission_release,5.0,0.17375512421131134,0.3472917079925537
+V0090,standard_admission_release,"The pathway involves NC ward admission and multiple lab checks, concluding with Release A.",6.0,readmission_loop,4.0,0.0016883508069440722,0.141609787940979
+V0091,standard_admission_release,"The pathway includes ward admission, extended observations, and eventual successful release (Release C).",14.0,readmission_loop,9.0,0.5238239169120789,0.3413165509700775
+V0092,acute_iv_treatment,"A mid-length pathway featuring IV fluids, antibiotics, and blood panels resolving within hours, without admission.",7.0,standard_admission_release,2.0,0.7038800120353699,0.09228887408971786
+V0093,standard_admission_release,The pathway requires ward admission followed by observation and concludes with Release D.,5.0,readmission_loop,2.0,0.3386194705963135,0.22023777663707733
+V0094,readmission_loop,A long-duration pathway lasting around 84 days that results in a Return ER event.,5.0,standard_admission_release,1.0,0.012169127352535725,0.35804983973503113
+V0095,standard_admission_release,"The pathway includes NC ward admission and multi-day observation, ending with Release A.",3.0,readmission_loop,3.0,0.018431013450026512,0.15835244953632355
+V0096,standard_admission_release,"The pathway includes ward admission, multi-day observation, and finishes with Release A.",7.0,readmission_loop,2.0,0.3358776867389679,0.3646880090236664
+V0097,standard_admission_release,The pathway requires ward admission followed by multi-day observation and eventually leads to Release A.,4.0,readmission_loop,2.0,0.11190997809171677,0.028011463582515717
+V0098,readmission_loop,The pathway has an extended duration spanning nearly two weeks and results in a Return ER outcome.,8.0,standard_admission_release,2.0,0.3751121461391449,0.3419385254383087
+V0099,standard_admission_release,"The pathway involves ward admission, multi-day observation, and concludes with Release A.",3.0,readmission_loop,2.0,0.11749177426099777,0.02242966741323471
+V0100,standard_admission_release,"The pathway includes ward admission and multi-day observation, finishing with Release A.",4.0,readmission_loop,1.0,0.002812995808199048,0.14273442327976227
+V0101,readmission_loop,The narrative features ward admission followed by release and eventual return to the ER after an extended duration.,7.0,standard_admission_release,3.0,0.04311274364590645,0.3889934718608856
+V0102,standard_admission_release,The pathway requires ward admission (Admission NC) followed by multi-day observation and successful release.,4.0,readmission_loop,3.0,0.11450287699699402,0.0322021022439003
+V0103,standard_admission_release,"The pathway involves ward admission, several days of observation, and subsequent release.",8.0,readmission_loop,4.0,0.12454891204833984,0.042248133569955826
+V0104,readmission_loop,"Features an inpatient stay and release, followed by a return to the emergency room.",7.0,standard_admission_release,1.0,0.3611348867416382,0.39718711376190186
+V0105,standard_admission_release,Requires inpatient ward admission followed by multi-day observation and ultimate release.,9.0,readmission_loop,6.0,0.461254745721817,0.20392340421676636
+V0106,standard_admission_release,Follows a standard inpatient admission and multi-day observation period before final release.,10.0,readmission_loop,5.0,0.1802186220884323,0.09859170764684677
+V0107,standard_admission_release,Shows ward admission followed by several days of observation and eventual release.,6.0,readmission_loop,3.0,0.011027790606021881,0.12889364361763
+V0108,readmission_loop,"Involves admission and release, subsequently leading to an ER readmission.",7.0,standard_admission_release,3.0,0.03053661622107029,0.33543863892555237
+V0109,readmission_loop,"Long-duration pathway featuring admission, release, and a return to the ER.",6.0,standard_admission_release,3.0,0.2412998080253601,0.405238538980484
+V0110,readmission_loop,"Features ward admission, release, and an extended duration ending with an ER return.",8.0,standard_admission_release,2.0,0.36517152190208435,0.4012237787246704
+V0111,acute_iv_treatment,"Mid-length pathway featuring IV fluids and antibiotics alongside blood panels, culminating in an admission evaluation.",3.0,standard_admission_release,1.0,0.3406863510608673,0.33357980847358704
+V0112,readmission_loop,"Involves admission, release, and a subsequent long-term return to the emergency room.",4.0,standard_admission_release,2.0,0.12144621461629868,0.3473641872406006
+V0113,acute_iv_treatment,"Mid-length pathway featuring IV intervention and blood tests, resolving quickly with release.",5.0,standard_admission_release,1.0,0.7293272614479065,0.2233854979276657
+V0114,standard_admission_release,Requires ward admission followed by multi-day observation and eventual release.,5.0,readmission_loop,3.0,0.12037086486816406,0.03807009384036064
+V0115,readmission_loop,Extremely long-duration pathway resulting in a return to the emergency room.,5.0,standard_admission_release,3.0,0.04382762685418129,0.38970836997032166
+V0116,readmission_loop,"Involves inpatient treatment, release, and an eventual return to the ER.",4.0,standard_admission_release,1.0,0.006528120953589678,0.35240885615348816
+V0117,readmission_loop,"Includes ward admission and release, followed by a return to the emergency room.",7.0,standard_admission_release,3.0,0.19024509191513062,0.33357277512550354
+V0118,standard_admission_release,Pathway requires ward admission followed by multi-day observation and successful release.,6.0,readmission_loop,3.0,0.032668884843587875,0.1149696633219719
+V0119,standard_admission_release,Involves ward admission followed by observation and successful release.,6.0,readmission_loop,3.0,0.0032889731228351593,0.13663245737552643
+V0120,readmission_loop,"Complex pathway involving admission and release, ultimately resulting in an ER return.",9.0,standard_admission_release,4.0,0.17077003419399261,0.4024234712123871
+V0121,readmission_loop,"Features inpatient stay and release, followed by a return to the ER after several weeks.",6.0,standard_admission_release,3.0,0.011134456843137741,0.3570151627063751
+V0122,standard_admission_release,"Pathway requires ward admission, multi-day observation, and eventual release.",4.0,readmission_loop,2.0,0.032812684774398804,0.11511345952749252
+V0123,readmission_loop,Long-duration repetitive pathway resulting in a return to the ER.,9.0,standard_admission_release,6.0,0.1350363940000534,0.3359651267528534
+V0124,readmission_loop,"Includes ward admission and release, ending with a return to the emergency room.",3.0,standard_admission_release,2.0,0.04980464652180672,0.333797425031662
+V0125,readmission_loop,Very long-duration pathway involving multiple admissions and ending in a return to the ER.,11.0,standard_admission_release,6.0,0.15497533977031708,0.3871457576751709
+V0126,readmission_loop,"The narrative features ward admission, multi-day stay, and concludes with a return to the emergency room (Return ER).",4.0,standard_admission_release,3.0,0.2747196555137634,0.3336634933948517
+V0127,acute_iv_treatment,"It is a mid-length pathway featuring IV fluids and antibiotics alongside blood work, resolving within hours.",4.0,standard_admission_release,2.0,0.6850506663322449,0.3333404064178467
+V0128,readmission_loop,"The pathway is very long-duration and complex, culminating in a Return ER event.",12.0,standard_admission_release,9.0,0.14212554693222046,0.3742959499359131
+V0129,readmission_loop,"This pathway spans an extended duration with multiple admissions and tests, eventually resulting in a Return ER.",19.0,standard_admission_release,12.0,0.16851522028446198,0.3525315821170807
+V0130,standard_admission_release,Requires ward admission (Admission NC) followed by multi-day observation and release (Release A).,4.0,readmission_loop,2.0,0.008126062341034412,0.14804749190807343
+V0131,readmission_loop,Includes inpatient admission followed by release and a subsequent Return ER.,7.0,standard_admission_release,3.0,0.38170698285102844,0.33534368872642517
+V0132,acute_iv_treatment,Resolves quickly within hours after administering IV antibiotics and fluids with initial blood panels.,4.0,rapid_triage_only,4.0,0.3609755039215088,0.3379305601119995
+V0133,acute_iv_treatment,"Features initial blood work and IV treatment, resolving in a few hours.",5.0,standard_admission_release,4.0,0.34526559710502625,0.3503265082836151
+V0134,readmission_loop,Features an extended multi-day stay with complications and ultimately a Return ER outcome.,16.0,standard_admission_release,8.0,0.19279222190380096,0.3384120464324951
+V0135,standard_admission_release,Involves admission to the ward (Admission NC) and subsequent release after a few days.,5.0,readmission_loop,3.0,0.014437061734497547,0.15435849130153656
+V0136,readmission_loop,Extremely long-duration pathway with repeated admissions and tests ending in Return ER.,20.0,standard_admission_release,11.0,0.14317472279071808,0.3690927028656006
+V0137,acute_iv_treatment,"Mid-length pathway featuring initial blood panels and IV antibiotics/fluids, resolving within hours.",5.0,standard_admission_release,2.0,0.6871301531791687,0.10903880000114441
+V0138,standard_admission_release,Involves ward admission (Admission NC) and multi-day observation ending in Release C.,4.0,readmission_loop,3.0,0.3349076509475708,0.3379143178462982
+V0139,standard_admission_release,"Involves intensive care and ward admission, multi-day observation, and release.",21.0,readmission_loop,11.0,0.17055557668209076,0.22492142021656036
+V0140,readmission_loop,Long-duration pathway resulting in a Return ER outcome.,6.0,standard_admission_release,4.0,0.15093235671520233,0.37685033679008484
+V0141,readmission_loop,Long duration path featuring multiple admissions and leading to Return ER.,9.0,standard_admission_release,7.0,0.13389526307582855,0.36606565117836
+V0142,standard_admission_release,"Involves admission to the ward (Admission NC), multi-day observation, and eventual release.",3.0,readmission_loop,2.0,0.007831408642232418,0.1320900321006775
+V0143,readmission_loop,Includes ward admission and concludes with a Return ER event.,4.0,standard_admission_release,3.0,0.04027065262198448,0.3334895074367523
+V0144,standard_admission_release,"Involves ward admission, multi-day monitoring, and final release.",4.0,readmission_loop,3.0,0.11189848184585571,0.028022950515151024
+V0145,readmission_loop,"Extremely repetitive, long-duration pathway spanning over a month with extensive rework.",108.0,standard_admission_release,47.0,0.45700645446777344,0.03063969500362873
+V0146,rapid_triage_only,"Short, fast-paced pathway completing within a couple of hours with initial tests and triage.",5.0,acute_iv_treatment,2.0,0.3662596046924591,0.21019303798675537
+V0147,standard_admission_release,Requires ward admission (Admission NC) followed by observation and release (Release B).,5.0,readmission_loop,4.0,0.44739261269569397,0.20264293253421783
+V0148,acute_iv_treatment,"Short pathway featuring IV fluids and antibiotics alongside blood panels, completing in a few hours.",1.0,rapid_triage_only,2.0,0.0,0.00506090372800827
+V0149,standard_admission_release,"Involves admission, multi-day observation, and eventual release.",4.0,readmission_loop,4.0,0.0017984500154852867,0.14171989262104034
+V0150,standard_admission_release,"Features ward admissions, multi-day observation, and eventual release (Release B).",8.0,readmission_loop,6.0,0.4615670144557953,0.20361113548278809
+V0151,readmission_loop,The pathway is long and results in a Return ER event after release following ward admission.,19.0,standard_admission_release,8.0,0.16730572283267975,0.3505380153656006
+V0152,standard_admission_release,Involves admission to the ward (Admission NC) and concludes with Release A.,8.0,rapid_triage_only,3.0,0.35613664984703064,0.2738358676433563
+V0153,standard_admission_release,Includes ward admission and ends with Release A after several days.,8.0,rapid_triage_only,3.0,0.33579373359680176,0.33757781982421875
+V0154,readmission_loop,Features an extended duration and results in a Return ER outcome.,5.0,standard_admission_release,3.0,0.19236063957214355,0.3379804790019989
+V0155,readmission_loop,Very long duration pathway ending in a Return ER.,5.0,standard_admission_release,3.0,0.15499113500118256,0.3809090852737427
+V0156,standard_admission_release,Features inpatient ward admission and concludes with Release A.,7.0,readmission_loop,1.0,0.3495783507823944,0.23478752374649048
+V0157,readmission_loop,Complex pathway culminating in a Return ER outcome.,8.0,standard_admission_release,5.0,0.020915741100907326,0.3377579152584076
+V0158,standard_admission_release,"Proceeds through ward admission and observation, ending in Release A.",6.0,readmission_loop,3.0,0.11803394556045532,0.021887488663196564
+V0159,standard_admission_release,Involves admission to the ward (Admission NC) and concludes with Release A.,5.0,readmission_loop,4.0,0.11837443709373474,0.021547002717852592
+V0160,readmission_loop,Involves multiple ward admissions and finishes with a Return ER outcome.,6.0,standard_admission_release,2.0,0.14540524780750275,0.3346841335296631
+V0161,readmission_loop,Extremely long duration pathway ending in Return ER.,4.0,standard_admission_release,3.0,0.16328103840351105,0.38919901847839355
+V0162,standard_admission_release,Requires ward admission followed by release (Release B).,4.0,readmission_loop,2.0,0.3479318916797638,0.07988143712282181
+V0163,readmission_loop,Extended duration ending in a Return ER event.,4.0,standard_admission_release,3.0,0.021049732342362404,0.36693045496940613
+V0164,readmission_loop,"Complex course with intensive care/ward stays, resulting in Return ER.",8.0,standard_admission_release,6.0,0.12117883563041687,0.3533492386341095
+V0165,standard_admission_release,"Involves ward admission and multi-day observation, ending in Release A.",7.0,acute_iv_treatment,1.0,0.3381442725658417,0.33992835879325867
+V0166,standard_admission_release,Includes ward admission and eventual release with Release A.,8.0,readmission_loop,5.0,0.11634081602096558,0.023580623790621758
+V0167,standard_admission_release,Requires intensive care admission followed by release (Release A).,8.0,readmission_loop,7.0,0.12238749116659164,0.20675338804721832
+V0168,readmission_loop,Long-duration pathway featuring intensive/ward admissions and ending with Return ER.,8.0,standard_admission_release,7.0,0.14228318631649017,0.3744535744190216
+V0169,standard_admission_release,Involves ward admission and subsequent release (Release A).,5.0,readmission_loop,1.0,0.12029615044593811,0.03799537569284439
+V0170,standard_admission_release,"Proceeds through ward admission and observation, concluding with Release B.",6.0,readmission_loop,4.0,0.3510781526565552,0.11222479492425919
+V0171,readmission_loop,Ends in a Return ER outcome after multi-day inpatient and outpatient monitoring.,8.0,standard_admission_release,5.0,0.04075121879577637,0.3339700698852539
+V0172,readmission_loop,"Complex, repetitive testing sequence culminating in Return ER.",15.0,standard_admission_release,7.0,0.02405117265880108,0.33462247252464294
+V0173,standard_admission_release,Involves ward admission and successfully finishes with Release A.,5.0,readmission_loop,5.0,0.010256116278469563,0.15017755329608917
+V0174,readmission_loop,Extremely repetitive and lengthy pathway resulting in Return ER.,46.0,standard_admission_release,19.0,0.11711952090263367,0.33727312088012695
+V0175,standard_admission_release,Requires ward admission and multi-day observation before release (Release A).,4.0,readmission_loop,2.0,0.11169593781232834,0.028225501999258995
+V0176,standard_admission_release,Pathway includes ward admission (Admission NC) and multi-day observation ending in Release A.,7.0,readmission_loop,6.0,0.0018092611571773887,0.1381121724843979
+V0177,standard_admission_release,Involves admission to the ward (Admission NC) followed by several days of care before Release A.,4.0,readmission_loop,4.0,0.11623553186655045,0.033934757113456726
+V0178,standard_admission_release,Contains ward admission (Admission NC) and multi-day observation resulting in Release A.,18.0,readmission_loop,6.0,0.14622966945171356,0.006308223586529493
+V0179,readmission_loop,Extended pathway involving admission and eventual Return ER after a long gap.,3.0,standard_admission_release,3.0,0.13917261362075806,0.36509057879447937
+V0180,readmission_loop,"Pathway features admission and release, subsequently followed by a Return ER event.",8.0,standard_admission_release,5.0,0.33627042174339294,0.38078024983406067
+V0181,,Involves admission and blood work but ends unusually with Leucocytes rather than a proper release or readmission event.,,standard_admission_release,4.0,,0.08425603061914444
+V0182,standard_admission_release,Longer inpatient observation with multiple ward admissions (Admission IC/NC) concluding with Release A.,16.0,readmission_loop,10.0,0.18321172893047333,0.09559860080480576
+V0183,readmission_loop,Features ward admissions and release followed by a Return ER event.,10.0,standard_admission_release,6.0,0.11449316889047623,0.3336470127105713
+V0184,standard_admission_release,Standard inpatient journey with Admission NC and final Release A.,5.0,readmission_loop,2.0,0.23420102894306183,0.1519002467393875
+V0185,standard_admission_release,"Inpatient path involving Admission NC and Admission IC, spanning multiple days and ending in Release A.",17.0,readmission_loop,11.0,0.19076168537139893,0.08804864436388016
+V0186,standard_admission_release,Pathway includes ward admission (Admission NC) and multi-day observation concluding with Release A.,6.0,readmission_loop,4.0,0.1794147938489914,0.12489179521799088
+V0187,rapid_triage_only,Short outpatient process ending quickly with basic triage and lab work without admission.,3.0,standard_admission_release,4.0,0.4100455045700073,0.09317597001791
+V0188,standard_admission_release,Pathway requires ward admission (Admission NC) and observation before Release A.,4.0,readmission_loop,4.0,0.23948661983013153,0.15718583762645721
+V0189,standard_admission_release,Inpatient stay with Admission NC and subsequent Release A.,3.0,readmission_loop,2.0,0.0029945739079266787,0.1429160088300705
+V0190,standard_admission_release,Includes ward admission (Admission NC) followed by days to Release A.,6.0,readmission_loop,2.0,0.1691223531961441,0.2534882128238678
+V0191,readmission_loop,"Involves admission, release, and a subsequent Return ER event.",9.0,standard_admission_release,5.0,0.012189138680696487,0.3336915969848633
+V0192,readmission_loop,"Long-duration pathway featuring admission, release, and an eventual Return ER.",4.0,standard_admission_release,1.0,0.169882670044899,0.3958006203174591
+V0193,standard_admission_release,Inpatient ward admission (Admission NC) followed by multi-day monitoring and Release A.,10.0,readmission_loop,5.0,0.021539507433772087,0.11838192492723465
+V0194,standard_admission_release,"Features IV treatments, ward admission (Admission NC), and multi-day recovery leading to Release A.",4.0,readmission_loop,2.0,0.010420232079923153,0.12950120866298676
+V0195,standard_admission_release,"Pathway includes IV interventions, ward admission (Admission NC), and eventual Release A.",7.0,readmission_loop,4.0,0.008442944847047329,0.1483643800020218
+V0196,readmission_loop,"Complex, very long-duration pathway concluding with a Return ER event.",29.0,standard_admission_release,17.0,0.18964128196239471,0.33526110649108887
+V0197,rapid_triage_only,Short outpatient workup completing within hours with initial lab tests and no admission.,1.0,standard_admission_release,2.0,0.39234232902526855,0.18411029875278473
+V0198,standard_admission_release,Inpatient pathway with ward admission (Admission NC) and final Release A.,6.0,acute_iv_treatment,2.0,0.34885546565055847,0.26655465364456177
+V0199,readmission_loop,Features an inpatient admission and release cycle followed by a Return ER event.,8.0,standard_admission_release,3.0,0.02119811438024044,0.3374755084514618
+V0200,readmission_loop,Inpatient admission and release pathway that ultimately results in a Return ER.,4.0,standard_admission_release,1.0,0.04074510931968689,0.33396396040916443
+V0201,readmission_loop,"This pathway results in a Return ER outcome after a long duration of 90 days with repeated lab monitoring and ward admission, fitting the readmission/extended complication pattern.",21.0,standard_admission_release,12.0,0.125308096408844,0.3574784994125366
+V0202,standard_admission_release,"The patient is admitted to the ward (Admission NC) and subsequently released with outcome Release A, which spans a duration of 3 days.",4.0,readmission_loop,2.0,0.021195165812969208,0.1611166000366211
+V0203,readmission_loop,"The pathway features a Return ER outcome after 17 days of observation and ward care, representing a readmission/extended complication path.",4.0,standard_admission_release,2.0,0.03395140543580055,0.333342045545578
+V0204,standard_admission_release,Involves inpatient ward admission (Admission NC) followed by eventual release (Release A) over 5 days.,3.0,readmission_loop,3.0,0.0,0.13992144167423248
+V0205,standard_admission_release,Longer inpatient stay with multiple ward admissions (Admission NC) concluding with a successful discharge (Release D).,20.0,readmission_loop,12.0,0.49092331528663635,0.09571164846420288
+V0206,standard_admission_release,"Features ward admission (Admission NC) with treatment, resolving via Release B over a couple of days.",7.0,acute_iv_treatment,1.0,0.6998996734619141,0.33684396743774414
+V0207,standard_admission_release,"Requires ward admission (Admission NC) alongside acute interventions, concluding with Release A.",4.0,readmission_loop,2.0,0.00872742012143135,0.14864885807037354
+V0208,standard_admission_release,"Inpatient pathway with multiple ward admissions (Admission NC) and subsequent monitoring, ending in Release A.",9.0,readmission_loop,5.0,0.11641377955675125,0.03411301225423813
+V0209,standard_admission_release,"Short inpatient admission pathway through Admission NC, ending successfully with Release A.",6.0,rapid_triage_only,3.0,0.35801294445991516,0.3542519807815552
+V0210,readmission_loop,Extended timeline of 110 days resulting in a Return ER outcome after initial admission and release.,5.0,standard_admission_release,4.0,0.019849270582199097,0.36573001742362976
+V0211,readmission_loop,Duration spans 47 days and ultimately leads to an emergency room return (Return ER).,4.0,standard_admission_release,1.0,0.004434216767549515,0.34144651889801025
+V0212,readmission_loop,"Path ends in a Return ER after 20 days, involving repeated admissions and prolonged care.",6.0,standard_admission_release,4.0,0.1411246359348297,0.33396613597869873
+V0213,readmission_loop,Patient experiences a readmission or return to ER (Return ER) following initial inpatient treatment and release.,8.0,standard_admission_release,4.0,0.3766550123691559,0.34039565920829773
+V0214,standard_admission_release,Standard inpatient pathway involving Admission NC and ending in Release A.,5.0,readmission_loop,2.0,0.015345331281423569,0.15526676177978516
+V0215,standard_admission_release,"Inpatient care pathway featuring ward admission and multi-day monitoring, concluding with Release A.",7.0,readmission_loop,6.0,0.02024191804230213,0.1196795180439949
+V0216,readmission_loop,Prolonged pathway of 54 days resulting in a Return ER outcome.,5.0,standard_admission_release,3.0,0.11161207407712936,0.33652809262275696
+V0217,rapid_triage_only,Short outpatient pathway concluding rapidly with initial triage and IV antibiotics administration without admission.,6.0,acute_iv_treatment,2.0,0.3380845785140991,0.0026350945699959993
+V0218,standard_admission_release,Requires intensive care ward admission (Admission IC) followed by release (Release B) within a couple of days.,13.0,readmission_loop,10.0,0.4800247251987457,0.01628837175667286
+V0219,rapid_triage_only,Extremely short pathway completing within hours of basic triage and lab tests without admission or treatment escalation.,1.0,standard_admission_release,2.0,0.4121969938278198,0.16907767951488495
+V0220,readmission_loop,Path takes 37 days and concludes with a Return ER event.,5.0,standard_admission_release,2.0,0.011615677736699581,0.3342650234699249
+V0221,standard_admission_release,Inpatient care sequence involving Admission NC and concluding with Release A.,6.0,readmission_loop,5.0,0.24562601745128632,0.302214115858078
+V0222,standard_admission_release,Multi-day inpatient monitoring requiring ward admission (Admission NC) and concluding with Release A.,9.0,readmission_loop,7.0,0.13080188632011414,0.009119548834860325
+V0223,standard_admission_release,Inpatient pathway featuring ward admission and subsequent release (Release A) over 9 days.,5.0,readmission_loop,2.0,0.23602360486984253,0.12612004578113556
+V0224,readmission_loop,Extremely long duration path (364 days) featuring a return to the emergency room (Return ER).,4.0,standard_admission_release,3.0,0.054502520710229874,0.40038323402404785
+V0225,standard_admission_release,Inpatient pathway featuring ward admission (Admission NC) and concluding with Release B.,7.0,rapid_triage_only,4.0,0.7048508524894714,0.33477380871772766
+V0226,standard_admission_release,The narrative includes ward admission (Admission NC) followed by multi-day observation and concludes with Release A.,6.0,readmission_loop,3.0,0.12164760380983353,0.03934682905673981
+V0227,readmission_loop,The pathway is complex and ends with a return to the emergency room (Return ER).,4.0,standard_admission_release,3.0,0.14059887826442719,0.3334403932094574
+V0228,standard_admission_release,Features inpatient ward admission (Admission NC) followed by multi-day observation and eventual successful release (Release A).,6.0,readmission_loop,4.0,0.23719702661037445,0.12494661659002304
+V0229,readmission_loop,The process extends to a readmission or return to the emergency room (Return ER).,5.0,standard_admission_release,3.0,0.06963566690683365,0.3333454132080078
+V0230,readmission_loop,Long-duration pathway resulting in a return to the emergency room (Return ER).,4.0,standard_admission_release,3.0,0.11539257317781448,0.33391904830932617
+V0231,readmission_loop,Extended pathway length over 150 days resulting in a Return ER outcome.,2.0,standard_admission_release,1.0,0.14142866432666779,0.3673466444015503
+V0232,acute_iv_treatment,"A short pathway featuring intravenous fluids and antibiotics alongside basic blood panels, resolving within an hour.",3.0,rapid_triage_only,2.0,0.03062336891889572,0.004081730730831623
+V0233,readmission_loop,Features repetitive steps and an extended duration ending with a Return ER outcome.,4.0,standard_admission_release,3.0,0.012843386270105839,0.3336293399333954
+V0234,rapid_triage_only,A short pathway ending quickly with basic triage and initial blood work without admission.,1.0,acute_iv_treatment,1.0,0.0008700560429133475,0.33620020747184753
+V0235,standard_admission_release,Includes ward admission (Admission NC) followed by treatment and subsequent release (Release A).,4.0,acute_iv_treatment,3.0,0.18652667105197906,0.27089253067970276
+V0236,standard_admission_release,Pathway requires ward admission (Admission NC) and multi-day observation before release.,6.0,readmission_loop,2.0,0.34699130058288574,0.2646905183792114
+V0237,readmission_loop,Complex pathway spanning multiple days and ending in a Return ER outcome.,6.0,standard_admission_release,3.0,0.15935148298740387,0.3344106376171112
+V0238,standard_admission_release,Requires ward admission (Admission NC) with observation and eventual successful release.,7.0,readmission_loop,3.0,0.12141647189855576,0.01850496232509613
+V0239,standard_admission_release,Features multiple ward admissions (Admission NC) and observation ending in Release C.,10.0,readmission_loop,6.0,0.49232879281044006,0.33454981446266174
+V0240,standard_admission_release,Includes inpatient admission (Admission NC) followed by observation and release.,4.0,readmission_loop,3.0,0.012252609245479107,0.15217404067516327
+V0241,readmission_loop,Long-duration pathway featuring complications and culminating in a Return ER outcome.,7.0,standard_admission_release,4.0,0.11719708889722824,0.33572354912757874
+V0242,readmission_loop,Very long-duration pathway over 100 days resulting in a Return ER outcome.,7.0,standard_admission_release,2.0,0.18888573348522186,0.3974165916442871
+V0243,readmission_loop,Extremely repetitive and long-duration path ending with a Return ER outcome.,26.0,standard_admission_release,15.0,0.22482331097126007,0.4033452570438385
+V0244,standard_admission_release,Involves ward admission (Admission NC) and multi-day monitoring leading to Release A.,7.0,readmission_loop,7.0,0.1161341592669487,0.023787276819348335
+V0245,standard_admission_release,Inpatient ward admission (Admission NC) followed by observation and eventual release.,14.0,readmission_loop,6.0,0.1420951783657074,0.002173741115257144
+V0246,standard_admission_release,Includes intensive care and ward admissions (Admission IC/NC) and observation ending in release.,10.0,readmission_loop,6.0,0.1150449886918068,0.1915431171655655
+V0247,standard_admission_release,Involves ward admissions (Admission NC) and observation culminating in Release B.,14.0,readmission_loop,8.0,0.5189949870109558,0.11840531975030899
+V0248,readmission_loop,"Complex, highly repetitive, and long-duration pathway resulting in patient readmission or Return ER.",12.0,standard_admission_release,7.0,0.13559477031230927,0.3677651882171631
+V0249,standard_admission_release,Pathway requires ward admission (Admission NC) followed by observation and release.,5.0,readmission_loop,3.0,0.028867855668067932,0.16878928244113922
+V0250,readmission_loop,Long-duration pathway spanning over 120 days that eventually results in a Return ER.,5.0,standard_admission_release,3.0,0.023172037675976753,0.3690527677536011
+V0251,readmission_loop,The pathway results in a Return ER outcome after a long duration of 87d involving multiple admissions and complications.,10.0,standard_admission_release,4.0,0.12413126230239868,0.3563016653060913
+V0252,standard_admission_release,Requires ward admission followed by multi-day observation and eventual successful release (Release A).,6.0,readmission_loop,4.0,0.11649931222200394,0.0234221164137125
+V0253,standard_admission_release,Involves admission to NC followed by multi-day observation and release A.,6.0,readmission_loop,3.0,0.3416164219379425,0.3617938756942749
+V0254,standard_admission_release,"Shows ward admissions, multi-day observation, and concludes with a successful release (Release D).",20.0,readmission_loop,11.0,0.5073776841163635,0.0874093770980835
+V0255,standard_admission_release,Features admission to NC followed by observation and release A over several days.,4.0,readmission_loop,3.0,0.11670994013547897,0.03440916910767555
+V0256,readmission_loop,Ends in a Return ER outcome after an extended duration of 97 days.,4.0,standard_admission_release,3.0,0.1273648589849472,0.3532828390598297
+V0257,standard_admission_release,Includes ward admission and multiple days of observation culminating in Release A.,12.0,readmission_loop,10.0,0.12031030654907227,0.18627779185771942
+V0258,standard_admission_release,"Proceeds with admission to NC, multi-day monitoring, and a final Release B.",9.0,readmission_loop,5.0,0.4460906982421875,0.052420735359191895
+V0259,standard_admission_release,Requires ward admission and several days of observation leading to Release A.,3.0,readmission_loop,3.0,0.0021090798545628786,0.13781236112117767
+V0260,acute_iv_treatment,A mid-length pathway featuring IV antibiotics and standard blood panels resolving within hours (5h) without admission.,3.0,rapid_triage_only,1.0,0.003681851550936699,0.00874275527894497
+V0261,readmission_loop,Complex long-duration pathway ending with a Return ER outcome.,7.0,standard_admission_release,5.0,0.002215833403170109,0.34366488456726074
+V0262,readmission_loop,Results in a Return ER outcome after an 18-day duration.,5.0,standard_admission_release,3.0,0.03310481831431389,0.3337962329387665
+V0263,readmission_loop,Extends over 63 days and concludes with a Return ER outcome.,4.0,standard_admission_release,3.0,0.003922604024410248,0.3498033285140991
+V0264,standard_admission_release,"Involves admission to the ward, observation, and successful release A.",4.0,readmission_loop,3.0,0.11122293025255203,0.028698498383164406
+V0265,readmission_loop,Spans 34 days and results in a Return ER outcome.,2.0,standard_admission_release,2.0,0.1805516481399536,0.38443508744239807
+V0266,standard_admission_release,"Requires ward admission, multi-day observation, and release A.",3.0,readmission_loop,3.0,0.12343195080757141,0.016489489004015923
+V0267,standard_admission_release,Features admission to the ward followed by multi-day monitoring and release A.,6.0,readmission_loop,4.0,0.12395045906305313,0.015970969572663307
+V0268,acute_iv_treatment,"Mid-length pathway with IV fluids, IV antibiotics, and blood panels resolving within 10 hours.",5.0,standard_admission_release,2.0,0.6924799084663391,0.14908649027347565
+V0269,readmission_loop,Long-duration pathway lasting 123 days and concluding with a Return ER outcome.,6.0,standard_admission_release,1.0,0.023151760920882225,0.36903247237205505
+V0270,readmission_loop,Extended duration of 96 days resulting in a Return ER outcome.,7.0,standard_admission_release,3.0,0.016111716628074646,0.3619924485683441
+V0271,standard_admission_release,"Involves admission, multi-day observation, and successful release B.",10.0,readmission_loop,7.0,0.45174169540405273,0.046769771724939346
+V0272,standard_admission_release,"Requires ward admission, observation over 12 days, and release A.",8.0,readmission_loop,4.0,0.021518945693969727,0.11840248852968216
+V0273,readmission_loop,Extremely repetitive and long-duration pathway (42 days) with numerous monitoring loops.,77.0,standard_admission_release,43.0,0.5077717900276184,0.041752103716135025
+V0274,standard_admission_release,Involves admission to NC followed by multi-day observation and eventual release C.,7.0,acute_iv_treatment,1.0,0.6972433924674988,0.34070172905921936
+V0275,standard_admission_release,"Requires ward admission, multi-day observation, and successful release A.",20.0,readmission_loop,14.0,0.11327451467514038,0.19764041900634766
+V0276,standard_admission_release,The narrative includes ward admission (Admission NC) followed by multi-day observation and successful release (Release A).,6.0,readmission_loop,3.0,0.014191769994795322,0.15411321818828583
+V0277,readmission_loop,"The pathway is long and complex, culminating in a return to the emergency room (Return ER).",14.0,standard_admission_release,8.0,0.15279240906238556,0.384962797164917
+V0278,standard_admission_release,The narrative features inpatient admission (Admission NC) and multi-day observation leading to Release A.,6.0,readmission_loop,5.0,0.006053885444998741,0.133867546916008
+V0279,readmission_loop,Involves ward admission followed by an eventual return to the emergency room (Return ER).,7.0,standard_admission_release,6.0,0.04333720728754997,0.3341047465801239
+V0280,readmission_loop,Long-duration pathway with ward admission and multiple blood tests ending in Return ER.,8.0,standard_admission_release,3.0,0.012829001992940903,0.3587097227573395
+V0281,standard_admission_release,Requires inpatient ward admission (Admission NC) followed by observation and Release A.,8.0,readmission_loop,8.0,0.01453226525336504,0.12538917362689972
+V0282,standard_admission_release,"Includes IV treatment and admission to the ward (Admission NC), concluding with Release A.",7.0,readmission_loop,3.0,0.006288583856076002,0.1336328536272049
+V0283,readmission_loop,"Complex, highly repetitive pathway with repeated admissions and blood tests leading to Return ER.",21.0,standard_admission_release,10.0,0.12750966846942902,0.33543023467063904
+V0284,readmission_loop,Long pathway featuring repeated ward admissions and an eventual return to the emergency room.,6.0,standard_admission_release,4.0,0.13422013819217682,0.36013808846473694
+V0285,readmission_loop,Repeated ward admissions and extensive rework loops classify this as an extended complication path.,10.0,standard_admission_release,4.0,0.48226308822631836,0.0002652652619872242
+V0286,standard_admission_release,"Direct pathway with IV antibiotics, ward admission (Admission NC), and release.",9.0,rapid_triage_only,3.0,0.33517158031463623,0.3369556665420532
+V0287,rapid_triage_only,Short triage and blood work pathway ending quickly without admission.,3.0,acute_iv_treatment,1.0,0.3405764102935791,0.00922070536762476
+V0288,readmission_loop,Inpatient admission pathway that eventually results in an ER return (Return ER).,6.0,standard_admission_release,3.0,0.04561590030789375,0.33374497294425964
+V0289,standard_admission_release,"Standard pathway featuring IV treatment, ward admission, and Release A.",4.0,acute_iv_treatment,2.0,0.028258098289370537,0.16817952692508698
+V0290,readmission_loop,Extremely long duration path resulting in Return ER.,6.0,standard_admission_release,5.0,0.1619197428226471,0.3878377377986908
+V0291,standard_admission_release,Features multiple admission steps and observation leading to Release A.,5.0,readmission_loop,4.0,0.2593994438648224,0.17709867656230927
+V0292,rapid_triage_only,Very short pathway completing within minutes with basic triage and blood work.,1.0,standard_admission_release,2.0,0.04569520428776741,0.3618764877319336
+V0293,standard_admission_release,Inpatient admission (Admission NC) with subsequent release (Release A).,6.0,readmission_loop,3.0,0.1792156845331192,0.2635815739631653
+V0294,standard_admission_release,"Standard sequence involving IV interventions, ward admission, and final release.",4.0,readmission_loop,3.0,0.1151570975780487,0.02476433664560318
+V0295,acute_iv_treatment,"Mid-length pathway featuring IV fluids, antibiotics, and standard blood work.",2.0,readmission_loop,2.0,0.053657982498407364,0.058718886226415634
+V0296,readmission_loop,Pathway involving ward admission and eventual Return ER.,3.0,standard_admission_release,3.0,0.16883866488933563,0.3335515260696411
+V0297,readmission_loop,Long-duration pathway resulting in a return to the emergency room.,2.0,standard_admission_release,2.0,0.01700274832546711,0.36288347840309143
+V0298,standard_admission_release,"Includes IV treatment, ward admission, and successful release.",4.0,readmission_loop,4.0,0.010617084801197052,0.15053851902484894
+V0299,standard_admission_release,Multi-day inpatient stay with blood work observation and eventual release.,11.0,readmission_loop,6.0,0.02229335345327854,0.1176280751824379
+V0300,readmission_loop,Very long duration and complex pathway resulting in Return ER.,16.0,standard_admission_release,10.0,0.2036067247390747,0.34922656416893005
+V0301,readmission_loop,"The pathway results in a return to the emergency room after an initial admission and release, fitting the readmission loop.",6.0,standard_admission_release,3.0,0.026101211085915565,0.33371493220329285
+V0302,rapid_triage_only,A very short pathway ending quickly at ER Sepsis Triage without any admission or treatment.,4.0,acute_iv_treatment,1.0,0.3466343879699707,0.3364960849285126
+V0303,readmission_loop,"Long duration pathway involving ward admission, treatment, release, and subsequent return to the ER.",7.0,standard_admission_release,3.0,0.12614063918590546,0.35205861926078796
+V0304,standard_admission_release,Involves ward admission (Admission NC) followed by multi-day observation and release.,5.0,readmission_loop,5.0,0.11284653097391129,0.030545761808753014
+V0305,acute_iv_treatment,"Mid-length pathway featuring acute blood work and IV antibiotics, resolving quickly within minutes/hours.",5.0,rapid_triage_only,1.0,0.06718098372220993,0.005613516550511122
+V0306,standard_admission_release,Requires ward admission followed by observation and release.,8.0,acute_iv_treatment,3.0,0.17405693233013153,0.24364227056503296
+V0307,readmission_loop,Results in return to the ER after a multi-day stay and release.,3.0,standard_admission_release,2.0,0.006850182544440031,0.3527309000492096
+V0308,readmission_loop,Features admission and subsequent return to the ER.,6.0,standard_admission_release,2.0,0.15310274064540863,0.33405211567878723
+V0309,acute_iv_treatment,"Features IV fluids and antibiotics alongside blood work, resolving in a few hours.",4.0,standard_admission_release,3.0,0.3443056046962738,0.3367060720920563
+V0310,standard_admission_release,Involves ward admission and multi-day observation before release.,5.0,readmission_loop,4.0,0.11430410295724869,0.03200333192944527
+V0311,readmission_loop,"Long pathway involving intensive care, ward admission, release, and return to the ER.",14.0,standard_admission_release,10.0,0.125859797000885,0.35803020000457764
+V0312,standard_admission_release,"Involves ward admission, multi-day observation, and final release.",8.0,readmission_loop,6.0,0.05172520503401756,0.13402597606182098
+V0313,standard_admission_release,Involves ward admission and eventual release.,6.0,readmission_loop,4.0,0.4508476257324219,0.3358316421508789
+V0314,standard_admission_release,Requires ward admission followed by multiple days of observation and release.,7.0,readmission_loop,7.0,0.46698451042175293,0.33409175276756287
+V0315,standard_admission_release,Involves ICU and ward admissions followed by multi-day observation and release.,26.0,readmission_loop,13.0,0.1612236052751541,0.18796885013580322
+V0316,standard_admission_release,Involves ward admission and multi-day observation ending in release.,6.0,readmission_loop,4.0,0.48169270157814026,0.3334403932094574
+V0317,readmission_loop,Extremely long and complex pathway culminating in a return to the ER.,158.0,standard_admission_release,70.0,0.20667028427124023,0.41241779923439026
+V0318,standard_admission_release,Involves multiple ward and ICU admissions followed by eventual successful release.,23.0,readmission_loop,12.0,0.15296369791030884,0.17970891296863556
+V0319,standard_admission_release,Requires ward admission and multi-day observation before final release.,11.0,readmission_loop,8.0,0.020193083211779594,0.11972835659980774
+V0320,readmission_loop,Very long duration pathway resulting in patient return to the ER.,2.0,standard_admission_release,3.0,0.2405533343553543,0.404492050409317
+V0321,readmission_loop,"Long-duration pathway involving admission, release, and subsequent return to the ER.",6.0,standard_admission_release,4.0,0.1742316484451294,0.34681519865989685
+V0322,acute_iv_treatment,"Mid-length pathway featuring IV fluids and antibiotics, resolving within an hour.",4.0,rapid_triage_only,2.0,0.043253038078546524,0.0026350945699959993
+V0323,standard_admission_release,Involves admission followed by a quick release.,7.0,rapid_triage_only,2.0,0.378671795129776,0.33359313011169434
+V0324,readmission_loop,Long-duration pathway ending in a return to the emergency room.,27.0,standard_admission_release,12.0,0.17790164053440094,0.3399420976638794
+V0325,acute_iv_treatment,"Short pathway involving IV fluids, blood work, and IV antibiotics, resolving within an hour.",3.0,rapid_triage_only,3.0,0.3702620267868042,0.33491361141204834
+V0326,standard_admission_release,This narrative includes hospital ward admission (Admission NC) followed by multi-day observation and eventually resolves with Release A.,5.0,readmission_loop,3.0,0.010032308287918568,0.14995373785495758
+V0327,readmission_loop,The pathway is long-duration and ends with a return to the emergency room (Return ER).,5.0,standard_admission_release,3.0,0.13617950677871704,0.3371082544326782
+V0328,readmission_loop,The pathway spans a long duration and culminates in an emergency room readmission (Return ER).,4.0,standard_admission_release,2.0,0.044117316603660583,0.38999804854393005
+V0329,standard_admission_release,This pathway involves inpatient admission (Admission NC) and multi-day observation before concluding with Release A.,16.0,readmission_loop,7.0,0.1396561712026596,0.0002652652619872242
+V0330,acute_iv_treatment,"Features administration of intravenous fluids and antibiotics alongside blood work, concluding within a short timeframe.",4.0,rapid_triage_only,1.0,0.38713929057121277,0.0009680844959802926
+V0331,standard_admission_release,Requires ward admission (Admission NC) with prolonged observation and eventual successful release (Release A).,14.0,readmission_loop,8.0,0.04128871113061905,0.12358948588371277
+V0332,standard_admission_release,Involves admission to the ward (Admission NC) followed by monitoring and release (Release B) within hours.,8.0,acute_iv_treatment,4.0,0.7277681827545166,0.3425661623477936
+V0333,standard_admission_release,"Features ward admission (Admission NC), multi-day monitoring, and final release (Release B).",13.0,readmission_loop,8.0,0.5046963095664978,0.13050569593906403
+V0334,readmission_loop,"Extended pathway involving multiple admissions and complications, ending in Return ER.",27.0,standard_admission_release,14.0,0.17905545234680176,0.33878830075263977
+V0335,readmission_loop,Path includes an initial release followed by an emergency room return (Return ER).,6.0,standard_admission_release,4.0,0.15299512445926666,0.3337486684322357
+V0336,acute_iv_treatment,"Mid-length pathway featuring IV fluids, IV antibiotics, and initial blood work, resolving in under a day.",5.0,standard_admission_release,1.0,0.7084527015686035,0.19464921951293945
+V0337,standard_admission_release,Requires admission to a care ward (Admission NC) followed by multi-day observation and Release A.,6.0,readmission_loop,3.0,0.011589896865189075,0.1515113264322281
+V0338,standard_admission_release,Involves ward admission (Admission NC) and multi-day observation before final release (Release A).,6.0,readmission_loop,4.0,0.11922011524438858,0.020701317116618156
+V0339,readmission_loop,"Complex, long-duration pathway that leads to a return to the emergency room (Return ER).",21.0,standard_admission_release,14.0,0.24978797137737274,0.40012574195861816
+V0340,standard_admission_release,Involves ward admission (Admission NC) followed by monitoring and final release (Release A).,5.0,readmission_loop,3.0,0.01319966558367014,0.15312109887599945
+V0341,standard_admission_release,Requires ward admission (Admission NC) followed by multi-day observation and Release A.,6.0,readmission_loop,4.0,0.11470868438482285,0.03240790590643883
+V0342,rapid_triage_only,"Short, fast-paced pathway consisting of initial triage and blood work panels, completing within hours without admission.",3.0,standard_admission_release,3.0,0.7311094403266907,0.17350775003433228
+V0343,standard_admission_release,"Includes inpatient ward admission (Admission NC) and multi-day observation, successfully concluding with Release A.",7.0,readmission_loop,3.0,0.1242372989654541,0.015684140846133232
+V0344,standard_admission_release,Involves hospital ward admission (Admission NC) followed by extended monitoring and release (Release B).,11.0,readmission_loop,4.0,0.3635295331478119,0.12467620521783829
+V0345,standard_admission_release,Features inpatient ward admission (Admission NC) and multi-day clinical observation before final release (Release A).,17.0,readmission_loop,11.0,0.20010684430599213,0.08796317130327225
+V0346,readmission_loop,Very long-duration and complex pathway resulting in a return to the emergency room (Return ER).,14.0,standard_admission_release,9.0,0.21349965035915375,0.3591195046901703
+V0347,readmission_loop,Extended duration pathway featuring multiple complications and an eventual return to the ER (Return ER).,11.0,standard_admission_release,6.0,0.03449539467692375,0.38037610054016113
+V0348,readmission_loop,Pathway features an initial hospital stay and release followed by a subsequent return to the emergency room.,6.0,standard_admission_release,4.0,0.18384946882724762,0.3335207402706146
+V0349,rapid_triage_only,Extremely short outpatient pathway ending quickly with triage and blood testing without any admission.,6.0,acute_iv_treatment,4.0,0.7495453953742981,0.33434319496154785
+V0350,readmission_loop,Long-duration pathway resulting in patient readmission or return to the emergency room (Return ER).,8.0,standard_admission_release,1.0,0.3581991493701935,0.39425143599510193
+V0351,standard_admission_release,The pathway involves ward admission (Admission NC) and successful release (Release A) after several days.,8.0,acute_iv_treatment,2.0,0.344266414642334,0.346050500869751
+V0352,readmission_loop,The pathway has a long duration with multiple admissions and ends with a return to the emergency room (Return ER).,6.0,standard_admission_release,3.0,0.12777216732501984,0.3351677358150482
+V0353,readmission_loop,This pathway spans over 180 days and ultimately results in a return to the emergency room (Return ER).,0.0,standard_admission_release,2.0,0.03482251986861229,0.38070324063301086
+V0354,standard_admission_release,The pathway includes ward admission and ends with Release A after multi-day observation.,17.0,readmission_loop,13.0,0.17076899111270905,0.10804132372140884
+V0355,standard_admission_release,"The case requires admission to the ward (Admission NC, Admission IC) followed by multi-day observation and Release A.",9.0,readmission_loop,4.0,0.16864334046840668,0.1101669892668724
+V0356,standard_admission_release,Includes ward admission and finishes successfully with Release A after sixteen days.,14.0,readmission_loop,5.0,0.1421840339899063,0.16892927885055542
+V0357,readmission_loop,"Involves ward admission and multi-day observation, ultimately leading to a return to the emergency room (Return ER).",4.0,standard_admission_release,3.0,0.11351663619279861,0.3394346237182617
+V0358,readmission_loop,The pathway shows an inpatient admission followed by a return to the emergency room (Return ER).,6.0,standard_admission_release,2.0,0.37499165534973145,0.34205901622772217
+V0359,readmission_loop,Features an inpatient admission and a lengthy course leading to a Return ER event.,4.0,standard_admission_release,3.0,0.019508657976984978,0.3653893768787384
+V0360,standard_admission_release,Includes ward admission (Admission NC) and finishes with Release A.,7.0,acute_iv_treatment,3.0,0.334547758102417,0.3339029848575592
+V0361,standard_admission_release,Follows a standard ward admission procedure ending in Release A.,5.0,readmission_loop,3.0,0.1321912407875061,0.049890462309122086
+V0362,standard_admission_release,Includes hospital admission and subsequent release after several days.,4.0,readmission_loop,2.0,0.004803874064236879,0.14472530782222748
+V0363,standard_admission_release,Requires ward admission followed by observation and release.,4.0,readmission_loop,3.0,0.010707507841289043,0.1506289392709732
+V0364,readmission_loop,Long-duration pathway with an inpatient admission that ends in a Return ER.,5.0,standard_admission_release,3.0,0.02221515029668808,0.36809587478637695
+V0365,,"The pathway ends with blood work (Leucocytes) rather than a clear admission, release, or ER return outcome.",,standard_admission_release,6.0,,0.058374062180519104
+V0366,readmission_loop,Inpatient admission pathway that eventually results in an ER return event.,6.0,standard_admission_release,3.0,0.03486030548810959,0.3342260420322418
+V0367,readmission_loop,Extended duration pathway with prolonged observations and a final Return ER outcome.,20.0,standard_admission_release,11.0,0.11496657878160477,0.33942604064941406
+V0368,,"This pathway terminates directly at Admission NC without showing any triage completion, intervention, or final release/return outcome.",,rapid_triage_only,1.0,,0.006206849589943886
+V0369,readmission_loop,Inpatient stay followed by a Return ER event after several days.,11.0,standard_admission_release,6.0,0.14699889719486237,0.33366504311561584
+V0370,readmission_loop,Extensive pathway spanning close to 100 days leading to a Return ER outcome.,6.0,standard_admission_release,5.0,0.12744374573230743,0.35961416363716125
+V0371,standard_admission_release,Involves ward admission followed by successful release (Release B).,7.0,acute_iv_treatment,3.0,0.7029959559440613,0.33374765515327454
+V0372,standard_admission_release,Standard multi-day inpatient pathway concluding with Release A.,16.0,readmission_loop,6.0,0.19412529468536377,0.08468502759933472
+V0373,standard_admission_release,Inpatient ward admission followed by observation and Release A.,6.0,readmission_loop,3.0,0.009158190339803696,0.1307632476091385
+V0374,,"The pathway halts at Leucocytes and does not complete a full admission, release, or readmission cycle.",,readmission_loop,2.0,,7.816903962520882e-05
+V0375,standard_admission_release,Features multiple ward admissions and multi-day observation ending in Release A.,12.0,readmission_loop,9.0,0.19374807178974152,0.08506224304437637
+V0376,standard_admission_release,"This narrative includes ward admission (Admission NC) and multi-day observation ending in release (Release C), matching standard inpatient admission and release.",7.0,readmission_loop,4.0,0.4801537096500397,0.33423948287963867
+V0377,standard_admission_release,The pathway features inpatient admission (Admission NC) followed by several days of observation and eventual release (Release A).,5.0,readmission_loop,5.0,0.002937379525974393,0.1428588181734085
+V0378,acute_iv_treatment,"This is a short pathway involving IV fluids, blood panels, and IV antibiotics, resolving within hours without admission.",2.0,rapid_triage_only,2.0,0.005552468355745077,0.0004915641620755196
+V0379,acute_iv_treatment,"This narrative represents a brief outpatient intervention with initial labs and IV antibiotics, finishing within hours.",3.0,rapid_triage_only,1.0,0.01676611229777336,0.009775525890290737
+V0380,standard_admission_release,Features standard admission to the ward (Admission NC) followed by multi-day recovery and release (Release A).,6.0,rapid_triage_only,2.0,0.3427259922027588,0.3445100784301758
+V0381,standard_admission_release,"Involves ward admission (Admission NC), multi-day care, and final release (Release A).",5.0,readmission_loop,1.0,0.12537509202957153,0.04307432472705841
+V0382,readmission_loop,"The pathway is long and complex, culminating in an emergency room return (Return ER).",4.0,standard_admission_release,3.0,0.15444163978099823,0.3336979150772095
+V0383,standard_admission_release,Includes ward admission (Admission NC) and subsequent release after a few days (Release A).,9.0,acute_iv_treatment,4.0,0.3513602018356323,0.3531443178653717
+V0384,standard_admission_release,Requires inpatient ward admission (Admission NC) with multi-day observation leading to release (Release B).,10.0,readmission_loop,7.0,0.467871755361557,0.03063969500362873
+V0385,readmission_loop,"Extended, repetitive duration pathway that concludes with a return to the emergency room (Return ER).",11.0,standard_admission_release,7.0,0.16145005822181702,0.33520781993865967
+V0386,readmission_loop,This is a very long-duration pathway extending over months and resulting in an emergency room return (Return ER).,3.0,standard_admission_release,3.0,0.014988929964601994,0.3608696460723877
+V0387,standard_admission_release,Features multiple ward admissions (Admission NC) and multi-day observation before final release (Release A).,7.0,readmission_loop,3.0,0.14119060337543488,0.001269170781597495
+V0388,standard_admission_release,Includes ward admission (Admission NC) followed by several days of monitoring and release (Release A).,7.0,readmission_loop,5.0,0.011730345897376537,0.1516517847776413
+V0389,standard_admission_release,Involves admission to the ward (Admission NC) and subsequent successful release (Release A).,6.0,acute_iv_treatment,2.0,0.3575500249862671,0.2752492129802704
+V0390,standard_admission_release,Shows ward admission (Admission NC) followed by multi-day observation and eventual release (Release B).,6.0,readmission_loop,4.0,0.4621572494506836,0.18787825107574463
+V0391,standard_admission_release,"Features intensive care and ward admission (Admission IC, Admission NC) with multi-day care and release (Release A).",6.0,readmission_loop,4.0,0.12009914964437485,0.20446503162384033
+V0392,standard_admission_release,Involves multiple ward admissions (Admission NC) and observation ending in release (Release A).,5.0,readmission_loop,2.0,0.24244330823421478,0.16014254093170166
+V0393,standard_admission_release,"Exhibits extended ward observation with multiple admission steps, ultimately concluding in release (Release B).",18.0,readmission_loop,9.0,0.47274670004844666,0.19243144989013672
+V0394,standard_admission_release,Includes ward admission (Admission NC) and multi-day follow-up before release (Release A).,6.0,readmission_loop,3.0,0.017977045848965645,0.15789848566055298
+V0395,standard_admission_release,Features ward admission (Admission NC) and multi-day monitoring leading to release (Release A).,5.0,readmission_loop,3.0,0.006066368892788887,0.13385505974292755
+V0396,standard_admission_release,Involves ward admission (Admission NC) followed by multi-day observation and release (Release A).,3.0,acute_iv_treatment,2.0,0.0015051988884806633,0.13841623067855835
+V0397,standard_admission_release,Shows ward admissions (Admission NC) and multi-day observation ending in final release (Release A).,6.0,readmission_loop,6.0,0.12385553866624832,0.0415547676384449
+V0398,readmission_loop,"Long-duration, complex pathway characterized by repeated interventions that ends in an emergency room return (Return ER).",17.0,standard_admission_release,6.0,0.13675029575824738,0.337074875831604
+V0399,standard_admission_release,"Despite a shorter duration than typical inpatient stays, this pathway includes ward admission (Admission NC) and ends in release (Release B).",7.0,rapid_triage_only,2.0,0.7736704349517822,0.3334716260433197
+V0400,standard_admission_release,Features ward admission (Admission NC) followed by multi-day observation and eventual release (Release A).,5.0,readmission_loop,2.0,0.1756306290626526,0.2599965035915375
+V0401,standard_admission_release,"This narrative includes ward admission (Admission NC) followed by multi-day monitoring and eventual release (Release B), fitting standard inpatient admission and release.",8.0,readmission_loop,4.0,0.3400893211364746,0.0877240002155304
+V0402,readmission_loop,"The pathway is long and concludes with a return to the emergency room (Return ER), indicating an extended complication and readmission path.",6.0,standard_admission_release,3.0,0.030915969982743263,0.376796692609787
+V0403,readmission_loop,"The pathway is prolonged and complex, featuring multiple readmissions or returns to the ER (Return ER).",6.0,standard_admission_release,3.0,0.2174549698829651,0.3340376913547516
+V0404,readmission_loop,A very long-duration pathway that finishes with a return to the emergency room (Return ER).,6.0,standard_admission_release,3.0,0.15119682252407074,0.37711477279663086
+V0405,standard_admission_release,The patient is admitted to the ward (Admission NC) and eventually successfully released (Release A).,4.0,readmission_loop,4.0,0.027999194338917732,0.16792063415050507
+V0406,standard_admission_release,The pathway includes an inpatient admission (Admission NC) and concludes with a successful release (Release A).,5.0,readmission_loop,2.0,0.1780501753091812,0.2624160647392273
+V0407,standard_admission_release,The case involves admission to intensive care (Admission IC) and subsequent multi-day observation ending in release (Release B).,7.0,readmission_loop,5.0,0.3700188100337982,0.057794537395238876
+V0408,readmission_loop,The narrative covers an extended timeline that eventually terminates with a return to the emergency room (Return ER).,2.0,standard_admission_release,3.0,0.021960154175758362,0.3367134630680084
+V0409,readmission_loop,The process spans a long duration and ends with a return to the emergency room (Return ER).,4.0,standard_admission_release,1.0,0.13300015032291412,0.35891810059547424
+V0410,standard_admission_release,The sequence involves admission (Admission NC) and multi-day observation ending in release (Release D).,4.0,acute_iv_treatment,2.0,0.33531391620635986,0.22354330122470856
+V0411,readmission_loop,This is a complex and repetitive pathway resulting in a return to the emergency room (Return ER).,8.0,standard_admission_release,6.0,0.49531975388526917,0.1273200362920761
+V0412,readmission_loop,The long-duration pathway includes repetitive checks and concludes with a return to the emergency room (Return ER).,10.0,standard_admission_release,5.0,0.007793121039867401,0.3380875885486603
+V0413,readmission_loop,This extended pathway results in a return to the emergency room (Return ER).,7.0,rapid_triage_only,3.0,0.37081781029701233,0.4068700969219208
+V0414,readmission_loop,The extended pathway results in a return to the emergency room (Return ER).,4.0,standard_admission_release,3.0,0.010164332576096058,0.3357163965702057
+V0415,acute_iv_treatment,"This is a short pathway featuring IV fluids, antibiotics, and basic blood panels, resolving quickly.",3.0,standard_admission_release,1.0,0.33908477425575256,0.3340238630771637
+V0416,standard_admission_release,The patient is admitted to the ward (Admission NC) and successfully released (Release A).,7.0,readmission_loop,1.0,0.3681950569152832,0.34406986832618713
+V0417,rapid_triage_only,A very short pathway ending quickly with initial triage and blood work without admission.,4.0,acute_iv_treatment,1.0,0.6692706942558289,0.6712097525596619
+V0418,readmission_loop,The prolonged pathway involves multiple checks and concludes with a return to the emergency room (Return ER).,2.0,standard_admission_release,3.0,0.0,0.3458807170391083
+V0419,standard_admission_release,Involves ward admission (Admission NC) and multi-day observation followed by successful release (Release A).,5.0,readmission_loop,2.0,0.002229053992778063,0.1376923769712448
+V0420,standard_admission_release,The patient is admitted to the ward (Admission NC) and eventually released (Release A).,7.0,readmission_loop,3.0,0.3450256884098053,0.262724906206131
+V0421,standard_admission_release,The pathway requires ward admission (Admission NC) followed by several days of observation and eventual release (Release B).,10.0,readmission_loop,6.0,0.44892263412475586,0.21006929874420166
+V0422,readmission_loop,A highly repetitive and long-duration pathway that concludes with a return to the emergency room (Return ER).,10.0,standard_admission_release,6.0,0.15026085078716278,0.3824312686920166
+V0423,standard_admission_release,The sequence involves ward admission (Admission NC) followed by multi-day observation and eventual release (Release C).,7.0,readmission_loop,6.0,0.4897799491882324,0.33396363258361816
+V0424,readmission_loop,The pathway involves an initial admission followed by an eventual return to the emergency room (Return ER).,7.0,standard_admission_release,3.0,0.3767540156841278,0.34070172905921936
+V0425,standard_admission_release,The pathway includes ward admission (Admission NC) and multi-day observation ending in release (Release A).,4.0,readmission_loop,1.0,0.00028532897704280913,0.14020676910877228
+V0426,standard_admission_release,The narrative includes ward admission (Admission NC) followed by multiple days of observation and eventually Release C.,6.0,readmission_loop,4.0,0.45424890518188477,0.33423635363578796
+V0427,readmission_loop,"The pathway involves ward admission, release, and a subsequent Return ER after an extended duration.",9.0,standard_admission_release,4.0,0.13104814291000366,0.356966108083725
+V0428,standard_admission_release,Features ward admission (Admission NC) and concludes with Release C after several days.,11.0,readmission_loop,7.0,0.3432140648365021,0.3364005982875824
+V0429,acute_iv_treatment,"A short pathway featuring initial labs, IV antibiotics, and ending within a couple of hours without admission.",5.0,rapid_triage_only,1.0,0.01802394725382328,0.008517690934240818
+V0430,standard_admission_release,Includes inpatient ward admission (Admission NC) and ends with Release A.,7.0,readmission_loop,5.0,0.11840271949768066,0.18818537890911102
+V0431,standard_admission_release,Involves admission to the ward (Admission NC) followed by multi-day observation and Release A.,4.0,readmission_loop,2.0,0.008028007112443447,0.1479494422674179
+V0432,standard_admission_release,Features intensive care ward admission (Admission IC) and concludes with Release B.,13.0,readmission_loop,9.0,0.4927658140659332,0.003547282889485359
+V0433,standard_admission_release,Contains inpatient admission (Admission NC) and concludes with Release C.,6.0,readmission_loop,3.0,0.5247648358345032,0.34123948216438293
+V0434,standard_admission_release,Involves ward admission (Admission NC) followed by observation and Release A.,3.0,readmission_loop,3.0,0.123954176902771,0.015967262908816338
+V0435,readmission_loop,Complex long-duration pathway featuring multiple admissions and a final Return ER.,35.0,standard_admission_release,18.0,0.18338602781295776,0.33445772528648376
+V0436,standard_admission_release,Requires ward admission (Admission NC) and multi-day observation before Release B.,9.0,readmission_loop,5.0,0.4711458683013916,0.1940322369337082
+V0437,readmission_loop,"Features intensive care admission, release D, and a subsequent return to the ER.",33.0,standard_admission_release,16.0,0.14321251213550568,0.3346395790576935
+V0438,standard_admission_release,Includes ward admission (Admission NC) and subsequent release (Release A).,10.0,readmission_loop,5.0,0.0248879324644804,0.11503350734710693
+V0439,standard_admission_release,Involves ward admission (Admission NC) and multi-day inpatient treatment followed by Release A.,29.0,readmission_loop,14.0,0.054081618785858154,0.13638238608837128
+V0440,readmission_loop,"Long-duration pathway with inpatient stay, release, and a Return ER event.",9.0,standard_admission_release,5.0,0.1691463589668274,0.34869739413261414
+V0441,readmission_loop,Extremely long duration pathway ending in a Return ER.,3.0,standard_admission_release,3.0,0.056983619928359985,0.40286433696746826
+V0442,readmission_loop,"Involves ward admission, release, and a subsequent Return ER after an extended duration.",6.0,standard_admission_release,4.0,0.12615977227687836,0.3520777225494385
+V0443,readmission_loop,Features an inpatient admission and release followed by a Return ER.,4.0,standard_admission_release,2.0,0.005319103132933378,0.3405616283416748
+V0444,standard_admission_release,Involves ward admission (Admission NC) and eventual Release C.,10.0,readmission_loop,5.0,0.3457367718219757,0.33387789130210876
+V0445,standard_admission_release,Includes ward admission (Admission NC) and subsequent Release A.,5.0,readmission_loop,3.0,0.11496453732252121,0.03266375884413719
+V0446,standard_admission_release,Requires ward admission (Admission NC) and multi-day observation before Release A.,6.0,readmission_loop,3.0,0.11269871145486832,0.030397936701774597
+V0447,readmission_loop,"Path featuring ward admission, release, and an eventual Return ER.",9.0,standard_admission_release,5.0,0.02648920752108097,0.3723699152469635
+V0448,readmission_loop,Complex pathway with intensive care / ward admissions and a subsequent Return ER.,10.0,standard_admission_release,7.0,0.1324613094329834,0.3646317422389984
+V0449,readmission_loop,"Long-duration pathway with admission, release, and a Return ER event.",6.0,standard_admission_release,4.0,0.1682366132736206,0.4004070460796356
+V0450,standard_admission_release,Includes ward admission (Admission NC) followed by observation and Release A.,4.0,readmission_loop,2.0,0.0009537968435324728,0.1389676332473755
+V0451,standard_admission_release,This narrative involves ward admission (Admission NC) followed by observation and successful release (Release A).,7.0,readmission_loop,2.0,0.33666446805000305,0.24770140647888184
+V0452,standard_admission_release,"This narrative involves multiple admissions (Admission NC/IC), multi-day observation, and successful release (Release A).",26.0,readmission_loop,13.0,0.20096959173679352,0.08882591873407364
+V0453,readmission_loop,This pathway involves an inpatient stay leading to release followed by a return to the emergency room (Return ER).,10.0,standard_admission_release,4.0,0.13626816868782043,0.3371969163417816
+V0454,readmission_loop,"The narrative features ward admission, IV treatment, and an eventual return to the ER after a long delay.",4.0,standard_admission_release,2.0,0.1286201924085617,0.3545381724834442
+V0455,standard_admission_release,"The narrative includes IV antibiotics, ward admission, and concludes with Release A over several days.",1.0,readmission_loop,1.0,0.13346581161022186,0.006455620750784874
+V0456,standard_admission_release,"The narrative contains IV intervention, admission to NC, and successful release (Release A).",5.0,readmission_loop,3.0,0.12324284762144089,0.04094206914305687
+V0457,standard_admission_release,This pathway features ward and intensive care admissions alongside IV antibiotics and multi-day monitoring ending in Release A.,17.0,readmission_loop,14.0,0.19536030292510986,0.08345001935958862
+V0458,readmission_loop,The pathway includes admission and release followed by a Return ER event.,7.0,standard_admission_release,3.0,0.17848564684391022,0.38701650500297546
+V0459,standard_admission_release,"The narrative covers IV treatment, ward admission, multi-day lab checks, and final release.",6.0,readmission_loop,5.0,0.11924955993890762,0.020671870559453964
+V0460,readmission_loop,"Following admission and release, the patient experiences a Return ER event.",1.0,standard_admission_release,2.0,0.1575019657611847,0.33342909812927246
+V0461,standard_admission_release,"This narrative includes IV liquids and antibiotics, admission to NC, and final release.",6.0,readmission_loop,3.0,0.11814412474632263,0.03584335371851921
+V0462,acute_iv_treatment,"The pathway is short (12 hours) and features IV fluids, antibiotics, and blood panels without inpatient ward admission.",3.0,standard_admission_release,1.0,0.6969738602638245,0.18317042291164398
+V0463,readmission_loop,The pathway contains an admission and release followed by a Return ER event.,7.0,acute_iv_treatment,2.0,0.3502037227153778,0.38625597953796387
+V0464,readmission_loop,"The narrative features ward admissions, lab tests, and concludes with a Return ER event after a long duration.",6.0,standard_admission_release,3.0,0.1879405975341797,0.33356043696403503
+V0465,standard_admission_release,"This short-duration pathway includes IV treatments, ward admission, and release.",8.0,readmission_loop,5.0,0.01462460309267044,0.15454603731632233
+V0466,standard_admission_release,"The sequence involves multiple ward admissions, IV fluids and antibiotics, and final release.",5.0,readmission_loop,3.0,0.14136499166488647,0.0014435508055612445
+V0467,readmission_loop,"Following ward admission and release, the patient returns to the ER.",5.0,standard_admission_release,3.0,0.14776110649108887,0.3334338366985321
+V0468,readmission_loop,"The narrative includes ward admission and release, followed by an ER return.",7.0,standard_admission_release,4.0,0.049394186586141586,0.33338698744773865
+V0469,readmission_loop,This multi-day sequence involves ward admissions and a subsequent Return ER.,6.0,standard_admission_release,5.0,0.1403624564409256,0.3334627151489258
+V0470,standard_admission_release,"The pathway includes IV intervention, ward admission, and concludes with Release D.",3.0,readmission_loop,2.0,0.33647581934928894,0.22866636514663696
+V0471,standard_admission_release,"The narrative contains IV treatment, ward admission, and successful release (Release A).",5.0,readmission_loop,2.0,0.012996010482311249,0.15291744470596313
+V0472,standard_admission_release,"This sequence features IV treatments, ward admission, and release (Release A).",5.0,readmission_loop,3.0,0.008840941824018955,0.14876237511634827
+V0473,readmission_loop,"The narrative includes a ward admission and release, which then loops back to a Return ER event.",6.0,standard_admission_release,3.0,0.052795782685279846,0.3340323865413666
+V0474,readmission_loop,"The narrative features ward admission, release, and an extended complication path resulting in Return ER.",4.0,standard_admission_release,2.0,0.03396235778927803,0.3798430860042572
+V0475,standard_admission_release,"This sequence involves ward admission, multi-day observation, and concludes with Release A.",2.0,readmission_loop,3.0,0.0031238861847668886,0.13679754734039307
+V0476,readmission_loop,"The pathway includes ward admission and multiple monitoring events over a longer duration, ending with a return to the emergency room.",4.0,standard_admission_release,4.0,0.18386846780776978,0.41552188992500305
+V0477,standard_admission_release,Features ward admission (Admission NC) followed by several days of observation and eventually Release A.,5.0,readmission_loop,5.0,0.11649402230978012,0.023427419364452362
+V0478,standard_admission_release,Involves admission to the ward (Admission NC) with subsequent multi-day observation and release.,8.0,readmission_loop,4.0,0.11703306436538696,0.03473229333758354
+V0479,readmission_loop,"Includes ward admission and observation, ultimately resulting in a return to the emergency room (Return ER).",4.0,standard_admission_release,2.0,0.05018136277794838,0.33417415618896484
+V0480,standard_admission_release,Follows standard inpatient admission (Admission NC) with ongoing labs and final release.,6.0,readmission_loop,4.0,0.007227100431919098,0.1326943337917328
+V0481,standard_admission_release,Demonstrates ward admission followed by multi-day observation and successful release.,9.0,readmission_loop,5.0,0.13219520449638367,0.007726229727268219
+V0482,readmission_loop,Contains ward admission and observation leading to an eventual return to the ER.,7.0,standard_admission_release,4.0,0.15342986583709717,0.3333527147769928
+V0483,standard_admission_release,"Longer inpatient stay with multiple ward admissions and monitoring sessions, culminating in Release B.",29.0,readmission_loop,13.0,0.4986813962459564,0.16683661937713623
+V0484,readmission_loop,"Extended duration pathway with ward admission and multiple blood tests, ending in a return to the ER.",7.0,standard_admission_release,5.0,0.17025555670261383,0.3507913053035736
+V0485,standard_admission_release,Extended pathway involving ward admissions (NC/IC) and multi-day observation before release.,22.0,readmission_loop,15.0,0.1911289095878601,0.08768142014741898
+V0486,standard_admission_release,Inpatient admission pathway spanning multiple days with frequent tests and final release D.,11.0,readmission_loop,7.0,0.47864198684692383,0.10799303650856018
+V0487,standard_admission_release,"Features ward admission, blood panels, observation, and final release.",7.0,readmission_loop,4.0,0.18602366745471954,0.09278666228055954
+V0488,acute_iv_treatment,"Short-duration pathway featuring IV fluids, antibiotics, and initial blood work without ward admission.",3.0,rapid_triage_only,2.0,0.35567402839660645,0.02226216532289982
+V0489,standard_admission_release,Includes initial workup and IV treatments followed by standard ward admission and release.,9.0,acute_iv_treatment,3.0,0.3338100016117096,0.33559414744377136
+V0490,standard_admission_release,"Involves ward admission, intermediate lab tests, and release over a multi-day span.",6.0,readmission_loop,4.0,0.17003072798252106,0.11550772190093994
+V0491,standard_admission_release,"Standard inpatient path with IV treatment, ward admission, and subsequent release.",5.0,readmission_loop,2.0,0.012925173155963421,0.15284661948680878
+V0492,acute_iv_treatment,"Rapid course administered entirely in an outpatient/ER setting with IV antibiotics and IV liquid, concluding within a day without admission.",6.0,standard_admission_release,3.0,0.717240571975708,0.33381107449531555
+V0493,standard_admission_release,Ward admission followed by several days of testing and eventual release (Release B).,5.0,acute_iv_treatment,4.0,0.3512403666973114,0.11238700896501541
+V0494,standard_admission_release,Pathway with IV therapy followed by inpatient admission and multiple days of monitoring before release.,7.0,readmission_loop,3.0,0.003653316991403699,0.13626812398433685
+V0495,rapid_triage_only,"Very short-duration pathway (hours) focusing strictly on initial triage, lab work, and IV intervention without admission.",5.0,acute_iv_treatment,2.0,0.3789118230342865,5.2188017434673384e-05
+V0496,standard_admission_release,"Involves ER care, IV intervention, ward admission, and multi-day monitoring leading to release.",6.0,readmission_loop,4.0,0.11115928739309311,0.1955251693725586
+V0497,readmission_loop,Path ends with a return to the emergency room following initial admission and release.,8.0,standard_admission_release,3.0,0.396679550409317,0.3354016840457916
+V0498,standard_admission_release,"Extended inpatient stay featuring ward admission, frequent lab evaluations, and final release D.",10.0,readmission_loop,6.0,0.3719351291656494,0.186922088265419
+V0499,standard_admission_release,"Includes ER triage, IV medication, ward admission, and multiple days of observation before release.",6.0,readmission_loop,4.0,0.12164857238531113,0.03934779390692711
+V0500,standard_admission_release,"Consists of initial triage, IV treatments, ward admission, and subsequent release.",7.0,readmission_loop,4.0,0.18038536608219147,0.26475122570991516
+V0501,standard_admission_release,"The narrative includes admission to the ward (Admission NC) followed by IV Liquid, representing an inpatient admission pathway.",8.0,acute_iv_treatment,2.0,0.7132329940795898,0.0009680844959802926
+V0502,acute_iv_treatment,"The pathway features acute administration of IV fluids and antibiotics along with standard labs, culminating in admission NC within a few hours.",3.0,rapid_triage_only,1.0,0.33665621280670166,0.3417171239852905
+V0503,standard_admission_release,Features ward admission (Admission NC) and concludes with successful release (Release B) after observation.,8.0,acute_iv_treatment,1.0,0.7145790457725525,0.33354461193084717
+V0504,readmission_loop,This long-duration pathway involves multi-day observation and eventually leads to a return to the emergency room (Return ER).,4.0,standard_admission_release,2.0,0.021653249859809875,0.3370203971862793
+V0505,readmission_loop,Extended duration pathway with repeat lab work and a final outcome of Return ER.,2.0,standard_admission_release,1.0,0.010074296034872532,0.35595500469207764
+V0506,standard_admission_release,Inpatient admission (Admission NC) followed by multi-day observation and eventual release (Release A).,4.0,readmission_loop,1.0,0.010582557879388332,0.1505039930343628
+V0507,acute_iv_treatment,"Short pathway featuring IV liquid and IV antibiotics administration, resolving within hours.",3.0,rapid_triage_only,2.0,0.006575766485184431,0.0015148621750995517
+V0508,readmission_loop,"Complex, long-duration pathway spanning multiple days with repeated labs, ending in a Return ER.",9.0,standard_admission_release,5.0,0.012840673327445984,0.35872137546539307
+V0509,standard_admission_release,Inpatient admission followed by ward care and final release (Release A) over several days.,5.0,readmission_loop,1.0,0.0028977205511182547,0.14281915128231049
+V0510,rapid_triage_only,"A very fast-paced pathway completing within a couple of hours with basic initial blood work and IV antibiotics, without admission.",2.0,acute_iv_treatment,1.0,0.3574310541152954,0.002677004085853696
+V0511,standard_admission_release,Inpatient admission (Admission NC) followed by multi-day observation and release (Release A).,11.0,readmission_loop,8.0,0.20234107971191406,0.09019742161035538
+V0512,standard_admission_release,"Pathway requiring ward admission and multi-day observation, concluding with Release A.",9.0,readmission_loop,4.0,0.12041182070970535,0.03811104968190193
+V0513,standard_admission_release,Involves admission NC and subsequent multi-day observation leading to a successful release.,6.0,readmission_loop,3.0,0.1282290369272232,0.04592825844883919
+V0514,standard_admission_release,Requires ward admission followed by multi-day observation and final release (Release A).,12.0,readmission_loop,4.0,0.13927040994167328,0.0006510278326459229
+V0515,readmission_loop,"Very long-duration pathway with repeated admissions/labs, concluding with an emergency room return.",8.0,standard_admission_release,4.0,0.12603449821472168,0.351952463388443
+V0516,rapid_triage_only,Short outpatient workup ending quickly with basic triage and lab panels within three hours.,7.0,acute_iv_treatment,6.0,0.37181058526039124,0.1273200362920761
+V0517,rapid_triage_only,Very short triage process completing in under an hour with basic blood tests.,2.0,standard_admission_release,2.0,0.6739336848258972,0.6667860150337219
+V0518,standard_admission_release,Includes ward admission (Admission NC) followed by observation and release (Release A).,4.0,readmission_loop,4.0,0.026469573378562927,0.1663910150527954
+V0519,readmission_loop,"Extended pathway spanning multiple days with multiple interventions, resulting in a Return ER.",3.0,standard_admission_release,2.0,0.15964873135089874,0.33411335945129395
+V0520,readmission_loop,Multi-day pathway resulting in an emergency room return (Return ER).,3.0,standard_admission_release,2.0,0.2779570519924164,0.3362405598163605
+V0521,standard_admission_release,Inpatient admission (Admission NC) followed by multi-day observation and eventual release.,6.0,readmission_loop,5.0,0.11388504505157471,0.026036391034722328
+V0522,standard_admission_release,Pathway requiring ward admission (Admission NC) followed by multi-day observation and eventual release (Release B).,19.0,readmission_loop,9.0,0.5308533310890198,0.1065470352768898
+V0523,standard_admission_release,Requires inpatient ward admission followed by multi-day observation and successful release.,6.0,readmission_loop,4.0,0.1763702780008316,0.10244005173444748
+V0524,standard_admission_release,Inpatient admission path featuring ward observation and final release (Release A).,3.0,readmission_loop,3.0,0.00629024812951684,0.13363118469715118
+V0525,standard_admission_release,Involves inpatient ward admission followed by multi-day observation and release (Release A).,3.0,readmission_loop,2.0,0.17270787060260773,0.24499134719371796
+V0526,readmission_loop,"The pathway includes ward admission and multi-day observation followed by a Return ER outcome after a long duration, characteristic of a readmission/complication loop.",5.0,standard_admission_release,3.0,0.1569514274597168,0.3828693926334381
+V0527,standard_admission_release,The pathway features ward admission (Admission NC) followed by multi-day observation and eventual successful release (Release A).,8.0,readmission_loop,6.0,0.17005020380020142,0.10876012593507767
+V0528,readmission_loop,"The pathway is extended in duration and terminates in a Return ER outcome, fitting the readmission loop category.",10.0,standard_admission_release,7.0,0.17799556255340576,0.3430512845516205
+V0529,readmission_loop,"The narrative includes ward admission followed by release and an eventual Return ER outcome, realizing the readmission loop category.",5.0,standard_admission_release,3.0,0.03704383596777916,0.38292455673217773
+V0530,readmission_loop,"The pathway includes ward admission and release followed by a Return ER outcome, marking an extended complication/readmission path.",6.0,standard_admission_release,5.0,0.1128460094332695,0.338763952255249
+V0531,readmission_loop,"The pathway involves ward admissions and concludes with a Return ER outcome, fitting the readmission loop pattern.",8.0,standard_admission_release,6.0,0.21658062934875488,0.34452512860298157
+V0532,standard_admission_release,The pathway requires ward admission (Admission NC) followed by several days of observation and eventual release (Release A).,4.0,readmission_loop,3.0,0.005830546375364065,0.13409088551998138
+V0533,standard_admission_release,The narrative includes ward admission (Admission NC) followed by multi-day observation and a successful release (Release A).,4.0,readmission_loop,2.0,0.0172884501516819,0.12263298034667969
+V0534,standard_admission_release,The pathway includes ward admission (Admission NC) followed by observation and successful release (Release A).,4.0,readmission_loop,3.0,0.11771109700202942,0.0354103185236454
+V0535,readmission_loop,"The narrative involves ward admission, observation, release, and an eventual Return ER outcome, fitting the readmission loop.",8.0,standard_admission_release,3.0,0.01733858697116375,0.363219290971756
+V0536,standard_admission_release,The pathway features ward admission (Admission NC) and multi-day observation ending in a successful release (Release A).,4.0,readmission_loop,3.0,0.11671999096870422,0.0344192199409008
+V0537,standard_admission_release,The narrative includes ward admission (Admission NC) followed by observation and final release (Release A).,9.0,readmission_loop,4.0,0.010280869901180267,0.15020230412483215
+V0538,standard_admission_release,The pathway involves multiple ward admissions followed by multi-day observation and final successful release (Release A).,13.0,readmission_loop,8.0,0.1451161652803421,0.005194725468754768
+V0539,readmission_loop,"The narrative includes ward admission and release, subsequently resulting in a Return ER outcome.",5.0,standard_admission_release,3.0,0.14021657407283783,0.33360859751701355
+V0540,standard_admission_release,The pathway features ward admission followed by observation and eventual release (Release B).,5.0,readmission_loop,4.0,0.4592236578464508,0.1908118724822998
+V0541,standard_admission_release,The narrative requires ward admission (Admission NC) followed by observation and release (Release A).,6.0,acute_iv_treatment,2.0,0.3474003076553345,0.34918439388275146
+V0542,standard_admission_release,The pathway includes intensive care and ward admissions followed by observation and successful release (Release A).,8.0,readmission_loop,6.0,0.11425187438726425,0.19861777126789093
+V0543,readmission_loop,"The narrative is a complex, long-duration pathway that results in a Return ER outcome.",20.0,standard_admission_release,14.0,0.13871218264102936,0.3340778350830078
+V0544,standard_admission_release,The pathway includes ward admission (Admission NC) followed by observation and eventual release (Release A).,5.0,readmission_loop,3.0,0.008335522376000881,0.14825695753097534
+V0545,standard_admission_release,The pathway features ward admission (Admission NC) followed by multi-day observation and release (Release A).,4.0,readmission_loop,1.0,0.006353470962494612,0.13356797397136688
+V0546,readmission_loop,"The narrative includes ward admission and release, followed by an eventual Return ER outcome.",4.0,standard_admission_release,3.0,0.019320713356137276,0.33775022625923157
+V0547,standard_admission_release,The pathway requires ward admissions followed by multi-day observation and final release (Release B).,17.0,readmission_loop,11.0,0.46675071120262146,0.19842739403247833
+V0548,standard_admission_release,The narrative features ward admissions followed by multi-day observation and eventual release (Release A).,9.0,readmission_loop,5.0,0.17258213460445404,0.10622819513082504
+V0549,acute_iv_treatment,"The pathway features administration of intravenous fluids and antibiotics alongside blood panels, resolving quickly within hours without inpatient ward admission.",3.0,rapid_triage_only,2.0,0.3844168186187744,3.1807852792553604e-05
+V0550,acute_iv_treatment,"The narrative is a short-duration pathway featuring IV treatment and blood work, resolving rapidly.",6.0,standard_admission_release,3.0,0.6715909838676453,0.057794537395238876
+V0551,standard_admission_release,This pathway involves ward admission followed by multi-day observation and eventual release.,73.0,readmission_loop,35.0,0.2154519110918045,0.10330826044082642
+V0552,standard_admission_release,Involves admission to the ward (Admission NC) and ends with Release B.,13.0,readmission_loop,8.0,0.344809889793396,0.1059565618634224
+V0553,standard_admission_release,Requires ward and intensive care admissions with multi-day observation and eventual release.,22.0,readmission_loop,9.0,0.5475921034812927,0.33539116382598877
+V0554,standard_admission_release,Features hospital admission followed by days of observation and release.,5.0,readmission_loop,3.0,0.11611927300691605,0.02380216307938099
+V0555,standard_admission_release,Includes hospital admission and concludes with a release outcome.,6.0,readmission_loop,4.0,0.5010775923728943,0.2600690722465515
+V0556,readmission_loop,Extends into a return to the emergency room after hospital admission and release.,5.0,standard_admission_release,4.0,0.14711274206638336,0.3336900472640991
+V0557,standard_admission_release,Standard inpatient pathway requiring ward admission and concluding in release.,5.0,readmission_loop,3.0,0.13078175485134125,0.009139684028923512
+V0558,readmission_loop,Involves admission and release followed by a long duration return to the ER.,5.0,standard_admission_release,3.0,0.0017119027907028794,0.34759262204170227
+V0559,readmission_loop,Path ends with an ER return after a prolonged inpatient and observation period.,6.0,standard_admission_release,4.0,0.11750110983848572,0.3360276222229004
+V0560,readmission_loop,"Long-duration pathway featuring an admission, release, and subsequent return to the ER.",5.0,standard_admission_release,3.0,0.017829731106758118,0.33625924587249756
+V0561,standard_admission_release,Inpatient admission followed by multiple days of monitoring and release.,7.0,readmission_loop,4.0,0.0083314822986722,0.13158994913101196
+V0562,standard_admission_release,Involves ward admission and standard observation leading to release.,7.0,readmission_loop,4.0,0.010112877935171127,0.12980856001377106
+V0563,standard_admission_release,Features hospital and intensive care admissions culminating in release.,11.0,readmission_loop,8.0,0.16832643747329712,0.1138034462928772
+V0564,readmission_loop,Leads to an ER return after initial hospital admission and release.,6.0,standard_admission_release,3.0,0.12090983241796494,0.3359266519546509
+V0565,acute_iv_treatment,"Mid-length pathway featuring IV fluids and antibiotics alongside blood panels, ending in admission without a long multi-day stay.",5.0,rapid_triage_only,3.0,0.3395378589630127,0.3399728238582611
+V0566,standard_admission_release,Typical inpatient stay involving ward admission and final release.,9.0,readmission_loop,4.0,0.12405356019735336,0.015867875888943672
+V0567,readmission_loop,Very long duration pathway resulting in a return to the ER after initial release.,5.0,standard_admission_release,2.0,0.033165644854307175,0.37904635071754456
+V0568,standard_admission_release,Extended inpatient stay with multiple ward admissions and eventual release.,10.0,readmission_loop,7.0,0.18373550474643707,0.09507481008768082
+V0569,standard_admission_release,Involves ward admission and monitoring over several days prior to release.,5.0,readmission_loop,3.0,0.11192231625318527,0.029621535912156105
+V0570,standard_admission_release,Ward admission followed by multi-day laboratory tests and eventual release.,13.0,readmission_loop,4.0,0.13544075191020966,0.00448068929836154
+V0571,standard_admission_release,"Complex inpatient stay requiring admissions, intensive care, and eventual release.",29.0,readmission_loop,16.0,0.5279721617698669,0.10942816734313965
+V0572,standard_admission_release,Long inpatient pathway featuring intensive care and ward stays before final release.,20.0,readmission_loop,9.0,0.14939452707767487,0.17613977193832397
+V0573,readmission_loop,Inpatient admission and release followed by a return to the emergency room.,5.0,standard_admission_release,4.0,0.14502161741256714,0.3346198797225952
+V0574,standard_admission_release,Hospital admission with ICU care and eventual release.,13.0,readmission_loop,9.0,0.17190003395080566,0.11737702041864395
+V0575,acute_iv_treatment,"Resolves quickly within hours with IV fluids, antibiotics, and blood tests, without hospital admission.",2.0,standard_admission_release,2.0,0.6978961825370789,0.154502734541893
+V0576,standard_admission_release,The narrative includes ward admission (Admission NC) and multiple days of observation culminating in release (Release A).,7.0,readmission_loop,6.0,0.12920282781124115,0.04690204933285713
+V0577,readmission_loop,The pathway is long-duration (61d) and concludes with a return to the emergency room (Return ER).,12.0,standard_admission_release,9.0,0.11380995064973831,0.33972790837287903
+V0578,readmission_loop,The pathway features admission and release followed by a return to the emergency room (Return ER).,4.0,standard_admission_release,2.0,0.02757723070681095,0.3337832987308502
+V0579,readmission_loop,Extremely long-duration and repetitive sequence resulting in a return to the emergency room (Return ER).,48.0,standard_admission_release,25.0,0.17273862659931183,0.3483082056045532
+V0580,acute_iv_treatment,"Mid-length pathway featuring IV fluids, antibiotics, and blood tests, resolving within hours.",2.0,standard_admission_release,2.0,0.6873111724853516,0.17350775003433228
+V0581,readmission_loop,"The pathway includes ward admission, release, and eventually a return to the emergency room (Return ER).",6.0,standard_admission_release,4.0,0.13904424011707306,0.3347809314727783
+V0582,standard_admission_release,Involves ward admission (Admission NC) followed by observation and successful release (Release A).,5.0,acute_iv_treatment,2.0,0.16830891370773315,0.24939028918743134
+V0583,standard_admission_release,"Includes ward admission (Admission NC), multi-day monitoring, and final release (Release A).",5.0,readmission_loop,4.0,0.11398632079362869,0.025935113430023193
+V0584,rapid_triage_only,Fast-paced pathway ending quickly with initial blood work and IV treatment without ward admission.,5.0,acute_iv_treatment,1.0,0.43502435088157654,3.1807852792553604e-05
+V0585,rapid_triage_only,"Short two-hour pathway ending quickly with triage, initial labs, and IV treatment without admission.",3.0,acute_iv_treatment,1.0,0.36565962433815,0.025179199874401093
+V0586,standard_admission_release,Requires ward admission (Admission NC) followed by observation and release (Release B).,5.0,readmission_loop,2.0,0.33662721514701843,0.09777385741472244
+V0587,rapid_triage_only,Short four-hour pathway consisting of triage and blood work without admission.,2.0,acute_iv_treatment,2.0,0.7177066206932068,0.18691067397594452
+V0588,readmission_loop,Long-duration pathway (63d) involving ward admission and eventual return to the emergency room (Return ER).,12.0,standard_admission_release,5.0,0.11491706967353821,0.3470875024795532
+V0589,standard_admission_release,"Involves ward admission (Admission NC), multi-day observation, and eventual release (Release B).",7.0,readmission_loop,6.0,0.4546245038509369,0.043886978179216385
+V0590,readmission_loop,Very long-duration pathway (136d) concluding with a return to the emergency room (Return ER).,7.0,standard_admission_release,4.0,0.13716822862625122,0.36308619379997253
+V0591,readmission_loop,Features an initial admission and release followed by a return to the emergency room (Return ER).,6.0,acute_iv_treatment,2.0,0.38401079177856445,0.33525845408439636
+V0592,acute_iv_treatment,Short one-hour pathway administering intravenous antibiotics and fluids with basic blood panels.,4.0,rapid_triage_only,2.0,0.040987495332956314,0.002478518756106496
+V0593,standard_admission_release,Requires ward admission (Admission NC) and multi-day observation before release (Release A).,6.0,readmission_loop,3.0,0.012720897793769836,0.12720052897930145
+V0594,standard_admission_release,"Features ward admission (Admission NC), multi-day monitoring, and final release (Release B).",6.0,readmission_loop,6.0,0.5219308733940125,0.11327114701271057
+V0595,readmission_loop,Extremely long-duration pathway (242d) featuring multiple admissions and a return to the emergency room (Return ER).,6.0,standard_admission_release,4.0,0.20930999517440796,0.3549298346042633
+V0596,standard_admission_release,Involves ward admission (Admission NC) followed by several days of observation and release (Release A).,5.0,readmission_loop,4.0,0.0017850450240075588,0.14170648157596588
+V0597,standard_admission_release,Features ward admission (Admission NC/IC) and multi-day inpatient treatment leading to release (Release A).,11.0,readmission_loop,8.0,0.183633491396904,0.09517683833837509
+V0598,standard_admission_release,Requires prolonged ward admission (Admission NC) followed by eventual inpatient release (Release E).,15.0,readmission_loop,9.0,0.4925779402256012,0.3343006372451782
+V0599,standard_admission_release,Involves ward admission (Admission NC) followed by multi-day observation and release (Release A).,5.0,readmission_loop,2.0,0.018246209248900414,0.15816764533519745
+V0600,standard_admission_release,Features ward admission (Admission NC/IC) with multi-day observation and eventual release (Release A).,26.0,readmission_loop,15.0,0.1930186003446579,0.08579173684120178
+V0601,standard_admission_release,This pathway involves ward admission (Admission NC) followed by multi-day observation and eventually resolves with Release C.,6.0,readmission_loop,3.0,0.33972930908203125,0.33988532423973083
+V0602,standard_admission_release,The narrative shows patient admission to intensive and normal care (Admission IC and Admission NC) followed by multiple days of stay ending in Release D.,7.0,acute_iv_treatment,6.0,0.5171051025390625,0.041752103716135025
+V0603,standard_admission_release,This sequence features ward admission (Admission NC) followed by an extended multi-day stay and final release (Release E).,5.0,acute_iv_treatment,4.0,0.37347957491874695,0.33371493220329285
+V0604,standard_admission_release,The narrative contains ward admission (Admission NC) and a multi-day hospital stay before concluding with Release A.,7.0,readmission_loop,2.0,0.02168414555490017,0.11823728680610657
+V0605,readmission_loop,The pathway is a long-duration sequence that ultimately results in a patient return to the emergency room (Return ER).,10.0,standard_admission_release,6.0,0.1698484867811203,0.4020189046859741
+V0606,standard_admission_release,This sequence includes ward admission (Admission NC) followed by inpatient observation and release (Release A).,5.0,readmission_loop,3.0,0.008295504376292229,0.14821694791316986
+V0607,standard_admission_release,"The patient is admitted to the ward (Admission NC), remains under observation for multiple days, and is successfully released (Release A).",7.0,readmission_loop,4.0,0.1189778670668602,0.03667708858847618
+V0608,standard_admission_release,This pathway includes an inpatient ward admission (Admission NC) and multi-day observation before culminating in a release (Release A).,4.0,readmission_loop,3.0,0.11503048986196518,0.024890951812267303
+V0609,standard_admission_release,The narrative features inpatient admission (Admission NC) followed by multi-day laboratory monitoring and final release (Release A).,6.0,readmission_loop,4.0,0.003519253572449088,0.1364021748304367
+V0610,standard_admission_release,The process includes ward admission (Admission NC) and multi-day observation before concluding with Release A.,4.0,readmission_loop,3.0,0.11313813924789429,0.03083736263215542
+V0611,standard_admission_release,This pathway involves ward admission (Admission NC) with repeated observation days and eventually concludes with Release A.,10.0,readmission_loop,7.0,0.19500724971294403,0.08380309492349625
+V0612,standard_admission_release,The narrative records an inpatient admission (Admission NC) followed by days of observation and subsequent release (Release A).,5.0,readmission_loop,4.0,0.12069380283355713,0.03839303180575371
+V0613,standard_admission_release,This sequence involves ward admission (Admission NC) followed by several days of observation and release (Release A).,4.0,acute_iv_treatment,2.0,0.18494071066379547,0.26930657029151917
+V0614,readmission_loop,"Although an initial release occurs, the pathway extends significantly over time and results in a Return ER event.",6.0,acute_iv_treatment,2.0,0.3642866611480713,0.40033888816833496
+V0615,readmission_loop,The narrative features a long duration pathway that ultimately results in a patient return to the emergency room (Return ER).,5.0,standard_admission_release,3.0,0.024910015985369682,0.3707907199859619
+V0616,standard_admission_release,"The pathway includes an inpatient admission (Admission NC), multi-day care, and concludes with Release A.",4.0,readmission_loop,2.0,0.16880293190479279,0.2531687915325165
+V0617,standard_admission_release,"This sequence features ward admission (Admission NC), several days of clinical monitoring, and final release (Release A).",4.0,readmission_loop,4.0,0.12864544987678528,0.04634467884898186
+V0618,standard_admission_release,"The patient is admitted to the ward (Admission NC) for multi-day observation and treatment, ending in Release C.",7.0,readmission_loop,6.0,0.472524493932724,0.33406364917755127
+V0619,standard_admission_release,"This pathway includes inpatient admission (Admission NC), multi-day observation, and eventual release (Release A).",6.0,acute_iv_treatment,3.0,0.17566384375095367,0.26002970337867737
+V0620,standard_admission_release,"The narrative records a ward admission (Admission NC), multi-day observation, and final successful release (Release A).",4.0,readmission_loop,4.0,0.1150490939617157,0.19941498339176178
+V0621,acute_iv_treatment,"This is a mid-length pathway featuring intravenous fluids and antibiotics alongside blood panels, resolving within hours.",6.0,rapid_triage_only,3.0,0.6847501397132874,0.25522151589393616
+V0622,standard_admission_release,"The sequence involves inpatient ward and intensive care admissions (Admission IC, Admission NC) spanning multiple days before concluding with Release A.",21.0,readmission_loop,13.0,0.12396501749753952,0.18262308835983276
+V0623,standard_admission_release,"This pathway includes ward admission (Admission NC), multi-day observation, and final release (Release A).",0.0,readmission_loop,2.0,0.015924859791994095,0.15584629774093628
+V0624,standard_admission_release,The narrative shows ward admission (Admission NC) and multi-day observation before terminating in Release A.,5.0,readmission_loop,3.0,0.16678167879581451,0.112258680164814
+V0625,readmission_loop,"This is a very long-duration pathway spanning over a year, terminating with a Return ER event.",5.0,standard_admission_release,2.0,0.05624697729945183,0.4021277129650116
+V0626,standard_admission_release,Involves ward admission (Admission NC) followed by multi-day observation and successful release (Release A).,4.0,readmission_loop,3.0,0.22651207447052002,0.1442113071680069
+V0627,readmission_loop,Complex long-duration pathway ending with a return to the emergency room (Return ER).,14.0,standard_admission_release,12.0,0.16853441298007965,0.352512389421463
+V0628,standard_admission_release,Requires ward admission (Admission NC) followed by observation and eventual release (Release A).,7.0,readmission_loop,3.0,0.1866316944360733,0.2709975838661194
+V0629,standard_admission_release,Features ward admission (Admission NC) and concludes with a standard release outcome (Release E).,8.0,readmission_loop,5.0,0.47338828444480896,0.3562581539154053
+V0630,standard_admission_release,Involves multi-day ward admission (Admission IC / NC) and ends with release (Release A).,10.0,readmission_loop,7.0,0.11571670323610306,0.20008260011672974
+V0631,readmission_loop,Extended pathway duration resulting in an eventual return to the emergency room (Return ER).,2.0,standard_admission_release,2.0,0.009413357824087143,0.33646735548973083
+V0632,readmission_loop,Very long duration pathway concluding with a patient readmission/return to the emergency room (Return ER).,4.0,standard_admission_release,2.0,0.03163992241024971,0.3775206506252289
+V0633,readmission_loop,Complex pathway spanning multiple weeks/months and culminating in a Return ER outcome.,6.0,standard_admission_release,3.0,0.010414083488285542,0.35629478096961975
+V0634,standard_admission_release,Includes ward admission (Admission NC) followed by days of monitoring and release (Release A).,4.0,readmission_loop,3.0,0.010354820638895035,0.15027625858783722
+V0635,readmission_loop,Extremely long duration pathway of over 300 days resulting in a Return ER.,5.0,standard_admission_release,4.0,0.16158081591129303,0.38749876618385315
+V0636,,"Path ends with intermediate lab work (LacticAcid) rather than triage completion, acute IV intervention, standard release, or a readmission event.",,standard_admission_release,2.0,,0.003960905596613884
+V0637,standard_admission_release,Includes ward admissions (Admission NC) and multi-day observation ending in release (Release A).,3.0,readmission_loop,3.0,0.12174753099679947,0.03944675996899605
+V0638,readmission_loop,Long-duration pathway featuring ward admissions and culminating in a Return ER event.,4.0,standard_admission_release,3.0,0.21093715727329254,0.3565570116043091
+V0639,readmission_loop,Complex pathway spanning nearly a month and ending with a return to the emergency room (Return ER).,7.0,standard_admission_release,4.0,0.1877613663673401,0.33539116382598877
+V0640,readmission_loop,Extended pathway with multiple repeated checks leading to a Return ER outcome.,8.0,standard_admission_release,5.0,0.01485956460237503,0.33337756991386414
+V0641,readmission_loop,Long-duration pathway lasting months and finishing with a Return ER outcome.,4.0,standard_admission_release,1.0,0.035352155566215515,0.381232887506485
+V0642,standard_admission_release,Features ward admissions (Admission IC / NC) and multi-day care ending with Release A.,11.0,readmission_loop,4.0,0.11880669742822647,0.20317257940769196
+V0643,readmission_loop,"Highly repetitive, long-duration pathway resulting in a Return ER event.",20.0,standard_admission_release,11.0,0.1940198540687561,0.33414873480796814
+V0644,,Process concludes with a standalone CRP lab test activity rather than a terminal category outcome like release or return ER.,,standard_admission_release,1.0,,0.0008615933475084603
+V0645,acute_iv_treatment,"Mid-length pathway featuring IV fluids and antibiotics alongside lab panels, resolving quickly within hours.",4.0,rapid_triage_only,2.0,0.6769332885742188,0.3414578437805176
+V0646,readmission_loop,"Complex path involving multiple admissions and loops, ending with a Return ER outcome.",11.0,standard_admission_release,7.0,0.480975478887558,0.09228887408971786
+V0647,standard_admission_release,"Involves ward admission (Admission NC), multi-day care, and subsequent release (Release A).",6.0,readmission_loop,1.0,0.22445207834243774,0.14215131103992462
+V0648,standard_admission_release,Requires ward admission (Admission NC) followed by days of observation and successful release (Release A).,6.0,readmission_loop,5.0,0.019140059128403664,0.12078136950731277
+V0649,readmission_loop,Extended pathway spanning over two weeks and concluding with a Return ER event.,7.0,standard_admission_release,5.0,0.14758628606796265,0.3334076404571533
+V0650,readmission_loop,Extremely long-duration pathway lasting around 207 days and ending with a Return ER outcome.,7.0,standard_admission_release,2.0,0.3715747594833374,0.4219587743282318
+V0651,readmission_loop,"The narrative features ward admission, multi-day observation, release, and eventually a Return ER event after a long duration, matching the readmission loop pattern.",5.0,standard_admission_release,2.0,0.22122132778167725,0.4297522008419037
+V0652,readmission_loop,"Includes inpatient admission, release, and a subsequent Return ER event, fitting the readmission or extended complication pathway.",5.0,standard_admission_release,1.0,0.23204554617404938,0.3751641809940338
+V0653,standard_admission_release,Requires ward admission (Admission NC) followed by multi-day observation and successful release (Release A).,7.0,readmission_loop,4.0,0.11540430039167404,0.033103521913290024
+V0654,,"The pathway is incomplete with an ending at Leucocytes and does not cleanly fit rapid triage, acute IV treatment, standard admission and release, or a readmission loop.",,standard_admission_release,4.0,,0.03983199968934059
+V0655,standard_admission_release,"Features ward admission (Admission IC and NC), multi-day observation, and an eventual release (Release A).",7.0,readmission_loop,5.0,0.18148328363895416,0.12696029245853424
+V0656,standard_admission_release,"Involves admission to the ward, multi-day observation, and eventual successful release (Release D).",12.0,readmission_loop,8.0,0.46175575256347656,0.12487921118736267
+V0657,standard_admission_release,"Proceeds through ward admission, multi-day observation, and concludes with a successful release (Release A).",6.0,readmission_loop,4.0,0.16964329779148102,0.10916703194379807
+V0658,readmission_loop,"Shows admission and release followed by a Return ER event after an extended period, fitting the readmission pattern.",6.0,standard_admission_release,2.0,0.18834275007247925,0.4199961721897125
+V0659,standard_admission_release,Features standard admission (Admission NC) followed by a short stay and successful release (Release A).,6.0,acute_iv_treatment,2.0,0.3532008230686188,0.35498496890068054
+V0660,standard_admission_release,"Includes inpatient ward admission, multi-day observation with repeated tests, and eventual successful release (Release A).",18.0,readmission_loop,11.0,0.13404498994350433,0.005876448005437851
+V0661,standard_admission_release,"Involves ward admission, multi-day observation, and an eventual successful release (Release A).",19.0,readmission_loop,10.0,0.13423621654510498,0.1723518967628479
+V0662,readmission_loop,"Includes ward admission and release, followed by a Return ER event after a long duration.",7.0,standard_admission_release,5.0,0.11984884738922119,0.3520192801952362
+V0663,,The pathway ends abruptly at Admission NC and lacks the duration or completion required for standard admission and release.,,standard_admission_release,1.0,,0.0018286644481122494
+V0664,rapid_triage_only,A very short pathway ending quickly at initial IV Liquid and blood work without admission.,5.0,acute_iv_treatment,3.0,0.3383813202381134,0.023250674828886986
+V0665,standard_admission_release,"Involves ward admission, multi-day observation, and eventual release (Release A).",5.0,readmission_loop,3.0,0.010797976516187191,0.12912346422672272
+V0666,standard_admission_release,"Features ward admission, observation, and final release (Release A).",4.0,readmission_loop,4.0,0.13614162802696228,0.05384085699915886
+V0667,readmission_loop,"Features ward admission, release, and a subsequent Return ER event after a long duration.",6.0,standard_admission_release,2.0,0.027312932536005974,0.3731936514377594
+V0668,standard_admission_release,Includes ward admission followed by a short multi-day observation and successful release.,8.0,acute_iv_treatment,2.0,0.36932432651519775,0.3429405987262726
+V0669,standard_admission_release,"Proceeds through ward admission, observation, and final release (Release A).",5.0,readmission_loop,3.0,0.010736711323261261,0.15065814554691315
+V0670,,"Contains a chaotic sequence of release followed by a Return ER and further lab work, not fitting neatly into a standard pattern.",,readmission_loop,4.0,,0.06940972059965134
+V0671,readmission_loop,Features standard admission and release followed by a Return ER event.,6.0,standard_admission_release,3.0,0.001010588021017611,0.34487012028694153
+V0672,standard_admission_release,"Involves multiple ward admissions, extensive observation, and a final successful release (Release B).",20.0,readmission_loop,12.0,0.44927510619163513,0.049236346036195755
+V0673,standard_admission_release,"Requires ward admission, multi-day observation, and successful release (Release A).",9.0,readmission_loop,6.0,0.12196552008390427,0.017955921590328217
+V0674,standard_admission_release,"Features extended ward admission, intensive observation, and final release (Release A).",39.0,readmission_loop,18.0,0.1677919179201126,0.19453716278076172
+V0675,readmission_loop,"Includes inpatient admission, release, and an eventual Return ER event after a very long duration.",8.0,standard_admission_release,6.0,0.14619378745555878,0.3721117675304413
+V0676,acute_iv_treatment,"Short pathway involving IV treatment and blood work, completing within an hour.",4.0,rapid_triage_only,2.0,0.03441663086414337,0.004092346411198378
+V0677,readmission_loop,Involves admission followed by release and a subsequent return to the ER.,8.0,standard_admission_release,2.0,0.33661118149757385,0.3661077320575714
+V0678,standard_admission_release,Requires ward admission followed by multi-day observation and eventual release.,6.0,readmission_loop,4.0,0.11996056884527206,0.037659790366888046
+V0679,acute_iv_treatment,"Mid-length pathway featuring IV fluids and antibiotics, resolving within hours.",2.0,rapid_triage_only,1.0,0.009861643426120281,0.004800739232450724
+V0680,readmission_loop,Long-duration pathway with admission and a subsequent return to the ER.,9.0,standard_admission_release,6.0,0.13106606900691986,0.33453842997550964
+V0681,readmission_loop,Complex pathway spanning multiple days ending in a return to the ER.,4.0,standard_admission_release,4.0,0.18015950918197632,0.38869038224220276
+V0682,standard_admission_release,Involves ward admission and observation leading to eventual release.,10.0,readmission_loop,9.0,0.5072216987609863,0.1279803365468979
+V0683,standard_admission_release,Inpatient admission spanning several days followed by release.,7.0,readmission_loop,3.0,0.13926556706428528,0.0006558714085258543
+V0684,standard_admission_release,Inpatient admission requiring multi-day observation and release.,5.0,readmission_loop,2.0,0.11803839355707169,0.021883035078644753
+V0685,acute_iv_treatment,"Mid-length pathway featuring IV fluids and antibiotics, resolving within hours.",4.0,rapid_triage_only,2.0,0.004450319334864616,0.009511223062872887
+V0686,readmission_loop,Extremely long-duration pathway resulting in a return to the emergency room.,7.0,standard_admission_release,1.0,0.3710915744304657,0.40714383125305176
+V0687,readmission_loop,"Complex pathway featuring admission, release, and a return to the ER.",3.0,standard_admission_release,2.0,0.13177429139614105,0.33384642004966736
+V0688,readmission_loop,Pathway resulting in a return to the emergency room after an initial release.,6.0,standard_admission_release,3.0,0.00809900276362896,0.337781697511673
+V0689,acute_iv_treatment,"Mid-length pathway featuring IV antibiotic administration, resolving within hours.",4.0,rapid_triage_only,1.0,0.005552646238356829,0.010613550432026386
+V0690,standard_admission_release,Inpatient ward admission followed by multi-day observation and release.,10.0,readmission_loop,5.0,0.11308135837316513,0.19350676238536835
+V0691,standard_admission_release,Admission to a ward followed by successful release within a short duration.,6.0,acute_iv_treatment,2.0,0.732875645160675,0.33619096875190735
+V0692,standard_admission_release,Inpatient admission followed by release within a day.,8.0,acute_iv_treatment,4.0,0.7120121121406555,0.33358609676361084
+V0693,readmission_loop,"Extended-duration pathway featuring admission, release, and return to the ER.",7.0,standard_admission_release,4.0,0.11699997633695602,0.4628807008266449
+V0694,rapid_triage_only,Very short pathway ending quickly at initial triage without admission.,3.0,acute_iv_treatment,2.0,0.3912224769592285,0.374070405960083
+V0695,standard_admission_release,Inpatient admission followed by multi-day observation and successful release.,5.0,readmission_loop,2.0,0.13104455173015594,0.008876887150108814
+V0696,readmission_loop,Long-duration pathway with admission and a subsequent return to the ER.,10.0,standard_admission_release,6.0,0.20506268739700317,0.35068249702453613
+V0697,standard_admission_release,Admission to ward followed by observation and release.,5.0,readmission_loop,1.0,0.01965768076479435,0.1595791131258011
+V0698,standard_admission_release,Ward admission followed by multi-day observation and release.,5.0,readmission_loop,3.0,0.13005302846431732,0.047752246260643005
+V0699,standard_admission_release,Inpatient ward admission followed by observation and release.,8.0,readmission_loop,3.0,0.012665529735386372,0.15258696675300598
+V0700,standard_admission_release,Admission to a ward followed by observation and release.,8.0,acute_iv_treatment,2.0,0.6891048550605774,0.3476387560367584
+V0701,standard_admission_release,Involves ward admission (Admission NC) followed by multiple days of observation and eventual release (Release C).,9.0,readmission_loop,5.0,0.46841731667518616,0.33367064595222473
+V0702,standard_admission_release,Features inpatient admission (Admission NC) and multi-day observation ending in Release A.,4.0,readmission_loop,2.0,0.11761748790740967,0.022303948178887367
+V0703,,"Path ends with IV Liquid rather than an admission or discharge, making it anomalous or incomplete.",,standard_admission_release,2.0,,0.00016920965572353452
+V0704,standard_admission_release,Requires ward admission (Admission NC) and concludes with a successful release (Release A).,6.0,readmission_loop,4.0,0.13147355616092682,0.17511455714702606
+V0705,readmission_loop,Long duration path resulting in a return to the emergency room (Return ER).,4.0,standard_admission_release,3.0,0.13987724483013153,0.33394792675971985
+V0706,standard_admission_release,Includes inpatient admission (Admission NC) followed by release within a short period.,7.0,rapid_triage_only,2.0,0.3784787654876709,0.33378615975379944
+V0707,,Terminates at Admission NC without an explicit release or other final workflow.,,rapid_triage_only,1.0,,0.0003059449081774801
+V0708,acute_iv_treatment,"Mid-length pathway featuring IV fluids, antibiotics, and blood work, concluding shortly after.",4.0,standard_admission_release,4.0,0.0060074119828641415,0.011068315245211124
+V0709,standard_admission_release,Follows a standard ward admission path and concludes with Release B.,7.0,readmission_loop,3.0,0.3396426737308502,0.08817065507173538
+V0710,standard_admission_release,"Extensive multi-day observation path following ward admission, ultimately concluding in Release C.",173.0,readmission_loop,70.0,0.5876758694648743,0.33356043696403503
+V0711,standard_admission_release,Involves inpatient admission (Admission NC) and multiple days of monitoring before Release A.,5.0,readmission_loop,3.0,0.1128973737359047,0.027024060487747192
+V0712,readmission_loop,Involves extended complication path and patient returning to the ER (Return ER).,11.0,standard_admission_release,8.0,0.19076073169708252,0.33740782737731934
+V0713,acute_iv_treatment,"Short duration pathway featuring IV antibiotics and lab panels, resolving within hours.",2.0,rapid_triage_only,1.0,0.009711953811347485,0.01477285847067833
+V0714,standard_admission_release,Includes ward admission followed by several days of observation and Release A.,1.0,readmission_loop,3.0,0.005113527178764343,0.14503495395183563
+V0715,acute_iv_treatment,"Mid-length pathway featuring intravenous fluids and antibiotics, resolving within under a day.",10.0,readmission_loop,4.0,0.7142022252082825,0.003547282889485359
+V0716,standard_admission_release,Features multi-day ward admission (Admission NC) and final successful Release A.,5.0,readmission_loop,3.0,0.13210594654083252,0.007815489545464516
+V0717,standard_admission_release,"Involves ward admission, ongoing monitoring over multiple days, and Release A.",4.0,readmission_loop,3.0,0.1149810254573822,0.02494041435420513
+V0718,readmission_loop,Long duration pathway spanning over 100 days with a return to the emergency room.,24.0,standard_admission_release,13.0,0.18613849580287933,0.3349083364009857
+V0719,readmission_loop,Complex pathway resulting in a return to the emergency room (Return ER).,6.0,standard_admission_release,2.0,0.005655121523886919,0.34022560715675354
+V0720,readmission_loop,Extended pathway featuring an eventual return to the ER.,4.0,standard_admission_release,2.0,0.13837778568267822,0.33544740080833435
+V0721,readmission_loop,Long-duration process path that results in a return to the emergency room.,16.0,standard_admission_release,5.0,0.0013553007738664746,0.34452542662620544
+V0722,standard_admission_release,Involves ward admission followed by multi-day observation and Release A.,5.0,readmission_loop,3.0,0.021408721804618835,0.16133016347885132
+V0723,standard_admission_release,Features inpatient admission and observation ending in Release A.,7.0,readmission_loop,5.0,0.11187858134508133,0.029577814042568207
+V0724,readmission_loop,Pathway featuring an eventual return to the ER after initial treatment.,5.0,standard_admission_release,2.0,0.05368103086948395,0.33356043696403503
+V0725,standard_admission_release,Involves admission to the ward followed by multi-day observation and Release D.,6.0,readmission_loop,2.0,0.5039874911308289,0.31284472346305847
+V0726,standard_admission_release,Involves ward admission and multi-day observation followed by Release A.,19.0,readmission_loop,9.0,0.13067929446697235,0.17590880393981934
+V0727,readmission_loop,Features ward admission and eventual Return ER after a prolonged duration.,4.0,standard_admission_release,2.0,0.04162245988845825,0.38750317692756653
+V0728,standard_admission_release,Requires ward admission followed by multi-day observation and Release A.,7.0,readmission_loop,4.0,0.11514130979776382,0.1995071917772293
+V0729,standard_admission_release,Includes ward admission and multi-day care ending in Release A.,5.0,readmission_loop,4.0,0.11515762656927109,0.19952352344989777
+V0730,standard_admission_release,Involves admission to the ward and multi-day monitoring leading to Release A.,5.0,readmission_loop,3.0,0.009966826066374779,0.14988826215267181
+V0731,standard_admission_release,Proceeds through admission and observation before concluding with Release A.,6.0,rapid_triage_only,2.0,0.1835949569940567,0.2679608166217804
+V0732,standard_admission_release,Requires ward admission and multi-day observation followed by Release A.,7.0,readmission_loop,2.0,0.3473597764968872,0.33525845408439636
+V0733,standard_admission_release,Involves ward admission and subsequent release after observation.,5.0,readmission_loop,2.0,0.12015420198440552,0.0378534309566021
+V0734,readmission_loop,Pathway culminates in a Return ER event after initial release.,4.0,standard_admission_release,2.0,0.20505070686340332,0.41358157992362976
+V0735,standard_admission_release,Involves ward admission and observation ending in Release A.,5.0,acute_iv_treatment,2.0,0.3430013358592987,0.260700523853302
+V0736,standard_admission_release,Follows a multi-day observation path ending in Release A.,4.0,readmission_loop,4.0,0.002232546918094158,0.13768889009952545
+V0737,standard_admission_release,Requires inpatient admission and multi-day care concluding with Release A.,5.0,readmission_loop,3.0,0.008542012423276901,0.1484634429216385
+V0738,standard_admission_release,Involves ward admission and a short multi-day observation ending in Release A.,5.0,readmission_loop,2.0,0.03250841051340103,0.17242984473705292
+V0739,standard_admission_release,Includes ward admission and observation leading to Release A.,8.0,readmission_loop,6.0,0.11543185263872147,0.19979774951934814
+V0740,standard_admission_release,Proceeds to ward admission and multi-day care before Release A.,7.0,readmission_loop,3.0,0.003913931082934141,0.14383536577224731
+V0741,standard_admission_release,Requires admission and observation ending in Release A.,6.0,readmission_loop,3.0,0.010865877382457256,0.15078730881214142
+V0742,,"Finishes with LacticAcid and does not result in admission, release, or ER return.",,readmission_loop,3.0,,6.455677794292569e-05
+V0743,standard_admission_release,Involves inpatient admission and multi-day observation ending in Release A.,5.0,readmission_loop,2.0,0.002689169952645898,0.13723225891590118
+V0744,readmission_loop,Extensive duration resulting in Return ER.,14.0,standard_admission_release,8.0,0.11343727260828018,0.34095534682273865
+V0745,readmission_loop,Features multiple admissions/observations and concludes with Return ER.,8.0,standard_admission_release,5.0,0.2599569261074066,0.34725281596183777
+V0746,readmission_loop,Very long duration pathway ending in Return ER.,24.0,standard_admission_release,12.0,0.1283435970544815,0.3605140149593353
+V0747,standard_admission_release,Involves ward admissions and concludes with Release C.,6.0,readmission_loop,5.0,0.5384604334831238,0.33414873480796814
+V0748,readmission_loop,Long duration pathway resulting in a Return ER outcome.,6.0,standard_admission_release,3.0,0.11278688162565231,0.335353285074234
+V0749,standard_admission_release,Involves ward admission and subsequent Release A.,4.0,readmission_loop,3.0,0.0101760970428586,0.1500975340604782
+V0750,acute_iv_treatment,Mid-length pathway featuring IV fluids and antibiotics alongside blood panels resolving within hours without admission.,3.0,standard_admission_release,3.0,0.34807682037353516,0.35082924365997314
+V0751,standard_admission_release,The narrative includes ward admission (Admission NC) followed by multi-day observation and eventual successful release (Release A).,3.0,readmission_loop,2.0,0.0070807370357215405,0.147002175450325
+V0752,readmission_loop,The pathway is long-duration and ends with a return to the emergency room (Return ER).,18.0,standard_admission_release,9.0,0.11505570262670517,0.33933690190315247
+V0753,readmission_loop,The pathway involves an extended duration and results in a patient return to the emergency room (Return ER).,6.0,standard_admission_release,3.0,0.0018415371887385845,0.3440392017364502
+V0754,readmission_loop,The pathway includes ward admission and ends with a patient readmission or return to the ER (Return ER).,4.0,standard_admission_release,1.0,0.037847887724637985,0.3341841697692871
+V0755,standard_admission_release,The patient is admitted to the ward (Admission NC) and eventually successfully released (Release A).,6.0,readmission_loop,3.0,0.12157843261957169,0.039277657866477966
+V0756,readmission_loop,This is a very long and complex pathway that concludes with a return to the ER (Return ER).,32.0,standard_admission_release,15.0,0.19449587166309357,0.3401156961917877
+V0757,readmission_loop,The process includes an inpatient admission and concludes with a return to the emergency room (Return ER).,7.0,standard_admission_release,4.0,0.14507892727851868,0.33467721939086914
+V0758,standard_admission_release,The case involves standard ward admission (Admission NC) and concludes with successful release (Release A).,5.0,readmission_loop,2.0,0.1434151828289032,0.06111440435051918
+V0759,acute_iv_treatment,"This is a mid-length pathway featuring IV antibiotics and fluids alongside blood panels, resolving quickly.",4.0,rapid_triage_only,2.0,0.05437630042433739,0.007191173732280731
+V0760,standard_admission_release,The pathway requires inpatient ward admission (Admission NC) and finishes with a release (Release A).,6.0,readmission_loop,3.0,0.1250704526901245,0.014850984327495098
+V0761,standard_admission_release,The patient is admitted to an inpatient ward (Admission NC) and subsequently discharged (Release A).,6.0,readmission_loop,2.0,0.011978083290159702,0.151899516582489
+V0762,standard_admission_release,"The pathway features ward and intensive care admissions with multi-day observation, culminating in release (Release A).",24.0,readmission_loop,14.0,0.15658006072044373,0.18332529067993164
+V0763,readmission_loop,"This pathway is highly repetitive, long-duration, and ultimately results in a return to the ER (Return ER).",40.0,standard_admission_release,18.0,0.18321377038955688,0.33462998270988464
+V0764,rapid_triage_only,"This is a short, fast-paced pathway that completes quickly within the emergency evaluation stage.",4.0,acute_iv_treatment,1.0,0.4133279025554657,0.33717337250709534
+V0765,readmission_loop,This is an extremely long-duration pathway that features multiple admissions and ends with a return to the ER (Return ER).,6.0,standard_admission_release,3.0,0.15264996886253357,0.3785679340362549
+V0766,standard_admission_release,The pathway requires ward admission (Admission NC) followed by a short observation and release (Release A).,6.0,readmission_loop,2.0,0.17981763184070587,0.26418349146842957
+V0767,readmission_loop,The pathway includes an admission and a subsequent return to the emergency room (Return ER).,8.0,standard_admission_release,2.0,0.3336670398712158,0.36905184388160706
+V0768,standard_admission_release,The case involves inpatient admission (Admission NC) followed by multi-day observation and release (Release A).,8.0,acute_iv_treatment,3.0,0.33671119809150696,0.33849528431892395
+V0769,standard_admission_release,"The pathway includes ward admission (Admission NC), multi-day observation, and final successful release (Release A).",5.0,readmission_loop,3.0,0.0189129076898098,0.12100852280855179
+V0770,readmission_loop,"This is a complex, extended pathway involving multiple admissions and ending with a return to the ER (Return ER).",7.0,standard_admission_release,4.0,0.18983028829097748,0.33746007084846497
+V0771,standard_admission_release,"The patient goes through ward admission (Admission NC), multi-day observation, and eventual release (Release A).",4.0,readmission_loop,3.0,0.11778983473777771,0.022131601348519325
+V0772,acute_iv_treatment,"This is a mid-length pathway featuring IV antibiotics and fluids with blood work, resolving within hours.",5.0,standard_admission_release,2.0,0.695695698261261,0.1818922907114029
+V0773,standard_admission_release,The pathway features an inpatient admission (Admission NC) followed by multi-day care and release (Release A).,6.0,rapid_triage_only,3.0,0.17404824495315552,0.2584141194820404
+V0774,rapid_triage_only,A short pathway ending quickly with basic initial evaluation steps in triage.,4.0,standard_admission_release,3.0,0.3968167304992676,0.33646538853645325
+V0775,acute_iv_treatment,"A mid-length pathway featuring intravenous treatment and blood work panels, completing within hours.",3.0,rapid_triage_only,2.0,0.6918115615844727,0.1780080646276474
+V0776,standard_admission_release,The pathway includes ward admission (Admission NC) followed by multi-day monitoring and eventual release (Release A).,6.0,readmission_loop,4.0,0.12022113054990768,0.037920352071523666
+V0777,rapid_triage_only,Short pathway ending quickly with initial diagnostics and treatment without admission.,3.0,acute_iv_treatment,2.0,0.0,0.3370702564716339
+V0778,rapid_triage_only,A short-duration pathway completing within hours with initial blood work and triage.,5.0,acute_iv_treatment,2.0,0.40712955594062805,0.16932307183742523
+V0779,readmission_loop,"The pathway involves ward admission, release, and a subsequent return to the ER.",6.0,standard_admission_release,3.0,0.04744434356689453,0.3333779275417328
+V0780,standard_admission_release,"Involves admission to NC ward, multi-day observation, and successful release.",15.0,readmission_loop,8.0,0.032661404460668564,0.11496218293905258
+V0781,standard_admission_release,"Features ward admission, extended duration, and final release.",8.0,readmission_loop,5.0,0.35984787344932556,0.3334895074367523
+V0782,standard_admission_release,Inpatient admission followed by multiple days of observation and release.,9.0,readmission_loop,3.0,0.02406320907175541,0.11585822701454163
+V0783,standard_admission_release,"Admission to ward, observation period, and final release.",7.0,readmission_loop,3.0,0.01893259771168232,0.12098883837461472
+V0784,standard_admission_release,Ward admission followed by multi-day observation and eventual release.,12.0,readmission_loop,5.0,0.03398708999156952,0.11628786474466324
+V0785,readmission_loop,Long-duration complex pathway ending in a return to the emergency room.,6.0,standard_admission_release,4.0,0.19073468446731567,0.3374338448047638
+V0786,standard_admission_release,Standard inpatient admission followed by observation and release.,7.0,readmission_loop,5.0,0.12552668154239655,0.18106143176555634
+V0787,readmission_loop,Complex and extended duration pathway resulting in a return to the ER.,5.0,standard_admission_release,3.0,0.12863926589488983,0.3343006372451782
+V0788,standard_admission_release,Inpatient admission followed by observation and release.,3.0,readmission_loop,3.0,0.008118322119116783,0.14803975820541382
+V0789,standard_admission_release,Involves admission to the ward and eventual release.,5.0,readmission_loop,3.0,0.11673855036497116,0.03443777561187744
+V0790,standard_admission_release,Inpatient ward admission followed by multi-day stay and release.,8.0,readmission_loop,5.0,0.4612489640712738,0.1253860592842102
+V0791,acute_iv_treatment,"Mid-length pathway featuring IV fluids, antibiotics, and blood panels resolving within hours.",2.0,rapid_triage_only,3.0,0.03912922739982605,0.0006202496006153524
+V0792,standard_admission_release,Ward admission followed by observation and release.,5.0,readmission_loop,4.0,0.33483564853668213,0.09598230570554733
+V0793,standard_admission_release,Inpatient admission to IC/NC ward followed by observation and release.,6.0,acute_iv_treatment,4.0,0.13502968847751617,0.1715584248304367
+V0794,readmission_loop,Long-duration pathway with readmission or return to the emergency room.,11.0,standard_admission_release,5.0,0.010912359692156315,0.33496835827827454
+V0795,standard_admission_release,"Ward admission with extended monitoring and observation, ending in release.",40.0,readmission_loop,20.0,0.19755619764328003,0.08541252464056015
+V0796,standard_admission_release,Includes inpatient admission and subsequent release.,6.0,readmission_loop,3.0,0.33968305587768555,0.34146714210510254
+V0797,readmission_loop,Very long-duration pathway ending in a return to the ER.,6.0,standard_admission_release,3.0,0.14529217779636383,0.37121012806892395
+V0798,readmission_loop,Long-duration pathway featuring a return to the emergency room.,5.0,standard_admission_release,2.0,0.008352451957762241,0.35423317551612854
+V0799,standard_admission_release,Inpatient admission and eventual release within a day.,5.0,readmission_loop,2.0,0.050994422286748886,0.19091586768627167
+V0800,standard_admission_release,Ward admission followed by observation and release.,4.0,readmission_loop,4.0,0.12056610733270645,0.20493198931217194
+V0801,standard_admission_release,This pathway involves ward admission (Admission NC) followed by multi-day observation and eventual release (Release A).,6.0,readmission_loop,4.0,0.12496396154165268,0.014957472681999207
+V0802,standard_admission_release,The narrative features inpatient ward admission and multi-day monitoring leading to Release D.,6.0,readmission_loop,3.0,0.45425209403038025,0.13238288462162018
+V0803,standard_admission_release,This path includes admission to both intensive care and standard care units before concluding with Release B.,8.0,readmission_loop,6.0,0.5245791077613831,0.11062294989824295
+V0804,readmission_loop,"After an initial admission and release (Release A), the patient returns to the emergency room, matching the readmission pattern.",6.0,standard_admission_release,3.0,0.032387036830186844,0.378267765045166
+V0805,standard_admission_release,The pathway requires ward admission and prolonged observation before final release (Release A).,31.0,readmission_loop,14.0,0.14694495499134064,0.17369019985198975
+V0806,readmission_loop,This pathway includes an initial hospital stay followed by a return to the emergency room (Return ER).,6.0,standard_admission_release,5.0,0.1252211332321167,0.3573915660381317
+V0807,standard_admission_release,Inpatient admission (Admission NC) is followed by multi-day treatment and release (Release A).,7.0,rapid_triage_only,3.0,0.18433816730976105,0.26870405673980713
+V0808,readmission_loop,"The patient is admitted and released, but eventually experiences an extended complication leading to a Return ER.",5.0,standard_admission_release,2.0,2.477323323546443e-05,0.3458559513092041
+V0809,standard_admission_release,This pathway involves standard inpatient ward admission followed by monitoring and eventual release.,10.0,readmission_loop,5.0,0.1327388733625412,0.007182567846029997
+V0810,standard_admission_release,The patient undergoes inpatient ward admission and subsequent release (Release A) after several days.,4.0,readmission_loop,4.0,0.11139189451932907,0.028529541566967964
+V0811,standard_admission_release,Includes hospital admission and multi-day observation ending in successful release.,6.0,readmission_loop,4.0,0.11473361402750015,0.19185447692871094
+V0812,readmission_loop,"Following inpatient treatment and release, the patient has a subsequent return to the ER.",6.0,standard_admission_release,1.0,0.3612794876098633,0.35577118396759033
+V0813,standard_admission_release,This sequence features ward admission and extensive lab monitoring before concluding with Release A.,15.0,readmission_loop,7.0,0.029631974175572395,0.11193274706602097
+V0814,standard_admission_release,"The pathway requires admission to the ward, several days of observation, and release.",4.0,readmission_loop,2.0,0.0015210657147690654,0.14144249260425568
+V0815,readmission_loop,The pathway concludes with a Return ER event following initial inpatient admission and release.,10.0,standard_admission_release,6.0,0.14748699963092804,0.3333340883255005
+V0816,acute_iv_treatment,A short pathway featuring intravenous antibiotics and blood work that resolves within hours without admission.,3.0,rapid_triage_only,4.0,0.02921864204108715,0.002677004085853696
+V0817,readmission_loop,"Includes ward admission and release, followed eventually by a return to the emergency department.",11.0,standard_admission_release,6.0,0.019503824412822723,0.33793333172798157
+V0818,standard_admission_release,This path involves standard inpatient admission with extended lab monitoring and final release.,13.0,readmission_loop,5.0,0.026533285155892372,0.11338815093040466
+V0819,standard_admission_release,The narrative describes hospital ward admission followed by observation and release.,7.0,readmission_loop,4.0,0.1207677498459816,0.01915368251502514
+V0820,acute_iv_treatment,A rapid intervention pathway involving IV fluids and antibiotics within a sub-hour timeframe.,4.0,rapid_triage_only,2.0,0.37682557106018066,0.0012343546841293573
+V0821,readmission_loop,"After being admitted and released, the patient returns to the ER, extending the pathway duration significantly.",5.0,standard_admission_release,4.0,0.11396149545907974,0.3341786861419678
+V0822,readmission_loop,"A very long, highly repetitive pathway resulting in a return to the emergency room.",48.0,standard_admission_release,24.0,0.19336746633052826,0.3389872610569
+V0823,readmission_loop,"This pathway includes an inpatient admission, release, and subsequent long-term return to the ER.",6.0,standard_admission_release,1.0,0.3778485953807831,0.41390085220336914
+V0824,standard_admission_release,"Features standard ward admission, observation, and final release.",5.0,readmission_loop,1.0,0.015146461315453053,0.12477497011423111
+V0825,readmission_loop,"The patient undergoes inpatient treatment and release, only to return to the emergency room later.",5.0,standard_admission_release,2.0,0.1906869262456894,0.39921775460243225
+V0826,acute_iv_treatment,"This pathway involves acute IV treatment and blood panels within a short timeframe of 9 hours, without full inpatient admission.",4.0,rapid_triage_only,1.0,0.35539284348487854,0.3373466432094574
+V0827,readmission_loop,"The pathway results in Return ER after a prolonged multi-day hospital stay and repeated complications, fitting the readmission loop.",5.0,standard_admission_release,4.0,0.014858946204185486,0.3333781957626343
+V0828,readmission_loop,"The process culminates in Return ER after multiple ward admissions and observations, characterizing an extended complication path.",8.0,standard_admission_release,3.0,0.40297427773475647,0.33912310004234314
+V0829,standard_admission_release,The narrative shows standard inpatient ward admission (Admission NC) followed by multi-day observation and successful release (Release A).,4.0,readmission_loop,4.0,0.12550032138824463,0.014421110041439533
+V0830,standard_admission_release,"The pathway requires ward admission, several days of observation, and ends with Release A.",6.0,readmission_loop,6.0,0.1241459846496582,0.01577545516192913
+V0831,standard_admission_release,This variant features standard inpatient admission followed by multi-day observation and eventually concludes with Release D.,8.0,readmission_loop,6.0,0.3455725610256195,0.2132846862077713
+V0832,rapid_triage_only,"A short, fast-paced pathway completing within an hour with triage and initial labs, ending in IV Antibiotics without admission.",5.0,acute_iv_treatment,2.0,0.34546372294425964,0.0006202496006153524
+V0833,standard_admission_release,"The narrative includes multiple ward admissions and laboratory work, culminating over several days in Release A.",10.0,readmission_loop,5.0,0.1314450353384018,0.008476407267153263
+V0834,readmission_loop,Long-duration pathway lasting 97 days that ultimately results in a return to the emergency room (Return ER).,15.0,standard_admission_release,9.0,0.1273747682571411,0.35954520106315613
+V0835,standard_admission_release,Features ward admission (Admission NC) and multi-day observation before concluding with Release A.,5.0,readmission_loop,2.0,0.010948367416858673,0.15086980164051056
+V0836,standard_admission_release,"Involves inpatient ward admission and a 10-day span of observation and lab work, finishing with Release A.",10.0,readmission_loop,5.0,0.1272720843553543,0.012649358250200748
+V0837,standard_admission_release,"Requires intensive care and ward admission, multi-day observation, and concludes with Release A.",4.0,readmission_loop,3.0,0.003443453460931778,0.136477991938591
+V0838,standard_admission_release,Features an inpatient admission (Admission NC) followed by a couple of days of observation and Release A.,5.0,readmission_loop,1.0,0.358241468667984,0.35402345657348633
+V0839,standard_admission_release,The narrative includes ward admission and multi-day laboratory tracking before ending in Release A.,7.0,readmission_loop,4.0,0.008585159666836262,0.14850659668445587
+V0840,standard_admission_release,"A lengthy 45-day inpatient observation path through multiple units, concluding successfully with Release B.",55.0,readmission_loop,22.0,0.5608814358711243,0.09014775604009628
+V0841,standard_admission_release,"Involves an inpatient admission (Admission NC) followed by day-long observation and lab tests, ending in Release A.",4.0,readmission_loop,2.0,0.050659019500017166,0.19058044254779816
+V0842,readmission_loop,Features a multi-day stay followed by an eventual return to the emergency room (Return ER).,7.0,standard_admission_release,3.0,0.033829864114522934,0.3333468735218048
+V0843,acute_iv_treatment,"Mid-length pathway involving IV antibiotics, IV liquid, and a brief admission that resolves quickly within a day.",4.0,standard_admission_release,1.0,0.38503649830818176,0.0006515100249089301
+V0844,standard_admission_release,"Requires admission to intensive care and ward units, several days of observation, and concludes with Release A.",14.0,readmission_loop,10.0,0.17218990623950958,0.22328709065914154
+V0845,standard_admission_release,"Features intensive care and ward admissions, multi-day lab tracking, and concludes with Release A.",18.0,readmission_loop,11.0,0.13368988037109375,0.17289823293685913
+V0846,standard_admission_release,"Involves ward admission and multi-day observation with lab tests, ending in Release A.",5.0,readmission_loop,4.0,0.11542082577943802,0.1997867226600647

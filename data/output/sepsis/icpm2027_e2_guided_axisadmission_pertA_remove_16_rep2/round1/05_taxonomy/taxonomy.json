@@ -1,0 +1,35 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission Non-Critical",
+      "description": "Patient is admitted to a non-critical inpatient ward, advancing the clinical workflow toward final discharge or release while being measured against potential post-discharge complications and ER return rates.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Mapped 1:1 to the single declared alternative under the OR-decomposition of goal id=5 (Patient is admitted to an inpatient ward), specifically task id=15 (Admission NC), which is heavily evidenced across multiple sampled variants such as V0008, V0625, V0605, and V0551.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0625",
+        "V0605",
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0273",
+        "V0068",
+        "V0072",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063",
+        "V0710"
+      ]
+    }
+  ]
+}

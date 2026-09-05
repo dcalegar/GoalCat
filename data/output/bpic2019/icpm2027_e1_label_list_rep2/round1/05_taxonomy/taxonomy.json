@@ -1,0 +1,36 @@
+{
+  "categories": [
+    {
+      "category_id": "straight_through_processing",
+      "name": "Straight-through processing",
+      "description": "The invoice is processed and paid with no recorded exception, block, discrepancy correction, or cancellation \u2014 the shortest, most direct realization of the process.",
+      "anchor_ids": [],
+      "rationale": "The baseline exception-free category against which the other three represent some departure, independent of which matching mechanism the case used.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "discrepancy_resolved",
+      "name": "Discrepancy resolved before payment",
+      "description": "A price, quantity, or date discrepancy is detected and corrected on record before the invoice is paid, without a full block or cancellation.",
+      "anchor_ids": [],
+      "rationale": "Captures cases whose exception was resolved within the normal flow, distinct from a formally blocked case.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "delayed_or_blocked_payment",
+      "name": "Delayed or blocked payment",
+      "description": "Payment occurs materially after the invoice's recorded terms, or a payment-block event is on record, without the case ending in a cancellation or reversal.",
+      "anchor_ids": [],
+      "rationale": "A distinct operational failure mode from a resolved discrepancy: the case proceeds but payment itself is late or held.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "cancelled_or_reversed",
+      "name": "Cancelled or reversed",
+      "description": "The purchase order or invoice is cancelled or reversed on record rather than completed through to payment.",
+      "anchor_ids": [],
+      "rationale": "The most severe category, kept separate because it reflects the process not completing as intended rather than completing late or with correction.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "categories": [
+    {
+      "category_id": "release_a",
+      "name": "Release A",
+      "description": "Standard release pathway for discharged patients supporting recovery and minimizing post-discharge deterioration.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Task Release A (id=17), supported by variants such as V0008, V0070, and V0069 where patients are discharged via Release A.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0070",
+        "V0069"
+      ]
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release B",
+      "description": "Alternative discharge pathway for admitted cases, contributing to avoiding post-discharge deterioration.",
+      "anchor_ids": [
+        "18"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Task Release B (id=18), supported by variant V0068 and V0145.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Discharge pathway for extended inpatient cases, leading to final release.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Task Release C (id=19), supported by long-running variant V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Specialized discharge route for cases completing extended inpatient treatment.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Task Release D (id=20), supported by complex variant V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release E",
+      "description": "Declared discharge alternative for admitted cases under the patient release goal.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Task Release E (id=21) based on the goal model decomposition, preserving the complete set of alternative outcomes.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "release_f",
+      "name": "Release F",
+      "description": "Declared discharge alternative for admitted cases under the patient release goal.",
+      "anchor_ids": [
+        "112"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Task Release F (id=112) based on the goal model decomposition, preserving the complete set of alternative outcomes.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

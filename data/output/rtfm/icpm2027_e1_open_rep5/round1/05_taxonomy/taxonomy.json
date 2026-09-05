@@ -1,0 +1,68 @@
+{
+  "categories": [
+    {
+      "category_id": "direct_payment",
+      "name": "Direct Payment",
+      "description": "Cases where the fine is paid promptly or directly after creation without extensive administrative escalation or collection procedures.",
+      "anchor_ids": [],
+      "rationale": "Represents low-duration and short-trace variants that cleanly result in payment early in the lifecycle.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0003",
+        "V0007",
+        "V0012"
+      ]
+    },
+    {
+      "category_id": "standard_fine_lifecycle",
+      "name": "Standard Fine Lifecycle with Penalties",
+      "description": "Typical administrative process involving fine creation, notification, addition of penalties, and ultimate resolution either via payment or escalation to credit collection.",
+      "anchor_ids": [],
+      "rationale": "Captures the most frequent high-volume variants containing standard notification, penalty addition, and eventual collection or payment.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0004",
+        "V0009",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "payment_rework_heavy",
+      "name": "Payment Rework Heavy",
+      "description": "Variants characterized by repeated payment activities occurring over extended durations or long traces.",
+      "anchor_ids": [],
+      "rationale": "Identified by recurring payment actions and high trace lengths reflecting installment-like or repeated settlement behavior.",
+      "evidence_variant_ids": [
+        "V0005",
+        "V0006",
+        "V0048",
+        "V0153",
+        "V0151",
+        "V0147",
+        "V0141",
+        "V0224"
+      ]
+    },
+    {
+      "category_id": "prefecture_appeal",
+      "name": "Prefecture Appeal and Legal Escalation",
+      "description": "Complex variants involving formal appeals to the prefecture or judge, processing of results, and notification of outcomes.",
+      "anchor_ids": [],
+      "rationale": "Groups cases that deviate from standard payment paths into legal or administrative appeals.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0103",
+        "V0177",
+        "V0176",
+        "V0144",
+        "V0158",
+        "V0135",
+        "V0137",
+        "V0136",
+        "V0134",
+        "V0133"
+      ]
+    }
+  ]
+}

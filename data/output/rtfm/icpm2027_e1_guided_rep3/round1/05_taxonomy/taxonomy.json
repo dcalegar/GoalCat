@@ -3,13 +3,14 @@
     {
       "category_id": "timely_payment",
       "name": "Resolve via timely payment",
-      "description": "Cases resolved through prompt payment by the offender, advancing the softgoal 'Maximize timely fine revenue' and helping 'Minimize administrative & enforcement cost', measured against indicator 'Time to fine dispatch (days)' and 'Average time to case closure (days)'.",
+      "description": "Cases resolved through prompt payment by the offender, advancing the softgoal to maximize timely fine revenue and helping minimize administrative and enforcement costs, judged against indicator 112 (Time to fine dispatch) and 114 (Average time to case closure).",
       "anchor_ids": [
         "12"
       ],
-      "rationale": "Maps 1:1 to the declared alternative id=12 as evidenced by variants such as V0002 and V0007 ending directly in payment.",
+      "rationale": "Mapped 1:1 to the declared alternative id=12, supported by frequent variants such as V0002 and V0007 where payment occurs shortly after fine creation or sending.",
       "evidence_variant_ids": [
         "V0002",
+        "V0003",
         "V0007",
         "V0012"
       ]
@@ -17,57 +18,64 @@
     {
       "category_id": "delinquent_payment",
       "name": "Resolve via delinquent payment",
-      "description": "Cases resolved via payment after a notification and penalty have been applied, helping maximize timely fine revenue and judged against average time to case closure.",
+      "description": "Cases resolved via payment after notification or penalty addition, advancing the softgoal to maximize timely fine revenue, judged against indicator 114 (Average time to case closure).",
       "anchor_ids": [
         "13"
       ],
-      "rationale": "Maps 1:1 to the declared alternative id=13 as supported by variants like V0004, V0005, and V0006 where payment occurs after penalties and notifications.",
+      "rationale": "Mapped 1:1 to the declared alternative id=13, evidenced by variants like V0004, V0005, and V0006 where payments happen after fine notifications and penalties.",
       "evidence_variant_ids": [
         "V0004",
         "V0005",
-        "V0006"
+        "V0006",
+        "V0009",
+        "V0010"
       ]
     },
     {
       "category_id": "administrative_appeal",
       "name": "Resolve via administrative appeal to the Prefecture",
-      "description": "Cases involving an administrative appeal to the Prefecture, preserving due-process rights while impacting enforcement costs and revenue, measured against 'Time to appeal filing, Prefecture (days)'.",
+      "description": "Cases involving an administrative appeal process directed to the Prefecture, preserving offender due-process rights (softgoal id=113) while impacting administrative costs and revenue, measured against indicator 113.",
       "anchor_ids": [
         "14"
       ],
-      "rationale": "Maps 1:1 to the declared alternative id=14 as evidenced by traces like V0008 and V0057 containing administrative appeal steps.",
+      "rationale": "Mapped 1:1 to the declared alternative id=14, observed in variants such as V0008, V0057, and V0035 which contain dates, send events, and results related to the Prefecture appeal.",
       "evidence_variant_ids": [
         "V0008",
         "V0057",
-        "V0137"
+        "V0135",
+        "V0137",
+        "V0145"
       ]
     },
     {
       "category_id": "judicial_appeal",
       "name": "Resolve via judicial appeal to the Judge",
-      "description": "Cases where the offender pursues a judicial appeal to the Judge, maximizing due-process rights while hurting administrative costs, evaluated against 'Time to appeal filing, Judge (days)'.",
+      "description": "Cases involving a judicial appeal to a judge, strongly making the case for preserving offender due-process rights while hurting administrative costs, measured via indicator 175.",
       "anchor_ids": [
         "19"
       ],
-      "rationale": "Maps 1:1 to the declared alternative id=19, observed in samples such as V0103 and V0144 featuring judicial appeal activities.",
+      "rationale": "Mapped 1:1 to the declared alternative id=19, identified in variants such as V0103, V0140, and V0176 which explicitly log appeals directed to the Judge.",
       "evidence_variant_ids": [
         "V0103",
-        "V0144",
-        "V0176"
+        "V0140",
+        "V0176",
+        "V0224"
       ]
     },
     {
       "category_id": "coercive_credit_collection",
       "name": "Resolve via coercive credit collection",
-      "description": "Cases that reach an enforced closure through coercive credit collection, helping revenue while hurting cost, judged against average case closure time.",
+      "description": "Cases resolved by sending uncollected or disputed fines for coercive credit collection, helping maximize revenue but hurting enforcement costs, evaluated against indicator 114.",
       "anchor_ids": [
         "20"
       ],
-      "rationale": "Maps 1:1 to the declared alternative id=20 as frequently seen in variants like V0001, V0009, and V0010 ending with credit collection.",
+      "rationale": "Mapped 1:1 to the declared alternative id=20, supported by frequent long-running variants like V0001, V0009, and V0057 ending with credit collection dispatch.",
       "evidence_variant_ids": [
         "V0001",
         "V0009",
-        "V0010"
+        "V0057",
+        "V0134",
+        "V0138"
       ]
     }
   ]

@@ -1,0 +1,56 @@
+2026-09-04 20:05:12,443 [INFO] goalcat: Run environment: host=192.168.68.64, platform=macOS-26.6.2-arm64-arm-64bit-Mach-O, python=3.14.6, cpu_count=8, total_ram_gib=8.0
+2026-09-04 20:05:12,444 [INFO] goalcat: ICPM 2027 condition run starting: run_id=icpm2027_e2_guided_axisdischarge_pertA_remove_21_rep3, steps=[5, 6], taxonomy_mode=intent_guided, goal_model=perturbed/sepsis_goal_model__pertA_remove_21.jucm
+2026-09-04 20:05:12,447 [INFO] goalcat: Step 5a (intent-guided taxonomy induction) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-09-04 20:05:12,447 [INFO] goalcat: Loading narrative sample from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_e2_guided_axisdischarge_pertA_remove_21_rep3/04_sampling/narrative_sample.csv
+2026-09-04 20:05:12,453 [INFO] goalcat: Inducing taxonomy from 33 sampled narratives against goal model: /Users/danielcalegari/vsc-workspace/GoalCat/data/goals/perturbed/sepsis_goal_model__pertA_remove_21.jucm
+2026-09-04 20:05:17,306 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2b1c9da20d7b87e9, latency=3.15s)
+2026-09-04 20:05:17,306 [INFO] goalcat: Induced 4 categories: release_a, release_b, release_c, release_d
+2026-09-04 20:05:17,312 [INFO] goalcat: Taxonomy grounding check: no problems found.
+2026-09-04 20:05:17,312 [INFO] goalcat: Axis partition check: 4 categories partition the declared axis (17, 18, 19, 20).
+2026-09-04 20:05:17,313 [INFO] goalcat: Saved taxonomy to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_e2_guided_axisdischarge_pertA_remove_21_rep3/round1/05_taxonomy/taxonomy.json
+2026-09-04 20:05:17,313 [INFO] goalcat: Step 5a complete.
+2026-09-04 20:05:17,313 [INFO] goalcat: Peak RSS after Step 5a: 385.1 MiB
+2026-09-04 20:05:17,315 [INFO] goalcat: Step 6 (narrative assignment) started for log: /Users/danielcalegari/vsc-workspace/GoalCat/data/logs/sepsis.xes.gz
+2026-09-04 20:05:17,315 [INFO] goalcat: Loading profiles/narratives from existing run directory: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_e2_guided_axisdischarge_pertA_remove_21_rep3
+2026-09-04 20:05:17,342 [INFO] goalcat: Loading taxonomy from: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_e2_guided_axisdischarge_pertA_remove_21_rep3/round1/05_taxonomy/taxonomy.json
+2026-09-04 20:05:17,346 [INFO] goalcat: Assigning 846 narratives against 4 categories (model=gemini/gemini-3.5-flash-lite, batch_size=25, concurrency=5)
+2026-09-04 20:05:20,883 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=af9f1f98b735aa5d, latency=3.50s)
+2026-09-04 20:05:20,943 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f9472db7210ba992, latency=3.56s)
+2026-09-04 20:05:21,716 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=ee9b738e6ee42690, latency=4.34s)
+2026-09-04 20:05:21,830 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=44050fb383752950, latency=4.46s)
+2026-09-04 20:05:21,859 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=04c0229fa41a3b3e, latency=4.47s)
+2026-09-04 20:05:24,366 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=f86130a4d8276240, latency=3.42s)
+2026-09-04 20:05:24,774 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=79f0a6086b60f72b, latency=3.89s)
+2026-09-04 20:05:25,183 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=a482635930c7c139, latency=3.47s)
+2026-09-04 20:05:25,452 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=e97364680cd01112, latency=3.62s)
+2026-09-04 20:05:25,799 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=aea2f53a508840b9, latency=3.94s)
+2026-09-04 20:05:27,940 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=07e3154310d68469, latency=3.57s)
+2026-09-04 20:05:28,460 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=42722bbd775db6dc, latency=3.69s)
+2026-09-04 20:05:28,871 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2d7e299acb86ccb1, latency=3.69s)
+2026-09-04 20:05:29,091 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=fc79ced430ac5cea, latency=3.64s)
+2026-09-04 20:05:29,372 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=9d8442db57247163, latency=3.57s)
+2026-09-04 20:05:31,635 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=76f8d14bc17173ac, latency=3.69s)
+2026-09-04 20:05:32,031 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=40a423bab192b7fc, latency=3.57s)
+2026-09-04 20:05:32,454 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=2ca469f54abcff1e, latency=3.58s)
+2026-09-04 20:05:32,969 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=076db1d141d1d279, latency=3.60s)
+2026-09-04 20:05:32,999 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=919a450ab154f9df, latency=3.91s)
+2026-09-04 20:05:35,112 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=e5d94cc80d4eebba, latency=3.48s)
+2026-09-04 20:05:35,576 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=6493929425375949, latency=3.55s)
+2026-09-04 20:05:36,141 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=8d20428391dda336, latency=3.69s)
+2026-09-04 20:05:36,247 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=7ea67c0da6be864d, latency=3.28s)
+2026-09-04 20:05:36,304 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=6d7a64810feb9f18, latency=3.30s)
+2026-09-04 20:05:38,906 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=70c929fcebf5ca66, latency=3.79s)
+2026-09-04 20:05:39,315 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=4307d56e8eba82c5, latency=3.74s)
+2026-09-04 20:05:39,700 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=fd8a095f95e2df37, latency=3.56s)
+2026-09-04 20:05:39,752 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=7de17aafe0385d57, latency=3.45s)
+2026-09-04 20:05:39,915 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=0385dc86a0a5e800, latency=3.67s)
+2026-09-04 20:05:42,495 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=e80efe64874e917c, latency=3.59s)
+2026-09-04 20:05:43,149 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=42103386e9ca7c7f, latency=3.83s)
+2026-09-04 20:05:43,160 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=065fbfcbb59f61e1, latency=3.41s)
+2026-09-04 20:05:43,745 [INFO] goalcat: LLM structured call ok (backend=remote, model=gemini/gemini-3.5-flash-lite, prompt_hash=fc5bb54a48bb8f2e, latency=4.04s)
+2026-09-04 20:05:43,749 [INFO] goalcat: Assigned 702/846 narratives to a category, 144 residual, 0 still pending
+2026-09-04 20:05:43,749 [INFO] goalcat: Assignment grounding check: no problems found.
+2026-09-04 20:05:44,658 [INFO] goalcat: Saved assignment outputs to: /Users/danielcalegari/vsc-workspace/GoalCat/data/output/sepsis/icpm2027_e2_guided_axisdischarge_pertA_remove_21_rep3/round1/06_assignment
+2026-09-04 20:05:44,658 [INFO] goalcat: Step 6 complete.
+2026-09-04 20:05:44,658 [INFO] goalcat: Peak RSS after Step 6: 526.5 MiB
+2026-09-04 20:05:44,660 [INFO] goalcat: ICPM 2027 condition run complete: run_id=icpm2027_e2_guided_axisdischarge_pertA_remove_21_rep3

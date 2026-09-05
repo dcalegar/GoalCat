@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "8b11ade8d6de839f",
+  "latency_seconds": 2.373929874986061,
+  "input_tokens": 8838,
+  "output_tokens": 582,
+  "prompt_chars": 27617,
+  "response_chars": 1957,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"merged_discharge\",\n      \"name\": \"Merged Discharge Pathway\",\n      \"description\": \"Represents cases that are discharged via the merged task path 17+18. Contributes to avoiding post-discharge deterioration as measured by post-discharge ER return indicators.\",\n      \"anchor_ids\": [\n        \"17\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to the declared alternative id=17 (Merged 17+18). Supported by variants such as V0008, V0551, V0700 where discharge occurs via Release A, mapping to the merged discharge goal achievement.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0551\",\n        \"V0700\"\n      ]\n    },\n    {\n      \"category_id\": \"release_c\",\n      \"name\": \"Release C Pathway\",\n      \"description\": \"Represents patients discharged through Release C. Aligns with goal-model element 19, concluding the inpatient ward stay.\",\n      \"anchor_ids\": [\n        \"19\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to the declared alternative id=19 (Release C). Observed in variant V0710.\",\n      \"evidence_variant_ids\": [\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"release_d\",\n      \"name\": \"Release D Pathway\",\n      \"description\": \"Represents patients discharged through Release D. Aligns with goal-model element 20.\",\n      \"anchor_ids\": [\n        \"20\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to the declared alternative id=20 (Release D). Observed in variant V0273.\",\n      \"evidence_variant_ids\": [\n        \"V0273\"\n      ]\n    },\n    {\n      \"category_id\": \"release_e\",\n      \"name\": \"Release E Pathway\",\n      \"description\": \"Represents patients discharged through Release E. Aligns with goal-model element 21.\",\n      \"anchor_ids\": [\n        \"21\"\n      ],\n      \"rationale\": \"Default 1:1 mapping to the declared alternative id=21 (Release E). Maintained as a distinct category per the OR-decomposition options.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0041064
+}

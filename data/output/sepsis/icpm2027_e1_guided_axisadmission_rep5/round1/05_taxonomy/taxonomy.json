@@ -3,33 +3,29 @@
     {
       "category_id": "admission_nc",
       "name": "Non-Critical Admission",
-      "description": "Patient is admitted to a non-critical inpatient ward, contributing to standard care flows and tracking against discharge outcomes.",
+      "description": "Admission of the patient to a non-critical inpatient ward (Admission NC), realizing the goal of admitting a patient to an inpatient ward. This contributes toward standard post-discharge recovery outcomes.",
       "anchor_ids": [
         "15"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Admission NC (id=15) from the OR decomposition of Goal 5. Observed in multiple variants such as V0008, where it supports patient disposition.",
+      "rationale": "Mapped 1:1 to the declared XOR alternative Admission NC (id=15) based on the goal model decomposition. Sample variants such as V0008, V0070, and V0066 realize this alternative directly.",
       "evidence_variant_ids": [
         "V0008",
-        "V0625",
-        "V0551",
-        "V0449",
-        "V0192"
+        "V0066",
+        "V0070"
       ]
     },
     {
       "category_id": "admission_ic",
       "name": "Intensive Care Admission",
-      "description": "Patient is admitted to an intensive care inpatient ward, introducing a negative contribution to minimizing time-to-treatment due to specialized routing.",
+      "description": "Admission of the patient to an intensive care unit (Admission IC), realizing the goal of inpatient admission while incurring a negative contribution (-25) to minimizing time-to-treatment due to specialized handling requirements.",
       "anchor_ids": [
         "16"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Admission IC (id=16) from the OR decomposition of Goal 5. Associated with softgoal trade-offs (SomeNegative contribution to time-to-treatment) and observed in complex variants such as V0605 and V0317.",
+      "rationale": "Mapped 1:1 to the declared XOR alternative Admission IC (id=16) as defined in the goal model. Sample variants such as V0605, V0317, and V0068 reflect patient cases routed through intensive care.",
       "evidence_variant_ids": [
-        "V0605",
-        "V0551",
-        "V0317",
         "V0068",
-        "V0145"
+        "V0317",
+        "V0605"
       ]
     }
   ]

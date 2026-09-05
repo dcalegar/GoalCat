@@ -4,75 +4,75 @@ Run: `icpm2027_e1_open_rep1` | Log: `bpic2019` | Taxonomy mode: `open` | Assignm
 
 11973 variants, 251734 cases total.
 
-## Standard Procure-to-Pay (`standard_procure_to_pay`)
+## Standard Procurement Flow (`standard_procurement_flow`)
 
-Standard, high-frequency procurement paths where purchase orders are created, goods and invoice receipts are recorded, and invoices are cleared without significant delays or complications.
+Standard purchasing and invoicing paths with predictable sequences, moderate lead times, and clean execution.
 
-**Taxonomy-derivation rationale (Step 5):** These variants represent the backbone of normal operations (high frequency, moderate duration, clean linear progression ending in Clear Invoice).
-
-**Goal-model linkage:** (no goal model)
-
-**Coverage:** macro 3839/11973 variants (32.1%) · micro 182566/251734 cases (72.5%)
-
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 7.44, nearest other category `extreme_rework_and_delay` at mean distance 17.93
-
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.400, nearest other category `extreme_rework_and_delay` at mean distance 0.424
-
-## Quick Cancellation or Early Termination (`quick_cancellation_or_completion`)
-
-Short-lived variants featuring very low trace lengths and rapid execution times, typically resulting in purchase order deletion, basic creation, or initial goods receipt without full invoice processing.
-
-**Taxonomy-derivation rationale (Step 5):** Distinctly short trace lengths and minimal durations characterize these early-stage or aborted procurements.
+**Taxonomy-derivation rationale (Step 5):** Represents the most frequent baseline purchasing processes (e.g. V0001, V0002) which lack extreme durations or rework anomalies.
 
 **Goal-model linkage:** (no goal model)
 
-**Coverage:** macro 932/11973 variants (7.8%) · micro 34534/251734 cases (13.7%)
+**Coverage:** macro 4782/11973 variants (39.9%) · micro 197642/251734 cases (78.5%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 40.79, nearest other category `standard_procure_to_pay` at mean distance 30.23
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 7.10, nearest other category `srm_integration_anomaly` at mean distance 14.16
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.492, nearest other category `service_entry_execution` at mean distance 0.486
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.413, nearest other category `extreme_duration_and_churn` at mean distance 0.433
 
-## Service Entry Sheet Processing (`service_entry_execution`)
+## Short/Low-Touch Flow (`short_low_touch_flow`)
 
-Procurement paths focusing specifically on the recording of service entry sheets and goods receipts with minimal overhead or intermediate steps.
+Short trace lengths consisting of early-stage procurement actions, rapid deletions, or immediate creation/goods receipt actions without full invoicing loops.
 
-**Taxonomy-derivation rationale (Step 5):** These variants group around service-oriented activities (Record Service Entry Sheet) with very low durations.
-
-**Goal-model linkage:** (no goal model)
-
-**Coverage:** macro 2288/11973 variants (19.1%) · micro 3768/251734 cases (1.5%)
-
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 93.27, nearest other category `quick_cancellation_or_completion` at mean distance 77.15
-
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.362, nearest other category `quick_cancellation_or_completion` at mean distance 0.486
-
-## SRM System Transfer Failure (`srm_integration_failure`)
-
-Complex procurement variants originating in the SRM subsystem that suffer from transfer failures or communication issues with execution systems.
-
-**Taxonomy-derivation rationale (Step 5):** Characterized by the presence of SRM lifecycle states and culminating explicitly in 'SRM: Transfer Failed (E.Sys.)'.
+**Taxonomy-derivation rationale (Step 5):** Captures low-length traces like simple order creations, deletions, or quick receipts (e.g. V0003, V0009, V0014, V0024) with minimal operational footprint.
 
 **Goal-model linkage:** (no goal model)
 
-**Coverage:** macro 180/11973 variants (1.5%) · micro 1210/251734 cases (0.5%)
+**Coverage:** macro 951/11973 variants (7.9%) · micro 36526/251734 cases (14.5%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 19.12, nearest other category `standard_procure_to_pay` at mean distance 18.59
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 35.31, nearest other category `standard_procurement_flow` at mean distance 25.36
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.517, nearest other category `standard_procure_to_pay` at mean distance 0.527
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.538, nearest other category `service_entry_and_rework` at mean distance 0.547
 
-## Extreme Rework and Administrative Delay (`extreme_rework_and_delay`)
+## Service Entry & Minor Rework (`service_entry_and_rework`)
 
-Extremely long-running variants characterized by massive trace lengths, repetitive loops of invoice creation, cancellations, payment block removals, and multi-year durations.
+Flows centered around service entry sheets with minor repetitions or immediate low-duration completions.
 
-**Taxonomy-derivation rationale (Step 5):** These represent extreme outliers in terms of trace length (hundreds of activities), duration (years), and extensive rework observed across multiple steps.
+**Taxonomy-derivation rationale (Step 5):** Reflects execution patterns featuring service entry and goods receipt loops or small repetitions without exploding into massive delays (e.g. V0064, V0162, V0244, V0271).
 
 **Goal-model linkage:** (no goal model)
 
-**Coverage:** macro 3290/11973 variants (27.5%) · micro 6806/251734 cases (2.7%)
+**Coverage:** macro 2797/11973 variants (23.4%) · micro 7690/251734 cases (3.1%)
 
-**Cohesion — structural (control-flow proximity):** intra-category mean distance 26.24, nearest other category `standard_procure_to_pay` at mean distance 17.93
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 82.46, nearest other category `standard_procurement_flow` at mean distance 62.74
 
-**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.386, nearest other category `standard_procure_to_pay` at mean distance 0.424
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.426, nearest other category `short_low_touch_flow` at mean distance 0.547
+
+## SRM Integration Anomaly (`srm_integration_anomaly`)
+
+Flows involving SRM sub-system milestones, transfers, transmission changes, or system transfer failures.
+
+**Taxonomy-derivation rationale (Step 5):** Isolates complex variants tied to SRM tracking states and transfer errors (e.g. V2944, V2952, V2950, V2949, V2947, V2946, V2948) which exhibit specialized messaging.
+
+**Goal-model linkage:** (no goal model)
+
+**Coverage:** macro 194/11973 variants (1.6%) · micro 1284/251734 cases (0.5%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 10.98, nearest other category `standard_procurement_flow` at mean distance 14.16
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.513, nearest other category `standard_procurement_flow` at mean distance 0.523
+
+## Extreme Duration and Churn (`extreme_duration_and_churn`)
+
+Massive trace lengths, extensive document cancellations, repetitive invoice postings, and multi-year durations.
+
+**Taxonomy-derivation rationale (Step 5):** Captures extreme outliers characterized by hundreds of activities, pervasive churn, invoice cancellations, and massive wait times spanning thousands of days (e.g. V1038, V3680, V3305, V3102, V3074, V6776, V5418).
+
+**Goal-model linkage:** (no goal model)
+
+**Coverage:** macro 2969/11973 variants (24.8%) · micro 5818/251734 cases (2.3%)
+
+**Cohesion — structural (control-flow proximity):** intra-category mean distance 35.60, nearest other category `standard_procurement_flow` at mean distance 23.10
+
+**Cohesion — profile (duration/outcome/rework):** intra-category mean distance 0.392, nearest other category `standard_procurement_flow` at mean distance 0.433
 
 ## Divergence between structural and profile distance
 
@@ -80,1475 +80,311 @@ Flagged for review, not resolved automatically — the two metrics measure diffe
 
 **Same category, structurally far apart** (possibly a category covering two distinct control-flow patterns):
 
-- `V0675` / `V6776` (category `extreme_rework_and_delay`): structural=989, profile=0.738
-- `V4364` / `V6776` (category `extreme_rework_and_delay`): structural=989, profile=0.730
-- `V4937` / `V6776` (category `extreme_rework_and_delay`): structural=989, profile=0.744
-- `V5367` / `V6776` (category `extreme_rework_and_delay`): structural=989, profile=0.726
-- `V5368` / `V6776` (category `extreme_rework_and_delay`): structural=989, profile=0.726
-- `V5457` / `V6776` (category `extreme_rework_and_delay`): structural=989, profile=0.720
-- `V6113` / `V6776` (category `extreme_rework_and_delay`): structural=989, profile=0.729
-- `V6763` / `V6776` (category `extreme_rework_and_delay`): structural=989, profile=0.786
-- `V6776` / `V11950` (category `extreme_rework_and_delay`): structural=989, profile=0.717
-- `V6776` / `V11953` (category `extreme_rework_and_delay`): structural=989, profile=0.717
+- `V1618` / `V6776` (category `extreme_duration_and_churn`): structural=989, profile=0.723
+- `V2258` / `V6776` (category `extreme_duration_and_churn`): structural=989, profile=0.726
+- `V2259` / `V6776` (category `extreme_duration_and_churn`): structural=989, profile=0.726
+- `V2937` / `V6776` (category `extreme_duration_and_churn`): structural=989, profile=0.725
+- `V4364` / `V6776` (category `extreme_duration_and_churn`): structural=989, profile=0.730
+- `V5367` / `V6776` (category `extreme_duration_and_churn`): structural=989, profile=0.726
+- `V5368` / `V6776` (category `extreme_duration_and_churn`): structural=989, profile=0.726
+- `V5457` / `V6776` (category `extreme_duration_and_churn`): structural=989, profile=0.720
+- `V6113` / `V6776` (category `extreme_duration_and_churn`): structural=989, profile=0.729
+- `V6776` / `V6903` (category `extreme_duration_and_churn`): structural=989, profile=0.739
 
 **Different category, structurally near-identical** (the TP/TA-style case — categories distinguished on business intent the activity sequence alone would not show):
 
-- `V0001` (`standard_procure_to_pay`) / `V0383` (`service_entry_execution`): structural=1, profile=0.003
-- `V0001` (`standard_procure_to_pay`) / `V1235` (`service_entry_execution`): structural=1, profile=0.006
-- `V0001` (`standard_procure_to_pay`) / `V2548` (`extreme_rework_and_delay`): structural=1, profile=0.338
-- `V0002` (`standard_procure_to_pay`) / `V0062` (`service_entry_execution`): structural=1, profile=0.002
-- `V0002` (`standard_procure_to_pay`) / `V0280` (`extreme_rework_and_delay`): structural=1, profile=0.683
-- `V0002` (`standard_procure_to_pay`) / `V1039` (`service_entry_execution`): structural=1, profile=0.004
-- `V0002` (`standard_procure_to_pay`) / `V1221` (`quick_cancellation_or_completion`): structural=1, profile=0.348
-- `V0002` (`standard_procure_to_pay`) / `V5031` (`extreme_rework_and_delay`): structural=1, profile=0.345
-- `V0003` (`quick_cancellation_or_completion`) / `V1874` (`service_entry_execution`): structural=1, profile=0.013
-- `V0004` (`standard_procure_to_pay`) / `V0227` (`extreme_rework_and_delay`): structural=1, profile=0.351
+- `V0001` (`standard_procurement_flow`) / `V0192` (`extreme_duration_and_churn`): structural=1, profile=0.686
+- `V0001` (`standard_procurement_flow`) / `V0383` (`service_entry_and_rework`): structural=1, profile=0.003
+- `V0001` (`standard_procurement_flow`) / `V0564` (`short_low_touch_flow`): structural=1, profile=0.334
+- `V0001` (`standard_procurement_flow`) / `V1235` (`service_entry_and_rework`): structural=1, profile=0.006
+- `V0001` (`standard_procurement_flow`) / `V1652` (`service_entry_and_rework`): structural=1, profile=0.684
+- `V0001` (`standard_procurement_flow`) / `V7341` (`service_entry_and_rework`): structural=1, profile=0.335
+- `V0001` (`standard_procurement_flow`) / `V11593` (`short_low_touch_flow`): structural=1, profile=0.345
+- `V0001` (`standard_procurement_flow`) / `V11917` (`short_low_touch_flow`): structural=1, profile=0.034
+- `V0002` (`standard_procurement_flow`) / `V0062` (`service_entry_and_rework`): structural=1, profile=0.002
+- `V0002` (`standard_procurement_flow`) / `V0096` (`service_entry_and_rework`): structural=1, profile=0.334
 
 ## Residual
 
-1444/11973 variants (12.1%), 22850/251734 cases (9.1%) unassigned.
+280/11973 variants (2.3%), 2774/251734 cases (1.1%) unassigned.
 
-- `V0011`: Terminates at record invoice receipt without clearing or cancellation, fitting none of the specific failure or extreme patterns.
-- `V0013`: Incomplete procure-to-pay path ending at invoice receipt without clearing.
-- `V0015`: Process stops at record invoice receipt without invoice clearance.
-- `V0017`: Terminates at invoice receipt without reaching final invoice clearance.
-- `V0018`: Terminates at invoice receipt without final clearance or other defined exceptional patterns.
-- `V0027`: Does not fit standard procure-to-pay because it lacks goods receipt clearance and has a very long duration just ending at invoice receipt without clearing.
-- `V0034`: Terminates early at goods receipt after a quantity change, not fitting clean standard P2P or quick cancellation.
-- `V0042`: Repeated goods receipt steps make it an anomaly rather than a standard or quick termination path.
-- `V0071`: Does not fit any category as it only consists of PO creation and a change to the delivery indicator without standard processing or clear cancellation patterns.
-- `V0079`: Features cancellations and debit memos without full standard lifecycle or extreme multi-year rework, making it part of the residual.
-- `V0085`: Variant focuses on repeated goods receipts without invoice clearing or standard full P2P completion, residing outside standard definitions.
-- `V0088`: Involves cancelled goods receipts and debit memos, not cleanly fitting the standard or other specific categories.
-- `V0091`: Consists primarily of cancellations of goods and invoice receipts over a longer duration, fitting the residual category.
-- `V0104`: Terminates early at payment block removal without reaching invoice clearance, meaning it does not fully complete a standard end-to-end procure-to-pay path.
-- `V0106`: Stops at invoice receipt without clearance or proper completion, and features a notably long duration that doesn't fit standard flow or quick termination.
-- `V0108`: Terminates at goods receipt with repeated goods receipts, lacking the full invoice processing steps of a standard procure-to-pay.
-- `V0114`: Terminates at goods receipt without invoice creation or clearance, outside standard P2P completion.
-- `V0116`: Complex rework involving repeated invoice receipts and clearances with debit memos, exceeding standard process simplicity.
-- `V0121`: Unusual path ending in block purchase order item with prolonged duration, fitting none of the primary operational definitions.
-- `V0125`: Significant rework involving repeated invoice creation, goods receipts, and invoice receipts, representing excessive administrative repetition beyond standard P2P.
-- `V0157`: This long-running variant involves a late cancellation of an invoice receipt after payment clearing, which does not fit cleanly into standard procure-to-pay or extreme rework definition.
-- `V0168`: Long duration variant resulting in cancellation of invoice receipt late in the process, not fully capturing standard flow or extreme rework.
-- `V0180`: This variant consists solely of repeated goods receipts after purchase order creation without full invoice processing or completion.
-- `V0184`: Features repeated invoice receipts and a multi-step timeline with a cancellation-like structure, not fitting standard flow.
-- `V0188`: Involves clearing followed by a late cancellation of an invoice receipt long after initial processing, making it non-standard.
-- `V0192`: Involves repeated invoice receipts and a lengthy duration with an atypical lifecycle.
-- `V0196`: Contains complex recurring debit memos, cancellations, and multiple invoice receipt/clearing steps.
-- `V0229`: Incomplete procure-to-pay cycle ending in goods receipt without invoice clearing or extreme rework patterns.
-- `V0232`: Short variant ending in record goods receipt without invoice processing.
-- `V0236`: Process terminates at record invoice receipt without complete clearing or extreme delays.
-- `V0237`: Unusual final outcome of cancel invoice receipt and high duration not neatly fitting standard flow.
-- `V0241`: Terminates early at remove payment block without invoice clearing.
-- `V0243`: Short variant ending in change delivery indicator.
-- `V0246`: Terminates at record goods receipt without invoice processing.
-- `V0279`: Does not fit standard flow or other categories due to ending prematurely at Record Invoice Receipt with an extended duration gap.
-- `V0286`: Involves repeated approval loops and ends unusually on an approval change without following standard procure-to-pay lifecycle completion.
-- `V0324`: Does not fit standard categories due to late invoice receipt cancellation after a long duration, lacking extreme multi-year rework characteristics.
-- `V0329`: Involves debit memos, cancellations of goods and invoice receipts, and subsequent clearing, not neatly fitting the standard procure-to-pay or other defined categories.
-- `V0338`: Features multiple loops of repeated invoicing and goods receipts, which departs from the standard straightforward P2P process.
-- `V0339`: Involves extensive repetition of goods receipt entries, creating an unusual pattern not captured by the main categories.
-- `V0340`: Contains excessive repeated goods receipts that do not align with standard procure-to-pay or service entry definitions.
-- `V0341`: Exhibits multiple recurring cycles of goods receipts and invoices, forming a complex rework pattern.
-- `V0347`: Complex sequence involving debit memos, canceled invoice receipts, and multiple clearing steps.
-- `V0350`: Focuses primarily on repeated approval changes for purchase orders rather than standard procurement or execution steps.
-- `V0351`: This variant involves frequent purchase order approvals and invoice receipts with iterative changes, which does not fit cleanly into standard procure-to-pay or other defined categories.
-- `V0356`: Terminates early at a price change without completing goods or invoice receipts.
-- `V0357`: Involves debit memos, cancellations of goods and invoice receipts, which is an exception handling path rather than a standard one.
-- `V0367`: Involves a long-delayed invoice receipt cancellation well after initial clearing.
-- `V0399`: Does not fit standard categories due to cancellation and delivery indicator changes without full P2P cycle.
-- `V0458`: The process terminates early with a quantity change after goods receipt, missing complete invoice clearing or other specific category characteristics.
-- `V0464`: Terminates at payment block removal and does not fit any clear pattern of standard P2P, extreme rework, or quick termination.
-- `V0468`: Variant concludes early at invoice receipt rather than invoice clearing or other defined paths.
-- `V0469`: Ends at record invoice receipt with repetitions, not fitting any specific category cleanly.
-- `V0470`: Ends at record invoice receipt without reaching final clearing or satisfying extreme duration/rework criteria.
-- `V0485`: Does not fit standard flow due to excessive repetition and loops of receipts and invoices, but lacks the extreme duration characteristics of extreme rework.
-- `V0487`: Involves repeated loops of goods receipts and invoices that do not cleanly map to standard procure-to-pay or extreme rework.
-- `V0488`: Features cancellation of invoice receipts and multiple clearing loops that deviate from standard flow.
-- `V0497`: Contains multiple cancellations, debit memos, and repeated payment blocks that diverge from standard procure-to-pay.
-- `V0618`: Does not fit standard P2P due to stalling at invoice receipt without clearing, nor does it fit other specific categories.
-- `V0619`: Variant concludes at invoice receipt with repeated cancellations and clears, not aligning cleanly with standard categories.
-- `V0621`: Terminates at payment block removal without complete invoice clearing, placing it outside standard P2P.
-- `V0622`: Terminates at payment block removal with repeated invoice and goods receipts, fitting none of the primary categories.
-- `V0623`: Ends at goods receipt after invoice recording, lacking full invoice clearing and not fitting other definitions.
-- `V0624`: A highly unusual variant dominated by repeated change approvals and non-standard execution order.
-- `V0625`: Incomplete or truncated variant ending with vendor invoice creation and lacking fulfillment steps.
-- `V0652`: Does not fit standard P2P due to repeated quantity changes and missing invoice receipt, nor does it fit other specific categories like SRM or extreme rework.
-- `V0658`: Incomplete procurement path ending prematurely at goods receipt with considerable delays, not fitting standard P2P or other specific categories.
-- `V0664`: Terminates early with a change delivery indicator and does not reach full invoice processing or match other categories.
-- `V0666`: Finishes at record invoice receipt with intermediate quantity changes but lacks standard clearance or extreme duration.
-- `V0669`: Involves repeated goods receipts without reaching final invoice clearing, falling outside standard P2P.
-- `V0670`: Short variant consisting only of requisition and repeated quantity changes without processing goods or invoices.
-- `V0672`: Simple variant concluding at goods receipt without full invoice processing.
-- `V0673`: Variant order is atypical with invoice occurring before goods receipt, not fitting standard P2P.
-- `V0676`: This variant involves repeated change approvals for a purchase order without completing standard procure-to-pay steps, making it a residual case that does not fit the defined categories.
-- `V0689`: This is an extremely long and convoluted variant lasting 335 days with multiple cancellations and re-recordings of invoices, which exceeds standard thresholds and fits a residual or extreme rework profile not fully captured by standard categories.
-- `V0729`: Does not fit any specific category pattern due to atypical sequence and cancellation of invoice receipt without clearing.
-- `V0864`: Ends in a delivery indicator change after goods receipt cancellation, which does not fit neatly into standard P2P or the other categories.
-- `V0868`: Stops at invoice receipt with repeated quantity changes, not fitting standard clearance or extreme delay patterns.
-- `V0871`: Features repeated goods receipts ending in invoice receipt without full end-to-end clearing or extreme rework loops.
-- `V0926`: This variant exhibits invoice cancellations and repeated clearing steps over 216 days, which does not cleanly fit standard P2P, quick cancellation, service entry processing, SRM failure, or extreme multi-year rework.
-- `V0927`: Involves changing delivery indicators, payment block removal, and repeated invoice clearing over 63 days, falling outside the defined categories.
-- `V0929`: Complex sequence involving debit memos, cancellations, and repeated invoice processing spanning 115 days without matching the specific criteria of the standard taxonomy.
-- `V0930`: Contains multiple repetitions of goods receipts, invoices, and clearing steps over 98 days, representing general process inefficiency rather than a specific taxonomy match.
-- `V0931`: Involves repeated invoice receipts over a 105-day duration, not fitting cleanly into standard or quick categories.
-- `V0932`: Ends in a cancelled goods receipt with repeated goods receipt actions, which is distinct from standard procure-to-pay or quick cancellation flows.
-- `V0933`: Features deletion and subsequent reactivation of a purchase order item before proceeding to invoice clearance, representing a non-standard path.
-- `V0934`: Shows extensive changes to approvals, price, and quantity alongside repeated invoice processing over 175 days, lacking a direct match.
-- `V0935`: Proceeds from a requisition through quantity and delivery changes to standard invoice clearing, but the modifications prevent it from being a purely standard P2P.
-- `V0936`: Characterized by excessive repetition of goods receipt entries within a short timeframe before final clearance.
-- `V0937`: Involves order confirmation, deletion, reactivation, and eventual clearance over 95 days.
-- `V0938`: Features multiple consecutive goods receipt recordings followed by normal invoice processing.
-- `V0939`: Includes release procedures, change approvals, price adjustments, and payment block removals over 141 days.
-- `V0940`: Involves multiple invoice cancellations, payment block removals, and re-clearance steps.
-- `V0941`: Long duration variant resulting in an eventual invoice receipt cancellation.
-- `V0942`: Features an initial clear followed by a very late invoice receipt cancellation after 174 days.
-- `V0943`: Exhibits repeated goods receipts and invoice entries with a payment block removal before clearance.
-- `V0944`: Contains duplicated vendor invoices and repeated invoice receipts prior to payment block removal and clearance.
-- `V0945`: Involves multiple price and quantity changes performed by the creator before recording goods and invoices.
-- `V0947`: Characterized by numerous recurring price and quantity changes interspersed across a 132-day duration.
-- `V0948`: Involves late cancellation of an invoice receipt followed by re-invoicing and clearance steps.
-- `V0949`: Contains a goods receipt cancellation and immediate re-entry before payment block removal and clearance.
-- `V0950`: Exhibits complex loops of repeated vendor invoices, goods receipts, invoice receipts, and double clearance steps.
-- `V0978`: This variant involves price/quantity changes and does not fit cleanly into standard procure-to-pay, extreme delays, or service entries.
-- `V0979`: Involves price changes and late invoice clearing without matching the exact patterns of the defined categories.
-- `V0981`: Involves repeated invoice receipts and payment block removals, but does not constitute the extreme multi-year rework or standard P2P flow.
-- `V0982`: A standard sequence ending in payment block removal with moderate duration, not fitting standard P2P clearing or other categories.
-- `V0986`: Standard procurement path with minor quantity adjustments and payment block removal leading to invoice clearance.
-- `V0987`: Standard flow with delivery indicator changes and payment block removal.
-- `V0989`: Contains repeated goods and invoice receipts but moderate duration, falling outside extreme rework.
-- `V0990`: Moderate duration procurement path with price changes and invoice receipt.
-- `V0991`: Contains repeated vendor invoices, goods receipts, and invoice receipts with moderate duration.
-- `V0992`: Procurement path with order confirmation, payment block removal, and invoice clearance.
-- `V0993`: Terminates with a change in the delivery indicator after quantity adjustments.
-- `V0994`: Features excessive repetition of record goods receipt activities.
-- `V0995`: Involves repeated goods receipts, vendor invoices, and invoice receipts.
-- `V0996`: Contains repeated price changes followed by standard invoice processing.
-- `V0997`: Procurement variant with delivery indicator change and delayed invoice clearing.
-- `V0999`: Involves repeated quantity changes and concludes with payment block removal.
-- `V1000`: Procurement path with approval changes and quantity adjustments ending in invoice receipt.
-- `V1004`: Involves recurring debit memos, cancellations, and re-entry of invoice receipts that do not cleanly fit standard or extreme categories.
-- `V1006`: Terminates early with a price change activity, not standard procure-to-pay or any other defined specific flow.
-- `V1008`: Contains recurring goods and invoice receipts but does not progress to proper invoice clearing or extreme durations.
-- `V1025`: Involves frequent approval changes and deletion of a purchase order item, which does not fit standard P2P or other definitions.
-- `V1026`: This narrative involves repeated cancellation and recording of goods receipts and service entry sheets, which does not fit standard P2P, quick cancellation, service entry execution, SRM integration failure, or extreme rework with multi-year delays.
-- `V1041`: Consists of repetitive goods receipts without standard invoice processing or clear mapping to the defined categories.
-- `V1064`: The variant terminates at Record Invoice Receipt without clearing or completing a full cycle, and does not fit cleanly into the other defined categories.
-- `V1102`: This variant involves invoice corrections and cancellations over a moderate duration, fitting none of the specific operational categories cleanly.
-- `V1109`: Involves specific quantity changes and blocking/reactivating purchase order items that do not clearly map to the standard categories.
-- `V1110`: Exhibits an unusual loop of numerous repeated goods receipts before normal invoice clearing.
-- `V1117`: Long duration ending in payment block removal rather than standard clearing, lacking a specific category match.
-- `V1124`: Procurement path featuring early goods receipt cancellation and price updates, not neatly falling into standard categories.
-- `V1126`: This narrative involves repetitive invoice creation, goods receipts, and payment block removals, but does not fit cleanly into any of the standard definitions as it contains heavy rework.
-- `V1128`: Involves multiple cancellations of invoice receipts and repeated clearing attempts, showing complex rework cycles beyond a standard P2P path.
-- `V1129`: Similar to V1128, featuring repeated invoice receipts, debit memos, cancellations, and multiple clearings.
-- `V1130`: Exhibits extensive rework with repeated invoice receipts, payment block removals, and invoice clearings.
-- `V1132`: Short variant focused on price changes and goods receipts without completing a full procure-to-pay cycle.
-- `V1133`: Consists solely of purchase order creation and repeated price changes, terminating without fulfillment.
-- `V1134`: Involves cancellation of invoice receipts and subsequent clearing and re-recording, representing non-standard process exceptions.
-- `V1135`: Incomplete procurement path ending with an un-cleared vendor invoice after significant delays and quantity changes.
-- `V1136`: Features repeated goods receipts, vendor invoices, and invoice receipts, representing an iterative rework pattern.
-- `V1137`: Involves price/quantity adjustments and goods receipt cancellations, falling outside standard straight-through processing.
-- `V1141`: Contains multiple repetitions of vendor invoices, goods receipts, invoice receipts, and clearings.
-- `V1143`: Involves repeated goods receipts and invoice receipts, indicating minor rework loops.
-- `V1144`: Exhibits multiple iterations of vendor invoices, goods receipts, and invoice clearings.
-- `V1146`: Contains duplicated sequences of vendor invoice, goods receipt, and invoice receipt.
-- `V1147`: Includes a goods receipt cancellation and subsequent re-recording.
-- `V1148`: Terminates early at the invoice receipt stage with a duplicated goods receipt.
-- `V1149`: Features complex loops including invoice cancellations, debit memos, and multiple clearings.
-- `V1150`: Involves repeated vendor invoices, goods receipts, and invoice receipts before final clearing.
-- `V1163`: Does not fit standard flow due to unusual delays and lack of final clearing, nor does it fit extreme rework, cancellation, or service entry categories.
-- `V1172`: Features an anomalous repetitive loop of dozens of goods receipt entries not cleanly fitting standard categories or extreme multi-year rework.
-- `V1174`: Incomplete procurement path ending with a price change without reaching goods receipt, invoicing, or completion.
-- `V1181`: Does not fit standard procure-to-pay due to extensive approval repetitions and does not match the other specific failure modes.
-- `V1190`: Features duplicated invoice clearance activities which deviate from a purely standard path, though not severe enough for extreme rework.
-- `V1195`: Long-running variant with multiple debit memos, cancellations, and repeated clearance steps, bordering on extreme rework.
-- `V1197`: Contains multiple repetitions of invoice receipts and invoice clearance steps, representing non-standard rework.
-- `V1199`: Extended duration with a late debit memo and invoice receipt cancellation, not fitting the standard smooth path.
-- `V1200`: Variant features multiple repeated invoice receipts and clearances with cancellations, representing administrative rework.
-- `V1229`: This long variant with post-clearing invoice receipts does not neatly fit the standard P2P flow or the other specialized categories.
-- `V1230`: The sequence involves multiple invoice clearing repetitions and debit memos over a long duration, leaving it outside the standard categories.
-- `V1233`: Contains cancellations, multiple invoice clearings, and block removals outside standard procurement predictability.
-- `V1236`: Involves invoice cancellations and re-recordings that deviate from standard processing paths.
-- `V1237`: Terminates with a late cancel invoice receipt months after initial clearance, fitting none of the core definitions well.
-- `V1238`: Characterized by multiple rounds of invoice receipts, cancellations, and clearings.
-- `V1240`: Includes goods receipt cancellation and subsequent invoicing, falling outside standard clear execution.
-- `V1249`: Features delayed invoice receipts and post-clearing invoice entry over an extended timeline.
-- `V1262`: Does not fit standard flow due to extremely delayed secondary invoice receipt after 226 days, falling outside clean standard processing.
-- `V1263`: Long execution time with duplicated invoice receipts extending over 255 days, not a standard fast process.
-- `V1276`: This narrative has a long duration and lacks clear standard end-to-end clearing, but it is not long enough or complex enough to be extreme rework, nor does it fit other specific categories.
-- `V1277`: Involves repeated goods receipts and payment blocks, representing standard exception handling rather than pure standard P2P or extreme rework.
-- `V1279`: Contains minor loops of goods and invoice receipts but does not fully qualify as extreme rework or standard P2P.
-- `V1280`: Exhibits multiple repeated clearings and invoice receipts but falls short of the extreme multi-year duration criteria.
-- `V1281`: Contains quantity changes and repeated goods receipts, but does not fit cleanly into standard P2P or other definitions.
-- `V1282`: A relatively standard flow with minor price changes and a payment block removal, not entirely clean standard P2P.
-- `V1283`: Involves cancelled invoice receipts and repeated clearings, constituting moderate rework outside the main categories.
-- `V1284`: Contains a mixture of quantity changes, invoice receipts, and payment block removal without matching a specific category.
-- `V1285`: Features subsequent invoice cancellation and repeated clearing, but lacks extreme duration and heavy looping.
-- `V1286`: Involves purchase order approvals, quantity changes, and cancellations, representing moderate complexity.
-- `V1287`: Contains duplicate goods and invoice receipts with multiple vendor invoices, forming a non-standard path.
-- `V1288`: Ends with a cancelled invoice receipt after a long duration, but does not meet the extreme multi-loop criteria.
-- `V1289`: A delayed variant with delivery indicator changes, but lacks the massive repetitive loops of extreme rework.
-- `V1290`: Standard path modified by quantity and delivery indicator changes.
-- `V1295`: Involves duplicate goods receipts and price changes, but remains relatively short.
-- `V1296`: Repeated price changes and invoice steps place this variant outside standard P2P.
-- `V1297`: Delayed payment block removal and late vendor invoice placement make this non-standard.
-- `V1298`: Includes repeated invoice receipts and a final invoice cancellation months later.
-- `V1299`: Contains repeated clearing and invoice cancellations indicative of complex exception handling.
-- `V1311`: This narrative focuses entirely on purchase order release, approval changes, and reactivation loops, fitting none of the standard categories.
-- `V1359`: The process terminates with a deleted purchase order item and includes invoice cancellations, which does not cleanly fit standard procure-to-pay or other predefined categories.
-- `V1367`: Involves cancelling goods receipts, changing quantities, and cancelling invoice receipts, resulting in an atypical termination.
-- `V1377`: Involves cancellations and debit memos with an unclear sequence and no final invoice clearing, failing to fit standard or other specific categories cleanly.
-- `V1379`: Contains multiple repeated invoice receipts and cancellations spanning several months without a clean completion path.
-- `V1381`: Involves lengthy delays, multiple quantity and delivery changes, and does not fit the standard clean P2P pattern or other specialized categories.
-- `V1382`: Exhibits heavy rework with repeated goods receipts, invoice receipts, and multiple vendor invoices, representing a complex non-standard deviation.
-- `V1384`: Includes blocking and reactivating purchase order items with extended delays, diverging from a standard execution path.
-- `V1385`: Features order blocking, quantity changes, and extended rework durations that disqualify it from standard procure-to-pay.
-- `V1386`: Ends in record invoice receipt without final clearing and contains repeated goods receipts with quantity modifications.
-- `V1387`: Exhibits multiple repetitions of invoice creation, receipt, and clearing steps indicating complex administrative rework.
-- `V1388`: Characterized by repeated vendor invoices, goods receipts, and invoice receipts, constituting non-standard processing overhead.
-- `V1389`: Contains payment block toggles and extended delays that deviate from a normal high-frequency P2P path.
-- `V1390`: Involves repeated quantity changes and delayed payment block removals stretching execution times.
-- `V1391`: Shows duplicated goods receipts, invoice receipts, and vendor invoices indicating repetitive administrative handling.
-- `V1392`: Includes purchase order item blocking and reactivation steps alongside standard processing.
-- `V1393`: Contains duplicated goods receipts and quantity changes, terminating at invoice receipt without full payment clearing.
-- `V1394`: Very short trace length ending prematurely at vendor invoice creation, but does not fit early termination characteristics of quick cancellation.
-- `V1395`: Involves cancelled invoice receipts, debit memos, and delayed clearing outside the standard process.
-- `V1396`: Incomplete procure-to-pay flow ending at price change without reaching invoice receipt or clearing.
-- `V1475`: Does not fit any category cleanly due to a long delay following a duplicate goods receipt that does not represent extreme multi-year rework loops or standard P2P.
-- `V1576`: This narrative involves repeated goods receipts, invoice receipts, and payment block removals over 106 days, but does not fit standard P2P due to the high rework, nor extreme multi-year rework delays.
-- `V1577`: The variant features multiple invoice receipts, cancellations, and invoice clearances spanning over 113 days, which represents administrative rework that does not fully match any defined category.
-- `V1579`: The variant consists primarily of multiple goods receipt repetitions with a moderate duration of 66 days, but does not fit the standard P2P flow or service entry focus.
-- `V1580`: Contains repeated clearing and invoice receipt actions over 85 days, representing moderate rework rather than a standard procure-to-pay process.
-- `V1582`: Characterized by multiple repeated goods receipts and payment block clearing over 72 days, falling outside standard procure-to-pay due to the rework.
-- `V1583`: Extends over 145 days with delayed invoice clearing and subsequent quantity changes, representing an atypical path.
-- `V1584`: Features repeated invoice creations, cancellations, and multiple clearings over 120 days, representing administrative rework.
-- `V1588`: Spans 148 days with an extended waiting period and repeated invoice receipts/clearings, constituting significant administrative delay.
-- `V1589`: Involves repeated invoice clearing and cancellations over 73 days, representing rework rather than a standard clean P2P process.
-- `V1590`: A long-running variant lasting 156 days featuring multiple duplicate invoice clearings and invoice entries.
-- `V1593`: Spans 175 days with extensive repetition of invoice receipts, clearings, and payment block removals, indicating heavy administrative rework.
-- `V1595`: Features a long duration of 169 days with multiple cycles of invoicing, goods receipt, and clearing.
-- `V1596`: Involves multiple subsequent invoice cancellations, payment block removals, and repeated clearing steps over 94 days.
-- `V1597`: Exhibits extended duration (132 days) with repeated invoice cancellations and re-clearings.
-- `V1599`: An extremely long-duration variant (252 days) with delayed secondary invoice receipt and payment clearing cycles.
-- `V1604`: Does not fit standard clean processing or extreme multi-year rework due to intermediate changes and repeated invoices stretching over months.
-- `V1605`: Involves invoice receipt cancellations and multiple payment block removals that do not neatly fit standard procurement or quick termination.
-- `V1606`: Contains multiple loops of quantity changes, invoice receipts, and clearing events, leaning outside the standard frictionless path.
-- `V1608`: Involves repeated payment block removals and duplicate invoice receipts indicating non-standard complications.
-- `V1610`: Features repeated invoice receipts, payment block removal, and re-clearing, which complicate the standard path.
-- `V1612`: Contains multiple invoice cancellations and re-clearings, which are outside standard clean processing.
-- `V1614`: Extremely long delay between initial steps and final invoice receipt without fitting standard quick or standard flows.
-- `V1615`: Extensive loops of purchase order release and approval changes before proceeding to regular procurement.
-- `V1616`: Characterized by multiple loops of release and approval changes preceding standard procurement steps.
-- `V1617`: Involves repeated release and approval steps for the purchase order before standard fulfillment.
-- `V1618`: Ends in reactivation of a purchase order item following approval loops and deletion, representing a non-standard administrative exception.
-- `V1619`: Contains repeated payment block removals and duplicate invoice receipts complicating the flow.
-- `V1622`: Very long duration with protracted approvals and changes prior to invoice receipt.
-- `V1623`: Features delayed vendor invoicing and long waiting periods before payment block removal and clearance.
-- `V1626`: The variant features extreme repetition of service entry sheets and goods receipts rather than fitting standard or quick completion paths.
-- `V1629`: The process contains multiple invoice cancellations and repeated clearing events that extend beyond a standard procure-to-pay lifecycle.
-- `V1630`: Involves repeated vendor invoices and repeated invoice clearings, which do not align neatly with standard or single-path categories.
-- `V1632`: The variant ends in a cancelled invoice receipt after long processing times, making it a non-standard outcome.
-- `V1634`: Contains multiple debit memos, repeated invoice receipts, and cancellations that exceed standard processing behavior.
-- `V1635`: Features repeated invoice cancellations and re-clearings, introducing complexity outside standard parameters.
-- `V1636`: Exhibits multiple repetitions of goods receipts, invoice receipts, and vendor invoices that depart from a standard linear flow.
-- `V1639`: Characterized by multiple quantity and price changes mid-process that deviate from standard processing paths.
-- `V1640`: Unusual variant ending in a quantity change after invoice clearing and repeated goods receipts.
-- `V1641`: Includes a prolonged sequence of repeated price changes before reaching invoice and goods receipts.
-- `V1642`: Features multiple consecutive goods receipts and payment block removals outside a normal standard path.
-- `V1643`: Involves debit memos, invoice cancellations, and repeated clearing steps.
-- `V1644`: Includes goods receipt cancellations, quantity updates, and debit memos leading to an extended timeline.
-- `V1645`: Complex case with multiple price changes, debit memos, delivery indicator changes, and invoice cancellations.
-- `V1646`: Contains duplicate cycles of vendor invoicing, goods receipts, invoice receipts, and clearings.
-- `V1647`: Contains numerous debit memos, invoice cancellations, and repeated clearings.
-- `V1648`: Involves repeated vendor invoices, multiple invoice receipts, and payment block handling.
-- `V1649`: Includes debit memos, invoice cancellations, and repeated clearing events.
-- `V1650`: Features multiple quantity changes and repeated goods receipts intermixed throughout the process.
-- `V1651`: The variant features delivery indicator changes, repetitive goods receipts and invoice clearing, which do not cleanly fit standard P2P, quick cancellations, service entries, SRM failures, or extreme multi-year rework.
-- `V1652`: Involves repetitive invoice receipts over a moderately long duration without a clear standard flow or fitting other specific categories.
-- `V1653`: Shows quantity changes, goods receipt cancellations and repetitions, not fitting neatly into standard procure-to-pay or other defined categories.
-- `V1654`: Contains multiple quantity changes, payment block removal, and invoice clearing over 113 days, lacking standard simplicity or extreme multi-year duration.
-- `V1655`: Features quantity changes, payment block toggling, and standard clearing over 148 days, which represents general process friction rather than a defined taxonomy category.
-- `V1656`: Exhibits repetitive invoice creation and clearing loops, indicating administrative friction outside the standard P2P definition.
-- `V1657`: Involves invoice cancellations, debit memos, and repeated invoice clearing, not matching standard procure-to-pay or any other category.
-- `V1658`: Displays multiple repetitions of goods receipts, vendor invoices, and invoice receipts, representing general rework rather than any specific category.
-- `V1659`: Shows price changes, debit memos, invoice cancellations and repeated clearing, lacking a clean fit into the predefined categories.
-- `V1660`: Contains extensive repetitions of invoices, goods receipts, and payment block removals, indicating process inefficiency rather than a specific taxonomy match.
-- `V1661`: Includes order confirmation, quantity changes, and repeated goods and invoice receipts, failing to meet the clean criteria of standard P2P.
-- `V1662`: Standard path with minor delivery indicator and payment block adjustments, but takes 120 days with additional steps, missing the ideal 'standard_procure_to_pay' profile.
-- `V1663`: Characterized by an extreme repetition of goods receipt events (over 30 times), which falls outside the standard definitions and fits none of the other categories.
-- `V1664`: Features invoice cancellations, debit memos, and repeated clearing steps, not fitting any specific category.
-- `V1665`: Involves storage location changes and payment block removal, representing a minor variation outside standard P2P.
-- `V1666`: Contains quantity changes, delayed vendor invoices, and repeated goods receipts, fitting none of the specific failure or standard categories.
-- `V1667`: Dominated by extensive repetitive loops of purchase order approvals and releases, constituting heavy administrative rework.
-- `V1668`: Involves quantity changes, debit memos, invoice cancellations, and repeated clearing, lacking a clean fit into standard P2P.
-- `V1670`: Features cancellations, payment block removals, and a delayed invoice receipt over 254 days, not fitting neatly into quick cancellations or extreme multi-year rework.
-- `V1671`: Contains multiple price and quantity changes prior to invoice receipt, reflecting pricing adjustments rather than standard P2P.
-- `V1672`: Long-running process culminating in a cancellation of an invoice receipt months after initial clearing, fitting none of the standard categories.
-- `V1673`: Exhibits multiple repetitions of vendor invoices, invoice receipts, and clearing steps, indicating process rework.
-- `V1674`: Displays repeated goods receipts, vendor invoices, invoice receipts, and multiple clearing events, representing process inefficiency.
-- `V1675`: Contains multiple approvals, debit memos, price changes, and invoice cancellations with repeated clearing over 175 days, fitting none of the structured categories.
-- `V1678`: Involves repeated invoicing, debit memos, cancellations, and re-clearings over a moderate duration that do not clearly fit standard processing or extreme multi-year rework.
-- `V1681`: Features repetitive invoice receipts, payment block removals, and re-clearings that fall outside standard clean execution but lack the extreme multi-year duration of the extreme category.
-- `V1682`: Contains a goods receipt cancellation and repeat goods receipt after invoice clearing, representing a complex deviation from standard flows.
-- `V1687`: Contains multiple repetitions of vendor invoices, goods receipts, and invoice clearances creating non-standard recurring patterns.
-- `V1688`: Characterized by a very long gap followed by an additional invoice receipt long after initial clearing, representing an atypical operational exception.
-- `V1694`: High-complexity variant with prolonged duration, multiple invoice receipts, repeated clearings, and a late invoice cancellation.
-- `V1696`: Involves late cancellations and re-clearings of invoice receipts over an extended period that deviate from clean standard execution.
-- `V1803`: Features multiple price and quantity changes followed by invoice receipt without reaching final invoice clearing, remaining in an incomplete or atypical state.
-- `V1804`: Involves multiple price changes and finishes at record invoice receipt without standard clearing or standard flow.
-- `V1807`: Complex repeating approval changes and releases ending abruptly at goods receipt, lacking standard invoice processing.
-- `V1812`: Involves cancelled invoice receipts, debit memos, and multiple payment block and clearing interactions that deviate from standard paths.
-- `V1813`: Variant featuring vendor debit memos, cancelled invoice receipts, and multiple clearings indicating non-standard exception handling.
-- `V1814`: Features price changes, debit memos, cancelled invoice receipts, and multiple clearings representing complex rework.
-- `V1819`: Involves repeated goods and invoice receipts without reaching invoice clearing, terminating prematurely at invoice receipt.
-- `V1822`: Short-lived variant ending with change delivery indicator without invoice processing or clearing.
-- `V1829`: Does not fit any category well as it involves repeated quantity changes and goods receipts without standard invoice processing or completion.
-- `V1837`: Variant consists entirely of multiple quantity changes and approvals without completing procurement or invoicing.
-- `V1851`: The variant features multiple deletions and reactivations of purchase order items, which does not fit standard P2P, quick cancellations, service entries, SRM integration, or extreme rework durations.
-- `V1852`: Involves repeated goods receipts, vendor invoices, invoice receipts, and a payment block removal, representing complex rework rather than a standard or simple path.
-- `V1853`: Contains multiple repeated goods receipts and invoice clearing without cleanly aligning to any specific category definition.
-- `V1854`: Features quantity changes and delivery indicator modifications over an 84-day period, representing a non-standard procurement exception path.
-- `V1855`: A procurement path involving delivery indicator changes and delayed processing that does not fit neatly into any of the primary predefined categories.
-- `V1856`: Includes repeated goods receipts, quantity changes, delivery indicator adjustments, and payment block removals, indicating complex exception handling.
-- `V1857`: Short duration ending in purchase order item deletion, but includes quantity adjustments and order confirmations not typical of simple early termination.
-- `V1858`: Features repeated invoice receipts and vendor invoices, representing minor rework cycles.
-- `V1859`: Contains interleaved goods receipts, invoice receipts, and payment block removal, fitting into a complex administrative exception path.
-- `V1860`: Repeated changes to the delivery indicator over a moderate duration, which does not align with standard P2P or other categories.
-- `V1861`: Includes goods receipt cancellation and repetition, representing a localized rework loop.
-- `V1862`: Involves multiple price changes and vendor invoice postings, indicating pricing rework rather than standard execution.
-- `V1863`: Standard procurement steps followed by payment block removal, but includes quantity changes and order confirmations representing minor deviations.
-- `V1864`: Features repeated vendor invoices and invoice receipts, indicating invoice processing rework.
-- `V1865`: Contains multiple repetitions of vendor invoices, goods receipts, and invoice receipts leading to a payment block removal.
-- `V1866`: Involves quantity changes, goods receipts, invoice receipts, and payment block removal over a 40-day median duration.
-- `V1867`: Includes a delivery indicator change, extended duration, and payment block removal.
-- `V1868`: Characterized by repeated quantity changes and multiple invoice receipt steps.
-- `V1869`: A moderate-duration variant featuring a quantity change and payment block removal.
-- `V1870`: Involves multiple price changes before vendor invoicing and goods receipt processing.
-- `V1871`: Exhibits repeated vendor invoices, goods receipts, and invoice receipts before payment block removal.
-- `V1872`: Features cyclical repetition of goods receipts, vendor invoices, and invoice receipts.
-- `V1873`: Involves delayed goods receipt processing and repeated goods receipt events.
-- `V1875`: Involves interspersed invoice receipts and repeated goods receipts occurring at different points in the process.
-- `V1877`: Involves repetitive loops of goods receipt and irregular sequencing that do not fit neatly into standard paths, quick terminations, service entries, SRM failures, or extreme rework durations.
-- `V1878`: Exhibits frequent invoice cancellations and clearings interspersed with debit memos, which goes beyond standard processing without reaching the multi-year scale of extreme rework variants.
-- `V1879`: Contains repeated goods receipts and invoice receipts that deviate from a clean standard procurement path.
-- `V1880`: Features goods receipt cancellations and repetitions that do not align with standard processing or other category descriptions.
-- `V1889`: Involves multiple repetitions of vendor invoices and goods receipts which introduce complexity outside the standard path.
-- `V1890`: Consists solely of repeated quantity changes after order creation, fitting none of the procurement taxonomy definitions.
-- `V1891`: Involves debit memos, invoice cancellations, and payment block removals that represent a non-standard handling exception path.
-- `V1894`: Focuses on purchase order release, approval changes, and quantity updates without concluding with receipts or invoices.
-- `V1895`: Features complex invoice cancellations, debit memos, and clearings that deviate from standard procure-to-pay.
-- `V1926`: This variant involves repeated goods and invoice receipts, payment block removal, and intermediate loops but does not fit standard or extreme categories cleanly, falling into the residual.
-- `V1927`: Involves repeated invoice clearings, cancellations, and long delays without matching any clean standard or specific failure archetype.
-- `V1929`: Standard flow with repeated goods receipts and delays, but not extreme enough or fitting specific failure categories.
-- `V1930`: Characterized by excessive repetition of goods receipt postings but concludes normally, forming part of the residual.
-- `V1931`: Ends in PO item deletion after goods receipt and cancellation, which does not fit standard P2P or other categories.
-- `V1935`: Involves invoice cancellations, debit memos, and repeated invoice entries, fitting the residual group.
-- `V1937`: Features multiple vendor invoice entries and service entry sheets, falling outside standard paths.
-- `V1938`: Extended procurement path with multiple delayed goods receipts, invoices, and repeat clearings.
-- `V1940`: Contains long duration gaps and price changes, not fitting standard flow or extreme multi-year rework.
-- `V1942`: Variant ends in an invoice receipt after a long duration and duplicate processing, falling into residual.
-- `V1943`: Unusual sequence with intermediate clearing followed by a delayed late invoice receipt.
-- `V1944`: Contains repeated quantity changes, duplicate goods receipts and invoices, and multiple clearings.
-- `V1947`: Involves multiple goods receipts, invoice entries, and duplicate payment block removals/clearings.
-- `V1948`: Contains debit memos, invoice cancellations, and repeated clearings outside standard patterns.
-- `V1949`: Dominated by a long burst of repeated goods receipt entries before proceeding to invoice clearing.
-- `V1950`: Long-duration variant with multiple debit memos, cancellations, and invoice receipts over time.
-- `V2002`: This variant contains duplicated invoice receipts and goods receipts as well as price changes, but does not fit standard P2P, service entry, SRM failure, or extreme multi-year rework.
-- `V2003`: Involves invoice cancellation and debit memos, but lacks the extreme length and complexity required for extreme rework or the specific characteristics of other categories.
-- `V2004`: The variant consists entirely of blocking and unblocking a purchase order item, which does not fit standard P2P or the other specific process categories.
-- `V2005`: Contains duplicated goods receipts and invoice receipts with a moderate duration, but does not neatly align with standard P2P or extreme rework categories.
-- `V2006`: Features an invoice cancellation late in the trace after cleared invoice, which does not cleanly fit standard P2P or the other defined categories.
-- `V2007`: Involves debit memos and invoice cancellations within a moderate duration, fitting none of the specific taxonomy definitions well.
-- `V2008`: Contains delivery indicator changes and debit memos with a short trace length, but does not match quick cancellation or other specific categories.
-- `V2009`: Involves quantity changes and payment block removals, representing standard exception handling rather than the defined categories.
-- `V2011`: Includes requisition creation and duplicated invoice creation/clearing, but does not fully fit standard P2P or extreme rework.
-- `V2012`: Similar to V2011 with duplicated invoice creation and clearing, fitting none of the categories precisely.
-- `V2016`: Contains multiple repetitions of vendor invoices, goods receipts, and invoice receipts, but does not reach the extreme multi-year duration or complexity of extreme rework.
-- `V2017`: Contains order confirmation and repeated goods/invoice receipts, not fitting any specific category cleanly.
-- `V2018`: Involves goods receipt cancellation and quantity changes, falling outside standard P2P or other categories.
-- `V2019`: Contains quantity and approval changes for a purchase order before standard processing, not matching any category perfectly.
-- `V2021`: Contains multiple invoice receipts and clearing steps due to delivery indicator changes, not fitting standard P2P cleanly.
-- `V2024`: Features quantity and delivery indicator changes after invoice receipt, fitting none of the categories well.
-- `V2025`: Involves debit memos, invoice cancellations, and repeated invoice receipts, representing exception handling rather than standard P2P.
-- `V2026`: This variant involves repeated invoice creation, receipt recording, and clearing loops over 99 days, fitting none of the standard or specific operational patterns cleanly.
-- `V2027`: The process features multiple payment block removals, repetitive goods and invoice receipts, and spanning 60 days, representing non-standard rework.
-- `V2028`: Involves changing delivery indicators, payment block removal, and delays over 133 days which do not match standard execution or extreme multi-year delay categories.
-- `V2029`: Consists solely of repeated changes to the delivery indicator over 154 days, representing an administrative deviation rather than standard P2P or service entry.
-- `V2030`: Long running (261 days) with multiple invoice receipts, cancellations, and payment block handling, but lacks the extreme multi-year duration characteristic of extreme rework.
-- `V2031`: Features extensive repetition of invoice receipts, payment block removals, and clearings over 119 days, forming a complex rework loop.
-- `V2032`: Involves quantity changes and repeated goods receipts over 32 days, falling outside clean procure-to-pay or pure service entry paths.
-- `V2034`: Includes deletion and reactivation of purchase order items combined with subsequent invoice clearing, representing a non-standard procurement path.
-- `V2035`: Contains price changes and duplicated goods and invoice receipts over 92 days, which does not fit standard high-frequency paths.
-- `V2036`: Though it ultimately clears an invoice after 103 days, it includes a payment block removal and order confirmation steps that introduce delay not typical of standard frictionless P2P.
-- `V2037`: Features item deletion, reactivation, and quantity modifications prior to goods receipt and invoicing over 114 days.
-- `V2038`: Involves cancellations of goods and invoice receipts as well as debit memos spread over 246 days, fitting none of the primary categories.
-- `V2039`: Exhibits repetitive loops of goods receipts, vendor invoices, and clearing events over 82 days.
-- `V2041`: Short-lived variant ending in purchase order item deletion after goods receipt cancellation and service entry.
-- `V2042`: Contains duplicate vendor invoices and goods receipts along with payment block removals over an 83-day median duration.
-- `V2043`: Features debit memos, invoice cancellations, and item deletions over 65 days.
-- `V2044`: Involves price changes, debit memos, and subsequent invoice cancellations prior to clearing over 114 days.
-- `V2045`: Complex process over 239 days involving invoice cancellations, multiple clearings, and late invoice receipts.
-- `V2046`: Includes debit memos, invoice cancellations, and repeated invoice receipts over 65 days.
-- `V2047`: Virtually identical sequence to V2046 involving debit memos, invoice cancellations, and repeated receipts over 85 days.
-- `V2048`: Characterized by a long sequence of repeated quantity changes before normal goods and invoice processing.
-- `V2049`: Involves blocking and reactivating purchase order items with repeated goods receipts over 267 days.
-- `V2051`: This variant features multiple repetitions of goods receipts, invoice receipts, and vendor invoices that introduce friction, preventing it from being classified as a standard procure-to-pay process, nor does it fit other specific failure or service entry categories.
-- `V2052`: The process contains payment block removals, debit memos, cancellations, and repeated invoice clearing which goes beyond standard procurement and does not fit the other categories.
-- `V2053`: Contains multiple repetitions of goods receipts, invoice receipts, and invoice clearances over an extended period, representing non-standard rework.
-- `V2054`: Involves repeated goods receipts, invoice receipts, and invoice clearing steps which deviate from a clean standard procure-to-pay path.
-- `V2056`: Features repeated goods receipts and cancellations, representing a non-standard procurement loop.
-- `V2059`: Includes multiple invoice receipts, cancellations, debit memos, and payment block removals making it non-standard and not fitting other categories.
-- `V2060`: Long-running process involving quantity changes, delivery indicator updates, and repeated invoice processing steps.
-- `V2061`: Includes debit memos, payment block removals, invoice cancellations, and multiple clearings.
-- `V2062`: Exhibits debit memos, payment block removals, invoice cancellations, and multiple invoice clearing activities.
-- `V2063`: Features payment block removals, debit memos, invoice cancellations, and repeated clearing steps.
-- `V2066`: Involves debit memos, delivery indicator modifications, invoice cancellations, and invoice clearing.
-- `V2067`: Contains multiple price changes, purchase order approval changes, and quantity modifications before invoice processing.
-- `V2068`: Extended procurement path featuring purchase order approval changes, price changes, and quantity adjustments.
-- `V2069`: Involves requisition creation, debit memos, invoice cancellations, and repeated invoice receipts and clearings.
-- `V2070`: Includes order confirmation, quantity changes, delivery indicator updates, and payment block removals.
-- `V2071`: Features repeated goods receipts, goods receipt cancellations, invoice receipts, and payment block removals.
-- `V2072`: Characterized by an extreme number of repeated goods receipt recordings, making it a distinct anomaly rather than standard.
-- `V2073`: Long-running process featuring multiple debit memos, invoice cancellations, and repeated invoice clearings.
-- `V2075`: Involves quantity changes, duplicate goods receipts, multiple invoice receipts, and payment block removals.
-- `V2160`: Ends in deletion of the purchase order item rather than successful completion or service entry execution, fitting none of the standard categories.
-- `V2163`: Exhibits extended rework with multiple invoice clearings and an eventual cancellation of the invoice receipt, differing from standard flows.
-- `V2183`: Involves approval and deletion loops without standard completion or clear fit in defined categories.
-- `V2184`: Complex rework and cancellation sequence not matching standard flows or other specific categories.
-- `V2192`: Variant focuses on quantity changes and delivery indicators rather than a complete P2P or specific failure trace.
-- `V2209`: Does not clearly fit any specific category; involves debit memos and invoice cancellation without the massive multi-year delays or specific SRM failures.
-- `V2215`: Involves item deletion and invoice cancellation, falling outside the defined core categories.
-- `V2227`: Involves price/quantity changes, goods receipt cancellations, and invoice clearing which does not cleanly fit standard or extreme categories.
-- `V2228`: Contains repeated invoice and goods receipt cycles with payment block removals spanning over a hundred days, but is not extreme enough.
-- `V2229`: Ends in invoice receipt cancellation following multiple payment block removals over an extended duration.
-- `V2230`: Features duplicated invoice receipts and goods receipts before clearing, resembling complex rework rather than standard procurement.
-- `V2231`: Contains multiple iterations of vendor invoices, goods receipts, and duplicate invoice clearances.
-- `V2232`: Ends in invoice cancellation after duplicated vendor invoices and invoice receipts over nearly 300 days.
-- `V2233`: Exhibits multiple quantity changes, repeated vendor invoices, and duplicate clearances.
-- `V2234`: Involves quantity changes, multiple invoice receipts, payment block removal, and eventual clearing.
-- `V2235`: Terminates with a cancelled invoice receipt following payment block removal and quantity changes.
-- `V2238`: Features debit memos, repeated vendor invoices, and invoice receipt cancellation before final clearance.
-- `V2239`: Shows duplicated invoice receipts and goods receipts with payment block removal.
-- `V2240`: Includes multiple order changes, price modifications, and long approval delays prior to invoice processing.
-- `V2241`: A relatively short path involving subsequent invoice cancellation, debit memos, and payment block removal.
-- `V2242`: Involves service entry, duplicate vendor invoices, and double clearing cycles.
-- `V2244`: Contains multiple cycles of invoice cancellations, clearing, and payment block toggling.
-- `V2245`: Long duration variant with price/quantity changes, repeated goods receipts, and payment block removal.
-- `V2246`: Long duration process with delayed secondary invoice receipt and repeated goods receipts.
-- `V2247`: Standard-like path with minor quantity changes and duplicated goods receipts.
-- `V2248`: Involves price changes, invoice receipts, and payment block removal.
-- `V2258`: The variant focuses heavily on repeated approval and release changes and ends in deletion without proceeding through goods or invoice receipts.
-- `V2259`: Characterized by repeated purchase order changes and deletions rather than standard procurement execution or fulfillment.
-- `V2302`: Does not fit standard procure-to-pay cleanly due to quantity and storage location changes and long waits, but lacks the extreme multi-step loop rework needed for extreme rework.
-- `V2312`: Features excessive quantity changes but does not match standard flow or extreme multi-year rework patterns.
-- `V2313`: Involves multiple quantity and price changes before regular processing, remaining in the residual.
-- `V2314`: Contains numerous quantity and price changes indicative of pre-processing modifications rather than standard p2p.
-- `V2325`: Involves goods receipt cancellation, price changes, and invoice cancellation without fitting standard or extreme categories neatly.
-- `V2343`: Moderate duration with multiple price changes, not fitting standard P2P cleanly nor severe enough for extreme rework.
-- `V2345`: Standard flow with minor price adjustments and payment block removal, lacking extreme characteristics.
-- `V2346`: Contains delivery indicator changes and quantity modifications but does not meet the extreme rework criteria.
-- `V2349`: Moderate duration with repeated quantity changes and a payment block, forming a distinct intermediate variant.
-- `V2376`: This variant features repeated invoice creation and receipt recording with intermediate delays, fitting neither standard procure-to-pay nor any specific failure pattern cleanly.
-- `V2379`: Contains multiple quantity and delivery changes along with repeated invoice receipts and payment block removal, not matching standard flow or other categories.
-- `V2383`: Includes repeated quantity changes and order confirmations followed by standard processing, but does not fit standard or extreme categories perfectly.
-- `V2386`: Involves purchase requisition, multiple delivery indicator changes, and standard clearing, forming a residual pattern.
-- `V2387`: Characterized by a long pause for price changes and currency adjustments before concluding with a goods receipt.
-- `V2388`: Features repeated cancellations and re-recordings of goods receipts, which is a residual rework pattern.
-- `V2390`: Contains goods receipt cancellation and re-recording with payment block removal, fitting residual handling.
-- `V2391`: Involves debit memos and invoice receipt cancellations over a medium-long duration, forming a residual variant.
-- `V2393`: Ends in a late invoice receipt cancellation after 209 days, representing an uncommon residual pattern.
-- `V2394`: Features price changes, quantity changes, and delivery indicator modifications before standard invoice processing.
-- `V2402`: This variant involves invoice receipt cancellation and significant duration without fitting cleanly into the standard P2P or extreme rework definitions.
-- `V2403`: Features repeated goods and invoice receipts over an intermediate duration, lacking the clean simplicity of standard P2P or the extreme multi-year rework profile.
-- `V2404`: Includes service entry recording combined with subsequent invoice cancellation, but does not strictly match the simple service entry execution category due to cancellations and debit memos.
-- `V2405`: Contains requisition creation, multiple invoice clearings and cancellations which make it non-standard.
-- `V2406`: Short variant ending in goods receipt with a cancellation, not following standard P2P flow.
-- `V2410`: Short variant terminating in cancellation of goods and invoice receipts rather than normal completion.
-- `V2412`: Involves order confirmation, price changes, and invoice cancellation over an extended duration.
-- `V2413`: Complex path with quantity changes and eventual invoice cancellation.
-- `V2414`: Contains excessive repetitions of goods receipt activities that deviate from standard processing.
-- `V2415`: Involves debit memos and invoice cancellations over a prolonged duration.
-- `V2416`: Variant contains delivery indicator changes and invoice cancellation over a long timeline.
-- `V2417`: Characterized by debit memos, cancellations, and multiple clearings.
-- `V2418`: Exhibits multiple repeated steps for goods and invoice receipts across a prolonged duration.
-- `V2419`: Involves repeated quantity changes and delivery indicator modifications.
-- `V2420`: Contains cancellations, repeated invoice receipts, and payment block removals over an extended period.
-- `V2421`: Unusual path with delayed repeated invoice receipts and intermediate clearing.
-- `V2430`: This variant ends in a purchase order item deletion after cancellations and does not fit the standard flow, quick cancellation, or service entry categories.
-- `V2431`: The variant results in a cancelled invoice receipt rather than completing a standard procurement cycle or fitting any specific taxonomy cleanly.
-- `V2438`: Features excessive repetitions of goods receipts and subsequent cancellations, which exceeds standard procure-to-pay behavior without fitting extreme multi-year rework.
-- `V2439`: This variant terminates with a repeated record invoice receipt and does not follow a typical complete procure-to-pay cycle.
-- `V2440`: Exhibits complex loops of payment block removals, multiple invoice receipts, and cancellations not fitting standard execution.
-- `V2449`: Exhibits an extreme repetition loop of goods receipts that falls outside standard procure-to-pay patterns.
-- `V2450`: Contains massive repetition loops of goods receipts that deviate significantly from a standard procure-to-pay execution.
-- `V2460`: Variant ends in a goods receipt cancellation which does not neatly map to standard processing or quick cancellations.
-- `V2465`: Features prolonged blocking and reactivation spanning many days, falling outside a standard clean procure-to-pay.
-- `V2512`: Does not fit any primary category cleanly due to irregular invoice-clearing sequence and lack of a complete standard lifecycle.
-- `V2551`: This variant consists of extreme repetitive loops of batch-processed goods receipts and service entry sheets rather than standard procure-to-pay, quick cancellation, service entry execution, SRM failure, or long-running rework.
-- `V2553`: This variant ends with changing the delivery indicator after repeated goods receipts, which does not cleanly fit standard P2P, quick cancellation, service entry execution, SRM failure, or extreme rework.
-- `V2555`: This variant shows repetitive batch processing of goods receipts and service entry sheets, which does not align with any defined category.
-- `V2560`: The narrative features repeated quantity adjustments and goods receipts ending with a delivery indicator change, fitting none of the primary categories.
-- `V2565`: This variant ends in a goods receipt following multiple changes to the delivery indicator and quantity, not matching any standard category pattern.
-- `V2568`: Featuring repeated goods receipts and quantity changes terminating in goods receipt, this does not fit the standard taxonomy definitions.
-- `V2569`: Contains multiple quantity changes and repeated goods receipts without reaching invoice processing, fitting none of the standard definitions.
-- `V2575`: This case completes the entire procure-to-pay process up to invoice clearing, but then unexpectedly deletes the purchase order item, fitting none of the categories.
-- `V2612`: Does not fit any category cleanly as it features extensive delays and quantity/price changes without invoice processing.
-- `V2618`: Results in invoice cancellation rather than standard completion or extreme rework, fitting no specific category well.
-- `V2621`: Unusual variant ending in storage location change long after invoice clearance, not fitting standard definitions.
-- `V2626`: This narrative involves multiple cancellations, changes, and repeated invoice clearing over roughly 112 days, but does not cleanly fit standard P2P, quick cancellation, service entry, SRM failure, or extreme multi-year rework.
-- `V2627`: Involves price changes, currency modifications, goods and invoice receipts, and invoice clearing over 112 days, lacking a neat fit into the specific defined categories.
-- `V2629`: Contains quantity changes, delivery indicator updates, multiple goods receipts, and an invoice receipt over 128 days, representing a complex variant outside the main categories.
-- `V2633`: Involves order confirmation, price change, delayed goods receipt, and invoice receipt over 107 days, constituting a residual variant.
-- `V2634`: Contains recurring invoice receipts, goods receipts, payment block removal, and multiple invoice clearings, representing non-standard rework behavior.
-- `V2635`: Features requisition and purchase order creation, delayed invoice and goods receipt, quantity changes, payment block removal, and clearing, but does not fit standard or extreme definitions neatly.
-- `V2636`: Characterized by multiple delivery indicator changes, price changes, and repeated goods receipts ending without invoice processing.
-- `V2637`: Consists mainly of price changes, delivery indicator updates, and goods receipts without full invoice processing, shorter than extreme rework but non-standard.
-- `V2639`: Involves price changes, goods receipt cancellation, and subsequent invoice receipt, forming a specialized non-standard flow.
-- `V2640`: A 133-day variant with delayed goods receipt, price changes, delivery indicator changes, and unhandled invoice clearing mechanics.
-- `V2641`: Extensive rework including repeated invoice creation, cancellation, and payment block removals over 143 days, but under the multi-year threshold of extreme rework.
-- `V2643`: Features quantity changes, debit memos, canceled invoice receipts, and repeated clearing over 63 days.
-- `V2680`: Does not fit any primary category as it stops at approval changes and does not complete the procure-to-pay or service entry cycle.
-- `V2682`: Stops at goods receipt with multiple quantity and approval changes, lacking invoice processing to be a standard P2P.
-- `V2727`: Involves debit memos, payment block removals, and subsequent invoice cancellations, which do not fit cleanly into the standard or specialized categories.
-- `V2728`: Contains subsequent invoice processing and repeated invoice clearance which represents non-standard rework not fitting the primary definitions.
-- `V2729`: Features multiple location changes, goods receipt cancellation, and invoice receipt cancellation, representing administrative rework outside standard paths.
-- `V2730`: Exhibits extensive repetition of goods receipts, invoice receipts, and vendor invoices, constituting excessive rework.
-- `V2731`: Contains looped cycles of goods receipts, vendor invoices, and invoice receipts, representing significant rework.
-- `V2732`: Shows repeated sequences of goods receipts, vendor invoices, and invoice receipts, indicating process rework.
-- `V2733`: Extensive rework with multiple payment block removals, repeated invoice receipts, and repeated invoice clearances.
-- `V2737`: Features repeated goods receipts, invoice receipts, and multiple clearance steps with payment block handling.
-- `V2739`: Terminates early at payment block after quantity changes and lacks a final invoice clearing step.
-- `V2740`: Involves multiple repetitions of goods receipts, vendor invoices, and invoice receipts terminating at payment block removal.
-- `V2742`: Exhibits repeated goods receipts and duplicated invoice receipts indicating administrative rework.
-- `V2743`: Contains multiple goods receipts and a very long delay before payment block removal and clearance.
-- `V2744`: Involves debit memos, invoice receipt cancellations, and repeated invoice clearances.
-- `V2745`: Features repeated goods receipts, debit memos, and subsequent invoice cancellations.
-- `V2746`: Exhibits heavy duplication of goods receipts, vendor invoices, and invoice receipts.
-- `V2747`: Characterized by recurring loops of goods receipts, vendor invoices, invoice receipts, and payment block removals.
-- `V2748`: Contains an extreme repetition loop of goods receipt recordings.
-- `V2749`: Short variant ending prematurely at invoice receipt after price changes and a long vendor invoice wait.
-- `V2777`: Moderate duration with some repeated goods and invoice receipts, but lacks the extreme multi-step complexities or clean procure-to-pay profile to cleanly fit any single category.
-- `V2779`: Contains cancellations, multiple invoice receipts, and changes, but does not fit standard P2P or extreme multi-year rework patterns.
-- `V2780`: Features repeated quantity changes but lacks the broad multi-step invoice/goods receipt rework loops typical of extreme rework or standard P2P.
-- `V2783`: Moderate procurement path with quantity changes and payment block removal, but does not fit standard or extreme categories clearly.
-- `V2784`: A relatively standard procurement sequence with a minor repeated invoice receipt, not quite meeting standard P2P or extreme rework.
-- `V2788`: Contains invoice cancellations and clearings, but doesn't strictly align with standard P2P or the extreme rework category definition.
-- `V2789`: Involves delayed invoice receipt and payment block removal, representing a minor variation outside standard P2P.
-- `V2800`: Features debit memos and invoice receipt cancellations, falling outside standard or extreme rework definitions.
-- `V2803`: The variant involves debit memos and a cancellation of an invoice receipt, which does not cleanly fit standard P2P or other specific categories.
-- `V2813`: Involves debit memos and cancellation of a subsequent invoice, which is outside the main standard paths.
-- `V2820`: Involves delivery indicator changes, debit memos, and invoice receipt cancellations.
-- `V2861`: This variant consists mostly of repeated changes to the delivery indicator without full procure-to-pay flow or other specific patterns.
-- `V2907`: This variant only covers requisition, PO, and repeated price changes, missing the full procure-to-pay or service lifecycle.
-- `V2926`: This narrative involves extensive change approvals and rework without falling under standard procure-to-pay or extreme multi-year delay categories.
-- `V2927`: Shows repetitive change approvals for purchase orders over several months, which does not cleanly map to any predefined category.
-- `V2928`: Features repetitive purchase order changes and does not fit standard or specific failure patterns.
-- `V2930`: Contains excessive order change loops not typical of standard procure-to-pay paths.
-- `V2932`: Features prolonged waits and repetitive change approvals, falling outside standard paths.
-- `V2934`: Characterized by an unusual loop of repeated purchase order change approvals.
-- `V2935`: Contains extensive order changes and rework that prevents it from being a standard flow.
-- `V2936`: Involves multiple repeated change approvals and does not fit standard categorization.
-- `V2937`: Purely consists of repeated order changes without invoice processing completion.
-- `V2939`: Contains post-clearance changes and order modifications outside the normal scope.
-- `V2941`: Involves irregular sequencing of invoice creation before order items and subsequent change loops.
-- `V2945`: Complex SRM flow involving multiple invoice cancellations and debits without a transfer failure outcome.
-- `V2988`: A relatively simple procurement path with a prolonged final wait before recording the invoice receipt, but does not fit standard P2P clean execution nor extreme rework.
-- `V2993`: Moderate duration variant with a repeated SRM cycle, but does not cleanly fit any single category description.
-- `V2997`: Moderate duration variant with repeated vendor invoices and goods receipts, but lacks the extreme scale of rework categories.
-- `V2999`: Moderate duration path with an SRM re-transmission loop, but too short to be extreme rework.
-- `V3000`: Short-lived variant with invoice cancellation and clearance, but does not fit the rapid early termination profile.
-- `V3089`: Although shorter than extreme rework variants, this has a highly repetitive loop of goods receipts and service entry sheets without fitting standard procure-to-pay cleanly.
-- `V3093`: Features a moderate duration (176 days) with price change, debit memo, and subsequent invoice cancellation, not matching standard clear or extreme rework.
-- `V3096`: Moderate duration (113 days) with multiple goods receipts and quantity change, forming a distinct variant outside the main categories.
-- `V3097`: Involves long delays (351 days) but centers around order confirmation, payment block removal, and duplicated invoice receipt without the massive loops of extreme rework.
-- `V3098`: 264-day duration with requisition, order change, multiple clearing steps, and debit memo, not cleanly fitting the defined categories.
-- `V3105`: This is a standard process path with a subsequent invoice and lengthy wait times, but does not fit cleanly into extreme multi-year rework or quick cancellation.
-- `V3106`: Involves price/quantity changes and a long waiting period for invoice cancellation, which does not strongly match any of the defined major categories.
-- `V3107`: Contains typical procurement steps with multiple quantity and price changes, payment block removal, and cancellations, not fitting standard P2P or extreme delay cleanly.
-- `V3110`: Involves multiple cancellation and invoice clearing steps with long gaps, but falls into the residual category due to unique structure.
-- `V3113`: Features delayed subsequent invoicing and multiple debit memos, but lacks the extreme scale or specific attributes of the main categories.
-- `V3114`: Similar to V3113 with delayed subsequent invoicing and cancellations, falling into the residual category.
-- `V3115`: Involves a long price change delay and subsequent invoice receipt without extreme multi-loop rework.
-- `V3118`: A relatively straightforward path with a payment block removal and subsequent invoice cancellation, not fitting standard high-frequency P2P due to cancellations.
-- `V3119`: Contains multiple price and quantity changes followed by long payment delays and a delayed secondary invoice.
-- `V3121`: Involves order confirmation, goods receipt, and cancellation, but does not cleanly fit standard P2P or quick cancellation.
-- `V3122`: Contains quantity changes, delayed invoice receipt, and payment block removal before clearance.
-- `V3164`: Does not fit standard P2P or extreme multi-year delay categories; exhibits some invoice/receipt loops but moderate duration.
-- `V3165`: Features unusual multi-month gaps between invoice receipts and payment block toggles, but does not match any primary category cleanly.
-- `V3166`: Moderate duration procurement path with some invoice repetition, but lacks the extreme length or standard flow characteristics.
-- `V3167`: Involves a long cancellation gap and invoice rework, but doesn't fully fit the extreme multi-year rework profile.
-- `V3168`: Contains quantity/price changes and invoice cancellation without falling neatly into standard or extreme categories.
-- `V3169`: Exhibits complex rework involving invoice cancellations and payment blocks over several months.
-- `V3170`: Standard-ish path with a price change and duplicate invoice receipt, but moderate duration.
-- `V3171`: Contains repeated payment blocks and invoice receipts over a moderate duration.
-- `V3172`: Ends in a late invoice cancellation after a long duration, not fitting standard P2P or quick cancellation categories.
-- `V3173`: Features quantity changes and delivery indicator modifications with goods receipt cancellation.
-- `V3174`: Involves repeated quantity changes followed by standard receipt and invoice processing.
-- `V3175`: Moderate duration with subsequent invoice processing, quantity changes, and payment block handling.
-- `V3277`: The narrative is relatively short and does not fit cleanly into standard, quick cancellation, service entry, SRM integration failure, or extreme rework categories.
-- `V3279`: This variant does not exhibit the defining characteristics of any of the given categories.
-- `V3282`: Although some quantity changes and repetitions occur, the duration and structure do not clearly fall into the defined categories.
-- `V3286`: The trace length and duration do not signify extreme rework or any of the specialized categories.
-- `V3341`: Ends in purchase order deletion rather than standard completion, cancellation, or standard procure-to-pay.
-- `V3457`: This variant features standard purchase order confirmation, delivery indicator updates, and invoice clearing without the extreme rework loops or failure indicators required by the categories.
-- `V3537`: Does not fit any specific category well: moderate duration of 43 days with multiple immediate goods receipt repetitions rather than extreme multi-year delays or standard p2p.
-- `V3538`: Short to medium duration (50 days) with repeated goods receipts but lacks the multi-year scope of extreme rework or the clean execution of standard p2p.
-- `V3544`: Moderate duration of 194 days featuring quantity changes and multiple invoice receipts, but does not fit the extreme multi-year profile or other specific categories.
-- `V3545`: Lasts 225 days with payment block removals and cancellations, falling into an intermediate category between standard execution and extreme delays.
-- `V3547`: Duration of 141 days with quantity and delivery indicator changes, presenting a moderate administrative path not strictly matching standard or extreme categories.
-- `V3548`: Duration of 71 days featuring payment block removals, debit memos, and cancellations, representing a non-standard path outside the defined categories.
-- `V3549`: Lasts 78 days with price changes, debit memos, and invoice cancellations, not fitting the clean standard procure-to-pay profile.
-- `V3550`: Duration of 141 days involving quantity/price changes and payment block removals, representing an intermediate non-standard workflow.
-- `V3634`: This variant does not fit the defined categories well as it involves a standard creation followed by quantity/delivery changes without matching the primary process patterns.
-- `V3635`: A moderate-length process involving invoice cancellation and payment block removal, not fitting neatly into standard P2P or extreme rework.
-- `V3636`: Process is dominated by repeated price changes after goods receipt, which is atypical for standard flows.
-- `V3637`: Involves quantity changes and duplicate invoice receipts, falling outside the main taxonomy definitions.
-- `V3638`: Contains multiple quantity changes, delivery indicators, and repeated invoice receipts over a moderate duration.
-- `V3640`: An isolated long wait between order confirmation/goods receipt and invoice receipt, but does not match extreme multi-year rework loops.
-- `V3641`: Repeated vendor invoices and goods receipts with payment clearings, representing residual variations.
-- `V3642`: Short duration process with debit memo, cancellation, and payment block removal.
-- `V3645`: Moderate duration process with invoice cancellation and debit memo processing.
-- `V3646`: Involves price changes and payment block removal before clearance.
-- `V3647`: Short variant with debit memo, cancellation, and payment block handling.
-- `V3648`: Features repeated invoice cancellations, debit memos, and payment block removals.
-- `V3649`: Involves a goods receipt cancellation and quantity change.
-- `V3650`: Complex sequence involving goods receipt cancellations, debit memos, and multiple payment block removals.
-- `V3702`: Short-lived variant ending with a blocked PO item, but without the full procure-to-pay lifecycle or specific service/SRM characteristics.
-- `V3708`: Moderate duration with goods receipt cancellations and adjustments, but not extensive enough to be extreme rework nor standard P2P.
-- `V3709`: Involves several cancellations and re-recordings of goods receipts, forming a short-to-medium rework loop.
-- `V3710`: Similar to V3709, features goods receipt cancellations and quantity changes before invoice clearance.
-- `V3714`: A moderate-duration process with repeated invoice receipts and cancellations, but lacking extreme duration.
-- `V3715`: Medium-long duration variant ending with a change in quantity well after initial invoice processing and clearance.
-- `V3760`: Does not fit standard procure-to-pay due to delivery indicator changes and payment block removals, but does not reach extreme multi-step rework lengths.
-- `V3799`: Does not fit standard procure-to-pay due to extensive repeated goods receipts and quantity changes, nor does it fit extreme multi-year rework or service entry execution.
-- `V3800`: Features multiple payment block removals and repeated invoice clearings over a moderate-to-long span, not cleanly falling into the standard path or extreme multi-year rework categories.
-- `V3878`: Moderate duration and trace length that does not clearly fit extreme rework or standard P2P.
-- `V3882`: An exceptionally long initial waiting time followed by straightforward completion, not matching the extreme rework loops.
-- `V3883`: Moderate length with some change and cancellation steps that do not constitute extreme multi-year rework.
-- `V3886`: Medium-length process with a delivery indicator change, not fitting the primary taxonomy definitions.
-- `V3887`: Medium-length process with goods receipt cancellations, falling outside the defined categories.
-- `V3891`: Long duration with an invoice receipt cancellation, but lacks the repetitive loop characteristics of extreme rework.
-- `V3892`: Moderate duration and complexity with price changes and block removals, not fitting the main categories.
-- `V3893`: Moderate duration with standard post-processing steps like price change and payment block removal.
-- `V3894`: Standard moderate-length exception flow involving delivery indicator change and price update.
-- `V3895`: Standard exception handling path involving quantity and delivery indicator changes.
-- `V3951`: This variant consists heavily of repeated goods receipts and cancellations with no standard invoice clearing or clear procure-to-pay progression, and does not cleanly fit any defined category.
-- `V4005`: Does not clearly fit any specific category, containing a mix of cancellations and invoice clearing without extreme multi-year duration or SRM failure.
-- `V4006`: Involves moderate rework and quantity changes but does not cleanly map to standard P2P or extreme delay categories.
-- `V4039`: Does not fit standard P2P or extreme rework cleanly due to its truncation with cancellations and final isolated invoice receipt.
-- `V4077`: Does not clearly fit any specific extreme pattern or standard path due to moderate length with multiple delivery indicator and quantity changes.
-- `V4084`: A relatively short process with only a single repeated invoice receipt; does not meet the extreme criteria or standard procure-to-pay simplicity.
-- `V4143`: Variant focuses solely on blocking, deleting, and reactivating purchase order items, which does not fit any of the defined categories.
-- `V4150`: Terminates early at change delivery indicator without reaching invoice processing or standard completion.
-- `V4215`: Does not fit standard P2P due to the late goods receipt cancellation, nor does it fit extreme rework or SRM failure categories.
-- `V4276`: This narrative shows moderate rework and delays, but does not fit the extreme multi-year duration of extreme rework, nor is it a standard P2P, service entry, or SRM integration failure.
-- `V4277`: The variant contains repeated invoice and goods receipt actions, but lacks the extreme length or specific characteristics of the defined categories.
-- `V4278`: This variant features multiple repetitions of quantity changes, invoices, and goods receipts over several months, falling into residual rework.
-- `V4279`: Contains multiple goods receipt cancellations and repetitions, not fitting neatly into any primary category.
-- `V4280`: A moderately long procurement flow with price changes and delivery indicator updates, but does not fit standard or extreme categories clearly.
-- `V4281`: Features debit memos, invoice cancellations, and price changes over 215 days, which is residual.
-- `V4282`: A 315-day duration with repeated invoice receipts, not aligning with standard flow or service entries.
-- `V4283`: Long execution with multiple invoice receipts and a final cancellation, remaining part of the residual.
-- `V4284`: Involves requisition, debit memo, and invoice cancellations, fitting residual.
-- `V4285`: Includes payment block removals and duplicate invoices, but is too complex for standard P2P and not extreme enough for extreme rework.
-- `V4286`: Contains debit memos, repeated invoice receipts, and multiple clearings over 152 days.
-- `V4287`: Contains multiple goods receipt and invoice receipt repetitions without fitting any specific specialized category.
-- `V4288`: Features multiple price and quantity changes with payment block removal over 140 days.
-- `V4289`: Includes requisition, price and quantity changes, and payment block removal in 43 days.
-- `V4290`: Features multiple invoice receipts, debit memos, and cancellations over 127 days.
-- `V4292`: A 315-day variant featuring invoice re-processing and eventual invoice receipt cancellation.
-- `V4365`: This variant involves a single cancellation of an invoice receipt after a long delay, which does not cleanly fit standard processing, quick termination, service entries, SRM issues, or extreme multi-year rework loops.
-- `V4368`: Contains debit memos, payment block removals, and cancellations that deviate from standard procure-to-pay without reaching the massive scale of extreme rework.
-- `V4376`: This variant exhibits considerable delays and repetitive loops of invoice creation, quantity changes, and goods receipts, but it does not cleanly fit standard P2P or extreme multi-year rework patterns.
-- `V4377`: Features invoice cancellations and payment block removals that are not characteristic of standard paths or quick cancellations.
-- `V4378`: Involves multiple invoice receipts, debit memos, and payment block removals over several weeks, falling outside standard or quick paths.
-- `V4379`: Shows extended duration with repeated invoice receipts and payment block removals, not fitting standard procurement.
-- `V4380`: Long execution time ending with a cancellation of an invoice receipt, which does not match any of the primary categories.
-- `V4381`: Delayed process with repeated invoice receipts and payment block removal.
-- `V4382`: Involves multiple changes, debit memos, and invoice cancellations.
-- `V4383`: Contains multiple quantity changes and goods receipt repetitions.
-- `V4384`: Contains repeated goods receipts and invoice receipts with price adjustments.
-- `V4385`: Involves cancellations of goods and invoice receipts followed by payment block removal.
-- `V4386`: Similar cancellation pattern as V4385 with inverted cancellation order.
-- `V4387`: Features an excessive repetition of goods receipts in rapid succession.
-- `V4388`: Also features intensive repetition of goods receipts.
-- `V4389`: Includes goods receipt cancellation and repetition.
-- `V4390`: Long running variant with blocked purchase orders and multiple repeated invoice receipts.
-- `V4391`: Shares initial complexity and blocks with V4390 but clears differently.
-- `V4392`: Involves multiple price changes and storage location updates before processing.
-- `V4393`: Features extensive price change rework loops.
-- `V4394`: Contains interleaved goods receipts, invoices, and multiple invoice receipts.
-- `V4395`: Involves order confirmation updates prior to standard goods and invoice receipt.
-- `V4396`: Contains repeated goods and invoice receipts separated by long intervals.
-- `V4397`: Involves goods receipt cancellation and re-creation.
-- `V4399`: Starts with approval changes before purchase order creation, non-standard path.
-- `V4512`: Does not clearly fit any category; involves intermediate quantity changes and payment block removal over a moderate timeframe.
-- `V4515`: Standard invoice and goods receipt flow with a price change, but does not fit standard high-frequency paths or extreme rework.
-- `V4518`: Includes multiple goods receipt recordings and payment block removal, falling outside the standard and extreme categories.
-- `V4519`: Contains recurring quantity changes and multiple invoice creations, but lacks the extreme multi-year duration.
-- `V4520`: Involves price and quantity changes prior to invoice receipt, not fitting neatly into any specific category.
-- `V4521`: Features multiple price changes and quantity updates without reaching extreme delay or standard status.
-- `V4523`: Involves repeated vendor invoices, price changes, and quantity adjustments over a moderate timeframe.
-- `V4524`: Characterized by multiple price changes, vendor invoice repetitions, and subsequent goods receipts.
-- `V4525`: Features loops of price changes, vendor invoices, and invoice receipts over 132 days.
-- `V4602`: Does not fit standard procure-to-pay due to complex cancellation and payment block removal steps, but is too short for extreme rework.
-- `V4603`: Contains multiple invoice cancellations, payment blocks, and rework, but does not match any of the primary categories cleanly.
-- `V4604`: Involves invoice cancellations and payment block handling that fall outside standard paths.
-- `V4606`: Features repeated invoice receipts and clearings but does not reach the scale of extreme rework.
-- `V4608`: Includes multiple quantity and price changes, but duration and complexity are moderate.
-- `V4621`: Contains subsequent invoice cancellation and debit memos outside standard procure-to-pay.
-- `V4623`: Includes multiple invoice entries and repeated clearings that deviate from a standard path.
-- `V4625`: Characterized by an unusual loop of numerous goods receipts following an invoice.
-- `V4877`: Does not fit standard procure-to-pay, service entry, SRM failure, or extreme multi-year rework categories, representing a non-standard residual variant.
-- `V4878`: Presents a complex sequence with cancellations and debit memos over several months without fitting cleanly into standard or extreme categories.
-- `V4879`: Involves multiple repetitions of quantities, invoices, and payment blocks over an extended duration, remaining part of the residual.
-- `V4880`: Contains multiple invoice receipts, cancellations, and debit memos over a moderate duration, fitting no specific primary taxonomy pattern.
-- `V4881`: Mixes service entry sheets with invoice cancellations and payment block adjustments, falling into the residual category.
-- `V4882`: Characterized by an unusual explosion of repeated goods receipt recordings alongside price changes, not mapping to standard flows.
-- `V4883`: Involves repeated debit memos, invoice cancellations, and a final purchase order item deletion, representing a non-standard residual flow.
-- `V4884`: Features interleaved invoice and goods receipt events with subsequent price changes and payment block removals.
-- `V4888`: Involves multiple debit memos and invoice cancellations over several months, falling outside standard or quick categories.
-- `V4889`: Presents a delayed secondary goods receipt following initial invoice clearing, fitting a residual classification.
-- `V4892`: Exhibits a prolonged duration with multiple mixed goods receipts, invoice cancellations, and repeated clearing events.
-- `V4893`: Contains multiple quantity changes and an intermediate invoice receipt before final payment clearance.
-- `V4894`: Features repeated invoice and goods receipt events under a moderate duration, fitting the residual category.
-- `V4895`: Consists of a sequence of multiple goods receipts followed by a cancellation without standard invoice processing.
-- `V4896`: Short variant involving goods receipt adjustments, quantity changes, and a goods receipt cancellation.
-- `V4897`: Long-running trace involving repeated invoice receipts and payment blocks over nearly 300 days.
-- `V4899`: Complex long duration path with price changes, goods receipt cancellations, and late invoice cancellation.
-- `V4902`: Does not fit any category neatly; contains a long delay and payment block removal but does not show extreme multi-year rework loops or standard P2P simplicity.
-- `V4904`: Involves repeated invoice receipts and a long delay before clearing, but does not fit standard clean P2P or extreme multi-year rework.
-- `V4905`: Long duration with payment block removal and multiple invoice receipts, but lacks the extreme length and complexity of the extreme rework category.
-- `V4906`: Features duplicated invoice receipts and payment block removals, representing a non-standard complex path rather than standard P2P.
-- `V4962`: Truncated variant terminating in a price change without reaching completion or standard P2P milestones.
-- `V5002`: Does not fit standard flow, quick completion, service entry focus, SRM transfer issues, or multi-year extreme rework; part of residual.
-- `V5004`: Involves multiple invoice receipts and cancellations but lacks the multi-year duration or extreme complexity of the extreme rework category.
-- `V5007`: Contains a late cancellation and clearing repeat, but doesn't meet the threshold for extreme multi-year rework or other specific categories.
-- `V5019`: Contains adjustments and delayed goods receipt but doesn't fit cleanly into any of the predefined categories.
-- `V5021`: Involves multiple debits, invoices, and payment block changes without being extreme enough or fitting other categories.
-- `V5022`: Short sequence focused on payment blocks and cancellations, not matching standard P2P or other definitions.
-- `V5152`: Contains multiple quantity changes, payment block removals, and invoice cancellations extending over considerable duration, fitting none of the clean standard or quick categories.
-- `V5155`: Involves multiple repetitions of invoice creation, quantity changes, and goods receipts without fitting cleanly into standard or extreme rework classifications.
-- `V5156`: Includes repeated goods receipts, debit memos, cancellations, and multiple invoice clearings, representing non-standard rework.
-- `V5157`: Characterized by multiple invoice entries, debit memos, cancellations, and repeated clearing steps.
-- `V5166`: Features multiple quantity changes, delivery indicator updates, and repeated invoice receipts and goods receipts.
-- `V5167`: Exhibits long duration with debit memos, invoice cancellations, and multiple clearings.
-- `V5168`: Contains multiple price changes, quantity modifications, and repeated goods/invoice receipts.
-- `V5169`: Includes multiple invoice receipts, payment block removals, and repeated clearing actions.
-- `V5171`: Features repeated invoice receipts and payment block removals.
-- `V5172`: Exhibits multiple iterations of goods receipts, vendor invoices, and invoice receipts.
-- `V5173`: Long duration with cancelled invoice receipts, debit memos, and multiple clearings separated by wide time gaps.
-- `V5174`: Contains multiple repetitions of goods receipts, vendor invoices, invoice receipts, and clearing steps.
-- `V5175`: Involves quantity changes, debit memos, payment block removals, cancellations, and multiple invoice clearings.
-- `V5210`: Duration is quite long and complex due to delays, but does not fit the extreme multi-year rework loops of the extreme category.
-- `V5213`: Long-running variant with multiple invoice receipts and delayed payments, but spans multiple months rather than fitting neatly into standard P2P.
-- `V5214`: Contains repetitive invoice receipts and clearings over several months, sitting outside the standard P2P definition.
-- `V5215`: Features cancellations and repeated clearings that make it non-standard.
-- `V5216`: Complex rework including cancellation of invoice receipts and multiple clearings over an extended duration.
-- `V5218`: Extended duration with a late second invoice receipt long after initial clearing, making it non-standard.
-- `V5222`: Complex process with multiple payment block removals, repeated invoices, and a very late secondary invoice receipt.
-- `V5223`: Heavy rework involving multiple cancellations of invoice receipts and repeated clearings.
-- `V5224`: Extensive rework involving multiple invoice cancellations and repeated clearing steps.
-- `V5225`: Extended timeline with subsequent invoice cancellation and multiple clearings.
-- `V5254`: While it contains some rework and cancellations, the duration and structure are moderately complex and do not fully reach extreme multi-step delays or match the standard, quick, or service entry paths.
-- `V5255`: Features blocking and reactivating a PO item over a moderate duration, but does not fit standard P2P or extreme multi-year rework patterns.
-- `V5256`: Contains a cancellation after a long delay, but doesn't exhibit the extreme repetitive loops characteristic of extreme rework.
-- `V5257`: Features repeated invoice receipts and a cancellation after ~196 days, falling short of extreme multi-loop rework.
-- `V5259`: Contains duplicate invoice creations and cancellations, but is relatively short in duration compared to extreme delay variants.
-- `V5261`: Has several repeats of goods receipt and payment block, but moderate duration (73d).
-- `V5262`: Moderate complexity and duration without severe rework loops.
-- `V5274`: Long waiting time for a quantity change, but lacks the intensive rework loops of extreme variants.
-- `V5507`: Does not fit standard procure-to-pay due to a long delay before ending abruptly at invoice receipt without clearing.
-- `V5509`: Intermediate variant with quantity and delivery changes leading to an uncleared invoice receipt after a long wait.
-- `V5530`: Does not fit standard procure-to-pay due to cancellations and repeated invoice handling, but lacks the extreme multi-year duration or massive trace length of the extreme rework category.
-- `V5533`: Features some invoice repetition and cancellations but does not neatly fit any specific recurring taxonomy category.
-- `V5534`: Involves goods receipt cancellation and repetition over a moderate duration, but does not clearly match any of the defined taxonomy categories.
-- `V5537`: Contains repetitive goods receipts but resolves within a moderate timeframe without fitting the extreme or standard definitions well.
-- `V5538`: Standard flow with minor quantity and invoice repetitions, not severe enough for extreme rework.
-- `V5541`: Involves multiple goods and invoice receipts but is relatively short in duration, failing to reach extreme rework status.
-- `V5544`: Moderate complexity involving goods receipt cancellation and quantity changes, not fitting standard or extreme extremes cleanly.
-- `V5545`: Involves delivery indicator changes and standard steps but does not fit standard P2P due to modifications.
-- `V5546`: Features delivery indicator and goods receipt repetitions over a moderate timeframe.
-- `V5547`: Similar to other modified variants with repeated goods receipts and quantity changes.
-- `V5549`: Contains debit memos, price changes, and invoice cancellations but lacks the massive scale required for extreme rework.
-- `V5550`: Involves repeated goods receipts, vendor invoices, and clearings without meeting the strict definition of standard P2P or extreme rework.
-- `V5551`: This variant exhibits moderate delays and multiple invoicing and goods receipt loops, but does not fit cleanly into standard paths or extreme multi-year rework.
-- `V5552`: Shows complex rework with cancellations and multiple payment block removals, but does not fit standard or extreme categories.
-- `V5566`: Contains duplicate invoice and clearing steps with moderate duration, falling outside standard clear-cut categories.
-- `V5568`: Features repetitive price changes and multiple clearing steps over an extended duration, but not extreme enough for the multi-year rework category.
-- `V5569`: Involves repeated quantity changes, multiple invoices, and payment block removals leading to delayed clearance.
-- `V5574`: Contains repeated goods receipts, invoice steps, and multiple clearings over a moderate duration.
-- `V5575`: Exhibits multiple invoice receipts and repeated clearings over a sub-100 day duration.
-- `V5726`: This narrative involves invoice cancellation and payment block removal over several months, which fits into a complex exception handling flow rather than a standard, quick, or service-entry process, and is not extreme enough in duration or trace length to be categorized as extreme rework.
-- `V5727`: The variant features multiple price and quantity changes alongside typical procure-to-pay steps, but does not fit standard clean processing or extreme multi-year rework loops.
-- `V5728`: Involves debit memos, invoice cancellations, and repeated invoice clearances over roughly eight months, constituting a complex exception case outside standard or quick paths.
-- `V5729`: Includes repeated goods and invoice receipts as well as invoice cancellation over a 120-day median duration, which is an exception handling pattern rather than a standard clean path.
-- `V5730`: Features debit memos, cancellations, and repeated invoice receipts over several months, failing to meet the criteria for standard P2P or quick cancellation.
-- `V5731`: Exhibits payment block removal and invoice cancellation steps, representing a typical exception or rework scenario rather than standard, quick, or service entry paths.
-- `V5732`: Contains multiple repetitions of invoice creation, goods receipts, and invoice receipts, but lacks the extreme multi-year duration and massive loops characteristic of extreme rework.
-- `V5735`: Involves delivery indicator changes, repeated goods and invoice receipts, and payment block removals over an extended period, fitting general exception handling rather than standard execution.
-- `V5737`: Exhibits repeated invoice creation, goods receipts, invoice receipts, and a late debit memo and invoice cancellation over several months, constituting an exception flow.
-- `V5738`: Involves price changes, payment block removal, and late invoice cancellation after clearance over 268 days, matching an exception path rather than standard execution.
-- `V5739`: Contains goods receipt cancellations, quantity changes, and repeated invoice clearances, pointing to exception handling and rework rather than standard or quick processing.
-- `V5740`: Long-running variant with repeated delivery indicators, cancellations, debit memos, and invoice receipts, representing complex rework and administrative delay.
-- `V5741`: Features multiple invoice receipts, payment block removals, and cancellations over roughly six months, fitting an exception-handling process.
-- `V5742`: Characterized by repeated invoice receipts, clearings, and cancellations over multiple months, indicating operational rework outside standard paths.
-- `V5743`: Involves repeated goods receipts, vendor invoices, invoice receipts, and payment block removals spread over five months, reflecting iterative rework.
-- `V5744`: Features multiple quantity changes, delivery indicators, and goods receipts followed by a late invoice cancellation after nearly nine months.
-- `V5745`: Contains repetitive delivery indicator updates, goods receipts, and late invoice receipts over more than six months.
-- `V5746`: Exhibits duplicated vendor invoices, goods receipts, and price changes before final invoice clearance, representing a non-standard procurement path.
-- `V5747`: Features repeated invoices, goods receipts, clearings, and a very late invoice cancellation after 268 days.
-- `V5748`: Includes repeated quantity updates, vendor invoices, goods receipts, and invoice clearances, representing routine procurement rework.
-- `V5840`: Does not fit standard P2P due to order deletion after clearing, nor does it fit extreme rework length or service entry execution.
-- `V5841`: Process ends with a delivery indicator change and cancellation after clearing, which is a residual path not captured by standard categories.
-- `V5842`: Short variant ending in delivery indicator change without invoice processing, failing to fit standard P2P or quick cancellation categories properly.
-- `V5844`: Involves quantity changes and multiple late goods receipts but lacks standard invoice clearing or extreme rework patterns.
-- `V5902`: Moderate duration and complexity with quantity and goods receipt changes, but does not neatly fit the extreme criteria of the other categories.
-- `V5906`: Features some standard invoice and goods receipt steps with minor loops, fitting poorly into standard procure-to-pay due to the rework.
-- `V5907`: Contains debit memos and cancellations in a relatively short timeframe, not fully aligning with standard procure-to-pay.
-- `V5909`: Involves multiple subsequent invoices, repeated payment blocks, and quantity changes, representing an atypical path.
-- `V5911`: Contains debit memos and multiple cancellations/clearances making it a non-standard path.
-- `V5912`: Long-running process involving quantity changes, debit memos, and cancellations.
-- `V5913`: Repeated quantity changes and delivery indicator modifications indicate non-standard processing.
-- `V5914`: Frequent repetitions of vendor invoices and clearance steps over a short duration.
-- `V5916`: Long waiting periods between initial processing and final invoice receipt.
-- `V5917`: Involves price changes and multiple payment block removals.
-- `V5918`: Involves price changes and delayed goods receipts following invoice recording.
-- `V5951`: This narrative involves standard procure-to-pay steps followed by an invoice cancellation after a long delay, but does not fit the extreme multi-year rework profile or other specialized categories.
-- `V5953`: Features standard steps ending in a cancellation after several months, representing an uncommon resolution rather than standard execution or other defined categories.
-- `V5954`: Exhibits repeated invoicing and clearing steps over a moderate duration, but does not fit cleanly into standard paths or extreme multi-year rework.
-- `V5955`: Involves repeated debit memos, invoice receipts, and cancellations which do not match standard procedures or the other specific categories.
-- `V5956`: Characterized by delayed late invoice recording and quantity changes after clearing, failing to match any standard or specific category cleanly.
-- `V5957`: Contains quantity changes, goods receipt cancellation, and debit memos that fall outside standard procure-to-pay or other defined categories.
-- `V5959`: Contains an excessive repetition of goods receipt records, which does not fit standard paths or the other taxonomy definitions.
-- `V5962`: Involves multiple quantity changes and duplicated vendor invoices and goods receipts, which deviates from standard execution.
-- `V5963`: Features a long waiting period before payment block removal and subsequent invoice cancellation, not fitting standard or extreme rework definitions.
-- `V5964`: Exhibits high repetition of invoice cancellations and clearances that do not align with any specific taxonomy category.
-- `V5967`: Starts with out-of-order vendor invoices and debit memos prior to order creation, representing an irregular flow not captured by categories.
-- `V5968`: Involves scattered duplicate invoices, delayed price changes, and late cancellations that do not match the defined categories.
-- `V6115`: Does not clearly fit standard processing, quick cancellation, service entry, or extreme multi-year loops; involves a mix of debit memos and cancellations over a moderate timeframe.
-- `V6116`: Contains quantity changes and payment block removals outside standard fast-track or extreme delay paths.
-- `V6117`: Involves multiple goods receipt cancellations and debit memos without forming part of the standard procure-to-pay or extreme delay cluster.
-- `V6118`: Features a goods receipt cancellation and repetition over a moderate duration, fitting none of the specific defined categories.
-- `V6120`: Exhibits storage location changes, repeated clearing, and invoice cancellations that form a distinct residual path.
-- `V6121`: Involves a very long delay before invoice cancellation and subsequent payment block removal, fitting none of the main clusters neatly.
-- `V6124`: Involves quantity changes, delivery indicator updates, and multiple invoice cycles outside the standard or extreme definitions.
-- `V6125`: Contains repeated goods receipts, invoice entries, and clearing loops that fall into the residual category.
-- `V6176`: This variant exhibits invoice cancellations, debit memos, and payment block removals over an extended period, fitting none of the standard or simple categories well.
-- `V6178`: Multiple repeated invoice receipts and cancellations spread over months do not cleanly match any specific category.
-- `V6179`: Includes quantity changes, multiple invoice receipts, and a final invoice cancellation.
-- `V6180`: Characterized by repetitive goods receipt and invoice receipt entries in a medium-duration path.
-- `V6181`: Features repeated goods receipts and invoice receipts with long waiting times.
-- `V6182`: Contains price changes and repeated invoice receipts over an extended duration.
-- `V6183`: Features price changes, payment block removal, and invoice cancellation.
-- `V6184`: Standard procurement path with price and quantity changes.
-- `V6186`: Involves multiple vendor invoice entries and repeated goods receipts.
-- `V6187`: Contains repeated goods receipts, invoice receipts, payment block removals, and clearing actions.
-- `V6188`: Features multiple quantity changes interwoven with standard procurement steps.
-- `V6189`: Involves item deletion and reactivation alongside quantity changes.
-- `V6190`: Exhibits multiple quantity changes and repeated invoice receipts.
-- `V6191`: Complex sequence involving debit memos, quantity changes, cancellations, and subsequent invoices.
-- `V6192`: Characterized by a long sequence of repeated goods receipts following an invoice.
-- `V6193`: Contains duplicate vendor invoices, repeated goods and invoice receipts, and a late cancellation.
-- `V6194`: Standard procurement sequence with price and quantity modifications.
-- `V6195`: Involves a long series of repetitive goods receipt entries.
-- `V6196`: Extensive repetition of goods receipt entries by multiple resources.
-- `V6197`: Involves multiple goods receipts following an early invoice receipt.
-- `V6263`: Does not fit standard procure-to-pay cleanly due to cancellation/subsequent invoice, nor is it extremely long-running or an SRM failure.
-- `V6273`: Moderate duration with some repetition, but does not reach the scale of extreme rework or fit other specific categories.
-- `V6275`: Shows some invoice and goods receipt repetition, but overall trace and duration do not qualify for extreme rework or other categories.
-- `V6351`: This variant features invoice cancellation and a multi-month duration, but does not fit cleanly into standard procurement or extreme rework patterns.
-- `V6352`: The variant contains repeated quantity, goods receipt, and payment block updates, but lacks the extreme scale to be classified as extreme rework.
-- `V6353`: Involves multiple goods receipts and invoice receipts with long durations, but does not align with standard P2P or extreme multi-year rework.
-- `V6354`: Features repetitive quantity changes and invoice creation, representing general process inefficiency rather than extreme rework.
-- `V6355`: Involves goods receipt cancellation and quantity adjustments, but remains a standard medium-length variant.
-- `V6356`: Displays typical price and quantity adjustments with goods receipt cancellations, falling outside standard or extreme categories.
-- `V6357`: Shows a delayed invoice receipt clearing path with some price changes, but not extreme enough for the extreme rework category.
-- `V6358`: A straightforward procurement process with minor quantity and price changes, close to standard procure-to-pay.
-- `V6359`: Involves repeated vendor invoicing and goods receipts, representing moderate exception handling.
-- `V6360`: Standard confirmation and invoice processing with minor order updates, realizing a near-standard procure-to-pay flow.
-- `V6361`: Long delay between goods receipt and invoice receipt, but not part of a recurring extreme rework loop.
-- `V6362`: A variant that simply gets blocked after storage location changes; does not fit other major categories.
-- `V6367`: Contains repeated clearing and invoice steps, but the duration and pattern do not reach the extreme rework threshold.
-- `V6369`: Involves duplicated invoice receipts and clearings, but remains below the threshold for extreme rework and delay.
-- `V6370`: Contains goods receipt cancellations and subsequent re-recordings, representing standard exception handling.
-- `V6371`: Shows debit memo and invoice cancellation handling, but does not match any specific dedicated category.
-- `V6372`: Involves deletion, reactivation, and multiple payment blocks, representing complex execution rather than standard P2P.
-- `V6394`: Does not fit standard P2P due to a very long duration (242d) and change delivery indicator, nor does it fit other specific categories cleanly.
-- `V6401`: This narrative involves multiple cycles of invoice receipts and price changes over several months, but does not cleanly fit standard P2P, service entry, or extreme multi-year rework categories.
-- `V6403`: This path features extensive rework, multiple invoice creations, cancellations, and price updates spread across months, falling outside standard or quick paths.
-- `V6404`: Involves multiple goods receipt cancellations and repetitions, payment block removals, and invoice entries over a 133-day period.
-- `V6405`: Complex sequence with multiple invoices, goods receipts, and payment block removals without matching the extreme multi-year definition.
-- `V6406`: Features cancellation of goods receipt and delivery indicator changes over 133 days, making it non-standard.
-- `V6407`: Exhibits repeated invoicing, goods receipts, and invoice clearing steps over nearly 100 days.
-- `V6408`: Involves approval changes, debit memos, and a delayed invoice receipt cancellation over 225 days.
-- `V6409`: Moderate duration path with multiple quantity updates and confirmation steps leading to invoice clearing.
-- `V6410`: An unconventional starting point (vendor creates invoice before PO creation) followed by cancellations and repetitions.
-- `V6420`: Long-running variant with quantity updates, payment block removal, and late invoice cancellation.
-- `V6421`: Includes delivery indicator changes, debit memos, and invoice receipt cancellations.
-- `V6422`: Long duration process with repeated goods receipts, quantity changes, and multiple clearing steps.
-- `V6423`: Features debit memos, multiple invoice entries, and cancellations before final clearing.
-- `V6424`: Involves multiple goods receipts, delivery indicator changes, and repeated clearing steps.
-- `V6425`: Contains delivery indicator changes, multiple invoices, and repeated clearing over several months.
-- `V6501`: This narrative involves multiple repetitions of goods receipts, invoices, and clearing steps over 94 days, which does not fit standard clean processing or simple cancellations, nor does it reach the extreme multi-year duration of rework.
-- `V6502`: Involves payment block removal and subsequent invoicing over 94 days, lacking the clean path of standard P2P or the extreme duration/loops of extreme rework.
-- `V6503`: Features invoice cancellations and multiple clearing steps over 87 days without fitting standard procure-to-pay or extreme rework criteria.
-- `V6504`: Shows goods receipt cancellation and re-entry over 87 days, making it non-standard and distinct from quick completions or extreme rework.
-- `V6505`: Contains duplicate goods receipts and payment block removal over 44 days, fitting neither standard procure-to-pay nor quick cancellation.
-- `V6506`: Involves invoice receipt cancellations, repeated clearings, and debit memos over 118 days, which falls outside standard P2P and extreme rework.
-- `V6507`: Exhibits similar complex patterns of invoice cancellations and repeated clearing steps over 118 days, not fitting any single specific taxonomy category well.
-- `V6508`: Shows extensive repetitions of invoices, debit memos, cancellations, and clearings over 240 days, but does not feature the extreme multi-year delays required for extreme rework.
-- `V6509`: Involves duplicate goods receipts, invoice receipts, and payment block removals over 107 days, constituting moderate rework rather than standard P2P.
-- `V6510`: Exhibits multiple cancellations and clearings over 261 days, representing significant administrative rework and delay.
-- `V6511`: Contains goods receipt cancellations, multiple payment block removals, and repeated invoices over 128 days, indicating moderate rework.
-- `V6512`: Involves quantity changes, delivery indicator updates, and repeated invoice/clearing steps over 128 days, failing standard P2P criteria.
-- `V6513`: Shows repeated goods receipts, invoice receipts, and payment block removals over 107 days, characteristic of administrative rework.
-- `V6514`: Contains duplicate goods receipts and invoice receipts with repeated clearing over 65 days, which is not a standard clean path.
-- `V6515`: Exhibits extensive loops of debit memos, invoice cancellations, and repeated clearings over 233 days, fitting moderate to heavy rework.
-- `V6516`: Includes quantity changes, invoice cancellations, and repeated clearing over 107 days, representing non-standard process execution.
-- `V6517`: Ends in an invoice receipt cancellation after 240 days with payment block removal and delivery indicator changes, indicating a complicated exception path.
-- `V6518`: Contains multiple price/quantity changes and repeated invoice and clearing steps over 143 days, falling outside standard P2P.
-- `V6519`: Shows multiple quantity changes and repeated clearing steps over 128 days, constituting administrative rework.
-- `V6521`: Involves invoice cancellations, payment block removals, and repeated clearing over 164 days, representing non-standard rework.
-- `V6522`: Extremely convoluted variant over 135 days with multiple quantity changes, delivery indicator updates, repeated goods receipts, and invoice entries.
-- `V6523`: Features multiple invoice receipts, debit memos, cancellations, and repeated clearings over 163 days, characteristic of heavy administrative rework.
-- `V6524`: Shows a cluster of four consecutive goods receipts following a quantity change and long delay over 142 days, representing process rework.
-- `V6526`: This variant features repetitive service entry and invoice receipt loops across several months, but does not fit cleanly into standard procure-to-pay, quick termination, simple service entry, SRM failure, or extreme multi-year rework.
-- `V6536`: Involves price changes, invoice receipt cancellations, and payment block removals spanning several months, which falls outside standard P2P and the other defined categories.
-- `V6537`: Characterized by multiple debit memos, subsequent invoice cancellations, and repeated clearance steps that do not fit neatly into standard or extreme definitions.
-- `V6538`: Features repeated invoice receipts, debit memos, delivery indicator changes, and a final invoice receipt cancellation which falls into the residual category.
-- `V6541`: Involves purchase order blocking and reactivations alongside multiple invoice receipts, representing a non-standard procurement exception path.
-- `V6543`: Long duration variant ending in an invoice receipt cancellation after several months, representing an atypical exception path.
-- `V6544`: Features multiple quantity changes, item deletions, and reactivations, representing complex rework outside standard definitions.
-- `V6545`: Involves multiple quantity changes and delayed secondary invoice processing, falling into the residual category.
-- `V6546`: Extensive quantity changes, delivery indicator updates, and repeated invoice receipts place this variant in the residual category.
-- `V6547`: Characterized by frequent quantity adjustments and multiple rapid invoice receipts.
-- `V6548`: Involves quantity changes, delayed goods receipts, and payment block removals.
-- `V6549`: Features a goods receipt cancellation and a long delay before a late invoice receipt.
-- `V6581`: This variant features price changes and delivery indicator modifications but lacks the massive multi-step repetitive rework or standard clean procure-to-pay paths.
-- `V6592`: Features multiple goods receipts and a cancellation culminating in delivery indicator modification without invoice processing.
-- `V6851`: The variant features multiple repeated invoice creations, goods receipts, and invoice receipts, alongside payment block removals, which does not fit standard P2P or other specific categories neatly.
-- `V6852`: Involves multiple invoice cancellations, repeated invoice receipts, and multiple payment block removals, indicating complex rework and deviation.
-- `V6853`: Contains subsequent invoices, multiple vendor invoices, and repeated clearings, which go beyond the standard P2P path.
-- `V6855`: Features repeated goods receipts, multiple vendor invoices, subsequent invoices, and repeated clearings, indicative of rework.
-- `V6856`: Exhibits multiple service entry sheets, repeated invoice receipts, subsequent invoices, and multiple vendor invoice entries.
-- `V6858`: Includes deletion and reactivation of purchase order items, multiple delivery indicator changes, and a long burst of repeated goods receipts.
-- `V6860`: Features goods receipt cancellation, debit memos, and cancelled invoice receipts with multiple clearings.
-- `V6861`: Exhibits reversed flow (starting with debit memo and invoice) alongside cancelled subsequent invoices and invoice receipts.
-- `V6862`: Contains blocking and reactivating of purchase order items, repeated vendor invoices, goods receipts, and duplicate invoice clearings.
-- `V6863`: Features block and reactivation of purchase order items, repeated invoicing, goods receipts, and duplicate clearings.
-- `V6864`: Exhibits long duration with cancelled invoice receipts and multiple invoice clearings separated by months.
-- `V6865`: Characterized by cyclical repetition of goods receipts, vendor invoices, invoice receipts, and clearing over a long duration.
-- `V6866`: Features a massive 175-day gap between quantity changes and delivery indicator updates, indicating administrative delay.
-- `V6867`: Contains debit memos, cancelled invoice receipts, multiple payment block removals, and repeated clearing steps.
-- `V6868`: Involves a 61-day price change followed by cancelled goods receipts and subsequent re-recording of goods receipts.
-- `V6869`: Features multiple delivery indicator changes and quantity adjustments before normal procurement execution.
-- `V6871`: Exhibits repeated delivery indicator changes, multiple vendor invoices, goods receipts, and invoice receipts with duplicated clearings.
-- `V6980`: Does not fit standard P2P due to ending in Cancel Goods Receipt and lacking full invoice processing, nor does it fit other specific categories.
-- `V7090`: Involves deletion and reactivation of purchase order items combined with delivery indicator changes, which do not cleanly fit standard P2P or extreme rework.
-- `V7094`: Short cancellation sequence that does not completely fit the early quick cancellation or standard P2P patterns.
-- `V7099`: Terminates in deletion of the purchase order item after several invoice and cancellation adjustments.
-- `V7105`: Features unusual repeated quantity changes, multiple duplicate invoice clearings, and significant rework that does not clearly fit into any specific category pattern.
-- `V7106`: Contains excessive quantity changes and delivery indicator modifications that place it outside standard paths or other predefined categories.
-- `V7117`: Features repeated goods receipt cancellations intermixed with service entry and invoice processing, creating an anomalous pattern.
-- `V7119`: Contains multiple quantity changes over a prolonged period that do not fit neatly into standard P2P or other categories.
-- `V7120`: Involves multiple invoice receipts, cancellations, and multiple invoice clearing events creating a complex, atypical flow.
-- `V7122`: Features a late invoice receipt cancellation occurring long after initial clearing, forming an unusual anomaly.
-- `V7238`: Does not fit the standard or specific failure patterns; involves multiple cancellations and debit memos outside standard flows.
-- `V7239`: Involves subsequent invoice cancellations and multiple clearings that deviate from standard procure-to-pay paths.
-- `V7240`: Exhibits complex cancellations and multiple invoice receipts over a long period, not matching standard categories.
-- `V7286`: Involves multiple payment block removals, invoice cancellations, and repeated clearings, making it a complex exception rather than standard or service entry.
-- `V7289`: Complex process with subsequent invoices, payment block removals, and multiple clearings spanning multiple months.
-- `V7290`: Features multiple invoice receipts, debit memos, payment block removals, and repeated invoice clearings over a long duration.
-- `V7292`: Unusual pattern with multiple invoice entries, repeated clearing, and subsequent delivery indicator changes and re-invoicing.
-- `V7293`: Complex path involving multiple purchase order approval changes, blocking, and reactivating of items.
-- `V7294`: Involves purchase order approval changes, item blocking and reactivation, and administrative delays.
-- `V7297`: Terminates unusually in a quantity change after a long delay and a goods receipt cancellation, not fitting standard completion.
-- `V7298`: Variant ends unexpectedly with a change delivery indicator following earlier clearing and quantity changes.
-- `V7504`: This narrative represents a moderate process with some invoice repetition, but does not fit cleanly into standard procure-to-pay nor the extreme rework category.
-- `V7505`: Moderate duration with price changes and single invoice processing, falling outside the defined categories.
-- `V7507`: A standard length variant with a single goods receipt repetition, not severe enough for extreme rework.
-- `V7512`: Includes a long waiting time before final invoice clearing but lacks the massive multi-step loops characteristic of extreme rework.
-- `V7513`: Involves some duplicated goods and invoice receipts with a moderate duration, but does not fit standard or extreme definitions perfectly.
-- `V7515`: A standard sequence with a delivery indicator change, not fitting any specific exception category.
-- `V7602`: Involves moderate rework (repeated goods receipts and invoice receipts) and payment block removals, but does not fit standard clean P2P or extreme multi-year rework.
-- `V7604`: Contains multiple repetitions of price and quantity changes, vendor invoices, goods receipts, and invoice clearances, representing messy rework rather than a standard path.
-- `V7608`: Contains a long waiting gap before quantity change and goods receipt, but does not reach the extreme multi-step looping characteristic of extreme rework.
-- `V7610`: Exhibits invoice receipt cancellations and repeated clearing steps, representing administrative exception handling.
-- `V7611`: Shows repeated invoice receipts and dual clearings, reflecting minor invoice verification rework.
-- `V7612`: Includes repeated goods receipts and invoice receipts with multiple clearings over 120 days.
-- `V7613`: Contains interleaved invoice receipts, vendor invoices, and double clearing actions.
-- `V7617`: Involves invoice cancellations, subsequent invoice records, and repeated clearing.
-- `V7618`: Contains cancellations of subsequent invoices, multiple payment block removals, and delayed clearing.
-- `V7619`: Long duration (224d) featuring a debit memo followed by a long wait and subsequent invoice cancellation.
-- `V7620`: Variant ends in a quantity change after invoice clearance, reflecting atypical execution.
-- `V7621`: Ends in an invoice receipt cancellation after a long duration and multiple payment block removals.
-- `V7622`: Involves duplicated goods and invoice receipts with standard payment block removal.
-- `V7623`: Unusual final activity pattern ending in a repeated goods receipt after invoice clearance.
-- `V7624`: Contains duplicated goods receipts, vendor invoices, and invoice receipts with payment block handlings.
-- `V7625`: Extensive rework involving multiple vendor invoices, debit memos, invoice cancellations, and repeated invoice clearings.
-- `V7726`: This variant exhibits considerable rework and multiple invoice/payment block events spanning 72 days, but does not neatly fit standard procure-to-pay or extreme multi-year rework criteria.
-- `V7727`: Involves repeated quantity changes, goods receipts, invoice receipts, and payment blocks over 72 days, falling outside standard paths and extreme multi-year rework.
-- `V7728`: Shows repeated invoice creation, receipt, and clearing steps over 72 days, representing minor process complications rather than standard flow or extreme rework.
-- `V7729`: Contains multiple goods receipts, invoice receipts, and payment block removals spread over 114 days, which deviates from standard procure-to-pay.
-- `V7730`: Exhibits multiple quantity changes, repetitive vendor invoicing, and goods receipts over 79 days, representing non-standard process behavior.
-- `V7742`: Involves invoice cancellations and changes spanning 160 days, representing a complex non-standard path.
-- `V7745`: Features debit memos, subsequent invoice cancellations, and multiple clearings over 135 days, falling outside standard execution.
-- `V7747`: Incomplete or truncated flow ending in invoice receipt after 61 days without clearing.
-- `V7748`: Involves duplicate goods receipts and invoice receipts over 78 days, representing minor rework rather than standard procure-to-pay.
-- `V7749`: Complex path with debit memos, quantity changes, delayed goods receipts, and post-clearing invoice cancellations spanning 169 days.
-- `V7750`: Contains multiple invoice entries, duplicate goods receipts, and delivery changes spread over 107 days, diverging from a standard path.
-- `V7760`: Involves requisitioning and multiple invoice/clearance cycles without matching the specific criteria of the standard or extreme categories.
-- `V7763`: Contains invoice and payment block removal steps, but lacks the extreme duration or standard clean path to fit neatly.
-- `V7764`: Features repeated invoice events and payment block removal without fitting purely into standard or extreme categories.
-- `V7767`: Involves atypical delivery indicator changes and delayed clearance without fitting the standard or service entry definitions.
-- `V7778`: Contains multiple quantity changes, goods receipts, invoice receipts, and payment block removals over several months, which does not fit standard or quick paths.
-- `V7779`: Involves invoice cancellations and re-recordings over more than three months, representing a non-standard complex rework pattern.
-- `V7780`: Features invoice cancellation and clearing loops that do not conform to standard clean procure-to-pay paths.
-- `V7781`: Contains multiple vendor invoices, debit memos, cancellations, and re-recordings spanning nearly two months.
-- `V7782`: Long execution time resulting in a final invoice receipt cancellation, outside of the standard successful procure-to-pay process.
-- `V7783`: Exhibits multiple rounds of invoice receipts, payment block removals, and clearing repetitions over an extended duration.
-- `V7784`: Contains multiple invoice cancellations and repeated clearings over a 154-day period.
-- `V7785`: Extremely long-running variant spanning multiple months with quantity and delivery changes, multiple receipts, and repeated clearing.
-- `V7787`: Complex sequence with multiple repeated cancel invoice receipt and remove payment block actions over several months.
-- `V7788`: Features multiple vendor invoices, cancellations, and repeated invoice receipts and payment block removals.
-- `V7789`: Contains repeated goods receipts, invoice cancellations, and payment block removals over a 91-day period.
-- `V7790`: Features service entry sheets, multiple vendor invoices, cancellations, and payment block handling.
-- `V7791`: Includes multiple vendor invoices, repeated invoice receipts, quantity changes, and payment block handling.
-- `V7792`: Shows a complex sequence of multiple vendor invoices, goods receipts, invoice receipts, and clearing repetitions.
-- `V7793`: Involves order confirmation, purchase order deletion, reactivation, and multiple goods receipts.
-- `V7794`: Characterized by multiple quantity changes, repeated vendor invoices, and several clearing steps over 168 days.
-- `V7795`:  Massive sequence of repeated quantity changes, goods receipts, vendor invoices, and multiple clearings over a 134-day duration.
-- `V7796`: Long-running variant with multiple quantity changes, repeated invoice receipts, and payment block removal.
-- `V7797`: Features extensive repetition of quantity changes, vendor invoices, and goods receipts over 134 days.
-- `V7798`: Includes multiple quantity changes, invoice cancellations, and repeated clearings over 114 days.
-- `V7799`: Extensive repetition of quantity changes, multiple goods receipts, and vendor invoices over 163 days.
-- `V7800`: Involves purchase order blocking and reactivation, invoice cancellation, and repeated clearings over 176 days.
-- `V7976`: This variant features repeated cancellations and reworks of goods receipts and invoices across 140 days, but does not fit neatly into extreme multi-year durations or standard P2P.
-- `V7977`: Complex pattern of multiple invoice clearings, cancellations, and goods receipts over 159 days without matching the exact parameters of standard processing or extreme rework.
-- `V7978`: Involves multiple repetitions of invoice creations, goods receipts, and invoice clearings over roughly 3 months, forming a non-standard complex variant.
-- `V7979`: Displays recurring vendor invoices, debit memos, and cancellations over 99 days, representing an exception path rather than a standard or quick process.
-- `V7980`: Contains duplicate goods receipts, invoice receipts, and repeated payment block removals over 105 days, falling outside standard procure-to-pay.
-- `V7981`: Exhibits extended processing time (140 days) with repeated invoicing, cancellations, and quantity changes.
-- `V7982`: Features repeated loops of goods receipts, vendor invoices, and invoice receipts over 105 days, representing administrative friction rather than standard P2P.
-- `V7983`: High complexity with repeated quantity changes, multiple goods receipts, and duplicate invoice receipts over 105 days.
-- `V7984`: Long execution with multiple invoice cancellations and repeated clearing actions over 140 days.
-- `V7985`: Involves quantity changes, delayed invoice receipts, and repeated goods receipts over 99 days.
-- `V7996`: Involves order confirmation, delayed cancellations, and re-clearing over 173 days, representing an exception path.
-- `V7998`: Features multiple invoice receipts, repeated vendor invoices, and duplicate clearings over 83 days, departing from standard flow.
-- `V7999`: Terminates with a change delivery indicator after a sequence of invoice cancellations and repeated entries.
-- `V8000`: Exhibits a looped pattern with multiple invoice clearings, payment block removals, and repeated invoicing over 98 days.
-- `V8226`: This variant exhibits moderate delays, debit memos, subsequent invoice cancellations, and repeated clearings that do not fit neatly into standard P2P, quick cancellations, service entries, SRM failures, or extreme multi-year rework loops.
-- `V8229`: Shows multiple quantity changes and repeated batch goods receipts over 116 days, representing a specialized exception loop rather than standard P2P or other defined categories.
-- `V8230`: Contains recurring vendor invoice creation and subsequent invoicing steps that fall outside a clean standard P2P flow or service entry focus.
-- `V8231`: Involves invoice receipt cancellations, debit memos, and repeated invoice entries that do not strictly match any single primary taxonomy category.
-- `V8233`: Features repeated goods receipts, debit memos, and subsequent invoice cancellations over 158 days, indicating non-standard complexity.
-- `V8234`: Exhibits multiple vendor invoices and goods receipts with delivery indicator changes that do not fit a clean standard P2P or other specific category.
-- `V8235`: Contains duplicate invoice receipts, repeated payment block removals, and multiple invoice clearings over a 150-day span.
-- `V8237`: Shows debit memos and invoice receipt cancellations following standard creation steps, fitting neither standard P2P nor extreme rework.
-- `V8239`: Involves item blocking, deletion, and reactivation combined with multiple invoicing cycles over 129 days.
-- `V8241`: Starts with out-of-sequence duplicate vendor invoices before purchase order creation, followed by multiple clearings.
-- `V8242`: Contains quantity changes, delivery indicator updates, and duplicate invoice receipts leading to a delayed clearance.
-- `V8243`: Features debit memos, duplicate vendor invoices, and invoice cancellations with multiple clearing steps.
-- `V8247`: Characterized by repeated goods receipt cancellations and re-recordings that represent specific warehouse correction loops.
-- `V8263`: Involves an invoice cancellation and long duration without fitting cleanly into standard or extreme categories.
-- `V8327`: Does not fit any category: features massive repetition of goods receipts within a moderate duration rather than full extreme multi-year rework or standard procure-to-pay.
-- `V8329`: Does not fit cleanly into any category due to intense goods receipt repetition within a moderate timeframe.
-- `V8330`: Does not fit any specific category well due to frequent changes in quantity and invoice/goods receipt repetitions.
-- `V8331`: Does not fit standard procure-to-pay due to price changes, cancellations, and goods receipt repetitions over 126 days.
-- `V8332`: Exhibits multiple payment block removals, cancellations, and invoice receipts, but duration and structure do not fit the extreme category definitions.
-- `V8333`: Involves quantity changes and delivery indicator modifications that place it outside standard procure-to-pay.
-- `V8335`: Features order confirmation, quantity changes, and delivery indicator adjustments, fitting none of the primary categories cleanly.
-- `V8337`: Involves multiple quantity changes and repeated invoice receipts, making it a non-standard path.
-- `V8338`: Includes multiple invoice receipts, cancellations, and payment block removals that deviate from standard flows.
-- `V8339`: Contains repeated goods receipts and invoice receipts over a moderate duration.
-- `V8341`: Includes purchase requisition and price change overhead with repeated invoice clearing.
-- `V8342`: Involves multiple clearing steps and debit memos following a purchase requisition.
-- `V8344`: Contains numerous quantity changes and delivery indicator updates.
-- `V8551`: This variant exhibits considerable rework including repeated invoice clearing and receipt cancellations, but it does not reach the extreme multi-year duration and massive scale characteristic of extreme rework and delay, nor does it fit other categories cleanly.
-- `V8552`: This narrative contains multiple payment blocks, invoice cancellations, and repetitions of invoice receipts and clearing, forming a complex path that does not match standard procure-to-pay or service entry definitions.
-- `V8553`: The process includes multiple vendor invoices and repeated goods/invoice receipts with subsequent cancellations and payment block removals, but remains moderate in duration and complexity.
-- `V8554`: Involves price changes, debit memos, and subsequent invoice cancellations, resulting in a non-standard path that doesn't cleanly fit any category.
-- `V8555`: A straightforward procurement path with some delays and a cancellation, but with insufficient structural alignment to standard procure-to-pay due to cancellations and debit memos.
-- `V8556`: Includes quantity and delivery indicator changes alongside repeated goods and invoice receipts, representing a variant with moderate rework.
-- `V8557`: Features multiple quantity and delivery indicator modifications alongside repeated goods receipts, but lacks the extreme scale needed for extreme rework.
-- `V8558`: Includes purchase order item deletion, invoice cancellation, and payment block removal, representing a non-standard process path.
-- `V8559`: Contains goods receipt cancellations and repeats without progressing all the way to a clean invoice clearance, ending instead on invoice receipt.
-- `V8560`: Involves goods receipt cancellations and quantity adjustments followed by invoice receipt and clearing.
-- `V8561`: Characterized by quantity changes, goods receipt cancellations, and a final invoice receipt without clearing.
-- `V8562`: Contains quantity adjustments and goods receipt cancellations before proceeding to invoice receipt and clearing.
-- `V8563`: Exhibits multiple vendor invoices, repeated invoice receipts, and delayed clearing with cancellations.
-- `V8564`: Starts unusually with a vendor invoice creation prior to purchase order creation, followed by storage location changes and normal procurement steps.
-- `V8565`: Involves multiple quantity changes and price modifications before goods and invoice receipts.
-- `V8566`: Features repeated goods receipts, multiple invoice receipts, and several cycles of invoice clearing and cancellations.
-- `V8567`: Contains multiple quantity changes, repeated payment block removals, vendor invoices, and double invoice clearing steps.
-- `V8568`: Exhibits frequent repetitions of goods receipts, invoice receipts, payment block removals, and invoice clearings.
-- `V8569`: Involves quantity changes, alternating goods receipts and vendor invoices, and multiple payment block removals.
-- `V8570`: Features long delays, quantity changes, repeated goods receipts followed by cancellations, and ultimately purchase order item deletion.
-- `V8781`: Duration is moderate (70d) and does not fit the extreme multi-year or massive rework definition, nor does it fit standard or service entry characteristics neatly.
-- `V8794`: Moderate duration (63d) with some rework and payment block removal, but does not clearly fall into extreme rework or standard P2P.
-- `V8923`: Does not fit standard procure-to-pay because it terminates unexpectedly with a change delivery indicator long after invoice clearing.
-- `V8953`: Exhibits excessive rework including repeated invoice cancellations, multiple invoice receipts, and repeated clearing, which does not fit a clean standard process or the other specialized categories.
-- `V8954`: Contains multiple quantity changes, cancellations, and repeated invoice receipts and clearances, representing non-standard rework.
-- `V8956`: Involves excessive loops of repeated invoice creation, multiple invoice receipts, and multiple clearings and cancellations.
-- `V8968`: Terminates unusually in an invoice receipt cancellation without reaching invoice clearance.
-- `V8969`: Contains multiple repetitions of goods receipts, vendor invoices, and invoice receipts indicating operational rework.
-- `V8970`: Characterized by repeated quantity changes, multiple invoices, goods receipts, and duplicate invoice receipts and clearances.
-- `V8971`: Shows significant rework with repeated goods receipts, multiple vendor invoices, duplicate invoice receipts, and multiple clearings.
-- `V8972`: Includes multiple quantity changes, debit memos, cancellations, and duplicate invoice clearings.
-- `V8973`: Features excessive quantity changes, repeated goods receipts, multiple invoices, multiple invoice receipts, and repeated clearing.
-- `V8974`: Involves subsequent invoice cancellations and multiple payment block removals and clearings.
-- `V8991`: Does not fit standard P2P because it ends in a cancelled goods receipt rather than invoice clearing, and does not fit other specific categories.
-- `V8999`: Involves complex debit memos, invoice cancellations, and ends in deletion of the PO item, fitting none of the standard categories cleanly.
-- `V9087`: Does not fit any defined category because it ends prematurely at Change Price with no order fulfillment or invoice processing.
-- `V9088`: Incomplete procure-to-pay process that terminates at Record Goods Receipt without reaching invoice receipt or clearing.
-- `V9126`: This variant exhibits extensive repetition of goods receipts and invoice clears rather than standard or quick processing, and does not align cleanly with any defined category.
-- `V9128`: Involves multiple changes in quantity and price over a moderately long period, but does not fit neatly into the extreme multi-year rework category or other specific patterns.
-- `V9129`: Contains repeated goods receipts and invoice receipts with payment block removal, representing a complex non-standard path not fully matching any single taxonomy definition.
-- `V9130`: Features debit memos, invoice cancellations, and a high duration with invoice clearing, falling into the residual category.
-- `V9131`: Involves debit memos, invoice creation, cancellation, and re-entry ending in invoice receipt, which does not fit standard or specific failure categories.
-- `V9136`: Contains recurring invoices, goods receipts, and payment blocks over 108 days, exhibiting administrative friction outside standard paths.
-- `V9137`: Characterized by a long sequence of repeated goods receipts following an initial delay, forming a unique pattern not covered by standard definitions.
-- `V9138`: Involves debit memos, invoice cancellations, and repeated clearings, constituting a complex non-standard path.
-- `V9140`: Involves invoice cancellations, debit memos, and delivery indicator changes, falling into the residual category.
-- `V9141`: Features invoice cancellations and repeated block removals over a 146-day duration.
-- `V9209`: This variant contains extensive adjustments, debit memos, and multiple payment block alterations that go beyond standard procure-to-pay or other defined categories.
-- `V9212`: Variant ends in a change quantity action rather than standard completion, falling outside standard definitions.
-- `V9213`: The process lacks standard goods receipt and invoice clearing, ending instead with a change quantity.
-- `V9254`: Contains multiple quantity changes, cancellations, and repeated invoice clearings that do not fit standard clean procure-to-pay or other specific categories.
-- `V9255`: Involves multiple quantity changes and repeated invoices leading to excessive rework.
-- `V9257`: Involves multiple cancellations of invoice receipts and debit memos which go beyond standard procure-to-pay.
-- `V9259`: Features repetitive quantity changes over a prolonged period before invoice receipt.
-- `V9262`: Characterized by multiple cancellations and repeated invoice receipts and clearings.
-- `V9264`: Contains repeated quantity changes and multiple invoice clearings representing rework.
-- `V9265`: Involves extensive delivery indicator and quantity changes prior to goods receipt.
-- `V9266`: Features extensive delivery indicator, quantity, and price changes before completion.
-- `V9267`: Features numerous delivery indicator and quantity changes without reaching invoice clearance.
-- `V9268`: Features delivery indicator and quantity changes prior to goods receipt.
-- `V9356`: The variant contains complex invoice and debit memo rework loops over a medium-long duration that do not fit neatly into any simple procurement category.
-- `V9363`: Involves invoice cancellations, debit memos, and price changes spanning over 100 days, falling outside standard or quick paths.
-- `V9365`: Features multiple invoice cancellations and repeated payment block removals over a 101-day span.
-- `V9366`: Extensive rework including repeated invoice cancellations, debit memos, and clearings representing complex administrative overhead.
-- `V9370`: Involves multiple cycles of approval changes, quantity adjustments, and repeat clearings over nearly 100 days.
-- `V9371`: Complex sequence with multiple debit memos, invoice cancellations, and repeated payment blocks and clearings.
-- `V9411`: The variant terminates at Remove Payment Block rather than clearing or quick cancellation, and does not cleanly fit standard P2P, service entry, or extreme rework.
-- `V9435`: This variant terminates prematurely with goods receipts and extensive changes to quantity and price without proceeding through invoice clearing.
-- `V9459`: Does not fit standard P2P due to lack of completion, nor is it an SRM transfer issue or service entry process.
-- `V9506`: Contains duplicate invoice receipts and multiple invoice clearings, falling outside standard execution or other specific categories.
-- `V9524`: Exhibits duplicated invoice creation and receipt steps not captured by standard categories.
-- `V9531`: The trace consists primarily of quantity modifications and a purchase order deletion and reactivation, which does not closely align with any of the defined taxonomy categories.
-- `V9544`: Ends in a subsequent invoice and involves quantity and delivery indicator changes, not fitting neatly into the main categories.
-- `V9677`: This variant involves a mixture of invoice cancellations and changes to delivery indicators over a couple of months, but does not cleanly fit standard P2P or any of the extreme rework/failure patterns.
-- `V9681`: Involves debit memos and subsequent invoice cancellations over 84 days, representing a specialized exception rather than standard P2P or extreme rework.
-- `V9683`: Duration is 121 days with repeated invoice receipts, but lacks the extreme multifaceted loops seen in extreme_rework_and_delay.
-- `V9685`: Features price changes and a 120-day duration, but lacks clear categorization in standard patterns.
-- `V9687`: Ends in Record Invoice Receipt with quantity/price changes over 31 days, not fitting standard or extreme categories clearly.
-- `V9688`: Involves purchase order approvals and confirmation changes taking 120 days to clear.
-- `V9689`: Involves multiple changes to approval and quantities, leading to invoice clearance over 120 days.
-- `V9690`: Similar to other long approval and quantity-change variants taking 120 days.
-- `V9695`: Ends in Cancel Invoice Receipt with a 134-day duration, representing an exceptional termination path.
-- `V9700`: 95-day duration missing purchase requisition and ending in record invoice receipt after price and quantity changes.
-- `V9711`: Does not fit standard procure-to-pay due to order quantity changes and temporary deletion of the purchase order item, nor does it fit other specific categories.
-- `V9714`: Contains cancellations of goods receipts and delivery indicator changes that introduce complications outside standard patterns.
-- `V9715`: Exhibits complex debit memos, invoice receipt cancellations, and multiple clearings that do not cleanly fit standard procure-to-pay.
-- `V9719`: Involves multiple quantity and price changes with payment block handling that deviates from standard flow.
-- `V9720`: Involves quantity and price changes, delivery indicator updates, and repeated goods receipts that represent non-standard administrative handling.
-- `V9723`: Features multiple invoice cancellations, debit memos, and recurring clearing steps that represent complex billing disputes rather than standard procure-to-pay.
-- `V9726`: The variant features multiple quantity changes, long delays, and non-standard steps, making it part of the residual rather than fitting neatly into standard procure-to-pay, extreme rework, or service entry.
-- `V9739`: Includes price changes and invoice cancellations resulting in an incomplete trace that stops at invoice receipt rather than standard clearing.
-- `V9740`: Contains invoice cancellations and stops at invoice receipt without clearing, falling outside standard paths.
-- `V9776`: The variant involves repeated order changes and approvals without a clear match to standard procure-to-pay or service entry, and is not an SRM failure or extreme rework.
-- `V9777`: Characterized by repeated quantity changes and approvals, falling outside standard execution patterns.
-- `V9778`: Involves multiple sequential quantity changes and order releases, representing a residual non-standard path.
-- `V9780`: Process features delayed goods receipt and invoicing after multiple approval loops, not fitting standard or extreme categories cleanly.
-- `V9781`: Involves vendor invoicing occurring before goods receipt along with multiple approval loops, remaining in the residual.
-- `V9782`: Exhibits complex order changes and approval cycling prior to goods and invoice receipts.
-- `V9783`: Contains multiple quantity changes, releases, and approvals creating a non-standard procurement path.
-- `V9784`: Features multiple quantity changes, repeated goods and invoice receipts, and payment block removal, representing residual complexity.
-- `V9785`: Unusual initial ordering sequence followed by approval loops and delayed goods/invoice receipts.
-- `V9786`: Features an inverted start sequence with releases before item creation, followed by multiple changes.
-- `V9788`: Delayed execution with late item creation after initial releases and approval cycles.
-- `V9789`: Involves delayed creation of purchase order items following initial releases and subsequent long waits.
-- `V9790`: Delayed item creation and extended waiting periods prior to goods receipt.
-- `V9791`: Late purchase order item creation occurring deep within an already established release sequence.
-- `V9792`: Involves rapid cancellation and re-recording of goods receipts, which does not fit standard or other specific categories.
-- `V9793`: Features multiple invoice creations, goods receipts, and repeated invoice clearing actions.
-- `V9794`: Complex path featuring debit memos, cancelled invoice receipts, and payment block removals.
-- `V9795`: Includes multiple goods and invoice receipts followed by clearing, remaining outside standard paths.
-- `V9796`: Characterized by multiple goods receipts, cancellations, delivery indicator changes, and debit memos.
-- `V9797`: Involves price changes, debit memos, repeated invoice receipts, and cancellations.
-- `V9798`: Features order confirmation, multiple invoice receipts, and a very long wait before clearing.
-- `V9799`: Involves multiple price changes and an exceptionally long delay before goods receipt.
-- `V9800`: Characterized by an intensive loop of repeated goods receipts following multiple vendor invoices.
-- `V9855`: Short-lived variant ending in change delivery indicator without clearing or invoice processing, fitting neither standard procure-to-pay nor the other specific categories.
-- `V9891`: Ends with release purchase order rather than completing the full procure-to-pay or service entry lifecycle, making it a partial or atypical path.
-- `V9902`: Involves multiple changes, debit memos, cancellations, and payment block removals over an extended duration, which does not fit cleanly into any specific category.
-- `V9903`: Features goods receipt cancellations and payment block removals, presenting non-standard process exceptions not covered by the main categories.
-- `V9904`: Contains repeated goods receipt cancellations and invoice actions, representing complex adjustments outside standard processing or specific failure types.
-- `V9905`: Characterized by multiple cancellations, debit memos, and repeated invoice clearing steps, representing general exception handling.
-- `V9906`: Dominated by repeated quantity changes and ending in an invoice receipt without clearing, which does not match the clean flow of standard paths.
-- `V9907`: Involves order deletion, reactivation, and multiple quantity changes before recording the invoice, representing administrative rework.
-- `V9908`: Exhibits multiple duplicate invoice and goods receipt entries combined with a long payment block removal delay.
-- `V9909`: Process involves modifications to quantities and delivery indicators following goods receipt, falling outside standard or specific failure tracks.
-- `V9910`: Contains quantity and delivery changes with additional goods receipts and payment block removal.
-- `V9911`: Features repetitive vendor invoice entries and payment block removals.
-- `V9912`: Involves multiple iterations of quantity changes, goods receipts, and vendor invoices.
-- `V9917`: Exhibits multiple redundant vendor invoice entries, goods receipts, and invoice receipts over a moderate duration.
-- `V9918`: Characterized by multiple repetitive quantity changes and delivery indicator modifications without reaching completion.
-- `V9919`: Features a long waiting period before a price change followed by goods and invoice receipts.
-- `V9936`: Variant consists of requisition, PO creation, price/quantity changes, and goods receipt, but lacks clear mapping to standard P2P or service entry execution due to price changes and does not fit severe delay or SRM categories.
-- `V9941`: Contains multiple repetitive invoice receipts and goods receipts, straying from a standard smooth P2P path without reaching extreme duration rework.
-- `V9942`: Variant terminates abnormally with a change quantity activity after invoice receipt and payment block removal, fitting no standard category.
-- `V9947`: Involves excessive price changes and multiple goods receipts/invoices, not matching standard P2P or extreme rework criteria cleanly.
-- `V9948`: Variant terminates with cancel goods receipt after a series of price and invoice changes.
-- `V9950`: Terminates with a change quantity activity following multiple quantity modifications and invoice creation.
-- `V10034`: Does not fit standard procure-to-pay (stops at goods receipt with quantity/delivery changes), quick cancellation, service entries, SRM failure, or extreme rework/delay.
-- `V10231`: Does not fit standard P2P due to delivery indicator changes and rework, nor extreme delay or service entries.
-- `V10233`: Contains multiple invoice receipts and vendor entries but does not reach the multi-month extreme rework threshold.
-- `V10240`: Features quantity changes and delivery indicator modifications, which do not fall into any standard category cleanly.
-- `V10245`: Standard procurement with a payment block removal, but does not fit standard P2P due to quantity changes and administrative steps.
-- `V10246`: Involves multiple goods receipts and invoice receipts but lacks the extreme duration characteristics.
-- `V10248`: Incomplete trace ending in a quantity change without invoice processing.
-- `V10326`: This variant features multiple quantity changes and repeated invoice and goods receipt events over 97 days, which does not fit standard P2P or any other category cleanly.
-- `V10327`: Contains recurring quantity changes and multiple invoice receipts over 78 days, representing non-standard rework behavior.
-- `V10328`: Characterized by repeated quantity modifications, goods receipts, and invoice recordings over 92 days.
-- `V10329`: Presents extensive loops of quantity changes, goods receipts, and invoice records, failing to match a clean P2P pattern.
-- `V10330`: Involves multiple price and quantity changes and repeated invoice receipts over 78 days.
-- `V10331`: Exhibits multiple quantity updates, vendor invoices, and repeated invoice receipts over 78 days.
-- `V10332`: Extremely dense sequence of repeated quantity changes, goods receipts, and invoice receipts over 93 days, representing significant administrative rework.
-- `V10333`: Contains multiple quantity changes, interleaved goods receipts, and invoice receipts over 91 days.
-- `V10340`: Involves invoice cancellations, debit memos, payment block removals, and multiple clearings over 99 days.
-- `V10341`: Features invoice cancellations, debit memos, payment block handling, and multiple clearings over 98 days.
-- `V10342`: Complex process with quantity changes, debit memos, payment block removals, and repeated cancellations over 106 days.
-- `V10343`: Long-running case featuring debit memos, invoice cancellations, and multiple invoice receipts and clearings.
-- `V10344`: Features debit memos, invoice cancellations, and repeated invoice receipts and clearings over 64 days.
-- `V10345`: Involves multiple quantity updates and repeated goods and invoice receipts over 28 days.
-- `V10347`: Complex path featuring delayed invoicing, repeated quantity updates, payment block removal, and clearing over 98 days.
-- `V10348`: Involves order deletion, reactivation, price/quantity changes, and standard clearing over 64 days.
-- `V10349`: Features purchase order deletion, reactivation, quantity changes, and invoice clearing over 64 days.
-- `V10350`: Involves intensive quantity modifications, late goods receipt, and invoice clearing over 64 days.
-- `V10401`: The variant features repeated goods receipts and moderate duration without full standard procure-to-pay clearance or severe multi-year rework.
-- `V10403`: Involves multiple goods receipts, delivery indicator changes, and a long duration but does not fit standard or extreme categories cleanly.
-- `V10404`: Contains repeated invoicing, payment block removals, and goods receipts spanning multiple steps without matching standard smooth P2P.
-- `V10405`: Features repeated goods receipts, quantity changes, payment block removal, and eventual clearance over nearly three months.
-- `V10406`: Includes repeated goods receipt and quantity adjustments before invoice clearance, showing moderate rework.
-- `V10407`: Involves goods receipt cancellation and repetition before recording an invoice receipt.
-- `V10408`: Exhibits multiple repetitions of goods receipts, vendor invoices, and invoice receipts before clearance.
-- `V10409`: Short path featuring multiple quantity changes and a payment block removal ending abruptly.
-- `V10410`: Contains order confirmation, price change, goods receipt, and delivery indicator change leading to invoice clearance.
-- `V10411`: Involves goods receipt cancellation and a change of delivery indicator without completing invoice processing.
-- `V10412`: Procurement path involving price and quantity changes, vendor invoice, payment block removal, and late goods receipt.
-- `V10413`: Involves repeated goods receipts, vendor invoice, invoice receipt, and payment block removal.
-- `V10414`: Features repeated goods receipts, price change, and vendor invoice leading to invoice receipt.
-- `V10415`: Contains extensive quantity and price changes, repeated goods receipts, and invoice receipts before final clearance.
-- `V10416`: Includes multiple quantity changes, delivery indicator updates, repeated goods and invoice receipts, and clearance.
-- `V10417`: Features multiple quantity changes, price changes, repeated goods and invoice receipts, and final clearance.
-- `V10418`: Contains repeated vendor invoices, goods receipts, and invoice receipts with a delayed clearance step.
-- `V10419`: Involves goods receipt, vendor invoice, invoice receipt, payment block removal, quantity change, and delivery indicator change.
-- `V10420`: Includes recurring vendor invoices, goods receipts, and invoice receipts before final clearance.
-- `V10421`: Exhibits repeated quantity changes and goods receipts alongside payment block removal and clearance.
-- `V10422`: Characterized by multiple iterations of vendor invoices, goods receipts, and invoice receipts ending in a delivery indicator change.
-- `V10423`: Contains multiple vendor invoices, repeated goods receipts, payment block removal, and repeated invoice receipts before clearance.
-- `V10424`: Involves multiple quantity changes, vendor invoices, goods receipts, and invoice receipts with payment block removal and clearance.
-- `V10425`: Features repeated vendor invoices and invoice receipts interspersed with goods receipt and interim clearance.
-- `V10429`: Contains multiple cancellations and repeated invoicing steps that do not strictly fit standard P2P or other specific categories cleanly.
-- `V10444`: Involves invoice receipt cancellation and subsequent re-recording, which falls outside the standard happy path.
-- `V10445`: Contains duplicate invoice and goods receipt loops that introduce significant rework.
-- `V10446`: Complex sequence involving repeated invoicing, payment block removal, and clearing.
-- `V10450`: Extensively reworked variant with repeated quantity changes, multiple payment block removals, and duplicated invoices/clearances.
-- `V10477`: Does not clearly fit any standard or extreme process pattern, featuring moderate delays and quantity/delivery changes without reaching the scale of extreme rework.
-- `V10478`: Involves payment block removal and invoice cancellations but lacks the repetitive loops of extreme rework or the clean execution of standard procure-to-pay.
-- `V10479`: Contains multiple price changes and a lengthy duration, but does not exhibit the defining characteristics of the defined categories.
-- `V10480`: Features goods receipt cancellations and a moderate duration, falling outside standard or extreme classifications.
-- `V10481`: Involves price/quantity changes and repeated invoice receipts, but is not extreme enough for the delay category nor clean enough for standard procurement.
-- `V10492`: Includes repeated goods receipts and a payment block removal, but does not fit cleanly into extreme rework or standard P2P.
-- `V10493`: Features purchase order deletion, debit memos, and payment block handling, representing a unique exception path.
-- `V10495`: Involves order confirmations and repeated invoices, but lacks the characteristics of the primary categories.
-- `V10496`: Contains multiple service entry sheets, invoice repetitions, and unordered initial vendor creation.
-- `V10497`: Features multiple price and quantity changes prior to goods receipt and invoice recording.
-- `V10498`: Involves multiple changes to quantity and price followed by standard invoice clearing.
-- `V10499`: Contains debit memos, payment block removal, and invoice cancellation, falling outside standard flows.
-- `V10576`: This narrative consists entirely of massive automated loops of goods receipts and service entry sheets without following any standard process or fitting other specific definitions.
-- `V10578`: Involves goods receipt cancellation and quantity changes, representing minor exceptions rather than a standard or extreme process.
-- `V10579`: Contains multiple invoice receipts and repeated clearing attempts over a moderate duration with rework, not fitting standard or extreme categories neatly.
-- `V10580`: Features multiple invoice receipts and vendor invoice steps interspersed with goods receipts, showing moderate complexity and rework.
-- `V10581`: Involves payment block removal and delivery indicator changes, indicating administrative exceptions.
-- `V10582`: Dominated by multiple quantity changes and adjustments rather than standard procure-to-pay flow.
-- `V10583`: Involves cancellations of both goods receipts and invoice receipts along with a debit memo.
-- `V10588`: Includes goods receipt cancellation and service entry sheets with invoice receipt repetitions.
-- `V10589`: Includes debit memos, subsequent invoices, and subsequent invoice cancellations.
-- `V10590`: Features excessive repetition of service entry sheets and goods receipts out of normal sequence before eventual invoice clearing.
-- `V10592`: Involves price and quantity changes prior to goods receipt and invoice processing.
-- `V10594`: Contains duplicated vendor invoices and invoice receipts with a payment block removal.
-- `V10595`: Exhibits repeated goods receipts, vendor invoices, and invoice receipts.
-- `V10596`: Features delayed goods receipt loops and delivery indicator changes.
-- `V10600`: Characterized by extremely long sequences of repeated service entry sheets and goods receipts prior to invoicing and clearing.
-- `V10717`: Does not clearly fit any specific category due to the presence of debit memo and invoice receipt cancellation without typical structure.
-- `V10734`: The variant includes multiple subsequent invoices and cancellations which do not cleanly fit the standard path or other specific categories, falling into the residual.
-- `V10752`: Does not fit standard P2P due to repeated goods and invoice receipts, nor does it match service entry execution or extreme multi-year delay categories.
-- `V10753`: Features order deletion and reactivation loops with multiple adjustments, which falls outside the standard clean P2P path or other defined categories.
-- `V10754`: Involves order deletion and reactivation, quantity changes, and payment block removals making it deviate from the standard clean execution.
-- `V10755`: Exhibits repetitive loops of goods receipts, invoice receipts, and vendor invoice creation indicating rework that does not match standard execution.
-- `V10757`: Contains multiple repetitions of vendor invoices, goods receipts, and invoice receipts indicating operational rework and complications.
-- `V10758`: Involves debit memos, goods receipt cancellations, and invoice receipt cancellations that do not fit the clean standard or other specialized categories.
-- `V10760`: Contains repetitive cycles of goods receipts and invoice receipts indicating rework and complications.
-- `V10761`: Features price and quantity changes along with delivery indicator modifications before concluding at invoice receipt.
-- `V10762`: Starts atypically with vendor invoice and debit memo before order creation, followed by subsequent invoice cancellations.
-- `V10763`: Contains multiple quantity changes, repeated vendor invoices, and repeated goods and invoice receipts denoting rework.
-- `V10765`: Involves multiple rounds of quantity changes, goods receipts, vendor invoices, and invoice receipts representing rework.
-- `V10766`: Features multiple invoice receipts, cancellations, and debit memos indicating non-standard exception handling.
-- `V10768`: Exhibits repeated quantity changes, goods receipts, and invoice receipts pointing to iterative rework.
-- `V10776`: This narrative involves repeated cancellation and recording of goods receipts and service entry sheets, which does not fit standard P2P, quick cancellation, service entry execution, SRM failure, or extreme rework profiles.
-- `V10793`: Variant concludes with changing the delivery indicator after numerous quantity changes, not fitting standard categories.
-- `V10794`: Involves complex delivery indicator changes and payment block removal following multiple adjustments, forming a residual pattern.
-- `V10795`: Involves multiple goods receipt cancellations and invoice receipt cancellation, forming a distinct residual pattern.
-- `V10796`: Process involving blocking and reactivating purchase order items, falling outside standard definitions.
-- `V10827`: Involves storage location changes and lacks standard completion or full invoice clearing to fit any specific main taxonomy category neatly.
-- `V10877`: The narrative consists of a brief order creation, price change, goods receipt, and quantity change without proceeding to complete invoice processing or fitting cleanly into the defined categories.
-- `V10892`: Short variant focused only on price and quantity changes without full procure-to-pay execution or service processing.
-- `V10904`: Does not fit standard procure-to-pay cleanly due to multiple delivery indicator changes and quantity alterations ending abruptly.
-- `V10921`: Exhibits excessive cancellations and repeated debit memos that fall outside a clean standard procure-to-pay path.
-- `V10959`: Involves unusual vendor-first invoice creation followed by repeated adjustments and clearings that do not cleanly fall into standard categories or meet the extreme multi-year definition.
-- `V11076`: This narrative involves complex rework, cancellations, and multiple invoice receipts, which do not fit a standard procure-to-pay process, nor are they extreme multi-year delays or service entry sheet processes.
-- `V11077`: Contains multiple quantity changes, repeated payment blocks, and invoice cancellations, representing non-standard procurement complications rather than a clean execution.
-- `V11078`: Exhibits irregular ordering of activities including initial debit memos and multiple clearings and invoice cancellations, falling outside standard procure-to-pay flow.
-- `V11079`: Features repeated goods receipts and subsequent invoices with payment blocks, making it an exception rather than a standard or quick cancellation path.
-- `V11080`: Involves invoice cancellations and multiple clearings without matching the standard straightforward procure-to-pay profile.
-- `V11081`: Contains duplicate goods receipts, invoice cancellations, and payment block removals, indicating standard deviation/rework.
-- `V11082`: Characterized by extensive quantity changes and repetitive goods receipt logging, fitting none of the clean or extreme taxonomy definitions.
-- `V11083`: Features repeated goods receipts, invoice cancellations, and payment blocks, diverging from standard paths.
-- `V11084`: Contains excessive goods receipt entries and cancellations, representing operational rework.
-- `V11085`: Includes multiple invoice receipts and debit memos with a cancellation step, not fitting standard or quick cancellation flows.
-- `V11088`: Contains cancellations and repeated quantity changes and invoice receipts, representing non-standard rework.
-- `V11089`: Exhibits goods receipt cancellations, multiple invoice entries, and payment block removals, falling outside standard patterns.
-- `V11092`: Contains multiple updates, repeated goods receipts, and invoice entries, representing complex intermediate steps.
-- `V11093`: Involves price and quantity changes followed by a long delay before invoice receipt, not fitting standard or quick flows.
-- `V11095`: Involves goods receipt cancellations and payment block removals over a moderate duration.
-- `V11097`: Consists of price changes and long delays ending in delivery indicator changes, lacking a standard invoice clearing or completion pattern.
-- `V11098`: Contains multiple repetitive goods receipts and invoice receipts, indicating operational rework.
-- `V11099`: Features price changes and repeated goods receipts over an extended duration without invoice completion.
-- `V11153`: Involves payment block removal and repeated invoice receipts, which does not cleanly fit standard P2P, quick completion, service entry, or SRM failure categories.
-- `V11156`: Involves debit memos and invoice receipt cancellations outside of typical standard or service entry flows.
-- `V11157`: Consists of purchase requisition, order creation, quantity changes, and approval changes without matching the primary process categories.
-- `V11158`: Involves goods receipt cancellation and modifications which form a non-standard handling path.
-- `V11159`: Features goods receipt cancellation and subsequent re-entry over an extended duration without fitting standard categories.
-- `V11160`: Characterized by repeated quantity changes and goods receipts without reaching final invoice clearing.
-- `V11161`: Involves multiple vendor invoices, goods/invoice receipts, and payment block removal.
-- `V11162`: Contains delivery indicator changes, multiple vendor invoices, and repeated entries that do not match standard definitions.
-- `V11168`: Contains extensive service entry and goods receipt repetitions followed by multiple cancellations of goods receipts.
-- `V11173`: Massive repetition of service entries, goods receipt cancellations, and multiple invoice receipts spanning a complex path.
-- `V11279`: The narrative represents a typical standard procurement path with some quantity changes and a cancellation, but does not neatly fit the specific extreme long-running or service-entry specific patterns.
-- `V11280`: Involves invoice receipt repetition and cancellation, which falls into the residual category as it is not a standard clean P2P or a pure service entry.
-- `V11281`: Involves repeated invoice receipts over a moderate duration, fitting into the residual category.
-- `V11282`: Contains quantity changes, multiple goods and invoice receipts, representing general rework rather than any specific taxonomy category.
-- `V11283`: Involves quantity changes and a late goods receipt after invoice creation, representing general process deviations.
-- `V11284`: Features massive repetitions of goods receipt recordings, which is an anomaly not covered by the defined categories.
-- `V11285`: Consists of multiple price and quantity changes over several weeks, falling into the residual category.
-- `V11286`: Involves purchase order blocking, reactivation, and quantity changes, representing an administrative exception path.
-- `V11287`: Characterized by multiple repetitive quantity changes before goods receipt.
-- `V11288`: Involves multiple goods receipt cancellations and debit memos, falling into the residual category.
-- `V11289`: Features multiple quantity changes and order confirmations, fitting the residual category.
-- `V11290`: Involves price changes and goods receipt cancellations, representing a non-standard procurement path.
-- `V11291`: Includes debit memos, invoice cancellations, clearing, and payment block removals.
-- `V11292`: Features repeated invoices, debit memos, and invoice clearing steps.
-- `V11293`: Involves delivery indicator changes and quantity modifications.
-- `V11294`: Contains repeated vendor invoices and goods receipts with subsequent invoice entries.
-- `V11295`: Involves quantity changes, multiple goods receipts, and repeated invoice receipts.
-- `V11296`: Features goods receipt cancellation and a long duration before final goods receipt.
-- `V11297`: Involves multiple quantity changes, invoice receipt, and payment block removal.
-- `V11405`: This is an intermediate procurement variation involving quantity adjustments and goods receipts over several weeks, which does not fit cleanly into any standard category.
-- `V11407`: Involves multiple quantity change loops and repeated goods receipts before invoice receipt, representing a non-standard adjustment path.
-- `V11409`: Contains an unusual burst of repeated goods receipt recordings following an invoice, deviating from standard processing.
-- `V11410`: Unconventional sequence where an invoice arrives before the initial goods receipt, followed by cancellations and corrections.
-- `V11412`: Characterized by an unusual sequence of multiple immediate goods receipt repetitions after an invoice creation.
-- `V11414`: Exhibits chaotic initial invoice repetitions before order creation, followed by mixed service entries and invoices over a long duration.
-- `V11419`: Features a temporary deletion and reactivation of the purchase order item, which deviates from standard execution paths.
-- `V11420`: Involves order deletion, reactivation, and an out-of-order invoice receipt prior to the final goods receipt.
-- `V11433`: This variant involves debit memo and cancellation steps terminating in a purchase order item deletion, which does not cleanly fit standard P2P, quick cancellation, service entry, SRM failure, or extreme rework.
-- `V11434`: Involves payment block removal and invoice changes that do not clearly align with the definitions of standard P2P or the other specific categories.
-- `V11436`: A brief sequence involving approval change and quantity change, ending without full invoice processing.
-- `V11437`: A short variation containing purchase order changes and quantity updates without a complete procure-to-pay lifecycle.
-- `V11439`: Contains delivery indicator changes, order confirmations, and payment block removals that represent a specialized exception path rather than a standard or service entry pattern.
-- `V11440`: Exhibits price changes and repetitive invoice receipts stretching over weeks, not fitting neatly into standard P2P or extreme rework.
-- `V11441`: Involves quantity changes and delivery indicator modifications with multiple goods receipts, falling outside standard flows.
-- `V11447`: Features a goods receipt cancellation which does not match the standard category definitions.
-- `V11464`: Does not fit any category cleanly due to significant price/quantity changes and payment block handling without standard flow.
-- `V11466`: Involves delayed goods receipts, payment block removals, and non-standard sequencing not fitting any specific profile.
-- `V11468`: Represents an administrative adjustment path ending in change delivery indicator rather than a standard procure-to-pay.
-- `V11469`: Focused primarily on repeated price changes and quantity adjustments rather than a standard procurement or service flow.
-- `V11470`: Consists almost entirely of repetitive quantity changes without completing a procurement or service cycle.
-- `V11496`: This variant involves multiple cancellations of goods receipts after heavy service entry processing, which does not cleanly fit standard P2P, quick cancellation, or service entry execution categories.
-- `V11551`: This variant involves invoice and goods receipt cancellations which do not cleanly fit standard P2P, service entry, quick cancellation, SRM failure, or extreme rework.
-- `V11552`: The variant features invoice repetition and a delivery indicator change over a moderate duration, but does not align well with the defined primary categories.
-- `V11556`: Contains multiple service entry and goods receipt entries followed by cancelled goods receipts, fitting none of the main taxonomy definitions well.
-- `V11560`: Involves interleaved service entries and goods receipts culminating in a goods receipt cancellation.
-- `V11567`: Contains minor repetitions of goods and invoice receipts during a standard procurement flow.
-- `V11568`: Features a long gap before a repeated goods receipt and quantity change, not fully fitting standard or extreme categories.
-- `V11569`: Unusual sequence starting directly with invoice creation before purchase order approval and goods receipt.
-- `V11571`: Involves debit memos, invoice cancellations, and repeated invoice clearances.
-- `V11573`: Dominated by repeated price and quantity changes rather than standard procurement execution.
-- `V11635`: Exhibits complex repetitive loops of goods receipts, service entry sheets, and invoice receipts that do not cleanly fit standard or quick completion paths, nor match the extreme multi-year rework category.
-- `V11639`: Contains an excessive repetition of goods receipt events that goes beyond standard procure-to-pay without constituting the multi-year extreme rework category.
-- `V11642`: Features heavy repetition of invoice receipts and goods receipts that deviates from standard process flows.
-- `V11655`: This narrative contains multiple price changes, debit memos, subsequent invoice cancellations, and payment block removals, which do not fit standard or other specific categories.
-- `V11656`: The narrative features repeated invoice creation and receipt recordings that deviate from standard procure-to-pay or service entry patterns.
-- `V11658`: Includes multiple quantity changes and delivery indicator modifications combined with payment block removal, fitting none of the predefined categories cleanly.
-- `V11659`: Involves price/quantity changes, debit memos, and cancellations leading to payment block removal, representing a complex non-standard path.
-- `V11660`: Features repeated approvals, multiple vendor invoices, and invoice receipts over several weeks, falling outside standard or quick flows.
-- `V11665`: Features multiple quantity changes, delivery indicator modifications, and repeated invoice receipts that do not align with standard categories.
-- `V11666`: Contains cancellations of goods receipts and payment block removals that represent exceptional handling.
-- `V11667`: Involves quantity changes, goods receipt cancellations, and multiple invoice receipts, fitting outside standard patterns.
-- `V11681`: The variant features excessive cancellations and repetitions of goods receipts and service entry sheets without completing a standard P2P cycle or fitting other categories well.
-- `V11684`: Involves multiple goods receipt cancellations and vendor invoice variations, failing to neatly match standard or quick flows.
-- `V11687`: Features complex loops of cancellations, multiple invoice receipts, and extensive rework outside standard clean execution.
-- `V11688`: Variant terminates prematurely at goods receipt with price changes, not reaching full invoice processing or fitting clean standard paths.
-- `V11692`: Involves repeated goods receipt cancellations and recreations, representing intermediate rework rather than standard flow.
-- `V11694`: Characterized by multiple vendor invoice entries and repeated invoice receipts that deviate from a standard straightforward path.
-- `V11695`: Contains multiple cancellations and goods receipt repetitions that introduce rework outside standard operational bounds.
-- `V11709`: This variant involves multiple loops of goods receipts and invoice receipts that deviate from a standard path without fitting cleanly into any other specific category.
-- `V11710`: Involves multiple changes and duplicate invoice receipts that do not cleanly align with standard or extreme definitions.
-- `V11711`: Features repeated invoicing and goods receipt cycles that represent a non-standard procedural loop.
-- `V11712`: Contains goods receipt cancellations and repetitions not typical of standard procure-to-pay.
-- `V11713`: Includes cancellations and delivery indicator changes outside the standard flow.
-- `V11714`: Involves goods receipt cancellation and repetition loops.
-- `V11715`: Contains repeated goods receipt steps after a significant delay.
-- `V11716`: Exhibits a non-standard sequence of invoicing followed by goods receipt and subsequent quantity and delivery indicator changes.
-- `V11717`: Short variant involving purchase order deletion and reactivation, which does not fit any core category.
-- `V11718`: Contains excessive repetitions of goods receipt actions from various resources.
-- `V11719`: Consists primarily of repeated change delivery indicator actions.
-- `V11759`: This complex variant involves multiple changes to delivery indicators, debit memos, and invoice cancellations spanning over a month, fitting none of the predefined categories.
-- `V11760`: Involves repeated invoice receipts and payment block removals over 35 days, which falls outside the standard or service entry categories.
-- `V11761`: Focuses purely on multiple price and quantity changes following purchase order creation without standard procurement execution.
-- `V11762`: Involves delayed invoice creation and repeated goods receipts over 33 days, not matching standard clean P2P or SES patterns.
-- `V11763`: Contains quantity changes and delayed, repeated goods receipts over nearly a month.
-- `V11764`: Features multiple quantity changes, order confirmations, and invoice receipt processing over 36 days.
-- `V11766`: Involves quantity changes and a delivery indicator change over 28 days.
-- `V11781`: This variant consists purely of repeated quantity changes on a purchase order without completing standard procure-to-pay milestones.
-- `V11783`: Incomplete procurement path ending in price and approval changes without purchasing completion.
-- `V11793`: Variant terminates prematurely with repeated cancellations of goods receipts.
-- `V11796`: Terminates prematurely with a goods receipt cancellation.
-- `V11802`: Involves price and quantity changes which do not cleanly fit standard P2P, service entry, SRM failure, extreme rework, or quick cancellation.
-- `V11803`: Consists of a purchase requisition and order followed by a goods receipt and a price change, not fitting any specific category archetype.
-- `V11805`: Standard purchasing path with quantity changes and goods receipt, missing standard invoice clearing.
-- `V11815`: Features invoice creation, goods receipts, and payment block removal which does not map to standard P2P or other categories.
-- `V11816`: Involves invoice cancellation and repeated price changes, not fitting standard categories.
-- `V11818`: Involves quantity changes, delivery indicator changes, and multiple steps outside the standard path.
-- `V11819`: Includes storage location and price/quantity changes before goods receipt.
-- `V11831`: Extended rework and multi-step invoice cancellation and clearing cycles do not fit any of the standard categories cleanly.
-- `V11836`: Extreme repetition of service entry sheets, goods receipts, and invoice entries spanning massive trace lengths.
-- `V11839`: Extreme loops of duplicate vendor invoices, price changes, service entries, and goods receipts.
-- `V11843`: Massive trace length with repetitive service entry sheets and goods receipts fitting extreme rework patterns.
-- `V11847`: Extremely long trace length consisting of hundreds of repeated service entry sheets and goods receipts.
-- `V11849`: Extensive repetition of goods receipts and service entries followed by multiple cancellations.
-- `V11854`: Involves deletion of PO items and debit memos with payment block removals, which does not cleanly fit standard flows or short terminations.
-- `V11855`: Consists primarily of cancellations of goods and invoice receipts without a standard procurement or service entry focus.
-- `V11881`: Features complex administrative steps including debit memos, invoice cancellations, and payment block removals that do not fit standard paths or other categories cleanly.
-- `V11891`: Involves debit memos, invoice cancellations, and multiple invoice clearing steps not fitting the standard pattern.
-- `V11892`: Contains debit memos, cancellations, and multiple clearing steps outside standard procure-to-pay.
-- `V11907`: Does not fit standard procure-to-pay due to invoice cancellations and does not exhibit extreme multi-month rework.
-- `V11908`: Involves invoice cancellations and debit memos but is relatively short-lived compared to extreme delay variants.
-- `V11919`: Moderate duration with some approval iteration but does not clearly fall into standard smooth execution or extreme rework.
-- `V11955`: Although it has some approval delays, it is relatively short-lived compared to extreme cases and lacks the massive loops characteristic of the extreme rework category, and does not clearly fit other categories.
-- `V11962`: Very short trace with only creation and approval loops, ending without invoice processing.
-- `V11963`: Short trace dominated by change approvals without completing an invoice cycle.
+- `V0027`: The flow is prolonged and anomalous without completing a standard end-to-end clearing loop, remaining residual.
+- `V0079`: Involves cancellations and debit memos over a prolonged duration that do not fit standard flows or other specific categories.
+- `V0088`: Characterized by cancellations and debit memos rather than a standard or low-touch flow.
+- `V0091`: Involves cancellations of goods and invoice receipts over an extended duration without completing a standard flow.
+- `V0121`: Does not fit standard flows due to long duration and ending in a purchase order block, but lacks the extreme churn of extreme duration categories.
+- `V0130`: Repetitive purchase order approvals that do not fit standard purchasing, low-touch paths, SRM, or extreme duration patterns.
+- `V0257`: Trace consists primarily of cancellations and a debit memo without a full standard procurement loop.
+- `V0279`: Trace ends at record invoice receipt without standard completion, but does not fit extreme churn or SRM patterns.
+- `V0329`: Starts with debit memo and involves cancellations and price changes out of standard sequential order, falling into the residual flow.
+- `V0337`: Involves cancellations of goods and invoice receipts driven by a debit memo, representing a non-standard exception path.
+- `V0347`: Contains complex cancellations and repeated clearing loops that do not cleanly match standard paths or extreme churn definitions.
+- `V0350`: Consists primarily of repeated approval changes on purchase orders, falling outside the standard procurement or service flow definitions.
+- `V0357`: Features debit memos and cancellations which do not cleanly fit standard flows or other categories.
+- `V0367`: Unusual late cancellation of invoice receipt after a long duration, not fitting standard categories.
+- `V0384`: Does not clearly map to any specific category; involves repeated goods receipt without full invoicing or typical service entry characteristics.
+- `V0386`: Involves invoice receipt repetition and longer duration, but does not fit cleanly into standard flows or extreme churn.
+- `V0390`: Repeated goods receipt without matching service entry or other clean categories.
+- `V0391`: Features multiple repetitions of goods receipts and invoice receipts, not fitting neatly into standard single-flow categories.
+- `V0394`: Terminates in cancel invoice receipt with an extended duration, not matching standard clean flows.
+- `V0395`: Involves duplicated invoice receipts and payment blocks.
+- `V0399`: Involves cancellations and delivery indicator changes, fitting none of the primary categories.
+- `V0550`: An inverted chronological sequence starting with a change approval and vendor invoice before PO creation, fitting none of the standard patterns.
+- `V0624`: Does not fit standard or low-touch categories; features chaotic sequence of approvals and does not clearly align with standard definitions.
+- `V0758`: Does not fit any category cleanly due to late goods receipt occurring after invoice clearing.
+- `V0926`: This flow features multiple invoice cancellations and repeated invoice clearings, placing it outside of standard or clean execution.
+- `V0927`: The process contains payment blocks, debit memos, and invoice cancellation loops which do not align with any primary category.
+- `V0929`: Involves multiple invoice receipts, debit memos, payment blocks, and cancellations, indicating a complex rework loop.
+- `V0930`: Repeated goods receipts, invoice receipts, and multiple invoice creations create a high-churn path.
+- `V0931`: Contains duplicate invoice receipts and multiple iterations that go beyond standard flows.
+- `V0932`: Centered on repeated goods receipts and ending in a goods receipt cancellation.
+- `V0934`: Features multiple changes to approval, price, and quantity along with invoice cancellations and repetition.
+- `V0936`: Heavy repetition of goods receipt events characterizes this anomaly.
+- `V0938`: Features extensive repetition of goods receipt actions before proceeding to invoice receipt.
+- `V0940`: Complex sequence involving debit memos, invoice cancellations, and repeated clearings.
+- `V0941`: Ends in an invoice receipt cancellation after a multi-step procurement and invoicing path.
+- `V0942`: Terminates with a delayed invoice receipt cancellation.
+- `V0943`: Exhibits duplicated goods receipts, invoice creations, and invoice receipts.
+- `V0944`: Contains duplicated invoice creations and repeated invoice receipts.
+- `V0947`: Characterized by multiple price and quantity change cycles before reaching final processing.
+- `V0948`: Features invoice cancellations, repeated clearings, and multiple invoice receipts.
+- `V0949`: Includes goods receipt cancellation and repetition before payment block removal.
+- `V0950`: High degree of repetition in invoices, goods receipts, invoice receipts, and clearings.
+- `V1004`: Involves invoice cancellations and debit memos which go beyond standard flows, but does not cleanly fit extreme duration or SRM anomaly patterns.
+- `V1005`: Contains multiple repeated invoice postings, payment block removals, and invoice cancellations creating extensive churn outside standard flow descriptions.
+- `V1008`: Features repeated goods receipts and invoice receipts with moderate duration, falling into residual due to rework complexity.
+- `V1015`: Involves multiple repetitions of goods receipts, invoices, and clearing steps causing rework churn.
+- `V1017`: Involves invoice cancellations, debit memos, and long durations spanning multiple months.
+- `V1018`: Features debit memos, quantity changes, and invoice cancellations spanning several months.
+- `V1019`: Contains duplicate invoicing and goods receipt loops requiring payment block removal.
+- `V1022`: Involves quantity changes and duplicate invoice receipts leading to moderate churn.
+- `V1023`: Contains goods receipt cancellations and payment block removals.
+- `V1025`: Involves item deletion and repeated purchase order approvals that do not fit standard purchasing flows.
+- `V1064`: Does not clearly fit any standard category due to prolonged waiting time ending prematurely at invoice receipt without full payment clearing or extreme churn.
+- `V1101`: This variant involves a purchase order item deletion following a goods receipt cancellation, which does not cleanly fit standard flows, service entries, or extreme churn patterns.
+- `V1102`: The narrative features a cancellation of a subsequent invoice and payment block adjustments, falling outside the standard procurement or low-touch definitions.
+- `V1109`: Involves blocking and reactivating a purchase order item alongside quantity changes, which fits none of the standard or churn categories directly.
+- `V1117`: Long duration path with multiple master data changes (price, quantity) and approval adjustments leading to a payment block removal.
+- `V1121`: Features goods receipt cancellation and replacement deep in the process flow, representing an anomaly outside normal flows.
+- `V1124`: Contains goods receipt cancellations and invoice cancellations spread across a moderate duration.
+- `V1311`: The narrative focuses extensively on purchase order release, approval changes, and reactivation loops, which do not cleanly fit any standard taxonomy category.
+- `V1752`: Involves repeated goods receipts without a full standard invoicing loop fitting the clean flow.
+- `V1759`: Involves cancellations and modifications that deviate slightly from a purely standard flow.
+- `V1762`: Contains minor repetitions of goods receipts and invoices that do not cleanly fit standard flow.
+- `V1763`: Unusual start with vendor invoice and late cancellation.
+- `V1764`: Contains repeated goods receipts and invoice receipts creating minor churn.
+- `V1765`: Multiple price and quantity changes during the execution phase.
+- `V1769`: Includes blocking and reactivating purchase order items with longer duration.
+- `V1770`: Contains repeated payment blocks and invoice receipts.
+- `V1773`: Involves subsequent invoice cancellation and repeated clearings.
+- `V1775`: Long waiting periods and payment block actions without full standard clarity.
+- `V1807`: The flow is dominated by extensive approval and change churn on the purchase order without reaching the invoicing stage.
+- `V1852`: Involves repeated goods receipts, invoice entries, and payment block removal which does not neatly fit standard or low touch paths.
+- `V1853`: Features multiple repeated goods receipt actions leading to a clear invoice step, containing rework that falls outside standard flows.
+- `V1856`: Contains quantity changes, repeated goods receipts, and payment block removals over a moderate duration.
+- `V1858`: Iterative vendor invoice creation and repeated invoice receipts without standard flow predictability.
+- `V1861`: Involves goods receipt cancellation and repetition anomalies.
+- `V1862`: Price changes and repeated vendor invoices with moderate duration and rework.
+- `V1864`: Contains duplicate vendor invoice creation and invoice receipt repetitions.
+- `V1865`: Multiple iterations of vendor invoice creation and goods receipt repetitions.
+- `V1868`: Repeated quantity changes and multiple modifications during the procurement path.
+- `V1870`: Repeated price change events before vendor invoice and goods receipt.
+- `V1871`: Extensive repetition of vendor invoices, goods receipts, and invoice receipts.
+- `V1872`: Looping pattern of vendor invoices and goods receipts interspersed with invoice receipts.
+- `V1873`: Contains repeated goods receipt actions within a moderate duration flow.
+- `V1875`: Involves repeated goods receipts following invoice receipt steps.
+- `V2029`: Does not fit standard flow or any specific anomaly category as it purely consists of repeated changes to delivery indicators without goods or invoice actions.
+- `V2402`: Involves invoice receipt cancellation and a lengthy duration with rework not matching standard flow criteria.
+- `V2404`: Includes service entry sheet references and cancellation anomalies not fitting simple flow categories.
+- `V2410`: Short trace with cancellations and debit memos not cleanly fitting standard or low-touch flows.
+- `V2412`: Extended duration and invoice cancellation pointing toward a non-standard residual flow.
+- `V2413`: Involves invoice cancellations and multiple payment adjustments over an extended duration.
+- `V2415`: Includes multiple invoice cancellations and debit memos outside standard flow limits.
+- `V2416`: Prolonged cycle with delivery indicator changes and cancellations.
+- `V2420`: Extended duration with multiple cancellations and invoice reprocessing loops.
+- `V2421`: Involves repeated invoice receipts and extended duration leading to record invoice receipt outcome.
+- `V2426`: This narrative involves quantity changes, multiple invoices and payments blocks with moderate duration, fitting the residual category as it does not neatly fit standard procurement, low-touch flows, service entry rework, or SRM anomalies.
+- `V2427`: Complex debit memo, invoice cancellations, and repeated payment block removals form a custom rework pattern not cleanly mapped to any single specific taxonomy category.
+- `V2429`: Involves multiple delivery indicator changes and standard invoice clearing, forming a minor custom variant not covered by the defined categories.
+- `V2430`: Ends in a PO deletion with cancellations of both goods receipt and invoice receipt, forming part of the residual.
+- `V2431`: Includes late cancellation of invoice receipts and quantity adjustments, not aligning cleanly with any main category.
+- `V2432`: Features quantity changes and order confirmations leading to a standard clear invoice, but falls into the residual due to quantity rework specifics.
+- `V2434`: Involves debit memos, cancellations, and payment block removals that represent a non-standard procurement exception flow.
+- `V2435`: Contains subsequent invoicing, duplicate goods receipts, and multiple invoice clearings, fitting the residual category.
+- `V2436`: Features repeated quantity changes and goods receipts over a moderate duration, falling outside standard clean procurement flows.
+- `V2437`: Characterized by multiple quantity changes, goods receipts, and duplicate invoice receipts over a moderate timeline.
+- `V2438`: Exhibits extensive repetitions of goods receipt events and subsequent invoice cancellations, placing it in the residual.
+- `V2439`: Involves late repeated invoice receipts months after initial clearing, making it a unique residual case.
+- `V2440`: Shows severe churn with repeated payment block removals, invoice receipts, and clearing cancellations.
+- `V2441`: Exhibits multiple alternating vendor invoices, goods receipts, and repeated invoice receipts and clearings.
+- `V2442`: Features price changes, debit memos, and multiple clearing loops characteristic of complex residual exception flows.
+- `V2446`: Includes multiple quantity changes, delivery indicator updates, and duplicate invoices, constituting a residual exception flow.
+- `V2447`: Features repeated vendor invoices and invoice receipts interspersed across different timeframes.
+- `V2449`: Characterized by an extreme burst of dozens of consecutive goods receipt events, placing it in the residual.
+- `V2450`: Features an extensive sequence of repeated goods receipt events by various resources, constituting a distinct anomaly outside standard definitions.
+- `V2575`: Does not fit standard flow due to deletion, nor low-touch because it completes invoicing, nor extreme churn/service entries.
+- `V2907`: Short sequence consisting solely of requisition, order, and repeated price changes, not fitting standard end-to-end procurement or other specific categories.
+- `V2911`: Short flow ending in approval changes, not matching a full standard procurement loop.
+- `V3634`: Does not fit standard flow, service entry, SRM anomalies, or extreme churn/duration patterns.
+- `V3635`: Moderate duration with some invoice rework, but does not match any primary category archetype cleanly.
+- `V3636`: Contains multiple price changes but lacks the typical multi-year churn or simple standard flow characteristics.
+- `V3637`: Involves quantity changes and invoice rework within a moderate duration, fitting outside the defined categories.
+- `V3638`: Moderate duration with quantity and delivery indicator modifications without falling into specific categories.
+- `V3640`: Single long wait between invoice receipt and order confirmation, but does not fit standard categories.
+- `V3641`: Multiple invoice and goods receipt iterations without extreme multi-year churn or service entry focus.
+- `V3642`: Short sequence involving payment block removal and clearing, not fitting standard flow or other definitions.
+- `V3645`: Involves debit memo and invoice cancellation within moderate duration.
+- `V3646`: Standard sequence with a price change and payment block removal.
+- `V3647`: Involves debit memo, cancel invoice receipt, and payment block handling.
+- `V3648`: Features multiple cancellations of invoice receipts and debit memos.
+- `V3649`: Involves goods receipt cancellation and quantity changes.
+- `V4276`: This narrative shows moderate duration and some invoice/payment block clearings, but none of the specific flow patterns from the taxonomy apply cleanly.
+- `V4277`: Shows repetition of goods receipts and invoices, but lacks the extreme churn or specific markers of the defined categories.
+- `V4278`: Moderate duration with some quantity and invoice repetitions, not aligning tightly with any specific category definition.
+- `V4279`: Contains cancellations and repetitions of goods receipts, but doesn't fit standard flows or extreme churn.
+- `V4281`: Long duration and repeated invoicing/clearing steps that do not fit into the other specific categories.
+- `V4282`: Extended duration with multiple goods receipts and invoice receipts, but lacks the extreme multi-year churn profile.
+- `V4283`: Involves multiple vendor invoices, goods receipts, and payment blocks over a long duration, but does not fit standard or specific categories.
+- `V4284`: Requisition-to-order flow with minor invoice cancellations and clearings, forming part of the residual.
+- `V4285`: Short-to-moderate flow with repeated payment blocks and invoices, not fitting neatly into the main defined patterns.
+- `V4286`: Contains debit memos, multiple invoice receipts, and multiple clearings over a moderate duration.
+- `V4287`: Shows repeated goods and invoice receipts but otherwise follows a general procurement pattern.
+- `V4288`: Involves price and quantity changes with delayed invoice receipt and clearing.
+- `V4290`: Involves repeated invoicing, cancellations, and multiple clearings.
+- `V4292`: Extended duration involving repeated invoices and a late invoice receipt cancellation.
+- `V4366`: Does not clearly fit any standard flow due to mixed duplicate goods and invoice entries without cleanly falling into extreme duration or low-touch categories.
+- `V4368`: Contains debit memos and cancellations within a moderate duration, representing a residual execution pattern.
+- `V4877`: Does not fit any category cleanly due to standard sequence length but contains multiple changes and cancellations spread out.
+- `V4878`: Contains multiple cancellations, debit memos, and duplicate clearing events, but is not massive enough to be extreme churn.
+- `V4880`: Represents a moderate cycle with some debit memos and payment block removals, but not extensive enough for extreme churn.
+- `V4883`: Contains cancellation and debit memo loops leading to order deletion, fitting none of the clean or minor flows.
+- `V4884`: Involves repeated invoicing and goods receipt loops, but duration and churn are moderate.
+- `V4888`: Includes repeated debit memos and cancel invoice receipts, falling outside standard or low-touch flows.
+- `V4889`: Contains a delayed secondary goods receipt long after invoice clearing, fitting no primary category.
+- `V4893`: Contains quantity change loops and payment blocks over a moderate timeframe.
+- `V4894`: Exhibits repeated invoice receipts and goods receipts, but doesn't reach the extreme level of churn.
+- `V4895`: Centered around multiple consecutive goods receipts followed by a cancellation.
+- `V4896`: Involves goods receipt, cancellation, quantity change, and another receipt in a short sequence.
+- `V4899`: Involves cancelled goods and invoice receipts over a long duration.
+- `V4902`: Does not fit standard clean flows or extreme churn; it has moderate duration and cancellation/rework elements not neatly matching the main categories.
+- `V4905`: Long duration involving a delayed duplicate invoice receipt, but not extensive enough in churn or structural anomaly to fit standard definitions.
+- `V5313`: The narrative features a late delivery indicator change after significant duration and goods receipt cancellation, which falls outside the standard patterns.
+- `V5315`: Features an exceptionally delayed invoice receipt resulting in an incomplete lifecycle ending on an invoice receipt without clearance.
+- `V5317`: Involves out-of-order vendor invoices and multiple cancellations, ending in a canceled invoice receipt outside standard flows.
+- `V5323`: Features unusual sequencing with long delays, debit memos, and a late cancellation of an invoice receipt.
+- `V5324`: Involves irregular ordering of debit memos and invoices prior to the standard processing steps.
+- `V5377`: This variant features a moderate-to-long duration with invoice cancellations and repetitions that do not cleanly fit the extreme multi-year churn category or standard flows.
+- `V5378`: The flow contains standard invoice and goods receipt steps with minor cancellations, forming part of the residual rather than fitting a clean standard or extreme category.
+- `V5379`: Involves quantity and price changes along with invoice cancellations and repeats, falling into the residual category.
+- `V5380`: Contains standard purchasing steps interspersed with quantity changes and an invoice cancellation over a medium duration.
+- `V5381`: Features quantity adjustments and delivery indicator changes alongside invoice processing, not matching any single strict pattern.
+- `V5382`: Displays price and quantity updates followed by a delayed invoice cancellation and receipt.
+- `V5383`: Involves order confirmation and payment block removal with delayed invoice clearing.
+- `V5384`: Characterized by a burst of repeated goods receipt actions followed by standard invoice clearing.
+- `V5385`: Features repeated goods receipts and price changes prior to payment block removal and invoice clearing.
+- `V5386`: Contains multiple repetitions of goods receipts, invoice receipts, and payment block removals over a 118-day duration.
+- `V5387`: Shows repeated vendor invoices, goods receipts, and multiple clearings over an extended duration.
+- `V5388`: Involves quantity changes and delivery indicator modifications with duplicate vendor invoice entries.
+- `V5389`: Features order item blocking and reactivation steps before goods receipt and payment clearing.
+- `V5390`: Contains debit memo handling and invoice cancellations prior to final payment clearing.
+- `V5391`: Dominated by an exceptionally high volume of repeated goods receipt actions before final invoicing and clearing.
+- `V5534`: The trace consists mainly of repeated goods receipts and a standard completion without significant churn or extreme duration.
+- `V5537`: Contains numerous repeated goods receipts but follows a relatively concise and direct purchasing path.
+- `V5538`: Contains minor repeat invoicing and clearing, but does not fit cleanly into extreme churn or standard flow categories.
+- `V5541`: Short process containing multiple repeat goods receipts and invoice receipts but completing relatively quickly.
+- `V5544`: Involves goods receipt cancellation and quantity changes but does not display extreme overall churn.
+- `V5545`: Repeated delivery indicator changes without reaching extreme duration or churn thresholds.
+- `V5804`: The flow involves extended cycles, multiple repeated document changes, and non-standard loops that exceed a clean standard or simple flow.
+- `V5817`: Involves extensive document cancellations, repeated changes, and multiple cycles of goods receipts and block removals exceeding a standard flow.
+- `V5818`: Extensive churn with numerous repeated vendor invoices, cancellations, and multiple clearings over a long duration.
+- `V5824`: High churn involving numerous repeated goods receipts, multiple vendor invoices, and several successive invoice receipt postings.
+- `V5954`: Repeated loops and cancellations over 147 days fit none of the standard or simple flows cleanly.
+- `V5955`: Exhibits multiple repeated invoice receipts and debit memos over a moderate duration.
+- `V5956`: Involves repeated goods and invoice receipts separated by long intervals.
+- `V5959`: Contains excessive repetition of goods receipts characteristic of data churn.
+- `V5962`: Multiple repetitions of quantities, goods receipts, and invoices deviate from standard flows.
+- `V5964`: Features repetitive cancellations and invoice clearing loops.
+- `V5965`: Extensive delay and cancellations without a normal completion path.
+- `V5968`: Involves multiple invoice entries and cancellations spanning several months.
+- `V6977`: Does not clearly fit any standard flow, containing a mixture of quantity changes, invoice cancellations, and payment block removals.
+- `V6978`: Contains repeated invoice receipts and cancellations, making it fall outside the standard procurement path.
+- `V6979`: Exhibits multiple repeated goods receipts and cancellations.
+- `V6980`: Anomalous sequence ending in a cancelled goods receipt with long intervals.
+- `V6981`: Features repeated clearing and invoice receipt reversals.
+- `V6982`: Long and complex trace with repeated invoice receipts, clearings, and goods receipt cancellations.
+- `V6983`: Similar to V6982 with complex invoice reversals, multiple clearings, and modifications.
+- `V6984`: Contains multiple quantity changes, repeated payment blocks, and invoice cancellations.
+- `V6986`: Involves price/quantity changes and repeated invoice receipts.
+- `V6987`: Contains multiple quantity changes and repeated vendor invoices.
+- `V6988`: Features delayed invoice cancellations, payment block removals, and repeated invoice receipts.
+- `V6989`: Unusual sequence of price and quantity changes occurring after invoice receipt.
+- `V6990`: Features repeated invoice receipts, debit memos, and clearings after long delays.
+- `V6991`: Involves subsequent invoice cancellation and repeated invoice clearing.
+- `V6992`: Extensive repetition of invoice receipts, payment block removals, and invoice clearings.
+- `V6993`: Contains multiple invoice receipts, debit memos, and cancellations.
+- `V6994`: Features subsequent invoice cancellations and replacements.
+- `V6995`: Involves deleting and reactivating a purchase order item along with repeated invoice processes.
+- `V6996`: Contains delayed steps, quantity changes, and repeated invoice processing.
+- `V6998`: Complex process involving invoice cancellations and removal of payment blocks.
+- `V6999`: Features multiple quantity changes, invoice cancellations, and repeated payment block actions.
+- `V7000`: Similar to V6999 with quantity changes, debit memos, cancellations, and clearings.
+- `V7024`: Does not fit standard procurement, low-touch, service entry, SRM anomaly, or extreme churn; it represents a simple blocking and reactivation without invoicing.
+- `V7090`: This flow includes deletion and reactivation of purchase order items mixed with delivery indicator changes, which does not fit cleanly into standard flows or extreme duration patterns.
+- `V7094`: Features multiple goods receipt cancellations and debit memos without progressing to a standard invoice clearing path.
+- `V7099`: Ends in a purchase order item deletion following a series of invoice cancellations and debit memos, representing an exceptional termination path.
+- `V7282`: Does not fit standard flows or service entry patterns cleanly due to multiple quantity changes, payment block removals, and cancellations.
+- `V7283`: Features multiple goods receipt cancellations and repeated invoice receipts without service entry dominance or standard clean flow.
+- `V7286`: Involves multiple invoice cancellations, repeated payment block removals, and repeated invoice clearings outside typical category bounds.
+- `V7288`: Contains multiple price changes and goods receipt cancellations not fitting standard procurement or other defined patterns.
+- `V7289`: Features subsequent invoices, multiple vendor invoices, and repeated clearing actions.
+- `V7290`: Involves multiple debit memos, repeated invoice clearings, and extended duration.
+- `V7291`: Contains quantity changes, repeated goods receipts, and multiple invoice receipts.
+- `V7292`: Exhibits complex rework including duplicate vendor invoices, repeated clearings, and delivery indicator changes.
+- `V7293`: Involves order approvals, blocking, reactivating, and quantity changes.
+- `V7294`: Involves order approvals, blocking, and reactivating purchase order items.
+- `V7297`: Contains delayed goods receipt cancellations, quantity changes, and delivery indicator changes.
+- `V7298`: Ends in a change delivery indicator with multiple quantity changes and delays.
+- `V7562`: Contains multiple quantity changes, delivery indicator updates, and payment blocks with repeated invoices that fall into the residual category due to specific churn and rework elements.
+- `V7564`: Contains long duration with invoice cancellations and payment blocks, which do not fit standard flows or other specific categories neatly.
+- `V7566`: Involves deletion and reactivation of purchase order items combined with multiple goods receipts and price changes.
+- `V7567`: Features goods receipt cancellations, invoice cancellations, and changes in delivery indicators representing non-standard rework.
+- `V7569`: Contains multiple price and quantity change cycles which represent non-standard procurement modifications.
+- `V7570`: Features repeated price changes and payment block removals that deviate from a standard, clean procurement flow.
+- `V7571`: Includes deletion and subsequent reactivation of a purchase order item, indicating non-standard path execution.
+- `V7572`: Involves multiple quantity changes, delivery indicator adjustments, and repeated goods receipts outside a standard path.
+- `V7573`: Contains multiple cancellations of invoice receipts, repeated clearing steps, and debit memos.
+- `V7575`: Features debit memos, invoice cancellations, and repeated changes making it a residual case.
+- `V7902`: Does not fit standard clean flows or heavy churn patterns; represents a moderate duration variant with a solitary payment block release and change quantity.
+- `V8650`: Does not fit standard procurement or service entry flow cleanly; ends in change quantity without full invoice clearing or low-touch completion.
+- `V8735`: The flow involves extended duration, price changes, multiple invoice postings, and payment blocks which do not fit the clean or short categories.
+- `V8737`: Involves multiple invoice receipts and vendor creates invoice iterations outside standard expected flows.
+- `V8741`: Repeated vendor invoices and payment block removals over a moderate duration.
+- `V8742`: Storage location changes and quantity modifications over a prolonged duration.
+- `V8744`: Includes quantity updates, multiple invoice receipts, and payment block removals.
+- `V8745`: Involves goods receipt cancellations and quantity adjustments.
+- `V8747`: Includes repeated clearings and debit memos.
+- `V8748`: Features out-of-order start with vendor invoice followed by purchase order creation, plus repeated clearings.
+- `V8750`: Contains quantity change repetitions and duplicate invoice creation.
+- `V8991`: Does not fit standard flow due to goods receipt cancellation anomaly, nor does it fit other specific categories.
+- `V8999`: Involves invoice cancellations, debit memos, and item blocking which does not fit cleanly into standard flows or other categories.
+- `V9053`: This variant exhibits unusual quantity adjustments and delivery indicator changes that do not cleanly match any standard or low-touch flow.
+- `V9063`: Contains excessive quantity changes and mixed invoice receipts that extend beyond standard flow patterns.
+- `V9064`: Characterized by recurring quantity adjustments and multiple invoice creation steps outside standard patterns.
+- `V9068`: Involves multiple repeated quantity changes and multiple invoices that make it deviate from clean standard flows.
+- `V9069`: Contains multiple quantity changes, repetitive invoice receipts, and removals of payment blocks indicating non-standard churn.
+- `V9070`: Extended sequence with repeated quantity changes, multiple invoice receipts, and repeated clearing steps.
+- `V9344`: Does not fit any category cleanly as it consists primarily of repeated delivery indicator changes with no invoice or service entry execution.
+- `V9345`: Does not fit a standard flow or service entry; primarily consists of multiple goods receipts and delivery indicator changes.
+- `V9356`: The process involves extended duration, invoice cancellations, and invoice removals that do not neatly fit the simpler categories.
+- `V9365`: Exhibits multiple invoice cancellations, repeated receipt steps, and payment block adjustments creating a complex loop.
+- `V9366`: Contains extensive cancellations, repeated invoices and debit memos, and multiple clearings that fall outside standard patterns.
+- `V9370`: Contains approval changes, multiple repeated goods receipts and invoice receipts spaced far apart, rendering it non-standard.
+- `V9371`: Involves multiple repeated invoices, debit memos, cancellations, and payment block toggles.
+- `V9531`: The trace consists entirely of order modifications, deletion, and reactivation without completing a standard procurement or invoice cycle.
+- `V10493`: Involves multiple adjustments and ends with a purchase order item deletion, not fitting cleanly into standard or short flows.
+- `V10809`: This narrative involves repeated invoicing, multiple payment block removals, and duplicate invoice clearances, which do not fit cleanly into any single defined category.
+- `V10821`: Involves delayed duplicate invoice receipts and clearances separated by a long duration, making it an anomaly outside standard flows.
+- `V10827`: Does not fit any category clearly due to an unusual sequence ending in a storage location change without standard completion.
+- `V11208`: The flow involves multiple deletions, reactivations, debit memos, and invoice clearings with cancellations, falling outside standard or simple flows.
+- `V11365`: Does not fit standard procurement or rework flows as it is dominated by repetitive storage location changes culminating in deletion.
+- `V11761`: This flow is strictly limited to price and quantity changes following order creation without reaching invoicing or service completions, falling outside the defined taxonomy categories.

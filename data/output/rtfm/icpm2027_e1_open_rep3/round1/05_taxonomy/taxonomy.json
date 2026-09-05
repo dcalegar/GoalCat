@@ -1,0 +1,66 @@
+{
+  "categories": [
+    {
+      "category_id": "direct_payment",
+      "name": "Direct Payment",
+      "description": "Cases where the fine is paid promptly with minimal steps and no escalation or penalties applied.",
+      "anchor_ids": [],
+      "rationale": "High frequency, low duration variants characterized by immediate or short-term payment following fine creation.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0007",
+        "V0012"
+      ]
+    },
+    {
+      "category_id": "standard_fine_collection",
+      "name": "Standard Fine Collection",
+      "description": "Standard processing path where fines progress through notification and penalties, ultimately ending in credit collection due to non-payment.",
+      "anchor_ids": [],
+      "rationale": "Represents the most frequent operational path (V0001) with long durations ending in Send for Credit Collection.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0009",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "delayed_payment",
+      "name": "Delayed Payment with Penalty",
+      "description": "Cases that undergo notifications and penalties before eventually resulting in payment after a moderate duration.",
+      "anchor_ids": [],
+      "rationale": "Captures standard payment behavior that occurs later in the lifecycle after notifications and penalty additions.",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0005",
+        "V0006"
+      ]
+    },
+    {
+      "category_id": "appeal_process",
+      "name": "Appeal and Prefecture Escalation",
+      "description": "Cases involving formal appeals to the prefecture or judge, leading to extended durations and complex review steps.",
+      "anchor_ids": [],
+      "rationale": "Identified by the inclusion of activities like Send Appeal to Prefecture, Appeal to Judge, and prefecture results.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0103",
+        "V0177"
+      ]
+    },
+    {
+      "category_id": "payment_rework_loop",
+      "name": "Payment Rework Loop",
+      "description": "Extremely long traces characterized by repetitive payment installments or micro-payments over extended periods.",
+      "anchor_ids": [],
+      "rationale": "Distinctly marked by high trace lengths due to repeated payment activities spanning hundreds of days.",
+      "evidence_variant_ids": [
+        "V0153",
+        "V0151",
+        "V0147",
+        "V0224"
+      ]
+    }
+  ]
+}

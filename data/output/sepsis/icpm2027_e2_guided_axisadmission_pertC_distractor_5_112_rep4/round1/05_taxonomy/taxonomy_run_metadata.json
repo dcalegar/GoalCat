@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "d489bde525988d72",
+  "latency_seconds": 3.142115750000812,
+  "input_tokens": 8870,
+  "output_tokens": 508,
+  "prompt_chars": 27780,
+  "response_chars": 1728,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Admission NC\",\n      \"description\": \"Admission to normal care ward realizing patient inpatient ward admission, advancing general recovery while measuring against post-discharge readmission indicators.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Admission NC (id=15) observed across standard inpatient pathways such as V0008.\",\n      \"evidence_variant_ids\": [\n        \"V0008\",\n        \"V0625\",\n        \"V0551\",\n        \"V0449\",\n        \"V0192\",\n        \"V0441\",\n        \"V0317\",\n        \"V0068\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Admission IC\",\n      \"description\": \"Admission to intensive care unit realizing inpatient ward admission, carrying some negative contribution to minimizing time-to-treatment due to acute stabilization overhead.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Admission IC (id=16) as evidenced by severe path variants like V0605 and V0317.\",\n      \"evidence_variant_ids\": [\n        \"V0605\",\n        \"V0551\",\n        \"V0317\",\n        \"V0068\",\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"admission_high_dependency_unit\",\n      \"name\": \"Admission to High-Dependency Unit\",\n      \"description\": \"Admission to a high-dependency unit realizing patient inpatient ward admission for monitored intermediate care.\",\n      \"anchor_ids\": [\n        \"112\"\n      ],\n      \"rationale\": \"Mapped 1:1 to declared alternative Admission to High-Dependency Unit (id=112) representing step-down or intermediate critical care placement.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.003931
+}

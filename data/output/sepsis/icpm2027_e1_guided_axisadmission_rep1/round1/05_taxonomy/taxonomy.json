@@ -2,26 +2,26 @@
   "categories": [
     {
       "category_id": "admission_nc",
-      "name": "Non-Critical Ward Admission",
-      "description": "Patient is admitted to a non-critical inpatient ward (Admission NC), supporting general recovery goals.",
+      "name": "Non-Critical Admission",
+      "description": "Admission of the patient to a non-critical inpatient ward (Admission NC), realizing the goal of admitting an inpatient for ongoing management and eventual discharge.",
       "anchor_ids": [
         "15"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Admission NC (id=15) under the XOR decomposition of goal id=5. Evidenced in variants such as V0008, where Admission NC leads to ward care without critical unit escalation.",
+      "rationale": "Default 1:1 mapping to declared alternative id=15 (Admission NC). The narrative sample shows patients routed to Admission NC in standard pathways (e.g. V0008, V0070), supporting the non-critical admission track. It does not warrant further subdivision as the logged activity cleanly realizes the non-critical care alternative.",
       "evidence_variant_ids": [
         "V0008",
-        "V0068",
-        "V0710"
+        "V0070",
+        "V0066"
       ]
     },
     {
       "category_id": "admission_ic",
-      "name": "Intensive Care Ward Admission",
-      "description": "Patient is admitted to an intensive care unit (Admission IC), which incurs a negative contribution profile for minimizing time-to-treatment due to heightened acuity.",
+      "name": "Intensive Care Admission",
+      "description": "Admission of the patient to an intensive care inpatient unit (Admission IC), realizing the goal of inpatient admission with higher-acuity care. This alternative has a negative contribution (-25) to minimizing time-to-treatment softgoals due to resource constraints or stabilization overhead.",
       "anchor_ids": [
         "16"
       ],
-      "rationale": "Mapped 1:1 to declared alternative Admission IC (id=16) under the XOR decomposition of goal id=5. Evidenced in variants like V0605 and V0317, realizing intensive care pathways with associated softgoal impacts.",
+      "rationale": "Default 1:1 mapping to declared alternative id=16 (Admission IC). The narrative sample shows this alternative taken in complex or severe cases (e.g., V0605, V0317), reflecting intensive ward routing rather than standard non-critical admission.",
       "evidence_variant_ids": [
         "V0605",
         "V0317",

@@ -1,0 +1,21 @@
+{
+  "schema": "icpm2027/perturbation/2",
+  "perturbation_id": "pertC_distractor_5_112",
+  "kind": "C - artificial plausible distractor",
+  "targets": [
+    "112"
+  ],
+  "base_model": {
+    "path": "data/goals/sepsis_goal_model.jucm",
+    "sha256": "5a4f9e9950f9a4cb05b3aec772f07a6b0ab3956a423360f804983bb6f032d58f"
+  },
+  "output": {
+    "path": "data/goals/perturbed/sepsis_goal_model__pertC_distractor_5_112.jucm",
+    "sha256": "dd3e64992c5dd10ab4142c3e26ca9d90d9ea035142414e80c8fd4000950ab776"
+  },
+  "goal_model_filename": "perturbed/sepsis_goal_model__pertC_distractor_5_112.jucm",
+  "generated_on": "2026-09-04",
+  "notes": [
+    "Added 112 ('Admission to High-Dependency Unit') as a leaf Task under 5, with no contribution links."
+  ]
+}

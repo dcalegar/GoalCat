@@ -1,0 +1,76 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Resolution of the fine case through early or timely payment made by the offender. This contributes to maximizing timely fine revenue and minimizing administrative and enforcement costs, and is measured by indicators such as the average time to case closure and time to fine dispatch.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=12. Supported by frequent narrative samples such as V0002, V0004, and V0007 where payment occurs directly or after initial dispatch.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0003",
+        "V0004",
+        "V0005",
+        "V0006",
+        "V0007",
+        "V0012"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Resolve via delinquent payment",
+      "description": "Resolution of the fine case through payment occurring after enforcement steps such as penalty addition have been executed. This advances timely fine revenue while interacting with penalty imposition, and performance is evaluated against the average time to case closure indicator.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=13. Supported by narratives like V0001, V0009, and V0010 where payments or collections occur after penalty notifications and additions.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0009",
+        "V0010",
+        "V0133",
+        "V0134",
+        "V0135",
+        "V0138"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal_prefecture",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Resolution through an administrative appeal submitted to the Prefecture. This preserves the offender's due-process rights while potentially impacting enforcement costs and revenue, measured by statutory indicators such as time to appeal filing in the Prefecture.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=14. Supported by variants involving appeal tracking steps directed to the Prefecture, such as V0008, V0057, and V0137.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0137",
+        "V0141",
+        "V0145",
+        "V0158",
+        "V0177"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal_judge",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Resolution through a judicial appeal brought before a Judge. Strongly preserves offender due-process rights while incurring costs and affecting revenue, monitored through the judicial appeal filing time indicator.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative id=19. Supported by variants containing judicial appeal activities, such as V0103, V0140, V0151, and V0176.",
+      "evidence_variant_ids": [
+        "V0103",
+        "V0140",
+        "V0147",
+        "V0151",
+        "V0153",
+        "V0176",
+        "V0224"
+      ]
+    }
+  ]
+}

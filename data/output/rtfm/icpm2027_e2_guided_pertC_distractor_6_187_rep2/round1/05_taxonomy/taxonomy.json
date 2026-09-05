@@ -1,0 +1,89 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Cases resolved through prompt payment of the fine, advancing the softgoal 'Maximize timely fine revenue' and helping 'Minimize administrative & enforcement cost', judged against indicator 'Average time to case closure'.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=12, supported by frequent variants such as V0002 and V0007 where payment concludes the case early.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0003",
+        "V0007",
+        "V0012"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Resolve via delinquent payment",
+      "description": "Cases resolved through payment made after penalties have been added and notifications sent, helping 'Maximize timely fine revenue', judged against indicator 'Average time to case closure'.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=13, supported by variants like V0004, V0005, and V0006 where payments occur subsequent to notification and penalty steps.",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0005",
+        "V0006",
+        "V0009"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Cases involving an administrative appeal process directed to the Prefecture, preserving offender's due-process rights while potentially increasing costs and delaying revenue, judged against 'Time to appeal filing, Prefecture'.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=14, evidenced by variants containing appeal insertion and transmission steps such as V0008, V0057, and V0135.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0135",
+        "V0137"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Cases involving judicial appeal to a judge, strongly making 'Preserve offender's due-process rights' while hurting cost minimization, judged against 'Time to appeal filing, Judge'.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=19, supported by variants showing 'Appeal to Judge' actions such as V0103, V0140, and V0176.",
+      "evidence_variant_ids": [
+        "V0103",
+        "V0140",
+        "V0176",
+        "V0158"
+      ]
+    },
+    {
+      "category_id": "coercive_credit_collection",
+      "name": "Resolve via coercive credit collection",
+      "description": "Cases escalated and resolved through coercive credit collection measures, helping revenue maximization but hurting cost minimization, judged against 'Average time to case closure'.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=20, evidenced by variants culminating in 'Send for Credit Collection' like V0001, V0009, and V0134.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0009",
+        "V0010",
+        "V0134"
+      ]
+    },
+    {
+      "category_id": "fine_annulment",
+      "name": "Resolve via fine annulment",
+      "description": "Cases resulting in the annulment of the fine.",
+      "anchor_ids": [
+        "187"
+      ],
+      "rationale": "Maps 1:1 to the declared alternative id=187 as declared in the goal model decomposition.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

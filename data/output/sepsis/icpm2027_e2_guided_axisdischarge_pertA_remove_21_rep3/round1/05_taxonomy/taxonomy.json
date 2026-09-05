@@ -1,0 +1,55 @@
+{
+  "categories": [
+    {
+      "category_id": "release_a",
+      "name": "Release A",
+      "description": "Represents the discharge of an admitted patient via pathway A, advancing the softgoal to avoid post-discharge deterioration and being measured against post-discharge ER return indicators.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release A (id 17), observed across multiple variants such as V0008, V0070, and V0069.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0070",
+        "V0069"
+      ]
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release B",
+      "description": "Represents the discharge of an admitted patient via pathway B, contributing to avoiding post-discharge deterioration and evaluated against post-discharge ER return rates.",
+      "anchor_ids": [
+        "18"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release B (id 18), observed in narrative variant V0068 and V0145.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Represents the discharge of an admitted patient via pathway C, contributing to post-discharge stability and measured via downstream ER return indicators.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release C (id 19), observed in complex variant V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Represents the discharge of an admitted patient via pathway D, advancing the organization's objective of preventing post-discharge deterioration.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative Release D (id 20), observed in variant V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    }
+  ]
+}

@@ -64,6 +64,13 @@ Softgoals and contribution links (source -> effect on softgoal):
   - id=20 3-way matching compliance (violation rate, %) --[Help (+50)]--> Preserve value-matching control integrity
   - id=21 Exception/rework rate (%) --[Help (+50)]--> Minimize procurement & matching overhead
 
+Categorization axis: the alternatives of id=4 (Item is resolved per its matching regime), decomposed OR.
+  - id=5 [Goal] 3-way matched, invoice recorded after goods receipt
+  - id=6 [Goal] 3-way matched, invoice recorded before goods receipt
+  - id=7 [Goal] 2-way matched (no goods receipt required)
+  - id=13 [Task] Resolve via consignment consumption
+These ids, and only these, are valid anchor_ids. Do not anchor to a parent or ancestor of one of them: a coarser element is a different, broader goal, not the alternative it contains. Do not anchor to an alternative of any other decomposition point in the tree above — those belong to a different axis and a case may realize one of them in addition to, not instead of, one of these.
+
 
 === NARRATIVE SAMPLE (35 variants, drawn to cover frequent, rare, and extreme cases) ===
 How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.

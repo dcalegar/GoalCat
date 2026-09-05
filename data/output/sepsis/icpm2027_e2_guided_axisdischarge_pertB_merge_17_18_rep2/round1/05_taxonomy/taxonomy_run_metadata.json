@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "8b11ade8d6de839f",
+  "latency_seconds": 3.0317276249988936,
+  "input_tokens": 8838,
+  "output_tokens": 546,
+  "prompt_chars": 27617,
+  "response_chars": 1941,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"merged_discharge_path\",\n      \"name\": \"Merged Discharge Path\",\n      \"description\": \"Represents discharges handled through the combined task pathway (Merged 17+18). Advances avoidance of post-discharge deterioration and is judged against post-discharge ER return indicators.\",\n      \"anchor_ids\": [\n        \"17\"\n      ],\n      \"rationale\": \"Maps 1:1 to the declared alternative id=17 in the goal model for goal id=6. It realizes the alternative through merged discharge handling tasks as observed in the sample.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"release_c\",\n      \"name\": \"Release C\",\n      \"description\": \"Represents patient discharge via Release C. Aligns with goal id=6 alternatives, impacting post-discharge continuity and measured against return rates.\",\n      \"anchor_ids\": [\n        \"19\"\n      ],\n      \"rationale\": \"Maps 1:1 to the declared alternative id=19 in the goal model under goal id=6. Evidence is observed in variant V0710.\",\n      \"evidence_variant_ids\": [\n        \"V0710\"\n      ]\n    },\n    {\n      \"category_id\": \"release_d\",\n      \"name\": \"Release D\",\n      \"description\": \"Represents patient discharge via Release D. Contributes to safe patient transitions under goal id=6.\",\n      \"anchor_ids\": [\n        \"20\"\n      ],\n      \"rationale\": \"Maps 1:1 to the declared alternative id=20 in the goal model under goal id=6. Evidence is observed in variant V0273.\",\n      \"evidence_variant_ids\": [\n        \"V0273\"\n      ]\n    },\n    {\n      \"category_id\": \"release_e\",\n      \"name\": \"Release E\",\n      \"description\": \"Represents patient discharge via Release E. Fulfills the final disposition requirement under goal id=6.\",\n      \"anchor_ids\": [\n        \"21\"\n      ],\n      \"rationale\": \"Maps 1:1 to the declared alternative id=21 in the goal model under goal id=6 as a standard discharge route.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0040164
+}

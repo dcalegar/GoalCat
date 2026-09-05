@@ -1,0 +1,67 @@
+{
+  "categories": [
+    {
+      "category_id": "direct_payment",
+      "name": "Direct Payment",
+      "description": "Cases where the fine is created and promptly paid with little or no intermediate notification or administrative overhead.",
+      "anchor_ids": [],
+      "rationale": "High frequency of short traces ending in Payment directly after Create Fine or Send Fine.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0003",
+        "V0007",
+        "V0012"
+      ]
+    },
+    {
+      "category_id": "standard_fine_collection",
+      "name": "Standard Fine Collection",
+      "description": "Standard administrative path involving fine creation, sending, notifications, and penalties, ultimately ending in credit collection due to non-payment.",
+      "anchor_ids": [],
+      "rationale": "Represents the most common heavy-weight lifecycle leading to non-payment and debt collection.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0009",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "delayed_payment",
+      "name": "Delayed Payment with Penalties",
+      "description": "Cases that undergo standard notifications and penalty additions before eventually being settled via one or more payments over a longer duration.",
+      "anchor_ids": [],
+      "rationale": "Captures a high frequency of cases where penalties are added and payments occur significantly later than direct payment variants.",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0005",
+        "V0006"
+      ]
+    },
+    {
+      "category_id": "prefecture_appeal",
+      "name": "Prefecture Appeal Path",
+      "description": "Cases involving formal appeals submitted to the prefecture, sometimes resulting in prefecture review outcomes, additional notifications, and varied final resolutions.",
+      "anchor_ids": [],
+      "rationale": "Identifiable by the insertion of prefecture appeal dates and subsequent prefecture-related activities.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0057",
+        "V0137",
+        "V0138"
+      ]
+    },
+    {
+      "category_id": "rework_heavy_payment",
+      "name": "Rework-Heavy Payment",
+      "description": "Extreme or long traces characterized by repeated payment transactions spread out over extended durations.",
+      "anchor_ids": [],
+      "rationale": "Distinct pattern of exceptionally long traces consisting almost entirely of repeated payment steps.",
+      "evidence_variant_ids": [
+        "V0151",
+        "V0153",
+        "V0147",
+        "V0224"
+      ]
+    }
+  ]
+}

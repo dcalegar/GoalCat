@@ -48,13 +48,12 @@ decisions:
     governs: [rtfm, sepsis, bpic2019]
     status: decided
     value:
-      default: 50
+      default: 25
       # Per-dataset exceptions. Each must be justified on call-count/wall-clock accounting only
       # (Task C10), never against observed categorization quality. Empty = one value everywhere.
-      exceptions:
-        bpic2019: 25
+      exceptions: {}
     decided_on: "2026-08-19"
-    amended_on: "2026-08-29"
+    amended_on: "2026-09-04"
     rationale: >-
       50 everywhere (raised from 20), on call-count/wall-clock grounds only, per Task C10's
       required basis — not against observed categorization quality. Google AI Studio billing was
@@ -83,6 +82,22 @@ decisions:
       ~1,920, both far below the verified rate limits. This amends an as-yet-unexecuted portion
       of the decision (no frozen BPIC 2019 run had completed), so rtfm/sepsis results already
       produced under protocol_version 1.0.0 are unaffected and no version bump is required.
+      .
+      AMENDMENT 2026-09-04 — the bpic2019 exception is retired; batch_size 50 -> 25 becomes the
+      one value for all three datasets, under protocol_version 1.1.0. Rationale is uniformity, not
+      a new feasibility finding: with the exception in place, rtfm and sepsis's guided/open
+      contrasts ran under a different assignment mechanism than bpic2019's, which is a threat this
+      project can remove rather than merely disclose (the 2026-08-29 amendment's own reliability
+      finding already shows 50 is not a value every log tolerates, so 25 is the correct default,
+      not a compromise). rtfm's and sepsis's full E1/E2/C12 run sets are re-executed under 1.1.0 at
+      batch_size=25; C12 (Step 5a only, no Step 6) is unaffected by this parameter and is not
+      re-run. Estimated added cost ~$6-7 on top of the ~$3.5 already spent on these two logs at
+      batch 50 (analysis/cost.py), scaled from the 2026-08-29 amendment's own measured BPIC 2019
+      before/after ratio (calls ~964->~1,920, cost ~$18->~$32); reported exactly in the
+      regenerated cost.md rather than re-estimated in the paper. This closes Internal validity's
+      "fixed on wall-clock grounds rather than varied" clause (paperICPM27.tex, §Threats). It is
+      scoped to batch_size alone: bpic2019's separate axis-declaration prompt gap (§Discussion) is
+      untouched by this amendment.
 
   C6_sepsis_perturbations:
     task: C6
@@ -114,8 +129,9 @@ decisions:
       list"?
     governs: [rtfm, sepsis, bpic2019]
     status: decided
-    value: false
+    value: true
     decided_on: "2026-08-25"
+    amended_on: "2026-09-04"
     rationale: >-
       Not adopted for the minimum design. It remains the highest-value optional item and also
       its largest budget increase (a third full arm on every dataset). The confound it addresses -
@@ -130,6 +146,45 @@ decisions:
       not-goal-derived list of matching cardinality per log - not a config edit, and the paper's
       Threats section now describes the control as supported by the harness but never instantiated.
       Do it before any frozen run rather than after, per this file's own discipline.
+      .
+      AMENDMENT 2026-09-04 — adopted for rtfm and sepsis, on cost grounds only (Task C5's original
+      refusal was a scope/budget call, not a validity objection). configs/label_lists/rtfm.yaml
+      and configs/label_lists/sepsis.yaml were authored the same day, per conditions.py's
+      requirement, by Claude Sonnet 5 at the request of the paper's author, and reviewed and
+      approved by the author before this amendment was written — each file's own header records
+      its authoring method and independence from data/goals/*.jucm. bpic2019 is excluded from
+      this amendment's scope: its Step-6 assignment cost (~479 calls/condition at batch_size=25)
+      makes a third full arm there disproportionate to the finding's marginal value, the same
+      cost-driven scoping already applied to Experiment 2 (paperICPM27.tex, §Setup). sepsis's
+      label list runs once per dataset (protocol.py's effective_axis is None for this arm, as for
+      open), and was authored at cardinality 5 to match the discharge axis; against the admission
+      axis (|T^G|=2) the comparison is necessarily unmatched-cardinality, and that limitation must
+      be stated wherever admission-axis label_list numbers are reported. Two replicates per
+      dataset, mirroring the frozen open-arm replicate count, at an estimated cost under $0.50
+      total (analysis/cost.py's per-call averages: ~5 Step-6 calls for rtfm, ~17 for sepsis, no
+      Step-5 call for either since the taxonomy is supplied, not induced).
+      .
+      AMENDMENT 2026-09-04 (same day, second amendment) — added arm "label_list_strict": the same
+      supplied taxonomy as "label_list" but run under taxonomy_mode="intent_guided" for Step 6
+      instead of "open" (protocol.py's _TAXONOMY_MODE_BY_ARM), so it isolates the fourth
+      co-varying factor this task's rationale names — the assignment prompt's stricter "must
+      satisfy" criterion — from the goal-derived content of the guided taxonomy, which "label_list"
+      alone leaves conflated with the criterion. Not in _GOAL_MODEL_ARMS, so it still reads no goal
+      model. Run on rtfm and sepsis at two replicates each, ~$0.4 total (assignment-only, same
+      per-call basis as the first amendment).
+      .
+      AMENDMENT 2026-09-04 (third amendment, same day) — bpic2019 brought into scope for both
+      "label_list" and "label_list_strict", superseding the first amendment's exclusion. That
+      exclusion was cost-driven, not a validity objection (as stated above), and the paper's own
+      Threats section (Construct validity) now reports the label-list finding as extending to two
+      of three logs only; closing that gap is worth the spend. configs/label_lists/bpic2019.yaml
+      was authored the same day, by Claude Sonnet 5 at the request of the paper's author, reviewed
+      and approved by the author before this amendment was written, at cardinality 4 to match
+      bpic2019's guided taxonomy (|T^G|=4, Table setup) — a matched-cardinality comparison, unlike
+      sepsis's admission-axis row. Two replicates per arm (four conditions total), at an estimated
+      ~$12-13 (analysis/cost.py: bpic2019's ~479 Step-6 calls/condition at batch_size=25, ~$3.13/
+      condition on this endpoint's measured per-call cost), bringing the whole study's total to
+      roughly $35-36. No Step-5 call for either arm, as above.
 
   D6_open_arm_steps_7_9:
     task: D6

@@ -4,11 +4,11 @@
   "backend": "remote",
   "temperature": 0.0,
   "prompt_hash": "e5f45cf2cb52f102",
-  "latency_seconds": 2.740345582998998,
+  "latency_seconds": 2.5189490420016227,
   "input_tokens": 2029,
-  "output_tokens": 266,
+  "output_tokens": 253,
   "prompt_chars": 8484,
-  "response_chars": 997,
-  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Normal Care Admission\",\n      \"description\": \"Patient is admitted to a normal care inpatient ward (Admission NC), advancing the standard treatment pathway without intensive care requirements.\",\n      \"anchor_ids\": [\n        \"15\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared alternative Admission NC (id=15) under the OR-decomposition of goal id=5.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Intensive Care Admission\",\n      \"description\": \"Patient is admitted to an intensive care inpatient ward (Admission IC). This path involves intensive monitoring but carries a negative contribution (-25) to the softgoal Minimize time-to-treatment.\",\n      \"anchor_ids\": [\n        \"16\"\n      ],\n      \"rationale\": \"Mapped 1:1 to the declared alternative Admission IC (id=16) under the OR-decomposition of goal id=5.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
-  "estimated_cost_usd": 0.0012736999999999998
+  "response_chars": 1039,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"admission_nc\",\n      \"name\": \"Admission to Normal Care (NC)\",\n      \"description\": \"Patient is admitted to a normal care inpatient ward (Admission NC), advancing treatment pathways while balancing resource utilization.\",\n      \"anchor_ids\": [\"15\"],\n      \"rationale\": \"Mapped 1:1 to declared alternative id=15 under the OR decomposition of goal id=5, representing standard inpatient ward admission.\",\n      \"evidence_variant_ids\": []\n    },\n    {\n      \"category_id\": \"admission_ic\",\n      \"name\": \"Admission to Intensive Care (IC)\",\n      \"description\": \"Patient is admitted to the intensive care unit (Admission IC), advancing clinical stabilization while carrying a SomeNegative contribution to minimizing time-to-treatment due to specialized coordination overhead.\",\n      \"anchor_ids\": [\"16\"],\n      \"rationale\": \"Mapped 1:1 to declared alternative id=16 under the OR decomposition of goal id=5, representing intensive care ward admission.\",\n      \"evidence_variant_ids\": []\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0012411999999999998
 }

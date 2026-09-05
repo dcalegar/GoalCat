@@ -1,0 +1,73 @@
+{
+  "categories": [
+    {
+      "category_id": "rapid_assessment_triage",
+      "name": "Rapid Assessment and Triage",
+      "description": "Short, fast-tracked patient encounters consisting strictly of initial registration, triage, and basic blood work or diagnostics without admission or intensive intervention, resulting in quick release or completion within minutes.",
+      "anchor_ids": [],
+      "rationale": "Groups low-duration, low-length variants where patients undergo immediate screening and initial diagnostic labs (CRP, Leucocytes) and are resolved rapidly.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0002",
+        "V0003",
+        "V0005",
+        "V0694",
+        "V0292",
+        "V0010"
+      ]
+    },
+    {
+      "category_id": "acute_emergency_treatment",
+      "name": "Acute Emergency Treatment",
+      "description": "Patient paths that involve immediate stabilization via IV fluids and IV antibiotics following triage and lab work, representing acute medical management within the emergency setting.",
+      "anchor_ids": [],
+      "rationale": "Characterized by moderate duration and intermediate trace lengths where administration of IV fluids and antibiotics is the core intervention.",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0006",
+        "V0007",
+        "V0009",
+        "V0036"
+      ]
+    },
+    {
+      "category_id": "inpatient_admission_recovery",
+      "name": "Inpatient Admission and Recovery",
+      "description": "Encounters requiring formal hospital admission (NC or IC) following initial emergency stabilization and diagnostics, ultimately culminating in a successful discharge or release category.",
+      "anchor_ids": [],
+      "rationale": "Captured by variants showing transition from ER activities to ward admissions (Admission NC/IC) and subsequent releases (Release A, B, C, D).",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0068",
+        "V0145",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063",
+        "V0710",
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "chronic_rework_readmission",
+      "name": "Chronic Rework and Readmission",
+      "description": "Complex, highly prolonged variants featuring extensive repetition of diagnostic tests (CRP, Leucocytes, LacticAcid) and ward readmissions, frequently ending in a return to the emergency room or prolonged stays spanning months.",
+      "anchor_ids": [],
+      "rationale": "Clearly separated by extreme duration (up to hundreds of days), massive trace lengths, and explicit rework flags on diagnostic activities.",
+      "evidence_variant_ids": [
+        "V0625",
+        "V0605",
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0072",
+        "V0071"
+      ]
+    }
+  ]
+}

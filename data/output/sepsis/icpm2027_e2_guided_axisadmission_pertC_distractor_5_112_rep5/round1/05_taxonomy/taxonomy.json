@@ -1,0 +1,62 @@
+{
+  "categories": [
+    {
+      "category_id": "admission_nc",
+      "name": "Admission to Normal Care",
+      "description": "Patient is admitted to a normal care inpatient ward (Admission NC), supporting general inpatient stabilization and discharge pathways without intensive or high-dependency intervention.",
+      "anchor_ids": [
+        "15"
+      ],
+      "rationale": "Maps 1:1 to declared alternative id=15 from the OR decomposition of goal id=5. Supported by frequent sampled variants such as V0008, where normal care admission leads to subsequent release or further observation.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0625",
+        "V0605",
+        "V0551",
+        "V0449",
+        "V0192",
+        "V0441",
+        "V0317",
+        "V0273",
+        "V0068",
+        "V0072",
+        "V0071",
+        "V0070",
+        "V0069",
+        "V0067",
+        "V0066",
+        "V0065",
+        "V0064",
+        "V0063",
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "admission_ic",
+      "name": "Admission to Intensive Care",
+      "description": "Patient is admitted to an Intensive Care unit (Admission IC), reflecting higher acuity treatment needs. Note that Admission IC carries a negative contribution (-25) to minimizing time-to-treatment in the goal model context.",
+      "anchor_ids": [
+        "16"
+      ],
+      "rationale": "Maps 1:1 to declared alternative id=16 from the OR decomposition of goal id=5. Supported by sampled variants like V0605 and V0317 where intensive care admission is explicitly observed.",
+      "evidence_variant_ids": [
+        "V0605",
+        "V0551",
+        "V0317",
+        "V0273",
+        "V0068",
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "admission_hdu",
+      "name": "Admission to High-Dependency Unit",
+      "description": "Patient is admitted to a High-Dependency Unit (Admission to High-Dependency Unit) to receive intermediate level care between normal ward and intensive care.",
+      "anchor_ids": [
+        "112"
+      ],
+      "rationale": "Maps 1:1 to declared alternative id=112 from the OR decomposition of goal id=5. Maintained as a distinct declared alternative despite lower direct frequency in the sample, following the rule that lack of frequent samples does not merge a declared alternative.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

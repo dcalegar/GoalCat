@@ -1,0 +1,847 @@
+variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
+V0001,,The narrative ends at ER Sepsis Triage and does not reach a discharge pathway.,,release_c,4.0,,0.4790303409099579
+V0002,,The narrative ends at CRP and does not reach a discharge pathway.,,release_c,2.0,,0.46623495221138
+V0003,,The narrative ends at Leucocytes and does not reach a discharge pathway.,,release_c,2.0,,0.4731513559818268
+V0004,,The narrative ends at IV Antibiotics without reaching a discharge pathway.,,release_c,2.0,,0.4355141818523407
+V0005,,The narrative ends at LacticAcid and does not reach a discharge pathway.,,release_c,2.0,,0.46753478050231934
+V0006,,The narrative ends at IV Antibiotics without reaching a discharge pathway.,,release_d,2.0,,0.41305819153785706
+V0007,,The narrative ends at IV Antibiotics without reaching a discharge pathway.,,release_c,3.0,,0.40601637959480286
+V0008,release_c,The narrative ends with Release A (Release C pathway equivalent) following admission.,8.0,release_d,2.0,0.6923930048942566,0.3369273245334625
+V0009,,The narrative ends at IV Antibiotics without reaching a discharge pathway.,,release_c,2.0,,0.4241449534893036
+V0010,,The narrative ends at ER Sepsis Triage and does not reach a discharge pathway.,,release_c,3.0,,0.42874225974082947
+V0011,,The narrative ends at IV Antibiotics without reaching a discharge pathway.,,release_c,3.0,,0.4091663360595703
+V0012,,The narrative ends at IV Antibiotics without reaching a discharge pathway.,,release_c,3.0,,0.4694965183734894
+V0013,,The narrative ends at Leucocytes and does not reach a discharge pathway.,,release_c,3.0,,0.4569317102432251
+V0014,release_c,"The narrative leads to Release A following admission, realizing Release C.",9.0,merged_discharge,2.0,0.6882480978965759,0.34107232093811035
+V0015,release_c,"The narrative leads to Release A following admission, realizing Release C.",3.0,release_d,3.0,0.3661614954471588,0.3531383275985718
+V0016,release_c,"The narrative leads to Release A following admission, realizing Release C.",5.0,merged_discharge,2.0,0.3537273108959198,0.340704083442688
+V0017,,The narrative ends at ER Sepsis Triage and does not reach a discharge pathway.,,release_c,3.0,,0.4570414125919342
+V0018,release_c,"The narrative leads to Release A following admission, realizing Release C.",7.0,merged_discharge,2.0,0.6873548626899719,0.34196552634239197
+V0019,,The narrative ends at IV Antibiotics without reaching a discharge pathway.,,release_c,4.0,,0.42465007305145264
+V0020,,The narrative ends at CRP and does not reach a discharge pathway.,,release_c,4.0,,0.46880826354026794
+V0021,merged_discharge,"The narrative results in a Return ER indicator following discharge, mapping to the Merged Discharge category tracking post-discharge deterioration.",0.0,release_c,3.0,0.00461190240457654,0.005273167043924332
+V0022,release_c,"The narrative leads to Release A following admission, realizing Release C.",7.0,merged_discharge,3.0,0.6868130564689636,0.34250733256340027
+V0023,merged_discharge,"The narrative results in a Return ER indicator following discharge, mapping to the Merged Discharge category tracking post-discharge deterioration.",3.0,release_c,4.0,0.0,0.009885069914162159
+V0024,,The narrative ends at Admission NC without completing a discharge pathway.,,release_c,4.0,,0.41704174876213074
+V0025,,The narrative ends at IV Antibiotics without reaching a discharge pathway.,,release_c,4.0,,0.41164445877075195
+V0026,merged_discharge,"The variant ends with Return ER after Release A, matching the merged discharge pathway involving post-discharge ER return indicators.",3.0,release_c,2.0,0.19100594520568848,0.1811208873987198
+V0027,,The variant ends with IV Antibiotics and does not reach any discharge or release outcome.,,release_c,4.0,,0.4068181812763214
+V0028,merged_discharge,"The variant ends with Return ER after Release A, tracking post-discharge deterioration as measured by ER return.",4.0,release_c,3.0,0.027264675125479698,0.007231835275888443
+V0029,,The variant terminates at Leucocytes without completing a discharge pathway.,,release_c,4.0,,0.4595734179019928
+V0030,release_c,"The variant concludes with Release A, corresponding to captured discharge alternatives evaluated against performance indicators.",5.0,merged_discharge,4.0,0.355057030916214,0.34203386306762695
+V0031,,The variant terminates at LacticAcid without reaching a discharge or release state.,,release_c,4.0,,0.44396302103996277
+V0032,merged_discharge,"The variant shows Release A followed by Return ER, matching the merged discharge pathway with post-discharge ER returns.",5.0,release_c,4.0,0.02426167018711567,0.01437660213559866
+V0033,merged_discharge,"The variant culminates in Return ER following Release A, fitting the merged discharge pathway.",3.0,release_c,2.0,0.2109108418226242,0.16679668426513672
+V0034,,The variant ends at IV Liquid and lacks any discharge activity.,,release_c,2.0,,0.3656522035598755
+V0035,release_c,"The variant concludes with Release A, representing a standard captured discharge outcome.",4.0,release_d,4.0,0.3336624205112457,0.3353627026081085
+V0036,,The variant ends prematurely at CRP and does not reach a discharge outcome.,,release_d,4.0,,0.47411593794822693
+V0037,release_d,"The variant concludes with Release B, mapping to captured discharge alternatives evaluated against performance indicators.",13.0,release_c,2.0,0.7203038334846497,0.3369273245334625
+V0038,,The variant ends with IV Antibiotics and does not involve any discharge.,,release_c,3.0,,0.4081854522228241
+V0039,release_c,"The variant results in Release A, aligning with captured discharge outcomes.",5.0,merged_discharge,4.0,0.44520553946495056,0.33402135968208313
+V0040,,The variant ends with Admission NC and does not progress to a final discharge or release outcome.,,release_c,3.0,,0.403452068567276
+V0041,release_c,"The variant concludes with Release A, matching captured discharge outcomes.",5.0,merged_discharge,3.0,0.4688534736633301,0.33535662293434143
+V0042,release_c,"The variant concludes with Release A, matching captured discharge outcomes.",5.0,merged_discharge,3.0,0.35636821389198303,0.3433450162410736
+V0043,,The variant terminates at LacticAcid without reaching a discharge pathway.,,release_c,2.0,,0.45636415481567383
+V0044,release_c,"The variant concludes with Release A, aligning with captured discharge outcomes.",5.0,merged_discharge,3.0,0.35944876074790955,0.34642553329467773
+V0045,merged_discharge,"The variant leads to Return ER after Release A, satisfying the merged discharge pathway with ER return indicators.",6.0,release_c,2.0,0.3368690311908722,0.3387773036956787
+V0046,release_c,"The variant ends with Release A, representing a captured discharge outcome.",5.0,merged_discharge,4.0,0.3407994508743286,0.3337673246860504
+V0047,release_c,"The variant concludes with Release A, reflecting a captured discharge outcome.",7.0,merged_discharge,3.0,0.7075799107551575,0.3449261486530304
+V0048,release_c,"The variant ends with Release A, matching captured discharge outcomes.",5.0,release_d,2.0,0.3434470593929291,0.3355468809604645
+V0049,merged_discharge,"The variant ends in Return ER after Release A, matching the merged discharge pathway with post-discharge ER return indicators.",4.0,release_c,5.0,0.051355015486478806,0.007240867242217064
+V0050,,The variant terminates at CRP without reaching a discharge or release outcome.,,release_c,3.0,,0.4602445065975189
+V0051,,"The narrative ends with Release A, which does not map to any of the specific discharge alternatives (merged_discharge, release_c, release_d, release_e) in the taxonomy.",,release_c,2.0,,0.011336692608892918
+V0052,,"The outcome is Return ER following Release A, which is not captured by the specified taxonomy categories.",,release_c,1.0,,0.0011550614144653082
+V0053,,"The narrative concludes with Release A, outside the scope of the defined taxonomy alternatives.",,release_c,2.0,,0.002903180895373225
+V0054,,"The pathway results in Return ER after Release A, which does not match any category_id.",,merged_discharge,1.0,,0.0008676698780618608
+V0055,,The variant ends with Return ER after Release A and does not match the target categories.,,release_c,1.0,,0.016950344666838646
+V0056,,The variant terminates at IV Antibiotics rather than a recognized discharge category.,,release_c,3.0,,0.4393429756164551
+V0057,,"The variant ends with Release A, which is not part of the taxonomy.",,release_c,2.0,,0.0005718793836422265
+V0058,,"The narrative ends with Release A, which does not fit the taxonomy categories.",,release_c,1.0,,0.004673418588936329
+V0059,,"The process terminates with Release A, which is outside the defined taxonomy.",,release_c,2.0,,0.0022903818171471357
+V0060,,"The variant leads to Return ER following Release A, fitting none of the specified categories.",,release_c,3.0,,0.0018295705085620284
+V0061,,"The narrative concludes with Release A, which does not map to the taxonomy.",,release_d,2.0,,0.001824133680202067
+V0062,,The variant stops at IV Antibiotics and does not realize a discharge category.,,release_c,2.0,,0.41568124294281006
+V0063,,"The process ends with Release A, which is not included in the taxonomy categories.",,release_c,8.0,,0.010391617193818092
+V0064,,"The narrative concludes with Release A, outside the defined alternatives.",,release_c,3.0,,0.16752056777477264
+V0065,,"The variant terminates with Release A, which does not match any category.",,release_c,2.0,,0.008531120605766773
+V0066,,"The process ends with Release A, fitting none of the taxonomy choices.",,release_c,3.0,,0.003362850984558463
+V0067,,"The narrative ends with Release A, outside the target taxonomy.",,merged_discharge,3.0,,0.0037785079330205917
+V0068,,"The variant terminates with Release B, which is not represented in the taxonomy.",,merged_discharge,5.0,,0.34092283248901367
+V0069,,"The narrative concludes with Release A, which does not match any taxonomy category.",,release_c,3.0,,0.002566380426287651
+V0070,,"The process ends with Release A, fitting none of the specified categories.",,release_d,2.0,,0.16709209978580475
+V0071,,"The variant results in Return ER after Release A, matching none of the taxonomy goals.",,merged_discharge,4.0,,0.0008149051573127508
+V0072,,"The narrative ends in Return ER after Release A, which is outside the taxonomy.",,release_c,3.0,,0.012050874531269073
+V0073,,"The variant terminates with Release A, mapping to no taxonomy category.",,release_c,2.0,,0.0015468252822756767
+V0074,,"The process concludes with Return ER following Release A, fitting none of the alternatives.",,merged_discharge,3.0,,0.05876186490058899
+V0075,,"The narrative ends in Return ER after Release A, which does not match the taxonomy categories.",,merged_discharge,5.0,,0.017104841768741608
+V0076,,"The narrative ends in Release B, which does not match any of the designated discharge categories (merged_discharge, release_c, release_d, release_e).",,release_d,3.0,,0.0065433369018137455
+V0077,,"The narrative ends in Release B, which does not match any of the designated discharge categories.",,release_e,4.0,,0.34396088123321533
+V0078,,"The narrative ends in Return ER following Release A, which does not map to the specified target categories.",,release_e,5.0,,0.007812818512320518
+V0079,,"The narrative ends in Release A, which is outside the target taxonomy categories.",,release_c,3.0,,0.16712866723537445
+V0080,,"The narrative ends in Return ER after Release A, which is not represented in the target taxonomy.",,merged_discharge,5.0,,0.03577690199017525
+V0081,,The process terminates at IV Liquid and does not reach a discharge outcome.,,release_d,3.0,,0.4463079869747162
+V0082,,"The narrative ends in Release A, which is not part of the target categories.",,release_c,3.0,,0.22794876992702484
+V0083,,"The narrative results in a Return ER outcome after Release A, falling outside the target taxonomy.",,merged_discharge,4.0,,0.0022808730136603117
+V0084,release_c,"The narrative successfully concludes with Release C, realizing the Release C alternative.",5.0,release_d,4.0,0.008998928591609001,0.33443212509155273
+V0085,,"The narrative ends in Return ER after Release A, which does not fit the target categories.",,release_c,2.0,,0.0034540959168225527
+V0086,,"The narrative ends in Release A, which is not one of the targeted release categories.",,release_d,3.0,,0.002068821107968688
+V0087,,"The narrative ends in Release A, outside the scope of the target categories.",,release_c,3.0,,0.006893863435834646
+V0088,,The process terminates at IV Antibiotics without reaching a discharge destination.,,release_c,4.0,,0.4632725715637207
+V0089,,"The narrative ends in Return ER following Release A, which does not match the target categories.",,merged_discharge,6.0,,0.007727517280727625
+V0090,,"The narrative ends in Release A, which is not among the target release categories.",,release_c,3.0,,0.0014553748769685626
+V0091,release_c,"The narrative concludes with Release C, thereby realizing the Release C category.",13.0,release_d,9.0,0.1806098371744156,0.34005212783813477
+V0092,,The process stops at LacticAcid without completing a discharge pathway.,,merged_discharge,4.0,,0.36658036708831787
+V0093,release_d,"The narrative concludes with Release D, realizing the Release D category.",6.0,release_c,3.0,0.14002251625061035,0.33444321155548096
+V0094,,"The narrative terminates with Return ER after Release A, which is not captured by the target categories.",,merged_discharge,2.0,,0.0017550437478348613
+V0095,,"The narrative ends in Release A, which is outside the specified target categories.",,release_e,2.0,,0.0021963289473205805
+V0096,,"The narrative ends in Release A, which does not match the target release categories.",,release_c,1.0,,0.3356447219848633
+V0097,,"The narrative concludes with Release A, failing to align with the target categories.",,release_c,1.0,,0.008320781402289867
+V0098,,"The narrative ends in Return ER following Release A, which is not in the target taxonomy.",,release_c,2.0,,0.23451322317123413
+V0099,,"The narrative ends in Release A, which is outside the targeted release categories.",,release_c,2.0,,0.0027389859315007925
+V0100,,"The narrative ends in Release A, not matching any of the specified target categories.",,merged_discharge,1.0,,0.002580020111054182
+V0101,,"The narrative ends with Release A followed by Return ER, which does not map to any of the specific discharge alternatives (merged_discharge, release_c, release_d, release_e).",,merged_discharge,4.0,,0.0013764862669631839
+V0102,,"The narrative ends with Release A, which does not correspond to any of the specified target discharge categories.",,release_c,3.0,,0.011136493645608425
+V0103,,"The narrative concludes with Release A, which does not match the defined discharge pathways in the taxonomy.",,release_c,5.0,,0.0010904624359682202
+V0104,,"The narrative ends with Release A and subsequent Return ER, which is outside the scope of the target categories.",,merged_discharge,2.0,,0.033884577453136444
+V0105,,"The narrative terminates with Release B, which is not included in the target categories.",,release_d,7.0,,0.3333390951156616
+V0106,,"The narrative ends with Release A, fitting none of the specified taxonomy categories.",,release_c,3.0,,0.0877656415104866
+V0107,,"The narrative concludes with Release A, which does not realize any of the defined discharge alternatives.",,release_c,4.0,,0.0008179508149623871
+V0108,,"The narrative terminates with Release A and a Return ER, fitting none of the designated taxonomy categories.",,merged_discharge,2.0,,0.0033438110258430243
+V0109,,"The narrative results in Release A followed by Return ER, matching none of the category definitions.",,merged_discharge,2.0,,0.11197053641080856
+V0110,,"The narrative ends with Release A and a Return ER, which is not covered by the target categories.",,release_c,2.0,,0.03792121633887291
+V0111,,The narrative terminates at Admission NC without a final discharge outcome corresponding to the taxonomy.,,release_c,3.0,,0.4090581238269806
+V0112,,"The narrative concludes with Release A and Return ER, falling outside the target category definitions.",,merged_discharge,3.0,,0.009601925499737263
+V0113,,"The narrative ends with Release B, which is absent from the target taxonomy categories.",,release_c,3.0,,0.3506373167037964
+V0114,,"The narrative terminates with Release A, which is not represented in the categories.",,release_c,3.0,,0.005268502980470657
+V0115,,"The narrative ends with Release A followed by Return ER, matching none of the specified alternatives.",,merged_discharge,4.0,,0.0020913672633469105
+V0116,,"The narrative ends with Release A and Return ER, which does not fit any of the taxonomy categories.",,release_c,1.0,,0.0038859627675265074
+V0117,release_d,"The narrative explicitly culminates in Release D, matching alternative 20 evaluated against post-discharge performance indicators.",7.0,merged_discharge,5.0,0.3800358474254608,0.0627354308962822
+V0118,,"The narrative terminates with Release A, which does not match any of the defined target categories.",,release_c,3.0,,0.02245904505252838
+V0119,,"The narrative concludes with Release A, fitting none of the specified taxonomy options.",,merged_discharge,3.0,,0.0008743650396354496
+V0120,,"The narrative results in Release A and subsequent Return ER, which is outside the target taxonomy.",,merged_discharge,5.0,,0.17297738790512085
+V0121,,"The narrative terminates with Release A and a Return ER, matching none of the defined categories.",,merged_discharge,2.0,,0.0007203731220215559
+V0122,,"The narrative ends with Release A, which is not included in the target category definitions.",,release_c,1.0,,0.02260284684598446
+V0123,,"The narrative concludes with Release A followed by Return ER, fitting none of the specified discharge alternatives.",,release_c,6.0,,0.00400783633813262
+V0124,,"The narrative ends with Release A and Return ER, falling outside the scope of the taxonomy categories.",,merged_discharge,1.0,,0.01592422090470791
+V0125,,"The narrative terminates with Release A and a Return ER, which does not map to any of the target categories.",,merged_discharge,8.0,,0.04005826637148857
+V0126,,"The narrative ends with Return ER and does not match any of the specified release categories (merged_discharge, release_c, release_d, release_e).",,merged_discharge,3.0,,0.13412079215049744
+V0127,,The narrative ends with LacticAcid and does not match any of the specified release categories.,,release_c,3.0,,0.6076318621635437
+V0128,,The narrative ends with Return ER and does not match any of the specified release categories.,,release_e,10.0,,0.02720847725868225
+V0129,,The narrative ends with Return ER and does not match any of the specified release categories.,,release_c,15.0,,0.0024876133538782597
+V0130,,"The narrative ends with Release A, which does not map to merged_discharge, release_c, release_d, or release_e.",,release_c,3.0,,0.002387170447036624
+V0131,,The narrative ends with Return ER and does not match any of the specified release categories.,,merged_discharge,3.0,,0.24110810458660126
+V0132,,The narrative ends with IV Antibiotics and does not match any of the specified release categories.,,release_c,6.0,,0.3821479380130768
+V0133,,The narrative ends with IV Antibiotics and does not match any of the specified release categories.,,release_c,7.0,,0.6140836477279663
+V0134,,The narrative ends with Return ER and does not match any of the specified release categories.,,release_d,11.0,,0.0031509532127529383
+V0135,,"The narrative ends with Release A, which does not match any of the target categories.",,release_c,3.0,,0.0012829260667786002
+V0136,,The narrative ends with Return ER and does not match any of the specified release categories.,,release_e,11.0,,0.0030190572142601013
+V0137,,The narrative ends with LacticAcid and does not match any of the specified release categories.,,release_d,2.0,,0.38333025574684143
+V0138,release_c,"The narrative ends with Release C, directly realizing the category_id release_c.",2.0,release_d,4.0,0.00830641109496355,0.33373960852622986
+V0139,,"The narrative ends with Release A, which does not match any of the target release categories.",,release_d,14.0,,0.1681409627199173
+V0140,,The narrative ends with Return ER and does not match any of the specified release categories.,,merged_discharge,5.0,,0.004738577641546726
+V0141,,The narrative ends with Return ER and does not match any of the specified release categories.,,release_c,7.0,,0.0189781803637743
+V0142,,"The narrative ends with Release A, which does not match any of the target release categories.",,merged_discharge,2.0,,0.0023784309159964323
+V0143,,The narrative ends with Return ER and does not match any of the specified release categories.,,release_c,3.0,,0.006390223279595375
+V0144,,"The narrative ends with Release A, which does not match any of the target release categories.",,release_c,5.0,,0.00833226926624775
+V0145,,"The narrative ends with Release B, which does not match any of the target categories (merged_discharge, release_c, release_d, release_e).",,release_d,57.0,,0.34970128536224365
+V0146,,The narrative ends with Leucocytes and does not match any of the specified release categories.,,release_c,6.0,,0.5941699147224426
+V0147,,"The narrative ends with Release B, which does not match any of the target categories.",,release_c,3.0,,0.34268462657928467
+V0148,,The narrative ends with IV Antibiotics and does not match any of the specified release categories.,,release_c,2.0,,0.4017051160335541
+V0149,,"The narrative ends with Release A, which does not match any of the target release categories.",,release_c,5.0,,0.001565474085509777
+V0150,,"The narrative ends with Release B, which does not match any of the target categories.",,release_c,6.0,,0.33352211117744446
+V0151,release_d,"The narrative terminates with Release D, directly realizing the alternative 20 discharge pathway.",15.0,release_c,10.0,0.44845911860466003,0.02361365407705307
+V0152,,"The narrative outcome is Release A, which does not correspond to any of the defined taxonomy categories (merged_discharge, release_c, release_d, release_e).",,release_c,6.0,,0.23049725592136383
+V0153,,"The narrative outcome is Release A, which is outside the scope of the taxonomy categories.",,release_c,3.0,,0.007805280853062868
+V0154,,"The narrative outcome is Release A, which does not match any category in the taxonomy.",,merged_discharge,5.0,,0.002719367854297161
+V0155,,"The narrative ends with Release A, fitting none of the specified discharge alternatives.",,merged_discharge,4.0,,0.008797337301075459
+V0156,,"The narrative ends with Release A, which is not part of the defined category set.",,release_c,2.0,,0.2293475717306137
+V0157,,"The final activity is Release A, leaving it outside the target categories.",,release_c,6.0,,0.0014119163388386369
+V0158,,"The narrative concludes with Release A, which does not realize any of the taxonomy options.",,release_c,3.0,,0.002196806250140071
+V0159,,"The variant results in Release A, making it part of the residual.",,release_c,3.0,,0.0018563204212114215
+V0160,,"The narrative ends with Release A, failing to match any taxonomy category.",,release_c,3.0,,0.004806386306881905
+V0161,,"The narrative outcome is Release A, which is not represented in the taxonomy categories.",,merged_discharge,4.0,,0.017087256535887718
+V0162,,"The narrative ends with Release B, which does not match merged_discharge, release_c, release_d, or release_e.",,release_c,3.0,,0.33477774262428284
+V0163,,"The narrative terminates with Release A, placing it in the residual.",,merged_discharge,4.0,,0.0034038142766803503
+V0164,,"The narrative concludes with Release A, which falls outside the target categories.",,release_d,6.0,,0.006261757109314203
+V0165,,"The variant ends with Release A, not matching any taxonomy definition.",,release_c,2.0,,0.005454749334603548
+V0166,,"The narrative outcome is Release A, which is not in the taxonomy.",,release_c,6.0,,0.003889942541718483
+V0167,,"The final activity is Release A, corresponding to none of the category alternatives.",,release_c,8.0,,0.11167770624160767
+V0168,,"The narrative terminates with Release A, leaving it unassigned.",,merged_discharge,8.0,,0.02736610174179077
+V0169,,"The narrative ends with Release A, which does not fit the taxonomy.",,release_c,2.0,,0.005343219265341759
+V0170,,"The narrative outcome is Release B, which is outside the specified categories.",,release_c,3.0,,0.3386746942996979
+V0171,,"The narrative results in Release A, not realizing any taxonomy category.",,release_d,6.0,,0.006870793178677559
+V0172,,"The narrative ends with Release A, fitting none of the alternatives.",,release_c,8.0,,0.004547347780317068
+V0173,,"The narrative concludes with Release A, falling into the residual.",,release_d,5.0,,0.0002571165969129652
+V0174,,"The variant ends with Release A, which is not part of the taxonomy.",,release_d,23.0,,0.009814383462071419
+V0175,,"The narrative terminates with Release A, leaving it unassigned to any taxonomy category.",,merged_discharge,2.0,,0.008534817956387997
+V0176,,"The outcome is Release A, which does not map to any of the specified taxonomy categories (merged_discharge, release_c, release_d, release_e).",,merged_discharge,6.0,,0.0006053470424376428
+V0177,,"The outcome is Release A, which does not fit the target categories defined in the taxonomy.",,release_d,3.0,,0.009403836913406849
+V0178,,"The narrative ends with Release A and does not correspond to alternative 17, 19, 20, or 21.",,release_c,10.0,,0.025998905301094055
+V0179,,"The narrative concludes with Release A followed by Return ER, which does not match the criteria for the specified taxonomy categories.",,merged_discharge,3.0,,0.007021170109510422
+V0180,,"The outcome is Release A followed by Return ER, not matching any targeted discharge pathway.",,release_c,5.0,,0.23568369448184967
+V0181,,"The variant ends in Leucocytes, which does not realize any of the discharge categories.",,release_e,6.0,,0.3370112180709839
+V0182,,"The outcome is Release A, outside the scope of merged_discharge, release_c, release_d, or release_e.",,release_c,12.0,,0.09075874835252762
+V0183,,"The workflow ends with Release A before a Return ER, not mapping to the requested taxonomy alternatives.",,release_d,7.0,,0.013016493059694767
+V0184,,"The outcome is Release A, which does not realize any of the defined taxonomy categories.",,merged_discharge,2.0,,0.1136605441570282
+V0185,,"The variant results in Release A, with no correspondence to the specified alternatives.",,release_c,11.0,,0.09830870479345322
+V0186,,"The outcome is Release A, which is not part of the target taxonomy pathways.",,release_d,4.0,,0.08511346578598022
+V0187,,"The sequence terminates at CRP, lacking a proper discharge or matching category outcome.",,release_c,4.0,,0.37563228607177734
+V0188,,"The narrative ends with Release A, failing to align with the goal-model alternatives.",,release_c,3.0,,0.11384724825620651
+V0189,,"The outcome is Release A, which does not map to any category in the taxonomy.",,release_c,3.0,,0.002761597977951169
+V0190,,"The variant ends with Release A, outside the defined alternatives 17, 19, 20, or 21.",,merged_discharge,2.0,,0.1688893586397171
+V0191,,"The outcome is Release A followed by Return ER, which does not fit the taxonomy definitions.",,release_d,6.0,,0.0020415193866938353
+V0192,,"The narrative ends with Release A and a subsequent Return ER, not realizing any target category.",,release_d,3.0,,0.023688888177275658
+V0193,,"The outcome is Release A, which is not covered by the taxonomy categories.",,release_d,6.0,,0.011329666711390018
+V0194,,"The variant results in Release A, failing to match any category.",,merged_discharge,2.0,,0.0002103931619785726
+V0195,,"The workflow ends with Release A, which does not map to the required discharge alternatives.",,release_c,2.0,,0.002070288872346282
+V0196,release_e,"The narrative explicitly culminates in Release E, directly realizing the pathway mapped to alternative 21.",24.0,release_d,15.0,0.37534478306770325,0.003502768697217107
+V0197,,"The sequence ends at Leucocytes, which is not a discharge or a realized taxonomy category.",,release_c,2.0,,0.5680871605873108
+V0198,,"The narrative concludes with Release A, which does not fit any of the valid category options.",,release_c,2.0,,0.22321605682373047
+V0199,,"The outcome involves Release A and Return ER, falling outside the defined taxonomy categories.",,merged_discharge,4.0,,0.0016942891525104642
+V0200,,"The variant ends with Release A before a Return ER, failing to match any taxonomy category.",,merged_discharge,1.0,,0.006864683236926794
+V0201,,The narrative ends with Return ER and does not match any of the specified release categories or merged discharge pathways.,,release_d,12.0,,0.010391023941338062
+V0202,,"The narrative results in Release A, which does not correspond to merged_discharge, release_c, release_d, or release_e.",,release_c,2.0,,0.0017522848211228848
+V0203,,"The narrative terminates with Return ER, which does not fit any taxonomy categories.",,merged_discharge,5.0,,7.097923662513494e-05
+V0204,,"The narrative concludes with Release A, which is outside the defined taxonomy categories.",,release_c,2.0,,0.00023297588631976396
+V0205,release_d,"The narrative ends with Release D, directly realizing the category representing alternative 20 for captured discharge.",17.0,release_e,9.0,0.012281385250389576,0.3344767391681671
+V0206,,"The narrative results in Release B, which is not part of the defined taxonomy categories.",,release_c,3.0,,0.013793335296213627
+V0207,,"The narrative ends with Release A, which does not match any category in the taxonomy.",,release_c,2.0,,0.0017858132487162948
+V0208,,"The narrative concludes with Release A, not fitting the specified release categories.",,release_c,7.0,,0.009225583635270596
+V0209,,"The narrative ends with Release A, which is not included in the taxonomy.",,release_c,2.0,,0.0063528516329824924
+V0210,,"The narrative results in Return ER, which falls outside the target discharge categories.",,merged_discharge,4.0,,0.002203351818025112
+V0211,,"The narrative terminates with Return ER, not realizing any of the release pathways.",,release_d,3.0,,0.005184538196772337
+V0212,,"The narrative ends with Return ER, which does not match the criteria for the taxonomy categories.",,release_c,5.0,,0.0005257689044810832
+V0213,,"The narrative ends with Return ER after an intermediate Release A, falling outside the target categories.",,merged_discharge,5.0,,0.2360561490058899
+V0214,,"The narrative concludes with Release A, which does not match any taxonomy category.",,release_c,2.0,,0.0008893530466593802
+V0215,,"The narrative ends with Release A, not matching the defined categories.",,release_d,4.0,,0.010032079182565212
+V0216,,"The narrative results in Return ER, failing to fit any of the release categories.",,merged_discharge,5.0,,0.015897588804364204
+V0217,,The narrative ends with IV Antibiotics and does not reach a discharge outcome.,,release_c,5.0,,0.44759321212768555
+V0218,,"The narrative concludes with Release B, which is outside the taxonomy.",,release_e,10.0,,0.33996978402137756
+V0219,,The narrative ends with Leucocytes and does not represent a discharge pathway.,,release_c,3.0,,0.5482324957847595
+V0220,,"The narrative ends with Return ER, which is not part of the release categories.",,release_c,2.0,,0.0019969227723777294
+V0221,,"The narrative terminates with Release A, which is not in the taxonomy.",,release_c,4.0,,0.2226785570383072
+V0222,,"The narrative concludes with Release A, failing to match any category.",,release_c,7.0,,0.01057113241404295
+V0223,,"The narrative results in Release A, which is outside the defined taxonomy.",,release_c,2.0,,0.11579284816980362
+V0224,,"The narrative ends with Return ER, not realizing any taxonomy category.",,release_c,3.0,,0.012766260653734207
+V0225,,"The narrative concludes with Release B, which does not match the specified taxonomy categories.",,release_d,4.0,,0.35207781195640564
+V0226,,"The narrative ends with Release A, which does not match any of the target categories (merged_discharge, release_c, release_d, release_e).",,merged_discharge,4.0,,0.00399176636710763
+V0227,release_d,"The narrative ends with Release D followed by Return ER, matching the release_d category.",7.0,merged_discharge,5.0,0.336277037858963,0.013089205138385296
+V0228,,"The narrative ends with Release A, which does not match any of the defined categories.",,release_c,3.0,,0.11696626991033554
+V0229,,"The narrative ends with Release A followed by Return ER, which does not map to any target categories.",,release_c,3.0,,0.03575524315237999
+V0230,,"The narrative ends with Release A followed by Return ER, not realizing any of the options.",,release_c,4.0,,0.012117087841033936
+V0231,,"The narrative terminates with Release A followed by Return ER, failing to map to the target categories.",,merged_discharge,2.0,,0.004765125457197428
+V0232,,"The outcome is IV Antibiotics, which is not a discharge category.",,release_d,3.0,,0.432328462600708
+V0233,,"The outcome is Release A followed by Return ER, not mapping to any target categories.",,release_c,3.0,,0.0013872712152078748
+V0234,,"The outcome is Leucocytes, which is not a discharge category.",,release_c,3.0,,0.45321452617645264
+V0235,,"The outcome is Release A, which does not match the target categories.",,release_c,3.0,,0.16975410282611847
+V0236,,"The outcome is Release A, which does not match any target category.",,release_c,2.0,,0.22309249639511108
+V0237,,"The outcome is Release A followed by Return ER, which does not match any target categories.",,merged_discharge,1.0,,0.01875261403620243
+V0238,,"The outcome is Release A, which does not map to any target category.",,release_c,4.0,,0.001185719040222466
+V0239,release_c,"The narrative successfully leads to Release C, perfectly matching the release_c category.",10.0,release_d,6.0,0.1491147130727768,0.3335825204849243
+V0240,,"The outcome is Release A, which is not among the target release categories.",,release_d,3.0,,0.0004096225602552295
+V0241,,"The outcome is Release A followed by Return ER, which does not match any category.",,merged_discharge,5.0,,0.0103125786408782
+V0242,,"The outcome is Release A followed by Return ER, which does not map to any target category.",,release_c,2.0,,0.01240634173154831
+V0243,,"The outcome is Release A followed by Return ER, not matching the defined categories.",,release_c,15.0,,0.07910116761922836
+V0244,,"The outcome is Release A, which does not match any target category.",,release_d,6.0,,0.004096595570445061
+V0245,,"The outcome is Release A, which does not match any target category.",,release_d,8.0,,0.021864423528313637
+V0246,,"The outcome is Release A, which does not match any target category.",,release_c,7.0,,0.11263037472963333
+V0247,,"The outcome is Release B, which is not included in the taxonomy categories.",,release_c,10.0,,0.3352232277393341
+V0248,,"The outcome is Release A followed by Return ER, not mapping to the available categories.",,merged_discharge,10.0,,0.020677702501416206
+V0249,,"The outcome is Release A, which does not match any target category.",,release_c,3.0,,0.005920404568314552
+V0250,,"The outcome is Release A followed by Return ER, not matching any target category.",,merged_discharge,4.0,,0.0017379781929776073
+V0251,,The narrative ends with Return ER and does not match any of the defined discharge pathways.,,merged_discharge,7.0,,0.009214191697537899
+V0252,,"The narrative ends with Release A, which does not correspond to merged_discharge, release_c, release_d, or release_e.",,release_c,3.0,,0.0037314349319785833
+V0253,,"The narrative concludes with Release A, which is outside the scope of the target taxonomy categories.",,release_c,3.0,,0.33531591296195984
+V0254,release_d,"The narrative terminates with Release D, directly realizing the category for alternative 20.",17.0,release_c,12.0,0.02873574197292328,0.3460361659526825
+V0255,,"The narrative ends with Release A, which does not match any category in the taxonomy.",,release_c,3.0,,0.008929426781833172
+V0256,,"The narrative terminates with Return ER, meaning it does not realize a valid release category.",,merged_discharge,3.0,,0.0036832736805081367
+V0257,,"The narrative concludes with Release A, fitting into the residual rather than the target categories.",,release_c,12.0,,0.11212173849344254
+V0258,,"The narrative ends with Release B, which is not part of the specified taxonomy categories.",,release_c,5.0,,0.3544192314147949
+V0259,,"The narrative ends with Release A, falling outside the target taxonomy alternatives.",,release_c,3.0,,0.00030552817042917013
+V0260,,The narrative terminates at IV Antibiotics without reaching a discharge destination.,,release_c,3.0,,0.39802324771881104
+V0261,,"The narrative ends with Return ER after an initial Release A, so it does not realize a target category.",,merged_discharge,7.0,,0.007402921561151743
+V0262,,"The narrative ends with Return ER following Release A, fitting the residual.",,merged_discharge,4.0,,0.0007756079430691898
+V0263,,"The narrative terminates with Return ER, thus failing to realize any of the target categories.",,release_c,4.0,,0.006491479929536581
+V0264,,"The narrative ends with Release A, which is not represented in the target taxonomy.",,release_c,2.0,,0.009007818065583706
+V0265,,"The narrative ends with Return ER, falling into the residual group.",,merged_discharge,2.0,,0.16701234877109528
+V0266,,"The narrative concludes with Release A, outside the scope of the target taxonomy.",,release_e,3.0,,0.0032011934090405703
+V0267,,"The narrative ends with Release A, which is not part of the target category set.",,merged_discharge,5.0,,0.003719713306054473
+V0268,,The narrative ends at Leucocytes without reaching a discharge outcome.,,merged_discharge,3.0,,0.38397684693336487
+V0269,,"The narrative ends with Return ER, which does not map to any target category.",,release_d,2.0,,0.0017582564614713192
+V0270,,"The narrative terminates with Return ER, falling into the residual.",,merged_discharge,6.0,,0.0015342022525146604
+V0271,,"The narrative ends with Release B, which is outside the specified taxonomy categories.",,merged_discharge,9.0,,0.36007022857666016
+V0272,,"The narrative ends with Release A, not matching any of the four defined categories.",,merged_discharge,4.0,,0.011309105902910233
+V0273,release_d,"The narrative terminates with Release D, realizing the alternative 20 category.",74.0,release_e,62.0,0.10799303650856018,0.3445984125137329
+V0274,release_c,"The narrative terminates with Release C, realizing the alternative 19 category.",6.0,merged_discharge,4.0,0.3540293276309967,0.3633025586605072
+V0275,,"The narrative ends with Release A, falling into the residual category.",,release_d,15.0,,0.11304154247045517
+V0276,,"The variant ends with Release A and does not map to any of the specific discharge alternatives (17, 19, 20, or 21) in the taxonomy.",,release_c,3.0,,0.0010376350255683064
+V0277,,"The variant ends with Return ER following Release A, which does not correspond to any of the designated discharge categories in the taxonomy.",,release_d,11.0,,0.037875328212976456
+V0278,,"The variant concludes with Release A, which is outside the scope of the defined taxonomy categories.",,release_d,4.0,,0.0036392773035913706
+V0279,,"The variant ends with Return ER after Release A, failing to realize any target category.",,merged_discharge,6.0,,0.00945678073912859
+V0280,,"The variant finishes with Return ER following Release A, outside the defined alternatives.",,release_c,7.0,,0.0024149182718247175
+V0281,,"The variant concludes with Release A, which does not match any category in the taxonomy.",,release_c,5.0,,0.004322426859289408
+V0282,,"The variant terminates with Release A, hence it belongs to the residual.",,merged_discharge,4.0,,0.003873975947499275
+V0283,release_c,"The variant culminates in Release C, directly realizing the corresponding category in the taxonomy.",22.0,release_d,10.0,0.48479413986206055,0.011534572578966618
+V0284,,"The variant ends with Return ER after Release A, which is not part of the taxonomy categories.",,release_c,5.0,,0.003172004595398903
+V0285,,"The variant ends with Release A, failing to fit any of the specialized discharge pathways.",,release_c,8.0,,0.019690681248903275
+V0286,,"The variant results in Release A, which is not among the taxonomy alternatives.",,release_c,4.0,,0.008427419699728489
+V0287,,The variant ends with CRP and does not complete a discharge pathway.,,release_c,3.0,,0.45958754420280457
+V0288,,"The variant concludes with Return ER following Release A, falling into the residual category.",,release_d,4.0,,0.011735476553440094
+V0289,,"The variant ends with Release A, which is outside the taxonomy's focus.",,release_c,3.0,,0.005310647189617157
+V0290,,"The variant ends with Return ER after Release A, not matching any defined taxonomy goal.",,release_d,6.0,,0.015725955367088318
+V0291,,"The variant terminates at Release A, which is not represented in the taxonomy categories.",,release_c,3.0,,0.13376007974147797
+V0292,,The variant ends early at Leucocytes without reaching a discharge outcome.,,release_c,3.0,,0.49803969264030457
+V0293,,"The variant ends with Release A, leaving it in the residual.",,release_c,3.0,,0.16727177798748016
+V0294,,"The variant concludes with Release A, which does not match any taxonomy category.",,release_c,4.0,,0.005073654931038618
+V0295,,The variant ends at IV Antibiotics without completing a discharge pathway.,,release_c,3.0,,0.3480471074581146
+V0296,,"The variant results in Return ER after Release A, outside the target categories.",,release_c,4.0,,0.02140643261373043
+V0297,,"The variant terminates in Return ER following Release A, falling into the residual.",,merged_discharge,2.0,,0.0006431698566302657
+V0298,,"The variant ends with Release A, which is not captured by the taxonomy.",,release_c,3.0,,0.00010385151108494028
+V0299,,"The variant ends with Release A, failing to align with any category.",,release_c,7.0,,0.012083514593541622
+V0300,,"The variant ends with Return ER after Release A, belonging to the residual category.",,release_d,10.0,,0.013965456746518612
+V0301,,"This variant ends with Return ER after Release A, but it does not match the specific discharge alternative mappings of the taxonomy categories.",,merged_discharge,4.0,,0.006597386207431555
+V0302,,The variant terminates at ER Sepsis Triage and does not complete a discharge pathway.,,release_c,4.0,,0.46564552187919617
+V0303,,"This variant concludes with Return ER following Release A, fitting neither merged discharge nor release C, D, or E categories.",,release_c,5.0,,0.004907504189759493
+V0304,,"The final activity is Release A, which does not correspond to any of the specific alternative-mapped categories (merged_discharge, release_c, release_d, release_e).",,release_d,5.0,,0.01085507869720459
+V0305,,The variant stops at IV Antibiotics without reaching a discharge destination.,,release_c,5.0,,0.4688861072063446
+V0306,,"The final activity is Release A, which is outside the defined taxonomy categories.",,release_c,4.0,,0.16948623955249786
+V0307,,"This narrative results in Return ER after Release A, falling outside the target categories.",,merged_discharge,1.0,,0.003563901409506798
+V0308,,"The outcome is Return ER following Release A, which does not match any specified category.",,merged_discharge,5.0,,0.009890234097838402
+V0309,,The process terminates at Admission NC without completing a discharge pathway.,,release_c,5.0,,0.4126773774623871
+V0310,,"The final activity is Release A, which is not part of the taxonomy categories.",,release_c,3.0,,0.011335264891386032
+V0311,,"This variant ends with Return ER after Release A, fitting none of the taxonomy choices.",,release_c,11.0,,0.010942717082798481
+V0312,,"The outcome is Release A, which is not mapped to the specific alternatives in the taxonomy.",,release_c,6.0,,0.04151536896824837
+V0313,release_c,"The narrative culminates in Release C, directly realizing alternative 19 as defined for release_c.",4.0,merged_discharge,4.0,0.11458868533372879,0.33673787117004395
+V0314,release_c,"The narrative culminates in Release C, directly realizing alternative 19 as defined for release_c.",7.0,release_e,5.0,0.12377043813467026,0.3385620415210724
+V0315,,"The final activity is Release A, which does not match the categories.",,release_c,14.0,,0.15101377665996552
+V0316,release_e,"The narrative culminates in Release E, directly realizing alternative 21 as defined for release_e.",9.0,release_c,4.0,0.09367720037698746,0.3334403932094574
+V0317,,"The narrative ends with Return ER following Release A, fitting none of the options.",,release_c,70.0,,0.07397598773241043
+V0318,,"The final activity is Release A, which is not included in the taxonomy categories.",,release_d,14.0,,0.14275385439395905
+V0319,,"The final activity is Release A, which falls outside the scope of the taxonomy.",,release_e,7.0,,0.0099832434207201
+V0320,,"This narrative leads to Return ER after Release A, matching none of the categories.",,release_c,3.0,,0.11271701008081436
+V0321,,"The outcome is Return ER following Release A, which does not match any category.",,merged_discharge,6.0,,0.008204028010368347
+V0322,,The process terminates at IV Antibiotics without reaching a discharge state.,,release_c,4.0,,0.4449581205844879
+V0323,,"The final activity is Release A, which is not represented in the taxonomy.",,release_c,2.0,,0.014306009747087955
+V0324,,"This narrative results in Return ER after Release A, fitting no taxonomy category.",,release_d,17.0,,0.0011538139078766108
+V0325,,The variant terminates at IV Antibiotics without completing a discharge pathway.,,release_d,4.0,,0.6133854985237122
+V0326,,"The variant ends with Release A, which does not map to any of the specified discharge categories (merged_discharge, release_c, release_d, release_e).",,release_c,2.0,,0.0004809253441635519
+V0327,,"The variant results in a Return ER outcome after Release A, fitting none of the designated discharge pathway categories.",,merged_discharge,4.0,,0.002864725887775421
+V0328,,"The narrative terminates with Release A and a subsequent Return ER, which is outside the scope of the target categories.",,merged_discharge,3.0,,0.002381053986027837
+V0329,,"The pathway concludes with Release A, lacking a mapping to the available taxonomy alternatives.",,release_d,10.0,,0.019425416365265846
+V0330,,The variant stops at IV Liquid and does not reach a recognized discharge category.,,release_c,3.0,,0.34789910912513733
+V0331,,"The outcome is Release A, which is not represented in the target taxonomy.",,release_d,8.0,,0.031078873202204704
+V0332,,"The narrative ends with Release B, which does not match any category_id in the taxonomy.",,release_d,3.0,,0.37499523162841797
+V0333,,"The variant leads to Release B, failing to match any of the defined discharge categories.",,release_d,9.0,,0.3480766713619232
+V0334,release_d,"The narrative records a discharge event corresponding to Release D, evaluated against post-discharge performance indicators leading to a Return ER.",25.0,release_c,17.0,0.43670937418937683,0.035363391041755676
+V0335,,"The process terminates with Release A followed by a Return ER, fitting none of the categories.",,merged_discharge,5.0,,0.012396258302032948
+V0336,,The variant concludes at CRP without reaching a discharge destination.,,release_c,1.0,,0.36800411343574524
+V0337,,"The outcome is Release A, which is not part of the taxonomy.",,release_c,2.0,,0.000253088801400736
+V0338,,"The variant results in Release A, fitting none of the designated options.",,release_c,4.0,,0.0010106355184689164
+V0339,,"The narrative ends with Release A and a Return ER, matching none of the taxonomy definitions.",,release_c,17.0,,0.10406583547592163
+V0340,,"The pathway ends with Release A, which is outside the target categories.",,release_e,4.0,,4.5530483475886285e-05
+V0341,,"The variant concludes with Release A, not matching any of the specified alternatives.",,release_c,3.0,,0.010930690914392471
+V0342,,"The process terminates at CRP, hence no discharge category is realized.",,release_c,3.0,,0.5626533031463623
+V0343,,"The outcome is Release A, which is not included in the taxonomy.",,merged_discharge,3.0,,0.00400654086843133
+V0344,,"The narrative ends with Release B, fitting none of the defined taxonomy categories.",,release_c,3.0,,0.3358857333660126
+V0345,,"The variant terminates with Release A, which lacks a corresponding category in the taxonomy.",,release_d,11.0,,0.10765385627746582
+V0346,,"The pathway results in Release A and a subsequent Return ER, matching none of the target categories.",,release_c,11.0,,0.023858383297920227
+V0347,release_d,"The narrative shows a discharge path matching Release D, evaluated with post-discharge performance indicators.",8.0,release_c,6.0,0.5113713145256042,0.007240867242217064
+V0348,,"The narrative ends with Release A followed by a Return ER, which does not fit the taxonomy.",,merged_discharge,7.0,,0.006395623087882996
+V0349,,The variant terminates at ER Sepsis Triage and does not realize any discharge pathway.,,release_c,5.0,,0.37755072116851807
+V0350,,"The process concludes with Release A and a Return ER, matching none of the available taxonomy choices.",,release_c,2.0,,0.030948853120207787
+V0351,,"The narrative results in Release A, which does not map to any of the specified discharge pathway alternatives (merged_discharge, release_c, release_d, or release_e).",,release_c,4.0,,0.00012561735638882965
+V0352,,"The narrative results in Return ER, which does not match the target discharge categories in the taxonomy.",,merged_discharge,4.0,,0.00026249856455251575
+V0353,,"The narrative results in Return ER, failing to map to the specified alternative discharge pathways.",,release_c,3.0,,0.0003271280147600919
+V0354,,"The final outcome is Release A, which is outside the scope of the defined taxonomy categories.",,release_d,14.0,,0.08835064619779587
+V0355,,"The outcome is Release A, which does not correspond to any category_id in the taxonomy.",,release_c,5.0,,0.09047631174325943
+V0356,,"The final activity is Release A, matching none of the target categories.",,release_c,7.0,,0.1319742053747177
+V0357,,"The narrative leads to Return ER, which is not represented in the specified taxonomy alternatives.",,merged_discharge,4.0,,0.0175314974039793
+V0358,,"The narrative terminates with Return ER, fitting none of the taxonomy categories.",,merged_discharge,2.0,,0.23439276218414307
+V0359,,"The outcome is Return ER, which falls outside the taxonomy's covered categories.",,merged_discharge,4.0,,0.0018627376994118094
+V0360,,"The outcome is Release A, which is not part of the taxonomy.",,release_c,4.0,,0.011480089277029037
+V0361,,"The final activity is Release A, which does not match any valid category_id.",,release_c,3.0,,0.006551870610564947
+V0362,,"The narrative ends in Release A, outside the scope of the taxonomy.",,release_c,1.0,,0.00457089813426137
+V0363,,"The narrative ends in Release A, which is not a targeted alternative in the taxonomy.",,release_c,2.0,,0.00019427388906478882
+V0364,,"The outcome is Return ER, not mapped to any category in the taxonomy.",,merged_discharge,2.0,,0.002694865921512246
+V0365,,The narrative ends with Leucocytes rather than a recognized discharge category.,,release_c,9.0,,0.3575817346572876
+V0366,,"The outcome is Return ER, which does not fit any of the taxonomy categories.",,release_c,4.0,,0.0009798796381801367
+V0367,,"The narrative results in Return ER, which is excluded from the taxonomy's discharge pathways.",,release_d,17.0,,0.007661447394639254
+V0368,,The narrative terminates at Admission NC and does not reach a discharge category.,,release_c,2.0,,0.42324861884117126
+V0369,,"The final outcome is Return ER, which has no corresponding category in the taxonomy.",,release_d,7.0,,0.0037863878533244133
+V0370,,"The narrative ends in Return ER, fitting none of the specified taxonomy options.",,merged_discharge,5.0,,0.0125266769900918
+V0371,,"The outcome is Release B, which is not included in the defined taxonomy categories.",,release_c,3.0,,0.01688963733613491
+V0372,,"The narrative results in Release A, outside the scope of the taxonomy.",,release_e,8.0,,0.10167232155799866
+V0373,,"The final activity is Release A, which is not part of the taxonomy.",,release_c,4.0,,0.0010516488691791892
+V0374,,The narrative terminates at Leucocytes and does not represent a discharge pathway.,,release_d,3.0,,0.37863874435424805
+V0375,,"The outcome is Release A, which does not match any of the targeted categories.",,release_d,7.0,,0.1012950912117958
+V0376,release_c,"The narrative ends with Release C, reflecting a captured discharge outcome evaluated against post-discharge performance indicators.",6.0,merged_discharge,4.0,0.13693967461585999,0.3347652852535248
+V0377,,"The variant ends with Release A, which does not map to any of the specified release categories (merged_discharge, release_c, release_d, release_e).",,release_c,4.0,,0.0027044035959988832
+V0378,,"The process variant does not reach a discharge outcome, ending in IV Antibiotics.",,release_d,3.0,,0.4072575569152832
+V0379,,"The process variant does not reach a discharge outcome, ending in IV Antibiotics.",,release_c,2.0,,0.41847121715545654
+V0380,,"The variant ends with Release A, which is not part of the defined taxonomy categories.",,release_c,5.0,,0.000873001292347908
+V0381,,"The variant ends with Release A, which is not covered by the defined taxonomy categories.",,release_c,3.0,,0.00026427218108437955
+V0382,,"The variant concludes with a Return ER outcome following Release A, fitting none of the designated target discharge categories.",,release_c,3.0,,0.01384276058524847
+V0383,,"The variant ends with Release A, which is outside the target taxonomy categories.",,release_c,3.0,,0.0021812545601278543
+V0384,,"The variant ends with Release B, which is not included in the provided taxonomy categories.",,release_c,8.0,,0.34443363547325134
+V0385,,"The variant concludes with a Return ER outcome after Release A, matching none of the target categories.",,release_c,7.0,,0.018237542361021042
+V0386,,"The variant ends with a Return ER outcome, which does not correspond to any valid taxonomy categories.",,release_c,3.0,,0.002656989498063922
+V0387,,"The variant ends with Release A, which is not part of the taxonomy categories.",,release_c,3.0,,0.020959852263331413
+V0388,,"The variant ends with Release A, which is outside the specified category set.",,release_c,5.0,,0.00011264110798947513
+V0389,,"The variant ends with Release A, which does not match any of the defined taxonomy categories.",,release_c,1.0,,0.23191063106060028
+V0390,,"The variant ends with Release B, which is outside the allowed category options.",,release_c,5.0,,0.33506011962890625
+V0391,,"The variant ends with Release A, failing to map to the target taxonomy categories.",,release_c,4.0,,0.11263629794120789
+V0392,,"The variant ends with Release A, which is not covered by the specified taxonomy categories.",,release_c,2.0,,0.11680394411087036
+V0393,,"The variant ends with Release B, which does not match any of the taxonomy categories.",,release_c,9.0,,0.33355554938316345
+V0394,,"The variant ends with Release A, which falls outside the target category definitions.",,release_c,5.0,,0.001742361462675035
+V0395,,"The variant ends with Release A, not corresponding to any of the taxonomy alternatives.",,release_c,1.0,,0.003651760518550873
+V0396,,"The variant ends with Release A, which is not part of the taxonomy.",,release_d,1.0,,0.0009094090783037245
+V0397,,"The variant ends with Release A, which does not match any taxonomy category.",,release_c,6.0,,0.0017838276689872146
+V0398,,"The variant ends with a Return ER outcome after Release A, matching none of the defined categories.",,release_e,9.0,,0.002293940167874098
+V0399,,"The variant ends with Release B, which is outside the defined taxonomy.",,release_d,3.0,,0.08756411075592041
+V0400,,"The variant ends with Release A, which is not included in the category specifications.",,release_c,2.0,,0.16821594536304474
+V0401,,"The narrative ends with Release B, which does not map to any of the specified target discharge categories in the taxonomy (merged_discharge, release_c, release_d, release_e).",,release_c,7.0,,0.33694684505462646
+V0402,,"The narrative ends with Return ER after Release A, which does not match the designated taxonomy pathways.",,merged_discharge,4.0,,0.0035794225987046957
+V0403,,"The narrative leads to Return ER following Release A, fitting none of the active target categories.",,release_c,7.0,,0.038399506360292435
+V0404,,"The narrative leads to a Return ER outcome after Release A, which falls outside the target categories.",,release_c,5.0,,0.005003033671528101
+V0405,,"The final activity is Release A, which is not part of the defined taxonomy categories.",,release_c,4.0,,0.005051745567470789
+V0406,,"The narrative results in Release A, missing the criteria for the targeted categories.",,release_c,2.0,,0.1671261340379715
+V0407,,"The variant ends with Release B, which is outside the defined scope of the taxonomy categories.",,release_c,6.0,,0.3470713198184967
+V0408,,"The narrative concludes with Return ER, failing to map to any specified release category.",,merged_discharge,3.0,,0.0024563290644437075
+V0409,,"The outcome is Return ER following Release A, which is not included in the taxonomy.",,merged_discharge,3.0,,0.0019520153291523457
+V0410,release_d,"The narrative ends with Release D, directly realizing the pathway mapped to alternative 20.",6.0,release_c,3.0,0.14332804083824158,0.33373960852622986
+V0411,,"The narrative terminates with Leucocytes and Return ER, not realizing any target category.",,release_d,7.0,,0.3521072566509247
+V0412,,"The final outcome includes Return ER following Release A, which does not match any target category.",,release_d,5.0,,0.0018256340408697724
+V0413,,"The narrative concludes with Return ER after Release A, which is not in the taxonomy.",,merged_discharge,3.0,,0.04356752708554268
+V0414,,"The outcome is Return ER after Release A, fitting none of the specified alternatives.",,release_c,5.0,,0.0005455769714899361
+V0415,,The variant ends at Admission NC without completing a discharge pathway.,,release_c,1.0,,0.40745654702186584
+V0416,,"The narrative ends with Release A, which is not represented in the taxonomy categories.",,release_c,2.0,,0.003829243825748563
+V0417,,"The process terminates with ER Triage, failing to reach any discharge or release category.",,release_c,4.0,,0.7830737233161926
+V0418,,"The narrative ends with Return ER after Release A, which is outside the target definitions.",,release_c,3.0,,0.009618755429983139
+V0419,,"The narrative concludes with Release A, which does not match the target release categories.",,release_c,3.0,,0.00018555410497356206
+V0420,,"The outcome is Release A, failing to align with the specified taxonomy categories.",,release_c,4.0,,0.22505812346935272
+V0421,,"The variant terminates with Release B, which is outside the scope of the taxonomy.",,merged_discharge,6.0,,0.33525827527046204
+V0422,,"The narrative results in Return ER following Release A, matching none of the valid categories.",,release_c,7.0,,0.035343777388334274
+V0423,release_c,"The narrative ends with Release C, directly realizing the pathway mapped to alternative 19.",6.0,release_e,6.0,0.14656586945056915,0.3344767391681671
+V0424,,"The final outcome is Return ER following Release A, which is not included in the target categories.",,merged_discharge,3.0,,0.03733763471245766
+V0425,,"The narrative ends with Release A, failing to match any of the designated taxonomy categories.",,release_c,2.0,,5.235307980910875e-05
+V0426,release_c,The narrative terminates with Release C and follows the treatment and monitoring pathway corresponding to alternative 19.,4.0,release_d,4.0,0.11118736863136292,0.33333656191825867
+V0427,release_c,"The narrative ends in Release C and is evaluated against post-discharge performance indicators, matching alternative 19.",8.0,merged_discharge,6.0,0.5211297869682312,0.015145647339522839
+V0428,release_c,"The narrative culminates in Release C, fulfilling the outcome criteria of alternative 19.",10.0,release_d,7.0,0.0,0.33569180965423584
+V0429,,The variant terminates prematurely at IV Antibiotics and does not reach a discharge category.,,release_c,5.0,,0.4197290241718292
+V0430,,"The narrative terminates with Release A, which is not part of the defined taxonomy categories.",,merged_discharge,5.0,,0.11402932554483414
+V0431,,"The narrative terminates with Release A, which is outside the target discharge categories in the taxonomy.",,release_c,1.0,,0.0024852261412888765
+V0432,,"The narrative terminates with Release B, which is not mapped to any of the specified release categories.",,release_c,10.0,,0.35271087288856506
+V0433,release_c,"The narrative concludes with Release C, corresponding to alternative 19.",6.0,merged_discharge,5.0,0.1815507411956787,0.34123948216438293
+V0434,,"The narrative results in Release A, which falls outside the scope of the defined taxonomy categories.",,release_d,5.0,,0.0037234195042401552
+V0435,,"The narrative ends with Release A followed by Return ER, which does not match the target release alternatives.",,release_d,20.0,,0.004330573603510857
+V0436,,"The outcome is Release B, which is not included in the taxonomy options.",,release_d,5.0,,0.3347119092941284
+V0437,release_d,"The narrative culminates in Release D (followed by Return ER), thus realizing alternative 20.",30.0,release_e,20.0,0.5003300905227661,0.03590737655758858
+V0438,,"The narrative ends with Release A, which is not represented in the taxonomy categories.",,release_c,5.0,,0.01467809360474348
+V0439,,"The narrative terminates with Release A, falling outside the target discharge taxonomy.",,release_c,14.0,,0.04387177899479866
+V0440,,"The outcome is Release A followed by Return ER, which does not align with the taxonomy.",,release_c,5.0,,0.001840634853579104
+V0441,,"The narrative ends with Release A followed by Return ER, outside the taxonomy categories.",,merged_discharge,2.0,,0.015247362665832043
+V0442,,"The narrative terminates in Release A, which does not fit the specified alternatives.",,merged_discharge,5.0,,0.0048883757553994656
+V0443,,"The narrative terminates with Release A, which is not part of the defined taxonomy.",,merged_discharge,2.0,,0.004299652297049761
+V0444,release_c,"The narrative finishes with Release C, realizing alternative 19.",6.0,release_d,6.0,0.0025226925499737263,0.333497554063797
+V0445,,"The outcome is Release A, which is outside the target categories.",,release_c,2.0,,0.010674837045371532
+V0446,,"The narrative terminates in Release A, not matching the taxonomy categories.",,merged_discharge,4.0,,0.010707255452871323
+V0447,release_c,"The narrative concludes with Release C (followed by Return ER), fulfilling alternative 19.",10.0,release_d,7.0,0.4165708124637604,0.008006184361875057
+V0448,,"The narrative leads to Release A, which is not covered by the taxonomy.",,release_c,7.0,,0.017544230446219444
+V0449,,"The narrative terminates with Release A, outside the scope of the taxonomy categories.",,merged_discharge,4.0,,0.0533195324242115
+V0450,,"The narrative ends in Release A, which does not match any of the defined discharge categories.",,release_c,3.0,,0.0011867728317156434
+V0451,,"The narrative ends with Release A and does not align with merged discharge or specific release categories c, d, or e.",,release_c,2.0,,0.22801071405410767
+V0452,,The narrative ends with Release A and does not map to the defined taxonomy discharge alternatives.,,release_d,16.0,,0.10851661115884781
+V0453,,The variant results in Return ER without aligning to the specific release categories.,,release_d,7.0,,0.0027760693337768316
+V0454,,The variant ends in Return ER and does not match the target release categories.,,release_d,3.0,,0.002427955623716116
+V0455,,"The narrative culminates in Release A and does not fit categories c, d, e, or merged discharge.",,release_c,4.0,,0.013235061429440975
+V0456,,"Ends with Release A, falling outside the target discharge pathways.",,merged_discharge,4.0,,0.0023965274449437857
+V0457,,Ends with Release A without mapping to any of the specific alternative categories.,,release_d,14.0,,0.10290732979774475
+V0458,,The outcome is Return ER and does not match the desired taxonomy.,,merged_discharge,2.0,,0.022806422784924507
+V0459,,"The narrative ends in Release A, outside the scope of categories c, d, e, and merged discharge.",,release_c,3.0,,0.000981189077720046
+V0460,,Outcome is Return ER and does not realize the taxonomy categories.,,release_c,3.0,,0.016903098672628403
+V0461,,"Ends with Release A, not corresponding to the specified alternatives.",,release_c,3.0,,0.007495241705328226
+V0462,,Outcome is CRP and does not complete a discharge pathway.,,release_c,1.0,,0.3794828951358795
+V0463,,"Ends with Return ER, which is not part of the release categories.",,merged_discharge,3.0,,0.02295343391597271
+V0464,,"Outcome is Return ER, falling into the residual category.",,merged_discharge,5.0,,0.0017006737180054188
+V0465,,"Ends with Release A, not matching the specific taxonomy outcomes.",,release_c,5.0,,0.0014704680070281029
+V0466,,"Outcome is Release A, which is excluded from categories c, d, e, or merged discharge.",,release_c,3.0,,0.021134233102202415
+V0467,,"Ends in Return ER after a standard release, not fitting the specific release categories.",,release_d,5.0,,0.0071622333489358425
+V0468,,"Outcome is Return ER, so it does not realize the taxonomy alternatives.",,release_d,5.0,,0.015513760037720203
+V0469,,Results in Return ER and does not match the release categories.,,release_d,4.0,,0.00023641105508431792
+V0470,release_d,"The narrative explicitly concludes with Release D, directly realizing the alternative 20 pathway.",5.0,release_c,4.0,0.14845110476016998,0.33624282479286194
+V0471,,"Ends with Release A, which does not match any of the four taxonomy categories.",,merged_discharge,3.0,,0.00015812554920557886
+V0472,,"Ends with Release A, which is outside the specified taxonomy.",,merged_discharge,3.0,,0.001672291778959334
+V0473,,"Ends in Return ER, falling into the residual.",,release_c,4.0,,0.01891535520553589
+V0474,,"Outcome is Return ER, not realizing any target category.",,merged_discharge,4.0,,0.0005330360145308077
+V0475,,"Concludes with Release A, which is not covered by the taxonomy.",,merged_discharge,4.0,,0.000709278101567179
+V0476,,The narrative ends with Return ER and does not match any of the designated release or merged discharge categories.,,release_c,5.0,,0.16711078584194183
+V0477,,"The narrative ends with Release A, which is not represented in the target taxonomy categories.",,release_c,5.0,,0.0037367381155490875
+V0478,,"The narrative ends with Release A, which is not represented in the target taxonomy categories.",,release_c,7.0,,0.008606301620602608
+V0479,,The narrative ends with Return ER and does not match any of the designated release or merged discharge categories.,,merged_discharge,2.0,,0.01630093902349472
+V0480,,"The narrative ends with Release A, which is not represented in the target taxonomy categories.",,release_c,4.0,,0.002982738660648465
+V0481,,"The narrative ends with Release A, which is not represented in the target taxonomy categories.",,release_c,6.0,,0.01196445245295763
+V0482,,The narrative ends with Return ER and does not match any of the designated release or merged discharge categories.,,release_c,6.0,,0.012831001542508602
+V0483,,"The narrative ends with Release B, which is not represented in the target taxonomy categories.",,release_c,14.0,,0.3373398780822754
+V0484,,The narrative ends with Return ER and does not match any of the designated release or merged discharge categories.,,merged_discharge,5.0,,0.004227946046739817
+V0485,,"The narrative ends with Release A, which is not represented in the target taxonomy categories.",,release_c,16.0,,0.0986759290099144
+V0486,release_d,"The narrative ends with Release D, directly realizing alternative 20 mapped to release_d.",10.0,release_c,6.0,0.0,0.33484509587287903
+V0487,,"The narrative ends with Release A, which is not represented in the target taxonomy categories.",,release_c,5.0,,0.09357068687677383
+V0488,,The narrative ends with IV Liquid rather than a recognized discharge pathway.,,release_c,3.0,,0.4240458011627197
+V0489,,"The narrative ends with Release A, which is not represented in the target taxonomy categories.",,release_c,4.0,,0.009788974188268185
+V0490,,"The narrative ends with Release A, which is not represented in the target taxonomy categories.",,release_c,2.0,,0.09449753165245056
+V0491,,"The narrative ends with Release A, which is not represented in the target taxonomy categories.",,release_c,2.0,,0.00022896243899594992
+V0492,,The narrative ends with IV Liquid rather than a recognized discharge pathway.,,release_c,3.0,,0.35921621322631836
+V0493,,"The narrative ends with Release B, which is not represented in the target taxonomy categories.",,merged_discharge,5.0,,0.3388369083404541
+V0494,,"The narrative ends with Release A, which is not represented in the target taxonomy categories.",,release_c,6.0,,0.0012387089664116502
+V0495,,The narrative ends with IV Antibiotics rather than a recognized discharge pathway.,,release_c,5.0,,0.40676602721214294
+V0496,,"The narrative ends with Release A, which is not represented in the target taxonomy categories.",,merged_discharge,4.0,,0.1112959012389183
+V0497,,The narrative ends with Return ER and does not match any of the designated release or merged discharge categories.,,release_c,3.0,,0.05726318061351776
+V0498,release_d,"The narrative ends with Release D, directly realizing alternative 20 mapped to release_d.",8.0,release_c,7.0,0.11551537364721298,0.33487775921821594
+V0499,,"The narrative ends with Release A, which is not represented in the target taxonomy categories.",,release_c,3.0,,0.003990801516920328
+V0500,,"The narrative ends with Release A, which is not represented in the target taxonomy categories.",,release_c,4.0,,0.1672312468290329
+V0501,,The variant ends with IV Liquid rather than a recognized discharge category from the taxonomy.,,release_c,4.0,,0.3488672077655792
+V0502,,The variant ends with Admission NC rather than a recognized discharge outcome.,,release_c,3.0,,0.39838218688964844
+V0503,,"The variant ends with Release B, which is not part of the defined taxonomy categories (merged_discharge, release_c, release_d, release_e).",,release_c,3.0,,0.02847270667552948
+V0504,,"The variant ends with Return ER following Release A, which does not match any of the target categories.",,release_c,2.0,,0.00214942405000329
+V0505,,"The variant ends with Return ER following Release A, which is not covered by the taxonomy categories.",,release_c,1.0,,0.00033978806459344923
+V0506,,"The variant ends with Release A, which is outside the specified taxonomy categories.",,release_c,2.0,,6.932452379260212e-05
+V0507,,The variant terminates at IV Antibiotics without reaching a discharge pathway.,,release_c,4.0,,0.4082808494567871
+V0508,,The variant results in a Return ER outcome after Release A.,,release_c,6.0,,0.0024265889078378677
+V0509,,"The variant ends with Release A, which is outside the specified taxonomy.",,release_c,2.0,,0.002664744621142745
+V0510,,The variant terminates at IV Antibiotics.,,release_c,2.0,,0.42824673652648926
+V0511,,The variant ends with Release A.,,release_c,9.0,,0.10988810658454895
+V0512,,The variant ends with Release A.,,release_c,5.0,,0.005227545276284218
+V0513,,The variant ends with Release A.,,release_c,3.0,,0.0025896632578223944
+V0514,,The variant ends with Release A.,,release_d,7.0,,0.019039655104279518
+V0515,,The variant ends with Return ER following Release A.,,release_c,6.0,,0.005013633985072374
+V0516,,The variant terminates at Leucocytes.,,release_d,6.0,,0.4159558117389679
+V0517,,The variant terminates at ER Triage.,,release_c,2.0,,0.7784108519554138
+V0518,,The variant ends with Release A.,,release_c,4.0,,0.003522123210132122
+V0519,,The variant ends with Return ER following Release A.,,release_c,2.0,,0.019049854949116707
+V0520,,The variant ends with Return ER following Release A.,,merged_discharge,1.0,,0.13451026380062103
+V0521,,The variant ends with Release A.,,release_c,6.0,,0.006345708388835192
+V0522,,"The variant ends with Release B, which is outside the taxonomy categories.",,release_d,9.0,,0.34036269783973694
+V0523,,The variant ends with Release A.,,release_c,5.0,,0.0839172974228859
+V0524,,The variant ends with Release A.,,release_c,3.0,,0.003875640220940113
+V0525,,The variant ends with Release A.,,release_d,2.0,,0.17029325664043427
+V0526,,"The narrative ends with Return ER following Release A, but does not align with the specific alternative criteria for merged_discharge, release_c, release_d, or release_e.",,release_c,3.0,,0.010757647454738617
+V0527,,"The narrative terminates with Release A, which does not correspond to any of the specified target categories (merged_discharge, release_c, release_d, release_e).",,merged_discharge,6.0,,0.08906944841146469
+V0528,,"The outcome involves Release A and Return ER, which does not match the definitions of the taxonomy categories.",,release_d,7.0,,0.008142935112118721
+V0529,,"The pathway concludes with Return ER after Release A, fitting none of the category definitions.",,merged_discharge,1.0,,0.002548444317653775
+V0530,,"The pathway leads to Release A followed by Return ER, falling outside the target categories.",,merged_discharge,5.0,,0.018133459612727165
+V0531,,"The workflow ends with Return ER after Release A, which is not represented in the taxonomy categories.",,merged_discharge,6.0,,0.10114588588476181
+V0532,,"The variant finishes with Release A, failing to map to any defined category.",,release_c,3.0,,0.0034159377682954073
+V0533,,"The narrative terminates with Release A, which is outside the scope of the taxonomy.",,release_c,3.0,,0.007078610826283693
+V0534,,The pathway ends with Release A and does not match the defined alternatives.,,release_c,3.0,,0.007928275503218174
+V0535,,"The variant ends with Return ER after Release A, matching none of the target categories.",,release_d,4.0,,0.0003073322877753526
+V0536,,"The narrative concludes with Release A, which is not part of the taxonomy.",,release_c,3.0,,0.008919376879930496
+V0537,,"The pathway finishes with Release A, failing to realize any taxonomy category.",,release_c,5.0,,0.00023236357083078474
+V0538,,"The variant ends with Release A, which is not included in the category definitions.",,release_c,9.0,,0.024885408580303192
+V0539,,"The narrative results in Return ER after Release A, fitting none of the specified categories.",,release_d,4.0,,0.0003822969738394022
+V0540,,"The outcome is Release B, which is outside the defined taxonomy.",,release_c,6.0,,0.3335843086242676
+V0541,,"The workflow ends with Release A, which does not match any taxonomy category.",,release_c,2.0,,0.0017786488169804215
+V0542,,"The narrative concludes with Release A, failing to realize any target category.",,release_c,6.0,,0.11401889473199844
+V0543,,"The variant terminates with Return ER after Release A, matching none of the taxonomy definitions.",,release_d,15.0,,0.004500335548073053
+V0544,,"The pathway ends with Release A, which is not part of the taxonomy.",,release_c,1.0,,0.0021777108777314425
+V0545,,"The narrative concludes with Release A, fitting none of the specified categories.",,release_c,3.0,,0.003856368362903595
+V0546,,"The variant ends with Return ER after Release A, outside the scope of the taxonomy.",,merged_discharge,3.0,,0.0001831106055760756
+V0547,,"The outcome is Release B, which does not align with any category in the taxonomy.",,release_d,10.0,,0.3335671126842499
+V0548,,"The pathway terminates with Release A, matching none of the taxonomy categories.",,release_c,7.0,,0.08653751015663147
+V0549,,The narrative ends at IV Liquid and does not reach a discharge pathway category.,,release_c,3.0,,0.35062161087989807
+V0550,,"The outcome is Release B, which is not included in the defined taxonomy.",,release_c,3.0,,0.40486589074134827
+V0551,,"The variant ends with Release A, which does not map to any of the specified discharge alternatives (merged_discharge, release_c, release_d, release_e).",,release_d,45.0,,0.12299894541501999
+V0552,,"The variant ends with Release B, which does not match any of the defined taxonomy categories.",,release_c,6.0,,0.3340959846973419
+V0553,release_e,"The variant ends with Release E, which corresponds to the discharge pathway mapped to alternative 21.",18.0,release_c,13.0,0.0,0.33998140692710876
+V0554,,"The variant terminates with Release A, falling outside the defined taxonomy categories.",,release_c,2.0,,0.004111482761800289
+V0555,,"The variant terminates with Release B, which is not part of the taxonomy.",,release_c,5.0,,0.35169538855552673
+V0556,,"The variant concludes with Return ER after Release A, so it does not realize any of the target discharge alternatives.",,release_c,5.0,,0.006513876840472221
+V0557,,"The variant ends with Release A, which is not represented in the taxonomy.",,release_c,3.0,,0.010550998151302338
+V0558,,"The variant concludes with Return ER following Release A, outside the scope of the target release categories.",,merged_discharge,4.0,,0.008702181279659271
+V0559,,"The variant results in a Return ER after Release A, which does not map to the required discharge categories.",,merged_discharge,5.0,,0.010008552111685276
+V0560,,"The variant ends in Return ER following Release A, meaning it does not fit the taxonomy.",,release_d,4.0,,0.0016740934224799275
+V0561,,"The variant ends with Release A, which is not included in the taxonomy categories.",,release_c,5.0,,0.001878357375971973
+V0562,,"The variant terminates with Release A, outside the target discharge pathways.",,release_c,4.0,,9.696097549749538e-05
+V0563,,"The variant ends with Release A, which does not match any category_id in the taxonomy.",,release_c,8.0,,0.09411276131868362
+V0564,,"The variant results in Return ER after Release A, failing to align with the target categories.",,merged_discharge,4.0,,0.006599831860512495
+V0565,,The variant ends with Admission NC and does not reach a discharge outcome.,,release_c,5.0,,0.3955005705356598
+V0566,,"The variant concludes with Release A, which is not part of the taxonomy.",,release_c,6.0,,0.0038228065241128206
+V0567,,"The variant ends with Return ER after Release A, fitting neither of the taxonomy options.",,merged_discharge,2.0,,0.0013297502882778645
+V0568,,"The variant terminates with Release A, which is outside the specified taxonomy.",,release_c,6.0,,0.09128253906965256
+V0569,,"The variant ends with Release A, so it does not match any of the defined categories.",,release_c,1.0,,0.009930853731930256
+V0570,,"The variant ends with Release A, which is not mapped in the taxonomy.",,release_c,7.0,,0.015209992416203022
+V0571,,"The variant ends with Release B, which is outside the target categories.",,release_d,16.0,,0.3374815881252289
+V0572,,"The variant concludes with Release A, failing to match any taxonomy category.",,release_d,14.0,,0.13918469846248627
+V0573,,"The variant ends in Return ER after Release A, fitting none of the target categories.",,merged_discharge,4.0,,0.004422743804752827
+V0574,,"The variant terminates with Release A, which is not included in the taxonomy.",,release_c,10.0,,0.09262823313474655
+V0575,,The variant ends with Leucocytes and does not complete a discharge process.,,release_c,3.0,,0.3785605728626251
+V0576,,"The narrative results in Release A, which does not map to merged_discharge, release_c, release_d, or release_e.",,release_c,5.0,,0.003563456004485488
+V0577,,"The narrative results in Return ER via Release A, which does not map to any of the target categories.",,release_c,10.0,,0.017238184809684753
+V0578,,"The narrative results in Return ER via Release A, which does not map to any of the target categories.",,merged_discharge,3.0,,0.006303194910287857
+V0579,,"The narrative results in Return ER via Release A, which does not map to any of the target categories.",,release_d,26.0,,0.0067110187374055386
+V0580,,The narrative ends with CRP and does not reach any discharge category.,,release_c,2.0,,0.3891455829143524
+V0581,release_d,"The narrative explicitly culminates in Release D, realizing the corresponding discharge pathway.",5.0,release_c,6.0,0.3378317058086395,0.011534572578966618
+V0582,,"The narrative results in Release A, which does not match any of the specified target categories.",,release_c,2.0,,0.1674390286207199
+V0583,,"The narrative results in Release A, which does not match any of the specified target categories.",,release_c,3.0,,0.006244432646781206
+V0584,,The narrative ends with IV Liquid and does not reach any discharge category.,,release_c,6.0,,0.35065343976020813
+V0585,,The narrative ends with LacticAcid and does not reach any discharge category.,,release_c,3.0,,0.42001816630363464
+V0586,,"The narrative results in Release B, which is outside the target categories.",,merged_discharge,2.0,,0.3342125713825226
+V0587,,The narrative ends with CRP and does not reach any discharge category.,,release_c,3.0,,0.5760562419891357
+V0588,release_c,"The narrative explicitly culminates in Release C, realizing the corresponding discharge pathway.",12.0,release_d,7.0,0.5049986839294434,0.03590737655758858
+V0589,,"The narrative results in Release B, which is outside the target categories.",,release_c,5.0,,0.35768088698387146
+V0590,,"The narrative results in Return ER via Release A, which does not map to any of the target categories.",,release_c,5.0,,0.006120092701166868
+V0591,,"The narrative results in Return ER via Release A, which does not map to any of the target categories.",,merged_discharge,2.0,,0.0445944108068943
+V0592,,The narrative ends with IV Antibiotics and does not reach any discharge category.,,release_c,4.0,,0.4426926076412201
+V0593,,"The narrative results in Release A, which does not match any of the specified target categories.",,release_c,3.0,,0.0025110591668635607
+V0594,,"The narrative results in Release B, which is outside the target categories.",,release_c,5.0,,0.335824579000473
+V0595,,"The narrative results in Return ER via Release A, which does not map to any of the target categories.",,merged_discharge,5.0,,0.019668729975819588
+V0596,,"The narrative results in Release A, which does not match any of the specified target categories.",,merged_discharge,4.0,,0.0015520690940320492
+V0597,,"The narrative results in Release A, which does not match any of the specified target categories.",,release_c,8.0,,0.09118050336837769
+V0598,release_e,"The narrative explicitly culminates in Release E, realizing the corresponding discharge pathway.",14.0,release_d,9.0,0.08387475460767746,0.3335825204849243
+V0599,,"The narrative results in Release A, which does not match any of the specified target categories.",,release_c,3.0,,0.0020115261431783438
+V0600,,"The narrative results in Release A, which does not match any of the specified target categories.",,release_e,16.0,,0.10056561231613159
+V0601,release_c,"The narrative ends with Release C, matching alternative 19 in the taxonomy.",0.0,release_d,3.0,0.003484755754470825,0.33444321155548096
+V0602,release_d,"The narrative ends with Release D, matching alternative 20 in the taxonomy.",7.0,release_c,6.0,0.10042574256658554,0.34005212783813477
+V0603,release_e,"The narrative ends with Release E, matching alternative 21 in the taxonomy.",9.0,release_d,4.0,0.17411257326602936,0.33487775921821594
+V0604,,"The narrative ends with Release A, which does not correspond to any of the taxonomy categories.",,release_c,4.0,,0.0114743048325181
+V0605,,"The narrative ends with Return ER after Release A, so it does not match any targeted release category.",,merged_discharge,7.0,,0.0549314059317112
+V0606,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_c,3.0,,0.0022177291102707386
+V0607,,"The narrative ends with Release A, which is not part of the taxonomy.",,merged_discharge,4.0,,0.006661508232355118
+V0608,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_c,3.0,,0.005200270563364029
+V0609,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_c,5.0,,0.0011046453146263957
+V0610,,"The narrative ends with Release A, which is not part of the taxonomy.",,merged_discharge,3.0,,0.01114668045192957
+V0611,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_c,6.0,,0.10255425423383713
+V0612,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_c,4.0,,0.00494556175544858
+V0613,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_c,1.0,,0.168706014752388
+V0614,,"The narrative ends with Return ER after Release A, outside the scope of the defined categories.",,release_c,3.0,,0.03703635558485985
+V0615,release_c,"The narrative includes Release C before Return ER, realizing the Release C pathway.",5.0,merged_discharge,3.0,0.4149916172027588,0.0072640967555344105
+V0616,,"The narrative ends with Release A, which is not part of the taxonomy.",,merged_discharge,2.0,,0.16856996715068817
+V0617,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_c,3.0,,0.0030060841236263514
+V0618,release_c,"The narrative ends with Release C, matching alternative 19.",8.0,release_d,5.0,0.12931039929389954,0.3394508361816406
+V0619,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_c,4.0,,0.16818271577358246
+V0620,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_e,3.0,,0.11481612175703049
+V0621,,"The narrative ends with Release B, which is outside the defined taxonomy categories.",,release_d,5.0,,0.3952144384384155
+V0622,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_d,13.0,,0.11375517398118973
+V0623,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_c,3.0,,0.00030982462340034544
+V0624,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_c,3.0,,0.09256800264120102
+V0625,,"The narrative ends with Return ER following Release A, outside the taxonomy.",,release_d,2.0,,0.014510717242956161
+V0626,,"The narrative ends with Release A, which does not map to any of the specific discharge alternatives (merged_discharge, release_c, release_d, release_e) in the taxonomy.",,release_c,3.0,,0.12134949117898941
+V0627,,"The narrative results in Release A followed by Return ER, which does not correspond to the targeted discharge pathways in the taxonomy.",,release_c,13.0,,0.002506805816665292
+V0628,,"The narrative ends with Release A, which is outside the scope of the defined taxonomy categories.",,release_c,3.0,,0.16964907944202423
+V0629,release_e,"The narrative terminates with Release E, mapping directly to alternative 21 representing Release E in the taxonomy.",0.0,release_d,6.0,0.15986932814121246,0.3968048095703125
+V0630,,"The narrative ends with Release A, which does not match any category in the taxonomy.",,merged_discharge,8.0,,0.11548372358083725
+V0631,,"The narrative terminates with Release A and a subsequent Return ER, which does not match the target discharge categories.",,release_c,3.0,,0.00020539744582492858
+V0632,,"The narrative ends with Release A followed by Return ER, which does not fit the taxonomy definitions.",,merged_discharge,2.0,,0.002855469472706318
+V0633,release_d,"The narrative terminates with Release D, directly mapping to alternative 20 representing Release D.",0.0,merged_discharge,6.0,0.48728999495506287,0.007231835275888443
+V0634,,"The narrative ends with Release A, which is not part of the defined taxonomy alternatives.",,release_c,3.0,,0.00015841257118154317
+V0635,,"The narrative ends with Release A followed by Return ER, which does not realize any taxonomy category.",,merged_discharge,4.0,,0.015387039631605148
+V0636,,"The narrative terminates with LacticAcid, lacking any valid discharge outcome.",,release_c,3.0,,0.3705412447452545
+V0637,,"The narrative concludes with Release A, which does not match the taxonomy categories.",,release_c,2.0,,0.003891833359375596
+V0638,,"The narrative ends with Release A and subsequent Return ER, falling outside the target discharge categories.",,merged_discharge,4.0,,0.021295899525284767
+V0639,,"The narrative concludes with Release A followed by Return ER, which does not match the taxonomy.",,merged_discharge,7.0,,0.008705905638635159
+V0640,,"The narrative ends with Release A and Return ER, not corresponding to any category.",,release_c,5.0,,0.0006289064767770469
+V0641,,"The narrative ends with Release A followed by Return ER, failing to map to the taxonomy.",,release_c,3.0,,0.0008567627519369125
+V0642,,"The narrative terminates with Release A, which is not covered in the taxonomy.",,release_c,7.0,,0.11392874270677567
+V0643,,"The narrative ends with Release A and Return ER, which does not fit any of the discharge categories.",,release_e,11.0,,0.014964391477406025
+V0644,,"The narrative ends with CRP, lacking a proper discharge outcome.",,release_c,3.0,,0.37862130999565125
+V0645,,The narrative concludes with LacticAcid without a recognized discharge event.,,release_c,4.0,,0.6157492995262146
+V0646,,"The narrative terminates with LacticAcid after a sequence involving Release A and Return ER, fitting none of the categories.",,release_c,8.0,,0.3377629518508911
+V0647,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_c,1.0,,0.12246062606573105
+V0648,,"The narrative concludes with Release A, failing to map to any specified category.",,merged_discharge,6.0,,0.008930220268666744
+V0649,,"The narrative ends with Release A followed by Return ER, which does not match the taxonomy categories.",,merged_discharge,5.0,,0.006987418979406357
+V0650,,"The narrative ends with Release A and Return ER, falling outside the taxonomy.",,release_c,2.0,,0.22538095712661743
+V0651,,"The narrative ends with Release A followed by Return ER, which does not map to merged_discharge, release_c, release_d, or release_e.",,merged_discharge,3.0,,0.019929252564907074
+V0652,,"The narrative ends with Release A and a Return ER outcome, which is outside the specified release alternatives.",,merged_discharge,2.0,,0.11768632382154465
+V0653,,"The narrative culminates in Release A, which is not among the target taxonomy categories.",,release_c,4.0,,0.010235072113573551
+V0654,,The process terminates with Leucocytes rather than a recognized discharge category.,,release_c,6.0,,0.3761238157749176
+V0655,,"The narrative concludes with Release A, which is outside the defined taxonomy categories.",,release_c,6.0,,0.08362168818712234
+V0656,release_d,"The narrative explicitly culminates in Release D, matching alternative 20.",10.0,release_c,6.0,0.01688617654144764,0.3385620415210724
+V0657,,"The narrative results in Release A, which does not match any of the four taxonomy categories.",,release_c,2.0,,0.08947634696960449
+V0658,,"The narrative ends with Release A and a subsequent Return ER event, fitting none of the categories.",,release_c,2.0,,0.16990059614181519
+V0659,,"The outcome is Release A, which is outside the taxonomy's target categories.",,release_c,3.0,,0.004021883476525545
+V0660,,"The narrative ends with Release A, failing to align with the specified taxonomy categories.",,release_d,11.0,,0.013814233243465424
+V0661,,"The process concludes with Release A, which is not part of the defined category options.",,release_d,13.0,,0.12402636557817459
+V0662,,"The narrative ends with Release A followed by Return ER, matching none of the category criteria.",,merged_discharge,6.0,,0.004931775387376547
+V0663,,The process terminates at Admission NC without reaching any discharge or release endpoint.,,release_c,1.0,,0.401623398065567
+V0664,,The narrative stops at IV Liquid without completing a discharge pathway.,,release_c,7.0,,0.44729647040367126
+V0665,,"The narrative concludes with Release A, which is outside the specified taxonomy.",,release_c,4.0,,0.0005881366087123752
+V0666,,"The outcome is Release A, which does not realize any of the defined taxonomy categories.",,release_c,4.0,,0.01050226017832756
+V0667,,"The narrative ends with Release A and a subsequent Return ER, mapping to none of the options.",,merged_discharge,3.0,,0.0008237233851104975
+V0668,,"The narrative terminates at Release A, which is not among the target categories.",,release_c,2.0,,0.00495850620791316
+V0669,,"The process ends with Release A, fitting none of the category definitions.",,release_c,2.0,,0.00022347726917359978
+V0670,,"The sequence includes a Return ER and terminates at Leucocytes, realizing none of the categories.",,release_d,4.0,,0.3336726427078247
+V0671,,"The narrative ends with Release A and a Return ER event, matching no taxonomy categories.",,merged_discharge,5.0,,0.008608167059719563
+V0672,,"The narrative concludes with Release B, which is outside the defined taxonomy categories.",,release_d,13.0,,0.35760363936424255
+V0673,,"The process terminates at Release A, failing to match any of the targeted categories.",,release_c,6.0,,0.001734760939143598
+V0674,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_d,22.0,,0.157582089304924
+V0675,release_d,"The narrative concludes with Release D before a Return ER event, matching alternative 20.",7.0,release_c,7.0,0.40084752440452576,0.015145647339522839
+V0676,,The narrative ends in IV Antibiotics without reaching a discharge pathway.,,release_c,6.0,,0.43612173199653625
+V0677,,"The narrative concludes with Return ER, which does not map to any captured discharge category.",,merged_discharge,2.0,,0.002805172698572278
+V0678,,"The narrative ends in Release A, which does not match any of the specified taxonomy categories (merged_discharge, release_c, release_d, release_e).",,release_c,4.0,,0.00567880691960454
+V0679,,The narrative terminates at IV Antibiotics without completing a discharge.,,release_c,2.0,,0.41156673431396484
+V0680,,"The narrative results in a Return ER outcome, which falls outside the discharge destination categories.",,merged_discharge,7.0,,0.012146451510488987
+V0681,,"The outcome is Return ER, so it does not realize any discharge pathway category.",,merged_discharge,5.0,,0.021132556721568108
+V0682,,"The narrative ends in Release B, which is not present in the given category options.",,release_d,9.0,,0.3455512821674347
+V0683,,"The final activity is Release B, which does not correspond to any valid category_id in the taxonomy.",,release_d,6.0,,0.01903481036424637
+V0684,,"The narrative concludes with Release A, not matching any category.",,release_c,3.0,,0.0021923528984189034
+V0685,,The process stops at IV Antibiotics without reaching discharge.,,release_c,4.0,,0.3972547948360443
+V0686,,"The outcome is Return ER, failing to realize a captured discharge category.",,release_c,1.0,,0.043841272592544556
+V0687,,The narrative terminates with Return ER.,,merged_discharge,2.0,,0.004264625255018473
+V0688,,The narrative results in Return ER.,,merged_discharge,2.0,,0.0015197525499388576
+V0689,,The process ends at IV Antibiotics without a discharge step.,,release_c,5.0,,0.39615246653556824
+V0690,,"The narrative ends in Release A, which is not part of the taxonomy.",,merged_discharge,8.0,,0.11155546456575394
+V0691,,"The narrative ends with Release B, which does not map to the allowed taxonomy categories.",,release_c,2.0,,0.04676935449242592
+V0692,,"The narrative ends with Release B, outside the target categories.",,release_c,4.0,,0.02590586431324482
+V0693,,The narrative results in Return ER.,,merged_discharge,2.0,,0.11563631892204285
+V0694,,The process terminates at ER Sepsis Triage without reaching discharge.,,release_c,4.0,,0.5102336406707764
+V0695,,"The narrative ends in Release A, which is not in the taxonomy.",,release_c,3.0,,0.01081379409879446
+V0696,,The narrative concludes with Return ER.,,merged_discharge,8.0,,0.01542141567915678
+V0697,,"The narrative ends in Release A, which is not part of the defined categories.",,merged_discharge,1.0,,0.003289768472313881
+V0698,,"The narrative ends with Release A, failing to match any category.",,release_c,1.0,,0.0044136508367955685
+V0699,,"The narrative ends in Release A, which is unmapped in the taxonomy.",,release_c,4.0,,0.0004886052338406444
+V0700,,"The narrative terminates with Release B, which does not fit the taxonomy options.",,release_c,3.0,,0.33633187413215637
+V0701,release_c,"The narrative ends with the 'Release C' outcome, directly realizing the Release C category.",8.0,merged_discharge,6.0,0.12520329654216766,0.3399949073791504
+V0702,,"The narrative ends with 'Release A', which does not match any of the defined taxonomy categories (merged_discharge, release_c, release_d, release_e).",,merged_discharge,3.0,,0.0026132676284760237
+V0703,,"The narrative ends with 'IV Liquid', which is not a discharge category matching the taxonomy.",,release_d,2.0,,0.3593854010105133
+V0704,,"The narrative ends with 'Release A', which is outside the specified discharge pathways.",,release_c,5.0,,0.12126370519399643
+V0705,,"The narrative results in 'Return ER' after 'Release A', fitting neither of the target release categories.",,merged_discharge,3.0,,0.0007216189987957478
+V0706,,"The narrative ends with 'Release A', not fitting any taxonomy alternative.",,release_c,1.0,,0.014112981967628002
+V0707,,"The narrative concludes with 'Admission NC', which is not a discharge pathway.",,release_c,1.0,,0.40936407446861267
+V0708,,"The narrative ends with 'IV Antibiotics', which is not a discharge category.",,release_d,5.0,,0.395697683095932
+V0709,,"The narrative ends with 'Release B', which is not part of the taxonomy alternatives.",,merged_discharge,4.0,,0.3365001976490021
+V0710,release_c,"The narrative culminates in the 'Release C' outcome, aligning with the Release C taxonomy category.",173.0,release_d,111.0,0.2444617748260498,0.3349083364009857
+V0711,,"The outcome is 'Release A', which is not included in the taxonomy.",,release_c,3.0,,0.007333377841860056
+V0712,,"The narrative shows 'Release A' followed by 'Return ER', fitting none of the designated categories.",,merged_discharge,9.0,,0.011705269105732441
+V0713,,The narrative stops at 'IV Antibiotics' without reaching a qualifying discharge pathway.,,release_c,3.0,,0.39199313521385193
+V0714,,"The outcome is 'Release A', which does not match the taxonomy categories.",,merged_discharge,4.0,,0.004880551248788834
+V0715,,"The outcome is 'Release B', which is outside the target taxonomy.",,release_c,6.0,,0.3562581539154053
+V0716,,"The outcome is 'Release A', which is not one of the taxonomy categories.",,merged_discharge,5.0,,0.011875192634761333
+V0717,,"The outcome is 'Release A', failing to map to any specified category.",,release_c,4.0,,0.005249731242656708
+V0718,release_d,"The narrative includes a 'Release D' outcome, fulfilling the criteria for the Release D category.",20.0,release_e,13.0,0.4685699939727783,0.003502768697217107
+V0719,,"The narrative ends with 'Return ER' after 'Release A', not matching the taxonomy.",,release_c,5.0,,0.003963633440434933
+V0720,,"The narrative ends with 'Return ER' following 'Release A', fitting none of the choices.",,release_c,2.0,,0.0006664472748525441
+V0721,,"The narrative ends with 'Return ER' after 'Release A', not fitting the taxonomy.",,release_c,8.0,,0.008263454772531986
+V0722,,"The outcome is 'Release A', which is excluded from the taxonomy categories.",,merged_discharge,3.0,,0.001538728945888579
+V0723,,"The outcome is 'Release A', which does not correspond to any category.",,release_c,4.0,,0.009887131862342358
+V0724,,"The narrative ends with 'Return ER' following 'Release A', fitting no taxonomy category.",,merged_discharge,2.0,,0.01980060525238514
+V0725,release_d,"The narrative concludes with the 'Release D' outcome, mapping directly to the Release D category.",10.0,release_c,2.0,0.2604072391986847,0.36208561062812805
+V0726,,"The narrative ends with Release A, which does not match any of the target discharge categories (merged_discharge, release_c, release_d, release_e).",,release_c,12.0,,0.12046945095062256
+V0727,,"The narrative ends with Return ER after Release A, fitting neither of the target release categories.",,merged_discharge,2.0,,0.00011380133219063282
+V0728,,"The narrative concludes with Release A, which is not part of the defined taxonomy categories.",,release_c,4.0,,0.11490833759307861
+V0729,,"The narrative concludes with Release A, which falls outside the specified taxonomy.",,release_c,4.0,,0.11492464691400528
+V0730,,"The outcome is Release A, not corresponding to any taxonomy category.",,release_c,3.0,,0.0005464075366035104
+V0731,,"The outcome is Release A, which is not represented in the taxonomy.",,release_c,2.0,,0.16736029088497162
+V0732,,"The narrative ends with Release A, outside the scope of the taxonomy.",,release_c,3.0,,0.024292118847370148
+V0733,,"The outcome is Release A, which does not match the taxonomy categories.",,release_d,3.0,,0.005485165864229202
+V0734,,"The narrative results in Return ER, not realizing any of the release pathways.",,merged_discharge,1.0,,0.003758639097213745
+V0735,,"The narrative ends with Release A, which is not among the target categories.",,release_c,3.0,,0.2270824909210205
+V0736,,"The outcome is Release A, failing to align with the specified taxonomy categories.",,release_c,4.0,,0.00018206116510555148
+V0737,,"The outcome is Release A, outside the defined taxonomy.",,release_c,2.0,,0.0019712208304554224
+V0738,,"The narrative results in Release A, which is not covered by the categories.",,release_c,2.0,,0.009560959413647652
+V0739,,"The outcome is Release A, not matching any taxonomy category.",,merged_discharge,6.0,,0.11519887298345566
+V0740,,"The narrative concludes with Release A, which is outside the taxonomy.",,release_c,4.0,,0.003680954920127988
+V0741,,"The outcome is Release A, not aligning with the taxonomy categories.",,merged_discharge,3.0,,0.00035264340112917125
+V0742,,"The narrative terminates at LacticAcid without any discharge event, hence no category fits.",,release_c,4.0,,0.38326573371887207
+V0743,,"The outcome is Release A, which is outside the specified taxonomy.",,release_c,5.0,,0.00027456198586151004
+V0744,,"The narrative ends in Return ER following Release A, not matching the taxonomy options.",,release_d,10.0,,0.006132142152637243
+V0745,,"The narrative ends in Return ER after Release A, fitting none of the categories.",,release_d,5.0,,0.11935805529356003
+V0746,,"The narrative leads to Return ER, not realizing any of the taxonomy release pathways.",,release_d,17.0,,0.013426513411104679
+V0747,release_c,"The narrative explicitly culminates in Release C, directly realizing the 'Release C' category.",5.0,merged_discharge,6.0,0.1952463835477829,0.34246501326560974
+V0748,,"The narrative results in Return ER, not mapping to the defined release categories.",,release_c,4.0,,0.014722787775099277
+V0749,,"The outcome is Release A, which is not part of the taxonomy.",,release_c,2.0,,0.0003371362399775535
+V0750,,The process terminates at IV Antibiotics without reaching a discharge or release event.,,release_c,4.0,,0.3950466215610504
+V0751,,"The narrative results in Release A which does not match any of the defined release categories (release_c, release_d, release_e) or merged_discharge.",,merged_discharge,2.0,,0.003432496450841427
+V0752,,"The narrative ends with Return ER following Release A, fitting neither the target release pathways nor merged discharge criteria.",,release_d,8.0,,0.007750561460852623
+V0753,,"The narrative finishes with Return ER after Release A, failing to align with any specific category alternative.",,release_c,3.0,,0.007777217775583267
+V0754,,"Outcome is Return ER following Release A, which does not correspond to the specified taxonomy categories.",,release_c,1.0,,0.003967460710555315
+V0755,,"Leads to Release A, which is outside the defined scope of alternatives 17, 19, 20, and 21.",,release_c,3.0,,0.004060936626046896
+V0756,,Ends in Return ER after Release A; does not fit the target release or merged discharge definitions.,,release_d,15.0,,0.004854610655456781
+V0757,,"Results in Return ER after Release A, lacking alignment with the defined categories.",,merged_discharge,4.0,,0.004480055999010801
+V0758,,"Variant concludes with Release A, which is not represented in the taxonomy categories.",,release_c,1.0,,0.01777580939233303
+V0759,,"Variant terminates at IV Antibiotics, lacking a final discharge outcome.",,release_c,6.0,,0.4560813903808594
+V0760,,"Ends with Release A, failing to match any of the target discharge taxonomy alternatives.",,release_c,5.0,,0.004839697387069464
+V0761,,"Terminates with Release A, which is not part of the taxonomy categories.",,release_c,5.0,,0.00013509762356989086
+V0762,,"Concludes with Release A, outside the scope of the defined release alternatives.",,release_d,14.0,,0.14637021720409393
+V0763,,"Results in Return ER following Release A, which does not fit the taxonomy criteria.",,release_d,23.0,,0.004158315248787403
+V0764,,Variant stops prematurely at ER Sepsis Triage without reaching a discharge or release state.,,release_c,4.0,,0.37234988808631897
+V0765,,"Ends in Return ER after Release A, failing to meet the requirements of the specified categories.",,release_c,5.0,,0.006456186529248953
+V0766,,"Finishes with Release A, which is not included in the taxonomy categories.",,release_c,1.0,,0.1666698306798935
+V0767,,"Terminates in Return ER following Release A, fitting none of the release alternatives.",,release_c,2.0,,0.005749322474002838
+V0768,,"Results in Release A, outside the defined alternatives 17, 19, 20, and 21.",,release_c,5.0,,0.0068877884186804295
+V0769,,"Concludes with Release A, which does not match any category in the taxonomy.",,release_c,2.0,,0.00870306883007288
+V0770,,"Results in Return ER after Release A, failing to match the target release pathways.",,merged_discharge,7.0,,0.010774829424917698
+V0771,,"Terminates with Release A, which is not represented in the taxonomy.",,release_c,1.0,,0.0024409189354628325
+V0772,,Variant ends at CRP diagnostic activity without reaching a discharge outcome.,,release_c,4.0,,0.3807610273361206
+V0773,,"Ends with Release A, failing to align with the specific taxonomy categories.",,release_c,2.0,,0.16979831457138062
+V0774,,Terminates early at ER Sepsis Triage with no discharge or release pathway.,,release_c,6.0,,0.3888610899448395
+V0775,,"Variant stops at CRP diagnostic activity, lacking a final discharge outcome.",,release_c,3.0,,0.3846452534198761
+V0776,,"The narrative ends with Release A, which does not match any of the target categories (merged_discharge, release_c, release_d, release_e).",,release_c,3.0,,0.0054182433523237705
+V0777,,"The narrative ends with Leucocytes, which is not a discharge category.",,release_d,4.0,,0.45234444737434387
+V0778,,"The narrative ends with Leucocytes, which is not a discharge category.",,release_c,6.0,,0.5532999038696289
+V0779,,"The narrative ends with Return ER after Release A, fitting neither merged discharge nor releases C, D, or E.",,merged_discharge,3.0,,0.013563917018473148
+V0780,,"The narrative ends with Release A, which is not part of the specified release taxonomy categories.",,release_c,8.0,,0.02245156280696392
+V0781,release_c,"The narrative ends with Release C, matching alternative 19.",8.0,merged_discharge,6.0,0.01663379743695259,0.3395673930644989
+V0782,,"The narrative ends with Release A, which is outside the target categories.",,release_c,5.0,,0.013853371143341064
+V0783,,"The narrative ends with Release A, which is outside the target categories.",,release_c,5.0,,0.0087227588519454
+V0784,,"The narrative ends with Release A, which is outside the target categories.",,release_d,7.0,,0.023777252063155174
+V0785,,"The narrative ends with Return ER, which does not match the target release categories.",,merged_discharge,5.0,,0.011679232120513916
+V0786,,"The narrative ends with Release A, which is outside the target categories.",,release_c,5.0,,0.11531683802604675
+V0787,,"The narrative ends with Return ER, which does not match the target categories.",,release_c,4.0,,0.001129603828303516
+V0788,,"The narrative ends with Release A, which is outside the target categories.",,release_d,3.0,,0.0023949111346155405
+V0789,,"The narrative ends with Release A, which is outside the target categories.",,release_c,3.0,,0.008900819346308708
+V0790,release_d,"The narrative ends with Release D, matching alternative 20.",9.0,release_c,7.0,0.017393022775650024,0.3390688896179199
+V0791,,The narrative ends with IV Antibiotics and lacks a discharge outcome.,,release_d,3.0,,0.44083431363105774
+V0792,,"The narrative ends with Release B, which is not in the taxonomy categories.",,merged_discharge,4.0,,0.33340534567832947
+V0793,,"The narrative ends with Release A, which is outside the target categories.",,release_c,3.0,,0.12481984496116638
+V0794,,"The narrative ends with Return ER after Release A, not matching the required categories.",,release_c,6.0,,0.0012936044950038195
+V0795,,"The narrative ends with Release A, which is outside the target categories.",,release_d,20.0,,0.10510320216417313
+V0796,,"The narrative ends with Release A, which is outside the target categories.",,release_c,4.0,,0.003915941808372736
+V0797,,"The narrative ends with Return ER, not matching the target categories.",,release_c,5.0,,0.0009016120457090437
+V0798,,"The narrative ends with Return ER, not matching the target categories.",,merged_discharge,2.0,,0.0020616312976926565
+V0799,,"The narrative ends with Release A, which is outside the target categories.",,release_c,3.0,,0.028046967461705208
+V0800,,"The narrative ends with Release A, which is outside the target categories.",,release_c,3.0,,0.11216933280229568
+V0801,,"The narrative ends with Release A, which does not map to any of the specific discharge alternatives (merged_discharge, release_c, release_d, release_e).",,release_c,4.0,,0.004733208566904068
+V0802,release_d,"The narrative ends with Release D, which directly realizes alternative 20 represented by release_d.",7.0,release_c,2.0,0.024389848113059998,0.33333656191825867
+V0803,,"The narrative ends with Release B, which is outside the scope of the defined taxonomy categories.",,merged_discharge,7.0,,0.33847275376319885
+V0804,,"The narrative ends with Return ER following Release A, fitting neither merged_discharge nor the specific release alternatives.",,merged_discharge,2.0,,0.0021083580795675516
+V0805,,"The narrative ends with Release A, which does not match any category in the taxonomy.",,release_d,14.0,,0.13673512637615204
+V0806,,"The outcome is Return ER after Release A, which does not match the target release categories.",,merged_discharge,5.0,,0.010304062627255917
+V0807,,"The narrative concludes with Release A, not mapping to the specified discharge pathways.",,release_c,4.0,,0.16810350120067596
+V0808,,"The narrative ends with Return ER after Release A, so it does not realize the taxonomy categories.",,release_c,6.0,,0.009593981318175793
+V0809,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_d,6.0,,0.012508113868534565
+V0810,,"The outcome is Release A, which has no corresponding category in the taxonomy.",,release_d,4.0,,0.008838859386742115
+V0811,,"The narrative ends with Release A, which is not represented in the taxonomy categories.",,release_c,4.0,,0.11231901496648788
+V0812,,"The narrative ends with Return ER after Release A, fitting none of the taxonomy categories.",,release_c,3.0,,0.22223521769046783
+V0813,,"The narrative concludes with Release A, which does not match any taxonomy category.",,release_c,9.0,,0.01942213624715805
+V0814,,"The narrative ends with Release A, which is outside the taxonomy definitions.",,release_c,1.0,,0.0012880897847935557
+V0815,,"The outcome is Return ER following Release A, which is not mapped to the taxonomy.",,release_c,6.0,,0.006888128817081451
+V0816,,"The narrative ends with IV Antibiotics, meaning the patient was not discharged.",,release_d,4.0,,0.430923730134964
+V0817,release_c,"The narrative ends with Release C, which directly realizes alternative 19 represented by release_c.",12.0,release_d,7.0,0.37057778239250183,0.005273167043924332
+V0818,,"The narrative ends with Release A, which is not part of the taxonomy.",,release_c,5.0,,0.016323447227478027
+V0819,,"The narrative ends with Release A, which does not map to any taxonomy category.",,release_c,5.0,,0.0005369993159547448
+V0820,,The narrative ends with LacticAcid and does not result in a discharge.,,release_c,4.0,,0.44519734382629395
+V0821,,"The narrative ends with Return ER after Release A, which does not fit the taxonomy.",,release_e,4.0,,0.013548166491091251
+V0822,,"The narrative ends with Return ER after Release A, so no category is realized.",,release_d,24.0,,0.00372619298286736
+V0823,,"The narrative ends with Return ER after Release A, which does not map to the taxonomy.",,release_c,1.0,,0.05059830844402313
+V0824,,"The narrative concludes with Release A, which is not included in the taxonomy.",,release_c,2.0,,0.00493662292137742
+V0825,,"The narrative ends with Return ER following Release A, fitting none of the taxonomy categories.",,release_c,2.0,,0.010605152696371078
+V0826,,The narrative ends in Admission NC and does not realize any of the discharge categories.,,release_c,3.0,,0.37964558601379395
+V0827,,"The narrative ends with Return ER after Release A, which does not map to the specified release categories.",,release_d,5.0,,0.0006282883114181459
+V0828,,The narrative ends with Return ER and does not realize a captured discharge category.,,merged_discharge,6.0,,0.23171526193618774
+V0829,,"The narrative ends with Release A, which is not part of the defined taxonomy categories.",,release_c,3.0,,0.005269570741802454
+V0830,,"The narrative ends with Release A, which is not one of the designated categories.",,release_d,7.0,,0.003915227018296719
+V0831,release_d,"The narrative ends with Release D, directly realizing the Release D category.",8.0,release_c,5.0,0.13306941092014313,0.333497554063797
+V0832,,The narrative ends with IV Antibiotics and does not reach a discharge pathway.,,release_c,5.0,,0.440214067697525
+V0833,,"The narrative ends with Release A, which is not included in the taxonomy.",,release_c,7.0,,0.011214274913072586
+V0834,,The narrative results in Return ER and does not realize the target categories.,,release_c,13.0,,0.012457691133022308
+V0835,,"The narrative ends with Release A, which falls outside the taxonomy categories.",,release_c,1.0,,0.0004351337265688926
+V0836,,"The narrative ends with Release A, not corresponding to any taxonomy category.",,release_c,7.0,,0.007041323464363813
+V0837,,"The narrative terminates with Release A, which is not represented in the taxonomy.",,release_c,4.0,,0.0010288454359397292
+V0838,,"The narrative ends with Release A, outside the scope of the taxonomy.",,release_c,2.0,,0.006124341394752264
+V0839,,"The narrative ends with Release A, which does not map to any defined category.",,release_c,4.0,,0.00192807347048074
+V0840,,"The narrative ends with Release B, which is not part of the taxonomy categories.",,release_d,31.0,,0.4136544167995453
+V0841,,"The narrative terminates with Release A, which is outside the taxonomy.",,release_c,2.0,,0.027711568400263786
+V0842,,"The narrative ends with Return ER after Release A, failing to realize the designated categories.",,release_c,5.0,,5.056213922216557e-05
+V0843,,The narrative ends with IV Liquid and does not represent a discharge pathway.,,release_c,2.0,,0.3500019311904907
+V0844,,"The narrative ends with Release A, which is not included in the taxonomy.",,release_e,10.0,,0.16977530717849731
+V0845,,"The narrative ends with Release A, outside the defined category list.",,release_d,12.0,,0.12348002940416336
+V0846,,"The narrative ends with Release A, which does not match any taxonomy categories.",,release_c,3.0,,0.11518785357475281

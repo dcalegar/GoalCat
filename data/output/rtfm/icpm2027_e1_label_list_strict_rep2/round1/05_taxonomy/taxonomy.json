@@ -1,0 +1,44 @@
+{
+  "categories": [
+    {
+      "category_id": "single_payment_settlement",
+      "name": "Single-payment settlement",
+      "description": "The fine is settled in one payment covering the full amount due at that point in the case, with no installment structure and no formal dispute on record.",
+      "anchor_ids": [],
+      "rationale": "Distinguishes cases whose settlement required no payment plan from those that did, independent of whether the amount paid included an added penalty.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "installment_settlement",
+      "name": "Installment or partial-payment settlement",
+      "description": "The fine is settled through two or more separate payments over time, with no formal dispute on record \u2014 a payment-plan pattern rather than a single transaction.",
+      "anchor_ids": [],
+      "rationale": "Separates settlement mechanics (how payment was structured) from settlement timing, which the appeal-channel framing does not distinguish on its own.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "formal_dispute",
+      "name": "Formal dispute lodged",
+      "description": "The offender contests the fine through any formal channel on record (e.g., a filing with an administrative or judicial authority), regardless of which channel or of the dispute's outcome.",
+      "anchor_ids": [],
+      "rationale": "Merges administrative and judicial contestation into one bucket, on the premise that, from a collections-office perspective, what matters operationally is that the case left the standard payment track, not which forum received the challenge.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "referred_to_collections",
+      "name": "Referred to external collections",
+      "description": "The case is escalated to an external credit-collection process because it was not settled or contested through the standard channels within the observed trace.",
+      "anchor_ids": [],
+      "rationale": "A case that reaches enforced collection is operationally distinct regardless of how it got there, so it is kept separate from formal_dispute even where a dispute preceded it.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "unresolved_other",
+      "name": "Unresolved or other",
+      "description": "The observed trace ends without a payment, a dispute filing, or a referral to collections \u2014 an open, ambiguous, or otherwise unclassifiable case.",
+      "anchor_ids": [],
+      "rationale": "A residual bucket for traces that do not exhibit any of the four settlement/escalation patterns above, kept distinct from the pipeline's own no-match residual.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

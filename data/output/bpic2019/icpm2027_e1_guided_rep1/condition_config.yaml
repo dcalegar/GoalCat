@@ -3,7 +3,7 @@
 # configs/<dataset>.yaml, or configs/preregistration.yaml and re-generate instead; editing this
 # file makes the run's manifest a record of settings that were not the ones used.
 #
-# Condition: e1_guided_rep1 | dataset: bpic2019 | protocol version: 1.0.0
+# Condition: e1_guided_rep1 | dataset: bpic2019 | protocol version: 1.1.0
 
 log_filename: bpic2019.xes.gz
 goal_model_filename: bpic2019_goal_model.jucm
@@ -18,6 +18,7 @@ sample_frequent_n: 10
 sample_rare_n: 10
 sample_extreme_n: 5
 taxonomy_mode: intent_guided
+axis_root: '4'
 discovery_noise_threshold: 0.0
 llm:
   taxonomy_model: gemini/gemini-3.5-flash-lite

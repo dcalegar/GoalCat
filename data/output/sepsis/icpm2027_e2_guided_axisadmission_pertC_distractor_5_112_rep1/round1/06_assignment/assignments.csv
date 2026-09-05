@@ -1,0 +1,847 @@
+variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
+V0001,,The narrative stops at ER Sepsis Triage and does not involve any ward admission.,,admission_nc,2.0,,0.3891150653362274
+V0002,,The narrative ends at CRP laboratory testing without involving any ward admission.,,admission_nc,1.0,,0.37631967663764954
+V0003,,The narrative ends with Leucocytes testing and does not include an admission event.,,admission_nc,2.0,,0.3832360804080963
+V0004,,The narrative ends with IV Antibiotics and contains no hospital admission steps.,,admission_nc,1.0,,0.0398164764046669
+V0005,,The narrative concludes with LacticAcid testing without any subsequent ward admission.,,admission_nc,1.0,,0.37761950492858887
+V0006,,The narrative represents emergency treatment up to IV Antibiotics without an admission event.,,admission_nc,2.0,,0.017360536381602287
+V0007,,The narrative stops at IV Antibiotics in the emergency pathway without a ward admission step.,,admission_nc,1.0,,0.010318686254322529
+V0008,admission_nc,"The narrative explicitly includes the 'Admission NC' activity, realizing admission to normal care ward.",7.0,admission_ic,3.0,0.36189985275268555,0.33436235785484314
+V0009,,The narrative finishes at IV Antibiotics without any admission to a ward.,,admission_nc,2.0,,0.02844727225601673
+V0010,,The narrative ends at ER Sepsis Triage and has no ward admission activity.,,admission_nc,2.0,,0.3388270139694214
+V0011,,The narrative concludes at IV Antibiotics without any corresponding hospital admission.,,admission_nc,1.0,,0.013468634337186813
+V0012,,The narrative stops at IV Antibiotics without an admission event.,,admission_nc,2.0,,0.07379884272813797
+V0013,,The narrative terminates at Leucocytes testing without proceeding to admission.,,admission_nc,3.0,,0.367016464471817
+V0014,admission_nc,"The narrative contains 'Admission NC', indicating admission to normal care.",6.0,admission_ic,4.0,0.3577549159526825,0.333757609128952
+V0015,admission_nc,"The narrative includes 'Admission NC', realizing admission to normal care ward.",5.0,admission_ic,4.0,0.03566834703087807,0.02639090269804001
+V0016,admission_nc,"The narrative includes 'Admission NC', realizing admission to normal care ward.",5.0,admission_ic,4.0,0.023234130814671516,0.013956687413156033
+V0017,,The narrative ends at ER Sepsis Triage without reaching any ward admission.,,admission_nc,2.0,,0.36712613701820374
+V0018,admission_nc,"The narrative includes 'Admission NC', realizing admission to normal care ward.",7.0,admission_ic,4.0,0.3568616807460785,0.3338022530078888
+V0019,,The narrative stops at IV Antibiotics without any ward admission activity.,,admission_nc,3.0,,0.028952397406101227
+V0020,,The narrative ends at CRP testing and does not show an admission step.,,admission_nc,3.0,,0.3788929879665375
+V0021,admission_nc,"The narrative includes 'Admission NC', realizing admission to normal care ward before release and return.",5.0,admission_ic,6.0,0.3730107843875885,0.11683540791273117
+V0022,admission_nc,"The narrative includes 'Admission NC', realizing admission to normal care ward.",6.0,admission_ic,4.0,0.3563199043273926,0.3343440592288971
+V0023,admission_nc,"The narrative includes 'Admission NC', realizing admission to normal care ward prior to release.",6.0,admission_ic,5.0,0.37762269377708435,0.11472144722938538
+V0024,admission_nc,"The narrative explicitly culminates in 'Admission NC', realizing admission to normal care ward.",7.0,admission_ic,4.0,0.79412841796875,0.700086772441864
+V0025,,The narrative stops at IV Antibiotics without involving any ward admission.,,admission_nc,2.0,,0.01594679243862629
+V0026,admission_nc,"The narrative includes the activity 'Admission NC', realizing admission to a normal care ward.",7.0,admission_ic,5.0,0.5199500918388367,0.22857917845249176
+V0027,,The narrative ends with 'IV Antibiotics' and does not contain any ward admission activity.,,admission_nc,3.0,,0.011120502837002277
+V0028,admission_nc,"Contains the 'Admission NC' activity, indicating normal care ward admission.",5.0,admission_ic,5.0,0.4048873484134674,0.1115245446562767
+V0029,,The process terminates at 'Leucocytes' without any ward admission step.,,admission_nc,2.0,,0.36965814232826233
+V0030,admission_nc,"Contains 'Admission NC', indicating admission to a normal care ward.",5.0,admission_ic,4.0,0.024563884362578392,0.015286439098417759
+V0031,,Process ends at 'LacticAcid' with no admission activity present.,,admission_nc,3.0,,0.3540477454662323
+V0032,admission_nc,Includes the 'Admission NC' activity reflecting normal care admission.,5.0,admission_ic,5.0,0.35336101055145264,0.1173904538154602
+V0033,admission_nc,"Contains 'Admission NC', realizing normal care ward admission.",7.0,admission_ic,6.0,0.5885335206985474,0.2256755381822586
+V0034,,Ends at 'IV Liquid' without any patient ward admission steps.,,admission_nc,2.0,,0.01565026491880417
+V0035,admission_nc,"Includes 'Admission NC', indicating normal care ward admission.",4.0,admission_ic,4.0,0.0025110591668635607,0.006766385864466429
+V0036,,Process stops at 'CRP' without an admission activity.,,admission_nc,3.0,,0.38420066237449646
+V0037,admission_nc,"Contains 'Admission NC' followed by release, realizing normal care ward admission.",8.0,admission_ic,4.0,0.6988272070884705,0.33847275376319885
+V0038,,Terminates at 'IV Antibiotics' without proceeding to ward admission.,,admission_nc,3.0,,0.012487771920859814
+V0039,admission_nc,"Contains 'Admission NC' activities, realizing normal care ward admission.",4.0,admission_ic,4.0,0.11471235752105713,0.08835064619779587
+V0040,admission_nc,"Ends with 'Admission NC', realizing admission to a normal care ward.",7.0,admission_ic,3.0,0.7805387377738953,0.686497151851654
+V0041,admission_nc,"Contains 'Admission NC' steps, realizing normal care ward admission.",5.0,admission_ic,5.0,0.13836026191711426,0.08362168818712234
+V0042,admission_nc,"Includes 'Admission NC', indicating normal care ward admission.",4.0,admission_ic,5.0,0.02587503381073475,0.01659758947789669
+V0043,,Ends at 'LacticAcid' without any admission step.,,admission_nc,2.0,,0.36644890904426575
+V0044,admission_nc,"Contains 'Admission NC', realizing normal care ward admission.",4.0,admission_ic,3.0,0.028955580666661263,0.019678138196468353
+V0045,admission_nc,"Contains 'Admission NC', indicating normal care ward admission.",7.0,admission_ic,4.0,0.7144916653633118,0.3334079682826996
+V0046,admission_nc,"Includes 'Admission NC', realizing normal care ward admission.",5.0,admission_ic,4.0,0.010306290350854397,0.0010288454359397292
+V0047,admission_nc,"Contains 'Admission NC', realizing normal care ward admission.",6.0,admission_ic,4.0,0.37708672881126404,0.34954917430877686
+V0048,admission_nc,"Contains 'Admission NC', indicating normal care ward admission.",5.0,admission_ic,5.0,0.012953873723745346,0.0036764293909072876
+V0049,admission_nc,"Includes 'Admission NC', realizing normal care ward admission.",7.0,admission_ic,6.0,0.42897769808769226,0.11116606742143631
+V0050,,Terminates at 'CRP' without any ward admission activity.,,admission_nc,1.0,,0.37032926082611084
+V0051,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,4.0,0.1270235776901245,0.08486512303352356
+V0052,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.4060424268245697,0.11267960071563721
+V0053,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",8.0,admission_ic,5.0,0.3799898624420166,0.3524523675441742
+V0054,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.3784903585910797,0.11385377496480942
+V0055,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.5013391971588135,0.08445227146148682
+V0056,,"The narrative does not contain any admission activity, only ending in IV Antibiotics.",,admission_nc,2.0,,0.04364530369639397
+V0057,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,4.0,0.37765857577323914,0.35012105107307434
+V0058,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,4.0,0.3724132776260376,0.3448757827281952
+V0059,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.03337796777486801,0.024100521579384804
+V0060,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.41556021571159363,0.11380677670240402
+V0061,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",1.0,admission_ic,4.0,0.004335192497819662,0.004942251835018396
+V0062,,"The narrative does not contain any admission activity, ending in IV Antibiotics.",,admission_nc,1.0,,0.019983569160103798
+V0063,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",13.0,admission_ic,9.0,0.007880558259785175,0.01715800352394581
+V0064,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.1804744452238083,0.17119699716567993
+V0065,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,5.0,0.12324347347021103,0.08472147583961487
+V0066,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,4.0,0.3804495334625244,0.352912038564682
+V0067,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.006527781952172518,0.0027496626134961843
+V0068,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",12.0,admission_nc,4.0,0.543943464756012,0.0019673386123031378
+V0069,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.005077439360320568,0.004200005438178778
+V0070,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,4.0,0.19032622873783112,0.18104879558086395
+V0071,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.5174746513366699,0.08368303626775742
+V0072,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,4.0,0.34131014347076416,0.12944133579730988
+V0073,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.014500699937343597,0.005223255138844252
+V0074,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.6776034832000732,0.34826430678367615
+V0075,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",7.0,admission_nc,4.0,0.15101385116577148,0.0025638891384005547
+V0076,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",8.0,admission_ic,3.0,0.7053706049919128,0.33473721146583557
+V0077,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",6.0,admission_ic,3.0,0.5427880883216858,0.17328494787216187
+V0078,admission_ic,"The narrative includes Admission IC, realizing the intensive care unit admission alternative.",8.0,admission_nc,5.0,0.03921985998749733,0.0024912438821047544
+V0079,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",6.0,admission_ic,4.0,0.19036279618740082,0.18108534812927246
+V0080,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",7.0,admission_ic,6.0,0.5379354357719421,0.00043312355410307646
+V0081,,The narrative does not include any admission activity corresponding to the available categories.,,admission_nc,3.0,,0.09630604833364487
+V0082,admission_ic,"The narrative includes Admission IC prior to admission NC, realizing the intensive care unit admission alternative.",13.0,admission_nc,2.0,0.7144963145256042,0.0008662789477966726
+V0083,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",7.0,admission_ic,6.0,0.39993640780448914,0.11143630743026733
+V0084,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",3.0,admission_ic,6.0,0.3451724052429199,0.25346070528030396
+V0085,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",6.0,admission_ic,5.0,0.5299811363220215,0.08713269978761673
+V0086,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",5.0,admission_ic,4.0,0.021165311336517334,0.011887866072356701
+V0087,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",5.0,admission_ic,4.0,0.12160622328519821,0.08358245342969894
+V0088,,The narrative does not include any admission activity corresponding to the available categories.,,admission_nc,3.0,,0.0675748810172081
+V0089,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",8.0,admission_ic,8.0,0.5609965920448303,0.0010164988925680518
+V0090,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",6.0,admission_ic,5.0,0.01440924871712923,0.005131804384291172
+V0091,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",14.0,admission_ic,11.0,0.5111030340194702,0.06385192275047302
+V0092,,The narrative does not include any admission activity corresponding to the available categories.,,admission_nc,2.0,,0.003960905596613884
+V0093,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",5.0,admission_ic,6.0,0.34076809883117676,0.1784856766462326
+V0094,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",5.0,admission_ic,4.0,0.39941057562828064,0.11166144162416458
+V0095,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",3.0,admission_ic,4.0,0.03115191124379635,0.02187446691095829
+V0096,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",7.0,admission_ic,5.0,0.34859856963157654,0.22260314226150513
+V0097,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",4.0,admission_ic,4.0,0.12303313612937927,0.08451113849878311
+V0098,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",8.0,admission_ic,4.0,0.6787959933280945,0.2644256055355072
+V0099,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",3.0,admission_ic,5.0,0.11745133996009827,0.08561166375875473
+V0100,admission_nc,"The narrative includes Admission NC, realizing the standard normal care ward admission alternative.",4.0,admission_ic,4.0,0.015533894300460815,0.00625644950196147
+V0101,admission_nc,"The narrative includes Admission NC, realizing the normal care ward admission alternative.",8.0,admission_ic,6.0,0.43035420775413513,0.11186259239912033
+V0102,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,4.0,0.12722377479076385,0.0850653275847435
+V0103,admission_nc,"The narrative features Admission NC, matching the normal care category.",8.0,admission_ic,6.0,0.13726980984210968,0.08471215516328812
+V0104,admission_nc,"The sequence contains Admission NC, which corresponds to admission to a normal care ward.",8.0,admission_ic,5.0,0.7483763098716736,0.33336102962493896
+V0105,admission_nc,"The narrative includes Admission NC, realizing standard ward care.",9.0,admission_ic,8.0,0.4485338628292084,0.021725786849856377
+V0106,admission_nc,"The variant features Admission NC, fitting normal care ward admission.",10.0,admission_ic,6.0,0.16749773919582367,0.003414864419028163
+V0107,admission_nc,"The narrative includes Admission NC, matching normal care ward admission.",6.0,admission_ic,6.0,0.0016931082354858518,0.007584336679428816
+V0108,admission_nc,"The sequence contains Admission NC, corresponding to normal care.",7.0,admission_ic,6.0,0.35670483112335205,0.11404664069414139
+V0109,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,7.0,0.6285412907600403,0.16706089675426483
+V0110,admission_nc,"The narrative contains Admission NC, fitting the normal care category.",7.0,admission_ic,3.0,0.7524129748344421,0.3339994251728058
+V0111,admission_nc,"The narrative includes Admission NC, matching normal care ward admission.",8.0,admission_ic,5.0,0.7861447930335999,0.6921032071113586
+V0112,admission_nc,"The sequence includes Admission NC, realizing normal care.",5.0,admission_ic,6.0,0.5086876749992371,0.08759647607803345
+V0113,admission_nc,"The narrative contains Admission NC, matching normal care ward admission.",8.0,admission_ic,4.0,0.7161312103271484,0.04457711800932884
+V0114,admission_nc,"The narrative features Admission NC, corresponding to normal care.",5.0,admission_ic,5.0,0.1330917626619339,0.08735973387956619
+V0115,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.4310690462589264,0.11114770919084549
+V0116,admission_nc,"The sequence contains Admission NC, matching the normal care category.",6.0,admission_ic,5.0,0.39376959204673767,0.1133207306265831
+V0117,admission_nc,"The narrative includes Admission NC, corresponding to normal care admission.",6.0,admission_ic,6.0,0.46967029571533203,0.1351141482591629
+V0118,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.01994798518717289,0.029225431382656097
+V0119,admission_nc,"The sequence contains Admission NC, matching normal care ward admission.",6.0,admission_ic,5.0,0.009431925602257252,0.00015448038175236434
+V0120,admission_nc,"The narrative includes Admission NC, realizing normal care.",10.0,admission_ic,8.0,0.5580114722251892,0.22685658931732178
+V0121,admission_nc,"The narrative features Admission NC, corresponding to normal care ward admission.",7.0,admission_ic,6.0,0.39837589859962463,0.11159542948007584
+V0122,admission_nc,"The sequence contains Admission NC, matching the normal care category.",4.0,admission_ic,5.0,0.020091786980628967,0.029369229450821877
+V0123,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",10.0,admission_ic,8.0,0.4744272232055664,0.08350209146738052
+V0124,admission_nc,"The narrative features Admission NC, matching normal care ward admission.",4.0,admission_ic,5.0,0.3374367952346802,0.13331468403339386
+V0125,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",11.0,admission_nc,6.0,0.07146530598402023,0.0042813667096197605
+V0126,admission_nc,The narrative includes 'Admission NC' and follows standard recovery pathways leading to release and return.,4.0,admission_ic,6.0,0.5569661855697632,0.19181092083454132
+V0127,,"The narrative ends with 'LacticAcid' and does not contain any ward admission activities matching normal care, intensive care, or high-dependency care.",,admission_nc,2.0,,0.2243661731481552
+V0128,admission_ic,"The narrative includes 'Admission IC', reflecting intensive care coordination.",12.0,admission_nc,10.0,0.05861552059650421,0.008568422868847847
+V0129,admission_ic,"The narrative includes 'Admission IC', realizing intensive care unit admission.",15.0,admission_nc,12.0,0.11278296262025833,0.0017403328092768788
+V0130,admission_nc,"The narrative features 'Admission NC', supporting standard post-discharge recovery pathways.",4.0,admission_ic,5.0,0.020846961066126823,0.01156951580196619
+V0131,admission_nc,"The narrative features 'Admission NC', realizing admission to a normal care ward.",8.0,admission_ic,5.0,0.6722011566162109,0.2680809795856476
+V0132,,The narrative ends at 'IV Antibiotics' without any ward admission steps.,,admission_nc,4.0,,0.33472028374671936
+V0133,,The process terminates at 'IV Antibiotics' and lacks any admission activities.,,admission_nc,4.0,,0.3392581641674042
+V0134,admission_ic,"The narrative includes 'Admission IC', realizing intensive care admission.",10.0,admission_nc,8.0,0.13705997169017792,0.004851627163589001
+V0135,admission_nc,"The narrative includes 'Admission NC', matching normal care ward admission.",5.0,admission_ic,5.0,0.027157960459589958,0.0178805161267519
+V0136,admission_nc,"The narrative includes multiple occurrences of 'Admission NC', realizing normal care ward admission.",22.0,admission_ic,11.0,0.5304161906242371,0.08756774663925171
+V0137,,The narrative terminates at 'LacticAcid' and contains no admission-related activities.,,admission_nc,2.0,,6.455677794292569e-05
+V0138,admission_nc,"The narrative includes 'Admission NC', realizing normal care ward admission.",4.0,admission_ic,6.0,0.34447991847991943,0.2527681887149811
+V0139,admission_ic,"The narrative includes 'Admission IC', realizing intensive care admission.",14.0,admission_nc,12.0,0.4518056809902191,0.08525199443101883
+V0140,admission_nc,"The narrative includes 'Admission NC', realizing normal care ward admission.",8.0,admission_ic,6.0,0.5381738543510437,0.0835915207862854
+V0141,admission_ic,"The narrative includes 'Admission IC', realizing intensive care unit admission.",8.0,admission_nc,6.0,0.05038522183895111,0.0014339489862322807
+V0142,admission_nc,"The narrative includes 'Admission NC', realizing normal care ward admission.",3.0,admission_ic,5.0,0.004889489617198706,0.004387954715639353
+V0143,admission_nc,"The narrative includes 'Admission NC', realizing normal care ward admission.",7.0,admission_ic,4.0,0.346970796585083,0.12378067523241043
+V0144,admission_nc,"The narrative includes 'Admission NC', realizing normal care ward admission.",4.0,admission_ic,5.0,0.12304461747407913,0.08452262729406357
+V0145,admission_ic,"The narrative includes 'Admission IC', realizing intensive care unit admission.",102.0,admission_nc,47.0,0.3483724296092987,0.03063969500362873
+V0146,,The process terminates at 'Leucocytes' without any admission to a ward.,,admission_nc,3.0,,0.21019303798675537
+V0147,admission_nc,"The narrative includes 'Admission NC', realizing normal care ward admission.",5.0,admission_ic,4.0,0.460113525390625,0.0019673386123031378
+V0148,,The process terminates at 'IV Antibiotics' without any admission step.,,admission_nc,2.0,,0.0060074119828641415
+V0149,admission_nc,"The narrative includes 'Admission NC', realizing normal care ward admission.",4.0,admission_ic,6.0,0.014519348740577698,0.005241903942078352
+V0150,admission_nc,"The narrative includes 'Admission NC', realizing normal care ward admission.",8.0,admission_ic,7.0,0.44884610176086426,0.02203805185854435
+V0151,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,20.0,admission_ic,8.0,0.55326908826828,0.0024876133538782597
+V0152,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,8.0,admission_ic,6.0,0.3688575327396393,0.014001607894897461
+V0153,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,8.0,admission_ic,5.0,0.3485146462917328,0.3336303234100342
+V0154,admission_ic,The narrative features 'Admission IC' which realizes intensive care unit admission.,9.0,admission_nc,3.0,0.13662837445735931,0.00442004157230258
+V0155,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,6.0,admission_ic,5.0,0.5422325730323792,0.08628629893064499
+V0156,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,7.0,admission_ic,2.0,0.3368574380874634,0.025046713650226593
+V0157,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,9.0,admission_ic,8.0,0.366325706243515,0.11207189410924911
+V0158,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,6.0,admission_ic,6.0,0.11690915375947952,0.08615383505821228
+V0159,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,5.0,admission_ic,4.0,0.1165686771273613,0.0864943265914917
+V0160,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,7.0,admission_ic,6.0,0.46405839920043945,0.09027430415153503
+V0161,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,5.0,admission_ic,6.0,0.55052250623703,0.0886702835559845
+V0162,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,4.0,admission_ic,5.0,0.3606528043746948,0.02208690159022808
+V0163,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,7.0,admission_ic,5.0,0.40829119086265564,0.1128455176949501
+V0164,admission_ic,The narrative features 'Admission IC' which realizes intensive care unit admission.,9.0,admission_nc,6.0,0.03766879811882973,0.004042305052280426
+V0165,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,7.0,admission_ic,5.0,0.3508651554584503,0.33353865146636963
+V0166,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,8.0,admission_ic,7.0,0.11860229820013046,0.08446070551872253
+V0167,admission_ic,The narrative features 'Admission IC' which realizes intensive care unit admission.,8.0,admission_nc,5.0,0.3836376667022705,0.0018213874427601695
+V0168,admission_ic,The narrative features 'Admission IC' which realizes intensive care unit admission.,10.0,admission_nc,5.0,0.05877314507961273,0.008410799317061901
+V0169,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,5.0,admission_ic,4.0,0.13301704823970795,0.08728501200675964
+V0170,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,6.0,admission_ic,6.0,0.33835723996162415,0.054430264979600906
+V0171,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,10.0,admission_ic,8.0,0.3464902341365814,0.12426125258207321
+V0172,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,16.0,admission_ic,10.0,0.36319026350975037,0.11466100811958313
+V0173,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,5.0,admission_ic,7.0,0.022977015003561974,0.01369956973940134
+V0174,admission_ic,The narrative features 'Admission IC' which realizes intensive care unit admission.,38.0,admission_nc,23.0,0.02159265987575054,0.009814383462071419
+V0175,admission_nc,The narrative features 'Admission NC' which realizes normal care ward admission.,4.0,admission_ic,6.0,0.1232471689581871,0.08472517132759094
+V0176,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",7.0,admission_ic,8.0,0.010911636985838413,0.001634192536585033
+V0177,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",4.0,admission_ic,5.0,0.12895642220973969,0.08344227075576782
+V0178,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",18.0,admission_ic,11.0,0.13350875675678253,0.08414896577596664
+V0179,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",4.0,admission_ic,5.0,0.5264140963554382,0.08356563001871109
+V0180,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",9.0,admission_ic,6.0,0.7176377177238464,0.2547856271266937
+V0181,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",7.0,admission_ic,7.0,0.33669376373291016,0.18038471043109894
+V0182,admission_nc,"The narrative includes Admission IC and Admission NC, realizing intermediate care or normal care pathways; Admission NC is present.",16.0,admission_ic,7.0,0.1704908162355423,0.00042176127317361534
+V0183,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",10.0,admission_ic,8.0,0.4949704706668854,0.0885639563202858
+V0184,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",5.0,admission_ic,5.0,0.24692194163799286,0.16950446367263794
+V0185,admission_nc,"The narrative includes Admission IC and Admission NC, realizing normal care ward admission.",17.0,admission_ic,11.0,0.1780407875776291,0.0003672268067020923
+V0186,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",6.0,admission_ic,5.0,0.19213569164276123,0.002068497007712722
+V0187,,The narrative stops at CRP and does not include any ward or intensive care admission activity.,,admission_nc,3.0,,0.3362896144390106
+V0188,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",4.0,admission_ic,5.0,0.25220751762390137,0.16911445558071136
+V0189,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",3.0,admission_ic,3.0,0.015715472400188446,0.0064380276016891
+V0190,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",6.0,admission_ic,4.0,0.18184323608875275,0.17256580293178558
+V0191,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",9.0,admission_ic,7.0,0.3750523030757904,0.11729183048009872
+V0192,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",2.0,admission_ic,5.0,0.557124137878418,0.09527191519737244
+V0193,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",10.0,admission_ic,9.0,0.008818607777357101,0.01809605211019516
+V0194,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",4.0,admission_ic,5.0,0.002300665946677327,0.006976779084652662
+V0195,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",7.0,admission_ic,6.0,0.02116384357213974,0.011886398307979107
+V0196,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",24.0,admission_nc,16.0,0.13390900194644928,0.0017006737180054188
+V0197,,The narrative ends with Leucocytes and contains no admission activities.,,admission_nc,1.0,,0.18411029875278473
+V0198,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",6.0,admission_ic,3.0,0.3615763187408447,0.006720403674989939
+V0199,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",7.0,admission_ic,7.0,0.3660433292388916,0.11235425621271133
+V0200,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",6.0,admission_ic,5.0,0.3464963436126709,0.12425514310598373
+V0201,admission_nc,"The narrative includes Admission NC, realizing alternative id=15 for normal care ward admission.",22.0,admission_ic,11.0,0.5125495791435242,0.0005516940727829933
+V0202,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,4.0,0.033916063606739044,0.024638617411255836
+V0203,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,6.0,0.35329005122184753,0.1174614354968071
+V0204,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",3.0,admission_ic,4.0,0.012720897793769836,0.003443453460931778
+V0205,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",20.0,admission_ic,13.0,0.4782024323940277,0.09571164846420288
+V0206,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,5.0,0.7126205563545227,0.33568069338798523
+V0207,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,5.0,0.021448319777846336,0.012170873582363129
+V0208,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",9.0,admission_ic,7.0,0.12913468480110168,0.08340265601873398
+V0209,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,4.0,0.3707338571548462,0.343196302652359
+V0210,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.4070906937122345,0.11372788995504379
+V0211,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,6.0,0.3828072249889374,0.11160072684288025
+V0212,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,6.0,0.46833905577659607,0.0859936848282814
+V0213,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",9.0,admission_ic,6.0,0.6772530674934387,0.26596853137016296
+V0214,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.028066230937838554,0.018788784742355347
+V0215,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,7.0,0.007521019782871008,0.016798464581370354
+V0216,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",3.0,admission_ic,5.0,0.4978516101837158,0.08568286895751953
+V0217,,The narrative ends at IV Antibiotics without any ward admission activity.,,admission_nc,4.0,,0.051895543932914734
+V0218,admission_ic,"The narrative includes Admission IC, realizing alternative id=16 for intensive care unit admission.",13.0,admission_nc,10.0,0.4079415798187256,0.037226609885692596
+V0219,,The narrative ends at Leucocytes without any ward or intensive care admission.,,admission_nc,2.0,,0.16907767951488495
+V0220,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,4.0,0.37562575936317444,0.11671837419271469
+V0221,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.25834691524505615,0.12323851138353348
+V0222,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",9.0,admission_ic,8.0,0.1180809810757637,0.08605729788541794
+V0223,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.2233027070760727,0.16983209550380707
+V0224,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.44174396991729736,0.11534595489501953
+V0225,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,6.0,0.7175717353820801,0.25549080967903137
+V0226,admission_nc,The narrative features Admission NC matching the normal care ward category.,6.0,admission_ic,5.0,0.13436849415302277,0.08761346340179443
+V0227,admission_nc,The narrative features Admission NC matching the normal care ward category.,5.0,admission_ic,6.0,0.468864768743515,0.08546791225671768
+V0228,admission_nc,The narrative features Admission NC matching the normal care ward category.,6.0,admission_ic,5.0,0.22447611391544342,0.16865867376327515
+V0229,admission_nc,The narrative features Admission NC matching the normal care ward category.,7.0,admission_ic,6.0,0.34906089305877686,0.1531457006931305
+V0230,admission_nc,The narrative features Admission NC matching the normal care ward category.,7.0,admission_ic,6.0,0.4940710961818695,0.08946336060762405
+V0231,admission_nc,The narrative features Admission NC matching the normal care ward category.,6.0,admission_ic,5.0,0.528670072555542,0.08582168072462082
+V0232,,The narrative stops at IV Antibiotics and contains no ward or ICU admission.,,admission_nc,1.0,,0.036630779504776
+V0233,admission_nc,The narrative features Admission NC matching the normal care ward category.,7.0,admission_ic,6.0,0.3743980824947357,0.1179460808634758
+V0234,,The narrative stops at Leucocytes without any admission event.,,admission_nc,2.0,,0.36329925060272217
+V0235,admission_nc,The narrative features Admission NC matching the normal care ward category.,4.0,admission_ic,5.0,0.1992475539445877,0.18997013568878174
+V0236,admission_nc,The narrative features Admission NC matching the normal care ward category.,6.0,admission_ic,3.0,0.3597122132778168,0.004856283310800791
+V0237,admission_nc,The narrative features Admission NC matching the normal care ward category.,6.0,admission_ic,5.0,0.4501121938228607,0.10422053188085556
+V0238,admission_nc,The narrative features Admission NC matching the normal care ward category.,7.0,admission_ic,5.0,0.11352663487195969,0.08953636884689331
+V0239,admission_nc,The narrative features Admission NC matching the normal care ward category.,10.0,admission_ic,10.0,0.4796079099178314,0.12312483042478561
+V0240,admission_nc,The narrative features Admission NC matching the normal care ward category.,4.0,admission_ic,5.0,0.02497350610792637,0.01569606177508831
+V0241,admission_nc,The narrative features Admission NC matching the normal care ward category.,8.0,admission_ic,7.0,0.49226656556129456,0.0884823277592659
+V0242,admission_nc,The narrative features Admission NC matching the normal care ward category.,6.0,admission_ic,5.0,0.5761271715164185,0.2227873057126999
+V0243,admission_ic,"The narrative includes Admission IC, representing intensive care unit admission.",21.0,admission_nc,15.0,0.1361110955476761,0.06742193549871445
+V0244,admission_nc,The narrative features Admission NC matching the normal care ward category.,7.0,admission_ic,7.0,0.11880894750356674,0.08425404876470566
+V0245,admission_nc,The narrative features Admission NC matching the normal care ward category.,14.0,admission_ic,9.0,0.12937428057193756,0.08562376350164413
+V0246,admission_ic,"The narrative includes Admission IC, representing intensive care unit admission.",0.0,admission_nc,5.0,0.3684273958206177,0.0019636324141174555
+V0247,admission_nc,The narrative features Admission NC matching the normal care ward category.,14.0,admission_ic,10.0,0.5062741637229919,0.008977153338491917
+V0248,admission_ic,"The narrative includes Admission IC, representing intensive care unit admission.",7.0,admission_nc,7.0,0.05208474397659302,0.0031334729865193367
+V0249,admission_nc,The narrative features Admission NC matching the normal care ward category.,5.0,admission_ic,4.0,0.04158875346183777,0.03231130912899971
+V0250,admission_nc,The narrative features Admission NC matching the normal care ward category.,6.0,admission_ic,6.0,0.4104134738445282,0.11149898916482925
+V0251,admission_ic,The narrative includes an admission to the intensive care unit (Admission IC).,11.0,admission_nc,7.0,0.040621235966682434,0.001089870580472052
+V0252,admission_nc,The narrative features normal care ward admissions (Admission NC).,6.0,admission_ic,5.0,0.11844378709793091,0.08461921662092209
+V0253,admission_nc,The narrative features a normal care ward admission (Admission NC).,6.0,admission_ic,4.0,0.35433733463287354,0.22280971705913544
+V0254,admission_nc,The narrative features multiple normal care ward admissions (Admission NC).,20.0,admission_ic,12.0,0.4946568012237549,0.0874093770980835
+V0255,admission_nc,The narrative features normal care ward admissions (Admission NC).,4.0,admission_ic,5.0,0.1294308453798294,0.0836988091468811
+V0256,admission_nc,The narrative features normal care ward admissions (Admission NC).,7.0,admission_ic,6.0,0.5146062970161438,0.08655140548944473
+V0257,admission_ic,The narrative includes an admission to the intensive care unit (Admission IC) followed later by normal care.,8.0,admission_nc,9.0,0.3631620705127716,0.0019075862364843488
+V0258,admission_nc,The narrative features a normal care ward admission (Admission NC).,9.0,admission_ic,5.0,0.45551905035972595,0.0056509640999138355
+V0259,admission_nc,The narrative features a normal care ward admission (Admission NC).,3.0,admission_ic,6.0,0.010611818172037601,0.0013343737227842212
+V0260,,The narrative ends at IV Antibiotics without any ward or unit admission step.,,admission_nc,2.0,,0.0023255597334355116
+V0261,admission_nc,The narrative features a normal care ward admission (Admission NC).,7.0,admission_ic,7.0,0.38502562046051025,0.11122144013643265
+V0262,admission_nc,The narrative features a normal care ward admission (Admission NC).,4.0,admission_ic,7.0,0.3541366159915924,0.11661484837532043
+V0263,admission_nc,The narrative features a normal care ward admission (Admission NC).,6.0,admission_ic,6.0,0.39116406440734863,0.11592624336481094
+V0264,admission_nc,The narrative features normal care ward admissions (Admission NC).,4.0,admission_ic,4.0,0.12372016906738281,0.08510494232177734
+V0265,admission_nc,The narrative features a normal care ward admission (Admission NC).,6.0,admission_ic,6.0,0.540023148059845,0.22829218208789825
+V0266,admission_nc,The narrative features normal care ward admissions (Admission NC).,3.0,admission_ic,5.0,0.11151116341352463,0.08797931671142578
+V0267,admission_nc,The narrative features normal care ward admissions (Admission NC).,6.0,admission_ic,5.0,0.11122956871986389,0.08746079355478287
+V0268,admission_nc,The narrative features a normal care ward admission (Admission NC).,5.0,admission_ic,6.0,0.41964519023895264,0.11296772956848145
+V0269,admission_nc,The narrative features a normal care ward admission (Admission NC).,6.0,admission_ic,5.0,0.41039320826530457,0.11147871613502502
+V0270,admission_nc,The narrative features a normal care ward admission (Admission NC).,8.0,admission_ic,7.0,0.40335318446159363,0.11126304417848587
+V0271,admission_ic,The narrative includes an intensive care unit admission (Admission IC).,8.0,admission_nc,8.0,0.36506402492523193,0.002466572681441903
+V0272,admission_nc,The narrative features a normal care ward admission (Admission NC).,8.0,admission_ic,6.0,0.008798046968877316,0.01807549223303795
+V0273,admission_ic,The narrative includes an intensive care unit admission (Admission IC) alongside normal care ward admissions.,73.0,admission_nc,47.0,0.43649598956108093,0.0874093770980835
+V0274,admission_nc,The narrative features a normal care ward admission (Admission NC).,7.0,admission_ic,5.0,0.6845224499702454,0.3904324471950531
+V0275,admission_ic,The narrative includes an intensive care unit admission (Admission IC).,13.0,admission_nc,11.0,0.37452468276023865,0.0017745723016560078
+V0276,admission_nc,"The narrative features an Admission NC activity, matching normal care ward admission.",6.0,admission_ic,6.0,0.026912668719887733,0.017635224387049675
+V0277,admission_ic,"The narrative explicitly contains Admission IC, realizing intensive care unit admission.",8.0,admission_nc,8.0,0.06928237527608871,0.0020984276197850704
+V0278,admission_nc,"The narrative features Admission NC, aligning with normal care ward admission.",6.0,admission_ic,5.0,0.006667012814432383,0.002610431984066963
+V0279,admission_nc,"The narrative includes Admission NC, representing admission to a normal care ward.",8.0,admission_ic,7.0,0.3439042270183563,0.12684723734855652
+V0280,admission_nc,"The narrative includes Admission NC, indicating a normal care ward stay.",12.0,admission_ic,7.0,0.4000704288482666,0.11130226403474808
+V0281,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",8.0,admission_ic,8.0,0.0018113679252564907,0.011088811792433262
+V0282,admission_nc,"The narrative shows Admission NC, matching normal care ward admission.",7.0,admission_ic,6.0,0.006432313937693834,0.002845130627974868
+V0283,admission_nc,"The narrative includes Admission NC activities, corresponding to normal care.",22.0,admission_ic,12.0,0.48195400834083557,0.08348187804222107
+V0284,admission_nc,"The narrative contains Admission NC, indicating normal care ward admission.",8.0,admission_ic,6.0,0.521461546421051,0.08346777409315109
+V0285,admission_nc,"The narrative contains Admission NC events, representing normal care.",9.0,admission_ic,7.0,0.12720052897930145,0.08345001935958862
+V0286,admission_nc,"The narrative includes Admission NC, matching normal care ward admission.",9.0,admission_ic,7.0,0.34789249300956726,0.3335117995738983
+V0287,,"The narrative ends at CRP without any ward admission activity, so no category fits.",,admission_nc,2.0,,0.3696722984313965
+V0288,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",7.0,admission_ic,6.0,0.34162554144859314,0.1291259378194809
+V0289,admission_nc,"The narrative includes Admission NC, aligning with normal care.",4.0,admission_ic,5.0,0.040978994220495224,0.031701549887657166
+V0290,admission_nc,"The narrative features Admission NC events, matching normal care ward admission.",9.0,admission_ic,7.0,0.5491611957550049,0.08730898052453995
+V0291,admission_nc,"The narrative contains Admission NC, corresponding to normal care.",5.0,admission_ic,4.0,0.27212032675743103,0.18902726471424103
+V0292,,"The narrative terminates at Leucocytes without any admission event, so none of the categories apply.",,admission_nc,2.0,,0.4081244170665741
+V0293,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,4.0,0.19193659722805023,0.18265914916992188
+V0294,admission_nc,"The narrative contains Admission NC, representing normal care.",4.0,admission_ic,5.0,0.11978600174188614,0.08338967710733414
+V0295,admission_nc,"The narrative features Admission NC, matching normal care ward admission.",7.0,admission_ic,3.0,0.7251338362693787,0.6692418456077576
+V0296,admission_nc,"The narrative includes Admission NC, corresponding to normal care.",5.0,admission_ic,6.0,0.44826388359069824,0.11370771378278732
+V0297,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",3.0,admission_ic,5.0,0.40424418449401855,0.11134084314107895
+V0298,admission_nc,"The narrative features Admission NC, indicating normal care ward admission.",4.0,admission_ic,6.0,0.02333798259496689,0.01406053826212883
+V0299,admission_nc,"The narrative contains Admission NC, representing normal care.",11.0,admission_ic,8.0,0.009572455659508705,0.018849899992346764
+V0300,admission_nc,"The narrative contains Admission NC as well as Admission IC, but primarily operates within normal care paths initially and predominantly.",18.0,admission_ic,9.0,0.5908481478691101,0.0014559595147147775
+V0301,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",5.0,admission_ic,6.0,0.36114025115966797,0.11261096596717834
+V0302,,The process terminates at ER Sepsis Triage without any admission event.,,admission_nc,4.0,,0.3757302761077881
+V0303,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,7.0,0.5133820176124573,0.08777564018964767
+V0304,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,6.0,0.12556743621826172,0.08340898156166077
+V0305,,The process terminates at IV Antibiotics without any admission event.,,admission_nc,4.0,,0.0731884017586708
+V0306,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",8.0,admission_ic,7.0,0.1719973087310791,0.17061348259449005
+V0307,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,5.0,0.3940916061401367,0.11299866437911987
+V0308,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,6.0,0.45636090636253357,0.014390569180250168
+V0309,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",9.0,admission_ic,5.0,0.7897641062736511,0.6957224011421204
+V0310,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,6.0,0.12702499330043793,0.08486655354499817
+V0311,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",11.0,admission_nc,10.0,0.04234975948929787,0.0005516940727829933
+V0312,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",8.0,admission_ic,8.0,0.039004307240247726,0.04828175529837608
+V0313,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.45076218247413635,0.1646060347557068
+V0314,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,8.0,0.4542635977268219,0.14846910536289215
+V0315,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",18.0,admission_nc,14.0,0.34441789984703064,0.019039567559957504
+V0316,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.4689718186855316,0.09367720037698746
+V0317,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",152.0,admission_nc,89.0,0.16760466992855072,0.06708485633134842
+V0318,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",20.0,admission_nc,13.0,0.33615800738334656,0.010779652744531631
+V0319,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",11.0,admission_ic,10.0,0.007472184952348471,0.016749629750847816
+V0320,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.6277948021888733,0.16780738532543182
+V0321,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.5614730715751648,0.0014930098550394177
+V0322,,The process terminates at IV Antibiotics without any admission event.,,admission_nc,3.0,,0.049260448664426804
+V0323,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,5.0,0.39139270782470703,0.3638552129268646
+V0324,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",23.0,admission_nc,17.0,0.09969943761825562,0.005484387278556824
+V0325,,The process terminates at IV Antibiotics without any admission event.,,admission_nc,3.0,,0.3762694299221039
+V0326,admission_nc,The narrative includes an admission to normal care ward via the 'Admission NC' activity.,5.0,admission_ic,5.0,0.02275320701301098,0.013475761748850346
+V0327,admission_nc,The narrative includes normal care admissions via 'Admission NC'.,6.0,admission_ic,5.0,0.47328415513038635,0.08430767804384232
+V0328,admission_nc,The narrative features 'Admission NC' indicating admission to a normal care ward.,6.0,admission_ic,6.0,0.4313587248325348,0.11136418581008911
+V0329,admission_nc,The narrative contains 'Admission NC' corresponding to normal care admission.,16.0,admission_ic,11.0,0.12693527340888977,0.08348190784454346
+V0330,,The narrative stops at IV Liquid and does not include any ward or ICU admission activities.,,admission_nc,1.0,,0.0009680844959802926
+V0331,admission_nc,The narrative contains 'Admission NC' representing admission to normal care.,14.0,admission_ic,9.0,0.028567813336849213,0.03784525766968727
+V0332,admission_nc,The narrative records 'Admission NC' steps for normal care admission.,8.0,admission_ic,4.0,0.7404890656471252,0.2784082293510437
+V0333,admission_nc,The narrative includes 'Admission NC' which realizes normal care ward admission.,13.0,admission_ic,6.0,0.5174172520637512,0.002525369171053171
+V0334,admission_ic,"The narrative includes an intensive care unit admission via 'Admission IC', alongside normal care steps.",24.0,admission_nc,16.0,0.0985456183552742,0.004330573603510857
+V0335,admission_nc,The narrative records standard ward admissions through 'Admission NC'.,7.0,admission_ic,5.0,0.45646849274635315,0.09786417335271835
+V0336,admission_nc,The narrative includes 'Admission NC' for normal care ward admission.,5.0,admission_ic,4.0,0.403672456741333,0.35426607728004456
+V0337,admission_nc,The narrative contains 'Admission NC' for normal care.,6.0,admission_ic,6.0,0.024310795590281487,0.015033350326120853
+V0338,admission_nc,The narrative includes 'Admission NC' indicating normal care admission.,6.0,admission_ic,4.0,0.11572299152612686,0.08734000474214554
+V0339,admission_ic,The narrative includes explicit 'Admission IC' steps indicating intensive care unit admission.,17.0,admission_nc,15.0,0.1555202156305313,0.06766699254512787
+V0340,admission_nc,The narrative features normal care admission via 'Admission NC'.,5.0,admission_ic,6.0,0.02592056430876255,0.016643119975924492
+V0341,admission_nc,The narrative contains 'Admission NC' corresponding to normal care.,6.0,admission_ic,6.0,0.12742957472801208,0.08496912568807602
+V0342,,The narrative ends at CRP and contains no admission activities.,,admission_nc,2.0,,0.1818922907114029
+V0343,admission_nc,The narrative contains 'Admission NC' steps realizing normal care admission.,7.0,admission_ic,6.0,0.11151639372110367,0.08717396855354309
+V0344,admission_nc,The narrative includes 'Admission NC' realizing normal care admission.,11.0,admission_ic,8.0,0.35080865025520325,0.06688166409730911
+V0345,admission_ic,"The narrative includes both normal care and intensive care ('Admission IC') admissions, realizing intensive care pathways.",13.0,admission_nc,10.0,0.42225444316864014,0.0022342444863170385
+V0346,admission_ic,The narrative features intensive care admission via 'Admission IC'.,11.0,admission_nc,9.0,0.1577674001455307,0.0025624819099903107
+V0347,admission_nc,The narrative includes 'Admission NC' realizing normal care ward admission.,13.0,admission_ic,6.0,0.42173683643341064,0.11443442851305008
+V0348,admission_nc,The narrative features normal care admission via 'Admission NC'.,9.0,admission_ic,7.0,0.4632747173309326,0.1287185102701187
+V0349,,The narrative terminates at ER Sepsis Triage and does not contain any hospital admission steps.,,admission_nc,5.0,,0.3344039022922516
+V0350,admission_nc,The narrative contains 'Admission NC' indicating admission to normal care.,8.0,admission_ic,5.0,0.745440661907196,0.3337154686450958
+V0351,admission_nc,The narrative features an admission to normal care (Admission NC) realizing alternative id=15.,8.0,admission_ic,6.0,0.356987327337265,0.33367666602134705
+V0352,admission_nc,"The narrative includes standard ward stays via Admission NC, realizing alternative id=15.",7.0,admission_ic,5.0,0.48169150948524475,0.08344728499650955
+V0353,admission_nc,"The narrative includes Admission NC, realizing the normal care ward admission alternative id=15.",4.0,admission_ic,4.0,0.4220639765262604,0.11476155370473862
+V0354,admission_ic,"The narrative includes Admission IC realizing alternative id=16, involving intensive care coordination.",14.0,admission_nc,11.0,0.45159223675727844,0.0007188001764006913
+V0355,admission_ic,The narrative includes Admission IC realizing alternative id=16.,5.0,admission_nc,5.0,0.4537179470062256,0.0009999602334573865
+V0356,admission_nc,The narrative includes Admission NC realizing alternative id=15.,14.0,admission_ic,8.0,0.12946315109729767,0.004760923329740763
+V0357,admission_nc,The narrative features Admission NC realizing alternative id=15.,6.0,admission_ic,5.0,0.5007581114768982,0.08387111872434616
+V0358,admission_nc,The narrative features Admission NC realizing alternative id=15.,7.0,admission_ic,5.0,0.6789164543151855,0.26430514454841614
+V0359,admission_nc,The narrative features Admission NC realizing alternative id=15.,5.0,admission_ic,5.0,0.4067500829696655,0.11338727921247482
+V0360,admission_nc,The narrative features Admission NC realizing alternative id=15.,7.0,admission_ic,6.0,0.34483981132507324,0.3340955972671509
+V0361,admission_nc,The narrative features Admission NC realizing alternative id=15.,5.0,admission_ic,5.0,0.14491213858127594,0.08959684520959854
+V0362,admission_nc,The narrative features Admission NC realizing alternative id=15.,4.0,admission_ic,5.0,0.017524773254990578,0.008247327990829945
+V0363,admission_nc,The narrative features Admission NC realizing alternative id=15.,4.0,admission_ic,5.0,0.023428404703736305,0.014150961302220821
+V0364,admission_nc,The narrative features Admission NC realizing alternative id=15.,5.0,admission_ic,5.0,0.4094565808773041,0.11168009787797928
+V0365,admission_ic,The narrative includes Admission IC realizing alternative id=16.,11.0,admission_nc,8.0,0.425553560256958,0.06894596666097641
+V0366,admission_nc,The narrative features Admission NC realizing alternative id=15.,7.0,admission_ic,6.0,0.3523811399936676,0.11837033182382584
+V0367,admission_ic,The narrative includes Admission IC realizing alternative id=16.,16.0,admission_nc,14.0,0.023745596408843994,0.007661447394639254
+V0368,admission_nc,The narrative features Admission NC realizing alternative id=15.,7.0,admission_ic,5.0,0.8003352284431458,0.7062936425209045
+V0369,admission_nc,The narrative features Admission NC realizing alternative id=15.,9.0,admission_ic,8.0,0.46246472001075745,0.00828672293573618
+V0370,admission_nc,The narrative features Admission NC realizing alternative id=15.,7.0,admission_ic,6.0,0.5146851539611816,6.898649007780477e-05
+V0371,admission_nc,The narrative features Admission NC realizing alternative id=15.,7.0,admission_ic,5.0,0.7157168388366699,0.33368954062461853
+V0372,admission_nc,The narrative features Admission NC realizing alternative id=15.,16.0,admission_ic,8.0,0.18140441179275513,0.000377224525436759
+V0373,admission_nc,The narrative features Admission NC realizing alternative id=15.,6.0,admission_ic,5.0,0.0035627076867967844,0.005714736878871918
+V0374,admission_nc,The narrative features Admission NC realizing alternative id=15.,4.0,admission_ic,5.0,0.4143071174621582,0.11459257453680038
+V0375,admission_ic,The narrative includes Admission IC realizing alternative id=16.,10.0,admission_nc,7.0,0.42861318588256836,0.000377224525436759
+V0376,admission_nc,"The narrative features an admission to normal care (Admission NC), realizing category admission_nc.",7.0,admission_ic,6.0,0.46743282675743103,0.13529987633228302
+V0377,admission_nc,"The narrative includes Admission NC, directly realizing admission_nc.",5.0,admission_ic,6.0,0.01565827801823616,0.0063808332197368145
+V0378,,"The narrative ends with IV Antibiotics and lacks any ward or intensive care admission activity, so no category fits.",,admission_nc,1.0,,0.011559880338609219
+V0379,,"The narrative ends at IV Antibiotics without any admission activity, hence no category applies.",,admission_nc,2.0,,0.02277352474629879
+V0380,admission_nc,"The narrative includes Admission NC, corresponding to admission_nc.",6.0,admission_ic,5.0,0.3554469048976898,0.3339242935180664
+V0381,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",5.0,admission_ic,5.0,0.13809598982334137,0.08388596773147583
+V0382,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",4.0,admission_ic,3.0,0.45502200722694397,0.09931067377328873
+V0383,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",9.0,admission_ic,5.0,0.36408111453056335,0.33654358983039856
+V0384,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",10.0,admission_ic,8.0,0.455150842666626,0.016130076721310616
+V0385,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",9.0,admission_ic,6.0,0.44801363348960876,0.022737877443432808
+V0386,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",5.0,admission_ic,5.0,0.4022303819656372,0.11135134845972061
+V0387,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",7.0,admission_ic,6.0,0.12846970558166504,0.08471918851137161
+V0388,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",7.0,admission_ic,6.0,0.0244512427598238,0.015173799358308315
+V0389,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",6.0,admission_ic,4.0,0.3702709376811981,0.015414985828101635
+V0390,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",6.0,admission_ic,6.0,0.4748781621456146,0.012797337956726551
+V0391,admission_nc,"The narrative includes Admission IC and Admission NC; since it includes normal care ward admission alongside intensive care, it aligns with admission_nc pathways.",6.0,admission_ic,4.0,0.13282005488872528,0.0012924493057653308
+V0392,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",5.0,admission_ic,4.0,0.2551642060279846,0.17207114398479462
+V0393,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",18.0,admission_ic,12.0,0.4600257873535156,0.03321772441267967
+V0394,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",6.0,admission_ic,6.0,0.03069794364273548,0.021420499309897423
+V0395,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",5.0,admission_ic,5.0,0.006654529366642237,0.0026229151990264654
+V0396,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",3.0,admission_ic,5.0,0.011215698905289173,0.0019382545724511147
+V0397,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",6.0,admission_ic,7.0,0.13657642900943756,0.08540552109479904
+V0398,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",19.0,admission_ic,9.0,0.4727133810520172,0.08487846702337265
+V0399,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",7.0,admission_ic,5.0,0.7863912582397461,0.3590163290500641
+V0400,admission_nc,"The narrative includes Admission NC, realizing admission_nc.",5.0,admission_ic,2.0,0.18835152685642242,0.17907409369945526
+V0401,admission_nc,"The narrative includes Admission NC, realizing the standard post-discharge recovery pathway of admission to normal care.",8.0,admission_ic,8.0,0.35281023383140564,0.029929466545581818
+V0402,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",5.0,admission_ic,5.0,0.4181574285030365,0.11120957881212234
+V0403,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",10.0,admission_ic,8.0,0.5031198263168335,0.023435115814208984
+V0404,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",7.0,admission_ic,7.0,0.5384382605552673,0.08333960175514221
+V0405,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",4.0,admission_ic,5.0,0.04072009399533272,0.03144264966249466
+V0406,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",5.0,admission_ic,4.0,0.19077108800411224,0.1814936399459839
+V0407,admission_ic,"The narrative includes Admission IC, realizing admission to the intensive care unit.",11.0,admission_nc,3.0,0.5201578140258789,0.02208690159022808
+V0408,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",4.0,admission_ic,5.0,0.3652813136577606,0.1131163015961647
+V0409,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",6.0,admission_ic,6.0,0.5202415585517883,0.084418885409832
+V0410,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",4.0,admission_ic,6.0,0.34407365322113037,0.18179118633270264
+V0411,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",10.0,admission_ic,8.0,0.447477251291275,0.06894596666097641
+V0412,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",12.0,admission_ic,6.0,0.3794483244419098,0.11289580911397934
+V0413,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",8.0,admission_ic,3.0,0.7580592632293701,0.33424487709999084
+V0414,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",5.0,admission_ic,5.0,0.3770771026611328,0.11526701599359512
+V0415,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",7.0,admission_ic,5.0,0.7845432758331299,0.6905016303062439
+V0416,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",7.0,admission_ic,4.0,0.38091596961021423,0.35337841510772705
+V0417,,"The narrative does not contain any admission activity, ending at ER Triage, so it fits none of the admission categories.",,admission_nc,1.0,,0.6931584477424622
+V0418,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",6.0,admission_ic,6.0,0.3872414529323578,0.11343727260828018
+V0419,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",5.0,admission_ic,5.0,0.010491844266653061,0.001214399584569037
+V0420,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",7.0,admission_ic,3.0,0.35774660110473633,0.0028906601946800947
+V0421,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",10.0,admission_ic,7.0,0.4526871144771576,0.00939370971173048
+V0422,admission_ic,"The narrative includes Admission IC as part of its progression, realizing intensive care unit admission.",6.0,admission_nc,6.0,0.06675081700086594,0.00043312355410307646
+V0423,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",7.0,admission_ic,6.0,0.4770590364933014,0.12567366659641266
+V0424,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",8.0,admission_ic,5.0,0.6771540641784668,0.3397006094455719
+V0425,admission_nc,"The narrative includes Admission NC, realizing admission to a normal care ward.",4.0,admission_ic,4.0,0.013006228022277355,0.0037287825252860785
+V0426,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.4473608434200287,0.16120471060276031
+V0427,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",9.0,admission_ic,9.0,0.5182895660400391,0.08379853516817093
+V0428,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",11.0,admission_ic,9.0,0.33617350459098816,0.2444617748260498
+V0429,,The narrative does not contain any admission activity to a ward or unit.,,admission_nc,2.0,,0.02403135783970356
+V0430,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,7.0,0.11654037982225418,0.0019075862364843488
+V0431,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,5.0,0.020748905837535858,0.0114714615046978
+V0432,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",11.0,admission_nc,6.0,0.4206826686859131,0.0499676950275898
+V0433,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.5120438933372498,0.3129110336303711
+V0434,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",3.0,admission_ic,7.0,0.11123327165842056,0.0874570906162262
+V0435,admission_nc,"The narrative includes Admission NC and Admission IC, but is predominantly characterized by normal care ward admissions.",36.0,admission_ic,18.0,0.537188708782196,0.00017225810734089464
+V0436,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",9.0,admission_ic,5.0,0.45842495560646057,0.0316169448196888
+V0437,admission_nc,"The narrative includes Admission IC and Admission NC, realizing normal care pathways.",34.0,admission_ic,16.0,0.4662511348724365,0.004500335548073053
+V0438,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",10.0,admission_ic,8.0,0.012167033739387989,0.021444479003548622
+V0439,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",29.0,admission_ic,16.0,0.04136072099208832,0.050638169050216675
+V0440,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",11.0,admission_ic,7.0,0.5514284372329712,0.004328248091042042
+V0441,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,5.0,0.4442250728607178,0.11286485195159912
+V0442,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",8.0,admission_ic,7.0,0.513401210308075,0.08775650709867477
+V0443,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,6.0,0.38192233443260193,0.1118004098534584
+V0444,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",10.0,admission_ic,6.0,0.3336507976055145,0.24193908274173737
+V0445,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,6.0,0.12768542766571045,0.08471327275037766
+V0446,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.12541960179805756,0.083405502140522
+V0447,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",11.0,admission_ic,8.0,0.413730651140213,0.11311664432287216
+V0448,admission_nc,"The narrative includes both Admission IC and Admission NC, fitting normal care pathways overall.",10.0,admission_ic,6.0,0.5197027325630188,0.0014339489862322807
+V0449,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,6.0,0.555478036403656,0.0016118697822093964
+V0450,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,5.0,0.011767101474106312,0.002489656675606966
+V0451,admission_nc,The narrative features Admission NC which realizes standard ward care.,7.0,admission_ic,2.0,0.3427231013774872,0.012132844887673855
+V0452,admission_ic,"The narrative explicitly includes Admission IC, realizing intensive care unit admission.",19.0,admission_nc,14.0,0.42139169573783875,0.0013714955421164632
+V0453,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",11.0,admission_ic,8.0,0.47319546341896057,0.08439633995294571
+V0454,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.5158615708351135,0.08529608696699142
+V0455,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",1.0,admission_ic,4.0,0.12074491381645203,0.08544086664915085
+V0456,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.13596373796463013,0.08601822704076767
+V0457,admission_ic,"The narrative contains Admission IC alongside Admission NC, realizing intensive care unit admission.",15.0,admission_nc,12.0,0.4270009696483612,0.00035307396319694817
+V0458,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",8.0,admission_ic,6.0,0.5657270550727844,0.22242240607738495
+V0459,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.11569353938102722,0.08736946433782578
+V0460,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.4519616663455963,0.10237101465463638
+V0461,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.13086502254009247,0.08513299375772476
+V0462,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,4.0,0.4151512384414673,0.36574485898017883
+V0463,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,4.0,0.7374451756477356,0.3336954116821289
+V0464,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,6.0,0.5751820206642151,0.0017006737180054188
+V0465,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",8.0,admission_ic,6.0,0.027345500886440277,0.018068058416247368
+V0466,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,3.0,0.12864409387111664,0.08489357680082321
+V0467,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",8.0,admission_ic,5.0,0.4617025852203369,0.09263014793395996
+V0468,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,6.0,0.3378472626209259,0.13290421664714813
+V0469,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.4691011905670166,0.08523150533437729
+V0470,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",3.0,admission_ic,6.0,0.3491967022418976,0.18691426515579224
+V0471,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,4.0,0.025716908276081085,0.016439463943243027
+V0472,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.021561838686466217,0.012284395284950733
+V0473,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,5.0,0.33444568514823914,0.1363058090209961
+V0474,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.4212038218975067,0.11390138417482376
+V0475,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",2.0,admission_ic,4.0,0.009597011841833591,0.00031956733437255025
+V0476,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",7.0,admission_ic,6.0,0.57110995054245,0.22225289046764374
+V0477,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",5.0,admission_ic,7.0,0.11844909191131592,0.08461391180753708
+V0478,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",8.0,admission_ic,7.0,0.1297539621591568,0.08402193337678909
+V0479,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",5.0,admission_ic,6.0,0.3370600938796997,0.13369138538837433
+V0480,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",6.0,admission_ic,6.0,0.005493797827512026,0.00378364697098732
+V0481,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",9.0,admission_ic,6.0,0.11947431415319443,0.08671147376298904
+V0482,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",8.0,admission_ic,8.0,0.4560337960720062,0.09829891473054886
+V0483,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",29.0,admission_ic,15.0,0.4859604835510254,0.059152472764253616
+V0484,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",8.0,admission_ic,7.0,0.557496964931488,0.0017211405793204904
+V0485,admission_ic,"The narrative contains the 'Admission IC' activity, realizing intensive care unit admission.",20.0,admission_nc,14.0,0.43123236298561096,0.0003672268067020923
+V0486,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",11.0,admission_ic,9.0,0.4659210741519928,0.10042574256658554
+V0487,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",7.0,admission_ic,6.0,0.1733027696609497,0.0023901795502752066
+V0488,,The narrative ends at IV Liquid without any ward admission activity.,,admission_nc,2.0,,0.0740438774228096
+V0489,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",9.0,admission_ic,6.0,0.3465309143066406,0.33451640605926514
+V0490,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",6.0,admission_ic,6.0,0.1827516406774521,0.0017042838735505939
+V0491,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",5.0,admission_ic,4.0,0.025646070018410683,0.016368625685572624
+V0492,,The narrative ends at IV Liquid without any ward admission activity.,,admission_nc,3.0,,0.00016920965572353452
+V0493,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",5.0,admission_ic,5.0,0.33851945400238037,0.054592471569776535
+V0494,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",7.0,admission_ic,7.0,0.009067581035196781,0.00020986347226426005
+V0495,,The narrative ends at IV Antibiotics without any ward admission activity.,,admission_nc,3.0,,0.011068315245211124
+V0496,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",6.0,admission_ic,6.0,0.12388018518686295,0.002115231705829501
+V0497,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",9.0,admission_ic,5.0,0.6761047840118408,0.3467656075954437
+V0498,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",10.0,admission_ic,7.0,0.3592142164707184,0.186922088265419
+V0499,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",6.0,admission_ic,6.0,0.13436946272850037,0.08761250227689743
+V0500,admission_nc,"The narrative contains the 'Admission NC' activity, realizing admission to a normal care ward.",7.0,admission_ic,4.0,0.1931062787771225,0.18382883071899414
+V0501,admission_nc,"The narrative includes Admission NC, realizing the normal care admission alternative.",8.0,admission_ic,5.0,0.7259538769721985,0.668421745300293
+V0502,admission_nc,"The narrative concludes with Admission NC, realizing the normal care admission alternative.",6.0,admission_ic,5.0,0.7754688858985901,0.6814272999763489
+V0503,admission_nc,"The narrative contains Admission NC, realizing the normal care ward admission pathway.",8.0,admission_ic,3.0,0.7272999286651611,0.3337424099445343
+V0504,admission_nc,"The narrative features Admission NC followed by subsequent lab work and release, realizing normal care.",6.0,admission_ic,4.0,0.3655881881713867,0.11280939728021622
+V0505,admission_nc,"The narrative includes Admission NC, mapping directly to the normal care ward category.",6.0,admission_ic,5.0,0.39731574058532715,0.11111766844987869
+V0506,admission_nc,"The variant contains Admission NC, satisfying the normal care ward admission alternative.",4.0,admission_ic,4.0,0.023303456604480743,0.01402601134032011
+V0507,,"The narrative ends at IV Antibiotics without any ward admission activity, so it does not realize any of the admission categories.",,admission_nc,2.0,,0.012583177536725998
+V0508,admission_nc,"The narrative includes Admission NC, realizing the normal care ward admission pathway.",10.0,admission_ic,7.0,0.4000821113586426,0.1112905964255333
+V0509,admission_nc,"The narrative includes Admission NC, realizing the normal care ward admission pathway.",5.0,admission_ic,4.0,0.015618618577718735,0.006341173779219389
+V0510,,"The process terminates at IV Antibiotics and lacks any admission event, fitting none of the taxonomy categories.",,admission_nc,1.0,,0.03254904970526695
+V0511,admission_nc,"The narrative includes multiple instances of Admission NC, realizing the normal care ward admission alternative.",11.0,admission_ic,9.0,0.18962018191814423,0.0013714955421164632
+V0512,admission_nc,"The narrative features Admission NC, satisfying the normal care ward admission pathway.",9.0,admission_ic,7.0,0.1331327110528946,0.08740069717168808
+V0513,admission_nc,"The narrative contains Admission NC, realizing the normal care ward admission alternative.",6.0,admission_ic,5.0,0.14094991981983185,0.08563464134931564
+V0514,admission_nc,"The narrative includes Admission NC, realizing the normal care ward admission alternative.",12.0,admission_ic,9.0,0.12654951214790344,0.08386767655611038
+V0515,admission_nc,"The narrative contains Admission NC, realizing the normal care ward admission alternative.",10.0,admission_ic,8.0,0.5132759213447571,0.08788176625967026
+V0516,,"The sequence stops at Leucocytes without containing any admission event, fitting none of the taxonomy categories.",,admission_nc,6.0,,0.03983199968934059
+V0517,,"The sequence terminates at ER Triage without any admission event, fitting none of the taxonomy categories.",,admission_nc,1.0,,0.6884955763816833
+V0518,admission_nc,"The narrative includes Admission NC, realizing the normal care ward admission alternative.",4.0,admission_ic,7.0,0.039190471172332764,0.029913028702139854
+V0519,admission_nc,"The narrative includes Admission NC, realizing the normal care ward admission alternative.",7.0,admission_ic,6.0,0.44981494545936584,0.10451778024435043
+V0520,admission_nc,"The narrative includes Admission NC, realizing the normal care ward admission alternative.",7.0,admission_ic,6.0,0.5573822855949402,0.19504833221435547
+V0521,admission_nc,"The narrative includes Admission NC, realizing the normal care ward admission alternative.",6.0,admission_ic,7.0,0.12105806916952133,0.08413060754537582
+V0522,admission_nc,"The narrative includes Admission NC, realizing the normal care ward admission alternative.",19.0,admission_ic,11.0,0.5181323885917664,0.0028811332304030657
+V0523,admission_nc,"The narrative includes Admission NC, realizing the normal care ward admission alternative.",6.0,admission_ic,4.0,0.16968394815921783,0.0056012780405581
+V0524,admission_nc,"The narrative includes Admission NC, realizing the normal care ward admission alternative.",3.0,admission_ic,4.0,0.006430650129914284,0.0028467949014157057
+V0525,admission_nc,"The narrative includes Admission NC, realizing the normal care ward admission alternative.",3.0,admission_ic,5.0,0.1733463555574417,0.16926442086696625
+V0526,admission_nc,The narrative features Admission NC events representing normal care ward admission.,6.0,admission_ic,6.0,0.5441928505897522,0.08432599157094955
+V0527,admission_nc,The narrative features multiple Admission NC events indicating normal care ward stays.,8.0,admission_ic,7.0,0.17600403726100922,0.0007188001764006913
+V0528,admission_nc,The narrative includes Admission NC events corresponding to normal care.,10.0,admission_ic,8.0,0.5652369856834412,0.005256932694464922
+V0529,admission_nc,"The narrative contains an Admission NC activity, matching normal care ward admission.",6.0,admission_ic,7.0,0.42428529262542725,0.11321701854467392
+V0530,admission_nc,The sequence contains Admission NC events realizing normal care.,6.0,admission_ic,7.0,0.5000874400138855,0.08344698697328568
+V0531,admission_ic,"The narrative features Admission IC events, realizing intensive care unit admission.",9.0,admission_nc,5.0,0.10564621537923813,0.08375833183526993
+V0532,admission_nc,The narrative includes an Admission NC event realizing normal care.,4.0,admission_ic,4.0,0.006890352349728346,0.002387092448771
+V0533,admission_nc,The narrative contains an Admission NC event for normal care ward admission.,4.0,admission_ic,5.0,0.004567551892250776,0.013844996690750122
+V0534,admission_nc,The narrative shows Admission NC events representing normal care.,4.0,admission_ic,4.0,0.13043199479579926,0.08469995856285095
+V0535,admission_nc,The narrative contains Admission NC corresponding to normal care.,8.0,admission_ic,7.0,0.4045800268650055,0.1112172082066536
+V0536,admission_nc,The narrative includes Admission NC events for normal care ward.,4.0,admission_ic,4.0,0.12944088876247406,0.08370885998010635
+V0537,admission_nc,The narrative contains an Admission NC event realizing normal care.,9.0,admission_ic,5.0,0.023001767694950104,0.013724323362112045
+V0538,admission_nc,The narrative features multiple Admission NC events for normal care.,13.0,admission_ic,9.0,0.13239526748657227,0.08363119512796402
+V0539,admission_nc,The narrative contains Admission NC events realizing normal care.,6.0,admission_ic,6.0,0.46924710273742676,0.08508562296628952
+V0540,admission_nc,The narrative includes Admission NC events for normal care.,5.0,admission_ic,7.0,0.47194457054138184,0.009863734245300293
+V0541,admission_nc,The narrative contains an Admission NC event realizing normal care ward admission.,6.0,admission_ic,4.0,0.3601212203502655,0.3340829610824585
+V0542,admission_ic,The narrative features an Admission IC event realizing intensive care unit admission.,8.0,admission_nc,5.0,0.3755020201206207,0.0007972149760462344
+V0543,admission_ic,The narrative includes an Admission IC event corresponding to intensive care unit admission.,16.0,admission_nc,13.0,0.0,0.004500335548073053
+V0544,admission_nc,The narrative contains an Admission NC event realizing normal care.,5.0,admission_ic,6.0,0.021056421101093292,0.01177897583693266
+V0545,admission_nc,The narrative includes an Admission NC event for normal care.,4.0,admission_ic,5.0,0.006367427762597799,0.00291001726873219
+V0546,admission_nc,The narrative contains an Admission NC event realizing normal care.,5.0,admission_ic,4.0,0.36792072653770447,0.11174535006284714
+V0547,admission_nc,The narrative features multiple Admission NC events corresponding to normal care.,17.0,admission_ic,13.0,0.45402979850769043,0.027221789583563805
+V0548,admission_nc,The narrative includes Admission NC events realizing normal care.,9.0,admission_ic,6.0,0.1734721064567566,0.0018131313845515251
+V0549,,"The narrative ends at IV Liquid and contains no ward or ICU admission events, thus fitting none of the categories.",,admission_nc,2.0,,0.0006197022157721221
+V0550,admission_nc,The narrative contains an Admission NC event realizing normal care.,9.0,admission_ic,7.0,0.44053423404693604,0.057794537395238876
+V0551,admission_nc,"The variant features multiple Admission NC steps, realizing normal care ward admission.",73.0,admission_ic,35.0,0.20273101329803467,0.014482331462204456
+V0552,admission_nc,"The variant contains Admission NC, realizing normal care ward admission.",13.0,admission_ic,11.0,0.33457767963409424,0.04816202446818352
+V0553,admission_ic,"The variant includes Admission IC, realizing intensive care unit admission.",15.0,admission_nc,8.0,0.42523086071014404,0.08387475460767746
+V0554,admission_nc,"The variant features Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.1188238337635994,0.084239162504673
+V0555,admission_nc,"The variant includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.5137984752655029,0.20227454602718353
+V0556,admission_nc,"The variant includes Admission NC, realizing normal care ward admission.",8.0,admission_ic,6.0,0.4623509347438812,0.09198179841041565
+V0557,admission_nc,"The variant contains Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.11806085705757141,0.08603715896606445
+V0558,admission_nc,"The variant contains Admission NC, realizing normal care ward admission.",3.0,admission_ic,5.0,0.3889533281326294,0.11514917761087418
+V0559,admission_nc,"The variant includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,5.0,0.4919625222682953,0.08817829936742783
+V0560,admission_nc,"The variant contains Admission NC, realizing normal care ward admission.",8.0,admission_ic,7.0,0.3694117069244385,0.11323633044958115
+V0561,admission_nc,"The variant includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,6.0,0.004389416426420212,0.004888028372079134
+V0562,admission_nc,"The variant contains Admission NC, realizing normal care ward admission.",7.0,admission_ic,7.0,0.002608019858598709,0.006669424474239349
+V0563,admission_ic,"The variant includes Admission IC along with Admission NC, realizing intensive care unit admission.",10.0,admission_nc,7.0,0.4573543965816498,0.0015447637997567654
+V0564,admission_nc,"The variant includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,6.0,0.48855385184288025,0.08476957678794861
+V0565,admission_nc,"The variant contains Admission NC, realizing normal care ward admission.",10.0,admission_ic,6.0,0.7725872993469238,0.6785456538200378
+V0566,admission_nc,"The variant includes Admission NC, realizing normal care ward admission.",9.0,admission_ic,8.0,0.11133266240358353,0.08735769987106323
+V0567,admission_nc,"The variant contains Admission NC, realizing normal care ward admission.",5.0,admission_ic,4.0,0.42040708661079407,0.1131046786904335
+V0568,admission_nc,"The variant contains multiple Admission NC steps, realizing normal care ward admission.",10.0,admission_ic,8.0,0.17101460695266724,0.00010202472185483202
+V0569,admission_nc,"The variant features Admission NC, realizing normal care ward admission.",5.0,admission_ic,4.0,0.12464320659637451,0.08418190479278564
+V0570,admission_nc,"The variant includes Admission NC, realizing normal care ward admission.",13.0,admission_ic,8.0,0.12271984666585922,0.08346593379974365
+V0571,admission_ic,"The variant features Admission IC as part of its acute pathway, realizing intensive care unit admission.",20.0,admission_nc,16.0,0.42772242426872253,0.0028811332304030657
+V0572,admission_ic,"The variant includes Admission IC, realizing intensive care unit admission.",14.0,admission_nc,7.0,0.3340778350830078,0.007210491690784693
+V0573,admission_nc,"The variant contains Admission NC, realizing normal care ward admission.",6.0,admission_ic,4.0,0.46444201469421387,0.08989065885543823
+V0574,admission_ic,"The variant includes Admission IC alongside Admission NC, realizing intensive care unit admission.",11.0,admission_nc,9.0,0.46092796325683594,0.0018692994490265846
+V0575,,"The variant ends in Leucocytes without any ward or unit admission activity, thus not realizing any taxonomy category.",,admission_nc,2.0,,7.816903962520882e-05
+V0576,admission_nc,The narrative features Admission NC activities realising normal care ward admission.,7.0,admission_ic,6.0,0.141923725605011,0.08660843223333359
+V0577,admission_nc,The narrative includes multiple instances of Admission NC representing normal care ward stays.,12.0,admission_ic,11.0,0.5010514259338379,0.08416443318128586
+V0578,admission_nc,The patient sequence contains Admission NC for standard ward care.,5.0,admission_ic,5.0,0.3596642017364502,0.11113494634628296
+V0579,admission_ic,The narrative includes Admission IC indicating intensive care unit admission.,41.0,admission_nc,25.0,0.11700636893510818,0.0010164988925680518
+V0580,,The narrative stops at CRP and does not contain any ward or ICU admission activities.,,admission_nc,1.0,,0.008384543471038342
+V0581,admission_nc,The narrative includes Admission NC representing normal care ward admission.,5.0,admission_ic,7.0,0.47041940689086914,0.08391328901052475
+V0582,admission_nc,The narrative includes Admission NC reflecting normal care ward placement.,5.0,admission_ic,4.0,0.1777452975511551,0.16846786439418793
+V0583,admission_nc,The narrative includes Admission NC activities corresponding to normal care.,5.0,admission_ic,4.0,0.12095678597688675,0.08423187583684921
+V0584,,The narrative ends with IV Liquid without any admission event.,,admission_nc,3.0,,0.0006515100249089301
+V0585,,The narrative ends with LacticAcid and lacks any hospital admission step.,,admission_nc,2.0,,0.3363097608089447
+V0586,admission_nc,The narrative contains Admission NC reflecting normal care ward admission.,5.0,admission_ic,4.0,0.3427603542804718,0.039979320019483566
+V0587,,The narrative terminates at CRP without an admission activity.,,admission_nc,2.0,,0.19529521465301514
+V0588,admission_nc,The narrative contains Admission NC representing normal care admission.,12.0,admission_ic,7.0,0.5021584630012512,0.004931775387376547
+V0589,admission_nc,The narrative includes Admission NC for normal care ward stay.,7.0,admission_ic,7.0,0.4469853341579437,0.002882793778553605
+V0590,admission_nc,The narrative includes Admission NC steps reflecting normal care admission.,7.0,admission_ic,7.0,0.5244097113609314,0.08340176194906235
+V0591,admission_nc,The narrative contains Admission NC realizing normal care ward admission.,7.0,admission_ic,5.0,0.6698973178863525,0.3340968191623688
+V0592,,The narrative terminates at IV Antibiotics without an admission step.,,admission_nc,3.0,,0.04699490964412689
+V0593,admission_nc,The narrative includes Admission NC reflecting normal care.,6.0,admission_ic,4.0,0.0,0.009277445264160633
+V0594,admission_nc,The narrative includes Admission NC steps for normal care.,6.0,admission_ic,5.0,0.5346518158912659,0.002648193622007966
+V0595,admission_nc,The narrative includes Admission NC steps for normal care admission.,7.0,admission_ic,5.0,0.5965514183044434,0.0025638891384005547
+V0596,admission_nc,The narrative includes Admission NC reflecting normal care ward admission.,5.0,admission_ic,4.0,0.014505942352116108,0.005228498484939337
+V0597,admission_ic,The narrative includes an Admission IC step representing intensive care unit admission.,9.0,admission_nc,7.0,0.4387277662754059,0.00010202472185483202
+V0598,admission_nc,The narrative contains Admission NC steps for normal care ward admission.,15.0,admission_ic,10.0,0.47985711693763733,0.08387475460767746
+V0599,admission_nc,The narrative contains Admission NC reflecting normal care admission.,5.0,admission_ic,5.0,0.0309671089053154,0.02168966270983219
+V0600,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",19.0,admission_nc,15.0,0.429342657327652,0.0011067080777138472
+V0601,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.339658260345459,0.24794654548168182
+V0602,admission_ic,"The narrative features an initial Admission IC, realizing intensive care unit admission.",9.0,admission_nc,5.0,0.438589483499527,0.08353956788778305
+V0603,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.3607586622238159,0.17411257326602936
+V0604,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",7.0,admission_ic,5.0,0.008963245898485184,0.018240690231323242
+V0605,admission_ic,"The narrative contains Admission IC, realizing intensive care unit admission.",10.0,admission_nc,6.0,0.08633845299482346,0.0016118697822093964
+V0606,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.021016402170062065,0.011738958768546581
+V0607,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",7.0,admission_ic,6.0,0.13169875741004944,0.08596672862768173
+V0608,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",4.0,admission_ic,4.0,0.11991262435913086,0.08351629227399826
+V0609,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.00920164491981268,7.579994417028502e-05
+V0610,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",4.0,admission_ic,5.0,0.12585903704166412,0.08370058983564377
+V0611,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",10.0,admission_ic,8.0,0.182286337018013,0.00035307396319694817
+V0612,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.13341470062732697,0.08768267184495926
+V0613,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",4.0,admission_ic,4.0,0.1976615935564041,0.18838417530059814
+V0614,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",8.0,admission_ic,3.0,0.7515280842781067,0.33339449763298035
+V0615,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.4121514558792114,0.11153744906187057
+V0616,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",4.0,admission_ic,6.0,0.18152384459972382,0.17224639654159546
+V0617,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",4.0,admission_ic,5.0,0.14136634767055511,0.08605105429887772
+V0618,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",7.0,admission_ic,7.0,0.45980358123779297,0.14292915165424347
+V0619,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.1883847564458847,0.17910730838775635
+V0620,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",4.0,admission_ic,5.0,0.12776999175548553,0.00010853328421944752
+V0621,admission_ic,"The narrative contains Admission IC, realizing intensive care unit admission.",13.0,admission_nc,3.0,0.6759042739868164,0.04457711800932884
+V0622,admission_ic,"The narrative contains Admission IC, realizing intensive care unit admission.",18.0,admission_nc,11.0,0.35950735211372375,0.0015616616001352668
+V0623,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",0.0,admission_ic,4.0,0.02864575944840908,0.019368313252925873
+V0624,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.17950259149074554,0.0015447637997567654
+V0625,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",5.0,admission_ic,6.0,0.4434884488582611,0.11360150575637817
+V0626,admission_nc,"The narrative features Admission NC as the primary ward stay, realizing normal care ward admission.",4.0,admission_ic,4.0,0.23923297226428986,0.16761015355587006
+V0627,admission_ic,"The narrative includes an Admission IC event, realizing intensive care unit admission.",13.0,admission_nc,11.0,0.11280215531587601,0.0017211405793204904
+V0628,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,5.0,0.19935260713100433,0.19007515907287598
+V0629,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",8.0,admission_ic,5.0,0.4861091673374176,0.15986932814121246
+V0630,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",8.0,admission_nc,6.0,0.3769668638706207,0.0002958752156700939
+V0631,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",3.0,admission_ic,4.0,0.37782809138298035,0.11451604962348938
+V0632,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.4188813865184784,0.11157896369695663
+V0633,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.39765551686286926,0.111457459628582
+V0634,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",4.0,admission_ic,6.0,0.02307572029531002,0.013798274099826813
+V0635,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,7.0,0.5488222241401672,0.08697006851434708
+V0636,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.5233170986175537,0.012724465690553188
+V0637,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",3.0,admission_ic,4.0,0.1344684362411499,0.0875135287642479
+V0638,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",4.0,admission_ic,6.0,0.5981786251068115,0.0025624819099903107
+V0639,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",9.0,admission_nc,4.0,0.08983971923589706,0.0020689237862825394
+V0640,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",9.0,admission_ic,7.0,0.37238189578056335,0.11620649695396423
+V0641,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",5.0,admission_ic,5.0,0.4225935935974121,0.11490869522094727
+V0642,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",9.0,admission_nc,5.0,0.38005685806274414,0.0012924493057653308
+V0643,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",19.0,admission_nc,10.0,0.08358123153448105,0.0032851595897227526
+V0644,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",4.0,admission_ic,5.0,0.4142896234989166,0.36488330364227295
+V0645,,The narrative does not contain any ward or ICU admission activities.,,admission_nc,2.0,,0.2324836105108261
+V0646,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",13.0,admission_ic,9.0,0.4618215560913086,0.10897424817085266
+V0647,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",6.0,admission_ic,4.0,0.23717297613620758,0.16723676025867462
+V0648,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.006419161334633827,0.015696605667471886
+V0649,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",7.0,admission_ic,7.0,0.46187734603881836,0.09245533496141434
+V0650,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",8.0,admission_ic,3.0,0.7588162422180176,0.250154584646225
+V0651,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.6084627509117126,0.22640492022037506
+V0652,admission_nc,"The narrative features repeated Admission NC, realizing normal care ward admission.",7.0,admission_ic,5.0,0.5996403098106384,0.16807830333709717
+V0653,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,5.0,0.12812519073486328,0.08427350968122482
+V0654,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",12.0,admission_nc,4.0,0.4440956115722656,0.08748802542686462
+V0655,admission_ic,"The narrative includes Admission IC followed by Admission NC, realizing intensive care unit admission.",11.0,admission_nc,4.0,0.47051122784614563,0.002068497007712722
+V0656,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",12.0,admission_ic,10.0,0.4490349292755127,0.08353956788778305
+V0657,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.17641092836856842,0.0009999602334573865
+V0658,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",7.0,admission_ic,4.0,0.5755842328071594,0.22333025932312012
+V0659,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.3659217357635498,0.3383842408657074
+V0660,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",18.0,admission_ic,10.0,0.1213240921497345,0.08486169576644897
+V0661,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",16.0,admission_nc,10.0,0.3492361605167389,0.00276266410946846
+V0662,admission_ic,"The narrative includes Admission IC, realizing intensive care unit admission.",10.0,admission_nc,5.0,0.036338817328214645,0.004931775387376547
+V0663,admission_nc,"The narrative ends with Admission NC, realizing normal care ward admission.",7.0,admission_ic,5.0,0.778710126876831,0.6846684813499451
+V0664,,The narrative ends at IV Liquid and contains no admission activity.,,admission_nc,4.0,,0.09729454666376114
+V0665,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,6.0,0.0019229223253205419,0.0073545221239328384
+V0666,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,5.0,0.14886252582073212,0.09354723244905472
+V0667,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",4.0,admission_ic,6.0,0.4145543575286865,0.11394036561250687
+V0668,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",8.0,admission_ic,4.0,0.382045179605484,0.3545076847076416
+V0669,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,6.0,0.023457609117031097,0.014180164784193039
+V0670,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",6.0,admission_ic,8.0,0.34481921792030334,0.16553838551044464
+V0671,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",8.0,admission_ic,6.0,0.38623085618019104,0.11242669075727463
+V0672,admission_nc,"The narrative includes Admission NC and Admission IC, primarily realizing normal care ward admission.",20.0,admission_ic,12.0,0.4523346424102783,0.002466572681441903
+V0673,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",9.0,admission_ic,6.0,0.11297759413719177,0.08944574743509293
+V0674,admission_ic,"The narrative includes Admission IC followed by Admission NC, realizing intensive care unit admission.",33.0,admission_nc,21.0,0.3509862422943115,0.025607885792851448
+V0675,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",11.0,admission_ic,8.0,0.5334351658821106,0.086646668612957
+V0676,,"The narrative ends at IV Antibiotics without any admission event, so none of the ward admission categories apply.",,admission_nc,2.0,,0.04042404145002365
+V0677,admission_nc,"The narrative includes an Admission NC activity, realizing admission to a normal care ward.",7.0,admission_ic,4.0,0.7172968983650208,0.3339109420776367
+V0678,admission_nc,"The narrative features Admission NC, realizing admission to normal care.",6.0,admission_ic,5.0,0.1326814591884613,0.0869494304060936
+V0679,,The narrative terminates at IV Antibiotics and contains no hospital admission steps.,,admission_nc,2.0,,0.015869054943323135
+V0680,admission_ic,"The narrative includes an Admission IC activity, realizing intensive care unit admission.",12.0,admission_nc,6.0,0.007646116893738508,0.012146451510488987
+V0681,admission_nc,"The narrative records an Admission NC activity, matching normal care admission.",5.0,admission_ic,6.0,0.5674009919166565,0.22269488871097565
+V0682,admission_ic,"The narrative contains both Admission NC and Admission IC events, but crucially includes Admission IC corresponding to intensive care.",15.0,admission_nc,6.0,0.4629162847995758,0.002525369171053171
+V0683,admission_nc,"The narrative shows Admission NC events, realizing normal care ward admission.",7.0,admission_ic,6.0,0.12654466927051544,0.08387251943349838
+V0684,admission_nc,"The narrative features Admission NC, realizing normal care.",5.0,admission_ic,4.0,0.11690470576286316,0.08615829795598984
+V0685,,The sequence stops at IV Antibiotics without proceeding to ward or ICU admission.,,admission_nc,2.0,,0.0015570921823382378
+V0686,admission_nc,"The narrative contains Admission NC, realizing normal care ward admission.",8.0,admission_ic,4.0,0.7583330273628235,0.3339711129665375
+V0687,admission_nc,"The narrative records Admission NC events, realizing normal care admission.",4.0,admission_ic,6.0,0.47768935561180115,0.08376484364271164
+V0688,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",7.0,admission_ic,3.0,0.3791424334049225,0.11320170015096664
+V0689,,The narrative ends at IV Antibiotics and lacks any admission category activity.,,admission_nc,4.0,,0.0004547650460153818
+V0690,admission_nc,"The narrative includes both Admission IC and Admission NC, but ultimately concludes with Admission NC which characterizes the definitive ward placement.",10.0,admission_ic,5.0,0.12186175584793091,0.0016522678779438138
+V0691,admission_nc,"The narrative features an Admission NC event, realizing admission to normal care.",6.0,admission_ic,4.0,0.7455965876579285,0.347673624753952
+V0692,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",8.0,admission_ic,6.0,0.7247330546379089,0.3363092243671417
+V0693,admission_nc,"The narrative records an Admission NC event, matching normal care admission.",7.0,admission_ic,6.0,0.504241406917572,0.16951555013656616
+V0694,,The process terminates early at ER Sepsis Triage without any admission.,,admission_nc,3.0,,0.4203183650970459
+V0695,admission_nc,"The narrative includes Admission NC, realizing normal care ward admission.",5.0,admission_ic,6.0,0.11832365393638611,0.08629995584487915
+V0696,admission_ic,"The narrative records an Admission IC event, realizing intensive care unit admission.",8.0,admission_nc,5.0,0.14933042228221893,0.0014559595147147775
+V0697,admission_nc,"The narrative contains an Admission NC activity, realizing normal care admission.",5.0,admission_ic,4.0,0.032378580421209335,0.023101136088371277
+V0698,admission_nc,"The narrative features Admission NC, realizing normal care ward admission.",5.0,admission_ic,4.0,0.14277391135692596,0.08745861798524857
+V0699,admission_nc,"The narrative includes an Admission NC event, realizing normal care admission.",8.0,admission_ic,6.0,0.025386428460478783,0.016108984127640724
+V0700,admission_nc,"The narrative records Admission NC steps, realizing normal care ward admission.",8.0,admission_ic,4.0,0.7018257975578308,0.2397448867559433
+V0701,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,9.0,admission_ic,7.0,0.4556964337825775,0.14703625440597534
+V0702,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,4.0,admission_ic,6.0,0.11732562631368637,0.08573737740516663
+V0703,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,3.0,admission_ic,6.0,0.3950537443161011,0.3456474244594574
+V0704,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,6.0,admission_ic,5.0,0.11875265091657639,0.0007942551746964455
+V0705,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,5.0,admission_ic,6.0,0.4695863723754883,0.08474630117416382
+V0706,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,7.0,admission_ic,3.0,0.39119967818260193,0.36366215348243713
+V0707,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,8.0,admission_ic,4.0,0.7864508032798767,0.692409098148346
+V0708,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,10.0,admission_ic,7.0,0.772784411907196,0.6787427067756653
+V0709,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,7.0,admission_ic,4.0,0.35236358642578125,0.030376123264431953
+V0710,admission_ic,"The narrative features Admission IC alongside Admission NC, which realizes intensive care unit admission (alternative 16).",167.0,admission_nc,112.0,0.4653145968914032,0.049215395003557205
+V0711,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,5.0,admission_ic,4.0,0.12204573303461075,0.08352372795343399
+V0712,admission_ic,"The narrative features Admission IC, which realizes intensive care unit admission (alternative 16).",11.0,admission_nc,7.0,0.08684035390615463,2.603729626571294e-05
+V0713,,The narrative ends at IV Antibiotics without involving any ward admission categories.,,admission_nc,2.0,,0.003704542526975274
+V0714,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,1.0,admission_ic,5.0,0.01783442497253418,0.008556980639696121
+V0715,admission_ic,"The narrative features Admission IC, which realizes intensive care unit admission (alternative 16).",11.0,admission_nc,4.0,0.4242299795150757,0.053514983505010605
+V0716,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,5.0,admission_ic,6.0,0.11938504129648209,0.08680073171854019
+V0717,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,4.0,admission_ic,4.0,0.11996208876371384,0.08356574922800064
+V0718,admission_ic,"The narrative features Admission IC, which realizes intensive care unit admission (alternative 16).",16.0,admission_nc,10.0,0.1304062455892563,0.0018020950956270099
+V0719,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,8.0,admission_ic,8.0,0.38158631324768066,0.11146440356969833
+V0720,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,6.0,admission_ic,4.0,0.47108587622642517,0.08341982960700989
+V0721,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,18.0,admission_ic,9.0,0.38588616251945496,0.11208197474479675
+V0722,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,5.0,admission_ic,5.0,0.03412961959838867,0.024852173402905464
+V0723,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,7.0,admission_ic,4.0,0.12459948658943176,0.0842256247997284
+V0724,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,6.0,admission_ic,5.0,0.33356043696403503,0.1371910572052002
+V0725,admission_nc,The narrative features Admission NC which realizes admission to normal care ward (alternative 15).,6.0,admission_ic,5.0,0.5167083740234375,0.27109262347221375
+V0726,admission_ic,"The narrative includes an Admission IC activity, realizing intensive care unit admission.",11.0,admission_nc,9.0,0.3527930974960327,0.0007942551746964455
+V0727,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",4.0,admission_ic,5.0,0.42886391282081604,0.11116994172334671
+V0728,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",7.0,admission_ic,6.0,0.12786221504211426,1.6309519196511246e-05
+V0729,admission_ic,"The narrative includes an Admission IC activity, realizing intensive care unit admission.",7.0,admission_nc,4.0,0.37640777230262756,1.6309519196511246e-05
+V0730,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",5.0,admission_ic,6.0,0.022687723860144615,0.013410278595983982
+V0731,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",6.0,admission_ic,4.0,0.19631586968898773,0.18703842163085938
+V0732,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",7.0,admission_ic,5.0,0.3346388638019562,0.3345058858394623
+V0733,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",5.0,admission_ic,5.0,0.13287509977817535,0.08714307099580765
+V0734,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",6.0,admission_ic,5.0,0.5922921299934387,0.22298790514469147
+V0735,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",5.0,admission_ic,3.0,0.35572221875190735,0.0008662789477966726
+V0736,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",4.0,admission_ic,5.0,0.010488350875675678,0.0012109066592529416
+V0737,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",5.0,admission_ic,4.0,0.021262912079691887,0.01198546588420868
+V0738,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",5.0,admission_ic,4.0,0.04522930458188057,0.03595186397433281
+V0739,admission_ic,"The narrative includes an Admission IC activity, realizing intensive care unit admission.",9.0,admission_nc,5.0,0.37668201327323914,1.1024879313481506e-05
+V0740,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",7.0,admission_ic,7.0,0.016634829342365265,0.007357384543865919
+V0741,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",6.0,admission_ic,6.0,0.023586774244904518,0.014309330843389034
+V0742,admission_ic,"The narrative includes an Admission IC activity, realizing intensive care unit admission.",11.0,admission_nc,3.0,0.4512375295162201,0.012724465690553188
+V0743,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",5.0,admission_ic,5.0,0.010031728073954582,0.0007542834500782192
+V0744,admission_ic,"The narrative includes an Admission IC activity, realizing intensive care unit admission.",13.0,admission_nc,8.0,0.02527490071952343,0.006132142152637243
+V0745,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",8.0,admission_ic,8.0,0.5717289447784424,0.1770481914281845
+V0746,admission_ic,"The narrative includes an Admission IC activity, realizing intensive care unit admission.",19.0,admission_nc,14.0,0.044833555817604065,0.0008998369448818266
+V0747,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",6.0,admission_ic,5.0,0.5257395505905151,0.049215395003557205
+V0748,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",4.0,admission_ic,5.0,0.4966767728328705,0.08685766905546188
+V0749,admission_nc,"The narrative includes an Admission NC activity, realizing normal care ward admission.",4.0,admission_ic,5.0,0.02289699576795101,0.013619550503790379
+V0750,,"The narrative ends at IV Antibiotics without reaching any ward admission event, hence it does not realize any taxonomy category.",,admission_nc,3.0,,0.3420694172382355
+V0751,admission_nc,"The narrative includes an Admission NC activity, matching normal care ward admission.",3.0,admission_ic,5.0,0.019801635295152664,0.010524190962314606
+V0752,admission_ic,"The narrative includes an Admission IC activity, realizing intensive care unit admission.",13.0,admission_nc,8.0,0.023656481876969337,0.007750561460852623
+V0753,admission_nc,"The narrative features Admission NC, representing admission to normal care.",6.0,admission_ic,5.0,0.3853999078273773,0.11159574240446091
+V0754,admission_nc,"Contains Admission NC, realizing normal care ward admission.",5.0,admission_ic,4.0,0.3493935763835907,0.12135791778564453
+V0755,admission_nc,"Contains Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.13429932296276093,0.08768263459205627
+V0756,admission_ic,"The narrative includes both Admission NC and Admission IC, with intensive care coordination fulfilling Admission IC requirements.",26.0,admission_nc,16.0,0.13876362144947052,0.006555283907800913
+V0757,admission_nc,"Contains Admission NC, realizing normal care ward admission.",8.0,admission_ic,5.0,0.46438470482826233,0.08994797617197037
+V0758,admission_nc,"Contains Admission NC, realizing normal care ward admission.",5.0,admission_ic,4.0,0.15613608062267303,0.10082077980041504
+V0759,,The narrative ends at IV Antibiotics without any ward or unit admission event.,,admission_nc,3.0,,0.06038370728492737
+V0760,admission_nc,"Contains Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.11234954744577408,0.08634081482887268
+V0761,admission_nc,"Contains Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.024698982015252113,0.01542153675109148
+V0762,admission_ic,"Includes Admission IC, realizing intensive care unit admission.",17.0,admission_nc,13.0,0.33977437019348145,0.014396019279956818
+V0763,admission_ic,"Includes Admission IC alongside Admission NC, realizing intensive care admission.",37.0,admission_nc,20.0,0.09438730031251907,0.00017225810734089464
+V0764,,Terminates at ER Sepsis Triage without any admission activity.,,admission_nc,3.0,,0.33717337250709534
+V0765,admission_nc,"Contains Admission NC, realizing normal care ward admission.",7.0,admission_ic,5.0,0.5398914217948914,0.08479275554418564
+V0766,admission_nc,"Contains Admission NC, realizing normal care ward admission.",6.0,admission_ic,3.0,0.1925385445356369,0.18326109647750854
+V0767,admission_nc,"Contains Admission NC, realizing normal care ward admission.",6.0,admission_ic,5.0,0.7202410697937012,0.33532580733299255
+V0768,admission_nc,"Contains Admission NC, realizing normal care ward admission.",8.0,admission_ic,5.0,0.349432110786438,0.3335704505443573
+V0769,admission_nc,"Contains Admission NC, realizing normal care ward admission.",5.0,admission_ic,4.0,0.0061920094303786755,0.015469454228878021
+V0770,admission_nc,"Contains Admission NC, realizing normal care ward admission.",10.0,admission_ic,6.0,0.5307444930076599,0.0009304405539296567
+V0771,admission_nc,"Contains Admission NC, realizing normal care ward admission.",4.0,admission_ic,6.0,0.11715327948331833,0.08590972423553467
+V0772,admission_nc,"Contains Admission NC, realizing normal care ward admission.",6.0,admission_ic,6.0,0.4164293706417084,0.3670229911804199
+V0773,admission_nc,"Contains Admission NC, realizing normal care ward admission.",6.0,admission_ic,3.0,0.18676914274692535,0.1774917095899582
+V0774,,Terminates at ER Sepsis Triage without any admission activity.,,admission_nc,3.0,,0.3399728238582611
+V0775,,Terminates at CRP without any ward or unit admission event.,,admission_nc,2.0,,0.0038842447102069855
+V0776,admission_nc,The narrative includes 'Admission NC' which realizes normal care ward admission.,6.0,admission_ic,7.0,0.13294202089309692,0.08720999211072922
+V0777,,The narrative stops at 'Leucocytes' and does not contain any hospital admission activities.,,admission_nc,3.0,,0.3624292314052582
+V0778,,The process ends at 'Leucocytes' without any admission step.,,admission_nc,3.0,,0.16932307183742523
+V0779,admission_nc,"Includes 'Admission NC', realizing admission to a normal care ward.",6.0,admission_ic,5.0,0.33979710936546326,0.13095436990261078
+V0780,admission_nc,"Contains 'Admission NC', indicating normal care ward admission.",15.0,admission_ic,12.0,0.019940504804253578,0.029217949137091637
+V0781,admission_nc,"Features 'Admission NC' activity, realizing normal care.",8.0,admission_ic,7.0,0.34712696075439453,0.2278279811143875
+V0782,admission_nc,"Includes 'Admission NC', corresponding to normal care ward admission.",9.0,admission_ic,7.0,0.011342312209308147,0.02061975747346878
+V0783,admission_nc,"Shows 'Admission NC', realizing admission to normal care.",7.0,admission_ic,7.0,0.006211699452251196,0.015489143319427967
+V0784,admission_nc,"Contains 'Admission NC', matching normal care ward admission.",12.0,admission_ic,7.0,0.021266192197799683,0.03054363839328289
+V0785,admission_nc,"Includes 'Admission NC' steps, realizing normal care admission.",7.0,admission_ic,4.0,0.5298400521278381,2.603729626571294e-05
+V0786,admission_nc,"Includes 'Admission NC', realizing normal care ward admission.",7.0,admission_ic,6.0,0.11280578374862671,0.0015616616001352668
+V0787,admission_nc,"Contains 'Admission NC', realizing normal care.",7.0,admission_ic,6.0,0.48082438111305237,0.08431439846754074
+V0788,admission_nc,"Features 'Admission NC', corresponding to normal care ward admission.",3.0,admission_ic,5.0,0.02083921991288662,0.011561776511371136
+V0789,admission_nc,"Shows 'Admission NC', realizing normal care ward admission.",5.0,admission_ic,4.0,0.1294594556093216,0.08372741937637329
+V0790,admission_nc,"Includes multiple 'Admission NC' events, realizing normal care admission.",8.0,admission_ic,7.0,0.4485280513763428,0.08363395184278488
+V0791,,Ends at 'IV Antibiotics' without proceeding to any ward or unit admission.,,admission_nc,3.0,,0.04513664171099663
+V0792,admission_nc,"Contains 'Admission NC', realizing normal care ward admission.",5.0,admission_ic,5.0,0.3445519208908081,0.038187768310308456
+V0793,admission_ic,Includes 'Admission IC' which realizes intensive care unit admission.,9.0,admission_nc,3.0,0.3484426736831665,0.0035561390686780214
+V0794,admission_nc,"Contains 'Admission NC', realizing normal care ward admission.",13.0,admission_ic,8.0,0.37632909417152405,0.11601504683494568
+V0795,admission_nc,"Includes both 'Admission IC' and 'Admission NC', but overall structured pathway with multiple normal care ward visits primarily aligns with normal care classification or includes mixed care. Since it primarily features normal care stays, admission_nc fits best based on predominant activities.",40.0,admission_ic,20.0,0.1848352998495102,0.002195878652855754
+V0796,admission_nc,"Contains 'Admission NC', realizing normal care ward admission.",6.0,admission_ic,5.0,0.3524039685726166,0.3344496786594391
+V0797,admission_nc,"Features 'Admission NC', realizing normal care ward admission.",8.0,admission_ic,8.0,0.5325336456298828,0.08754828572273254
+V0798,admission_nc,"Contains 'Admission NC', realizing normal care ward admission.",7.0,admission_ic,5.0,0.39559388160705566,0.11149639636278152
+V0799,admission_nc,"Includes 'Admission NC', realizing normal care ward admission.",5.0,admission_ic,5.0,0.06371531635522842,0.054437872022390366
+V0800,admission_nc,"Shows 'Admission NC', realizing normal care ward admission.",4.0,admission_ic,5.0,0.1332869976758957,0.0017594067612662911
+V0801,admission_nc,The narrative features multiple 'Admission NC' activities realizing standard ward admission.,6.0,admission_ic,5.0,0.11224306374788284,0.08644729852676392
+V0802,admission_nc,"The narrative includes 'Admission NC' events, aligning with normal care ward admission.",6.0,admission_ic,6.0,0.4473576545715332,0.09063077718019485
+V0803,admission_ic,The narrative includes 'Admission IC' reflecting intensive care unit admission.,8.0,admission_nc,6.0,0.48027369379997253,0.002648193622007966
+V0804,admission_nc,The narrative contains 'Admission NC' corresponding to normal care admission.,4.0,admission_ic,6.0,0.41962847113609314,0.11232606321573257
+V0805,admission_ic,The narrative includes 'Admission IC' denoting an intensive care unit admission step.,27.0,admission_nc,18.0,0.33652737736701965,0.004760923329740763
+V0806,admission_nc,The narrative features 'Admission NC' matching normal care ward admission.,5.0,admission_ic,7.0,0.5124625563621521,0.000638655386865139
+V0807,admission_nc,The narrative includes 'Admission NC' representing normal care ward admission.,7.0,admission_ic,5.0,0.19705908000469208,0.18778163194656372
+V0808,admission_nc,The narrative features 'Admission NC' realizing normal care admission.,9.0,admission_ic,7.0,0.3872166574001312,0.11341249942779541
+V0809,admission_nc,"The narrative shows multiple 'Admission NC' events, realizing normal care.",10.0,admission_ic,7.0,0.12001796811819077,0.08616781234741211
+V0810,admission_nc,The narrative includes 'Admission NC' for normal care ward admission.,4.0,admission_ic,6.0,0.12355121225118637,0.08502921462059021
+V0811,admission_ic,The narrative contains 'Admission IC' reflecting intensive care unit admission.,7.0,admission_nc,4.0,0.36873874068260193,0.0016522678779438138
+V0812,admission_nc,The narrative features 'Admission NC' corresponding to normal care.,8.0,admission_ic,3.0,0.6926286220550537,0.250592976808548
+V0813,admission_nc,The narrative includes 'Admission NC' realizing normal care ward admission.,15.0,admission_ic,10.0,0.01691107638180256,0.026188520714640617
+V0814,admission_nc,The narrative shows 'Admission NC' matching normal care admission.,4.0,admission_ic,4.0,0.014241963624954224,0.004964519292116165
+V0815,admission_nc,The narrative includes 'Admission NC' steps realizing normal care.,14.0,admission_ic,9.0,0.46197667717933655,0.09235604852437973
+V0816,,The narrative ends at IV Antibiotics without any ward admission activity.,,admission_nc,2.0,,0.03522605448961258
+V0817,admission_nc,The narrative features 'Admission NC' representing normal care admission.,10.0,admission_ic,10.0,0.36773762106895447,0.11156222969293594
+V0818,admission_nc,The narrative contains 'Admission NC' realizing normal care ward admission.,13.0,admission_ic,8.0,0.01381238829344511,0.023089833557605743
+V0819,admission_nc,The narrative includes 'Admission NC' events corresponding to normal care.,7.0,admission_ic,6.0,0.11417535692453384,0.08888763934373856
+V0820,,The narrative ends at LacticAcid and lacks any admission activities.,,admission_nc,2.0,,0.35528209805488586
+V0821,admission_nc,The narrative shows 'Admission NC' steps realizing normal care ward admission.,5.0,admission_ic,6.0,0.49550214409828186,0.08803228288888931
+V0822,admission_ic,The narrative includes 'Admission IC' reflecting intensive care unit admission.,43.0,admission_nc,24.0,0.13763520121574402,0.0054268669337034225
+V0823,admission_nc,The narrative features 'Admission NC' matching normal care admission.,7.0,admission_ic,5.0,0.7650899887084961,0.333984375
+V0824,admission_nc,The narrative contains 'Admission NC' realizing normal care ward admission.,5.0,admission_ic,4.0,0.0024255637545138597,0.011703007854521275
+V0825,admission_nc,The narrative includes 'Admission NC' corresponding to normal care admission.,7.0,admission_ic,4.0,0.577928364276886,0.22268563508987427
+V0826,admission_nc,"The narrative concludes with an Admission NC step, perfectly realizing standard normal care ward admission.",5.0,admission_ic,5.0,0.7567322850227356,0.6681981682777405
+V0827,admission_nc,"The variant features an Admission NC step, aligning with normal care ward admission paths.",6.0,admission_ic,6.0,0.3723824918270111,0.11620711535215378
+V0828,admission_nc,"The variant involves multiple Admission NC steps, matching normal care ward admissions.",11.0,admission_ic,8.0,0.6823995113372803,0.2865196466445923
+V0829,admission_nc,"The variant contains Admission NC steps, realizing normal care ward admission.",4.0,admission_ic,5.0,0.11277943104505539,0.08591093868017197
+V0830,admission_nc,"The variant includes Admission NC steps, realizing normal care ward admission.",6.0,admission_ic,8.0,0.11142507940530777,0.08726528286933899
+V0831,admission_nc,"The variant includes an Admission NC step, realizing normal care ward admission.",8.0,admission_ic,8.0,0.3338150084018707,0.17153257131576538
+V0832,,"The narrative ends at IV Antibiotics without involving any ward or unit admission steps, so none of the categories fit.",,admission_nc,2.0,,0.044516388326883316
+V0833,admission_nc,"The variant includes multiple Admission NC steps, realizing normal care ward admission.",10.0,admission_ic,7.0,0.11872413009405136,0.0867004320025444
+V0834,admission_ic,"The variant contains an Admission IC step, realizing intensive care unit admission.",10.0,admission_nc,10.0,0.04386473074555397,6.898649007780477e-05
+V0835,admission_nc,"The variant includes an Admission NC step, realizing normal care ward admission.",5.0,admission_ic,5.0,0.02366926521062851,0.014391820877790451
+V0836,admission_nc,"The variant includes Admission NC steps, realizing normal care ward admission.",10.0,admission_ic,8.0,0.11455117911100388,0.08413919061422348
+V0837,admission_ic,"The variant features an Admission IC step, realizing intensive care unit admission.",7.0,admission_nc,3.0,0.4800289571285248,7.579994417028502e-05
+V0838,admission_nc,"The variant includes an Admission NC step, realizing normal care ward admission.",5.0,admission_ic,4.0,0.37096238136291504,0.34342482686042786
+V0839,admission_nc,"The variant includes an Admission NC step, realizing normal care ward admission.",7.0,admission_ic,7.0,0.021306058391928673,0.01202861312776804
+V0840,admission_ic,"The variant contains multiple Admission IC steps, realizing intensive care unit admission.",49.0,admission_nc,31.0,0.4385201632976532,0.12078744173049927
+V0841,admission_nc,"The variant includes an Admission NC step, realizing normal care ward admission.",4.0,admission_ic,5.0,0.0633799210190773,0.054102469235658646
+V0842,admission_nc,"The variant includes an Admission NC step, realizing normal care ward admission.",7.0,admission_ic,5.0,0.35341158509254456,0.11733990162611008
+V0843,admission_nc,"The variant includes an Admission NC step, realizing normal care ward admission.",7.0,admission_ic,5.0,0.7270886301994324,0.6672870516777039
+V0844,admission_ic,"The variant contains Admission IC steps, realizing intensive care unit admission.",10.0,admission_nc,10.0,0.4501713514328003,0.08510170131921768
+V0845,admission_ic,"The variant features an Admission IC step, realizing intensive care unit admission.",11.0,admission_nc,10.0,0.3497824966907501,0.0022163281682878733
+V0846,admission_nc,"The variant includes an Admission NC step, realizing normal care ward admission.",5.0,admission_ic,6.0,0.12814171612262726,1.1024879313481506e-05

@@ -1,0 +1,52 @@
+{
+  "categories": [
+    {
+      "category_id": "merged_discharge",
+      "name": "Merged Discharge Pathway",
+      "description": "Represents cases that are discharged via the merged task path 17+18. Contributes to avoiding post-discharge deterioration as measured by post-discharge ER return indicators.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Default 1:1 mapping to the declared alternative id=17 (Merged 17+18). Supported by variants such as V0008, V0551, V0700 where discharge occurs via Release A, mapping to the merged discharge goal achievement.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0551",
+        "V0700"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C Pathway",
+      "description": "Represents patients discharged through Release C. Aligns with goal-model element 19, concluding the inpatient ward stay.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Default 1:1 mapping to the declared alternative id=19 (Release C). Observed in variant V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D Pathway",
+      "description": "Represents patients discharged through Release D. Aligns with goal-model element 20.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Default 1:1 mapping to the declared alternative id=20 (Release D). Observed in variant V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release E Pathway",
+      "description": "Represents patients discharged through Release E. Aligns with goal-model element 21.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Default 1:1 mapping to the declared alternative id=21 (Release E). Maintained as a distinct category per the OR-decomposition options.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

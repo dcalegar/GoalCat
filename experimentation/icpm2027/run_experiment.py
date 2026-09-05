@@ -22,10 +22,15 @@ Three experiments:
                  Task C3's structural baseline, and Task C11a's `guided_no_sample` ablation when the
                  arm is requested. Emits the §3 evidence report.
 
-  ``e2``         Experiment 2 — controlled goal-model perturbations (§4). Runs the guided arm once
-                 per perturbed model and computes TargetReassignment/CollateralReassignment against
-                 the unperturbed guided partition, matching categories by `anchor_ids` rather than
-                 by name, since Step 5a is re-run for every perturbation.
+  ``e2``         Experiment 2 — controlled goal-model perturbations (§4). Runs the guided arm
+                 `perturbation_replicates` times per perturbed model (default 5, matching the
+                 unperturbed guided replicates already run for `CollateralReassignmentNull`) and
+                 computes TargetReassignment/CollateralReassignment against the unperturbed guided
+                 partition, matching categories by `anchor_ids` rather than by name, since Step 5a
+                 is re-run for every perturbation. Perturbations A (removal) and B (merge) are
+                 always attempted where the frontier admits them; Perturbation C (a prospectively
+                 named, plausible distractor added under the axis — never tuned against any run's
+                 output) is attempted wherever `_DISTRACTOR_SPECS` names one for the dataset/axis.
 
 Steps 1-4 run exactly once per dataset into a shared base and are copied — never recomputed — into
 each condition, which is what makes the freeze table's identical-inputs rows assertable rather than
@@ -387,6 +392,36 @@ def run_e1(
 # Experiment 2 — controlled perturbations
 # --------------------------------------------------------------------------------------------
 
+#: Perturbation C's distractor, one entry per (dataset_id, axis_label). Named prospectively, before
+#: any Experiment 2 result on the corresponding axis was inspected, and grounded in the same public
+#: log/domain material the base goal model was authored from — never in what would make a favorable
+#: result (§4's own design constraint on `add_distractor`). RTFM's "fine annulment" is a real
+#: administrative outcome distinct from payment (13), coercive collection (20), and the appeal
+#: subtree (7), but not a declared alternative under Or 6. Sepsis's admission axis records only two
+#: ward codes in the log itself ("Admission NC"/"Admission IC"); "High-Dependency Unit" is a
+#: plausible third ward category realized by no case. Sepsis's discharge axis names its five
+#: outcomes with a letter suffix (Release A-E); "Release F" mirrors that convention exactly while
+#: naming a code the log never assigns. A dataset/axis with no entry here runs Perturbations A/B
+#: only, exactly as before this change.
+_DISTRACTOR_SPECS: dict[tuple[str, str | None], tuple[str, str]] = {
+    ("rtfm", "resolution"): ("6", "Resolve via fine annulment"),
+    ("sepsis", "admission"): ("5", "Admission to High-Dependency Unit"),
+    ("sepsis", "discharge"): ("6", "Release F"),
+}
+
+
+def _summarize(values: Collection[float]) -> dict[str, Any]:
+    """Mean/min/max over a set of per-replicate rates, NaN-filtered (a rate is NaN only when its
+    variant population is empty, e.g. Perturbation C's TargetReassignment, which has no baseline
+    realization to measure). `k` is the number of non-NaN observations that went in, distinct from
+    whatever replicate count produced them, so a partially-invalid perturbation is visible instead
+    of silently averaging over fewer runs than requested.
+    """
+    clean = [v for v in values if v == v]  # NaN != NaN
+    if not clean:
+        return {"k": 0, "mean": float("nan"), "min": float("nan"), "max": float("nan")}
+    return {"k": len(clean), "mean": sum(clean) / len(clean), "min": min(clean), "max": max(clean)}
+
 
 def reassignment_rates(
     baseline: pd.DataFrame,
@@ -465,6 +500,61 @@ def reassignment_rates(
             "Task C2 — without it, collateral change cannot be distinguished from ordinary "
             "run-to-run variance (Experiment 2's design constraint)."
         ),
+    }
+
+
+def merge_origin_rates(
+    baseline: pd.DataFrame,
+    perturbed: pd.DataFrame,
+    baseline_anchors: dict[str, frozenset[str]],
+    perturbed_anchors: dict[str, frozenset[str]],
+    retained_id: str,
+    dropped_id: str,
+    variants_df: pd.DataFrame,
+) -> dict[str, Any]:
+    """Splits Perturbation B's blended TargetReassignment by which original alternative a variant
+    realized (§4/Table 3's own text on the RTFM merge's 93.8%, not a code defect: `merge_alternatives`
+    keeps the first-listed target's id, so a variant already anchored there before the merge shows
+    the same anchor set after it — correctly, since its category-membership slot did not move, even
+    though the category's meaning broadened). Reporting one blended rate then has to explain that
+    away; reporting the two populations separately does not, because the two have different correct
+    expectations: `dropped_id`-realizing variants are structurally guaranteed to move (their anchor
+    no longer exists), `retained_id`-realizing variants are not.
+    """
+    retained = reassignment_rates(
+        baseline, perturbed, baseline_anchors, perturbed_anchors, [retained_id], variants_df
+    )["TargetReassignment"]
+    dropped = reassignment_rates(
+        baseline, perturbed, baseline_anchors, perturbed_anchors, [dropped_id], variants_df
+    )["TargetReassignment"]
+    return {"retained_id": retained_id, "dropped_id": dropped_id, "retained_id_rate": retained, "dropped_id_rate": dropped}
+
+
+def distractor_uptake(
+    perturbed: pd.DataFrame,
+    perturbed_anchors: dict[str, frozenset[str]],
+    distractor_id: str,
+    variants_df: pd.DataFrame,
+) -> dict[str, Any]:
+    """Perturbation C's own metric: the share of variants the perturbed run places in a category
+    anchored on the distractor, out of every variant — not a TargetReassignment/CollateralReassignment
+    pair, since no baseline variant realizes an alternative that did not exist before the edit. The
+    distractor's uptake is what §4's docstring on `add_distractor` calls the measurement this
+    perturbation exists to enable; the plain `reassignment_rates(..., target_anchors=[distractor_id])`
+    call still reports a meaningful CollateralReassignment (every baseline variant is "other" here,
+    since none anchor to an id that did not exist), which is reported alongside this, separately.
+    """
+    anchor_categories = {cid for cid, anchors in perturbed_anchors.items() if distractor_id in anchors}
+    pert_by_variant = dict(zip(perturbed["variant_id"], perturbed["category_id"]))
+    freq = dict(zip(variants_df["variant_id"], variants_df["frequency"]))
+    uptaken = [v for v, c in pert_by_variant.items() if c in anchor_categories]
+    total = len(pert_by_variant)
+    return {
+        "anchor_categories": sorted(anchor_categories),
+        "n_variants": len(uptaken),
+        "n_total": total,
+        "rate": len(uptaken) / total if total else float("nan"),
+        "cases": sum(int(freq.get(v, 0)) for v in uptaken),
     }
 
 
@@ -572,13 +662,19 @@ def run_e2(
     stability: report_mod.InductionStability | None,
     axis: str | None = None,
     null_replicates: int = 5,
+    perturbation_replicates: int = 5,
 ) -> dict[str, Any]:
-    """Perturbations A and B on one axis of one dataset, against its unperturbed guided partition.
+    """Perturbations A, B, and (where `_DISTRACTOR_SPECS` names one) C on one axis of one dataset,
+    against its unperturbed guided partition.
 
     `axis` names which declared axis to perturb; a dataset declaring several (Sepsis) must be run
     once per axis, since each frontier is its own partition. `null_replicates` unperturbed guided
     replicates are also run, to give CollateralReassignment the same-unit noise floor §4's AMI
-    comparison could not supply (`replicate_reassignment_null`).
+    comparison could not supply (`replicate_reassignment_null`). `perturbation_replicates` reruns
+    each perturbed model that many times (same replicate count as `null_replicates` by default), so
+    a perturbed condition is read as a range against $C^\\emptyset$'s range rather than as one run
+    against a range — the single-run asymmetry §Threats' Conclusion Validity paragraph names as this
+    design's own weakest point.
     """
     if dataset.dataset_id == "sepsis":
         adopted = (
@@ -676,6 +772,13 @@ def run_e2(
             dataset.dataset_id, axis or "sole",
         )
 
+    distractor_spec = _DISTRACTOR_SPECS.get((dataset.dataset_id, axis))
+    if distractor_spec:
+        distractor_parent, distractor_name = distractor_spec
+        perturbations.append(
+            ("C", perturb.add_distractor(model, distractor_parent, distractor_name))
+        )
+
     findings: list[dict[str, Any]] = []
     if dry_run:
         logger.info("Dry run: %d perturbation(s) prepared, no conditions launched", len(perturbations))
@@ -708,70 +811,127 @@ def run_e2(
 
     perturbed_results: list[ConditionResult] = []
     for kind, result in perturbations:
-        condition = ConditionSpec(
-            dataset=dataset,
-            arm="guided",
-            replicate=1,
-            tag=result.perturbation_id,
-            goal_model_filename=str(result.output_path.relative_to(REPO_ROOT / "data" / "goals")),
-            experiment="e2",
-            axis=axis,
-        )
-        run = execute_condition(
-            condition, base, protocol, prereg, logger,
-            pending_decisions=pending, dry_run=False, force=force,
-        )
-        perturbed_results.append(run)
-        perturbed_assignments = _read_assignments(run)
-        perturbed_taxonomy = _read_taxonomy(run)
-        if perturbed_assignments is None or perturbed_taxonomy is None:
-            continue
+        # Each perturbed model is re-run `perturbation_replicates` times (replicate=1 has always
+        # existed; this loop is what adds 2..k), the same pattern `null_runs` above already uses for
+        # the unperturbed side, so TargetReassignment/CollateralReassignment become a range read
+        # against $C^\emptyset$'s range instead of a single run read against it.
+        valid_runs: list[tuple[pd.DataFrame, dict[str, frozenset[str]]]] = []
+        axis_problem_notes: list[str] = []
+        for replicate in range(1, perturbation_replicates + 1):
+            condition = ConditionSpec(
+                dataset=dataset,
+                arm="guided",
+                replicate=replicate,
+                tag=result.perturbation_id,
+                goal_model_filename=str(result.output_path.relative_to(REPO_ROOT / "data" / "goals")),
+                experiment="e2",
+                axis=axis,
+            )
+            run = execute_condition(
+                condition, base, protocol, prereg, logger,
+                pending_decisions=pending, dry_run=False, force=force,
+            )
+            perturbed_results.append(run)
+            perturbed_assignments = _read_assignments(run)
+            perturbed_taxonomy = _read_taxonomy(run)
+            if perturbed_assignments is None or perturbed_taxonomy is None:
+                axis_problem_notes.append(f"replicate {replicate}: no taxonomy/assignments written")
+                continue
 
-        # The perturbed taxonomy must anchor to the perturbed model's own frontier. When it does
-        # not — when Step 5a answers the perturbation by re-anchoring to an And-decomposed parent —
-        # the perturbed alternative's id is simply absent, TargetReassignment reads 100% because
-        # the anchor vanished rather than because variants moved, and the collateral figure
-        # measures induction collapse. Both frozen merge runs failed exactly this way and were
-        # reported; this refuses to report them.
-        axis_problems = _axis_problems_for_run(run, result.output_path, axis_root)
-        if axis_problems:
-            for problem in axis_problems:
-                logger.error("Perturbation %s rejected: %s", result.perturbation_id, problem)
+            # The perturbed taxonomy must anchor to the perturbed model's own frontier. When it
+            # does not — when Step 5a answers the perturbation by re-anchoring to an And-decomposed
+            # parent — the perturbed alternative's id is simply absent, TargetReassignment reads
+            # 100% because the anchor vanished rather than because variants moved, and the
+            # collateral figure measures induction collapse. A replicate that fails this check is
+            # dropped from the average, not zeroed into it; the whole condition is unreportable
+            # only if every replicate fails it.
+            axis_problems = _axis_problems_for_run(run, result.output_path, axis_root)
+            if axis_problems:
+                for problem in axis_problems:
+                    logger.error(
+                        "Perturbation %s replicate %d rejected: %s",
+                        result.perturbation_id, replicate, problem,
+                    )
+                axis_problem_notes.extend(f"replicate {replicate}: {p}" for p in axis_problems)
+                continue
+
+            valid_runs.append((perturbed_assignments, _anchor_table(perturbed_taxonomy)))
+
+        if not valid_runs:
             findings.append(
                 {
                     "kind": kind,
                     "perturbation_id": result.perturbation_id,
                     "targets": list(result.targets),
                     "valid": False,
-                    "axis_problems": axis_problems,
+                    "axis_problems": axis_problem_notes,
                     "note": (
-                        "Step 5a did not anchor to the perturbed model's axis frontier, so this "
-                        "perturbation measures induction collapse rather than sensitivity to the "
-                        "edit. Not reportable."
+                        "Step 5a did not anchor to the perturbed model's axis frontier in any of "
+                        f"{perturbation_replicates} replicate(s), so this perturbation measures "
+                        "induction collapse rather than sensitivity to the edit. Not reportable."
                     ),
                 }
             )
             continue
 
-        findings.append(
-            {
-                "kind": kind,
-                "perturbation_id": result.perturbation_id,
-                "targets": list(result.targets),
-                "valid": True,
-                **reassignment_rates(
-                    baseline_assignments,
-                    perturbed_assignments,
-                    _anchor_table(baseline_taxonomy),
-                    _anchor_table(perturbed_taxonomy),
-                    result.targets,
-                    variants_df,
-                ),
-                "CollateralReassignmentNull": replicate_reassignment_null(
-                    null_runs, result.targets, variants_df
+        baseline_anchors = _anchor_table(baseline_taxonomy)
+        per_replicate = [
+            reassignment_rates(
+                baseline_assignments, asg, baseline_anchors, anch, result.targets, variants_df
+            )
+            for asg, anch in valid_runs
+        ]
+        finding: dict[str, Any] = {
+            "kind": kind,
+            "perturbation_id": result.perturbation_id,
+            "targets": list(result.targets),
+            "valid": True,
+            "k": len(valid_runs),
+            "axis_problems": axis_problem_notes,
+            "replicates": per_replicate,
+            "TargetReassignment": _summarize([r["TargetReassignment"]["rate"] for r in per_replicate]),
+            "CollateralReassignment": _summarize([r["CollateralReassignment"]["rate"] for r in per_replicate]),
+            "CollateralReassignmentNull": replicate_reassignment_null(
+                null_runs, result.targets, variants_df
+            ),
+        }
+        if kind == "B" and len(result.targets) == 2:
+            retained_id, dropped_id = result.targets
+            splits = [
+                merge_origin_rates(
+                    baseline_assignments, asg, baseline_anchors, anch, retained_id, dropped_id, variants_df
+                )
+                for asg, anch in valid_runs
+            ]
+            finding["MergeOriginSplit"] = {
+                "retained_id": retained_id,
+                "dropped_id": dropped_id,
+                "retained_id_rate": _summarize([s["retained_id_rate"]["rate"] for s in splits]),
+                "dropped_id_rate": _summarize([s["dropped_id_rate"]["rate"] for s in splits]),
+                "note": (
+                    "TargetReassignment split by which original alternative a variant realized. "
+                    "retained_id keeps its id after the merge (a variant already anchored there is "
+                    "correctly unmoved); dropped_id's anchor no longer exists post-merge (its "
+                    "variants are structurally guaranteed to move). The blended TargetReassignment "
+                    "above conflates these two populations."
                 ),
             }
-        )
+        if kind == "C":
+            distractor_id = result.targets[0]
+            uptakes = [distractor_uptake(asg, anch, distractor_id, variants_df) for asg, anch in valid_runs]
+            finding["DistractorUptake"] = {
+                "distractor_id": distractor_id,
+                "rate": _summarize([u["rate"] for u in uptakes]),
+                "cases": [u["cases"] for u in uptakes],
+                "note": (
+                    "Share of variants the perturbed run places in a category anchored on the "
+                    "distractor, out of every variant. TargetReassignment above is not applicable "
+                    "here (no baseline variant realizes an alternative that did not exist before "
+                    "the edit) and reads NaN/k=0 by construction; this is Perturbation C's own "
+                    "measurement, per `add_distractor`'s docstring."
+                ),
+            }
+        findings.append(finding)
 
     suffix = _axis_suffix(dataset, axis)
     if not verify_freeze(
@@ -808,7 +968,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--arms",
         default="guided,open",
-        help="Comma-separated arms for e1 (guided, open, guided_no_sample, label_list)",
+        help="Comma-separated arms for e1 (guided, open, guided_no_sample, label_list, "
+        "label_list_strict)",
     )
     parser.add_argument(
         "--axis",

@@ -12,7 +12,7 @@ as opposed to `experimentation/examples/`'s illustrative per-log demos with no f
 | `configs/{rtfm,sepsis,bpic2019}.yaml` | Per-dataset specs (log/goal-model filenames, keys, role, variant scope) |
 | `protocol.py` | Merges protocol + dataset spec + preregistration into one condition's executable config; the pre-registration gate |
 | `inputs.py` | Runs Steps 1-4 **once** per dataset into a shared base; Task C7 variant-scope policies; copies (never recomputes) into each condition |
-| `conditions.py` | Executes one condition end to end (materialize inputs → render config → launch → manifest); Task C5's label-list control |
+| `conditions.py` | Executes one condition end to end (materialize inputs → render config → launch → manifest); Task C5's label-list control and its label\_list\_strict companion |
 | `run_condition.py` | The actual subprocess entrypoint (Steps 5-8 only; Step 9 refused outright) |
 | `manifest.py` | Per-run manifest — hashes, resolved model version, seed (documented as unavailable), everything Task D4 asks for |
 | `freeze.py` | Verifies the freeze table row-by-row from manifests after the fact, not just by construction |
@@ -21,7 +21,7 @@ as opposed to `experimentation/examples/`'s illustrative per-log demos with no f
 | `analysis/coverage.py` | Macro/micro coverage, residual (Task D2's caveat) |
 | `analysis/contingency.py` | Contingency matrices + merge/split identification, for any two conditions |
 | `analysis/divergence.py` | AMI/NMI over all four (residual-handling x weighting) conventions, with D1's pre-registered one flagged; never reported as accuracy |
-| `analysis/aggregate_tables.py` | k-replicate aggregation across every frozen run — the paper's setup and divergence tables (residual mean [min-max] over n replicates; AMI over all within- and cross-arm pairs, both weightings), including the `guided_no_sample` arm. Reads run directories only; no LLM call |
+| `analysis/aggregate_tables.py` | k-replicate aggregation across every frozen run — the paper's setup and divergence tables (residual mean [min-max] over n replicates; AMI over all within- and cross-arm pairs, both weightings), including `guided_no_sample`, `label_list`, and `label_list_strict`. Row-count-checks `assignments.csv` before trusting a run, so a provider outage that leaves one short is never silently aggregated. Reads run directories only; no LLM call |
 | `analysis/report.py` | Assembles one dataset's evidence into Markdown — scope framing, coverage, declared-alternative coverage, contingency, divergence, and Task E7's instability qualification |
 | `run_experiment.py` | **The driver.** `--experiment stability\|e1\|e2` for one dataset, end to end |
 
@@ -47,6 +47,11 @@ python -m experimentation.icpm2027.run_experiment --dataset rtfm --experiment e1
 python -m experimentation.icpm2027.run_experiment --dataset rtfm --experiment e1 \
     --arms guided,open,guided_no_sample
 
+# ... or Task C5's label-list control and its label_list_strict companion (needs
+# configs/label_lists/<dataset>.yaml authored first — see conditions.py's load_label_list)
+python -m experimentation.icpm2027.run_experiment --dataset rtfm --experiment e1 \
+    --arms guided,label_list,label_list_strict
+
 # Experiment 2 — perturbations (refuses on a dataset C12 showed unstable)
 python -m experimentation.icpm2027.run_experiment --dataset rtfm --experiment e2
 
@@ -54,11 +59,17 @@ python -m experimentation.icpm2027.run_experiment --dataset rtfm --experiment e2
 python -m experimentation.icpm2027.analysis.aggregate_tables
 ```
 
-`aggregate_tables` is the k-replicate complement to `run_experiment`: the driver's E1 loop is fixed
-at the protocol's two `unperturbed` replicates and reports the rep1/rep2 pair, whereas the guided arm
-was later extended to five replicates on RTFM and both Sepsis axes. It discovers whatever replicates
-exist on disk, so the `n` it prints is what was executed, and writes
-`data/output/icpm2027_results/aggregate_tables.{json,md,tex}`.
+`aggregate_tables` is the k-replicate complement to `run_experiment`: a single invocation's E1 loop
+is fixed at `protocol.yaml`'s `unperturbed` replicate count at the time it runs and reports only
+the reps it was asked to cover, whereas the guided and open arms were extended beyond that count
+over several separate invocations (`replicates.unperturbed` bumped, `--arms` scoped to the one arm
+being extended, then reverted — the mechanism `protocol.yaml`'s own comment documents): guided and
+open both reached five replicates on RTFM and both Sepsis axes, and three on BPIC 2019 (which never
+ran at five, to bound its per-replicate cost); `label_list`/`label_list_strict` were not extended
+and stay at two replicates everywhere. `aggregate_tables` discovers whatever replicates exist on
+disk regardless of which invocation produced them, so the `n` it prints is what was executed, and
+writes `data/output/icpm2027_results/aggregate_tables.{json,md,tex}` plus
+`aggregate_tables_label_list.tex` for the label-list control's own table.
 
 `--dry-run` resolves and logs every condition, with its LLM-call estimate, and launches nothing.
 It still builds the shared base if absent (Steps 1-4 are deterministic and LLM-free), because the
@@ -117,19 +128,24 @@ perturbations, and every condition this package runs all point at `.jucm` files 
 
 1. **Pre-registration is now resolved** — C5, C6, C7, C10, C13, D1, D6, D7 and the degenerate-OR
    policy are all `status: decided`, so `prereg.require()` passes for all three datasets. Re-read
-   them before running: `C5_label_list_control` is the one deliberately marked as the most
-   revisitable (the label-list arm is supported in code and costs only budget to enable);
+   them before running: `C5_label_list_control` was adopted for RTFM/Sepsis on 2026-09-04, extended
+   the same day to a `label_list_strict` companion (the criterion-wording factor, isolated from the
+   list's content), and extended again to BPIC 2019 in a third same-day amendment — all three logs
+   now carry both arms (`data/output/{rtfm,sepsis,bpic2019}/icpm2027_e1_label_list*`), authored per
+   `configs/label_lists/<dataset>.yaml`'s own provenance header;
    `C6_sepsis_perturbations` was flipped to `true` on 2026-08-29 after Sepsis's Step 5a induction
    was re-verified stable, so Experiment 2 now runs on Sepsis as well as RTFM (its runs already
    exist under `data/output/sepsis/icpm2027_e2_*`); and `C10_assignment_batch_size` carries a
-   2026-08-29 BPIC 2019 amendment (batch size 50 → 25, wall-clock grounds only). Do not edit a
-   decision after the run it governs has executed — supersede it, or amend only an as-yet-unexecuted
-   portion with a dated `amended_on` note (as C10 did for BPIC 2019).
+   2026-08-29 BPIC 2019 amendment (batch size 50 → 25) later retired on 2026-09-04 in favor of one
+   uniform value across all three datasets under `protocol_version` 1.1.0. Do not edit a decision
+   after the run it governs has executed — supersede it, or amend only an as-yet-unexecuted portion
+   with a dated `amended_on` note (as C5 and C10 both did, repeatedly).
 2. Confirm `GEMINI_API_KEY` is exported and the account is off the free tier before a full-scale
-   run. `assignment_batch_size` is `50` for RTFM and Sepsis but `25` for BPIC 2019 — a
-   pre-registered per-dataset exception added 2026-08-29 on wall-clock/reliability grounds
-   (`C10_assignment_batch_size.exceptions.bpic2019`), after two full-scope BPIC 2019 runs at 50 saw
-   ~5-15% of Step 6 batches exceed the 120 s timeout and abort the condition. At 25 the full
-   11,973-variant BPIC 2019 scope is roughly 480 Step-6 calls per condition (~240 at 50). Use
+   run. `assignment_batch_size` is `25`, uniform across all three datasets since the 2026-09-04
+   `protocol_version` 1.1.0 amendment retired the earlier per-dataset exception (batch `50` proved
+   unreliable at BPIC 2019's longer narratives — ~5-15% of Step 6 batches exceeded the 120 s
+   timeout and aborted the condition — so `25` became the one value every log tolerates rather than
+   a BPIC-2019-only carve-out). At 25 the full 11,973-variant BPIC 2019 scope is roughly 480 Step-6
+   calls per condition. Use
    `--dry-run` to see `conditions.estimated_llm_calls()` for every condition before anything is billed.
 3. Run `--experiment stability` (Task C12) before committing a dataset's budget to `e1`.

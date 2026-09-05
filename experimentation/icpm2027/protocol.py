@@ -43,20 +43,31 @@ PERTURBED_GOALS_DIRNAME = "perturbed"
 
 DATASET_IDS = ("rtfm", "sepsis", "bpic2019")
 
-Arm = Literal["guided", "open", "label_list", "guided_no_sample"]
+Arm = Literal["guided", "open", "label_list", "guided_no_sample", "label_list_strict"]
 
 #: taxonomy_mode each arm runs under. "label_list" (Task C5's control) is an open induction over a
 #: supplied label list, so it runs the same pipeline mode as "open" and differs in its prompt-side
-#: input, not in the pipeline switch — see conditions.py.
+#: input, not in the pipeline switch — see conditions.py. "label_list_strict" reads the identical
+#: supplied list but runs Step 6 under taxonomy_mode="intent_guided" instead: the assignment
+#: prompt's mode_clause then reads "the narrative satisfies that declared alternative" rather than
+#: "the narrative matches the recurring pattern" (goalcat.llm.assignment._MODE_CLAUSES). It is not
+#: in _GOAL_MODEL_ARMS below, so it still reads no goal model and anchor_ids stays empty — the
+#: pairing with "label_list" isolates the fourth co-varying factor (Threats, Construct validity)
+#: that "label_list" alone leaves untouched: guided's stricter "must satisfy" criterion, apart from
+#: the goal-derived content and the goal model itself.
 _TAXONOMY_MODE_BY_ARM: dict[str, str] = {
     "guided": "intent_guided",
     "open": "open",
     "label_list": "open",
+    "label_list_strict": "intent_guided",
     # Task C11a's ablation is a guided condition in every respect except that Step 5a receives an
     # empty narrative sample — the taxonomy_mode and the goal model are unchanged, which is what
     # makes the comparison against the plain guided arm a clean single-factor one.
     "guided_no_sample": "intent_guided",
 }
+
+#: Arms whose taxonomy is supplied directly (Task C5), never induced by an LLM call at Step 5.
+LABEL_LIST_ARMS: frozenset[str] = frozenset({"label_list", "label_list_strict"})
 
 # Arms that read a goal model. Task C11a's ablation withholds the *sample*, not the model.
 _GOAL_MODEL_ARMS: frozenset[str] = frozenset({"guided", "guided_no_sample"})

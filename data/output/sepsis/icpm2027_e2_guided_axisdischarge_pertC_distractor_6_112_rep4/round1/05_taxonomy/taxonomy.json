@@ -1,0 +1,87 @@
+{
+  "categories": [
+    {
+      "category_id": "release_a",
+      "name": "Release A",
+      "description": "Represents the standard discharge pathway (Release A) for an admitted patient, helping to avoid post-discharge deterioration and measured against post-discharge ER returns.",
+      "anchor_ids": [
+        "17"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release A (id=17) which is observed in multiple narrative variants (e.g. V0008, V0065, V0070) concluding normal inpatient care pathways.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0065",
+        "V0066",
+        "V0067",
+        "V0069",
+        "V0070",
+        "V0071",
+        "V0072",
+        "V0192",
+        "V0317",
+        "V0441",
+        "V0449",
+        "V0551",
+        "V0605",
+        "V0625"
+      ]
+    },
+    {
+      "category_id": "release_b",
+      "name": "Release B",
+      "description": "Represents discharge pathway B for an admitted patient, contributing to avoiding post-discharge deterioration and monitored via post-discharge ER return indicators.",
+      "anchor_ids": [
+        "18"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release B (id=18) observed in rare and extended inpatient recovery variants such as V0068 and V0145.",
+      "evidence_variant_ids": [
+        "V0068",
+        "V0145"
+      ]
+    },
+    {
+      "category_id": "release_c",
+      "name": "Release C",
+      "description": "Represents discharge pathway C for an admitted patient, aligning with long-term inpatient care outcomes and post-discharge stability.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release C (id=19) which is realized in long-running complex variants such as V0710.",
+      "evidence_variant_ids": [
+        "V0710"
+      ]
+    },
+    {
+      "category_id": "release_d",
+      "name": "Release D",
+      "description": "Represents discharge pathway D for an admitted patient, contributing to avoidance of post-discharge deterioration.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release D (id=20) observed in length-high diagnostic variants like V0273.",
+      "evidence_variant_ids": [
+        "V0273"
+      ]
+    },
+    {
+      "category_id": "release_e",
+      "name": "Release E",
+      "description": "Represents discharge pathway E for an admitted patient, targeting safe discharge transitions.",
+      "anchor_ids": [
+        "21"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release E (id=21) based on the goal-model decomposition axis.",
+      "evidence_variant_ids": []
+    },
+    {
+      "category_id": "release_f",
+      "name": "Release F",
+      "description": "Represents discharge pathway F for an admitted patient, concluding the inpatient treatment trajectory.",
+      "anchor_ids": [
+        "112"
+      ],
+      "rationale": "Mapped 1:1 to declared alternative Release F (id=112) based on the goal-model decomposition axis.",
+      "evidence_variant_ids": []
+    }
+  ]
+}

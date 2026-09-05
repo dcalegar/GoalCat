@@ -1,0 +1,232 @@
+variant_id,category_id,rationale,structural_distance_to_category_medoid,nearest_other_category_id,nearest_other_category_structural_distance,profile_distance_to_category_medoid,nearest_other_category_profile_distance
+V0001,referred_to_collections,The trace ends with Send for Credit Collection after the standard process without payment or dispute.,2.0,single_payment_settlement,1.0,0.017405163496732712,0.33374977111816406
+V0002,single_payment_settlement,A single Payment activity settles the fine immediately.,4.0,unresolved_other,1.0,0.2281332165002823,0.21015578508377075
+V0003,unresolved_other,"The trace ends at Send Fine without payment, dispute, or collection referral.",0.0,single_payment_settlement,1.0,0.015334241092205048,0.33492860198020935
+V0004,single_payment_settlement,The fine is settled through a single Payment activity after notifications and penalties.,1.0,referred_to_collections,1.0,0.006649890448898077,0.0029525740537792444
+V0005,installment_settlement,Multiple Payment events indicate installment or partial-payment settlement behavior.,1.0,single_payment_settlement,1.0,0.02241422049701214,0.05990925803780556
+V0006,installment_settlement,"The narrative includes multiple Payment events, constituting an installment pattern.",2.0,single_payment_settlement,1.0,0.03297964110970497,0.07047467678785324
+V0007,single_payment_settlement,The case concludes with a single Payment transaction.,3.0,unresolved_other,1.0,0.07071322202682495,0.052735794335603714
+V0008,formal_dispute,The offender contests the fine by sending an appeal to the prefecture.,0.0,single_payment_settlement,1.0,0.011704887263476849,0.0007805326604284346
+V0009,referred_to_collections,"Despite a partial payment, the case ultimately escalates to external collections.",2.0,single_payment_settlement,1.0,0.018745308741927147,0.33508992195129395
+V0010,referred_to_collections,The case ends with Send for Credit Collection after uncompleted payment steps.,3.0,installment_settlement,1.0,0.022672250866889954,0.3334667682647705
+V0011,formal_dispute,"The trace includes an appeal sent to the prefecture, representing a formal dispute.",2.0,single_payment_settlement,1.0,0.0057556480169296265,0.006729772314429283
+V0012,unresolved_other,"Payment happens first followed by Send Fine, leaving the case status ambiguous and unresolved.",1.0,single_payment_settlement,1.0,0.04559949040412903,0.33692148327827454
+V0013,single_payment_settlement,"After a formal dispute and its resolution, the fine is settled via a single final payment.",3.0,referred_to_collections,1.0,0.0074508520774543285,0.00016303516167681664
+V0014,single_payment_settlement,"An appeal to a judge occurs, followed eventually by a single payment settling the fine.",1.0,installment_settlement,1.0,0.028813635930418968,0.005550093483179808
+V0015,formal_dispute,The variant consists entirely of initiating and sending an appeal to the prefecture.,2.0,single_payment_settlement,1.0,0.03263473138213158,0.01770135760307312
+V0016,single_payment_settlement,"A formal dispute is processed and concluded, followed by a single settlement payment.",3.0,referred_to_collections,1.0,0.015168587677180767,0.002321308245882392
+V0017,referred_to_collections,"A dispute is lodged with a judge, but the case ultimately escalates to collections.",3.0,single_payment_settlement,1.0,0.009527665562927723,0.33523401618003845
+V0018,installment_settlement,Multiple payment occurrences indicate an installment structure.,3.0,single_payment_settlement,1.0,0.03273193538188934,0.07022697478532791
+V0019,referred_to_collections,"An appeal process concludes, but the case is ultimately referred to external collections.",2.0,single_payment_settlement,1.0,0.0,0.33593234419822693
+V0020,referred_to_collections,"Despite an appeal process, the case ultimately ends in a collection referral.",2.0,single_payment_settlement,1.0,0.011376958340406418,0.3356766998767853
+V0021,installment_settlement,Three separate payment actions characterize this installment-settlement variant.,0.0,referred_to_collections,1.0,0.01579173095524311,0.02170330472290516
+V0022,single_payment_settlement,"An appeal is handled and concluded, followed by a single payment.",4.0,referred_to_collections,1.0,0.0013996813213452697,0.002297634957358241
+V0023,installment_settlement,Multiple payment transactions show an installment payment structure.,4.0,single_payment_settlement,1.0,0.08221358805894852,0.11970862746238708
+V0024,installment_settlement,Repeated payments indicate an installment or partial-payment pattern.,3.0,single_payment_settlement,1.0,0.03691635653376579,0.07441139966249466
+V0025,referred_to_collections,"An appeal is processed, but the case ultimately goes to credit collection.",2.0,single_payment_settlement,1.0,0.0017929569585248828,0.3341393768787384
+V0026,referred_to_collections,"The trace ends with Send for Credit Collection, indicating the fine was referred to external collections.",3.0,installment_settlement,1.0,0.014266159385442734,0.33387914299964905
+V0027,formal_dispute,"The narrative includes formal appeals up to the judge (Appeal to Judge), indicating a formal dispute.",3.0,single_payment_settlement,1.0,0.345302015542984,0.3346560299396515
+V0028,installment_settlement,"Multiple Payment activities are recorded over time without any dispute or collections, realizing an installment or partial-payment settlement.",3.0,single_payment_settlement,1.0,0.06230004131793976,0.09979508072137833
+V0029,formal_dispute,"The case ends with an Appeal to Judge, representing a formal dispute.",2.0,referred_to_collections,1.0,0.3464986979961395,0.3340132534503937
+V0030,formal_dispute,"The trace involves appealing to the prefecture and notifying the result, which constitutes a formal dispute.",2.0,single_payment_settlement,1.0,0.3362460136413574,0.0035430535208433867
+V0031,formal_dispute,"Although a payment is made, there is a prior formal dispute (Appeal to Judge) on record.",3.0,single_payment_settlement,1.0,0.3911702334880829,0.0013200849061831832
+V0032,formal_dispute,"The process involves filing an appeal and receiving results from the prefecture, indicating a formal dispute.",2.0,installment_settlement,1.0,0.3517422378063202,0.3368088901042938
+V0033,formal_dispute,The case contains formal appeals and ends with a payment after the dispute process.,4.0,single_payment_settlement,1.0,0.37733912467956543,0.00045500797568820417
+V0034,formal_dispute,"The trace involves prefecture appeals and notification of results, representing a formal dispute.",4.0,single_payment_settlement,1.0,0.3352867066860199,0.0013230106560513377
+V0035,formal_dispute,"The trace includes prefecture appeals and concludes with an appeal to a judge, indicating a formal dispute.",4.0,single_payment_settlement,1.0,0.34048518538475037,0.3336153030395508
+V0036,installment_settlement,"Multiple payment events occur across the trace, showing a pattern of installment or partial payments.",2.0,referred_to_collections,1.0,0.03308900073170662,0.07058403640985489
+V0037,formal_dispute,"The trace features an appeal to a judge followed by multiple payments, constituting a formal dispute.",3.0,installment_settlement,1.0,0.7325809597969055,0.00041855929885059595
+V0038,formal_dispute,"The trace consists of appealing to the prefecture and receiving results, realizing a formal dispute.",1.0,single_payment_settlement,1.0,0.33527079224586487,0.3335515260696411
+V0039,installment_settlement,"There is a formal appeal process started but payment is ultimately made in installments or after a payment plan, wait - looking closer, it has an appeal and a single payment. However, it involves dispute steps. Let's classify as formal_dispute because it includes appeal to prefecture.",3.0,formal_dispute,1.0,0.33515334129333496,5.510637038241839e-06
+V0040,referred_to_collections,"The trace ends with Send for Credit Collection after an appeal, realizing referral to collections.",2.0,formal_dispute,1.0,0.009402916766703129,0.33510926365852356
+V0041,formal_dispute,"The trace includes prefecture appeals and results, followed by a payment, representing a formal dispute.",4.0,referred_to_collections,1.0,0.33658567070961,0.0017474755877628922
+V0042,formal_dispute,"The trace includes prefecture appeals and results, followed by a payment, representing a formal dispute.",2.0,single_payment_settlement,1.0,0.34678778052330017,0.00016303516167681664
+V0043,referred_to_collections,"The trace ends with Send for Credit Collection, indicating escalation to external collections.",3.0,installment_settlement,1.0,0.020344438031315804,0.33488819003105164
+V0044,installment_settlement,"Multiple payments are recorded over time without dispute, realizing an installment settlement.",2.0,formal_dispute,1.0,0.021643109619617462,0.05913814902305603
+V0045,installment_settlement,"Four separate Payment events occur over time, realizing an installment or partial-payment settlement.",1.0,referred_to_collections,1.0,0.023375103250145912,0.014119935221970081
+V0046,formal_dispute,"The trace consists of prefecture appeal activities and ends with notifying the result, realizing a formal dispute.",3.0,single_payment_settlement,1.0,0.3417385518550873,0.00903556402772665
+V0047,formal_dispute,"The trace involves prefecture appeals and finishes with an appeal to a judge, realizing a formal dispute.",5.0,single_payment_settlement,1.0,0.3444582223892212,0.33453771471977234
+V0048,installment_settlement,"Multiple payments are recorded, indicating an installment or partial-payment settlement.",4.0,single_payment_settlement,1.0,0.06731908768415451,0.10481411963701248
+V0049,formal_dispute,"The trace includes prefecture appeals and results before a final payment, realizing a formal dispute.",4.0,single_payment_settlement,1.0,0.35108497738838196,0.00022560743673238903
+V0050,formal_dispute,"The trace includes prefecture appeal steps before a final payment, realizing a formal dispute.",3.0,single_payment_settlement,1.0,0.33609816431999207,0.0022350053768604994
+V0051,referred_to_collections,The trace ends with Send for Credit Collection after being escalated through appeals and penalties.,3.0,formal_dispute,1.0,0.00021177421149332076,0.33572056889533997
+V0052,formal_dispute,The trace involves an appeal process to the prefecture and concludes with Send Appeal to Prefecture.,2.0,single_payment_settlement,1.0,0.07417158782482147,0.016582997515797615
+V0053,formal_dispute,The offender logged a formal appeal to the prefecture despite a payment occurring mid-trace.,1.0,installment_settlement,2.0,0.01750011183321476,0.0025667399168014526
+V0054,single_payment_settlement,The fine concludes with a single Payment activity without any formal dispute or collections.,0.0,installment_settlement,1.0,0.004281948786228895,0.0012913530226796865
+V0055,formal_dispute,The case involves filing a formal appeal to the prefecture.,2.0,referred_to_collections,2.0,0.10526154190301895,0.0027148013468831778
+V0056,single_payment_settlement,"Although a formal appeal was lodged and judged, the final outcome is a single Payment settling the fine.",4.0,formal_dispute,1.0,0.023903079330921173,0.000639535894151777
+V0057,referred_to_collections,The trace concludes with a referral to external credit collections.,2.0,formal_dispute,1.0,0.3747650682926178,0.001717108185403049
+V0058,formal_dispute,The trace includes formal dispute filings and concludes after receiving the result of the appeal.,3.0,single_payment_settlement,1.0,0.34470924735069275,0.3347887694835663
+V0059,referred_to_collections,The case goes through a formal dispute and ultimately results in being sent to collections.,2.0,unresolved_other,1.0,0.35754331946372986,0.009126193821430206
+V0060,installment_settlement,"Rework observed shows multiple repeated payments, realizing an installment or partial-payment structure.",3.0,referred_to_collections,1.0,0.027110422030091286,0.0646054595708847
+V0061,installment_settlement,"Rework observed indicates payments were repeated, realizing an installment pattern.",3.0,formal_dispute,1.0,0.006087727844715118,0.043582767248153687
+V0062,single_payment_settlement,The fine is settled through a single Payment transaction following a formal appeal process.,1.0,formal_dispute,1.0,0.011699109338223934,0.004411292728036642
+V0063,formal_dispute,The offender contests the fine by lodging an appeal to a judge.,4.0,unresolved_other,1.0,0.3629594147205353,0.3344395160675049
+V0064,single_payment_settlement,The fine is resolved with a single final Payment after administrative appeal results are notified.,3.0,formal_dispute,1.0,0.0,0.0029905957635492086
+V0065,single_payment_settlement,The case concludes with a single payment covering the amount due after an administrative appeal.,3.0,referred_to_collections,1.0,0.014604806900024414,0.0028850892558693886
+V0066,formal_dispute,The case involves formal dispute channels culminating in sending an appeal to the prefecture.,1.0,unresolved_other,1.0,0.08162838965654373,0.009126193821430206
+V0067,referred_to_collections,"Despite repeated payments, the case ultimately gets escalated to external credit collections.",3.0,installment_settlement,1.0,0.3496696650981903,0.3334977924823761
+V0068,referred_to_collections,The offender contested the fine through multiple channels before the case was referred to collections.,3.0,formal_dispute,1.0,0.006556026171892881,0.3338318169116974
+V0069,formal_dispute,The process involves formal dispute actions such as appealing to the prefecture and a judge.,4.0,referred_to_collections,1.0,0.3339593708515167,0.333337664604187
+V0070,formal_dispute,The case focuses on a formal appeal process and concludes with notifying the result to the offender.,3.0,referred_to_collections,1.0,0.34636983275413513,0.013666859827935696
+V0071,referred_to_collections,"Despite partial payments, the case was ultimately referred to external collections.",2.0,installment_settlement,1.0,0.3506556451320648,0.33349868655204773
+V0072,installment_settlement,"Rework indicates many repeated payment actions, forming an installment payment structure.",4.0,referred_to_collections,3.0,0.022630535066127777,0.014864504337310791
+V0073,installment_settlement,"Rework shows multiple repeated payments after a formal appeal, forming an installment settlement.",4.0,single_payment_settlement,1.0,0.0044161914847791195,0.03307884559035301
+V0074,referred_to_collections,"The case includes a dispute and a payment, but ultimately ends with a referral to credit collections.",3.0,single_payment_settlement,1.0,0.004816525150090456,0.334490031003952
+V0075,single_payment_settlement,The fine is settled via a single payment following the outcome of an administrative dispute.,2.0,formal_dispute,1.0,0.000713976623956114,0.002276618964970112
+V0076,referred_to_collections,The trace ends with the fine being sent for credit collection.,3.0,single_payment_settlement,1.0,0.019136564806103706,0.3354811668395996
+V0077,unresolved_other,"The trace ends with sending the fine and has no payment, dispute, or collection referral.",2.0,single_payment_settlement,1.0,0.018020344898104668,0.3344241678714752
+V0078,installment_settlement,"The narrative shows multiple repeated payments over time, realizing an installment or partial-payment settlement.",2.0,referred_to_collections,1.0,0.002549698343500495,0.04004473611712456
+V0079,installment_settlement,The fine is settled through multiple repeated payments over time.,3.0,referred_to_collections,2.0,0.00282138679176569,0.04031642526388168
+V0080,installment_settlement,The trace includes multiple payments made across different timestamps.,3.0,single_payment_settlement,2.0,0.04631656035780907,0.08381158858537674
+V0081,single_payment_settlement,The trace ends with a single payment after the appeal process.,2.0,installment_settlement,1.0,0.0032916199415922165,0.00030102423625066876
+V0082,referred_to_collections,The case concludes with a referral to external credit collection.,3.0,formal_dispute,1.0,0.014768742956221104,0.33364835381507874
+V0083,formal_dispute,"Although a payment is attempted, the trace ultimately contains a formal appeal to the prefecture.",2.0,installment_settlement,1.0,0.0,0.012485419400036335
+V0084,referred_to_collections,The trace culminates in sending the case for credit collection.,3.0,formal_dispute,1.0,0.021953441202640533,0.3394041359424591
+V0085,single_payment_settlement,The trace ends with a single payment settling the fine.,2.0,installment_settlement,1.0,0.013011321425437927,0.009314004331827164
+V0086,formal_dispute,The trace features a formal appeal submitted to the prefecture.,1.0,single_payment_settlement,1.0,0.004369667265564203,0.008115752600133419
+V0087,installment_settlement,The fine is paid through multiple separate payments over time.,1.0,formal_dispute,2.0,0.042615409940481186,0.08011044561862946
+V0088,referred_to_collections,"Despite initial partial payments, the case ultimately escalates to external collections.",3.0,installment_settlement,1.0,0.350079208612442,0.33349737524986267
+V0089,single_payment_settlement,The case involves an appeal process followed by a final settlement payment.,3.0,referred_to_collections,1.0,0.010821728967130184,0.0035339118912816048
+V0090,single_payment_settlement,The trace involves an appeal followed immediately by a single payment.,2.0,formal_dispute,1.0,0.0492621473968029,0.031284719705581665
+V0091,single_payment_settlement,The case goes through a dispute process and concludes with a settlement payment.,5.0,formal_dispute,1.0,0.05285688862204552,0.015762221068143845
+V0092,referred_to_collections,"The dispute process fails to resolve the case, leading to a referral to collections.",2.0,single_payment_settlement,1.0,0.0008582955342717469,0.3352634012699127
+V0093,unresolved_other,The trace ends with sending the fine after a judge appeal without payment or collection.,1.0,single_payment_settlement,1.0,0.0,0.33374011516571045
+V0094,single_payment_settlement,The case is settled via a single payment following the appeal process.,3.0,formal_dispute,1.0,0.0032162030693143606,0.00022560743673238903
+V0095,installment_settlement,The fine is settled through multiple payments after a formal dispute.,4.0,single_payment_settlement,1.0,0.004952995106577873,0.04244803264737129
+V0096,formal_dispute,The trace ends with a formal appeal to the judge.,3.0,single_payment_settlement,1.0,0.3866467773914337,0.3333333432674408
+V0097,formal_dispute,The trace ends with the submission of a formal appeal to the prefecture.,2.0,single_payment_settlement,2.0,0.0448305569589138,0.015876993536949158
+V0098,formal_dispute,The case involves a formal dispute process concluding with notification of the result.,3.0,single_payment_settlement,1.0,0.3487059772014618,0.007938816212117672
+V0099,formal_dispute,The trace focuses on a formal dispute and concludes with the notification of the result.,4.0,single_payment_settlement,1.0,0.3389030396938324,0.0018641023198142648
+V0100,installment_settlement,The case features multiple successive payment transactions settling the fine.,7.0,referred_to_collections,4.0,0.017837516963481903,0.019657520577311516
+V0101,installment_settlement,"The narrative shows multiple Payment events occurring over time, realizing the installment or partial-payment settlement category.",3.0,formal_dispute,1.0,0.05018727108836174,0.010532551445066929
+V0102,formal_dispute,"The trace ends with an Appeal to Judge, representing a formal dispute channel.",3.0,single_payment_settlement,1.0,0.3497166633605957,0.3334102928638458
+V0103,formal_dispute,"The trace involves appeal activities such as Send Appeal to Prefecture and Appeal to Judge, constituting a formal dispute.",1.0,single_payment_settlement,1.0,0.12594234943389893,0.016248896718025208
+V0104,unresolved_other,"The trace ends with Notify Result Appeal to Offender without any payment, dispute filing outcome, or collections referral.",4.0,single_payment_settlement,1.0,0.39140626788139343,0.006460675969719887
+V0105,formal_dispute,"The trace contains an Appeal to Judge activity, realizing a formal dispute.",4.0,single_payment_settlement,1.0,0.35048118233680725,0.333636075258255
+V0106,referred_to_collections,The trace explicitly ends with Send for Credit Collection.,0.0,single_payment_settlement,1.0,0.006165289785712957,0.3344186246395111
+V0107,formal_dispute,"The trace ends with an Appeal to Judge activity, indicating a formal dispute.",4.0,unresolved_other,1.0,0.3558880388736725,0.33360815048217773
+V0108,referred_to_collections,"Despite an intermediate payment, the trace ultimately escalates and ends with Send for Credit Collection.",4.0,formal_dispute,1.0,0.0002084532316075638,0.3359132707118988
+V0109,single_payment_settlement,"The trace features a single Payment event following an appeal process, realizing a single-payment settlement.",2.0,formal_dispute,1.0,0.006717600394040346,0.0030202839989215136
+V0110,single_payment_settlement,"The trace concludes with a single Payment event, realizing a single-payment settlement.",4.0,formal_dispute,1.0,0.0037028267979621887,5.510637038241839e-06
+V0111,referred_to_collections,The trace ends with Send for Credit Collection.,3.0,formal_dispute,3.0,0.014380245469510555,0.33399322628974915
+V0112,installment_settlement,"Multiple Payment events occur in sequence, realizing an installment or partial-payment settlement.",4.0,single_payment_settlement,1.0,0.004950071685016155,0.042445108294487
+V0113,single_payment_settlement,The trace ends with a single Payment event.,4.0,referred_to_collections,1.0,0.01479597482830286,0.0026939206290990114
+V0114,installment_settlement,"The trace shows repeated Payment events, realizing an installment or partial-payment settlement.",3.0,single_payment_settlement,1.0,0.025228792801499367,0.06272383034229279
+V0115,formal_dispute,"The trace involves appeal actions such as Send Appeal to Prefecture, falling under formal dispute.",3.0,unresolved_other,1.0,0.3348805606365204,0.0009168292745016515
+V0116,single_payment_settlement,The trace concludes with a single Payment event.,2.0,installment_settlement,1.0,0.03208203986287117,0.005012627691030502
+V0117,installment_settlement,"The trace features multiple repeated Payment events, realizing an installment or partial-payment settlement.",5.0,formal_dispute,1.0,0.026369387283921242,0.011125650256872177
+V0118,formal_dispute,"The trace includes Appeal to Judge and Send Appeal to Prefecture, realizing a formal dispute.",1.0,single_payment_settlement,2.0,0.0199038777500391,0.004970504902303219
+V0119,formal_dispute,"The trace includes multiple appeal actions, realizing a formal dispute.",3.0,referred_to_collections,1.0,0.07020444422960281,0.020550139248371124
+V0120,formal_dispute,"The trace ends with Appeal to Judge, realizing a formal dispute.",4.0,single_payment_settlement,1.0,0.3452953100204468,0.3338567912578583
+V0121,single_payment_settlement,The trace concludes with a single Payment event after a dispute process.,4.0,formal_dispute,1.0,0.0485907644033432,0.011496100574731827
+V0122,installment_settlement,"The trace contains multiple repeated Payment events, realizing an installment or partial-payment settlement.",1.0,single_payment_settlement,1.0,0.03405267000198364,0.00344236777164042
+V0123,referred_to_collections,"Despite prior payments, the trace ultimately culminates in Send for Credit Collection.",3.0,installment_settlement,1.0,0.34519341588020325,0.3334452211856842
+V0124,formal_dispute,The trace includes appeal actions culminating in Send Appeal to Prefecture.,3.0,installment_settlement,2.0,0.007440027315169573,0.0050453925505280495
+V0125,formal_dispute,The trace includes appeal actions culminating in Send Appeal to Prefecture.,3.0,unresolved_other,2.0,0.04633143171668053,0.014376118779182434
+V0126,installment_settlement,"The narrative shows multiple Payment events over time with no formal dispute or collection referral, realizing an installment or partial-payment pattern.",3.0,single_payment_settlement,1.0,0.04631656035780907,0.08381158858537674
+V0127,installment_settlement,"The trace includes multiple Payment events following an appeal process, forming an installment payment pattern.",4.0,formal_dispute,1.0,0.0188333410769701,0.05632838234305382
+V0128,single_payment_settlement,"The fine is settled through a single Payment event after an appeal result, with no installment structure or dispute on record.",2.0,installment_settlement,1.0,0.015551771968603134,0.001938123838044703
+V0129,referred_to_collections,The case concludes with a Send for Credit Collection event after appeals and notifications.,2.0,formal_dispute,2.0,0.009949623607099056,0.33565595746040344
+V0130,installment_settlement,"The variant ends with multiple Payment events, indicating a payment-plan settlement pattern.",2.0,formal_dispute,1.0,0.003636368550360203,0.041131407022476196
+V0131,single_payment_settlement,The case is settled with a single Payment event following an appeal process.,2.0,installment_settlement,2.0,0.002558155683800578,0.0011391605949029326
+V0132,installment_settlement,"The case includes repeated Payment events over time, fitting the installment settlement pattern.",2.0,single_payment_settlement,1.0,0.011518632061779499,0.04901367053389549
+V0133,referred_to_collections,The narrative terminates with a Send for Credit Collection event.,2.0,unresolved_other,2.0,0.0029849892016500235,0.3335299491882324
+V0134,referred_to_collections,The case includes formal appeals and concludes with a Send for Credit Collection event.,4.0,formal_dispute,1.0,0.023026203736662865,0.3404769003391266
+V0135,referred_to_collections,The trace ends with a Send for Credit Collection event.,2.0,single_payment_settlement,3.0,0.003550338326022029,0.3342846632003784
+V0136,single_payment_settlement,The case is resolved with a single Payment event after notifications and appeals.,2.0,installment_settlement,2.0,0.022897908464074135,0.00492048216983676
+V0137,unresolved_other,"The trace ends at Notify Result Appeal to Offender without payment, dispute conclusion, or collections referral.",5.0,formal_dispute,1.0,0.3738086521625519,0.0018641023198142648
+V0138,referred_to_collections,The process ends with a Send for Credit Collection event.,2.0,formal_dispute,2.0,0.007002261932939291,0.3333855867385864
+V0139,single_payment_settlement,The fine is settled through a single Payment event after formal judge appeal processes.,4.0,formal_dispute,1.0,0.013457700610160828,0.009760384447872639
+V0140,single_payment_settlement,The case finishes with a single Payment event following appeal activities.,3.0,formal_dispute,1.0,0.014761265367269516,0.008502277545630932
+V0141,installment_settlement,"The narrative records numerous consecutive Payment events, demonstrating an installment structure.",9.0,referred_to_collections,3.0,0.011856471188366413,0.02563856728374958
+V0142,installment_settlement,"The trace shows repeated Payment events, indicating partial or installment payments.",4.0,single_payment_settlement,1.0,0.01428388524800539,0.051778923720121384
+V0143,installment_settlement,"A series of multiple Payment events are logged, fulfilling the installment settlement category.",8.0,referred_to_collections,2.0,0.04007327929139137,0.00041855929885059595
+V0144,formal_dispute,"The case involves filing appeals to the judge and prefecture but ends without payment or collection referral, highlighting a formal dispute trajectory.",2.0,single_payment_settlement,1.0,0.07505284994840622,0.014345300383865833
+V0145,installment_settlement,"The narrative features a Payment event followed by further appeal actions, representing a partial payment pattern.",2.0,formal_dispute,1.0,0.7536337971687317,0.014345300383865833
+V0146,installment_settlement,The trace concludes with multiple Payment events following complex appeals.,5.0,single_payment_settlement,2.0,0.01989494077861309,0.017600098624825478
+V0147,installment_settlement,A long sequence of multiple Payment events characterizes this variant.,10.0,referred_to_collections,3.0,0.0414312481880188,0.0017765274969860911
+V0148,installment_settlement,"The case ends with numerous repeated Payment events, realizing installment settlement.",8.0,referred_to_collections,2.0,0.023128075525164604,0.014366962015628815
+V0149,installment_settlement,"Multiple Payment events are observed after appeal activities, fitting an installment structure.",2.0,referred_to_collections,2.0,0.009127573110163212,0.02836746536195278
+V0150,installment_settlement,"The narrative shows a series of sequential Payment events over time, realizing installment settlement.",5.0,referred_to_collections,3.0,0.03570364788174629,0.0017913879128172994
+V0151,installment_settlement,"The narrative shows multiple Payment events, indicating a payment-plan settlement structure without a formal dispute.",9.0,referred_to_collections,2.0,0.028536831960082054,0.00895820651203394
+V0152,formal_dispute,"The narrative contains an appeal to the judge and a result from the prefecture, representing a formal dispute.",3.0,referred_to_collections,1.0,0.37585267424583435,0.333901971578598
+V0153,installment_settlement,Numerous recurring payment events indicate an installment or partial-payment pattern over time.,13.0,referred_to_collections,6.0,0.023784266784787178,0.013710769824683666
+V0154,single_payment_settlement,The trace includes a formal appeal but ends with a single payment covering the obligation.,4.0,installment_settlement,1.0,0.004354528151452541,0.0006572117563337088
+V0155,installment_settlement,Multiple payment occurrences demonstrate an installment settlement approach.,4.0,referred_to_collections,3.0,0.031106360256671906,0.06860139966011047
+V0156,unresolved_other,"The case ends with sending an appeal to the prefecture without final payment, dispute resolution, or collection referral.",3.0,formal_dispute,1.0,0.35144147276878357,0.0025667399168014526
+V0157,installment_settlement,"Repeated payments appear in the trace, indicating an installment structure.",2.0,referred_to_collections,2.0,0.07109010964632034,0.10858514904975891
+V0158,unresolved_other,The process terminates at sending an appeal to the prefecture without resolution or collections.,7.0,referred_to_collections,1.0,0.47606828808784485,2.640567436174024e-05
+V0159,single_payment_settlement,A single payment concludes the trace following an appeal process.,1.0,formal_dispute,1.0,0.0032162030693143606,0.00022560743673238903
+V0160,referred_to_collections,The case ultimately escalates to external collections after unsettled payments.,3.0,installment_settlement,1.0,0.33820202946662903,0.33393314480781555
+V0161,referred_to_collections,The trace concludes with a referral to external credit collection.,3.0,single_payment_settlement,1.0,0.002976443851366639,0.33371075987815857
+V0162,single_payment_settlement,"Despite an appeal, the case resolves with a single payment transaction.",1.0,formal_dispute,1.0,0.015559702180325985,0.0019301939755678177
+V0163,referred_to_collections,The case ends with a referral to external collections.,2.0,formal_dispute,2.0,0.02642853558063507,0.34387925267219543
+V0164,single_payment_settlement,The case concludes with a single payment following the appeal steps.,3.0,installment_settlement,1.0,0.028657564893364906,0.010680139064788818
+V0165,referred_to_collections,The trace ends with an escalation to external credit collection.,3.0,formal_dispute,1.0,0.036787595599889755,0.33511897921562195
+V0166,installment_settlement,Repeated payment events indicate an installment structure at the end of the trace.,5.0,single_payment_settlement,1.0,0.04055291414260864,0.0008981942664831877
+V0167,unresolved_other,"The process ends with notifying the result of the appeal, leaving the case unclassifiable into payment or collections.",7.0,formal_dispute,1.0,0.36700519919395447,0.0006101335748098791
+V0168,unresolved_other,The trace stops at sending the appeal to the prefecture without payment or collections.,5.0,formal_dispute,1.0,0.35388943552970886,0.0007805326604284346
+V0169,referred_to_collections,Multiple payments followed by escalation result in a referral to external collections.,4.0,installment_settlement,1.0,0.3358723223209381,0.33358433842658997
+V0170,referred_to_collections,The case eventually ends in an external collections referral.,3.0,formal_dispute,1.0,0.3553851842880249,0.3349219560623169
+V0171,installment_settlement,Multiple payments characterize the settlement phase of this trace.,4.0,single_payment_settlement,1.0,0.0,0.03749503567814827
+V0172,single_payment_settlement,A single payment concludes the case following a formal dispute.,3.0,formal_dispute,1.0,0.022808535024523735,0.00045500797568820417
+V0173,referred_to_collections,The case is referred to credit collections after initial partial actions.,4.0,installment_settlement,1.0,0.344069242477417,0.3341670036315918
+V0174,installment_settlement,Multiple payment actions show an installment or repeated payment structure.,4.0,single_payment_settlement,2.0,0.014641580171883106,0.022853456437587738
+V0175,formal_dispute,"The trace focuses on administrative appeals, concluding with notification of the result.",3.0,single_payment_settlement,2.0,0.33599841594696045,0.0020347272511571646
+V0176,formal_dispute,The narrative includes formal dispute actions such as Send Appeal to Prefecture and Appeal to Judge.,2.0,referred_to_collections,2.0,0.10974622517824173,5.277184027363546e-05
+V0177,referred_to_collections,The trace ends with Send for Credit Collection after various appeal steps.,3.0,unresolved_other,1.0,0.37645578384399414,2.640567436174024e-05
+V0178,formal_dispute,The case involves a formal appeal process ending with Notify Result Appeal to Offender.,3.0,unresolved_other,1.0,0.3345738351345062,0.0006101335748098791
+V0179,formal_dispute,The trace focuses on an appeal to the prefecture and concludes with the notification of the result.,3.0,unresolved_other,1.0,0.35160768032073975,0.006757062394171953
+V0180,installment_settlement,"Multiple payment events are observed after the appeal process, indicating an installment or partial payment pattern.",4.0,single_payment_settlement,1.0,0.001882934127934277,0.03561210259795189
+V0181,installment_settlement,The trace contains multiple Payment events following the fine creation and appeal steps.,2.0,formal_dispute,1.0,0.00623129541054368,0.04372633621096611
+V0182,referred_to_collections,The case ultimately escalates to external collections after an appeal.,2.0,single_payment_settlement,2.0,0.0053681074641644955,0.33521580696105957
+V0183,installment_settlement,There are multiple repeated Payment events following an appeal to a judge.,2.0,referred_to_collections,2.0,0.044553931802511215,0.004899207968264818
+V0184,single_payment_settlement,"Although multiple payment entries are listed, the rework notes indicate a single repeated transaction or settlement following a dispute, fitting a full settlement.",3.0,installment_settlement,1.0,0.3763456642627716,0.0017913879128172994
+V0185,formal_dispute,"The narrative features a payment followed by an Appeal to Judge, emphasizing the formal dispute process.",5.0,single_payment_settlement,1.0,0.34758877754211426,0.33429741859436035
+V0186,installment_settlement,Repeated payments occur over time after the dispute steps.,2.0,single_payment_settlement,2.0,0.018023421987891197,0.01947161741554737
+V0187,installment_settlement,A series of multiple consecutive Payment events indicates an installment settlement structure.,3.0,referred_to_collections,2.0,0.008733522146940231,0.0462285578250885
+V0188,installment_settlement,"Numerous recurring Payment events are logged over time, showing a payment plan.",5.0,referred_to_collections,4.0,0.013295755721628666,0.05079079791903496
+V0189,single_payment_settlement,A single payment is made after the appeal and notification steps without installment subdivision.,2.0,installment_settlement,1.0,0.05223849415779114,0.0342610664665699
+V0190,installment_settlement,"Multiple Payment events are observed, reflecting an installment or partial payment settlement.",3.0,single_payment_settlement,1.0,0.02885434962809086,0.06634938716888428
+V0191,formal_dispute,"The trace ends with the reception of an appeal result from the prefecture, leaving it as a formal dispute case.",2.0,single_payment_settlement,2.0,0.33613061904907227,0.3333425521850586
+V0192,formal_dispute,The sequence involves filing and receiving results for an appeal.,3.0,single_payment_settlement,1.0,0.3416639268398285,0.3340458869934082
+V0193,unresolved_other,"Payments happen before the fine is even sent, leading to an unclassifiable anomalous trace ending in Send Fine.",2.0,installment_settlement,1.0,0.37805071473121643,0.35513821244239807
+V0194,formal_dispute,The trace includes an intermediate payment followed by further appeal actions.,2.0,single_payment_settlement,2.0,0.03146453946828842,0.016531167551875114
+V0195,installment_settlement,Multiple payments are made following the dispute process.,4.0,formal_dispute,1.0,0.01226765662431717,0.0252273827791214
+V0196,single_payment_settlement,A single payment event concludes the trace after an appeal and fine sending sequence.,4.0,unresolved_other,1.0,0.07405569404363632,0.05607827007770538
+V0197,single_payment_settlement,A single final Payment event settles the fine after the appeal workflow.,2.0,installment_settlement,1.0,0.022453365847468376,0.004475939087569714
+V0198,installment_settlement,Multiple payments are made over a long duration following a judge appeal.,5.0,single_payment_settlement,1.0,0.025547927245497704,0.011947110295295715
+V0199,single_payment_settlement,A single payment event settles the fine after the appeal activities.,3.0,installment_settlement,2.0,0.016658298671245575,0.006605243775993586
+V0200,formal_dispute,"The trace concludes with an Appeal to Judge, representing an active formal dispute.",2.0,single_payment_settlement,1.0,0.3385237753391266,0.3333333432674408
+V0201,single_payment_settlement,"The trace concludes with a single Payment activity after an appeal process, with no formal dispute resolution blocking the final payment and no installment pattern.",4.0,unresolved_other,1.0,0.03855181112885475,0.0014571441570296884
+V0202,formal_dispute,"The trace involves an appeal to the prefecture and a judge, ending with the notification of the appeal result without any settlement or collections.",5.0,single_payment_settlement,1.0,0.3519040644168854,0.006460675969719887
+V0203,single_payment_settlement,The trace includes appeals and finishes with a single Payment transaction.,4.0,formal_dispute,1.0,0.03841475024819374,0.0013200849061831832
+V0204,installment_settlement,"Multiple Payment activities are recorded over time, indicating a recurring payment or partial installment structure.",1.0,formal_dispute,1.0,0.013370838016271591,0.024124199524521828
+V0205,formal_dispute,"The case involves a payment followed by an Appeal to Judge, ending in an unresolved formal dispute state.",2.0,installment_settlement,1.0,0.39727890491485596,0.33371075987815857
+V0206,formal_dispute,"The case involves filing appeals and receives a result from the prefecture, ending on that administrative step.",3.0,installment_settlement,2.0,0.3350444734096527,0.3333333432674408
+V0207,single_payment_settlement,The case includes an appeal filing and concludes with a single Payment.,3.0,installment_settlement,2.0,0.01868928223848343,0.004574260208755732
+V0208,single_payment_settlement,"The sequence shows standard fine processing, an appeal step, and concludes with a single Payment.",3.0,installment_settlement,1.0,0.002763284370303154,0.0009340320248156786
+V0209,installment_settlement,"Multiple consecutive Payment events occur after an appeal and penalty, showing an installment or partial payment pattern.",1.0,formal_dispute,1.0,0.06392554193735123,0.02427082322537899
+V0210,single_payment_settlement,The case includes a full appeal cycle and finishes with a single Payment.,5.0,formal_dispute,1.0,0.0616849847137928,0.024590319022536278
+V0211,installment_settlement,A series of multiple Payment entries indicates an installment pattern over time.,7.0,single_payment_settlement,5.0,0.004523840732872486,0.03297119587659836
+V0212,formal_dispute,The case involves appeals and ends with an Appeal to Judge action without being settled or referred.,3.0,unresolved_other,1.0,0.34412404894828796,0.3342035114765167
+V0213,referred_to_collections,"After payments and appeals, the case is ultimately escalated via Send for Credit Collection.",4.0,installment_settlement,1.0,0.3543374836444855,0.33394739031791687
+V0214,referred_to_collections,"Following appeals and notifications, the case is escalated with Send for Credit Collection.",3.0,single_payment_settlement,2.0,0.005194281693547964,0.33486780524253845
+V0215,formal_dispute,The trace involves multiple appeal actions and ends inconclusively at Send Appeal to Prefecture.,2.0,referred_to_collections,2.0,0.10511782020330429,0.002858525374904275
+V0216,single_payment_settlement,The case goes through an appeal process and resolves with a single final Payment.,4.0,formal_dispute,1.0,0.022345706820487976,0.0009178369655273855
+V0217,installment_settlement,Numerous repeating Payment events indicate an installment-style settlement structure.,7.0,referred_to_collections,1.0,0.03424951806664467,0.003245521569624543
+V0218,referred_to_collections,"After a series of partial payments, the case is ultimately referred to external credit collections.",10.0,installment_settlement,1.0,0.3428950607776642,0.33529675006866455
+V0219,formal_dispute,The case includes appeal steps and ends with Notify Result Appeal to Offender without settling.,4.0,single_payment_settlement,2.0,0.3704477548599243,0.03774479404091835
+V0220,installment_settlement,"Multiple payments are recorded interspersed with appeal steps, matching the installment category.",3.0,formal_dispute,1.0,0.049952924251556396,0.08744796365499496
+V0221,single_payment_settlement,The trace combines appeal actions and concludes with a payment action.,2.0,formal_dispute,1.0,0.01574241928756237,0.0017474755877628922
+V0222,installment_settlement,A sequence of repeated Payment events indicates installment or partial-payment fulfillment.,4.0,referred_to_collections,3.0,0.06591088324785233,0.02625615894794464
+V0223,single_payment_settlement,The case contains mixed appeal and penalty events before concluding with a single Payment.,2.0,installment_settlement,1.0,0.0015376340597867966,0.0021596821025013924
+V0224,installment_settlement,The sequence contains a long string of repeated Payment events following an appeal.,10.0,referred_to_collections,4.0,0.028759902343153954,0.008735135197639465
+V0225,installment_settlement,The case involves appeals followed by a series of multiple recurring Payment events.,5.0,referred_to_collections,4.0,0.04811720922589302,0.008462493307888508
+V0226,installment_settlement,"The case involves multiple separate Payment events over time (rework observed: Payment was repeated), indicating an installment or partial-payment settlement structure rather than a single payment, despite the presence of an appeal.",4.0,single_payment_settlement,1.0,0.00026026240084320307,0.037234775722026825
+V0227,single_payment_settlement,"The narrative concludes with a single Payment event following an appeal process, with no formal dispute resolution blocking payment and no installment pattern.",1.0,installment_settlement,2.0,0.024217024445533752,0.006239598151296377
+V0228,installment_settlement,"The fine is settled through three separate Payment events over time, matching the installment or partial-payment settlement pattern.",1.0,formal_dispute,2.0,0.012649363838136196,0.05014440417289734
+V0229,referred_to_collections,"Although a payment occurs, the trace ultimately ends with Send for Credit Collection, making referral to external collections the final and defining outcome of the case.",3.0,single_payment_settlement,1.0,0.007456285413354635,0.33340200781822205
+V0230,installment_settlement,"The case involves multiple sequential Payment events (six payments in total), reflecting an installment or partial-payment pattern.",8.0,single_payment_settlement,5.0,0.03465208783745766,0.002842947840690613
+V0231,single_payment_settlement,"Despite the presence of appeal activities, the fine is ultimately settled through a single Payment event at the end of the observed trace.",3.0,installment_settlement,3.0,0.02354874275624752,0.0055713169276714325

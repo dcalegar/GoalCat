@@ -7,47 +7,47 @@
       "anchor_ids": [
         "12"
       ],
-      "rationale": "Maps 1:1 to the declared OR alternative id=12 as the baseline path for fast resolution.",
+      "rationale": "Maps 1:1 to declared alternative id=12 as authorized by the goal model decomposition under id=4.",
       "evidence_variant_ids": []
     },
     {
       "category_id": "delinquent_payment",
       "name": "Resolve via delinquent payment",
-      "description": "Cases resolved via payment after penalties are applied, helping Maximize timely fine revenue, judged against Indicator 114 Average time to case closure.",
+      "description": "Cases resolved via payment after penalties have been added, helping Maximize timely fine revenue, judged against Indicator 114 Average time to case closure.",
       "anchor_ids": [
         "13"
       ],
-      "rationale": "Maps 1:1 to the declared OR alternative id=13 representing late payments after enforcement notification.",
+      "rationale": "Maps 1:1 to declared alternative id=13 as authorized by the goal model decomposition under id=4.",
       "evidence_variant_ids": []
     },
     {
       "category_id": "administrative_appeal",
       "name": "Resolve via administrative appeal to the Prefecture",
-      "description": "Cases involving an administrative appeal lodged with the Prefecture, balancing the preservation of due-process rights against administrative costs, judged by Indicator 113 Time to appeal filing, Prefecture.",
+      "description": "Cases resolved through an administrative appeal process to the Prefecture, preserving due process rights while impacting administrative costs and revenue, judged against Indicator 113.",
       "anchor_ids": [
         "14"
       ],
-      "rationale": "Maps 1:1 to the declared OR alternative id=14 representing the administrative appeal path.",
+      "rationale": "Maps 1:1 to declared alternative id=14 as authorized by the goal model decomposition under id=4.",
       "evidence_variant_ids": []
     },
     {
       "category_id": "judicial_appeal",
       "name": "Resolve via judicial appeal to the Judge",
-      "description": "Cases involving a judicial appeal to a judge, strongly making Preserve offender's due-process rights while hurting cost-efficiency, judged against Indicator 175 Time to appeal filing, Judge.",
+      "description": "Cases resolved through a judicial appeal to the Judge, strongly supporting offender's due process rights while hurting enforcement costs, judged against Indicator 175.",
       "anchor_ids": [
         "19"
       ],
-      "rationale": "Maps 1:1 to the declared OR alternative id=19 representing judicial appeals.",
+      "rationale": "Maps 1:1 to declared alternative id=19 as authorized by the goal model decomposition under id=4.",
       "evidence_variant_ids": []
     },
     {
       "category_id": "coercive_credit_collection",
       "name": "Resolve via coercive credit collection",
-      "description": "Cases resolved through forced credit collection measures, helping revenue but hurting enforcement costs and due-process rights, judged against Indicator 114 Average time to case closure.",
+      "description": "Cases resolved through coercive credit collection measures, helping revenue but hurting administrative costs, judged against Indicator 114.",
       "anchor_ids": [
         "20"
       ],
-      "rationale": "Maps 1:1 to the declared OR alternative id=20 representing coercive recovery actions.",
+      "rationale": "Maps 1:1 to declared alternative id=20 as authorized by the goal model decomposition under id=4.",
       "evidence_variant_ids": []
     }
   ]
