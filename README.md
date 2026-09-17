@@ -299,7 +299,10 @@ Verified end to end on `rtfm_mini`: the committed run `data/output/rtfm_mini/202
 was generated this way from within Claude Code, with Anthropic's Claude Fable 5.1 model writing
 every Step 5a/6/8 reply by hand (see that run's `PROVENANCE.md`). Its categorization matched the
 Gemini run `20260831_064805` exactly in round 1 (same five categories, anchors, assignments,
-fitness and precision), differing only in category slugs and in the prose of Step 8.
+fitness and precision), differing only in category slugs and in the prose of Step 8. The same
+was then done on the full RTFM log: `data/output/rtfm/20260917_152158` carries its own
+`PROVENANCE.md` (including the temperature and isolation caveats that make it a descriptive
+comparison, not a controlled one) and `COMPARISON_vs_gemini_20260828_181451.md`.
 
 **Throughput tuning (`llm:` block, hosted backend only).** Four knobs control call volume and
 pacing for Steps 5/6/8; every config under `src/goalcat/` and `experimentation/examples/*/` sets

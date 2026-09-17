@@ -1,0 +1,38 @@
+{
+  "log_filename": "rtfm.xes.gz",
+  "goal_model_filename": "rtfm_goal_model.jucm",
+  "axis_root": null,
+  "output_dir": "C:\\Users\\jucmn\\Claude\\GoalCat\\data\\output",
+  "case_id_key": "case:concept:name",
+  "activity_key": "concept:name",
+  "timestamp_key": "time:timestamp",
+  "resource_key": "org:resource",
+  "sample_frequent_n": 10,
+  "sample_rare_n": 10,
+  "sample_extreme_n": 5,
+  "taxonomy_mode": "intent_guided",
+  "discovery_noise_threshold": 0.0,
+  "discovery_precision_timeout_seconds": null,
+  "skip_precision": false,
+  "skip_indicators": false,
+  "review_precision_flag_threshold": 0.3,
+  "prune_pairwise_distances_on_finalize": false,
+  "skip_pairwise_distances": false,
+  "llm": {
+    "taxonomy_model": "manual/claude-fable-5-1",
+    "assignment_model": "manual/claude-fable-5-1",
+    "description_model": "manual/claude-fable-5-1",
+    "temperature": 0,
+    "timeout_seconds": 120,
+    "max_retries": 3,
+    "concurrency": 1,
+    "requests_per_minute": null,
+    "assignment_batch_size": 50,
+    "pricing_usd_per_million_tokens": {
+      "manual/claude-fable-5-1": {
+        "input": 0.3,
+        "output": 2.5
+      }
+    }
+  }
+}

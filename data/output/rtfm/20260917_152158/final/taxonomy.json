@@ -1,0 +1,76 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolved via timely payment",
+      "description": "The offender pays the fine before enforcement begins, that is before any Insert Fine Notification or Add Penalty, typically within days of creation and sometimes before or shortly after the fine is dispatched. The case closes at the first OR branch of 'Fine case is resolved' without entering the enforceable path. This alternative fully advances 'Maximize timely fine revenue' (Make +100) and helps 'Minimize administrative & enforcement cost' (+50); its performance is judged against 'Average time to case closure' (id 114).",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative id=12. The sample realizes it as Create Fine then Payment (V0002, 30.8% of all cases, 5-day median), as Payment after Send Fine but before notification (V0007), and as Payment recorded before Send Fine (V0012, V0193) or in two installments (V0048). These differ only in whether and when the dispatch event is logged and in payment rework, not in how the goal is achieved, so one category is kept rather than splitting.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0007",
+        "V0012",
+        "V0048",
+        "V0193"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Resolved via delinquent payment after enforcement",
+      "description": "The fine enters enforcement (Insert Fine Notification, Add Penalty) and is then closed by the offender paying, often late and often in several installments, without any appeal. This alternative helps 'Maximize timely fine revenue' (+50), while the mandatory Add Penalty step slightly harms 'Preserve offender's due-process rights' (-25). Judged against 'Average time to case closure' (id 114).",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative id=13 (child of the OR at id=6). Realized by V0004 (6.3% of cases, single payment 231 days after the penalty), V0005 and V0006 (two payments, with the penalty either before or between them), and by long installment chains such as V0141. Installment count and penalty/payment ordering are rework and ordering variation within the same alternative, not evidence of distinct realizations, so no subdivision.",
+      "evidence_variant_ids": [
+        "V0004",
+        "V0005",
+        "V0006"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal_prefecture",
+      "name": "Resolved via administrative appeal to the Prefecture",
+      "description": "The offender contests the fine administratively: the appeal date is inserted, the appeal is sent to the Prefecture, and the Prefecture's result is received and notified to the offender. One of the two mutually exclusive branches of 'Contested appeal is resolved'. It helps 'Preserve offender's due-process rights' (+50) but slightly harms both 'Minimize administrative & enforcement cost' (-25) and 'Maximize timely fine revenue' (-25). Judged against 'Time to appeal filing, Prefecture' (id 113) and 'Average time to case closure' (id 114).",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative id=14; anchor_ids names the alternative only, not its AND-decomposed steps (15-18). V0008 (1.7% of cases) ends at Send Appeal to Prefecture, V0137 runs through to Notify Result Appeal to Offender, and V0136 receives and notifies a result without a logged filing. The sample also shows appeals that are later followed by payment or credit collection (V0132, V0138); those are mixed cases for Step 6 to weigh, not a reason to subdivide. XOR with id=19, so never combined with the judicial appeal.",
+      "evidence_variant_ids": [
+        "V0008",
+        "V0137",
+        "V0136"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal_judge",
+      "name": "Resolved via judicial appeal to the Judge",
+      "description": "The offender takes the fine to a Judge, logged as Appeal to Judge, usually shortly after notification and before or around the penalty. The other, mutually exclusive branch of 'Contested appeal is resolved'. It fully advances 'Preserve offender's due-process rights' (Make +100) while hurting 'Minimize administrative & enforcement cost' (-50) and slightly harming 'Maximize timely fine revenue' (-25). Judged against 'Time to appeal filing, Judge' (id 175) and 'Average time to case closure' (id 114).",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative id=19. The sample contains no variant that ends at Appeal to Judge alone; Appeal to Judge appears in V0144, V0176 and V0103 alongside a Prefecture filing, and in V0147, V0151 and V0153 followed by long payment installment chains. These show the alternative is exercised in the log, and the mixing with other closures is for Step 6 to resolve per narrative. XOR with id=14, so kept separate from the Prefecture appeal.",
+      "evidence_variant_ids": [
+        "V0144",
+        "V0176",
+        "V0103"
+      ]
+    },
+    {
+      "category_id": "coercive_credit_collection",
+      "name": "Resolved via coercive credit collection",
+      "description": "The fine is notified and penalised and, with no payment in full and no successful appeal, the organization hands it to credit collection to enforce it, typically more than a year after the penalty. This alternative helps 'Maximize timely fine revenue' (+50) but hurts 'Minimize administrative & enforcement cost' (-50) and slightly harms 'Preserve offender's due-process rights' (-25). Judged against 'Average time to case closure' (id 114).",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Default 1:1 mapping to declared alternative id=20. V0001 is the single most frequent variant in the log (37.6% of cases, 638-day median) and realizes it exactly; V0009 and V0010 reach credit collection after a partial payment. A partial payment before hand-over does not change the closure, so no subdivision.",
+      "evidence_variant_ids": [
+        "V0001",
+        "V0009",
+        "V0010"
+      ]
+    }
+  ]
+}
