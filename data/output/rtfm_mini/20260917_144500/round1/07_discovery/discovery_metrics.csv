@@ -1,0 +1,6 @@
+category_id,name,num_variants,num_cases,perc_fit_traces,average_trace_fitness,log_fitness,precision
+timely_payment,Resolved via timely payment,1,1,100.0,1.0,1.0,1.0
+delinquent_payment,Resolved via delinquent payment after enforcement,3,3,100.0,1.0,1.0,0.9523809523809523
+administrative_appeal_prefecture,Resolved via administrative appeal to the Prefecture,1,1,100.0,1.0,1.0,1.0
+judicial_appeal_judge,Resolved via judicial appeal to the Judge,1,1,100.0,1.0,1.0,1.0
+coercive_credit_collection,Resolved via coercive credit collection,1,1,100.0,1.0,1.0,1.0

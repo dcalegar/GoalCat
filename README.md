@@ -295,7 +295,9 @@ external agent acting as the LLM — can drive the full pipeline, rework loop in
 machine with no API key and no local model. `RunMetadata.backend` records `manual`; token counts
 are `None` and `estimated_cost_usd` is `null`, since nothing was metered. Set `concurrency: 1` so
 prompts arrive one at a time; Step 6 still batches `assignment_batch_size` narratives per prompt.
-Verified end to end on `rtfm_mini` (run `20260917_144500`): the categorization matched the
+Verified end to end on `rtfm_mini`: the committed run `data/output/rtfm_mini/20260917_144500`
+was generated this way from within Claude Code, with Anthropic's Claude Fable 5.1 model writing
+every Step 5a/6/8 reply by hand (see that run's `PROVENANCE.md`). Its categorization matched the
 Gemini run `20260831_064805` exactly in round 1 (same five categories, anchors, assignments,
 fitness and precision), differing only in category slugs and in the prose of Step 8.
 
