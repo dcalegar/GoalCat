@@ -21,6 +21,12 @@ metered, `input_tokens`/`output_tokens` are null, `estimated_cost_usd` is null, 
 `latency_seconds` measures the human/agent turnaround (about 35 to 60 s per call), not model
 inference time.
 
+One field of this run's metadata is stale rather than merely unknown: `temperature` reads `0.0`,
+copied from the config by the adapter as first merged. No sampling temperature governed these
+replies, and the field says nothing about how they were produced. The adapter now records `null`
+there for every manual call (commit `ed580ef`), so a fresh manual run will not carry the `0.0`
+this one does. The recorded value is left as written rather than edited after the fact.
+
 ## One deviation from `example_run.py`, visible in `pipeline.log`
 
 The driver mirrored `experimentation/examples/rtfm_mini/example_run.py`. Its scripted reviewer,
