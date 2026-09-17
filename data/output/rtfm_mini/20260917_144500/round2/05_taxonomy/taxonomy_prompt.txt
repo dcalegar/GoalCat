@@ -1,0 +1,118 @@
+You are revising an existing taxonomy that subdivides a declared goal-model axis, per a human reviewer's specific request below. You have no authority to invent a different axis, merge unrelated alternatives together, or discard a declared alternative — the same constraints as the original induction apply. Apply exactly the requested revision (merge and/or split) and otherwise preserve the existing taxonomy as closely as possible: keep every unaffected category's category_id, name, description, anchor_ids, and rationale unchanged.
+
+A *declared alternative* is a child of a goal-model element whose decomposition operator is OR or XOR: those are the points where the goal model declares that the process may proceed in one of several ways. Children of an AND-decomposed element are not alternatives — they are steps that all contribute to the same parent.
+
+Every category you propose must remain traceable to one or more goal-model element IDs (from the goal-task decomposition below) via its anchor_ids field, following the same combination rules as the original induction (do not combine alternatives the goal model marks XOR, i.e. mutually exclusive).
+
+The goal model also declares what the organization *values* (softgoals, reached through contribution links) and how it *measures* whether a goal is met (indicators, with the value set converting a measurement to satisfaction). Use both: a category's rationale and description should say which softgoals its alternative advances or harms, and against which indicator its performance would be judged. They inform what a category *means*, never where its boundary falls — specifically:
+- Two declared alternatives having similar or identical contribution profiles is not evidence to merge them. Only the co-occurrence rule above licenses a merge.
+- An element that contributes to a softgoal but is not itself a declared alternative is still not a category. Contributing to something the organization values does not make a mandatory step an alternative to anything.
+- An indicator is never a valid anchor_ids target. Anchor to the goal or task whose achievement the indicator measures, not to the measurement.
+
+Activity labels in the narratives come from the event log and need not match goal-model element names verbatim: a logged activity realizes a goal-model element by meaning, not by string equality, and one goal-model element may be realized by several logged activities.
+
+=== GOAL MODEL (excerpt: name, actors, goal-task decomposition, indicators, contribution links) ===
+Goal model: RTFM Goal Model
+
+Actors:
+  - id=1: Traffic Police Back-Office
+
+Goal-task decomposition (id, type, name, decomposition operator; indentation = parent/child):
+- id=2 [Goal] Every issued fine reaches a lawful, documented closure (AND)
+  - id=3 [Goal] Fine is issued and formally communicated (AND)
+    - id=8 [Task] Create Fine (leaf)
+    - id=9 [Task] Send Fine (leaf)
+  - id=4 [Goal] Fine case is resolved (OR)
+    - id=12 [Task] Resolve via timely payment (leaf)
+    - id=5 [Goal] Fine becomes enforceable and is resolved (AND)
+      - id=10 [Task] Insert Fine Notification (leaf)
+      - id=11 [Task] Add Penalty (leaf)
+      - id=6 [Goal] Enforced case is closed (OR)
+        - id=13 [Task] Resolve via delinquent payment (leaf)
+        - id=7 [Goal] Contested appeal is resolved (XOR)
+          - id=14 [Task] Resolve via administrative appeal to the Prefecture (AND)
+            - id=15 [Task] Insert Date Appeal to Prefecture (leaf)
+            - id=16 [Task] Send Appeal to Prefecture (leaf)
+            - id=17 [Task] Receive Result Appeal from Prefecture (leaf)
+            - id=18 [Task] Notify Result Appeal to Offender (leaf)
+          - id=19 [Task] Resolve via judicial appeal to the Judge (leaf)
+        - id=20 [Task] Resolve via coercive credit collection (leaf)
+
+Indicators (how the organization measures whether a goal is met; id, name, unit, and the value set converting a measurement to satisfaction):
+  - id=112 [Indicator] Time to fine dispatch (days) (target 30, threshold 90, worst 360 days) [provenance: statutory]
+  - id=113 [Indicator] Time to appeal filing, Prefecture (days) (target 60, threshold 60, worst 120 days) [provenance: statutory]
+  - id=175 [Indicator] Time to appeal filing, Judge (days) (target 30, threshold 30, worst 60 days) [provenance: statutory]
+  - id=114 [Indicator] Average time to case closure (days) (target 150, threshold 180, worst 365 days) [provenance: external-by-analogy]
+
+Softgoals and contribution links (source -> effect on softgoal):
+  - id=12 Resolve via timely payment --[Make (+100)]--> Maximize timely fine revenue
+  - id=12 Resolve via timely payment --[Help (+50)]--> Minimize administrative & enforcement cost
+  - id=13 Resolve via delinquent payment --[Help (+50)]--> Maximize timely fine revenue
+  - id=11 Add Penalty --[SomePositive (+25)]--> Maximize timely fine revenue
+  - id=11 Add Penalty --[SomeNegative (-25)]--> Preserve offender's due-process rights
+  - id=14 Resolve via administrative appeal to the Prefecture --[Help (+50)]--> Preserve offender's due-process rights
+  - id=14 Resolve via administrative appeal to the Prefecture --[SomeNegative (-25)]--> Minimize administrative & enforcement cost
+  - id=14 Resolve via administrative appeal to the Prefecture --[SomeNegative (-25)]--> Maximize timely fine revenue
+  - id=19 Resolve via judicial appeal to the Judge --[Make (+100)]--> Preserve offender's due-process rights
+  - id=19 Resolve via judicial appeal to the Judge --[Hurt (-50)]--> Minimize administrative & enforcement cost
+  - id=19 Resolve via judicial appeal to the Judge --[SomeNegative (-25)]--> Maximize timely fine revenue
+  - id=20 Resolve via coercive credit collection --[Help (+50)]--> Maximize timely fine revenue
+  - id=20 Resolve via coercive credit collection --[Hurt (-50)]--> Minimize administrative & enforcement cost
+  - id=20 Resolve via coercive credit collection --[SomeNegative (-25)]--> Preserve offender's due-process rights
+  - id=112 Time to fine dispatch (days) --[Help (+50)]--> Maximize timely fine revenue
+  - id=113 Time to appeal filing, Prefecture (days) --[Help (+50)]--> Preserve offender's due-process rights
+  - id=175 Time to appeal filing, Judge (days) --[Help (+50)]--> Preserve offender's due-process rights
+  - id=114 Average time to case closure (days) --[Help (+50)]--> Maximize timely fine revenue
+  - id=114 Average time to case closure (days) --[Help (+50)]--> Minimize administrative & enforcement cost
+
+
+=== NARRATIVE SAMPLE (8 variants, drawn to cover frequent, rare, and extreme cases) ===
+How to read each line below: one line is one process *variant* — a distinct activity sequence — not one case.
+- frequency is how many cases share that sequence, with that count as a share of all cases in the log in parentheses; duration_median is the median case duration for that variant, written compactly on the same scale as the waits inside the narrative ("134d", "3h", "45m"); trace_length is the number of activities in the sequence; outcome is the variant's final activity.
+- The activity sequence shown after "narrative:" is that of a single representative case (the one whose duration is closest to the variant's median), so a "(+34d)" after an activity is that case's waiting time since the preceding activity, not a variant-wide average. Activities are listed in the order they occurred. A "(handled by resource R)" clause, where present, names the resource that performed that activity in the representative case. A trailing "Rework observed: ..." sentence, where present, is a variant-level count over the variant's own cases, not part of the representative case's sequence.
+- sample_reasons records why the variant was drawn into the sample. The sample deliberately over-represents rare and extreme variants, so the frequencies listed below are not the log's overall distribution and must not be read as one.
+
+- variant_id=V0001 | sample_reasons=frequent,rare,duration_high,duration_low,length_low | frequency=1 (12.5%) | trace_length=2 | duration_median=134d | outcome=Send Fine
+  narrative: Create Fine Send Fine (+134d)
+- variant_id=V0002 | sample_reasons=frequent,rare,duration_high,length_high,length_low | frequency=1 (12.5%) | trace_length=5 | duration_median=971d | outcome=Send for Credit Collection
+  narrative: Create Fine Send Fine (+132d) Insert Fine Notification (+34d) Add penalty (+60d) Send for Credit Collection (+745d)
+- variant_id=V0003 | sample_reasons=frequent,rare,duration_high,length_high,length_low | frequency=1 (12.5%) | trace_length=5 | duration_median=550d | outcome=Payment
+  narrative: Create Fine Send Fine (+130d) Insert Fine Notification (+16d) Add penalty (+60d) Payment (+344d)
+- variant_id=V0004 | sample_reasons=frequent,rare,duration_low,length_low | frequency=1 (12.5%) | trace_length=2 | duration_median=1d | outcome=Payment
+  narrative: Create Fine Payment (+1d)
+- variant_id=V0005 | sample_reasons=frequent,rare,duration_high,duration_low,length_high,length_low | frequency=1 (12.5%) | trace_length=5 | duration_median=136d | outcome=Appeal to Judge
+  narrative: Create Fine Send Fine (+46d) Insert Fine Notification (+9d) Add penalty (+60d) Appeal to Judge (+21d)
+- variant_id=V0006 | sample_reasons=frequent,rare,duration_low,length_high | frequency=1 (12.5%) | trace_length=7 | duration_median=78d | outcome=Receive Result Appeal from Prefecture
+  narrative: Create Fine Send Fine Insert Fine Notification Insert Date Appeal to Prefecture (+5d) Send Appeal to Prefecture (+35d) Add penalty (+20d) Receive Result Appeal from Prefecture (+18d)
+- variant_id=V0007 | sample_reasons=duration_high,duration_low,length_high,length_low | frequency=1 (12.5%) | trace_length=6 | duration_median=225d | outcome=Payment
+  narrative: Create Fine Send Fine (+119d) Insert Fine Notification (+6d) Add penalty (+60d) Payment (+10d) Payment (+30d) Rework observed: Payment was repeated (seen in 1 cases).
+- variant_id=V0008 | sample_reasons=duration_high,duration_low,length_high | frequency=1 (12.5%) | trace_length=6 | duration_median=209d | outcome=Payment
+  narrative: Create Fine Send Fine (+130d) Insert Fine Notification (+9d) Payment (+45d) Add penalty (+15d) Payment (+10d) Rework observed: Payment was repeated (seen in 1 cases).
+
+=== PRIOR TAXONOMY (the taxonomy you are revising) ===
+- category_id=timely_payment | name=Resolved via timely payment
+  description: The offender pays the fine directly after it is created, before any notification or penalty. The case closes at the first OR branch of 'Fine case is resolved' without entering enforcement. This alternative fully advances 'Maximize timely fine revenue' (Make +100) and helps 'Minimize administrative & enforcement cost' (+50); its performance is judged against 'Average time to case closure' (id 114).
+  anchor_ids=['12']
+  rationale: Default 1:1 mapping to declared alternative id=12. The sample realizes it in exactly one way (V0004: Create Fine, Payment after 1 day, no Send Fine or enforcement steps), so there is no evidence for subdivision and no co-occurrence with any other alternative that would license a merge.
+- category_id=delinquent_payment | name=Resolved via delinquent payment after enforcement
+  description: The fine goes through the enforcement path (Insert Fine Notification, Add Penalty) and is then closed by the offender paying, possibly in more than one installment. This alternative helps 'Maximize timely fine revenue' (+50), while the mandatory Add Penalty step it contains slightly harms 'Preserve offender's due-process rights' (-25). Judged against 'Average time to case closure' (id 114).
+  anchor_ids=['13']
+  rationale: Default 1:1 mapping to declared alternative id=13 (child of the OR at id=6). Three sampled variants realize it (V0003, V0007, V0008). V0007 and V0008 differ from V0003 only by a repeated Payment activity (rework) and, in V0008, by the penalty being added between two payments; these are variations in how the payment is collected, not meaningfully different realizations of the alternative, so one category is kept rather than splitting on rework.
+- category_id=administrative_appeal_prefecture | name=Resolved via administrative appeal to the Prefecture
+  description: After notification the offender contests the fine administratively: the appeal date is inserted, the appeal is sent to the Prefecture, and the Prefecture's result is received (and notified to the offender). One of the two mutually exclusive branches of 'Contested appeal is resolved'. It helps 'Preserve offender's due-process rights' (+50) but slightly harms both 'Minimize administrative & enforcement cost' (-25) and 'Maximize timely fine revenue' (-25). Judged against 'Time to appeal filing, Prefecture' (id 113) and 'Average time to case closure' (id 114).
+  anchor_ids=['14']
+  rationale: Default 1:1 mapping to declared alternative id=14. anchor_ids names only the alternative itself, not its AND-decomposed steps (15-18). V0006 realizes it (Insert Date Appeal to Prefecture, Send Appeal to Prefecture, Receive Result Appeal from Prefecture). It is XOR with the judicial appeal (id=19) and so must not be combined with it.
+- category_id=judicial_appeal_judge | name=Resolved via judicial appeal to the Judge
+  description: After notification and penalty the offender takes the fine to a Judge. The other, mutually exclusive branch of 'Contested appeal is resolved'. It fully advances 'Preserve offender's due-process rights' (Make +100) while hurting 'Minimize administrative & enforcement cost' (-50) and slightly harming 'Maximize timely fine revenue' (-25). Judged against 'Time to appeal filing, Judge' (id 175) and 'Average time to case closure' (id 114).
+  anchor_ids=['19']
+  rationale: Default 1:1 mapping to declared alternative id=19. V0005 realizes it (Appeal to Judge as the closing activity, 21 days after the penalty). XOR with id=14, so kept separate from the Prefecture appeal.
+- category_id=coercive_credit_collection | name=Resolved via coercive credit collection
+  description: The fine is notified and penalised but never paid or appealed, and the organization hands it to credit collection to enforce it. This alternative helps 'Maximize timely fine revenue' (+50) but hurts 'Minimize administrative & enforcement cost' (-50) and slightly harms 'Preserve offender's due-process rights' (-25). Judged against 'Average time to case closure' (id 114), against which it performs worst in the sample.
+  anchor_ids=['20']
+  rationale: Default 1:1 mapping to declared alternative id=20. V0002 realizes it (Send for Credit Collection 745 days after the penalty, 971-day median duration). A single realization in the sample gives no basis for subdivision.
+
+=== REVIEWER'S REQUESTED REVISION ===
+MERGE these categories into one: delinquent_payment, coercive_credit_collection.
+  Reason: Rework-loop demonstration (manual-LLM rerun of experimentation/examples/rtfm_mini/example_run.py): merging the two enforcement closures that are direct children of Or point id=6 to exercise Step 9's revise path end-to-end. The script's default 'first two categories' pair (timely_payment, delinquent_payment) was rejected by check_axis_partition because ids 12 and 13 sit under different Or points (4 and 6).
+
+Propose the revised taxonomy now, applying exactly the requested changes above and leaving every other category as close to its prior form as possible.

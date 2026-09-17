@@ -1,0 +1,22 @@
+{
+  "calls": [
+    {
+      "provider": "manual",
+      "model": "manual/claude-fable-5-1",
+      "backend": "manual",
+      "temperature": 0.0,
+      "prompt_hash": "6d19361a89fed126",
+      "latency_seconds": 40.187000000005355,
+      "input_tokens": null,
+      "output_tokens": null,
+      "prompt_chars": 6606,
+      "response_chars": 3032,
+      "raw_response": "{\n  \"assignments\": [\n    {\n      \"variant_id\": \"V0001\",\n      \"category_id\": null,\n      \"rationale\": \"The case only reaches Create Fine and Send Fine (the mandatory issuance goal) and then stops after 134 days with no payment, notification, penalty, appeal, or credit collection. It has not entered any branch of 'Fine case is resolved', so it realizes none of the four categories; it is a still-open case and belongs in the residual.\"\n    },\n    {\n      \"variant_id\": \"V0002\",\n      \"category_id\": \"uncontested_enforcement_closure\",\n      \"rationale\": \"After Send Fine, Insert Fine Notification and Add penalty, the case ends with Send for Credit Collection 745 days later, with no appeal activity. Enforcement followed by coercive credit collection, with no appeal, is one of the two routes of the merged enforcement-closure category.\"\n    },\n    {\n      \"variant_id\": \"V0003\",\n      \"category_id\": \"uncontested_enforcement_closure\",\n      \"rationale\": \"The fine is notified and penalised (Insert Fine Notification, Add penalty) and then closed by a single Payment 344 days after the penalty, with no appeal. Payment after enforcement is the delinquent-payment route of the merged category.\"\n    },\n    {\n      \"variant_id\": \"V0004\",\n      \"category_id\": \"timely_payment\",\n      \"rationale\": \"Payment occurs one day after Create Fine, before any Send Fine, notification, or penalty. The case never enters enforcement, which is the defining property of timely payment.\"\n    },\n    {\n      \"variant_id\": \"V0005\",\n      \"category_id\": \"judicial_appeal_judge\",\n      \"rationale\": \"After notification and penalty the case's final activity is Appeal to Judge. Taking the fine to a Judge realizes the judicial appeal branch; because the case is contested it does not belong to the uncontested enforcement closure.\"\n    },\n    {\n      \"variant_id\": \"V0006\",\n      \"category_id\": \"administrative_appeal_prefecture\",\n      \"rationale\": \"The narrative contains Insert Date Appeal to Prefecture, Send Appeal to Prefecture, and Receive Result Appeal from Prefecture, the steps of the administrative appeal alternative. Add penalty occurring mid-appeal does not change which alternative is realized.\"\n    },\n    {\n      \"variant_id\": \"V0007\",\n      \"category_id\": \"uncontested_enforcement_closure\",\n      \"rationale\": \"Notification and penalty are followed by two Payment activities (10 and 30 days after the penalty) and no appeal. Paying after enforcement, here in two installments, is the delinquent-payment route of the merged category; the repeated Payment is rework within it.\"\n    },\n    {\n      \"variant_id\": \"V0008\",\n      \"category_id\": \"uncontested_enforcement_closure\",\n      \"rationale\": \"After Insert Fine Notification the offender pays, a penalty is then added, and a second Payment follows, with no appeal. Both payments occur after enforcement began and the case closes by payment, so it is the delinquent-payment route of the merged category; the penalty/payment interleaving is an ordering variation within it.\"\n    }\n  ]\n}\n",
+      "estimated_cost_usd": null
+    }
+  ],
+  "total_input_tokens": 0,
+  "total_output_tokens": 0,
+  "total_latency_seconds": 40.187000000005355,
+  "total_estimated_cost_usd": null
+}

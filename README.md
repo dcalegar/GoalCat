@@ -238,6 +238,27 @@ pip install -r requirements-lock.txt
 GoalCat is licensed `AGPL-3.0-or-later` (see [LICENSE](LICENSE)) — inherited from its PM4Py
 dependency, not an independent choice.
 
+**Windows, behind TLS-intercepting software.** Verified 2026-09-17 on Windows 11 with Avast Web
+Shield active: `import litellm` fails at import time with
+`SSL: CERTIFICATE_VERIFY_FAILED ... unable to get local issuer certificate`, because `tiktoken`
+downloads its `cl100k_base` encoding on first import and the interceptor re-signs every HTTPS
+connection with its own root CA. That root is in the Windows certificate store but not in the
+`certifi` bundle `requests`/`httpx` trust, and Python 3.13+ additionally rejects it under the
+`VERIFY_X509_STRICT` flag its default SSL context now enables ("Basic Constraints of CA cert not
+marked critical"), so it fails even from the system store. Two choices make the install work
+without touching the security software:
+
+```bash
+py -3.12 -m venv .venv                 # 3.12: VERIFY_X509_STRICT is not on by default
+.venv/Scripts/python -m pip install -e ".[llm]" pip-system-certs
+```
+
+`pip-system-certs` makes `requests`/`urllib3` trust the Windows store. `pip` itself is unaffected
+(it already uses the system trust store), which is why `pip install` succeeds while the first
+`import litellm` does not. The same symptom under a corporate proxy has the same fix. Also note
+that `scripts/setup_local_llm.sh` is Homebrew-based and does not run on Windows; install Ollama
+from its Windows installer instead if you want the local backend.
+
 ### LLM backend
 
 Steps 5a/5b, 6, and 8 call an LLM through a provider-agnostic adapter
@@ -261,6 +282,24 @@ done, so it is safe to re-run. Then point the pipeline at `src/goalcat/config_lo
 `config.yaml` to route the LLM steps through it. Local models can produce weaker categorization
 judgments inside a still schema-valid response — spot-check Step 5/6 output against the hosted
 baseline before relying on this beyond quick local iteration.
+
+**Option C — manual, no LLM at all.** A model string with the `manual/` provider prefix (e.g.
+`taxonomy_model: "manual/reviewer"`) routes every Step 5a/5b, 6, and 8 call to the filesystem
+instead of litellm. For each call the adapter writes `<seq>_<prompt-hash>.prompt.txt` (the exact
+rendered prompt) and, for structured calls, `<seq>_<prompt-hash>.schema.json` (the pydantic JSON
+schema the reply must satisfy) to the directory named by the `GOALCAT_MANUAL_LLM_DIR` environment
+variable, then polls every 2 s until `<seq>_<prompt-hash>.response.txt` appears there and is
+non-empty. The reply goes through the same schema validation and retry loop as a model's would,
+so a malformed one is re-requested as a new prompt file. This exists so that a human — or an
+external agent acting as the LLM — can drive the full pipeline, rework loop included, on a
+machine with no API key and no local model. `RunMetadata.backend` records `manual`; token counts
+are `None` and `estimated_cost_usd` is `null`, since nothing was metered. Set `concurrency: 1` so
+prompts arrive one at a time; Step 6 still batches `assignment_batch_size` narratives per prompt.
+Verified end to end on `rtfm_mini`: the committed run `data/output/rtfm_mini/20260917_144500`
+was generated this way from within Claude Code, with Anthropic's Claude Fable 5.1 model writing
+every Step 5a/6/8 reply by hand (see that run's `PROVENANCE.md`). Its categorization matched the
+Gemini run `20260831_064805` exactly in round 1 (same five categories, anchors, assignments,
+fitness and precision), differing only in category slugs and in the prose of Step 8.
 
 **Throughput tuning (`llm:` block, hosted backend only).** Four knobs control call volume and
 pacing for Steps 5/6/8; every config under `src/goalcat/` and `experimentation/examples/*/` sets
@@ -421,8 +460,21 @@ python -m experimentation.examples.bpic2019.example_run
 python -m experimentation.examples.sepsis.example_run
 ```
 
-Each requires `GEMINI_API_KEY` (or `config_local.yaml` for the local backend) and makes real LLM
+Each requires `GEMINI_API_KEY` (or `config_local.yaml` for the local backend, or a `manual/`
+model string plus `GOALCAT_MANUAL_LLM_DIR` for the hand-driven backend) and makes real LLM
 calls — billed ones, under the hosted backend.
+
+The `rtfm_mini` driver's scripted reviewer requests one merge in round 1 to exercise Step 9's
+revise path. It no longer merges "the first two induced categories": the LLM returns categories
+in an arbitrary order, and Step 5a's `check_axis_partition` rejects a merge whose anchors sit
+under different decomposition points or under an Xor point, aborting the revision round. On the
+RTFM goal model that ruled out the pair the script used to pick whenever `Resolve via timely
+payment` (id 12, under Or 4) came first. `_mergeable_pair()` now selects the first pair in
+taxonomy order whose anchors are all siblings under one Or-decomposed parent — on RTFM, the two
+enforcement closures under id 6 — and fails with an explicit error if no such pair exists. The
+committed run `data/output/rtfm_mini/20260831_064805` predates the partition check (added the
+same day, commit `b016cb9`) and merged ids 12 and 13; the current code would not accept that
+merge.
 
 The runs behind the ICPM 2027 replication package live separately, under
 `experimentation/icpm2027/` — see [`experimentation/README.md`](experimentation/README.md)

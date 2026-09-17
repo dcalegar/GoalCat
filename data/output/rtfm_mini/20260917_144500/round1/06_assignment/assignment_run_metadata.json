@@ -1,0 +1,22 @@
+{
+  "calls": [
+    {
+      "provider": "manual",
+      "model": "manual/claude-fable-5-1",
+      "backend": "manual",
+      "temperature": 0.0,
+      "prompt_hash": "063d28ac83d2d710",
+      "latency_seconds": 34.125,
+      "input_tokens": null,
+      "output_tokens": null,
+      "prompt_chars": 6873,
+      "response_chars": 2851,
+      "raw_response": "{\n  \"assignments\": [\n    {\n      \"variant_id\": \"V0001\",\n      \"category_id\": null,\n      \"rationale\": \"The case only reaches Create Fine and Send Fine (the mandatory issuance goal) and then stops after 134 days with no payment, notification, penalty, appeal, or credit collection. It has not entered any branch of 'Fine case is resolved', so it realizes none of the five resolution alternatives; it is a still-open case and belongs in the residual.\"\n    },\n    {\n      \"variant_id\": \"V0002\",\n      \"category_id\": \"coercive_credit_collection\",\n      \"rationale\": \"After Send Fine, Insert Fine Notification and Add penalty, the case ends with Send for Credit Collection 745 days later, with no Payment or appeal activity. That is exactly the coercive credit collection alternative.\"\n    },\n    {\n      \"variant_id\": \"V0003\",\n      \"category_id\": \"delinquent_payment\",\n      \"rationale\": \"The fine is notified and penalised (Insert Fine Notification, Add penalty) and then closed by a single Payment 344 days after the penalty. Payment after enforcement is the delinquent payment alternative.\"\n    },\n    {\n      \"variant_id\": \"V0004\",\n      \"category_id\": \"timely_payment\",\n      \"rationale\": \"Payment occurs one day after Create Fine, before any Send Fine, notification, or penalty. The case never enters enforcement, which is the defining property of the timely payment alternative.\"\n    },\n    {\n      \"variant_id\": \"V0005\",\n      \"category_id\": \"judicial_appeal_judge\",\n      \"rationale\": \"After notification and penalty the case's final activity is Appeal to Judge. Taking the fine to a Judge realizes the judicial appeal branch of 'Contested appeal is resolved'.\"\n    },\n    {\n      \"variant_id\": \"V0006\",\n      \"category_id\": \"administrative_appeal_prefecture\",\n      \"rationale\": \"The narrative contains Insert Date Appeal to Prefecture, Send Appeal to Prefecture, and Receive Result Appeal from Prefecture, the steps of the administrative appeal alternative. Add penalty occurring mid-appeal does not change which alternative is realized.\"\n    },\n    {\n      \"variant_id\": \"V0007\",\n      \"category_id\": \"delinquent_payment\",\n      \"rationale\": \"Notification and penalty are followed by two Payment activities (10 and 30 days after the penalty). Paying after enforcement, here in two installments, is the delinquent payment alternative; the repeated Payment is rework within that alternative, not a different one.\"\n    },\n    {\n      \"variant_id\": \"V0008\",\n      \"category_id\": \"delinquent_payment\",\n      \"rationale\": \"After Insert Fine Notification the offender pays, a penalty is then added, and a second Payment follows. Both payments occur after enforcement began, and the case closes by payment, so it realizes delinquent payment; the interleaving of penalty and payments is an ordering variation within the same alternative.\"\n    }\n  ]\n}\n",
+      "estimated_cost_usd": null
+    }
+  ],
+  "total_input_tokens": 0,
+  "total_output_tokens": 0,
+  "total_latency_seconds": 34.125,
+  "total_estimated_cost_usd": null
+}
