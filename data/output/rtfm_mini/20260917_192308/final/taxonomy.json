@@ -1,0 +1,56 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Resolution of the fine through timely payment, advancing Maximize timely fine revenue and minimizing administrative and enforcement costs.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task 12 as evidenced by variant V0004 where payment occurs directly after fine creation.",
+      "evidence_variant_ids": [
+        "V0004"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment_and_coercive_collection",
+      "name": "Resolve via delinquent payment or coercive credit collection",
+      "description": "Resolution of the case through delinquent payment or coercive credit collection after notification and penalty have been applied.",
+      "anchor_ids": [
+        "13",
+        "20"
+      ],
+      "rationale": "Merged per reviewer request to combine sibling alternatives under XOR point id=6 (delinquent payment and coercive credit collection) for script experimentation.",
+      "evidence_variant_ids": [
+        "V0002",
+        "V0003",
+        "V0007",
+        "V0008"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal_prefecture",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Resolution via an administrative appeal process directed to the Prefecture, preserving due-process rights.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task 14, supported by variant V0006 showing appeal insertion and sending.",
+      "evidence_variant_ids": [
+        "V0006"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal_judge",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Resolution through a judicial appeal brought before a judge, strongly making offender's due-process rights.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task 19, supported by variant V0005 culminating in an appeal to the judge.",
+      "evidence_variant_ids": [
+        "V0005"
+      ]
+    }
+  ]
+}

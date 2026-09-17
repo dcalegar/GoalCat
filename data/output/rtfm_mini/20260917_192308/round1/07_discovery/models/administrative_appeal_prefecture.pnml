@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pnml>
+  <net id="imdf_net_1789683797.7403562" type="http://www.pnml.org/version-2009/grammar/pnmlcoremodel">
+    <name>
+      <text>imdf_net_1789683797.7403562</text>
+    </name>
+    <page id="n0">
+      <place id="p_3">
+        <name>
+          <text>p_3</text>
+        </name>
+      </place>
+      <place id="p_4">
+        <name>
+          <text>p_4</text>
+        </name>
+      </place>
+      <place id="p_8">
+        <name>
+          <text>p_8</text>
+        </name>
+      </place>
+      <place id="source">
+        <name>
+          <text>source</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="sink">
+        <name>
+          <text>sink</text>
+        </name>
+      </place>
+      <place id="p_5">
+        <name>
+          <text>p_5</text>
+        </name>
+      </place>
+      <place id="p_6">
+        <name>
+          <text>p_6</text>
+        </name>
+      </place>
+      <place id="p_7">
+        <name>
+          <text>p_7</text>
+        </name>
+      </place>
+      <transition id="fa246d6d-1c23-442e-972c-ae6ab6f11265">
+        <name>
+          <text>Add penalty</text>
+        </name>
+      </transition>
+      <transition id="93316e09-0539-4e19-a045-4d943b08e3b2">
+        <name>
+          <text>Create Fine</text>
+        </name>
+      </transition>
+      <transition id="516690d8-a34f-422b-8f4d-2185199cd3ee">
+        <name>
+          <text>Send Appeal to Prefecture</text>
+        </name>
+      </transition>
+      <transition id="5fadbe13-a3e1-4e53-984a-0e3ee02db94e">
+        <name>
+          <text>Send Fine</text>
+        </name>
+      </transition>
+      <transition id="5dfacccf-5181-40bd-b51c-73c87082e081">
+        <name>
+          <text>Insert Date Appeal to Prefecture</text>
+        </name>
+      </transition>
+      <transition id="b380a37e-4620-4ad5-b598-e1aa21c628ec">
+        <name>
+          <text>Insert Fine Notification</text>
+        </name>
+      </transition>
+      <transition id="145a654e-48f1-4d05-a6d1-1b417adc8c05">
+        <name>
+          <text>Receive Result Appeal from Prefecture</text>
+        </name>
+      </transition>
+      <arc id="5943992992" source="source" target="93316e09-0539-4e19-a045-4d943b08e3b2"/>
+      <arc id="5943988672" source="93316e09-0539-4e19-a045-4d943b08e3b2" target="p_3"/>
+      <arc id="5943989248" source="b380a37e-4620-4ad5-b598-e1aa21c628ec" target="p_5"/>
+      <arc id="5943992704" source="p_5" target="5dfacccf-5181-40bd-b51c-73c87082e081"/>
+      <arc id="5943992416" source="516690d8-a34f-422b-8f4d-2185199cd3ee" target="p_7"/>
+      <arc id="5943988384" source="p_7" target="fa246d6d-1c23-442e-972c-ae6ab6f11265"/>
+      <arc id="5943987808" source="p_8" target="145a654e-48f1-4d05-a6d1-1b417adc8c05"/>
+      <arc id="5943992128" source="145a654e-48f1-4d05-a6d1-1b417adc8c05" target="sink"/>
+      <arc id="5943992848" source="p_4" target="b380a37e-4620-4ad5-b598-e1aa21c628ec"/>
+      <arc id="5943993136" source="p_3" target="5fadbe13-a3e1-4e53-984a-0e3ee02db94e"/>
+      <arc id="5943989392" source="5fadbe13-a3e1-4e53-984a-0e3ee02db94e" target="p_4"/>
+      <arc id="5943989104" source="5dfacccf-5181-40bd-b51c-73c87082e081" target="p_6"/>
+      <arc id="5943988816" source="p_6" target="516690d8-a34f-422b-8f4d-2185199cd3ee"/>
+      <arc id="5943992272" source="fa246d6d-1c23-442e-972c-ae6ab6f11265" target="p_8"/>
+    </page>
+    <finalmarkings>
+      <marking>
+        <place idref="sink">
+          <text>1</text>
+        </place>
+      </marking>
+    </finalmarkings>
+  </net>
+</pnml>

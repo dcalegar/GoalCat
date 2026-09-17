@@ -1,0 +1,96 @@
+{
+  "run_id": "20260917_192308",
+  "rounds": {
+    "1": {
+      "round": 1,
+      "steps": {
+        "taxonomy": {
+          "call_count": 1,
+          "total_input_tokens": 3077,
+          "total_output_tokens": 701,
+          "total_prompt_chars": 11938,
+          "total_response_chars": 2533,
+          "total_latency_seconds": 4.958588584000154,
+          "total_estimated_cost_usd": 0.0026755999999999998
+        },
+        "assignment": {
+          "call_count": 1,
+          "total_input_tokens": 1325,
+          "total_output_tokens": 484,
+          "total_prompt_chars": 5237,
+          "total_response_chars": 1775,
+          "total_latency_seconds": 2.8500198749998162,
+          "total_estimated_cost_usd": 0.0016075
+        },
+        "description": {
+          "call_count": 1,
+          "total_input_tokens": 1894,
+          "total_output_tokens": 716,
+          "total_prompt_chars": 7926,
+          "total_response_chars": 2905,
+          "total_latency_seconds": 3.511907125000107,
+          "total_estimated_cost_usd": 0.0023582
+        }
+      },
+      "totals": {
+        "call_count": 3,
+        "total_input_tokens": 6296,
+        "total_output_tokens": 1901,
+        "total_prompt_chars": 25101,
+        "total_response_chars": 7213,
+        "total_latency_seconds": 11.320515584000077,
+        "total_estimated_cost_usd": 0.006641299999999999
+      }
+    },
+    "2": {
+      "round": 2,
+      "steps": {
+        "taxonomy": {
+          "call_count": 1,
+          "total_input_tokens": 3329,
+          "total_output_tokens": 585,
+          "total_prompt_chars": 12795,
+          "total_response_chars": 2165,
+          "total_latency_seconds": 2.243473042000005,
+          "total_estimated_cost_usd": 0.0024611999999999998
+        },
+        "assignment": {
+          "call_count": 1,
+          "total_input_tokens": 1293,
+          "total_output_tokens": 538,
+          "total_prompt_chars": 5070,
+          "total_response_chars": 2009,
+          "total_latency_seconds": 3.1257452919999196,
+          "total_estimated_cost_usd": 0.0017329000000000001
+        },
+        "description": {
+          "call_count": 1,
+          "total_input_tokens": 1666,
+          "total_output_tokens": 457,
+          "total_prompt_chars": 7023,
+          "total_response_chars": 1806,
+          "total_latency_seconds": 1.8900243329999284,
+          "total_estimated_cost_usd": 0.0016423
+        }
+      },
+      "totals": {
+        "call_count": 3,
+        "total_input_tokens": 6288,
+        "total_output_tokens": 1580,
+        "total_prompt_chars": 24888,
+        "total_response_chars": 5980,
+        "total_latency_seconds": 7.259242666999853,
+        "total_estimated_cost_usd": 0.0058364
+      }
+    }
+  },
+  "totals": {
+    "call_count": 6,
+    "total_input_tokens": 12584,
+    "total_output_tokens": 3481,
+    "total_prompt_chars": 49989,
+    "total_response_chars": 13193,
+    "total_latency_seconds": 18.57975825099993,
+    "total_estimated_cost_usd": 0.0124777
+  }
+}

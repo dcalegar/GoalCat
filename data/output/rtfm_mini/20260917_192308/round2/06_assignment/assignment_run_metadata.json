@@ -1,0 +1,22 @@
+{
+  "calls": [
+    {
+      "provider": "gemini",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "backend": "remote",
+      "temperature": 0.0,
+      "prompt_hash": "6af3c5a28503b087",
+      "latency_seconds": 3.1257452919999196,
+      "input_tokens": 1293,
+      "output_tokens": 538,
+      "prompt_chars": 5070,
+      "response_chars": 2009,
+      "raw_response": "{\n  \"assignments\": [\n    {\n      \"variant_id\": \"V0001\",\n      \"category_id\": \"timely_payment\",\n      \"rationale\": \"The narrative ends with Send Fine without any coercive collection or appeals, representing a standard fine issuance that aligns with timely payment expectations.\"\n    },\n    {\n      \"variant_id\": \"V0002\",\n      \"category_id\": \"delinquent_payment_and_coercive_collection\",\n      \"rationale\": \"The case involves fine notification, addition of a penalty, and ultimately ends with Send for Credit Collection, matching the coercive credit collection category.\"\n    },\n    {\n      \"variant_id\": \"V0003\",\n      \"category_id\": \"delinquent_payment_and_coercive_collection\",\n      \"rationale\": \"The narrative includes fine notification and a penalty before a late payment is made, reflecting resolution via delinquent payment.\"\n    },\n    {\n      \"variant_id\": \"V0004\",\n      \"category_id\": \"timely_payment\",\n      \"rationale\": \"The fine is created and immediately paid within 1 day, clearly realizing timely payment.\"\n    },\n    {\n      \"variant_id\": \"V0005\",\n      \"category_id\": \"judicial_appeal_judge\",\n      \"rationale\": \"The case concludes with an Appeal to Judge, directly realizing the judicial appeal to the judge category.\"\n    },\n    {\n      \"variant_id\": \"V0006\",\n      \"category_id\": \"administrative_appeal_prefecture\",\n      \"rationale\": \"The process involves an appeal to the Prefecture and receiving the result from the Prefecture, matching the administrative appeal category.\"\n    },\n    {\n      \"variant_id\": \"V0007\",\n      \"category_id\": \"delinquent_payment_and_coercive_collection\",\n      \"rationale\": \"The case proceeds through notification and penalty before payments are made, reflecting resolution after delinquency.\"\n    },\n    {\n      \"variant_id\": \"V0008\",\n      \"category_id\": \"delinquent_payment_and_coercive_collection\",\n      \"rationale\": \"The process includes notification, payment, penalty, and subsequent payment, indicating a delinquent resolution context.\"\n    }\n  ]\n}",
+      "estimated_cost_usd": 0.0017329000000000001
+    }
+  ],
+  "total_input_tokens": 1293,
+  "total_output_tokens": 538,
+  "total_latency_seconds": 3.1257452919999196,
+  "total_estimated_cost_usd": 0.0017329000000000001
+}

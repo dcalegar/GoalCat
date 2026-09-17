@@ -1,0 +1,9 @@
+variant_id,activity_sequence,trace_length,frequency,frequency_pct,representative_case_id,duration_seconds_mean,duration_seconds_median,duration_seconds_min,duration_seconds_max,outcome,rework,resource_distribution
+V0001,Create Fine>Send Fine,2,1,0.125,A1,11581200.0,11581200.0,11581200.0,11581200.0,Send Fine,{},"{""561"": 1}"
+V0002,Create Fine>Send Fine>Insert Fine Notification>Add penalty>Send for Credit Collection,5,1,0.125,A100,83894400.0,83894400.0,83894400.0,83894400.0,Send for Credit Collection,{},"{""561"": 1}"
+V0003,Create Fine>Send Fine>Insert Fine Notification>Add penalty>Payment,5,1,0.125,A10000,47516400.0,47516400.0,47516400.0,47516400.0,Payment,{},"{""561"": 1}"
+V0004,Create Fine>Payment,2,1,0.125,A10005,86400.0,86400.0,86400.0,86400.0,Payment,{},"{""537"": 1}"
+V0005,Create Fine>Send Fine>Insert Fine Notification>Add penalty>Appeal to Judge,5,1,0.125,A31588,11754000.0,11754000.0,11754000.0,11754000.0,Appeal to Judge,{},"{""563"": 1, ""0"": 1}"
+V0006,Create Fine>Send Fine>Insert Fine Notification>Insert Date Appeal to Prefecture>Send Appeal to Prefecture>Add penalty>Receive Result Appeal from Prefecture,7,1,0.125,C19128,6742800.0,6742800.0,6742800.0,6742800.0,Receive Result Appeal from Prefecture,{},"{""56"": 1}"
+V0007,Create Fine>Send Fine>Insert Fine Notification>Add penalty>Payment>Payment,6,1,0.125,A10009,19440000.0,19440000.0,19440000.0,19440000.0,Payment,"{""Payment"": 1}","{""537"": 1}"
+V0008,Create Fine>Send Fine>Insert Fine Notification>Payment>Add penalty>Payment,6,1,0.125,A10798,18054000.0,18054000.0,18054000.0,18054000.0,Payment,"{""Payment"": 1}","{""559"": 1}"

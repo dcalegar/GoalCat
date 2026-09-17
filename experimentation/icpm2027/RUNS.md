@@ -191,10 +191,28 @@ the default only covers two).
 
 Not run through `run_experiment.py` at all; it's the 8-case fixture behind the paper's running
 example (Table `tab:rtfm-mini`, Fig. `fig:rtfm-mini`) and Task C8's structural-vector-collapse
-demonstration, run directly through the base pipeline. Its single timestamped directory
-(`20260831_064805/`) holds one full Steps 1-9 execution including a real Step 9 merge-revision
-round (the *timely* + *delinquent payment* merge the paper's running-example text describes).
-Result: `data/output/icpm2027_results/rtfm_mini/c8_boolean_vector_collapse.md`.
+demonstration, run directly through the base pipeline.
+
+Three timestamped directories, each a full Steps 1-9 execution:
+
+- `20260917_192308/` — **the current one.** Gemini 3.5 Flash Lite, produced by the example script
+  as it now stands. Its Step 9 merge is *delinquent payment* + *coercive credit collection*
+  (ids 13 and 20, siblings under Or point 6).
+- `20260831_064805/` — predates `check_axis_partition` (commit `b016cb9`, the same day). Its Step
+  9 merge is *timely* + *delinquent payment*, ids 12 and 13, which sit under Or points 4 and 6
+  respectively. The current code rejects that merge, so this run is not reproducible.
+- `20260917_144500/` — the same fixture driven by Claude Fable 5.1 through the `manual/` provider;
+  see its `PROVENANCE.md`. Not a Gemini run and not part of any reported result.
+
+**Consequence for the paper.** The running-example text describes the *timely* + *delinquent
+payment* merge, and `data/output/icpm2027_results/rtfm_mini/c8_boolean_vector_collapse.md` names
+the category `resolve_via_timely_or_delinquent_payment` that merge produced. Neither is
+reproducible: that merge combines alternatives under two different Or points, which the axis
+check now rejects, and rightly — it is not a merge within one decomposition. C8's substance is
+unaffected (V0003, V0007 and V0008 still share one activity vector and still land in one
+category, `delinquent_payment` in round 1 of the current run), but the category name and the
+running example's merge both need updating in the text. Result:
+`data/output/icpm2027_results/rtfm_mini/c8_boolean_vector_collapse.md`.
 
 ## Superseded and deleted runs
 

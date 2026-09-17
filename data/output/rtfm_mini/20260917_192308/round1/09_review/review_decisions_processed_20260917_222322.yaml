@@ -1,0 +1,13 @@
+decision: revise
+notes: null
+renames: []
+merges:
+- category_ids:
+  - delinquent_payment
+  - coercive_credit_collection
+  reason: 'Scripted rework-loop demonstration (experimentation/examples/rtfm_mini/example_run.py):
+    merging delinquent_payment and coercive_credit_collection, whose anchors are siblings
+    under Or point id=6 (the first such pair in taxonomy order, so the merge passes
+    Step 5a''s axis-partition check), to exercise Step 9''s revise path end-to-end
+    (new round, Steps 5-8 re-run).'
+splits: []

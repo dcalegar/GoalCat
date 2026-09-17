@@ -1,0 +1,66 @@
+{
+  "categories": [
+    {
+      "category_id": "timely_payment",
+      "name": "Resolve via timely payment",
+      "description": "Resolution of the fine through timely payment, advancing Maximize timely fine revenue and minimizing administrative and enforcement costs.",
+      "anchor_ids": [
+        "12"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task 12 as evidenced by variant V0004 where payment occurs directly after fine creation.",
+      "evidence_variant_ids": [
+        "V0004"
+      ]
+    },
+    {
+      "category_id": "delinquent_payment",
+      "name": "Resolve via delinquent payment",
+      "description": "Resolution of the case through payment after notification and penalty have been applied, contributing to timely fine revenue.",
+      "anchor_ids": [
+        "13"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task 13, evidenced by variants V0003, V0007, and V0008 where payment follows enforcement steps.",
+      "evidence_variant_ids": [
+        "V0003",
+        "V0007",
+        "V0008"
+      ]
+    },
+    {
+      "category_id": "administrative_appeal_prefecture",
+      "name": "Resolve via administrative appeal to the Prefecture",
+      "description": "Resolution via an administrative appeal process directed to the Prefecture, preserving due-process rights.",
+      "anchor_ids": [
+        "14"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task 14, supported by variant V0006 showing appeal insertion and sending.",
+      "evidence_variant_ids": [
+        "V0006"
+      ]
+    },
+    {
+      "category_id": "judicial_appeal_judge",
+      "name": "Resolve via judicial appeal to the Judge",
+      "description": "Resolution through a judicial appeal brought before a judge, strongly making offender's due-process rights.",
+      "anchor_ids": [
+        "19"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task 19, supported by variant V0005 culminating in an appeal to the judge.",
+      "evidence_variant_ids": [
+        "V0005"
+      ]
+    },
+    {
+      "category_id": "coercive_credit_collection",
+      "name": "Resolve via coercive credit collection",
+      "description": "Resolution of the fine via coercive credit collection procedures, helping fine revenue while hurting administrative costs.",
+      "anchor_ids": [
+        "20"
+      ],
+      "rationale": "Maps 1:1 to declared alternative task 20, evidenced by variant V0002 ending with credit collection.",
+      "evidence_variant_ids": [
+        "V0002"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "calls": [
+    {
+      "provider": "gemini",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "backend": "remote",
+      "temperature": 0.0,
+      "prompt_hash": "4a63179d7031a087",
+      "latency_seconds": 2.8500198749998162,
+      "input_tokens": 1325,
+      "output_tokens": 484,
+      "prompt_chars": 5237,
+      "response_chars": 1775,
+      "raw_response": "{\n  \"assignments\": [\n    {\n      \"variant_id\": \"V0001\",\n      \"category_id\": null,\n      \"rationale\": \"The narrative ends with Send Fine and has no payment or appeal resolution, so it does not fit any completed resolution category.\"\n    },\n    {\n      \"variant_id\": \"V0002\",\n      \"category_id\": \"coercive_credit_collection\",\n      \"rationale\": \"The process ends with the Send for Credit Collection activity, directly realizing coercive credit collection.\"\n    },\n    {\n      \"variant_id\": \"V0003\",\n      \"category_id\": \"delinquent_payment\",\n      \"rationale\": \"The fine is paid after a notification and a penalty have been applied, matching resolution via delinquent payment.\"\n    },\n    {\n      \"variant_id\": \"V0004\",\n      \"category_id\": \"timely_payment\",\n      \"rationale\": \"The fine is paid immediately after creation without notifications or penalties, realizing timely payment.\"\n    },\n    {\n      \"variant_id\": \"V0005\",\n      \"category_id\": \"judicial_appeal_judge\",\n      \"rationale\": \"The process concludes with an Appeal to Judge after notification and penalty, realizing judicial appeal to the judge.\"\n    },\n    {\n      \"variant_id\": \"V0006\",\n      \"category_id\": \"administrative_appeal_prefecture\",\n      \"rationale\": \"The process involves an appeal to the Prefecture and ends with receiving the result of the appeal from the Prefecture.\"\n    },\n    {\n      \"variant_id\": \"V0007\",\n      \"category_id\": \"delinquent_payment\",\n      \"rationale\": \"Payment occurs after the fine notification and penalty are applied, representing delinquent payment.\"\n    },\n    {\n      \"variant_id\": \"V0008\",\n      \"category_id\": \"delinquent_payment\",\n      \"rationale\": \"Payment happens after fine notification and penalty application, aligning with delinquent payment.\"\n    }\n  ]\n}",
+      "estimated_cost_usd": 0.0016075
+    }
+  ],
+  "total_input_tokens": 1325,
+  "total_output_tokens": 484,
+  "total_latency_seconds": 2.8500198749998162,
+  "total_estimated_cost_usd": 0.0016075
+}

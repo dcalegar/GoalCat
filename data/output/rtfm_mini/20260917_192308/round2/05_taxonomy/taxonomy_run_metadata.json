@@ -1,0 +1,14 @@
+{
+  "provider": "gemini",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "backend": "remote",
+  "temperature": 0.0,
+  "prompt_hash": "6580939bc96d5281",
+  "latency_seconds": 2.243473042000005,
+  "input_tokens": 3329,
+  "output_tokens": 585,
+  "prompt_chars": 12795,
+  "response_chars": 2165,
+  "raw_response": "{\n  \"categories\": [\n    {\n      \"category_id\": \"timely_payment\",\n      \"name\": \"Resolve via timely payment\",\n      \"description\": \"Resolution of the fine through timely payment, advancing Maximize timely fine revenue and minimizing administrative and enforcement costs.\",\n      \"anchor_ids\": [\n        \"12\"\n      ],\n      \"rationale\": \"Maps 1:1 to declared alternative task 12 as evidenced by variant V0004 where payment occurs directly after fine creation.\",\n      \"evidence_variant_ids\": [\n        \"V0004\"\n      ]\n    },\n    {\n      \"category_id\": \"delinquent_payment_and_coercive_collection\",\n      \"name\": \"Resolve via delinquent payment or coercive credit collection\",\n      \"description\": \"Resolution of the case through delinquent payment or coercive credit collection after notification and penalty have been applied.\",\n      \"anchor_ids\": [\n        \"13\",\n        \"20\"\n      ],\n      \"rationale\": \"Merged per reviewer request to combine sibling alternatives under XOR point id=6 (delinquent payment and coercive credit collection) for script experimentation.\",\n      \"evidence_variant_ids\": [\n        \"V0002\",\n        \"V0003\",\n        \"V0007\",\n        \"V0008\"\n      ]\n    },\n    {\n      \"category_id\": \"administrative_appeal_prefecture\",\n      \"name\": \"Resolve via administrative appeal to the Prefecture\",\n      \"description\": \"Resolution via an administrative appeal process directed to the Prefecture, preserving due-process rights.\",\n      \"anchor_ids\": [\n        \"14\"\n      ],\n      \"rationale\": \"Maps 1:1 to declared alternative task 14, supported by variant V0006 showing appeal insertion and sending.\",\n      \"evidence_variant_ids\": [\n        \"V0006\"\n      ]\n    },\n    {\n      \"category_id\": \"judicial_appeal_judge\",\n      \"name\": \"Resolve via judicial appeal to the Judge\",\n      \"description\": \"Resolution through a judicial appeal brought before a judge, strongly making offender's due-process rights.\",\n      \"anchor_ids\": [\n        \"19\"\n      ],\n      \"rationale\": \"Maps 1:1 to declared alternative task 19, supported by variant V0005 culminating in an appeal to the judge.\",\n      \"evidence_variant_ids\": [\n        \"V0005\"\n      ]\n    }\n  ]\n}",
+  "estimated_cost_usd": 0.0024611999999999998
+}

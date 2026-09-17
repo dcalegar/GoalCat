@@ -1,0 +1,16 @@
+{
+  "call": {
+    "provider": "gemini",
+    "model": "gemini/gemini-3.5-flash-lite",
+    "backend": "remote",
+    "temperature": 0.0,
+    "prompt_hash": "4d45d316a3591bba",
+    "latency_seconds": 1.8900243329999284,
+    "input_tokens": 1666,
+    "output_tokens": 457,
+    "prompt_chars": 7023,
+    "response_chars": 1806,
+    "raw_response": "{\n  \"assessments\": [\n    {\n      \"category_id\": \"timely_payment\",\n      \"goal_alignment\": \"The discovered evidence supports the goal of timely payment with a tight model (precision 1.00, fitness 1.00) and consistent waiting times, though the measured satisfaction for time to fine dispatch is -16 (statutory, 50% coverage) while average time to case closure scores +100 (external-by-analogy, 50% coverage).\"\n    },\n    {\n      \"category_id\": \"delinquent_payment_and_coercive_collection\",\n      \"goal_alignment\": \"The discovered evidence reflects resolution via delinquent payment and coercive collection through a tightly bounded model (precision 0.91, fitness 1.00) with moderate variant concentration and variability. Measured satisfaction shows a negative score of -13 for time to fine dispatch (statutory) and a -100 score for average time to case closure (external-by-analogy), highlighting significant delays in achieving final closure.\"\n    },\n    {\n      \"category_id\": \"administrative_appeal_prefecture\",\n      \"goal_alignment\": \"The single-variant path and tightly bounded model (precision 1.00, fitness 1.00) support resolution via administrative appeal to the Prefecture. This is reinforced by positive measured satisfaction scores of +100 for time to fine dispatch (statutory), time to appeal filing (statutory), and average time to case closure (external-by-analogy).\"\n    },\n    {\n      \"category_id\": \"judicial_appeal_judge\",\n      \"goal_alignment\": \"The single-variant path and tightly bounded model (precision 1.00, fitness 1.00) align with the goal of judicial appeal to the Judge. Measured satisfaction is mixed, with +73 for time to fine dispatch (statutory) but a negative score of -100 for time to appeal filing (statutory), pointing to delays in the appeal filing step.\"\n    }\n  ]\n}",
+    "estimated_cost_usd": 0.0016423
+  }
+}
