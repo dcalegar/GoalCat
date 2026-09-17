@@ -21,6 +21,7 @@ from pathlib import Path
 
 import yaml
 
+from goalcat import grl
 from goalcat.config import load_config, new_run_id
 from goalcat.llm.taxonomy import Taxonomy
 from goalcat.pipeline import (
@@ -42,10 +43,36 @@ CONFIG_PATH = Path(__file__).with_name("config_mini.yaml")
 MAX_REWORK_ROUNDS = 5
 
 
+def _mergeable_pair(taxonomy: Taxonomy, model: grl.GRLModel) -> tuple[str, str, str] | None:
+    """First pair of categories (in taxonomy order) that Step 5a's `check_axis_partition` will
+    accept as one merged category: every anchor of both categories must be a child of the *same*
+    Or-decomposed parent. Anchors under different decomposition points, or under an Xor point
+    (mutually exclusive by ITU-T Z.151), are rejected by that check and would abort the revision
+    round — the RTFM goal model's `Resolve via timely payment` (id 12, under Or 4) can never be
+    merged with the enforcement closures (ids 13/20, under Or 6), and the two appeals (14/19)
+    are Xor siblings. Returns (category_id_a, category_id_b, parent_id), or None if no such pair
+    exists."""
+    for i, a in enumerate(taxonomy.categories):
+        for b in taxonomy.categories[i + 1 :]:
+            anchors = list(a.anchor_ids) + list(b.anchor_ids)
+            if not anchors:
+                continue
+            parents = {model.parent_of(anchor) for anchor in anchors}
+            if len(parents) != 1:
+                continue
+            parent_id = next(iter(parents))
+            parent = model.elements.get(parent_id) if parent_id is not None else None
+            if parent is not None and parent.decomposition_type == "Or":
+                return a.category_id, b.category_id, parent_id
+    return None
+
+
 def _write_scripted_decision(config_path: Path, run_id: str, round_num: int, round_index: int, logger) -> None:
-    """round_index 0 (first round reached) requests a merge of the taxonomy's first two
-    categories, to genuinely exercise the revise path end-to-end; every later round accepts, so
-    the loop converges in exactly two rounds."""
+    """round_index 0 (first round reached) requests a merge of two induced categories, to
+    genuinely exercise the revise path end-to-end; every later round accepts, so the loop
+    converges in exactly two rounds. The pair is not simply the first two categories: the LLM
+    returns categories in an arbitrary order, and Step 5a rejects a merge whose anchors span two
+    decomposition points, so the pair is chosen by `_mergeable_pair()` against the goal model."""
     config = load_config(config_path, run_id, round_num)
     taxonomy = Taxonomy.model_validate_json((config.taxonomy_dir / "taxonomy.json").read_text(encoding="utf-8"))
 
@@ -55,7 +82,15 @@ def _write_scripted_decision(config_path: Path, run_id: str, round_num: int, rou
                 f"Rework-loop demo needs >=2 induced categories to request a merge, got "
                 f"{len(taxonomy.categories)} in run {run_id} round {round_num}."
             )
-        a, b = taxonomy.categories[0].category_id, taxonomy.categories[1].category_id
+        model = grl.read_jucm(config.goal_model_path)
+        pair = _mergeable_pair(taxonomy, model)
+        if pair is None:
+            raise RuntimeError(
+                f"Rework-loop demo found no pair of categories whose anchors share one Or-decomposed "
+                f"parent in run {run_id} round {round_num}; a merge of any two would be rejected by "
+                "Step 5a's axis-partition check."
+            )
+        a, b, parent_id = pair
         decisions = ReviewDecisions(
             decision="revise",
             merges=[
@@ -63,8 +98,10 @@ def _write_scripted_decision(config_path: Path, run_id: str, round_num: int, rou
                     category_ids=[a, b],
                     reason=(
                         "Scripted rework-loop demonstration (experimentation/examples/rtfm_mini/example_run.py): "
-                        f"merging the first two induced categories ({a}, {b}) to exercise Step 9's "
-                        "revise path end-to-end (new round, Steps 5-8 re-run)."
+                        f"merging {a} and {b}, whose anchors are siblings under Or point id={parent_id} "
+                        "(the first such pair in taxonomy order, so the merge passes Step 5a's "
+                        "axis-partition check), to exercise Step 9's revise path end-to-end "
+                        "(new round, Steps 5-8 re-run)."
                     ),
                 )
             ],

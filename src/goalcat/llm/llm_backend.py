@@ -7,9 +7,14 @@ the user's shell profile (e.g. ~/.bash_profile), never store one in a file insid
 
 from __future__ import annotations
 
+import asyncio
 import hashlib
+import itertools
+import json
 import logging
+import os
 import time
+from pathlib import Path
 from typing import TypeVar
 
 from pydantic import BaseModel, ValidationError
@@ -45,6 +50,15 @@ class RunMetadata(BaseModel):
 # litellm provider prefixes that route to a locally-hosted model rather than a hosted API —
 # checked against the model string's provider segment to fill RunMetadata.backend.
 _LOCAL_PROVIDERS = {"ollama", "ollama_chat"}
+
+# `manual/<label>` routes a call to a human (or an external agent) instead of litellm: the
+# rendered prompt and, for structured calls, the JSON schema are written to the directory named
+# by GOALCAT_MANUAL_LLM_DIR, and the adapter blocks until a `<name>.response.txt` appears there.
+# Token counts are unknown (None), so estimate_cost_usd() reports null, never a fabricated 0.0.
+_MANUAL_PROVIDER = "manual"
+_MANUAL_DIR_ENV = "GOALCAT_MANUAL_LLM_DIR"
+_MANUAL_POLL_SECONDS = 2.0
+_manual_seq = itertools.count(1)
 
 
 def estimate_cost_usd(
@@ -88,23 +102,27 @@ class LLMBackend:
         different handling: a validation failure means asking again with the same input,
         a transport failure means the same request didn't arrive or return.
         """
-        import litellm
-
         prompt_hash = _hash_prompt(prompt)
         last_error: Exception | None = None
 
         for attempt in range(1, self._config.max_retries + 1):
             start = time.monotonic()
-            response = await litellm.acompletion(
-                model=self._model,
-                messages=[{"role": "user", "content": prompt}],
-                response_format=output_schema,
-                temperature=self._config.temperature,
-                timeout=self._config.timeout_seconds,
-                num_retries=self._config.max_retries,
-            )
+            if self._is_manual():
+                raw_content = await self._manual_call(prompt, prompt_hash, output_schema)
+                response = None
+            else:
+                import litellm
+
+                response = await litellm.acompletion(
+                    model=self._model,
+                    messages=[{"role": "user", "content": prompt}],
+                    response_format=output_schema,
+                    temperature=self._config.temperature,
+                    timeout=self._config.timeout_seconds,
+                    num_retries=self._config.max_retries,
+                )
+                raw_content = response.choices[0].message.content
             latency = time.monotonic() - start
-            raw_content = response.choices[0].message.content
 
             try:
                 parsed = output_schema.model_validate_json(raw_content)
@@ -140,19 +158,23 @@ class LLMBackend:
         """Calls the model for free-form prose. General-purpose method on the adapter -- every
         pipeline step currently uses generate_structured() instead (Step 8's goal_alignment is a
         batched list response, so it needs a schema to map judgments back to category_ids)."""
-        import litellm
-
         prompt_hash = _hash_prompt(prompt)
         start = time.monotonic()
-        response = await litellm.acompletion(
-            model=self._model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=self._config.temperature,
-            timeout=self._config.timeout_seconds,
-            num_retries=self._config.max_retries,
-        )
+        if self._is_manual():
+            text = await self._manual_call(prompt, prompt_hash, None)
+            response = None
+        else:
+            import litellm
+
+            response = await litellm.acompletion(
+                model=self._model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=self._config.temperature,
+                timeout=self._config.timeout_seconds,
+                num_retries=self._config.max_retries,
+            )
+            text = response.choices[0].message.content
         latency = time.monotonic() - start
-        text = response.choices[0].message.content
 
         metadata = self._run_metadata(prompt_hash, len(prompt), latency, text, response)
         self._logger.info(
@@ -164,6 +186,36 @@ class LLMBackend:
         )
         return text, metadata
 
+    def _is_manual(self) -> bool:
+        return self._model.split("/", 1)[0] == _MANUAL_PROVIDER
+
+    async def _manual_call(self, prompt: str, prompt_hash: str, output_schema: type[BaseModel] | None) -> str:
+        """Hands one call to a human/external agent through the filesystem and waits for the
+        reply. Files: `<seq>_<hash>.prompt.txt` (the exact prompt), `<seq>_<hash>.schema.json`
+        (the pydantic JSON schema the reply must satisfy, structured calls only), and the reply
+        `<seq>_<hash>.response.txt`, read once it exists and is non-empty."""
+        manual_dir = os.environ.get(_MANUAL_DIR_ENV)
+        if not manual_dir:
+            raise LLMGenerationError(
+                f"model {self._model!r} uses the manual provider but {_MANUAL_DIR_ENV} is not set"
+            )
+        base = Path(manual_dir)
+        base.mkdir(parents=True, exist_ok=True)
+        name = f"{next(_manual_seq):03d}_{prompt_hash}"
+        (base / f"{name}.prompt.txt").write_text(prompt, encoding="utf-8")
+        if output_schema is not None:
+            (base / f"{name}.schema.json").write_text(
+                json.dumps(output_schema.model_json_schema(), indent=2), encoding="utf-8"
+            )
+        response_path = base / f"{name}.response.txt"
+        self._logger.info("Manual LLM call %s: waiting for %s", name, response_path)
+        while True:
+            if response_path.exists():
+                text = response_path.read_text(encoding="utf-8")
+                if text.strip():
+                    return text
+            await asyncio.sleep(_MANUAL_POLL_SECONDS)
+
     def _run_metadata(
         self, prompt_hash: str, prompt_chars: int, latency: float, raw_content: str, response
     ) -> RunMetadata:
@@ -172,7 +224,8 @@ class LLMBackend:
         return RunMetadata(
             provider=provider,
             model=self._model,
-            backend="local" if provider in _LOCAL_PROVIDERS else "remote",
+            backend="manual" if provider == _MANUAL_PROVIDER
+            else ("local" if provider in _LOCAL_PROVIDERS else "remote"),
             temperature=self._config.temperature,
             prompt_hash=prompt_hash,
             latency_seconds=latency,
