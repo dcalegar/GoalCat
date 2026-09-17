@@ -292,8 +292,13 @@ variable, then polls every 2 s until `<seq>_<prompt-hash>.response.txt` appears 
 non-empty. The reply goes through the same schema validation and retry loop as a model's would,
 so a malformed one is re-requested as a new prompt file. This exists so that a human — or an
 external agent acting as the LLM — can drive the full pipeline, rework loop included, on a
-machine with no API key and no local model. `RunMetadata.backend` records `manual`; token counts
-are `None` and `estimated_cost_usd` is `null`, since nothing was metered. Set `concurrency: 1` so
+machine with no API key and no local model. The wait is bounded by
+`GOALCAT_MANUAL_LLM_TIMEOUT_SECONDS` (one hour per call by default; `0` waits indefinitely) —
+the `llm.timeout_seconds` config knob is scaled for a hosted call and does not govern this path,
+but an unattended run that nobody answers must fail naming the file it wanted rather than hang.
+`RunMetadata.backend` records `manual`; token counts are `None` and `estimated_cost_usd` is
+`null`, since nothing was metered; `temperature` is `null` rather than the configured value,
+because no sampling parameter governed a reply a person or an agent wrote by hand. Set `concurrency: 1` so
 prompts arrive one at a time; Step 6 still batches `assignment_batch_size` narratives per prompt.
 Verified end to end on `rtfm_mini`: the committed run `data/output/rtfm_mini/20260917_144500`
 was generated this way from within Claude Code, with Anthropic's Claude Fable 5.1 model writing

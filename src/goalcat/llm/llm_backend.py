@@ -37,7 +37,11 @@ class RunMetadata(BaseModel):
     provider: str
     model: str
     backend: str
-    temperature: float
+    # None under the manual provider: the reply is written by a human or an external agent,
+    # so no sampling temperature governed it. Recording the config's value there would assert
+    # a sampling parameter that never applied — the one number in this record that would be
+    # false rather than merely unknown.
+    temperature: float | None
     prompt_hash: str
     latency_seconds: float
     input_tokens: int | None = None
@@ -58,7 +62,28 @@ _LOCAL_PROVIDERS = {"ollama", "ollama_chat"}
 _MANUAL_PROVIDER = "manual"
 _MANUAL_DIR_ENV = "GOALCAT_MANUAL_LLM_DIR"
 _MANUAL_POLL_SECONDS = 2.0
+# A manual reply is written by a person or an agent, so the hosted `timeout_seconds` (tens of
+# seconds) is the wrong scale. One hour per call by default, overridable; 0 restores an
+# unbounded wait for an interactive session that is being watched.
+_MANUAL_TIMEOUT_ENV = "GOALCAT_MANUAL_LLM_TIMEOUT_SECONDS"
+_MANUAL_TIMEOUT_DEFAULT_SECONDS = 3600.0
 _manual_seq = itertools.count(1)
+
+
+def _manual_timeout_seconds() -> float:
+    """How long a manual call waits for its reply file, from `GOALCAT_MANUAL_LLM_TIMEOUT_SECONDS`.
+
+    Returns 0.0 for an unbounded wait. An unparseable or negative value is a configuration
+    mistake, not a reason to hang forever, so it falls back to the default.
+    """
+    raw = os.environ.get(_MANUAL_TIMEOUT_ENV)
+    if raw is None:
+        return _MANUAL_TIMEOUT_DEFAULT_SECONDS
+    try:
+        value = float(raw)
+    except ValueError:
+        return _MANUAL_TIMEOUT_DEFAULT_SECONDS
+    return value if value >= 0 else _MANUAL_TIMEOUT_DEFAULT_SECONDS
 
 
 def estimate_cost_usd(
@@ -193,7 +218,11 @@ class LLMBackend:
         """Hands one call to a human/external agent through the filesystem and waits for the
         reply. Files: `<seq>_<hash>.prompt.txt` (the exact prompt), `<seq>_<hash>.schema.json`
         (the pydantic JSON schema the reply must satisfy, structured calls only), and the reply
-        `<seq>_<hash>.response.txt`, read once it exists and is non-empty."""
+        `<seq>_<hash>.response.txt`, read once it exists and is non-empty.
+
+        Waits up to `GOALCAT_MANUAL_LLM_TIMEOUT_SECONDS` (1 h by default, 0 for no limit) rather
+        than indefinitely: an unattended run that nobody is answering must fail with a message
+        naming the file it wanted, not hang."""
         manual_dir = os.environ.get(_MANUAL_DIR_ENV)
         if not manual_dir:
             raise LLMGenerationError(
@@ -208,12 +237,25 @@ class LLMBackend:
                 json.dumps(output_schema.model_json_schema(), indent=2), encoding="utf-8"
             )
         response_path = base / f"{name}.response.txt"
-        self._logger.info("Manual LLM call %s: waiting for %s", name, response_path)
+        timeout = _manual_timeout_seconds()
+        self._logger.info(
+            "Manual LLM call %s: waiting for %s (timeout %s)",
+            name,
+            response_path,
+            f"{timeout:.0f}s" if timeout else "none",
+        )
+        deadline = time.monotonic() + timeout if timeout else None
         while True:
             if response_path.exists():
                 text = response_path.read_text(encoding="utf-8")
                 if text.strip():
                     return text
+            if deadline is not None and time.monotonic() >= deadline:
+                raise LLMGenerationError(
+                    f"manual LLM call {name} got no reply within {timeout:.0f}s: expected a "
+                    f"non-empty {response_path}. Set {_MANUAL_TIMEOUT_ENV} to raise the limit, "
+                    "or to 0 to wait indefinitely."
+                )
             await asyncio.sleep(_MANUAL_POLL_SECONDS)
 
     def _run_metadata(
@@ -226,7 +268,7 @@ class LLMBackend:
             model=self._model,
             backend="manual" if provider == _MANUAL_PROVIDER
             else ("local" if provider in _LOCAL_PROVIDERS else "remote"),
-            temperature=self._config.temperature,
+            temperature=None if provider == _MANUAL_PROVIDER else self._config.temperature,
             prompt_hash=prompt_hash,
             latency_seconds=latency,
             input_tokens=getattr(usage, "prompt_tokens", None),
