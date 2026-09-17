@@ -204,14 +204,21 @@ Three timestamped directories, each a full Steps 1-9 execution:
 - `20260917_144500/` — the same fixture driven by Claude Fable 5.1 through the `manual/` provider;
   see its `PROVENANCE.md`. Not a Gemini run and not part of any reported result.
 
-**Consequence for the paper.** The running-example text describes the *timely* + *delinquent
-payment* merge, and `data/output/icpm2027_results/rtfm_mini/c8_boolean_vector_collapse.md` names
-the category `resolve_via_timely_or_delinquent_payment` that merge produced. Neither is
-reproducible: that merge combines alternatives under two different Or points, which the axis
-check now rejects, and rightly — it is not a merge within one decomposition. C8's substance is
-unaffected (V0003, V0007 and V0008 still share one activity vector and still land in one
-category, `delinquent_payment` in round 1 of the current run), but the category name and the
-running example's merge both need updating in the text. Result:
+**What the paper actually uses.** Round 1, not round 2. Table `tab:rtfm-mini` lists the five-way
+guided categorization with `V0001` in the residual, and `20260917_192308`'s round 1 reproduces it
+on all eight rows. The paper never describes a Step 9 merge of this fixture: Step 9's merge
+appears only as a capability (§ Analyst review) and RQ2's Perturbation B, which merges
+*delinquent* + *coercive* in the **goal model**, not in a taxonomy, and is a different operation
+on a different artifact. An earlier version of this file claimed the running-example text
+describes the *timely* + *delinquent payment* merge; it does not.
+
+**One artifact does need updating.** `data/output/icpm2027_results/rtfm_mini/c8_boolean_vector_collapse.md`
+names the category `resolve_via_timely_or_delinquent_payment`, which only ever existed in
+`20260831_064805`'s round 2 — the merge the axis check now rejects. That name also contradicts
+the paper's own text, which says V0003, V0007 and V0008 are "all assigned to *delinquent
+payment*". C8's substance is unaffected: the three still share one activity vector and still land
+in one category, `delinquent_payment` in the current run's round 1, which is what the paper says.
+Only the category name in that file needs correcting. Result:
 `data/output/icpm2027_results/rtfm_mini/c8_boolean_vector_collapse.md`.
 
 ## Superseded and deleted runs

@@ -492,7 +492,8 @@ point 6), chosen by `_mergeable_pair()`. Two things in it are worth knowing befo
   correctly left it in the residual in round 1. Its own rationale concedes the point — "the
   narrative ends with Send Fine". This is a Step 6 misassignment, not a pipeline defect, and it
   is recorded rather than re-rolled: re-running until the fixture's residual survives would be
-  selecting a draw for its output. Cite round 1 when the residual path is the point.
+  selecting a draw for its output. Cite round 1 when the residual path is the point — which is
+  what the paper's running example does, and its round 1 reproduces that table on all eight rows.
 
 The runs behind the ICPM 2027 replication package live separately, under
 `experimentation/icpm2027/` — see [`experimentation/README.md`](experimentation/README.md)
