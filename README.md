@@ -1,5 +1,7 @@
 # GoalCat
 
+[![DOI](https://zenodo.org/badge/1338713358.svg)](https://doi.org/10.5281/zenodo.22829941)
+
 GoalCat is a goal-driven process-variant categorization pipeline. Process discovery on real
 event logs typically yields unreadable "spaghetti" models; the conventional fix clusters variants
 on their structure first and attaches a business-meaning label afterward. GoalCat inverts that
@@ -12,6 +14,30 @@ matches nothing is not discarded: it is reported as a residual, evidence that th
 model does not yet cover something the process actually does. When no goal model can be authored for
 a log, the same pipeline falls back to open taxonomy induction, proposing categories directly from
 the narratives.
+
+<!-- 
+### Citation
+
+A preprint version of the accompanying paper is available on arXiv:
+
+> Daniel Calegari, Daniel Amyot.
+> *A Framework for Object-Centric Predictive Monitoring of Collaborative
+> Processes.* Preprint, arXiv:2608.27671, 2026.
+> <https://arxiv.org/abs/2608.27671>
+
+```bibtex
+@misc{calegari2026ocpm,
+  title        = {A Framework for Object-Centric Predictive Monitoring of Collaborative Processes},
+  author       = {Calegari, Daniel and Delgado, Andrea and Pe\~{n}a, Leonel and Rubio, Mart\'{i}n},
+  year         = {2026},
+  eprint       = {2608.27671},
+  archiveprefix = {arXiv},
+  primaryclass = {cs.SE},
+  howpublished = {arXiv preprint arXiv:2608.27671},
+  url          = {https://arxiv.org/abs/2608.27671}
+}
+```
+-->
 
 ## Pipeline at a glance
 
