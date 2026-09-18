@@ -176,6 +176,7 @@ reproducibility question is Step 6 assignment variance, which the replicate rang
 ```
 GoalCat/
 ├── LICENSE                # AGPL-3.0-or-later, matching pyproject.toml's declaration
+├── CITATION.cff           # software citation metadata (GitHub "Cite this repository", Zenodo)
 ├── pyproject.toml, requirements-lock.txt, .python-version
 ├── data/
 │   ├── README.md          # study cases, references, how to read an output run — see below

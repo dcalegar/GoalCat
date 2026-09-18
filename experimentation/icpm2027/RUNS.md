@@ -54,6 +54,64 @@ variant(s) from `assignments.csv` entirely, and a short file must never be silen
 (hit twice in practice: Sepsis's `icpm2027_e1_open_rep1`, 2026-08-29; BPIC 2019's
 `icpm2027_e1_label_list_rep1`, 2026-09-04 — both resumed and completed before being aggregated).
 
+## Recorded commit and the `git_dirty` flag
+
+All 111 tracked manifests record `environment.git_dirty: true`. `manifest.py`'s `git_is_dirty()`
+sets the flag when `git status --porcelain` prints anything, so it does not distinguish modified
+tracked files from untracked ones, and it does not record which paths were involved. Two causes
+apply:
+
+- **Untracked run outputs, in every run.** `.gitignore` re-includes
+  `data/output/{rtfm,sepsis,bpic2019}/`, so the run's own directory, and any other run not yet
+  committed, is untracked while the run executes. No run under this harness can record a clean
+  tree.
+- **Uncommitted configuration, in two run sets.** Those runs executed with `configs/` and harness
+  edits that were committed only in the next commit.
+
+The table gives, for each run set, the commit whose `experimentation/icpm2027/` sources regenerate
+every condition config byte-for-byte:
+
+| Run set | Runs | Recorded `git_commit` | Sources that reproduce the configs | Evidence of uncommitted edits |
+|---|---|---|---|---|
+| Every `protocol_version` 1.1.0 condition, all three logs | 89 | `7d93545` | `ea00c0a` (committed 2026-09-05 04:06 UTC; the last of these runs finished 2026-09-04 23:53 UTC) | `protocol.yaml` at `7d93545` reads 1.0.0 with batch size 50; the manifests read 1.1.0 with batch size 25. The `label_list_strict` arm and the `pertC_distractor_<parent_id>_<id>` naming do not exist at `7d93545`. |
+| RTFM and Sepsis `c12_*_stability_rep1`–`5` | 15 | `b016cb9` | `b016cb9` | None found |
+| BPIC 2019 `c12_guided_stability_rep1`–`5` | 5 | `bb77e5f` | `bb77e5f` | None found |
+| BPIC 2019 `e1_guided_no_sample_rep1`, `rep2` | 2 | `bb77e5f` | `bb77e5f` plus C10's 2026-08-29 amendment, committed in `b016cb9` | The manifests record C10's BPIC 2019 exception (batch size 25), which `preregistration.yaml` at `bb77e5f` lacks |
+
+Checked on 2026-09-18 against every tracked manifest, with no failures:
+
+- The event-log, goal-model (including every perturbed variant) and prompt-template hashes match
+  the committed files at the reproducing commit.
+- The Steps 1-4 base artifacts, the prompts sent, `taxonomy.json` and `assignments.csv` match the
+  tracked files, so no hashed output has changed since its manifest was written.
+- `protocol.write_condition_config()`, run over the reproducing commit's sources, regenerates each
+  recorded `condition_config.yaml` hash. For the 12 label-list runs,
+  `conditions.write_label_list_taxonomy()` regenerates the recorded `taxonomy.json` from the
+  committed `configs/label_lists/*.yaml`.
+- `conditions._decision_record()` reproduces each manifest's `decisions` block, except in 38 of
+  the 89 1.1.0 runs, which differ in C5 alone (below).
+
+**C5 amendment timing.** The 1.1.0 manifests record C5 in three successive states. The states date
+the three same-day amendments more precisely than `amended_on` does:
+
+| C5 state recorded in the manifest | Runs | Started (UTC, 2026-09-04) |
+|---|---|---|
+| Original decision (`value: false`) | 30 | 14:47–15:15 |
+| First amendment: `label_list` on RTFM and Sepsis | 8 | 15:37–16:52 |
+| Second and third amendments: `label_list_strict`; BPIC 2019 in scope. Identical to `ea00c0a` | 51 | 17:12–23:50 |
+
+The 30 runs in the first state are guided, open and Experiment 2 conditions, whose configuration
+C5 does not affect. The first amendment preceded every `label_list` run. The second amendment did
+**not** precede the four RTFM and Sepsis `label_list_strict` runs (16:51–16:52 UTC). Their
+manifests record the first-amendment text, and the second amendment first appears in a manifest
+at 17:12 UTC. Their condition configs still regenerate exactly from the `ea00c0a` sources. BPIC 2019's
+`label_list` and `label_list_strict` runs (from 17:12 UTC) postdate all three amendments.
+
+**What the flag leaves open.** The manifests hash no Python source. The checks above therefore
+cover every input a manifest records, but they cannot exclude an uncommitted edit to
+`src/goalcat/*.py` that was reverted before the next commit. `src/` is byte-identical between
+`7d93545` and `ea00c0a`.
+
 ## Why Sepsis has an axis and the others don't
 
 Sepsis's root goal is AND-decomposed over two independent Or frontiers — admission (`5` →

@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+type: software
+title: "GoalCat: Goal-Driven Variant Categorization"
+abstract: >-
+  A goal-driven process-variant categorization pipeline. A GRL/URN goal model declares the
+  categorization axis; an LLM assigns each variant, rendered as a natural-language narrative, to one
+  of the model's declared alternatives, and variants that match none are reported as a residual.
+authors:
+  - family-names: Calegari
+    given-names: Daniel
+    affiliation: Universidad ORT Uruguay
+  - family-names: Amyot
+    given-names: Daniel
+    affiliation: University of Ottawa
+version: 0.1.0
+license: AGPL-3.0-or-later
+repository-code: "https://github.com/dcalegar/GoalCat"
+keywords:
+  - process mining
+  - goal models
+  - GRL
+  - URN
+  - variant analysis
+  - large language models

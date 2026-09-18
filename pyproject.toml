@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Goal-driven categorization of process variants anchored in a declared goal model"
 requires-python = ">=3.11"
 license = { text = "AGPL-3.0-or-later" }
-authors = [{ name = "Daniel Calegari" }]
+authors = [{ name = "Daniel Calegari" }, { name = "Daniel Amyot" }]
 
 # AGPL-3.0 is not a choice: pm4py imposes it, and the repository adopts it.
 dependencies = [
