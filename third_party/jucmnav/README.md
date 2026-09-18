@@ -1,56 +1,53 @@
 # `third_party/jucmnav`
 
-Vendored GRL/URN metamodel definitions (`.ecore` files), fetched from
-[JUCMNAV/jUCMNavPlus](https://github.com/JUCMNAV/jUCMNavPlus) — the jUCMNav Eclipse project's
-"attempted resurrection", the de facto reference implementation for the User Requirements Notation
-(URN, ITU-T Z.151) and its Goal-oriented Requirement Language (GRL). Used by
-`src/goalcat/grl/jucm_io.py` to load the real schema through `pyecore` (a Python EMF
-implementation), so `.jucm` files are parsed and serialized against the actual metamodel rather
-than a hand-derived re-implementation of it.
+Vendored GRL/URN metamodel definitions (`.ecore` files) from
+[JUCMNAV/jUCMNavPlus](https://github.com/JUCMNAV/jUCMNavPlus), the continuation of jUCMNav, the
+reference tool for the User Requirements Notation (URN, ITU-T Z.151) and its Goal-oriented
+Requirement Language (GRL). `src/goalcat/grl/jucm_io.py` loads them through `pyecore` (a Python
+EMF implementation), so `.jucm` files are parsed and serialized against the actual metamodel
+rather than a hand-derived re-implementation of it.
 
-## What's here and why
+## Contents
 
-Only the `.ecore` schema files, at the same relative paths they occupy inside jUCMNavPlus (`grl`
-and `urncore`/`urn` cross-reference each other, `.ecore`, and several other schemas, via relative
-paths baked into the files themselves — `../../../../../ca.mcgill.sel.core/model/CORE.ecore` and
-similar — so this directory mirrors that structure rather than flattening it):
+Only the `.ecore` schemas, at the relative paths they occupy in jUCMNavPlus. The files
+cross-reference each other through relative paths baked into them (e.g.
+`../../../../../ca.mcgill.sel.core/model/CORE.ecore`), so the directory mirrors that layout
+instead of flattening it:
 
 ```
 jucmnav/
-├── ca.mcgill.sel.core/model/CORE.ecore
+├── ca.mcgill.sel.core/model/CORE.ecore   # referenced by the jUCMNav schemas; must resolve
 └── seg.jUCMNav/src/seg/jUCMNav/emf/
-    ├── grl.ecore          # Goal-oriented Requirement Language (this project's actual target)
-    ├── urncore.ecore       # shared URN base types (URNmodelElement, GRLmodelElement, ...)
-    ├── urn.ecore            # URNspec root, combines grlspec + ucmspec + asdspec
-    ├── ucm.ecore              # Use Case Maps (unused by this project — loaded only because
-    ├── ucmscenarios.ecore      # urn.ecore references it structurally, so it must resolve)
-    └── asd.ecore                # aspect-oriented scenario definitions (same — unused, must resolve)
+    ├── grl.ecore            # Goal-oriented Requirement Language — this project's target
+    ├── urncore.ecore        # shared URN base types (URNmodelElement, GRLmodelElement, ...)
+    ├── urn.ecore            # URNspec root: combines grlspec, ucmspec, and asdspec
+    ├── ucm.ecore            # Use Case Maps           ┐
+    ├── ucmscenarios.ecore   # UCM scenario definitions │ unused; loaded only so that
+    ├── asd.ecore            # aspect-oriented scenarios│ urn.ecore / grl.ecore resolve
+    └── fm.ecore             # feature models          ┘
 ```
 
-No Java source, no generated code, no build tooling — just the schema definitions themselves.
-This project never edits them; they are read-only reference data for `pyecore` to load.
+No Java source, generated code, or build tooling. The files are read-only reference data for
+`pyecore` and are never edited here.
 
-## Why this content, not the `pm4py_ucm` PyPI package
+## Why not the `pm4py_ucm` package
 
-`pm4py_ucm` (a separate dependency of `experimentation/icpm2027`, for the UCM/process-mining
-side unrelated to goal models) was investigated first and confirmed to have **no GRL support** —
-its `.jucm` importer explicitly skips `grlspec` and its exporter writes an empty one (see
-`src/goalcat/grl/__init__.py`'s module docstring, and `pm4py_ucm`'s own documentation, which
-documented GRL synthesis as an unimplemented design proposal at the time these files were
-vendored). There is nothing to reuse from it for GRL specifically.
+`pm4py_ucm` (process mining over Use Case Maps; not declared in `pyproject.toml` and imported by no
+module here) was evaluated first and has **no GRL support**: its `.jucm` importer skips `grlspec` and its exporter
+writes an empty one. Its documentation described GRL synthesis as an unimplemented design proposal
+when these files were vendored (see `src/goalcat/grl/__init__.py`'s module docstring).
 
 ## License
 
-jUCMNav is licensed under the **Eclipse Public License, version 1.0** (per
-`seg.jUCMNav/about.html` in the source repository: *"usecasemaps.org makes available all content
-in this plug-in ... under the terms and conditions of the Eclipse Public License Version 1.0"*).
-Only schema/metamodel definitions are vendored here — data consumed at runtime to validate and
-serialize `.jucm` documents, not executable code linked into GoalCat's own AGPL-3.0-or-later
-codebase — mirroring the isolation approach `third_party/lupin/` already takes for a
-differently-licensed vendored component (see that directory's own README for its contract).
+jUCMNav is licensed under the **Eclipse Public License, version 1.0** (`seg.jUCMNav/about.html` in
+the source repository: *"usecasemaps.org makes available all content in this plug-in ... under the
+terms and conditions of the Eclipse Public License Version 1.0"*). Only schema definitions are
+vendored: data read at runtime to validate and serialize `.jucm` documents, not executable code
+linked into GoalCat's AGPL-3.0-or-later codebase. This mirrors the isolation of the other
+differently-licensed vendored component, [`third_party/lupin/`](../lupin/README.md).
 
 ## Provenance
 
-Fetched 2026-08-19 from `https://github.com/JUCMNAV/jUCMNavPlus` (branch `master`) via the GitHub
-API, at the commit current when `src/goalcat/grl/` was built. Not kept in sync automatically —
-re-fetch manually if the upstream schema changes and this project needs to track it.
+Fetched on 2026-08-19 from `https://github.com/JUCMNAV/jUCMNavPlus` (branch `master`) through the
+GitHub API, at the commit current when `src/goalcat/grl/` was built. Not synchronized
+automatically; re-fetch manually if the upstream schema changes and this project needs to follow.

@@ -129,7 +129,7 @@ Two properties of the model are not carried into the excerpt, neither of which a
 models currently in `data/goals/`:
 
 - **Element-to-actor membership.** Actors are listed, but the excerpt does not state which elements
-  belong to which actor. All five goal models declare exactly one actor and carry no element-level
+  belong to which actor. All four goal models declare exactly one actor and carry no element-level
   `actor` attribute in `grlspec` (ownership exists only in the diagram layer), so nothing is lost
   today; a multi-actor goal model would need this rendered.
 - **Softgoals with no incoming contribution link** are never printed, since the softgoal block is
@@ -138,36 +138,38 @@ models currently in `data/goals/`:
 
 ## What the LLM actually sees of a narrative
 
-Each variant's narrative — the object Step 5a/5b/6 actually read — is rendered by the vendored
-LUPIN module (`third_party/lupin/`, [`log_templates.py`](third_party/lupin/log_templates.py)) as a
-sequence of `activity (+waiting)` clauses, e.g. `Create Fine, Send Fine (+90d), Insert Fine
-Notification (+15d), ...`, followed by a `rework_summary` clause when the variant repeats an
-activity. This is a compact rendering, adopted 2026-08-25 as the pipeline's single default,
-superseding an earlier form that spelled out each wait as its own sentence (`", 7776000 seconds
-after the previous step."`) and repeated the header's frequency/duration/outcome fields a second
-time in prose. `_format_waiting_display()`
-([`src/goalcat/extraction/profiling.py`](src/goalcat/extraction/profiling.py)) computes the
-human-scale suffix (`+90d`, `+3h`, `+45m`, `+12s`, or nothing for the always-zero-wait first
-event); the vendored module only lays it out, keeping unit conversion out of the CC BY-NC-SA-licensed
+Each variant's narrative — the object Steps 5a/5b/6 read — is rendered by the vendored LUPIN
+module ([`third_party/lupin/log_templates.py`](third_party/lupin/log_templates.py)) as a sequence of
+`activity (+waiting)` clauses, followed by a `rework_summary` clause when the variant repeats an
+activity:
+
+```
+Create Fine, Send Fine (+90d), Insert Fine Notification (+15d), ...
+```
+
+`_format_waiting_display()` ([`src/goalcat/extraction/profiling.py`](src/goalcat/extraction/profiling.py))
+computes the human-scale suffix (`+90d`, `+3h`, `+45m`, `+12s`, or nothing for the first event);
+the vendored module only lays it out, which keeps unit conversion outside the CC BY-NC-SA
 `third_party/` boundary.
 
-Measured directly on the committed Step 5a prompts, the compact form cuts the narrative block
-by 32–60% (largest on sepsis and bpic2019, where per-event wait clauses — not the header
-restatement — dominate token count). Verified end to end on three logs (`rtfm_mini`, `rtfm`,
-`sepsis`) by re-running the full pipeline before and after the change at `temperature=0`: fitness
-and precision were unchanged throughout, and the induced taxonomies and Step 6 partitions matched
-within the same run-to-run variance observed between two identical-format reruns — this rendering
-change is not a confound on the categorization results reported elsewhere. One reproducible,
-narrower effect surfaced on `rtfm_mini`: an `anchor_ids` citation for one category shifted from a
-mandatory AND-decomposition parent's full child list to the parent alone, which is arguably the
-more correct citation and affects only the reviewer-facing "goal-model linkage" line in the
-generated reports, not Step 6's assignment or Step 7's discovered models.
+This compact form replaced, on 2026-08-25, a verbose one that spelled out each wait as its own
+sentence (`", 7776000 seconds after the previous step."`) and restated the header's
+frequency/duration/outcome fields in prose. On the committed Step 5a prompts it shortens the
+narrative block by 32–60% (most on Sepsis and BPIC 2019, where per-event wait clauses dominate).
+Re-running `rtfm_mini`, `rtfm` and `sepsis` end to end before and after the change at
+`temperature=0` left fitness and precision unchanged, and the induced taxonomies and Step 6
+partitions differed only within the run-to-run variance of two identical-format reruns. The
+rendering change is therefore not a confound on the categorization results. Its one reproducible
+effect is narrower: on `rtfm_mini`, one category's `anchor_ids` moved from an AND parent's full
+child list to the parent alone, which changes only the "goal-model linkage" line of the generated
+reports, not Step 6 or Step 7.
 
-That same comparison surfaced a separate, pre-existing issue worth stating plainly: Step 5a's
-taxonomy induction is not reproducible on the Sepsis log at `temperature=0` — two runs with
-byte-identical prompts induced structurally different taxonomies (15 leaf-level categories in one
-run, 4 coarse top-level categories in the other). This is independent of the narrative-rendering
-change above; it is a property of the LLM call itself on that log.
+That comparison also produced an apparent Step 5a instability on Sepsis (15 leaf-level categories
+in one run, 4 top-level ones in the other, from byte-identical prompts). It did **not** survive the
+later Task C12 check: after a prompt defect was fixed, k=5 identical-input reruns reproduced a
+single anchor set on each of Sepsis's two axes
+(`data/output/icpm2027_results/sepsis/stability_axis{admission,discharge}.json`). The remaining
+reproducibility question is Step 6 assignment variance, which the replicate ranges report.
 
 ## Repository structure
 
@@ -177,43 +179,48 @@ GoalCat/
 ├── pyproject.toml, requirements-lock.txt, .python-version
 ├── data/
 │   ├── README.md          # study cases, references, how to read an output run — see below
-│   ├── goals/               # one goal model per log (GRL/URN): <log>_goal_model.jucm — the sole
-│   │                          # pipeline input; <log>GM_description.md is documentation only
-│   ├── logs/                 # XES.gz event logs: RTFM, BPIC 2019, Sepsis
-│   ├── templates/            # LLM prompt templates, shared across logs
-│   └── output/                # generated pipeline run artifacts, one dir per run
-├── scripts/
-│   └── setup_local_llm.sh # optional local Ollama backend bootstrap
+│   ├── goals/             # one goal model per log (GRL/URN): <log>_goal_model.jucm — the sole
+│   │                      #   pipeline input; <log>GM_description.md is documentation only;
+│   │                      #   perturbed/ holds Experiment 2's generated variants
+│   ├── logs/              # XES.gz event logs: RTFM (+ the rtfm_mini fixture), BPIC 2019, Sepsis
+│   └── output/            # generated pipeline run artifacts, one dir per run
+├── scripts/               # standalone utilities, none of them pipeline steps
+│   ├── setup_local_llm.sh                 # optional local Ollama backend bootstrap
+│   ├── convert_distance_files_to_parquet.py
+│   ├── verify_kpi_evaluation.py           # checks Step 7b against jUCMNav's reference behaviour
+│   └── aggregate_actor_satisfaction.py
 ├── src/
-│   ├── goalcat/              # the pipeline library — core execution, no case-study or GUI code
-│   │   ├── config.py, config.yaml, config_local.yaml   # PipelineConfig + default/local-LLM configs
-│   │   ├── pipeline.py       # orchestrator: run_step1_variants ... run_step9_review
-│   │   ├── discovery.py      # Step 7: per-category process discovery
-│   │   ├── indicators.py     # Step 7b (optional): measured goal satisfaction per category
-│   │   ├── review.py          # Step 9: business review loop
-│   │   ├── run_logging.py
-│   │   ├── extraction/        # Steps 1-2: log I/O, variants, profiling, similarity
-│   │   ├── narrative/          # Steps 3-4: textualization, sampling
-│   │   └── llm/                 # Steps 5a/5b, 6, 8: LLM backend, taxonomy, assignment, description
-│   └── gui/                   # local Streamlit GUI over the pipeline (imports goalcat) — see
-│                               # "Running the GUI" below; gui/diagnostics.py explains a run's
-│                               # warnings and where it stopped
-├── experimentation/          # case-study drivers (imports goalcat) — see experimentation/README.md
-│   ├── examples/               # one self-contained subdirectory per illustrative case study
-│   │   ├── rtfm_mini/           # config_mini.yaml + example_run.py (6-case fixture)
-│   │   ├── rtfm/                 # config_rtfm.yaml + example_run.py (full RTFM log)
+│   ├── goalcat/           # the pipeline library — core execution, no case-study or GUI code
+│   │   ├── config.py, config.yaml, config_local.yaml  # PipelineConfig + default/local-LLM configs
+│   │   ├── pipeline.py    # orchestrator: run_step1_variants ... run_step9_review
+│   │   ├── discovery.py   # Step 7: per-category process discovery
+│   │   ├── indicators.py  # Step 7b (optional): measured goal satisfaction per category
+│   │   ├── review.py      # Step 9: business review loop
+│   │   ├── log_inspector.py, run_logging.py, atomic_io.py
+│   │   ├── templates/     # LLM prompt templates, shared across logs
+│   │   ├── grl/           # GRL/URN goal models: .jucm I/O, the prompt excerpt, KPI evaluation
+│   │   ├── extraction/    # Steps 1-2: log I/O, variants, profiling, similarity
+│   │   ├── narrative/     # Steps 3-4: textualization, sampling
+│   │   └── llm/           # Steps 5a/5b, 6, 8: LLM backend, taxonomy, assignment, description
+│   └── gui/               # local Streamlit GUI over the pipeline (imports goalcat) — see
+│                          #   "Running the GUI" below; gui/diagnostics.py explains a run's
+│                          #   warnings and where it stopped
+├── experimentation/       # case-study drivers (imports goalcat) — see experimentation/README.md
+│   ├── examples/          # one self-contained subdirectory per illustrative case study
+│   │   ├── rtfm_mini/     # config_mini.yaml + example_run.py (6-case fixture)
+│   │   ├── rtfm/          # config_rtfm.yaml + example_run.py (full RTFM log)
 │   │   ├── bpic2019/
 │   │   └── sepsis/
-│   └── icpm2027/               # replication package for the ICPM 2027 submission (RQ1 protocol runs)
-└── third_party/lupin/      # vendored CC BY-NC-SA 4.0 textualization module (subprocess-isolated)
+│   └── icpm2027/          # replication package for the ICPM 2027 submission
+├── tests/                 # test_icpm2027_regression.py — the rules the reported numbers rest on
+└── third_party/
+    ├── lupin/             # vendored CC BY-NC-SA 4.0 textualization module (subprocess-isolated)
+    └── jucmnav/           # vendored EPL-1.0 GRL/URN .ecore schemas (read by grl/jucm_io.py)
 ```
 
-`goalcat`, `gui`, and `experimentation` are three separate top-level Python packages —
-`experimentation` and `gui` both import `goalcat` as a library, never the reverse. `goalcat` and
-`gui` live under `src/`; `experimentation` lives at the repository root instead, since it only
-consumes the pipeline and isn't part of the implemented core.
-
-`.claude/` (assistant configuration) is listed in `.gitignore` and is not part of the git repository.
+`goalcat`, `gui`, and `experimentation` are separate top-level packages: `gui` and
+`experimentation` import `goalcat`, never the reverse. `experimentation` sits at the repository
+root rather than under `src/` because it consumes the pipeline without being part of it.
 
 ## Installation
 
@@ -235,29 +242,21 @@ For exact reproducibility of the verified environment instead of resolving again
 pip install -r requirements-lock.txt
 ```
 
-GoalCat is licensed `AGPL-3.0-or-later` (see [LICENSE](LICENSE)) — inherited from its PM4Py
-dependency, not an independent choice.
-
-**Windows, behind TLS-intercepting software.** Verified 2026-09-17 on Windows 11 with Avast Web
-Shield active: `import litellm` fails at import time with
-`SSL: CERTIFICATE_VERIFY_FAILED ... unable to get local issuer certificate`, because `tiktoken`
-downloads its `cl100k_base` encoding on first import and the interceptor re-signs every HTTPS
-connection with its own root CA. That root is in the Windows certificate store but not in the
-`certifi` bundle `requests`/`httpx` trust, and Python 3.13+ additionally rejects it under the
-`VERIFY_X509_STRICT` flag its default SSL context now enables ("Basic Constraints of CA cert not
-marked critical"), so it fails even from the system store. Two choices make the install work
-without touching the security software:
+**Windows behind TLS-intercepting software** (antivirus web shields, corporate proxies). Verified
+on 2026-09-17 on Windows 11 with Avast Web Shield: `import litellm` fails with
+`SSL: CERTIFICATE_VERIFY_FAILED`, because `tiktoken` downloads an encoding on first import and the
+interceptor re-signs the connection with a root CA that is in the Windows store but not in
+`certifi`. Python 3.13+ also rejects that CA under its default `VERIFY_X509_STRICT` flag. `pip`
+uses the system store, which is why installation succeeds and the import does not. The fix does
+not touch the security software:
 
 ```bash
 py -3.12 -m venv .venv                 # 3.12: VERIFY_X509_STRICT is not on by default
 .venv/Scripts/python -m pip install -e ".[llm]" pip-system-certs
 ```
 
-`pip-system-certs` makes `requests`/`urllib3` trust the Windows store. `pip` itself is unaffected
-(it already uses the system trust store), which is why `pip install` succeeds while the first
-`import litellm` does not. The same symptom under a corporate proxy has the same fix. Also note
-that `scripts/setup_local_llm.sh` is Homebrew-based and does not run on Windows; install Ollama
-from its Windows installer instead if you want the local backend.
+`pip-system-certs` makes `requests`/`urllib3` trust the Windows store. `scripts/setup_local_llm.sh`
+is Homebrew-based; on Windows, install Ollama from its own installer.
 
 ### LLM backend
 
@@ -283,39 +282,46 @@ done, so it is safe to re-run. Then point the pipeline at `src/goalcat/config_lo
 judgments inside a still schema-valid response — spot-check Step 5/6 output against the hosted
 baseline before relying on this beyond quick local iteration.
 
-**Option C — manual, no LLM at all.** A model string with the `manual/` provider prefix (e.g.
-`taxonomy_model: "manual/reviewer"`) routes every Step 5a/5b, 6, and 8 call to the filesystem
-instead of litellm. For each call the adapter writes `<seq>_<prompt-hash>.prompt.txt` (the exact
-rendered prompt) and, for structured calls, `<seq>_<prompt-hash>.schema.json` (the pydantic JSON
-schema the reply must satisfy) to the directory named by the `GOALCAT_MANUAL_LLM_DIR` environment
-variable, then polls every 2 s until `<seq>_<prompt-hash>.response.txt` appears there and is
-non-empty. The reply goes through the same schema validation and retry loop as a model's would,
-so a malformed one is re-requested as a new prompt file. This exists so that a human — or an
-external agent acting as the LLM — can drive the full pipeline, rework loop included, on a
-machine with no API key and no local model. The wait is bounded by
-`GOALCAT_MANUAL_LLM_TIMEOUT_SECONDS` (one hour per call by default; `0` waits indefinitely) —
-the `llm.timeout_seconds` config knob is scaled for a hosted call and does not govern this path,
-but an unattended run that nobody answers must fail naming the file it wanted rather than hang.
-`RunMetadata.backend` records `manual`; token counts are `None` and `estimated_cost_usd` is
-`null`, since nothing was metered; `temperature` is `null` rather than the configured value,
-because no sampling parameter governed a reply a person or an agent wrote by hand. Set `concurrency: 1` so
-prompts arrive one at a time; Step 6 still batches `assignment_batch_size` narratives per prompt.
-Verified end to end on `rtfm_mini`: the committed run `data/output/rtfm_mini/20260917_144500`
-was generated this way from within Claude Code, with Anthropic's Claude Fable 5.1 model writing
-every Step 5a/6/8 reply by hand (see that run's `PROVENANCE.md`). Its categorization matched the
-Gemini run `20260831_064805` exactly in round 1 (same five categories, anchors, assignments,
-fitness and precision), differing only in category slugs and in the prose of Step 8.
+**Option C — manual, no LLM at all.** A model string with the `manual/` prefix (e.g.
+`taxonomy_model: "manual/reviewer"`) routes Step 5a/5b, 6, and 8 calls to the filesystem instead of
+litellm, so that a person, or an external agent acting as the LLM, can drive the whole pipeline,
+rework loop included, with no API key and no local model. Per call, in the directory named by
+`GOALCAT_MANUAL_LLM_DIR`:
+
+1. The adapter writes `<seq>_<prompt-hash>.prompt.txt` (the rendered prompt) and, for structured
+   calls, `<seq>_<prompt-hash>.schema.json` (the pydantic JSON schema the reply must satisfy).
+2. It polls every 2 s until a non-empty `<seq>_<prompt-hash>.response.txt` appears, for at most
+   `GOALCAT_MANUAL_LLM_TIMEOUT_SECONDS` (default one hour; `0` waits indefinitely). The
+   `llm.timeout_seconds` config knob does not apply here. An unanswered call fails naming the file
+   it expected rather than hanging.
+3. The reply passes through the same schema validation and retry loop as a model's; a malformed
+   reply is re-requested as a new prompt file.
+
+Set `concurrency: 1` so prompts arrive one at a time (Step 6 still batches
+`assignment_batch_size` narratives per prompt). `RunMetadata` records `backend: manual`, `None`
+token counts, and `null` for `estimated_cost_usd` and `temperature`, since nothing was metered or
+sampled. The committed run `data/output/rtfm_mini/20260917_144500` was produced this way from
+within Claude Code, with Claude Fable 5.1 writing every Step 5a/6/8 reply (see its
+`PROVENANCE.md`). Its round 1 matched the Gemini run `20260831_064805` exactly (same five
+categories, anchors, assignments, fitness and precision), differing only in category slugs and in
+Step 8's prose.
 
 **Throughput tuning (`llm:` block, hosted backend only).** Four knobs control call volume and
-pacing for Steps 5/6/8; every config under `src/goalcat/` and `experimentation/examples/*/` sets
-them the same way, so change them together if you change them at all:
+pacing for Steps 5/6/8. `src/goalcat/config.yaml` and every `experimentation/examples/*/` config
+set them identically, so change them together if you change them at all:
 
-| Key | Current value | Meaning |
+| Key | Value in these configs | Meaning |
 |---|---|---|
 | `concurrency` | `5` | Parallel in-flight LLM calls. |
 | `requests_per_minute` | `null` | Proactive request pacing; `null` disables it and relies on litellm's own retry backoff to absorb the rare `429`. |
-| `assignment_batch_size` | `25` | Narratives per Step 6 call — e.g. a 231-variant run costs ~10 calls instead of 231. Larger batches trade away per-narrative failure isolation: a failed/invalid batch response leaves every narrative in it pending, retried on the next call against the same `run_id`. The frozen ICPM 2027 protocol (`protocol_version` 1.1.0) uses `25` for all three datasets (`experimentation/icpm2027/configs/preregistration.yaml`, `C10`): batch `50` proved to time out and abort Step 6 at BPIC 2019's ~1,285-char mean narrative, so `25` is the one value every log tolerates, not a per-dataset exception. |
+| `assignment_batch_size` | `50` | Narratives per Step 6 call — a 231-variant run costs ~5 calls instead of 231. Larger batches trade away per-narrative failure isolation: a failed/invalid batch response leaves every narrative in it pending, retried on the next call against the same `run_id`. |
 | `max_retries` | `3` | litellm retries per call before failing the batch. |
+
+The ICPM 2027 replication package does **not** inherit these: its frozen protocol
+(`experimentation/icpm2027/configs/protocol.yaml`, `protocol_version` 1.1.0) pins
+`assignment_batch_size: 25` for all three datasets, because batch `50` timed out and aborted Step 6
+at BPIC 2019's ~1,285-character mean narrative. `25` is the one value every log there tolerates,
+adopted uniformly rather than as a per-dataset exception.
 
 These values assume Gemini's **paid tier** is active on the Google AI Studio project behind
 `GEMINI_API_KEY` (aistudio.google.com — billing is an account action, done outside this repo).
@@ -331,192 +337,169 @@ Gemini Batch is not an option here: litellm's `create_batch` only routes Google 
 `custom_llm_provider="vertex_ai"` (a separate GCP project/billing/quota from the `gemini` provider
 these configs use), so switching provider families just for batching was judged not worth it.
 
-**Cost tracking.** Google AI Studio's own GUI (and the linked GCP Billing console) only reports
-aggregate spend per project/day — it cannot attribute cost to a specific run or pipeline step. Every
-LLM call already records exact token counts in its `*_run_metadata.json` (`RunMetadata.input_tokens`
-/ `output_tokens`, read from the provider's response, not estimated). The `llm.pricing_usd_per_million_tokens`
-map in each config (keyed by the same model string as `taxonomy_model`/`assignment_model`/
-`description_model`) turns those into an `estimated_cost_usd` per call —
-`taxonomy_run_metadata.json` and `description_run_metadata.json` each carry one, and
-`assignment_run_metadata.json` carries one per batch call plus a `total_estimated_cost_usd`. A model
-absent from the map logs `estimated_cost_usd: null` rather than a fabricated `0.0`. Rates are USD per
-1M tokens, standard (non-batch) tier; re-check `ai.google.dev/gemini-api/docs/pricing` before trusting
-these figures for a publication's cost accounting if a run postdates the "Verified" date next to the map in
-`config.yaml` by long enough for pricing to have moved. Every call's `RunMetadata` also carries
-`prompt_chars`/`response_chars` (`len()` of the rendered prompt / raw response — a tokenizer-
-independent size measure, since the same text tokenizes to different counts depending on language,
-content, and model family) alongside `latency_seconds`.
+**Cost tracking.** Google AI Studio and the GCP Billing console report spend per project and day
+only; they cannot attribute cost to a run or a step. GoalCat therefore records it per call. Each
+`*_run_metadata.json` holds the provider-reported `input_tokens`/`output_tokens`, the
+tokenizer-independent `prompt_chars`/`response_chars`, `latency_seconds`, and an
+`estimated_cost_usd` computed from the config's `llm.pricing_usd_per_million_tokens` map (USD per
+1M tokens, standard tier, keyed by model string). Step 6's `assignment_run_metadata.json` holds one
+entry per batch plus a `total_estimated_cost_usd`. A model absent from the pricing map yields
+`null`, never a fabricated `0.0`. The rates carry a "Verified" date in `config.yaml`; re-check
+[ai.google.dev/gemini-api/docs/pricing](https://ai.google.dev/gemini-api/docs/pricing) before
+using them for a publication's cost figures.
 
-**Usage rollups (`src/goalcat/llm/usage_summary.py`).** Individual `*_run_metadata.json` files are
-per-call/per-step; two coarser views combine them for reporting:
+**Usage rollups** (`src/goalcat/llm/usage_summary.py`) aggregate those files at two levels:
 
-- **Per round** — `roundN/round_usage_summary.json`, written every time Step 9 runs against that
-  round (awaiting-review or accept alike), combining whichever of Steps 5/6/8 already ran in it.
-- **Per execution** — `final/pipeline_usage_summary.json`, written once at accept time
-  (`review.finalize_run`), combining every round of the run (a revision chain may span several).
-  This is the one place the *whole run's* cost/latency/token/char total lives; `pipeline.log` gets
-  a matching one-line summary at the same point, pointing at this file rather than duplicating its
-  detail.
+| File | Written | Covers |
+|---|---|---|
+| `roundN/round_usage_summary.json` | every time Step 9 runs against the round | the Steps 5/6/8 calls made so far in that round |
+| `final/pipeline_usage_summary.json` | once, at accept (`review.finalize_run`) | every round of the run — the only whole-run total |
 
-Both files nest per-step (round summary) or per-round (execution summary) breakdowns under a
-`totals` key with the same shape: `call_count`, `total_input_tokens`, `total_output_tokens`,
-`total_prompt_chars`, `total_response_chars`, `total_latency_seconds`, `total_estimated_cost_usd`
-(`null` if any included call's cost is unknown, never a misleading `0.0`).
+Both share a `totals` shape: `call_count`, `total_input_tokens`, `total_output_tokens`,
+`total_prompt_chars`, `total_response_chars`, `total_latency_seconds`, and
+`total_estimated_cost_usd` (`null` if any included call's cost is unknown).
 
 ## Resource usage
 
-Two pipeline outputs do not scale linearly with log size and are worth planning disk/memory
-around before a large run.
+Two pipeline outputs do not scale linearly with log size; plan disk and memory around them before
+a large run.
 
-**Memory.** Every step logs its peak resident set size (RSS) so far to `pipeline.log`
-(`log_peak_memory()` in `src/goalcat/run_logging.py`), normalized to MiB regardless of platform.
-It is a running maximum since process start, not a per-step delta — read it as "how big has this
-process gotten by now," and look at which step's line shows the jump to identify the driver.
+**Memory.** Every step logs the process's peak resident set size (RSS) to `pipeline.log`
+(`log_peak_memory()` in `src/goalcat/run_logging.py`), in MiB on every platform. The value is a
+running maximum since process start, not a per-step delta: the step whose line shows the jump is
+the driver.
 
 **Disk — `structural_distances.parquet` / `profile_distances.parquet`.** Step 6's pairwise
-variant-distance files (`src/goalcat/extraction/similarity.py`) are the only pipeline artifacts
-computed over every variant *pair* (`n(n-1)/2`) rather than once per variant — every other
-CSV/JSON in the run scales linearly with variant, case, or narrative count instead. They are
-written as Parquet, not CSV: `_pair_frame()`'s `variant_id_a`/`variant_id_b` columns are already
-`pd.Categorical` in memory (dictionary-encoded to avoid duplicating each id string once per pair),
-and Parquet preserves that dictionary encoding on disk instead of re-expanding it into ASCII text
-the way `to_csv()` did — measured on the datasets below, this alone cuts the combined
-structural+profile file size to roughly a third of the equivalent CSV (individual files range
-wider, from ~6% for `structural_distances`'s single int32 column down to ~46% for
-`profile_distances`'s four float32 columns, where there is less redundant-string encoding to
-recover), and both write (Step 6) and read (Step 9's re-render) are faster too, since neither has
-to format/parse float32 values as text. In practice:
+variant-distance files (`src/goalcat/extraction/similarity.py`) are the only artifacts computed
+over every variant *pair* (`n(n-1)/2`); every other file scales linearly with variant, case, or
+narrative count. They are written as Parquet because it preserves the dictionary encoding of the
+`pd.Categorical` id columns built by `_pair_frame()`, which CSV would expand into one string per
+pair. The combined size is roughly a third of the CSV equivalent, and both writing (Step 6) and
+reading (Step 9's re-render) are faster.
 
-| Dataset | Variants | Combined distance-file size (Parquet) | Equivalent CSV size |
+| Dataset | Variants | Combined distance files (Parquet) | CSV equivalent |
 |---|---|---|---|
 | RTFM (mini fixture) | 6 | ~1 KB | ~1 KB |
-| RTFM (full) | 231 | ~0.53 MB | ~1.5 MB (35%) |
-| Sepsis | 846 | ~7.0 MB | ~20.7 MB (34%) |
-| BPIC 2019 (full) | 11,973 | ~1.37 GB | ~4.18 GB (33%) |
+| RTFM (full) | 231 | ~0.53 MB | ~1.5 MB |
+| Sepsis | 846 | ~7.0 MB | ~20.7 MB |
+| BPIC 2019 (full) | 11,973 | ~1.37 GB | ~4.18 GB |
 
-Growth is quadratic, not linear, regardless of format: BPIC 2019's ~14x larger variant count than
-Sepsis still produces a ~200x larger combined distance-file size. Budget disk accordingly before
-running against a log with several thousand variants — doubling the variant count roughly
-quadruples these two files.
+Growth is quadratic regardless of format: BPIC 2019 has ~14× Sepsis's variants and ~200× its
+distance-file size, and doubling the variant count roughly quadruples both files. Run directories
+from before the Parquet switch still hold `.csv` versions; `scripts/convert_distance_files_to_parquet.py`
+converts them, reading each Parquet back and comparing it with the source before deleting the CSV.
 
-Existing run directories from before this change still have `structural_distances.csv`/
-`profile_distances.csv`; convert them with `scripts/convert_distance_files_to_parquet.py` (verifies
-each conversion by reading the Parquet back and comparing it against the source CSV before
-deleting the CSV). New runs write `.parquet` directly.
+Do not delete these files while a run is still under review: Step 9 re-reads them whenever a
+rename triggers a report re-render (`rerender_reports_after_rename()` in `src/goalcat/review.py`),
+without recomputing Step 6/7. Keep them until the run is accepted (`review.finalize_run`).
 
-These two files are **not safely deletable** once Step 6 finishes, in general: Step 9 re-reads
-them from disk whenever a category rename triggers a report re-render
-(`rerender_reports_after_rename()` in `src/goalcat/review.py`), without recomputing Step 6/7. Keep
-them until a run's revision chain is fully accepted (`review.finalize_run`).
+**Opt-in flags.** Four `PipelineConfig` fields (all default `false`, all also exposed in the GUI's
+"New Run" form) trade information for speed or disk. None is applied automatically — whether the
+trade-off is acceptable is the reviewer's decision. Like every other field, each is set once per
+run; changing one mid-run trips the config-drift check in `run_logging.py`.
 
-**`prune_pairwise_distances_on_finalize`** (`config.yaml` / GUI "New run" form, default `false`):
-on accept, deletes both files from *every* round of the run, not just the accepted one — including
-superseded rounds from earlier merge/split revisions. Trades traceability for disk: a superseded
-round's copies are exactly what `rerender_reports_after_rename()` needs if that round is ever
-re-reviewed with a rename, and there is no cheaper way to regenerate them than re-running Step 6's
-full O(n²) computation. Leave this off unless disk pressure at BPIC-2019-like scale outweighs that
-risk; the raw pairwise rows are unrecoverable once pruned, though the aggregate statistics they fed
-into `assignment_report.md` remain. Set once per run — it cannot be changed mid-run without
-tripping the config-drift check in `run_logging.py`.
+| Flag | Effect | What is lost |
+|---|---|---|
+| `skip_precision` | Skips Step 7's precision (`pm4py.precision_token_based_replay`), the only single-threaded, GIL-bound step. Its cost scales with a category's unique *prefix* count, not its variant count (on BPIC 2019, one category's 6,082 variants yielded 88,241 prefixes), and pm4py's optional threading does not help (~26 s vs ~28 s on a 500-variant slice). | `discovery_metrics.csv`'s `precision` is `NaN` throughout; Step 9's low-precision flag has nothing to flag. Fitness is still computed, and `discovery_report.md` states the skip. |
+| `skip_pairwise_distances` | Skips Step 6's quadratic distance computation. Both files are still written, empty but schema-valid, so Step 9's rename re-render keeps working. | `assignment_report.md`'s cohesion/divergence sections and `assignments.csv`'s nearest-neighbor columns. |
+| `prune_pairwise_distances_on_finalize` | On accept, deletes both distance files from *every* round, superseded ones included. Moot if `skip_pairwise_distances` is set. | The raw pairwise rows, which only a full O(n²) Step 6 re-run can regenerate; a later rename in a superseded round cannot re-render. The aggregates already in `assignment_report.md` remain. |
+| `skip_indicators` | Turns off Step 7b. Not a cost lever: Step 7b is deterministic and cheap (see below). | `07b_indicators/` and Step 8's citations of measured satisfaction. |
 
-**Compute — `skip_precision` / `skip_pairwise_distances`** (`config.yaml` / GUI "New Run" form's
-"Performance" section, both default `false`): two independent opt-in flags that skip the pipeline's
-two confirmed computational cost drivers, trading information for speed. Neither is automatic —
-whether the tradeoff is worth it on a given run is a decision for the human reviewer/domain expert,
-not the pipeline.
-
-- `skip_indicators` turns off Step 7b, the optional measured-satisfaction step. Step 7b measures each
-  goal-model indicator over each category's sublog, converts it through the indicator's own
-  `KPIEvalValueSet`, and propagates the result up the goal model, writing `indicator_satisfaction.csv`,
-  `goal_satisfaction.csv`, and a copy of the `.jucm` carrying one `EvaluationStrategy` per category —
-  openable in jUCMNav. It is deterministic (no LLM call, no alignment computation) and cheap, and it is
-  a no-op on a goal model whose indicators carry no `goalcat:*` measurement binding, which today means
-  every model except RTFM's. `scripts/verify_kpi_evaluation.py` checks the conversion and propagation
-  arithmetic against jUCMNav's reference behaviour.
-- `skip_precision` skips Step 7's precision computation (`pm4py.precision_token_based_replay`), the
-  only single-threaded, GIL-bound step in the pipeline — its cost scales with a category's unique
-  *prefix* count, not its variant count (observed on BPIC 2019: one category's 6,082 variants
-  produced 88,241 unique prefixes), and pm4py's own optional threading does not help (benchmarked:
-  ~26s vs ~28s on a 500-variant slice). Fitness is still computed. `discovery_metrics.csv`'s
-  `precision` column is `NaN` throughout, `discovery_report.md` notes it was skipped by config
-  rather than timed out, and Step 9's automated low-precision review flag has nothing to flag.
-- `skip_pairwise_distances` skips Step 6's structural/profile distance computation described above
-  — `structural_distances.parquet`/`profile_distances.parquet` are still written (empty,
-  schema-valid, so Step 9's rename re-render keeps working), but `assignment_report.md`'s
-  per-category cohesion/divergence sections and `assignments.csv`'s nearest-neighbor columns carry
-  no data for the round. Moot to also set `prune_pairwise_distances_on_finalize` in the same run —
-  there is nothing left to prune.
-
-Both are ordinary `PipelineConfig` fields: set once per run, and changing either mid-run trips the
-same config-drift check as every other field.
+Step 7b measures each goal-model indicator over each category's sublog, converts it through the
+indicator's own `KPIEvalValueSet`, and propagates the result up the goal model, writing
+`indicator_satisfaction.csv`, `goal_satisfaction.csv`, and a copy of the `.jucm` with one
+`EvaluationStrategy` per category, openable in jUCMNav. It is a no-op on a goal model whose
+indicators carry no `goalcat:*` measurement binding; all four goal models in `data/goals/` carry
+one. `scripts/verify_kpi_evaluation.py` checks the conversion and propagation arithmetic against
+jUCMNav's reference behaviour.
 
 ## Running the pipeline
 
-There is no packaged CLI. `src/goalcat/pipeline.py` exposes each step as a library function —
-`run_step1_variants()` through `run_step9_review()` — not a `__main__` entry point.
+There is no packaged CLI. `src/goalcat/pipeline.py` exposes each step as a library function,
+`run_step1_variants()` through `run_step9_review()`.
 
-Each study case under `experimentation/examples/` is a self-contained, illustrative,
-runnable example (its own config alongside its driver script), invoked as a module:
+### The example drivers
+
+Each case study under `experimentation/examples/` pairs a config with an `example_run.py` driver,
+run as a module from the repository root:
 
 ```bash
-python -m experimentation.examples.rtfm_mini.example_run       # 6-case fixture, scripted rework round
-python -m experimentation.examples.rtfm.example_run             # full RTFM log
+python -m experimentation.examples.rtfm_mini.example_run   # 6-case fixture, scripted rework round
+python -m experimentation.examples.rtfm.example_run        # full RTFM log
 python -m experimentation.examples.bpic2019.example_run
 python -m experimentation.examples.sepsis.example_run
 ```
 
-Each requires `GEMINI_API_KEY` (or `config_local.yaml` for the local backend, or a `manual/`
-model string plus `GOALCAT_MANUAL_LLM_DIR` for the hand-driven backend) and makes real LLM
-calls — billed ones, under the hosted backend.
+Each makes real LLM calls (billed ones, under the hosted backend) and needs one of the three
+backends in [LLM backend](#llm-backend). Each runs Steps 1–8 and then plays the Step 9 reviewer
+itself by writing `review_decisions.yaml`:
 
-The `rtfm_mini` driver's scripted reviewer requests one merge in round 1 to exercise Step 9's
-revise path. It no longer merges "the first two induced categories": the LLM returns categories
-in an arbitrary order, and Step 5a's `check_axis_partition` rejects a merge whose anchors sit
-under different decomposition points or under an Xor point, aborting the revision round. On the
-RTFM goal model that ruled out the pair the script used to pick whenever `Resolve via timely
-payment` (id 12, under Or 4) came first. `_mergeable_pair()` now selects the first pair in
-taxonomy order whose anchors are all siblings under one Or-decomposed parent — on RTFM, the two
-enforcement closures under id 6 — and fails with an explicit error if no such pair exists.
+| Driver | Scripted Step 9 decision |
+|---|---|
+| `rtfm`, `sepsis`, `bpic2019` | `accept` on round 1 |
+| `rtfm_mini` | `merge` on round 1 (exercising the revision path), then `accept` on round 2 |
 
-`data/output/rtfm_mini/20260917_192308` is the example as the current code produces it: a real
-Gemini run of the script above, Steps 1-9, accepted on round 2, 6 calls for $0.0125. Its round-1
-merge is `delinquent_payment` + `coercive_credit_collection` (ids 13 and 20, siblings under Or
-point 6), chosen by `_mergeable_pair()`. Two things in it are worth knowing before it is cited:
+The `rtfm_mini` merge is chosen by `_mergeable_pair()`: the first pair, in taxonomy order, whose
+anchors are all siblings under one OR-decomposed parent. Step 5a's `check_axis_partition` rejects
+any other merge (anchors under different decomposition points, or under an XOR point) and aborts
+the revision round, and the LLM returns categories in arbitrary order, so the driver cannot simply
+merge the first two. On the RTFM goal model the qualifying pair is the two enforcement closures
+under id 6. If no pair qualifies, the driver fails with an explicit error.
 
-- `data/output/rtfm_mini/20260831_064805` — the previous committed run, kept because the Fable
-  run's `PROVENANCE.md` compares against it — predates the partition check (added the same day,
-  commit `b016cb9`) and merged ids 12 and 13. The current code rejects that merge, so that run
-  cannot be regenerated by the script that produced it.
-- In round 2 of the new run, Step 6 assigned `V0001` (`Create Fine > Send Fine`, the fixture's
-  deliberate still-open case, with no `Payment` event at all) to `timely_payment`, having
-  correctly left it in the residual in round 1. Its own rationale concedes the point — "the
-  narrative ends with Send Fine". This is a Step 6 misassignment, not a pipeline defect, and it
-  is recorded rather than re-rolled: re-running until the fixture's residual survives would be
-  selecting a draw for its output. Cite round 1 when the residual path is the point — which is
-  what the paper's running example does, and its round 1 reproduces that table on all eight rows.
+**Reference run.** `data/output/rtfm_mini/20260917_192308` is this driver's output under the
+current code: a Gemini run of Steps 1–9, accepted on round 2, 6 LLM calls, USD 0.0125. Its round-1
+merge is `delinquent_payment` + `coercive_credit_collection` (ids 13 and 20). Two caveats before
+citing it:
 
-The runs behind the ICPM 2027 replication package live separately, under
-`experimentation/icpm2027/` — see [`experimentation/README.md`](experimentation/README.md)
-for the distinction and that subpackage's own README for its module inventory and current status.
+- In round 2, Step 6 assigned `V0001` (`Create Fine > Send Fine`, the fixture's deliberately
+  still-open case, with no `Payment` event) to `timely_payment`, after correctly leaving it in the
+  residual in round 1; its own rationale concedes that "the narrative ends with Send Fine". This is
+  a Step 6 misassignment, recorded rather than re-rolled, since re-running until the residual
+  survives would select a draw for its output. Cite round 1 when the residual path is the point;
+  the paper's running example does, and round 1 reproduces its table on all eight rows.
+- The other two committed `rtfm_mini` runs are kept for comparison, not as current output.
+  `20260831_064805` predates the partition check (commit `b016cb9`) and merged ids 12 and 13, a
+  merge the current code rejects, so its driver can no longer regenerate it. `20260917_144500` was
+  produced through the `manual/` backend (see [LLM backend](#llm-backend)).
 
-For a custom run against any config, call the `run_stepN_*()` functions directly with a shared
-`run_id`:
+The ICPM 2027 replication runs are driven separately, by `experimentation/icpm2027/` — see
+[`experimentation/README.md`](experimentation/README.md).
+
+### A custom run
+
+Call the step functions directly with a shared `run_id`, against `src/goalcat/config.yaml` (the
+default) or any other `config_path`:
 
 ```python
 from goalcat.config import new_run_id
 from goalcat.pipeline import (
     run_step1_variants, run_step2_profiling, run_step3_textualization, run_step4_sampling,
-    run_step5_taxonomy, run_step6_assignment, run_step7_discovery, run_step8_description,
-    run_step9_review,
+    run_step5_taxonomy, run_step6_assignment, run_step7_discovery, run_step7b_indicators,
+    run_step8_description, run_step9_review,
 )
 
+config_path = "src/goalcat/config.yaml"
 run_id = new_run_id()
-run_step1_variants(run_id=run_id)
-run_step2_profiling(run_id=run_id)
-# ... run_step3_textualization() through run_step9_review(), same run_id=
+run_step1_variants(config_path, run_id)
+run_step2_profiling(config_path, run_id)
+run_step3_textualization(config_path, run_id)
+run_step4_sampling(config_path, run_id)
+run_step5_taxonomy(config_path, run_id)
+run_step6_assignment(config_path, run_id)
+run_step7_discovery(config_path, run_id)
+run_step7b_indicators(config_path, run_id)   # optional; a no-op without an indicator binding
+run_step8_description(config_path, run_id)
+run_step9_review(config_path, run_id, 1)     # returns {"status": "awaiting_review", ...}
 ```
 
-against `src/goalcat/config.yaml` (the default) or any other `config_path=`.
+Step 9 acts only on a decision already on disk. The first call writes a template to
+`round1/09_review/review_decisions.yaml` and returns `awaiting_review`. Set `decision: accept`, or
+`decision: revise` with at least one rename, merge, or split filled in (the untouched template is
+deliberately invalid, so nothing is accepted by default), then call `run_step9_review()` again. The
+GUI's Review page writes the same file. A rename-only revision applies in place, returns
+`renamed`, and writes a fresh template for the same round; a merge or split returns
+`{"status": "revised", "round": 2}` after re-running Steps 5–8 under `round2/`, which is then
+reviewed the same way.
 
 ### When a step cannot finish: `IncompleteAssignmentError`
 
@@ -536,8 +519,8 @@ unrelated failures. The GUI's Diagnostics page reports the condition as a `block
 
 ## Running the GUI
 
-`src/gui/` is a local Streamlit app over the same pipeline library — no YAML hand-editing, no
-`review_decisions.yaml` hand-editing. Install its extra and launch it:
+`src/gui/` is a local Streamlit app over the same pipeline library, replacing hand-edited config
+and `review_decisions.yaml` files with forms. Install its extra and launch it:
 
 ```bash
 pip install -e ".[llm,gui]"
@@ -545,36 +528,22 @@ export GEMINI_API_KEY=...        # or the local Ollama backend — see "LLM back
 streamlit run src/gui/app.py
 ```
 
-This opens `http://localhost:8501` in your browser. Everything runs on your machine — there is no
-hosted/paid Streamlit service involved. Six pages, in the sidebar:
+This opens `http://localhost:8501`; everything runs locally. The sidebar has six pages:
 
 - **Setup** — check which LLM API key (`GEMINI_API_KEY`/`OPENAI_API_KEY`/`ANTHROPIC_API_KEY`) is
   already in the environment, or paste one in for the session (kept in the server process's memory
   only — never written to a file, per the "LLM backend" convention above).
-- **New Run** — upload a new log/goal model if needed, pick a log (`data/logs/`) and goal model
-  (`data/goals/`), a form pre-filled from the matching case study's config (or the top-level
-  default) for everything else (`case_id_key`/`activity_key`/..., sample sizes, `taxonomy_mode`,
-  a "Performance" section for `skip_precision`/`skip_pairwise_distances`/
-  `prune_pairwise_distances_on_finalize` (see "Resource usage" above), LLM model/temperature/
-  concurrency/rate-limit), and a button that launches Steps 1-8 with a live progress checklist, a
-  stop control, and a `pipeline.log` tail — useful during Step 6/8, which can take several minutes
-  against real LLM calls. Launching directly works with no further action; an optional "Inspect
-  log" step (`src/goalcat/log_inspector.py`) sits in between for a form-and-inspect workflow
-  instead:
-  - Parses the log once — key validation, exact variant/prefix counts, a calibrated
-    `skip_pairwise_distances` disk estimate, and Step 6's LLM call count/cost — before any run
-    starts. Repeat inspections of the same log (same path/size/mtime and column keys) reuse the
-    cached parse instead of re-reading the XES file.
-  - Reports a *suggested* `skip_pairwise_distances` value from a disclosed, deliberately
-    unvalidated heuristic threshold on the predicted disk estimate, and a descriptive-only signal
-    for `skip_precision` against four reference logs (never a suggested boolean for that flag —
-    its true per-category cost isn't computable before Step 6 runs). Nothing is applied on its
-    own authority: an "Apply suggestion" button flips the `skip_pairwise_distances` checkbox only
-    on explicit click.
-  - If the log was inspected before "Run pipeline" was clicked, `log_inspection.json` (the
-    report, the suggestion, and whether it was accepted) is written into the run directory
-    alongside `gui_run_config.yaml` — a record of which of the two workflows produced this run,
-    absent when the operator launched directly.
+- **New Run** — pick (or upload) a log from `data/logs/` and a goal model from `data/goals/`, adjust
+  a form pre-filled from the matching case study's config (keys, sample sizes, `taxonomy_mode`,
+  LLM settings, and a "Performance" section with the four opt-in flags of
+  [Resource usage](#resource-usage)), and launch Steps 1–8 with a live progress checklist, a stop
+  control, and a `pipeline.log` tail. An optional "Inspect log" panel
+  (`src/goalcat/log_inspector.py`) parses the log once beforehand and reports key validity, exact
+  variant/prefix counts, the predicted distance-file size, and Step 6's call count and cost. It
+  *suggests* a `skip_pairwise_distances` value from a deliberately unvalidated disk threshold (and
+  only a descriptive signal for `skip_precision`, whose cost is not computable before Step 6); the
+  suggestion is applied only by clicking "Apply suggestion". When an inspection preceded the
+  launch, `log_inspection.json` records it in the run directory beside `gui_run_config.yaml`.
 - **Results** — browse any past run's variants, profiles, narratives, taxonomy, per-category
   reports, discovered process models (DFG images + downloadable `.pnml`), Step 7b's indicator
   satisfaction (when that step ran — measured value, propagated softgoal scores, and a
@@ -586,19 +555,16 @@ hosted/paid Streamlit service involved. Six pages, in the sidebar:
 - **History** — every run under `data/output/`, with its reconstructed outcome, warning counts by
   severity, round count, latest status, and config summary, with a shortcut into
   Results/Review/Diagnostics for any of them.
-- **Diagnostics** — where a run stopped and what its warnings mean: a step timeline, plus every
-  `WARNING`/`ERROR` in `pipeline.log` grouped by kind, each with a plain-language explanation and
-  the repair, graded `blocking` (no round can be accepted) / `quality` (a result is weaker than it
-  looks) / `transient` (a retried API hiccup) / `benign` / `unclassified`. Built from the run
-  directory's own files, so it also covers runs launched outside the GUI (`experimentation/`), and
-  it is the only page that reports a run that died before producing a round — Results and Review
-  both need one.
+- **Diagnostics** — where a run stopped and what its warnings mean: a step timeline plus every
+  `WARNING`/`ERROR` in `pipeline.log`, grouped by kind, explained, and graded `blocking` (no round
+  can be accepted), `quality` (a result is weaker than it looks), `transient` (a retried API
+  hiccup), `benign`, or `unclassified`. It reads only the run directory, so it also covers runs
+  launched outside the GUI, and it is the only page that can report a run that died before
+  producing a round.
 
-Each run/round the GUI launches executes in its own subprocess (`python -m gui.worker`), not
-inside the Streamlit process itself — `goalcat.run_logging.get_logger()` caches its file handler
-per process, so a long-lived GUI session launching many runs needs one fresh process per run to
-give each its own `pipeline.log`. See `src/gui/run_control.py`'s module docstring for the full
-rationale.
+Each run the GUI launches executes in its own subprocess (`python -m gui.worker`), because
+`goalcat.run_logging.get_logger()` caches its file handler per process and each run needs its own
+`pipeline.log` (see `src/gui/run_control.py`).
 
 ### Deploying the GUI as a shared web server (not currently supported)
 
@@ -628,7 +594,8 @@ with publisher references, and for how to read a pipeline output-run directory u
 
 ## License and third-party components
 
-GoalCat is licensed `AGPL-3.0-or-later` — see [LICENSE](LICENSE). The vendored
+GoalCat is licensed `AGPL-3.0-or-later` (see [LICENSE](LICENSE)), inherited from its PM4Py
+dependency. The vendored
 `third_party/lupin/` module (textualization) is reused from LUPIN (Pasquadibisceglie, Appice &
 Malerba, 2024) under CC BY-NC-SA 4.0, isolated from the rest of the codebase via `subprocess`
 invocation only; see [`third_party/lupin/README.md`](third_party/lupin/README.md) for the full
