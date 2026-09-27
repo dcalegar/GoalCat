@@ -15,29 +15,26 @@ model does not yet cover something the process actually does. When no goal model
 a log, the same pipeline falls back to open taxonomy induction, proposing categories directly from
 the narratives.
 
-<!-- 
 ### Citation
 
 A preprint version of the accompanying paper is available on arXiv:
 
 > Daniel Calegari, Daniel Amyot.
-> *A Framework for Object-Centric Predictive Monitoring of Collaborative
-> Processes.* Preprint, arXiv:2608.27671, 2026.
-> <https://arxiv.org/abs/2608.27671>
+> *Goal-driven Variant Categorization.
+> * Preprint, arxiv:2609.22475, 2026.
+> <https://arxiv.org/abs/2609.22475>
 
 ```bibtex
-@misc{calegari2026ocpm,
-  title        = {A Framework for Object-Centric Predictive Monitoring of Collaborative Processes},
-  author       = {Calegari, Daniel and Delgado, Andrea and Pe\~{n}a, Leonel and Rubio, Mart\'{i}n},
-  year         = {2026},
-  eprint       = {2608.27671},
-  archiveprefix = {arXiv},
-  primaryclass = {cs.SE},
-  howpublished = {arXiv preprint arXiv:2608.27671},
-  url          = {https://arxiv.org/abs/2608.27671}
+@misc{calegari2026goaldrivenvariantcategorization,
+      title={Goal-driven Variant Categorization}, 
+      author={Daniel Calegari and Daniel Amyot},
+      year={2026},
+      eprint={2609.22475},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2609.22475}, 
 }
 ```
--->
 
 ## Pipeline at a glance
 
