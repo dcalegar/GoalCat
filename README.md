@@ -20,8 +20,8 @@ the narratives.
 A preprint version of the accompanying paper is available on arXiv:
 
 > Daniel Calegari, Daniel Amyot.
-> *Goal-driven Variant Categorization.
-> *Preprint, arxiv:2609.22475, 2026.
+> *Goal-driven Variant Categorization.*
+> Preprint, arxiv:2609.22475, 2026.
 > <https://arxiv.org/abs/2609.22475>
 
 ```bibtex
